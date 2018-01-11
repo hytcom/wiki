@@ -58,18 +58,18 @@
 #### Simple {label,value}
 ```json
 [
-	{label:.., value:..},
-	{label:.., value:..},
-	{label:.., value:..}
+	{"label":"..", "value":".."},
+	{"label":"..", "value":".."},
+	{"label":"..", "value":".."}
 ]
 ```
 
 #### Grupos {group,label,value} (sólo disponible para selects)
 ```json
 [
-	{group:...,label:.., value:..},
-	{group:...,label:.., value:..},
-	{group:...,label:.., value:..}
+	{"group":...,"label":"..", "value":".."},
+	{"group":...,"label":"..", "value":".."},
+	{"group":...,"label":"..", "value":".."}
 ]
 ```
 &nbsp;
@@ -452,7 +452,7 @@ switch:
 
 tag:
 	source: opcionalmente una url de un json que retorne registros con el formato:
-		[{label:.., value:..}, {label:.., value:..}, {label:.., value:..}]
+		[{"label:"..", "value":".."}, {"label:"..", "value":".."}, {"label:"..", "value":".."}]
 		si no se declara, el campo será libre
 		
 		
