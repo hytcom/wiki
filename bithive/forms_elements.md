@@ -325,10 +325,10 @@ En si mismo, este elemento no añade contenido alguno. Es una herramienta para a
         <table class='table table-bordered'>
             <thead>
                 <tr>
-			        <th>#</th>
-			        <th>Nombre</th>
-			        <th>Apellido</th>
-			        <th>Usuario</th>
+                    <th>#</th>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Usuario</th>
                 </tr>
             </thead>
             <tbody>
