@@ -67,9 +67,9 @@
 #### Grupos {group,label,value} (sólo disponible para selects)
 ```json
 [
-	{"group":...,"label":"..", "value":".."},
-	{"group":...,"label":"..", "value":".."},
-	{"group":...,"label":"..", "value":".."}
+	{"group":"...","label":"..", "value":".."},
+	{"group":"...","label":"..", "value":".."},
+	{"group":"...","label":"..", "value":".."}
 ]
 ```
 &nbsp;
