@@ -1,5 +1,5 @@
 ## Consideraciones Generales
-### Listado de Elementos soportados
+### Elementos Básicos
 - [attacher](#attacher)
 - [autocomplete](#autocomplete)
 - [break](#break)
@@ -13,7 +13,6 @@
 - [hidden](#hidden)
 - [html](#html)
 - [input](#input)
-- [modalform](#modalform)
 - [number](#number)
 - owl-checkbox ( obsoleto, utilizar [checkbox](#checkbox) )
 - owl-radio ( obsoleto, utilizar [radio](#radio) )
@@ -24,10 +23,13 @@
 - [section](#section)
 - [select](#select)
 - [slider](#slider)
-- [subform](#subform)
 - [switch](#switch)
 - [tags](#tags)
 - [textarea](#textarea)
+
+### Elementos Avanzados
+- [relation](#relation)
+- [subform](#subform)
 &nbsp;
 
 ### Atributos comunes a todos los Elementos
@@ -134,7 +136,7 @@ Para validar un dato contra el servidor, en tiempo real, se pueden utilizar los 
 ---
 &nbsp;
 
-# Elementos
+# Elementos Básicos
 En la sección **Atributos** de cada elemento enumeran los atributos particulares y opcionales del elemento que se suman a los atributos comunes.
 &nbsp;
 
@@ -147,7 +149,7 @@ Zona para drag a drop para adjuntar archivos
 
 ### Atributos
 - **text** = texto de la zona de drop
-#### Opcionales
+#### opcionales
 - **types** = tipos de archivos separados por coma (,)
 - **max** = maximo de archivos permitidos
 - **autohide** = define si se debe ocultar la zona drop despues de adjuntar: true o false
@@ -168,7 +170,7 @@ Zona para drag a drop para adjuntar archivos
 Lista autocompletable de opciones
 ### Atributos
 - **source** = url o json con datos, formato {label,value}
-#### Opcionales
+#### opcionales
 - **addtext** = texto que se mostrara cuando no haya resultados y que dará la opcion de **agregar nuevos valores** abriendo el formulario *addsource*
 - **addsource** = url del formulario para agregar datos al autocomplete
 
@@ -205,7 +207,7 @@ Añade un espacio vertical. Este elemento unicamente soporta el atributo *class*
 Grupo de opciones checkbox
 ### Atributos
 - **source** = opciones en formato {label,value} donde *label* será el texto a mostrar y *value* el valor del checkbox
-#### Opcionales
+#### opcionales
 - **class** = se pueden especificar clases de columnas Bootstrap para una mejor representación *col-lg-4 col-md-6 col-xs-12*
 - **empty** = texto que se mostrará cuando no se encuentren opciones en *source*, utilizado con *checkbox* dinámicos
 
@@ -353,30 +355,6 @@ Clásico input text
 ```
 &nbsp;
 
-## modalform
-Este elemento genera un botón que al presionarlo abre un formulario emergente. Utilizado generalmente en formularios de edición, ya que es ideal para vincular registros satélites a un registro maestro, como por ejemplo los contactos de una empresa a la misma.
-### Atributos
-- **button** = texto que se mostrará en el botón
-- **source** = URL del formulario. Puede contener variables, esto permite, por ejemplo, pasar el **id** de un registro maestro
-#### opcionales
-- **value** = URL de un documento que contiene los valores previamentes cargados (ej: tabla con contactos). Este documento se cargará en *target* al inicio (excepto con *skipfirst =* **true**) y después de cada envio satisfactorio
-- **target** = selector jquery de la zona en donde se cargará *value*
-- **skipfirst** = evita el primer llamado al domumento *value*, por defecto es **false**
-- **size** = tamaño del dialogo (hg xl lg md sm xs)
-
-```json
-["modalform", {
-	"button": "nuevo contacto",
-	"class": "btn btn-primary",
-	"source": "modalform_form?id=1234", 
-	"value": "modalform_table?id=1234",
-	"target": "#demo",
-	"skipfirst": "true",
-	"size": "md"
-}],
-```
-&nbsp;
-
 ## number
 Selector de valores numéricos.
 ### Atributos
@@ -384,9 +362,19 @@ Selector de valores numéricos.
 - **min** = menor valor posible
 - **max** = maximo valor posible
 - **step** = incremento
+- **attribs**
+	- **data-prefix** = texto anterior al campo
+	- **data-postfix** = texto posterior al campo
 
 ``` json
-["number", {"name":"number", "label":"number", "min":"0", "max":"100", "step":"10"}]
+["number", {
+	"name":"number", 
+	"label":"number", 
+	"min":"0", 
+	"max":"100", 
+	"step":"10",
+	"attribs": {"data-postfix":"%"}
+}]
 ```
 &nbsp;
 
@@ -402,7 +390,7 @@ Campo para contraseñas que cuenta con la opción de mostrar el valor introducid
 Grupo de opciones radio
 ### Atributos
 - **source** = opciones en formato {label,value} donde *label* será el texto a mostrar y *value* el valor del radio
-#### Opcionales
+#### opcionales
 - **class** = se pueden especificar clases de columnas Bootstrap para una mejor representación *col-lg-4 col-md-6 col-xs-12*
 - **empty** = texto que se mostrará cuando no se encuentren opciones en *source*, utilizado con *radio* dinámicos
 - **lnk-source** = URL del origen de datos de un **combo relacionado**, que se ejecutará al seleccionar un valor
@@ -418,54 +406,170 @@ Grupo de opciones radio
 ```
 &nbsp;
 
+## readonly
+Emula un campo `<input>` utilizando un `<span>`, la utilidad de es este elemento es poder mostrar un valor en el `<span>` mientras que el campo *hidden* alberga otro
+### Atributos
+- **show** = valor que se mostrará en el campo falso `<span>`
+#### opcionales
+
+```json
+["readonly", {
+	"name":"name",
+	"label":"Responsable",
+	"value":"1",
+	"show": "Mark Otto (@motto)"
+}]
+```
+&nbsp;
+
+## section
+Inserta un título de sección del tipo `<h.>` con la posibilidad de anteponer un `<hr>`
+### Atributos
+#### opcionales
+- **divider** = si tiene seteado cualquier valor, se insertará un `<hr>` antes del título de sección
+- **title** = texto del título de la sección
+- **size** = tamaño de texto del título, valores de 1 a 6. Por defecto 3
+- **dclass** = clase CSS del divider
+
+```json
+["section", {
+	"divider":"1",
+	"title":"Sección"
+}]
+```
+&nbsp;
+
+## select
+Lista desplegable de opciones
+### Atributos
+- **source** = opciones en formato `{label,value}` donde *label* será el texto a mostrar y *value* el valor del option. También se puede utilizar `{group,label,value}` para agrupar opciones
+#### opcionales
+- **empty** = texto que se mostrará cuando no se encuentren opciones en *source*, utilizado con *selects* dinámicos
+- **lnk-source** = URL del origen de datos de un **combo relacionado**, que se ejecutará al seleccionar un valor
+- **lnk-target** = jquery selector del combo relacionado, *select*, *radio** o *checkbox*
+- **attribs**
+	- **multiple** = determina si es un `<select>` de selección multiple, true o false
+	- **size** = cantidad de valores visibles en el select tamaño
+
+```json
+["select", {
+	"name":"name",
+	"label":"Barrio",
+	"source":"__knot?imya=uEdVChLkoZkKbHsYQtiiulHQNwnihLxd"
+}]
+```
+&nbsp;
+
+## slider
+Selector desplazable de valores
+### Atributos
+#### opcionales
+- **min** = menor valor posible
+- **max** = maximo valor posible
+- **step** = incremento
+- **attribs**
+	- **data-prefix** = texto anterior al valor
+	- **data-postfix** = texto posterior al valor
+
+```json
+["select", {
+	"name":"name",
+	"label":"Barrio",
+	"source":"__knot?imya=uEdVChLkoZkKbHsYQtiiulHQNwnihLxd"
+}]
+```
+&nbsp;
+
+## switch
+Grupo de opciones **checkbox** en formato de botones switch
+### Atributos
+- **source** = opciones en formato {label,value} donde *label* será el texto a mostrar y *value* el valor del switch
+#### opcionales
+- **class** = se pueden especificar clases de columnas Bootstrap para una mejor representación *col-lg-4 col-md-6 col-xs-12*
+- **empty** = texto que se mostrará cuando no se encuentren opciones en *source*, utilizado con *switch* dinámicos
+
+```json
+["switch", {
+	"name":"name",
+	"label":"Barrio",
+	"source":"__knot?imya=uEdVChLkoZkKbHsYQtiiulHQNwnihLxd",
+	"class": "col-lg-4 col-md-6 col-xs-12"
+}]
+```
+&nbsp;
+
+## tags
+Selector de etiquetas. Estas pueden ser libres y/o provenientes de un autocomplete si se espeficita *source*
+### Atributos
+- **source** = por convencion las opciones se esperan en formato {label,value} pero el *label* será ignorado, el *value* será el texto a consignar en la etiqueta
+
+```json
+["tags", {
+	"name":"name",
+	"label":"tags",
+	"source":"data.json?"
+}],
+```
+&nbsp;
 
 
+## textarea
+Clasico campo `<textarea>` o versiones enriquecidas
+### Atributos
+- **type** = tipo de `<textarea>`, las opciones son:
+	- **dynamic** = dinámico, el campo se agranda automaticamente para su edición pero luego vuelve a ocupar pocas líneas
+	- **fullscreen** = añade la posibilidad de llevar el `<textarea>` al 90% del alto y ancho de la ventana
+	- **wysiwyg-lite** = editor WYSIWYG con funcionalidades mínimas: `<b><i><u>`
+	- **wysiwyg** = editor WYSIWYG estandar: `<b><i><u>` + alineaciones
+	- **wysiwyg-full** = editor WYSIWYG completo
+
+```json
+["textarea", {
+	"type":"wysiwyg",
+	"name":"name",
+	"label":"textarea",
+
+}],
+```
+&nbsp;
+&nbsp;
+
+---
+&nbsp;
+
+# Elementos Avanzados
+## relation
+Formulario emergente en el cual se cargarán nuevos. Utilizado generalmente en formularios de edición, ya que es ideal para vincular registros satélites a un registro maestro, como por ejemplo los contactos de una empresa a la misma.
+### Atributos
+- **button** = texto que se mostrará en el botón
+- **source** = URL del formulario. Puede contener variables, esto permite, por ejemplo, pasar el **id** de un registro maestro
+#### opcionales
+- **value** = URL de un documento que contiene los valores previamentes cargados (ej: tabla con contactos). Este documento se cargará en *target* al inicio (excepto con *skipfirst =* **true**) y después de cada envio satisfactorio
+- **target** = selector jquery de la zona en donde se cargará *value*
+- **skipfirst** = evita el primer llamado al domumento *value*. Valore aceptados "true" y "false"
+- **size** = tamaño del dialogo (hg xl lg md sm xs)
+
+```json
+["relation", {
+	"button": "nuevo contacto",
+	"class": "btn btn-primary",
+	"source": "relation_form?id=1234", 
+	"value": "relation_table?id=1234",
+	"target": "#demo",
+	"skipfirst": "true",
+	"size": "md"
+}],
+```
+&nbsp;
 
 
-section:
-	divider: opcional, inserta un HR antes del Hn
-	size: tamaño del titulo Hn (1 a 6)
-	title: texto del titulo
 	
-readonly:
-	show: valor a mostrar, puede o no ser igual a value
-
-	
-select:
-	source: url o json en formato {label,value} donde value sera el valor de la opcion y label el texto a mostrar
-		utilizar {group,label,value} para agrupar opciones dentro de un select
-
-	attribs
-		multiple: true o false
-		size: 
-
-slider:
-	attribs
-		data-min: menor valor posible
-		data-max: maximo valor posible
-		data-step: incremento
-
-
-switch:
-	source: json en formato {label,value} donde label sera el texto a mostrar y value el valor del checkbox
-
-
-tag:
-	source: opcionalmente una url de un json que retorne registros con el formato:
-		[{"label:"..", "value":".."}, {"label:"..", "value":".."}, {"label:"..", "value":".."}]
-		si no se declara, el campo será libre
 		
-		
-textarea
-	type
-		dynamic
-		wysiwyg-lite
-		wysiwyg
-		wysiwyg-full
 
 
 
-subform:
+
+#subform:
 	button: texto del boton de agregar
 	source: url del subformulario
 	default: cantidad de subformularios cargados por default
@@ -506,31 +610,3 @@ subform:
 					</@multiple>
 				</rind:mergefile>
 			</div>
-
-
-
-dialog
-<div class="form-group">
-	<label class="control-label"><button class="btn btn-primary btn-sm margin-sm margin-only-bottom dialog-link" dialog-href="motos_search" dialog-id="motos" dialog-title="Seleccionar Moto">agregar moto</button></label>
-	<input id="dominio" value="" class="form-control form-input" style="display:none" />
-	<input type="hidden" id="dominioh" name="moto" value="" />
-</div>
-
-
-
-// -------------------------------------------------------------------------------------------------
-Validacion de datos
-
-para validad un dato contra el servidor, on the fly, utilizar los atributos especiales: data-checker y data-checker-text
-	"attribs": {
-		"data-checker": "url del script chequeador. En la variable q el sistema agregará el valor actual del campo",
-		"data-checker-text": "mensaje a mostrar en caso de que el chequeo de positivo. Utilizar *** para imprimir el valor retornado por el archivo chequeador"
-	}
-	
-	
-	ej:
-	
-	"attribs": {
-		"data-checker": "__knot?imya=fUyqGMP1vTnvECn2zRHCtjj5RIHVtgdz",
-		"data-checker-text": "El correo *** ya se encuentra registrado"
-	}
