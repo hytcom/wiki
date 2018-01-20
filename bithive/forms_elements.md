@@ -55,6 +55,7 @@
 - checkbox
 - radio
 - select
+- switch
 &nbsp;
 
 #### Simple {label,value}
@@ -109,7 +110,7 @@ Es posible relacionar 2 ó mas combos, para ello se deberan utilizar los siguien
 	"label":"Empresa", 
 	"source":"__knot?imya=agHra496ft4LhAQZcg7rlefxW54prX6d",
 	"lnk-source":"__knot?imya=Uh06krPfToxH08qeX5z4uokRAsEzrhQU&q=",
-	"lnk-target":"#cc"
+	"lnk-target":"#contact"
 }],
 ["checkbox", {
 	"attribs":{"id":"contact"},
@@ -232,20 +233,28 @@ Selector de color hexadecimal
 ## cols
 Agrupa los campos de 2 a 5 columnas en resoluciones mayores a **992px**
 En resoluciones menores, los bloques de 4 y 5 columnas se transformarán en 2 columnas, y los bloques de 2 y 3 en 1 columna.
-El bloque de columnas se inicia con la llamada de un elemento *cols* y se cierra con la llamada de otro elemento *cols* que tenga presente el atributo *close*
+Un bloque de columnas se inicia con la llamada de un elemento **cols** con el atributo *open* y se cierra con la llamada de otro elemento **cols** que tenga presente el atributo *close*
+Cada llamada al elemento que contenga unicamente el atributo *cols*, cerrará el bloque anterior de columnas e iniciará uno nuevo
 ### Atributos
 - **cols** = cantidad de columnas 2 a 5
 #### opcionales
+- **open** = indica el inicio del encolumnado, se puede utilizar 1 o true
 - **close** = indica el cierre de columnas, se puede utilizar 1 o true
 
 ```json
+El tabulado del ejemplo es unicamente con fines estéticos
+
+["cols", {"cols":"3", "open":"1"}],
+	["input", {"name":"name", "label":"Label"}],
+	["input", {"name":"name", "label":"Label"}],
+	["input", {"name":"name", "label":"Label"}],
+["cols", {"cols":"2"}],
+	["input", {"name":"name", "label":"Label"}],
+	["input", {"name":"name", "label":"Label"}],
 ["cols", {"cols":"3"}],
-["input", {"name":"name", "label":"Label"}],
-["input", {"name":"name", "label":"Label"}],
-["input", {"name":"name", "label":"Label"}],
-["cols", {"cols":"2", "close":"1"}],
-["input", {"name":"name", "label":"Label"}],
-["input", {"name":"name", "label":"Label"}],
+	["input", {"name":"name", "label":"Label"}],
+	["input", {"name":"name", "label":"Label"}],
+	["input", {"name":"name", "label":"Label"}],
 ["cols", {"close":"1"}]
 ```
 &nbsp;
@@ -323,26 +332,14 @@ En si mismo, este elemento no añade contenido alguno. Es una herramienta para a
 
 ```json
 ["html", {"code":"
-    <div id='demo'>
-        <table class='table table-bordered'>
-            <thead>
-                <tr>
-                    <th>#</th>
-                    <th>Nombre</th>
-                    <th>Apellido</th>
-                    <th>Usuario</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <th>1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@motto</td>
-                </tr>
-            </tbody>
-    	</table>
-    </div>
+	<table class='table table-bordered'>
+		<tbody>
+			<tr><td>7</td><td>8</td><td>9</td></tr>
+			<tr><td>4</td><td>5</td><td>6</td></tr>
+			<tr><td>1</td><td>2</td><td>3</td></tr>
+			<tr><td colspan='2'>0</td><td>.</td></tr>
+		</tbody>
+	</table>
 "}]
 ```
 &nbsp;
@@ -498,6 +495,36 @@ Grupo de opciones **checkbox** en formato de botones switch
 ```
 &nbsp;
 
+## tabs
+Genera un grupo de tabs.
+El grupo se inicia con la llamada de un elemento **tabs** con el atributo *open* y se cierra con la llamada de otro elemento **tabs** que tenga presente el atributo *close*
+Cada llamada al elemento que contenga unicamente el atributo *title*, cerrará el tab anterior y abrirá uno nuevo
+### Atributos
+- **title** = título del TAB
+- **class** = clase aplicada al contenedor de todo el bloque. Solo tiene efecto cuando se encuentra presente el atributo *open*
+#### opcionales
+- **open** = indica el inicio del grupo de tabs, se espera *1* o *true*
+- **close** = indica el cierre del grupo de tabs, se espera *1* o *true*
+
+```json
+```json
+El tabulado del ejemplo es unicamente con fines estéticos
+
+["tabs", {"title":"Datos Personales", "open":"1"}],
+	["input", {"name":"name", "label":"Label"}],
+	["input", {"name":"name", "label":"Label"}],
+	["input", {"name":"name", "label":"Label"}],
+["tabs", {"title":"Datos Laborales"}],
+	["input", {"name":"name", "label":"Label"}],
+	["input", {"name":"name", "label":"Label"}],
+["tabs", {"title":"Datos Bancarios"}],
+	["input", {"name":"name", "label":"Label"}],
+	["input", {"name":"name", "label":"Label"}],
+	["input", {"name":"name", "label":"Label"}],
+["tabs", {"close":"1"}]
+```
+&nbsp;
+
 ## tags
 Selector de etiquetas. Estas pueden ser libres y/o provenientes de un autocomplete si se espeficita *source*
 ### Atributos
@@ -539,7 +566,13 @@ Clasico campo `<textarea>` o versiones enriquecidas
 
 # Elementos Avanzados
 ## relation
-Formulario emergente en el cual se cargarán nuevos. Utilizado generalmente en formularios de edición, ya que es ideal para vincular registros satélites a un registro maestro, como por ejemplo los contactos de una empresa a la misma.
+El elemento se muestra como un botón que abre un diálogo en el que se pueden cargar diferentes tipos de documentos.
+El propósito del elemento es generar vinculos entre el formulario actual y datos adyacentes. Conceptualmente es identico a un elemento combo (select, radios, etc), pero ofrece un mayor control y versatilidad.  
+Hay diferentes variantes para este elmento, algunos de sus usos:
+- dar de alta un registro *hijo* y vincularlo al *padre*. Ej: datos de la persona responsable de una empresa (ver ejemplo #2)
+- seleccionar uno o varios valores de un grupo de resultados. Ej: vincular rubro/s a un producto
+- buscar un valor, si no existe darlo de alta, si existe seleccionarlo del grupo de resultados. Ej: seleccionar el cliente en una factura
+
 ### Atributos
 - **button** = texto que se mostrará en el botón
 - **source** = URL del formulario. Puede contener variables, esto permite, por ejemplo, pasar el **id** de un registro maestro
@@ -547,29 +580,116 @@ Formulario emergente en el cual se cargarán nuevos. Utilizado generalmente en f
 - **value** = URL de un documento que contiene los valores previamentes cargados (ej: tabla con contactos). Este documento se cargará en *target* al inicio (excepto con *skipfirst =* **true**) y después de cada envio satisfactorio
 - **target** = selector jquery de la zona en donde se cargará *value*
 - **skipfirst** = evita el primer llamado al domumento *value*. Valore aceptados "true" y "false"
+- **closebutton** = determina si debe mostrarse el botón "cerrar" en el diálogo, se espera *1* o *true*, por defecto: *false*
+- **noform** = determina si el contenido de el diálogo debe presentarse como un formulario, se espera *1* o *true* por defecto: *false*
 - **size** = tamaño del dialogo (hg xl lg md sm xs)
+#### en los documentos *source*
+- **data-relation** = por medio de este atributo se puede asignar funcionalidades a los elementos de los documentos cargados en el diálogo
+	- **close** = al hacer click sobre el elemento se cerrará el diálogo
+	- **multiple** = añade a *target* el contenido del comentario del elemento (ver ejemplo #2)
+	- **once** = setea de manera única el contenido del comentario en el *target* (aplicable al ejemplo #2)
+	- **onceclose** = identico al anterior, pero luego de setearlo cierra el diálogo (aplicable al ejemplo #2)
 
+##### [ Ejemplo 1 ]
 ```json
+["html", {"code": "<div id='contzone'></div>"}],
 ["relation", {
 	"button": "nuevo contacto",
 	"class": "btn btn-primary",
-	"source": "relation_form?id=1234", 
-	"value": "relation_table?id=1234",
-	"target": "#demo",
+	"value": "contacts.php?parent=1234",
+	"source": "new_contact.php?parent=1234", 
+	"target": "#contzone",
 	"skipfirst": "true",
 	"size": "md"
+}]
+```
+``` html
+<!-- Tabla con contactos previos (contacts.php) -->
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Usuario</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th>1</th>
+            <td>Mark</td>
+            <td>Otto</td>
+            <td>@motto</td>
+        </tr>
+    </tbody>
+</table>
+```
+``` html
+<!-- formulario para agregar nuevos contactos (new_contact.php) -->
+<form action="{$ENV.tutor}/contact/insert" method="post">
+    <input type="hidden" name="NGL_ONCECODE" value="<rind:once />" />
+    <input type="hidden" name="parent" value="{$_GET.parent}" />
+    <div class="row margin-md margin-only-bottom">
+        <div class="col-xs-12">
+            <rind:mergefile>
+                <@source>_templates_/forms</@source>
+                <@multiple json>
+                    [
+                        ["input", {"name":"firstname", "label":"Nombre"}],
+                        ["input", {"name":"lastname", "label":"Apellido"}],
+                        ["input", {"name":"username", "label":"Usuario"}]
+                    ]
+                </@multiple>
+            </rind:mergefile>
+        </div>
+    </div>
+</form>
+```
+
+##### [ Ejemplo 2 ]
+```json
+["html", {"code":"<div id='categories' class='padding-sm brd-solid brd-gray brd-xs brd-round-xs'></div>"}],
+["relation", {
+    "button": "seleccionar categorías",
+    "closebutton": "true",
+    "class": "btn btn-primary",
+    "source": "categories.php", 
+    "target": "#categories",
+    "noform": "true",
+    "size": "md"
 }],
 ```
+``` html
+<!-- Tabla de selección de Categorías (categoires.php) -->
+<table class='table table-bordered'>
+	<tr>
+		<td>Deportes</td>
+		<td class="text-center"><a class="btn btn-xs btn-primary" data-relation="multiple">seleccionar<!-- <span><input type="hidden" name="categories[]" value="1" />Deportes<br /></span> --></a></td>
+	</tr>
+	<tr>
+		<td>Economía</td>
+		<td class="text-center"><a class="btn btn-xs btn-primary" data-relation="multiple">seleccionar<!-- <span><input type="hidden" name="categories[]" value="2" />Economía<br /></span> --></a></td>
+	</tr>
+	<tr>
+		<td>Policiales</td>
+		<td class="text-center"><a class="btn btn-xs btn-primary" data-relation="multiple">seleccionar<!-- <span><input type="hidden" name="categories[]" value="3" />Policiales<br /></span> --></a></td>
+	</tr>
+	<tr>
+		<td>Sociales</td>
+		<td class="text-center"><a class="btn btn-xs btn-primary" data-relation="multiple">seleccionar<!-- <span><input type="hidden" name="categories[]" value="4" />Sociales<br /></span> --></a></td>
+	</tr>
+</table>
+```
+
+
+
+
+
+
 &nbsp;
 
-
-	
-		
-
-
-
-
 #subform:
+
 	button: texto del boton de agregar
 	source: url del subformulario
 	default: cantidad de subformularios cargados por default
