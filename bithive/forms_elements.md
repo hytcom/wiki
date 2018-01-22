@@ -681,6 +681,47 @@ Hay diferentes variantes para este elmento, algunos de sus usos:
 </table>
 ```
 
+#### [ ejemplo 3 ]
+```json
+["html", {"code":"<div id='localidad' class='padding-sm brd-solid brd-gray brd-xs brd-round-xs'></div>"}],
+["relation", {
+    "button": "localidad",
+    "class": "btn btn-primary",
+    "source": "search.php", 
+    "target": "#localidad",
+    "noform": "true",
+    "size": "md"
+}]
+```
+```html
+<div>
+    <div class="row margin-md margin-only-bottom">
+        <div class="col-xs-12">
+            <div class="form-group">
+                <label class="control-label">Localidad</label>
+                <input id="relation_q" name="name" value="" class="form-control form-input ">
+            </div>
+        </div>
+    </div>
+    <div class="text-center">
+        <input value="Buscar" class="btn btn-primary" type="button" id="searchbtn" />
+        <input value="Cerrar" class="btn btn-primary margin-xs margin-only-left" type="button" data-relation="close" />
+    </div>
+</div>
+<div id="search_result" class="margin-md margin-only-top"></div>
+<script type="text/javascript">
+    $(function(){
+        $("#searchbtn").click(function(e) {
+            e.preventDefault();
+            $("#search_result").load("relation_table?q="+$("#relation_q").val(), function() {
+				jQuery.bithive.formRelation(this);
+				$(this).closest(".relation-dialog").trigger("loadcontent");
+            });
+        });
+    });
+</script>
+```
+
 
 
 
