@@ -508,20 +508,31 @@ Cada llamada al elemento que contenga unicamente el atributo *title*, cerrará e
 
 ```json
 ```json
-El tabulado del ejemplo es unicamente con fines estéticos
-
-["tabs", {"title":"Datos Personales", "open":"1"}],
-	["input", {"name":"name", "label":"Label"}],
-	["input", {"name":"name", "label":"Label"}],
-	["input", {"name":"name", "label":"Label"}],
-["tabs", {"title":"Datos Laborales"}],
-	["input", {"name":"name", "label":"Label"}],
-	["input", {"name":"name", "label":"Label"}],
-["tabs", {"title":"Datos Bancarios"}],
-	["input", {"name":"name", "label":"Label"}],
-	["input", {"name":"name", "label":"Label"}],
-	["input", {"name":"name", "label":"Label"}],
-["tabs", {"close":"1"}]
+El tabulado y las columnas del ejemplo son unicamente con fines ilustrtivos
+[            
+    ["tabs", {"title":"Datos Personales", "open":"1"}],
+        ["cols", {"open":"1", "cols":"3"}],
+            ["input", {"name":"name", "label":"input"}],
+            ["input", {"name":"name", "label":"input"}],
+            ["input", {"name":"name", "label":"input"}],
+        ["cols", {"cols":"4"}],
+            ["input", {"name":"name", "label":"input"}],
+            ["input", {"name":"name", "label":"input"}],
+            ["input", {"name":"name", "label":"input"}],
+            ["input", {"name":"name", "label":"input"}],
+        ["cols", {"cols":"2"}],
+            ["input", {"name":"name", "label":"input"}],
+            ["input", {"name":"name", "label":"input"}],
+        ["cols", {"close":"1"}],
+    ["tabs", {"title":"Datos Laborales"}],
+        ["input", {"name":"name", "label":"Label"}],
+        ["input", {"name":"name", "label":"Label"}],
+    ["tabs", {"title":"Datos Bancarios"}],
+        ["input", {"name":"name", "label":"Label"}],
+        ["input", {"name":"name", "label":"Label"}],
+        ["input", {"name":"name", "label":"Label"}],
+    ["tabs", {"close":"1"}]
+]
 ```
 &nbsp;
 
