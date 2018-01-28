@@ -616,7 +616,8 @@ Hay diferentes variantes para este elmento, algunos de sus usos:
 }]
 ```
 ``` html
-<!-- Tabla con contactos previos (contacts.php) -->
+*** Tabla con contactos previos (contacts.php) ***
+
 <table class="table table-bordered">
     <thead>
         <tr>
@@ -637,7 +638,8 @@ Hay diferentes variantes para este elmento, algunos de sus usos:
 </table>
 ```
 ``` html
-<!-- formulario para agregar nuevos contactos (new_contact.php) -->
+*** formulario para agregar nuevos contactos (new_contact.php) ***
+
 <form action="{$ENV.tutor}/contact/insert" method="post">
     <input type="hidden" name="NGL_ONCECODE" value="<rind:once />" />
     <input type="hidden" name="parent" value="{$_GET.parent}" />
@@ -672,7 +674,8 @@ Hay diferentes variantes para este elmento, algunos de sus usos:
 }],
 ```
 ``` html
-<!-- Tabla de selección de Categorías (categoires.php) -->
+*** Tabla de selección de Categorías (categoires.php) ***
+
 <table class='table table-bordered'>
 	<tr>
 		<td>Deportes</td>
@@ -707,7 +710,8 @@ Hay diferentes variantes para este elmento, algunos de sus usos:
 }]
 ```
 ```html
-<!-- Buscador (search.php) -->
+*** Buscador (search.php) ***
+
 <div>
     <div class="row margin-md margin-only-bottom">
         <div class="col-xs-12">
@@ -735,7 +739,8 @@ Hay diferentes variantes para este elmento, algunos de sus usos:
 </script>
 ```
 ```html
-<!-- Resultados de búsqueda (result.php) -->
+*** Resultados de búsqueda (result.php) ***
+
 <table class='table table-bordered'>
     <tr>
         <td>Adidas</td>
@@ -796,6 +801,7 @@ Ej: ingredientes de una receta
 ```
 ```html
 *** Sub-Formulario (ingredients.php) ***
+
 <rind:mergefile>
     <@source>_templates_/forms</@source>
     <@multiple json>
@@ -827,7 +833,8 @@ Ej: ingredientes de una receta
 </rind:mergefile>
 ```
 ```json
-ingredients.json
+*** ingredients.json ***
+
 [
     {"value": "1", "label": "Harina"},
     {"value": "2", "label": "Huevo"},
