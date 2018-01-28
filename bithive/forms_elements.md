@@ -816,7 +816,7 @@ Ej: ingredientes de una receta
                 ["select", {
                     "label": "Ingrediente",
                     "name": "ingredient",
-                    "source": "data2.json",
+                    "source": "ingredients.json",
                     "groupclass": "margin-none-bottom"
                 }], 
                 ["input", {"name":"quantity", "label":"Cantidad"}],
@@ -825,4 +825,15 @@ Ej: ingredientes de una receta
         ]
     </@multiple>
 </rind:mergefile>
+```
+ingredients.json
+```json
+[
+    {"value": "1", "label": "Harina"},
+    {"value": "2", "label": "Huevo"},
+    {"value": "3", "label": "Manteca"},
+    {"value": "4", "label": "Sal"},
+    {"value": "5", "label": "Azúcar"},
+    {"value": "6", "label": "Leche"}
+]
 ```
