@@ -585,6 +585,7 @@ Hay diferentes variantes para este elmento, algunos de sus usos:
 - buscar un valor, si no existe darlo de alta, si existe seleccionarlo del grupo de resultados. Ej: seleccionar el cliente en una factura
 
 ### Atributos
+- **id** = id del objeto del *diaolog* en donde se cargarán los contenidos dinámcicos. **IMPORTANTE** Luego de cargar nuevos contenidos deberá ejecutarse el método `$("#VALOR_ID").trigger("relation");` para que sean parseados. (ver ejemplo #3)
 - **button** = texto que se mostrará en el botón
 - **source** = URL del formulario. Puede contener variables, esto permite, por ejemplo, pasar el **id** de un registro maestro
 #### opcionales
@@ -599,7 +600,7 @@ Hay diferentes variantes para este elmento, algunos de sus usos:
 	- **close** = al hacer click sobre el elemento se cerrará el diálogo
 	- **multiple** = añade a *target* el contenido del comentario del elemento (ver ejemplo #2)
 	- **once** = setea de manera única el contenido del comentario en el *target* (aplicable al ejemplo #2)
-	- **onceclose** = identico al anterior, pero luego de setearlo cierra el diálogo (aplicable al ejemplo #2)
+	- **onceclose** = identico al anterior, pero luego de setearlo cierra el diálogo (ver ejemplo #3)
 
 ##### [ Ejemplo 1 ]
 ```json
