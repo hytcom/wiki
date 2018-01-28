@@ -795,7 +795,7 @@ Ej: ingredientes de una receta
 	["subform", {"button":"agregar ingrediente", "source":"ingredients.php", "class": "btn btn-primary", "default":"0", "value":"{$aIngredients}"}]
 ```
 ```html
-<!-- Sub-Formulario (ingredients.php) -->
+*** Sub-Formulario (ingredients.php) ***
 <rind:mergefile>
     <@source>_templates_/forms</@source>
     <@multiple json>
@@ -826,8 +826,8 @@ Ej: ingredientes de una receta
     </@multiple>
 </rind:mergefile>
 ```
-ingredients.json
 ```json
+ingredients.json
 [
     {"value": "1", "label": "Harina"},
     {"value": "2", "label": "Huevo"},
