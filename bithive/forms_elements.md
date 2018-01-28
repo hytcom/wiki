@@ -332,14 +332,14 @@ En si mismo, este elemento no añade contenido alguno. Es una herramienta para a
 
 ```json
 ["html", {"code":"
-<table class='table table-bordered'>
-    <tbody>
-        <tr><td>7</td><td>8</td><td>9</td></tr>
-        <tr><td>4</td><td>5</td><td>6</td></tr>
-        <tr><td>1</td><td>2</td><td>3</td></tr>
-        <tr><td colspan='2'>0</td><td>.</td></tr>
-    </tbody>
-</table>
+    <table class='table table-bordered'>
+        <tbody>
+            <tr><td>7</td><td>8</td><td>9</td></tr>
+            <tr><td>4</td><td>5</td><td>6</td></tr>
+            <tr><td>1</td><td>2</td><td>3</td></tr>
+            <tr><td colspan='2'>0</td><td>.</td></tr>
+        </tbody>
+    </table>
 "}]
 ```
 &nbsp;
