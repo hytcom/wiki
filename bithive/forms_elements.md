@@ -752,52 +752,77 @@ Hay diferentes variantes para este elmento, algunos de sus usos:
 </table>
 ```
 
-
-
-
-
-
 &nbsp;
+## subform
+El elemento se muestra como un botón que agrega al formulario actual un campo o bloque de ellos.
+Al igual que [relation](#relation), el propósito del elemento es generar vinculos entre el formulario actual y datos adyacentes, pero su uso se centraliza en las uniones ***padre/hijo*** 
+Ej: ingredientes de una receta
 
-#subform:
+### Atributos
+- **button** = texto que se mostrará en el botón
+- **source** = URL del sub-formulario. Puede contener variables, esto permite, por ejemplo, pasar el **id** de un registro maestro
+#### opcionales
+- **default** = cantidad de sub-formularios que se cargarán la primera vez
+- **value** = Array bidimensional en formato JSON y encodeado como BASE64. Donde cada entrada del Array será un conjunto de claves/valor con los datos de cada sub-formulario. Para conseguir este tipo de dato podemos utilizar, por ejemplo:
+	```php
+	$aIngredients = base64_encode(json_encode(array(
+		array("ingrid"=>1, "ingredient"=>"1", "quantity"=>"300"),
+		array("ingrid"=>2, "ingredient"=>"2", "quantity"=>"2"),
+		array("ingrid"=>3, "ingredient"=>"3", "quantity"=>"180")
+	)));
+	```
+	O en **rind**, si los ingredientes formaran parte de un array mayor llamado *recipe*
+	```html
+	<rind:set>
+		<@name>ingredients</@name>
+		<@value>{$_SET.recipe.ingredients}</@value>
+		<@keys>ingrid,ingredient,quantity</@keys>
+		<@method>chkeys,jsonenc,base64enc</@method>
+	</rind:set>
+	```
+#### en los documentos *source*
+- **data-subform-id** = campo del conjunto de datos **value** que se utilizará para identificar al sub-formulario en caso de *update* y *remove*. 
+- **data-subform** = por medio de este atributo se puede asignar funcionalidades a los elementos de los documentos cargados en el diálogo
+	- **number** = número de orden del sub-formulario dentro del grupo
+	- **up** =  mueve el sub-formulario hacia arriba, colocandolo por encima del sub-formulario inmediato anterior
+	- **down** = mueve el sub-formulario hacia abajo, colocandolo por debajo del sub-formulario inmediato posterior
+	- **update** = cuando existe bloquea la edición de los campos y la eliminacion del sub-formulario. Al hacer click activa la edición y crea un campo oculto que tiene por nombre el valor del atributo *data-subform-id* + *_update* y le asigna el valor el almacenado en *value* para ese indice. Esto actua como FLAG de modificación. (ver ejemplo)
+	- **remove** = remueve el sub-formulario y de existir *data-subform-id* crea un campo oculto que tiene por nombre el valor del atributo + *_update* y le asigna el valor el almacenado en *value* para ese indice. Esto actua como FLAG de eliminación. (ver ejemplo)
 
-	button: texto del boton de agregar
-	source: url del subformulario
-	default: cantidad de subformularios cargados por default
-	
-	controles
-		los subforms cuentan con algunos controles, que se asignan a los objetos html segun los atributos subform-
-			subform-number: pondra el numero de orden del subform dentro del grupo
-			subform-up: mueve el subform hacia arriba, colocandolo por encima del subform inmediato anterior
-			subform-down: mueve el subform hacia abajo, colocandolo por debajo del subform inmediato posterior
-			subform-update:
-				cuando existe bloquea la edición de los campos y la eliminacion del subform
-				al presionarlo activa la edición y crea un campo oculto que tiene por nombre el valor del atributo 'subform-update' + '_update' y le asigna el valor el almacenado en 'value' para ese indice. Esto actua como FLAG de modificación
-			subform-remove:
-				remueve el subform y de existir un valor en 'value' para el valor del atributo 'subform-remove' crea un campo oculto llamado como dicho valor + '_remove' y 
-				le asigna el valor el almacenado en 'value' para ese indice. Esto actua como FLAG de eliminación
-		ej:
-			<div class="bg-lighter-grey brd-solid brd-xs brd-light-grey padding-sm margin-md margin-only-bottom">
-				<div class="row">
-					<div class="col-xs-6 h4"><span class="label label-info">Paso <span class="text-white" subform-number="true"></span></span></div>
-					<div class="col-xs-6 text-right">
-						<i class="fa fa-chevron-up cursor-pointer" subform-up="true"></i>
-						<i class="fa fa-chevron-down cursor-pointer margin-xs" subform-down="true"></i>
-						<i class="fa fa-pencil cursor-pointer margin-xs" subform-update="id"></i>
-						<i class="fa fa-times cursor-pointer margin-xs" subform-remove="id"></i>
-					</div>
-				</div>
-				<br />
-				<rind:set><@name>step</@name><@value><rind:unique/></@value></rind:set>
-				<rind:mergefile>
-					<@source>forms</@source>
-					<@multiple json>
-						[
-							["input", {"name":"stepname[{*step}]", "label":"Nombre"}],
-							["input", {"name":"stepdescription[{*step}]", "label":"Descripción"}],
-							["number", {"name":"stepattempts[{*step}]", "label":"Intentos", "value":"1"}],
-							["subform", {"button":"agregar opción", "source":"case_add.php?id={*step}", "default":"1"}]
-						]
-					</@multiple>
-				</rind:mergefile>
-			</div>
+##### [ Ejemplo ]
+```json
+	["section", {"title":"Ingredientes"}],
+	["subform", {"button":"agregar ingrediente", "source":"ingredients.php", "class": "btn btn-primary", "default":"0", "value":"{$aIngredients}"}]
+```
+```html
+<!-- Sub-Formulario (ingredients.php) -->
+<rind:mergefile>
+    <@source>_templates_/forms</@source>
+    <@multiple json>
+        [
+            ["hidden", {"name":"ingrid"}],
+            ["html", {"code":"
+                <div class='text-left'>
+                    <b class='text-lg'># <span class='text-lg' data-subform='number'></span></b>
+                    <span class='pull-right'>
+                        <span class='btn btn-primary btn-xs margin-xs' data-subform='update' data-subform-id='ingrid'>habilitar edición</span>
+                        <span class='btn btn-danger btn-xs margin-xs margin-none-left' data-subform='remove' data-subform-id='ingrid'>eliminar</span>
+                        <i class='btn btn-default btn-sm fa fa-chevron-up cursor-pointer' data-subform='up'></i>
+                        <i class='btn btn-default btn-sm fa fa-chevron-down cursor-pointer margin-xs' data-subform='down'></i>
+                    </span>
+                </div>
+            "}],
+            ["cols", {"cols":"2", "open":"1"}],
+                ["select", {
+                    "label": "Ingrediente",
+                    "name": "ingredient",
+                    "source": "data2.json",
+                    "groupclass": "margin-none-bottom"
+                }], 
+                ["input", {"name":"quantity", "label":"Cantidad"}],
+            ["cols", {"close":"true"}],
+            ["divider", {"class":"brd-gray"}]
+        ]
+    </@multiple>
+</rind:mergefile>
+```
