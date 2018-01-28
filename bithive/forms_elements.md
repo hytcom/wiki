@@ -694,23 +694,25 @@ Hay diferentes variantes para este elmento, algunos de sus usos:
 
 #### [ ejemplo 3 ]
 ```json
-["html", {"code":"<div id='localidad' class='padding-sm brd-solid brd-gray brd-xs brd-round-xs'></div>"}],
+["html", {"code":"<div id='marks' class='padding-sm brd-solid brd-gray brd-xs brd-round-xs'></div>"}],
 ["relation", {
-    "button": "localidad",
+	"id": "searchrel",
+    "button": "seleccionar marca",
     "class": "btn btn-primary",
     "source": "search.php", 
-    "target": "#localidad",
+    "target": "#marks",
     "noform": "true",
     "size": "md"
 }]
 ```
 ```html
+<!-- Buscador (search.php) -->
 <div>
     <div class="row margin-md margin-only-bottom">
         <div class="col-xs-12">
             <div class="form-group">
-                <label class="control-label">Localidad</label>
-                <input id="relation_q" name="name" value="" class="form-control form-input ">
+                <label class="control-label">Marcas</label>
+                <input id="q" name="name" value="" class="form-control form-input ">
             </div>
         </div>
     </div>
@@ -724,13 +726,29 @@ Hay diferentes variantes para este elmento, algunos de sus usos:
     $(function(){
         $("#searchbtn").click(function(e) {
             e.preventDefault();
-            $("#search_result").load("relation_table?q="+$("#relation_q").val(), function() {
-				jQuery.bithive.formRelation(this);
-				$(this).closest(".relation-dialog").trigger("loadcontent");
+            $("#search_result").load("result?q="+$("#q").val(), function() {
+                $("#searchrel").trigger("relation");
             });
         });
     });
 </script>
+```
+```html
+<!-- Resultados de búsqueda (result.php) -->
+<table class='table table-bordered'>
+    <tr>
+        <td>Adidas</td>
+        <td class="text-center"><a class="btn btn-xs btn-primary" data-relation="onceclose">seleccionar<!-- <span><input type="hidden" name="mark" value="1" />Adidas<br /></span> --></a></td>
+    </tr>
+    <tr>
+        <td>Nike</td>
+        <td class="text-center"><a class="btn btn-xs btn-primary" data-relation="onceclose">seleccionar<!-- <span><input type="hidden" name="mark" value="2" />Nike<br /></span> --></a></td>
+    </tr>
+    <tr>
+        <td>Reebok</td>
+        <td class="text-center"><a class="btn btn-xs btn-primary" data-relation="onceclose">seleccionar<!-- <span><input type="hidden" name="mark" value="3" />Reebok<br /></span> --></a></td>
+    </tr>
+</table>
 ```
 
 
