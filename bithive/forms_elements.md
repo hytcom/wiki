@@ -24,6 +24,7 @@
 - [select](#select)
 - [slider](#slider)
 - [switch](#switch)
+- [tabs](#tabs)
 - [tags](#tags)
 - [textarea](#textarea)
 
