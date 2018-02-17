@@ -155,8 +155,8 @@ Zona para drag a drop para adjuntar archivos
 - **types** = tipos de archivos separados por coma (,)
 - **max** = maximo de archivos permitidos
 - **autohide** = define si se debe ocultar la zona drop despues de adjuntar: true o false
-- **value** =  opcional, url con la ruta del archivo actual
-
+- **value** =  opcional, json con archivos precargados `[{"name":"nombre_archivo", "path":"ruta_archivo", "size":"tamaño_bytes"}, {...} ]`
+- 
 ```json
 ["attacher", {
 	"name": "images", 
