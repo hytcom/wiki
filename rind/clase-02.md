@@ -74,7 +74,7 @@ En el caso de querer evaluar mas de una condición de manera simultanea, se debe
 *** index.html ***
 
 <rind:ifcase>
-    <@iff>{$genero}=="M" && {$edad}<18</@iff>
+    <@iff>{$genero}=="M" AND {$edad}<18</@iff>
     <@then>Eres un hombre menor de edad</@then>
     <@else>No eres un hombre menor de edad</@else>
 </rind:ifcase> 
@@ -123,13 +123,13 @@ Para un mejor mantenimiento del código fuente, recomendamos utilizar un identif
 *** index.html ***
 
 <rind:ifcase>
-    <@iff:hombremenor>{$genero}=="M" && {$edad}<18</@iff:hombremenor>
+    <@iff:hombremenor>{$genero}=="M" AND {$edad}<18</@iff:hombremenor>
     <@then:hombremenor>Eres un hombre menor de edad</@then:hombremenor>
 
-    <@iff:hombremayor>{$genero}=="M" && {$edad}>=18</@iff:hombremayor>
+    <@iff:hombremayor>{$genero}=="M" AND {$edad}>=18</@iff:hombremayor>
     <@then:hombremayor>Eres un hombre mayor de edad</@then:hombremayor>
 
-    <@iff:mujermenor>{$genero}=="F" && {$edad}<18</@iff:mujermenor>
+    <@iff:mujermenor>{$genero}=="F" AND {$edad}<18</@iff:mujermenor>
     <@then:mujermenor>Eres una mujer menor de edad</@then:mujermenor>
 
     <@else>Eres una mujer mayor de edad</@else>
