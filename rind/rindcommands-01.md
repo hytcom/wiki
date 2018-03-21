@@ -8,11 +8,11 @@ EMPECEMOS!!
 
 
 # Clase 1
-- [Estructura de Archivos](#Estructura_de_Archivos)
+- [Estructura de Archivos](#Estructura-de-Archivos)
 - [Variables](#Variables)
 - [Comandos](#Comandos)
-- [Variables Anidadas](#Variables Anidadas)
-- [Comandos Anidados](#Comandos Anidados)
+- [Variables Anidadas](#Variables-Anidadas)
+- [Comandos Anidados](#Comandos-Anidados)
 
 
 ## Estructura de Archivos
