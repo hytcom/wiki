@@ -1,10 +1,11 @@
-# Clase 1
+# Clase 1 - Conceptos Básicos
 - [Estructura de Archivos](#estructura-de-archivos)
 - [Variables](#variables)
 - [Comandos](#comandos)
 - [Variables Anidadas](#variables-anidadas)
 - [Comandos Anidados](#comandos-anidados)
-
+&nbsp;
+&nbsp;
 
 ## Estructura de Archivos
 ### Concepto de plantilla
