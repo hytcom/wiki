@@ -1,12 +1,12 @@
 # Clase 2 - Condicional IF
-- [Concepto general](#concepto-general)
+- [Concepto General](#concepto-general)
 - [Comando IFCASE](#Comando-IFCASE)
 - [Anidamiento](#anidamiento)
 - [Modo Swtich](#modo-swtich)
 <br />
 <br />
 
-## Concepto general
+## Concepto General
 El condicional **if**, es una estructura de control que nos permite determinar que acciones tomar dada o no cierta condición.
 Su funcionamiento es simple, se evalúa una condición, si **(if)** es verdadera ejecuta un grupo de sentencias, sino **(else)** otra o ninguna.
 

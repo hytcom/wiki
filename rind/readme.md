@@ -8,3 +8,5 @@ EMPECEMOS!!
 
 - [Clase 1 - Conceptos Básicos](clase-01.md)
 - [Clase 2 - Condicional IF](clase-02.md)
+- [Clase 3 - Bucles](clase-03.md)
+- [Clase 4 - Seteo de Variables](clase-04.md)
