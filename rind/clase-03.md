@@ -212,25 +212,25 @@ Y se busca imprimir el último personaje con el que jugó.
 *** index.html ***
 
 <rind:loop>
-	<@source>{$aGames}</@source>
-	<@content>
-		<rind:loop>
-			<@source>{users}</@source>
-			<@content>
-				<rind:loop>
-					<@source>{parent.characters}</@source>
-					<@limit>1</@limit>
-					<@content>
-						<div>
-							Juego {game}<br />
-							Usuario: {parent.username}<br />
-							Personaje: {self.#current}<br />
-						</div>
-					</@content>
-				</rind:loop>
-			</@content>
-		</rind:loop>
-	</@content>
+    <@source>{$aGames}</@source>
+    <@content>
+        <rind:loop>
+            <@source>{users}</@source>
+            <@content>
+                <rind:loop>
+                    <@source>{parent.characters}</@source>
+                    <@limit>1</@limit>
+                    <@content>
+                        <div>
+                            Juego {game}<br />
+                            Usuario: {parent.username}<br />
+                            Personaje: {self.#current}<br />
+                        </div>
+                    </@content>
+                </rind:loop>
+            </@content>
+        </rind:loop>
+    </@content>
 </rind:loop>
 ```
 
