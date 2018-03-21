@@ -324,4 +324,4 @@ Rind ignorará todos los parámetros del **COMANDO2** hasta llegar a `<@name></@
 ```
 
 ---
-[<< Indice](readme.md) | [Clase 1 - Conceptos Básicos >>](clase-01.md)
+[<< Indice](readme.md) --- [Clase 2 - Condicional IF >>](clase-02.md)

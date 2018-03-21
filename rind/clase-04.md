@@ -143,4 +143,4 @@ Dominio: <b>zaraza.com</b>
 Para ver la descripción completa del comando ver la [ayuda](set.md)
 
 ---
-[<< Clase 3 - Bucles](clase-03.md) | [Clase 5 - ??? >>](clase-05.md)
+[<< Clase 3 - Bucles](clase-03.md) --- [Clase 5 - ??? >>](clase-05.md)
