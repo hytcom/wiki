@@ -59,6 +59,7 @@ echo $ngl("rind")->stamp();
 
 
 **Navegador**
+
 Hola Mundo!
 
 <br />
