@@ -23,6 +23,7 @@ En este momento no vamos a adentrarnos mucho en este tema, sólo debemos saber q
 - **PHP** es donde el programador PHP prepara los datos e invoca al archivo HTML
 - **RIND** es el resultado que arroja el sistema luego de procesar los archivos HTML y PHP
 &nbsp;
+&nbsp;
 
 Rind combina los datos del archivo PHP con las declaraciones e interfaz gráfica del archivo HTML. El resultado de este proceso es un archivo RIND, que no es mas que un archivo PHP avanzado.
 
@@ -71,7 +72,7 @@ echo $ngl("rind")->stamp();
 Hola Mundo!
 ```
 &nbsp;
-
+&nbsp;
 
 ## Variables
 ### Definición de variable
@@ -92,6 +93,7 @@ Algunos ejemplos:
 - $4day (no es un nombre válido, pues comienza con un número)
 
 Para aprender más sobre las variables en PHP hacé [click](http://php.net/language.variables.basics)
+&nbsp;
 &nbsp;
 
 ### Imprimir variables
@@ -136,7 +138,7 @@ echo $ngl("rind")->stamp();
 
 Existen otros tipos de datos predefinidos en las plantillas con sus propios atajos para ser impresos, pero los iremos viendo más adelante, en la medida en que avancemos.
 &nbsp;
-
+&nbsp;
 
 ## Comandos
 ### Definición de comando
@@ -159,6 +161,7 @@ Los nombres de los comandos están precedidos por la etiqueta **rind:** y cada p
 
 Por razones de seguridad todos los valores pasados en los parámetros son entrecomillados por el sistema.
 &nbsp;
+&nbsp;
 
 ### Otras declaraciones de comandos
 Es posible declarar comandos con un sólo parámetro sin especificar el nombre del mismo.
@@ -180,13 +183,14 @@ También existen determinados comandos no requieren del uso de parámetros, en e
 <rind:NOMBRE_DEL_COMANDO />
 ```
 &nbsp;
+&nbsp;
 
 ### Normalizadores de datos
 El sistema cuenta con normalizadores de datos que pueden ser aplicados a los parámetros. Estos normalizadores preparan los datos para que puedan ser utilizados por los comandos. No siempre son necesarios, todo dependerá del comando.
 - **json** trata al valor como un JSON y lo convierte en un array
 - **quotes** permite el uso de comillas dobles
 - **math** prepara una expresión para ser utilizada como valor numérico en otro comando
-
+&nbsp;
 
 El modo en el que se aplican los normalizadores es:
 ``` html
@@ -197,12 +201,14 @@ El modo en el que se aplican los normalizadores es:
 </rind:NOMBRE_DEL_COMANDO>
 ```
 &nbsp;
+&nbsp;
 
 ### Tipos de comandos
 Existen 3 tipos de comandos en Rind:
 - **nativos** son los comandos específicos de Rind
 - **nuts** son un conjunto de métodos declarados en PHP por el programador del proyecto
 - **php** son las funciones nativas de PHP declaradas en el argumento **php_functions** del objeto **Rind**
+&nbsp;
 
 Todos los tipos de comandos comparten la misma estructura, sin embargo hay una pequeña variación en el nombre de los mismos a la hora de invocarlos; esta variación es la que permite al sistema saber de que tipo de comando se trata.Otro punto a tener en cuenta es que tanto en los **nativos** como en los **nuts** es importante respetar el nombre de los parámetros. 
 Esto no es así en los comandos **php**, donde sólo es importante el orden en el que se declaran, ya que ese es el orden en el que se pasarán al método final.
@@ -237,7 +243,7 @@ Esto no es así en los comandos **php**, donde sólo es importante el orden en e
 </rind:php.FUNCION_PHP>
 ```
 &nbsp;
-
+&nbsp;
 
 ## Variables Anidadas
 ### Referenciando arrays con variables
@@ -300,7 +306,7 @@ echo $ngl("rind")->stamp();
 {$colors[{$preferences.($current)}]["B"]} <br /> 
 ```
 &nbsp;
-
+&nbsp;
 
 ## Comandos Anidados
 ### Como utilizar un comando como parámetro de otro
