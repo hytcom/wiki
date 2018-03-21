@@ -322,3 +322,6 @@ Rind ignorará todos los parámetros del **COMANDO2** hasta llegar a `<@name></@
     </@name>
 </rind:COMANDO1>
 ```
+
+---
+[<< Indice](readme.md) | [Clase 1 - Conceptos Básicos >>](clase-01.md)
