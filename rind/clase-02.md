@@ -3,8 +3,8 @@
 - [Comando IFCASE](#Comando-IFCASE)
 - [Anidamiento](#anidamiento)
 - [Modo Swtich](#modo-swtich)
-&nbsp;
-&nbsp;
+<br />
+<br />
 
 ## Concepto general
 El condicional **if**, es una estructura de control que nos permite determinar que acciones tomar dada o no cierta condición.
@@ -46,8 +46,8 @@ if($edad >= 18) {
 
 ?>
 ```
-&nbsp;
-&nbsp;
+<br />
+<br />
 
 ## Comando IFCASE
 If es la estructura de programación mas utilizada, sin **IF** no podríamos programar! es por eso que el primer comando que aprenderemos será **rind:ifcase**, que es la manera de declarar un **IF** en **Rind**.
@@ -79,8 +79,8 @@ En el caso de querer evaluar mas de una condición de manera simultanea, se debe
     <@else>No eres un hombre menor de edad</@else>
 </rind:ifcase> 
 ```
-&nbsp;
-&nbsp;
+<br />
+<br />
 
 ## Anidamiento
 Muchas veces necesitamos evaluar una condición que depende de un resultado anterior, y para ello solo debemos anidar los **if**, es decir, meter uno dentro de otro.
@@ -107,8 +107,8 @@ La única recomendación es ser cuidadosos con los cierres y aperturas de las co
     </@else>
 </rind:ifcase> 
 ```
-&nbsp;
-&nbsp;
+<br />
+<br />
 
 ## Modo Swtich
 Como mensionamos al comienzo de esta clase, la estructura **if** cuenta con la variante **else if**; en **Rind** esta funcionalidad se logra colocando un identificador alfanumérico a los componentes **<@iff>** y **<@then>** separado por dos puntos **(:)**

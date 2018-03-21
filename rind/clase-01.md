@@ -5,7 +5,6 @@
 - [Variables Anidadas](#variables-anidadas)
 - [Comandos Anidados](#comandos-anidados)
 <br />
-<br />
 
 ## Estructura de Archivos
 ### Concepto de plantilla
@@ -15,9 +14,9 @@ En este momento no vamos a adentrarnos mucho en este tema, sólo debemos saber q
 - **PHP** es donde el programador PHP prepara los datos e invoca al archivo HTML
 - **RIND** es el resultado que arroja el sistema luego de procesar los archivos HTML y PHP
 <br />
-<br />
 
 Rind combina los datos del archivo PHP con las declaraciones e interfaz gráfica del archivo HTML. El resultado de este proceso es un archivo RIND, que no es mas que un archivo PHP avanzado.
+<br />
 
 ### El clásico "Hola Mundo!"
 ``` php
@@ -86,7 +85,6 @@ Algunos ejemplos:
 
 Para aprender más sobre las variables en PHP hacé [click](http://php.net/language.variables.basics)
 <br />
-<br />
 
 ### Imprimir variables
 Para imprimir una variable proveniente del entorno PHP en la plantilla, se deberá encerrar a la misma entre llaves. A su vez existen dos maneras de escribirlas, utilizando la sintáxis de **PHP** o la sintáxis abreviada **Rind**
@@ -153,8 +151,6 @@ Los nombres de los comandos están precedidos por la etiqueta **rind:** y cada p
 
 Por razones de seguridad todos los valores pasados en los parámetros son entrecomillados por el sistema.
 <br />
-<br />
-
 
 ### Otras declaraciones de comandos
 Es posible declarar comandos con un sólo parámetro sin especificar el nombre del mismo.
@@ -176,7 +172,6 @@ También existen determinados comandos no requieren del uso de parámetros, en e
 <rind:NOMBRE_DEL_COMANDO />
 ```
 <br />
-<br />
 
 ### Normalizadores de datos
 El sistema cuenta con normalizadores de datos que pueden ser aplicados a los parámetros. Estos normalizadores preparan los datos para que puedan ser utilizados por los comandos. No siempre son necesarios, todo dependerá del comando.
@@ -193,7 +188,6 @@ El modo en el que se aplican los normalizadores es:
     <@parametro3 math>...</@parametro3>
 </rind:NOMBRE_DEL_COMANDO>
 ```
-<br />
 <br />
 
 ### Tipos de comandos
