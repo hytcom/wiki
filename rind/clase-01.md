@@ -57,11 +57,10 @@ echo $ngl("rind")->stamp();
 ```
 <br />
 
-``` txt
-*** Resultado en el Navegador ***
 
+**Navegador**
 Hola Mundo!
-```
+
 <br />
 <br />
 
@@ -308,7 +307,8 @@ Al anidar comandos es conveniente declarar todos los parámetros para evitar una
 </rind:COMANDO1>
 ```
 
-Rind ignorará todos los parámetros del **COMANDO2** hasta llegar a `<@name></@name>`, y asumirá que corresponde a **COMANDO1**La correcta manera de declararlos para evitar errores es:
+Rind ignorará todos los parámetros del **COMANDO2** hasta llegar a `<@name></@name>`, y asumirá que corresponde a **COMANDO1**. La correcta manera de declararlos para evitar errores es:
+Rind ignorará todos los parámetros del **COMANDO2** hasta llegar a `<@name></@name>`, y asumirá que corresponde a **COMANDO1**. La correcta manera de declararlos para evitar errores es:
 
 ``` html
 <rind:COMANDO1>
