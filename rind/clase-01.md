@@ -19,9 +19,8 @@ Rind combina los datos del archivo PHP con las declaraciones e interfaz gráfica
 <br />
 
 ### El clásico "Hola Mundo!"
+**index.php**
 ``` php
-*** index.php ***
-
 <?php
 require_once("config.php");
 
@@ -30,9 +29,8 @@ echo $ngl("rind")->stamp();
 ?>
 ```
 
+**index.html**
 ``` html
-*** index.html ***
-
 <html>
     <head>
         <title>demo</title>
@@ -43,9 +41,8 @@ echo $ngl("rind")->stamp();
 </html>
 ```
 
+**index.html.rind**
 ``` php
-*** index.html.rind ***
-
 <?php /*rind-ac2c9f4756518fe726709b2758e58e52-N9uaFH-20170115223049*/ ?>
 <html>
     <head>
@@ -90,9 +87,8 @@ Para aprender más sobre las variables en PHP hacé [click](http://php.net/langu
 Para imprimir una variable proveniente del entorno PHP en la plantilla, se deberá encerrar a la misma entre llaves. A su vez existen dos maneras de escribirlas, utilizando la sintáxis de **PHP** o la sintáxis abreviada **Rind**
 La sintáxis **Rind** es como la de javascript, se utilizan puntos para separar en índices y subíndices
 
+**index.php**
 ``` php
-*** index.php ***
-
 <?php
 require_once("config.php");
 
@@ -108,9 +104,8 @@ echo $ngl("rind")->stamp();
 ?>
 ```
 
+**index.html**
 ``` html
-*** index.html ***
-
 <b>Impresión de variables con la sintáxis tradicional</b>
 {$foo} <br />
 {$bar["foo"]} <br />
@@ -242,9 +237,8 @@ En lo que se refiere a la sintáxis Rind, se utiliza un único par de llaves **{
 Supongamos que tenemos por un lado un array con la definición RGB de algunos colores y por el otro uno con las preferencias de color del usuario para el texto y el fondo de su entorno. También pondremos en juego una variable que determina si estamos trabajando con el texto o con el fondo *(esta variable carece de relevancia en 
 un entorno de producción, pero es útil a los efectos de este ejemplo)*
 
+**index.php**
 ``` php
-*** index.php ***
-
 <?php
 require_once("config.php");
 
@@ -270,9 +264,8 @@ echo $ngl("rind")->stamp();
 ?>
 ```
 
+**index.html**
 ``` html
-*** index.html ***
-
 - Sintáxis tradicional, se respeta la estructura de corchetes y comillas de PHP, cada variable está encerrada entre llaves
 
 {$preferences[{$current}]} <br />
