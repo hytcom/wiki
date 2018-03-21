@@ -176,6 +176,7 @@ También existen determinados comandos no requieren del uso de parámetros, en e
 ### Normalizadores de datos
 El sistema cuenta con normalizadores de datos que pueden ser aplicados a los parámetros. Estos normalizadores preparan los datos para que puedan ser utilizados por los comandos. No siempre son necesarios, todo dependerá del comando.
 - **json** trata al valor como un JSON y lo convierte en un array
+- **base64** codifica el valor en base64 antes de utilizarlo
 - **quotes** permite el uso de comillas dobles
 - **math** prepara una expresión para ser utilizada como valor numérico en otro comando
 <br />
@@ -184,6 +185,7 @@ El modo en el que se aplican los normalizadores es:
 ``` html
 <rind:NOMBRE_DEL_COMANDO>
     <@parametro1 json>...</@parametro1>
+    <@parametro1 base64>...</@parametro1>
     <@parametro2 quotes>...</@parametro2>
     <@parametro3 math>...</@parametro3>
 </rind:NOMBRE_DEL_COMANDO>
