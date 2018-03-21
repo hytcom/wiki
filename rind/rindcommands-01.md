@@ -92,7 +92,7 @@ Algunos ejemplos:
 - $4day (no es un nombre válido, pues comienza con un número)
 
 Para aprender más sobre las variables en PHP hacé [click](http://php.net/language.variables.basics)
-
+&nbsp;
 
 ### Imprimir variables
 Para imprimir una variable proveniente del entorno PHP en la plantilla, se deberá encerrar a la misma entre llaves. A su vez existen dos maneras de escribirlas, utilizando la sintáxis de **PHP** o la sintáxis abreviada **Rind**
@@ -158,7 +158,7 @@ Los nombres de los comandos están precedidos por la etiqueta **rind:** y cada p
 **IMPORTANTE:**
 
 Por razones de seguridad todos los valores pasados en los parámetros son entrecomillados por el sistema.
-
+&nbsp;
 
 ### Otras declaraciones de comandos
 Es posible declarar comandos con un sólo parámetro sin especificar el nombre del mismo.
@@ -179,6 +179,7 @@ También existen determinados comandos no requieren del uso de parámetros, en e
 ``` html
 <rind:NOMBRE_DEL_COMANDO />
 ```
+&nbsp;
 
 ### Normalizadores de datos
 El sistema cuenta con normalizadores de datos que pueden ser aplicados a los parámetros. Estos normalizadores preparan los datos para que puedan ser utilizados por los comandos. No siempre son necesarios, todo dependerá del comando.
@@ -195,7 +196,7 @@ El modo en el que se aplican los normalizadores es:
     <@parametro3 math>...</@parametro3>
 </rind:NOMBRE_DEL_COMANDO>
 ```
-
+&nbsp;
 
 ### Tipos de comandos
 Existen 3 tipos de comandos en Rind:
