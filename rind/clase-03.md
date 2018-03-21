@@ -145,7 +145,7 @@ echo $ngl("rind")->stamp();
 <br />
 
 ## Anidamiento de Bucles
-Los bucles cuentan con un parámetro **<@name>**, que si bien no es necesario cuando declaramos un bucle simple, 
+Los bucles cuentan con un parámetro `<@name>`, que si bien no es necesario cuando declaramos un bucle simple, 
 es util a la hora de anidar bucles, ya que se puede utilizar para identificar el origen de los índices.
 Si no se especifica un nombre de bucle, el sistema asumirá que se trata del bucle principal.
 Siguiendo con el ejemplo de los puntajes, supongamos que tenemos un indice con los nombres de los ultimos 3 personajes con los que jugó el usuario.
@@ -233,5 +233,8 @@ Y se busca imprimir el último personaje con el que jugó.
     </@content>
 </rind:loop>
 ```
+<br />
+<br />
 
+---
 Para ver la descripción completa del comando ver la [ayuda](loop.md)

@@ -52,7 +52,7 @@ if($edad >= 18) {
 ## Comando IFCASE
 If es la estructura de programación mas utilizada, sin **IF** no podríamos programar! es por eso que el primer comando que aprenderemos será **rind:ifcase**, que es la manera de declarar un **IF** en **Rind**.
 
-El comando cuenta con varios parámetros, pero para empezar nos concentraremos en los básicos. Para ver el comando en profundidad consultar la [ayuda](ifcase.md)
+El comando cuenta con varios parámetros, pero para empezar nos concentraremos en los básicos.
 
 - **<@iff>** en este parámetro ubicaremos la condición a evaluar
 - **<@then>** acciones que deben ejecutar en caso de una condición VERDADERA
@@ -111,7 +111,7 @@ La única recomendación es ser cuidadosos con los cierres y aperturas de las co
 <br />
 
 ## Modo Swtich
-Como mensionamos al comienzo de esta clase, la estructura **if** cuenta con la variante **else if**; en **Rind** esta funcionalidad se logra colocando un identificador alfanumérico a los componentes **<@iff>** y **<@then>** separado por dos puntos **(:)**
+Como mensionamos al comienzo de esta clase, la estructura **if** cuenta con la variante **else if**; en **Rind** esta funcionalidad se logra colocando un identificador alfanumérico a los componentes `<@iff>` y `<@then>` separado por dos puntos **(:)**
 
 - <@iff:identificador>...</@iff:identificador>
 - <@then:identificador>...</@then:identificador>
@@ -137,5 +137,8 @@ Para un mejor mantenimiento del código fuente, recomendamos utilizar un identif
 ```
 
 Existen otra variantes de **ifcase**, como por ejemplo chequear si una variable existe, o buscar si un valor está en una lista.
+<br />
+<br />
 
+---
 Para ver la descripción completa del comando ver la [ayuda](ifcase.md)
