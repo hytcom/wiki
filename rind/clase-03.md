@@ -1,10 +1,10 @@
 # Clase 3 - Bucles
--[Concepto General](#concepto-general)
--[Comando LOOP](#comando-loop)
--[LOOP indicadores](#loop-indicadores)
--[LOOP índices](#loop-indices)
--[Anidamiento de Bucles](#anidamiento-de-bucles)
--[Referencias entre Bucles](#referencias-entre-bucles)
+- [Concepto General](#concepto-general)
+- [Comando LOOP](#comando-loop)
+- [LOOP indicadores](#loop-indicadores)
+- [LOOP índices](#loop-indices)
+- [Anidamiento de Bucles](#anidamiento-de-bucles)
+- [Referencias entre Bucles](#referencias-entre-bucles)
 <br />
 <br />
 
