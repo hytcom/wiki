@@ -139,9 +139,10 @@ Para un mejor mantenimiento del código fuente, recomendamos utilizar un identif
 Existen otra variantes de **ifcase**, como por ejemplo chequear si una variable existe, o buscar si un valor está en una lista.
 <br />
 <br />
+<br />
 
----
 Para ver la descripción completa del comando ver la [ayuda](ifcase.md)
 
 ---
-[<< Clase 1 - Conceptos Básicos](clase-01.md) --- [Clase 3 - Bucles >>](clase-03.md)
+- [Clase 1 - Conceptos Básicos](clase-01.md)
+- [Clase 3 - Bucles](clase-03.md)

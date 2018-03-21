@@ -235,9 +235,10 @@ Y se busca imprimir el último personaje con el que jugó.
 ```
 <br />
 <br />
+<br />
 
----
 Para ver la descripción completa del comando ver la [ayuda](loop.md)
 
 ---
-[<< Clase 2 - Condicional IF](clase-02.md) --- [Clase 4 - Seteo de Variables >>](clase-04.md)
+- [Clase 2 - Condicional IF](clase-02.md)
+- [Clase 4 - Seteo de Variables](clase-04.md)
