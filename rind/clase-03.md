@@ -180,7 +180,7 @@ echo $ngl("rind")->stamp();
     <@source>{$users}</@source>
     <@content>
         <div class="bg-{#parity}">
-            **{username}**
+            <b>{username}</b>
             <ul>
                 <rind:loop>
                     <@name>chars</@name>
