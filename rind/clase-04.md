@@ -30,7 +30,7 @@ La estructura básica del comando es:
 </rind:set>
 ```
 Aunque **operator** no es necesario en el caso de las asignaciones (=)
-
+<br />
 
 Para setear una variable sólo debemos hacer:
 
