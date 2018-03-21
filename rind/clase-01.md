@@ -28,6 +28,7 @@ $myvar = "Mundo";
 echo $ngl("rind")->stamp();
 ?>
 ```
+<br />
 
 **index.html**
 ``` html
@@ -40,6 +41,7 @@ echo $ngl("rind")->stamp();
     </body>
 </html>
 ```
+<br />
 
 **index.html.rind**
 ``` php
@@ -53,6 +55,7 @@ echo $ngl("rind")->stamp();
     </body>
 </html>
 ```
+<br />
 
 ``` txt
 *** Resultado en el Navegador ***
@@ -103,6 +106,7 @@ $foobar->foo["bar"] = "índice de un array del objeto";
 echo $ngl("rind")->stamp();
 ?>
 ```
+<br />
 
 **index.html**
 ``` html
@@ -120,6 +124,7 @@ echo $ngl("rind")->stamp();
 {$foobar->bar} <br />
 {$foobar->foo.bar} <br />
 ```
+<br />
 
 Existen otros tipos de datos predefinidos en las plantillas con sus propios atajos para ser impresos, pero los iremos viendo más adelante, en la medida en que avancemos.
 <br />
@@ -263,6 +268,7 @@ $current = "text";
 echo $ngl("rind")->stamp();
 ?>
 ```
+<br />
 
 **index.html**
 ``` html
