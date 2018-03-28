@@ -1,4 +1,5 @@
-## Consideraciones Generales
+# Bithive Formularios
+## Indice
 ### Elementos Básicos
 - [attacher](#attacher)
 - [autocomplete](#autocomplete)
@@ -14,9 +15,6 @@
 - [html](#html)
 - [input](#input)
 - [number](#number)
-- owl-checkbox ( obsoleto, utilizar [checkbox](#checkbox) )
-- owl-radio ( obsoleto, utilizar [radio](#radio) )
-- owl-select ( obsoleto, utilizar [select](#select) )
 - [password](#password)
 - [radio](#radio)
 - [readonly](#readonly)
@@ -33,6 +31,7 @@
 - [subform](#subform)
 &nbsp;
 
+## Conceptos Generales
 ### Atributos comunes a todos los Elementos
 - **class** = clase css del campo
 - **groupclass** = clase css que se añadirá al *DIV* form-group
