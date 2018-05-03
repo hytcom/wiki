@@ -7,6 +7,8 @@
 - [checkbox](#checkbox)
 - [color](#color)
 - [cols](#cols)
+- [cols](#cols)
+- [colsgroup](#colsgroup)
 - [date](#date)
 - [date-range](#date)
 - [divider](#divider)
@@ -122,7 +124,7 @@ Es posible relacionar 2 ó mas combos, para ello se deberan utilizar los siguien
 
 ### Validación "On The Fly"
 Para validar un dato contra el servidor, en tiempo real, se pueden utilizar los sub-atributos: *data-checker* y *data-checker-text* dentro del atributo **attribs**
-- **data-checker** = URL del script verificador, al cual se le pasará la variable **q**  con el valor actual del campo. La respuesta deberá ser retornada en formato JSON y deberá tener la siguiente estructura: &nbsp; `{"value": "1", "message": "@motto"}`
+- **data-checker** = URL del script verificador, al cual se le pasará la variable **q**  con el valor actual del campo. La respuesta deberá ser retornada en formato JSON y deberá tener la siguiente estructura: &nbsp; `{"value": "1", "message": "Mensaje de error"}`
 - **data-checker-text** = mensaje que se mostrará cuando *data-checker* retorne **1** en el campo **value**. Se puede utilizar *** para imprimir el valor retornado en el campo **message**
 
 ``` json	
@@ -155,7 +157,7 @@ Zona para drag a drop para adjuntar archivos
 - **max** = maximo de archivos permitidos
 - **autohide** = define si se debe ocultar la zona drop despues de adjuntar: true o false
 - **value** =  opcional, json con archivos precargados `[{"name":"nombre_archivo", "path":"ruta_archivo", "size":"tamaño_bytes"}, {...} ]`
-- 
+
 ```json
 ["attacher", {
 	"name": "images", 
@@ -255,6 +257,35 @@ El tabulado del ejemplo es unicamente con fines estéticos
 	["input", {"name":"name", "label":"Label"}],
 	["input", {"name":"name", "label":"Label"}],
 	["input", {"name":"name", "label":"Label"}],
+["cols", {"close":"1"}]
+```
+&nbsp;
+
+## colsgroup
+Permite generar bloques con grupos de campos dentro del elemento **cols**
+Un grupo se inicia con la llamada de un elemento **colsgroup** con el atributo *open* y se cierra con la llamada de otro elemento **cols** que tenga presente el atributo *close*
+Cada llamada al elemento que contenga unicamente el atributo *colsgroup*, cerrará el bloque anterior de columnas e iniciará uno nuevo
+### Atributos
+#### opcionales
+- **open** = indica el inicio del grupo, se puede utilizar 1 o true
+- **close** = indica el cierre del grupo, se puede utilizar 1 o true
+
+```json
+El tabulado del ejemplo es unicamente con fines estéticos
+
+["cols", {"cols":"3", "open":"1"}],
+	["colsgroup", {"open":"1"}],
+		["input", {"name":"name", "label":"Label"}],
+		["input", {"name":"name", "label":"Label"}],
+		["input", {"name":"name", "label":"Label"}],
+	["colsgroup"],
+		["input", {"name":"name", "label":"Label"}],
+		["input", {"name":"name", "label":"Label"}],
+	["colsgroup"],
+		["input", {"name":"name", "label":"Label"}],
+		["input", {"name":"name", "label":"Label"}],
+		["input", {"name":"name", "label":"Label"}],
+	["colsgroup", {"close":"1"}],
 ["cols", {"close":"1"}]
 ```
 &nbsp;
@@ -540,16 +571,18 @@ El tabulado y las columnas del ejemplo son unicamente con fines ilustrtivos
 Selector de etiquetas. Estas pueden ser libres y/o provenientes de un autocomplete si se espeficita *source*
 ### Atributos
 - **source** = por convencion las opciones se esperan en formato {label,value} pero el *label* será ignorado, el *value* será el texto a consignar en la etiqueta
+- **clear** = expresión regular que determina que caracteres deben eliminarse del tag antes de añadirlo a la lista
+- **length** = longitud máxima para cada tag (cantidad de caracteres)
 
 ```json
 ["tags", {
 	"name":"name",
 	"label":"tags",
-	"source":"data.json?"
+	"source":"data.json?",
+	"clear": "^0-9"
 }],
 ```
 &nbsp;
-
 
 ## textarea
 Clasico campo `<textarea>` o versiones enriquecidas
@@ -568,6 +601,19 @@ Clasico campo `<textarea>` o versiones enriquecidas
 	"label":"textarea",
 
 }],
+```
+&nbsp;
+
+## year
+Selector de año. Variante de **date** con `"type":"yearpicker"`
+### Atributos
+#### opcionales
+- **attribs**
+	- **data-min** = menor valor posible, sólo para los tipo *picker*
+	- **data-max** = máximo valor posible, sólo para los tipo *picker*
+
+```json
+["date", {"name":"name", "label":"Año"}]
 ```
 &nbsp;
 &nbsp;
