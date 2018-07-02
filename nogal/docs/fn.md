@@ -37,7 +37,7 @@ Compendio de métodos utilizados para resolver tareas rutinarias vinculadas a:<u
 |[coockie](#coockie)|Guarda y optiene el valor de una cookie del navegador.Los valores son analizados con ngl::passwd(), por lo que si NGL_PASSWORD_KEY esta activa, los va...|
 |[dec2hex](#dec2hex)|Transforma un decimal en hexadecimal sin límite de tamaño y con la posibilidad de rellenar con 0 por delante|
 |[disarrange](#disarrange)|Desordena de manera cíclica la Cadena o Array $mSource según las posiciones de $aArrange.En la medida en que el desordenamiento avanza sobre $aArran...|
-|[dump](#dump)|Retorna el contenido de una variable de acuerdo al tipo de la misma:arrays -> print_rcadenas -> echootros -> var_dumpLos valores son capturados por m�...|
+|[dump](#dump)|Retorna el contenido de una variable de acuerdo al tipo de la misma:arrays -> print_rcadenas -> echootros -> var_dumpLos valores son capturados por m�...|
 |[emptyToNull](#emptyToNull)|Establece como NULL los valores de $aData, cuyo indice se encuentre en $aKeys, que retornen TRUE a la funcion empty.Si $aKeys es NULL se evaluarán to...|
 |[encoding](#encoding)|Verifica si la cadena $sString se encuentra codificada en $mEncoding$mEncoding debe ser el nombre de una codificación válida o un array de nombres.S...|
 |[ensureVar](#ensureVar)|Retorna el valor de $mSure cuanto $mVar no esta seteada o es NULL|
@@ -65,7 +65,7 @@ Compendio de métodos utilizados para resolver tareas rutinarias vinculadas a:<u
 |[once](#once)|Genera o chequea un código único guardado en la session activa.Cuando se ejecuta el método sin el argumento $sCode, este generará un ONCECODE, lo ...|
 |[round05](#round05)|Redondea un número al entero o punto medio mas cercano.El parámetro $nPrecition permite controlar la distancia del redondeo al punto medioSegún la ...|
 |[secureName](#secureName)|Limpia una cadena para que pueda ser utilizada como nombre de archivo, carpeta, tabla o campo de una base de datos|
-|[strBoxAppend](#strBoxAppend)|Añade $sAppend a $sString desde el final y hasta el largo de $sString.Si $sPrepend es mas corta que $sString se conservarán los caracteres de esta �...|
+|[strBoxAppend](#strBoxAppend)|Añade $sAppend a $sString desde el final y hasta el largo de $sString.Si $sPrepend es mas corta que $sString se conservarán los caracteres de esta �...|
 |[strBoxPrepend](#strBoxPrepend)|Añade $sPrepend a $sString desde el inicio y hasta el largo de $sString.Si $sPrepend es mas corta que $sString se conservarán los caracteres de esta...|
 |[strCommon](#strCommon)|Compara dos cadenas desde el inicio y retorna la subcadena en común|
 |[strOperator](#strOperator)|Retorna un operador válido en función su codificación:eq:= (Equal)noteq:!= (Not equal)lt: (Greater than)lteq:= (Greater than or equal to)like:LIKEr...|
@@ -1402,32 +1402,7 @@ $aFamily = array(
      )
 );
 ```
-#### Ejemplo de función del usuario  
-```php
-$aLs = $ngl("files")->ls("mydocuments", "*", "info", true);
 
-echo "<pre>";
-$sColumn = "basename";
-$aList = $ngl()->treeWalk($aLs, function($aNode, $nLevel, $bFirst, $bLast) use ($sColumn) {
-        $sOutput  = ($nLevel) ? str_repeat("│   ", $nLevel) : "";
-        $sOutput .= ($bLast) ? "└─── " : "├─── ";
-        $sOutput .= (($aFile["type"]=="dir") ? $aFile[$sColumn]."/" : $aFile[$sColumn]);
-        $sOutput .= "\n";
-        return $sOutput;
-    }
-);
-echo implode($aList);
-echo "</pre>";
-
-# salida
-mydocuments/
-├── excel/
-├── mp3/
-│   ├── rock/
-│   └── pop/
-└── word/
-    └── personal/
-```
 
 &nbsp;
 ___
