@@ -11,16 +11,18 @@ Métodos frecuentes para el manejo de archivos y directorios.
 &nbsp;
 
 # Métodos
-- [RebuildFILES = ](#RebuildFILES)
-- [absPath = formatea un path como absoluto limpiando doble barras o referencias atras (](#absPath)
-- [basePaths = Retorna la porción común de dos paths desde el inicio](#basePaths)
-- [copyr = Copia archivos y directorios de manera recursiva](#copyr)
-- [ls = ](#ls)
-- [lsprint = ](#lsprint)
-- [maxUploadSize = ](#maxUploadSize)
-- [mkdirr = Crea un directorio](#mkdirr)
-- [unlinkr = Elimina archivos y directorios de manera recursiva](#unlinkr)
-- [upload = ](#upload)
+|Método|Descripción|
+|---|---|
+|[RebuildFILES](#RebuildFILES)||
+|[absPath](#absPath)|formatea un path como absoluto limpiando doble barras o referencias atras (|
+|[basePaths](#basePaths)|Retorna la porción común de dos paths desde el inicio|
+|[copyr](#copyr)|Copia archivos y directorios de manera recursiva|
+|[ls](#ls)||
+|[lsprint](#lsprint)||
+|[maxUploadSize](#maxUploadSize)||
+|[mkdirr](#mkdirr)|Crea un directorio|
+|[unlinkr](#unlinkr)|Elimina archivos y directorios de manera recursiva|
+|[upload](#upload)||
 
   
 &nbsp;

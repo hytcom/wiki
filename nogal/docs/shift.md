@@ -14,28 +14,30 @@ Este objeto nuclea métodos de conversión de datos entre las siguientes escruct
 &nbsp;
 
 # Métodos
-- [CSVParseLine = auxiliar del método nglShift::csvToArray](#CSVParseLine)
-- [CastValue = ](#CastValue)
-- [HTMLTableParser = ](#HTMLTableParser)
-- [JSONChar = ](#JSONChar)
-- [JSONNameValuePair = ](#JSONNameValuePair)
-- [JSONReduceString = ](#JSONReduceString)
-- [XMLChildren = ](#XMLChildren)
-- [cast = ](#cast)
-- [convert = ](#convert)
-- [csvEncode = ](#csvEncode)
-- [csvToArray = ](#csvToArray)
-- [fixedExplode = ](#fixedExplode)
-- [fixedImplode = Convierte un Array en una cadena respetando las logitudes de **positions**](#fixedImplode)
-- [html = ](#html)
-- [htmlToArray = Convierte una Tabla HTML en un array, utilizando el objeto DOMDocument](#htmlToArray)
-- [jsonDecode = ](#jsonDecode)
-- [jsonEncode = ](#jsonEncode)
-- [jsonFormat = ](#jsonFormat)
-- [objFromArray = ](#objFromArray)
-- [objToArray = ](#objToArray)
-- [xmlEncode = ](#xmlEncode)
-- [xmlToArray = ](#xmlToArray)
+|Método|Descripción|
+|---|---|
+|[CSVParseLine](#CSVParseLine)|auxiliar del método nglShift::csvToArray|
+|[CastValue](#CastValue)||
+|[HTMLTableParser](#HTMLTableParser)||
+|[JSONChar](#JSONChar)||
+|[JSONNameValuePair](#JSONNameValuePair)||
+|[JSONReduceString](#JSONReduceString)||
+|[XMLChildren](#XMLChildren)||
+|[cast](#cast)||
+|[convert](#convert)||
+|[csvEncode](#csvEncode)||
+|[csvToArray](#csvToArray)||
+|[fixedExplode](#fixedExplode)||
+|[fixedImplode](#fixedImplode)|Convierte un Array en una cadena respetando las logitudes de **positions**|
+|[html](#html)||
+|[htmlToArray](#htmlToArray)|Convierte una Tabla HTML en un array, utilizando el objeto DOMDocument|
+|[jsonDecode](#jsonDecode)||
+|[jsonEncode](#jsonEncode)||
+|[jsonFormat](#jsonFormat)||
+|[objFromArray](#objFromArray)||
+|[objToArray](#objToArray)||
+|[xmlEncode](#xmlEncode)||
+|[xmlToArray](#xmlToArray)||
 
   
 &nbsp;

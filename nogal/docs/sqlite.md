@@ -36,19 +36,21 @@ Gestiona conexciones con bases de datos SQLite.
 &nbsp;
 
 # Métodos
-- [Error = ](#Error)
-- [PrepareValues = Auxiliar de los métodos **insert** y **update**](#PrepareValues)
-- [close = ](#close)
-- [connect = ](#connect)
-- [destroy = ](#destroy)
-- [escape = ](#escape)
-- [exec = ](#exec)
-- [insert = ](#insert)
-- [jsqlParser = ](#jsqlParser)
-- [mexec = ](#mexec)
-- [mquery = ](#mquery)
-- [query = ](#query)
-- [update = ](#update)
+|Método|Descripción|
+|---|---|
+|[Error](#Error)||
+|[PrepareValues](#PrepareValues)|Auxiliar de los métodos **insert** y **update**|
+|[close](#close)||
+|[connect](#connect)||
+|[destroy](#destroy)||
+|[escape](#escape)||
+|[exec](#exec)||
+|[insert](#insert)||
+|[jsqlParser](#jsqlParser)||
+|[mexec](#mexec)||
+|[mquery](#mquery)||
+|[query](#query)||
+|[update](#update)||
 
   
 &nbsp;

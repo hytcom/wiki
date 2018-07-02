@@ -15,15 +15,17 @@ Establece y almacena las variables por sistema de NOGAL.<ul><li>**ERRORS** =  c�
 &nbsp;
 
 # Métodos
-- [AccentedChars = ](#AccentedChars)
-- [SetErrors = ](#SetErrors)
-- [SetIP = ](#SetIP)
-- [SetRegexs = ](#SetRegexs)
-- [SetSelf = ](#SetSelf)
-- [SetUID = ](#SetUID)
-- [SetVersion = ](#SetVersion)
-- [__get = Método mágico encargado de retornar los valores de la variable \$VARS cuando es invocada por medio de **\$ngl("sysvar")**
-si no se especifica un nombre de variable se retornarán todas las variables de sistema](#__get)
+|Método|Descripción|
+|---|---|
+|[AccentedChars](#AccentedChars)||
+|[SetErrors](#SetErrors)||
+|[SetIP](#SetIP)||
+|[SetRegexs](#SetRegexs)||
+|[SetSelf](#SetSelf)||
+|[SetUID](#SetUID)||
+|[SetVersion](#SetVersion)||
+|[__get](#__get)|Método mágico encargado de retornar los valores de la variable \$VARS cuando es invocada por medio de **\$ngl("sysvar")**
+si no se especifica un nombre de variable se retornarán todas las variables de sistema|
 
   
 &nbsp;

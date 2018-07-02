@@ -23,6 +23,8 @@ Operaciones con listas.
 &nbsp;
 
 # Métodos
+|Método|Descripción|
+|---|---|
 
   
 &nbsp;

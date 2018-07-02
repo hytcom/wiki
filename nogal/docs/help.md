@@ -18,17 +18,19 @@ nglHelp construye el objeto \$help dentro del framework, el cual es accedido a t
 &nbsp;
 
 # Métodos
-- [ParamsBox = ](#ParamsBox)
-- [PrintClass = ](#PrintClass)
-- [PrintList = ](#PrintList)
-- [PrintMethod = ](#PrintMethod)
-- [Template = ](#Template)
-- [VarsBlocks = ](#VarsBlocks)
-- [VarsBlocksExplain = ](#VarsBlocksExplain)
-- [VarsExplain = ](#VarsExplain)
-- [about = ](#about)
-- [language = ](#language)
-- [varsFunctions = ](#varsFunctions)
+|Método|Descripción|
+|---|---|
+|[ParamsBox](#ParamsBox)||
+|[PrintClass](#PrintClass)||
+|[PrintList](#PrintList)||
+|[PrintMethod](#PrintMethod)||
+|[Template](#Template)||
+|[VarsBlocks](#VarsBlocks)||
+|[VarsBlocksExplain](#VarsBlocksExplain)||
+|[VarsExplain](#VarsExplain)||
+|[about](#about)||
+|[language](#language)||
+|[varsFunctions](#varsFunctions)||
 
   
 &nbsp;

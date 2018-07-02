@@ -14,75 +14,77 @@ Compendio de métodos utilizados para resolver tareas rutinarias vinculadas a:<u
 &nbsp;
 
 # Métodos
-- [ArrayGrouper = ](#ArrayGrouper)
-- [apacheMimeTypes = Retorna los Internet media types indexados por extención proporcionados por el sitio 
-http://svn](#apacheMimeTypes)
-- [arrange = Restituye el orden original de la Cadena o Array **\$mSource** desordenado por **nglCommon::disarrange** según las posiciones de **\$aArrange**](#arrange)
-- [arrayAppend = Añade los indices de 1 o mas arrays al array principal, sin importar el tipo de dato y sin sobreescribir indices](#arrayAppend)
-- [arrayColumn = ](#arrayColumn)
-- [arrayGoto = ](#arrayGoto)
-- [arrayGroup = Agrupa un array bidimensional](#arrayGroup)
-- [arrayIn = Comprueba si un valor se encuentra en un array utilizando in_array o 
-chequeando valor por valor utilizando expresiones regulares](#arrayIn)
-- [arrayInsert = ](#arrayInsert)
-- [arrayMerge = ](#arrayMerge)
-- [arrayMultiSort = ](#arrayMultiSort)
-- [arrayRebuilder = Agrupa los índices **\$aIndexes** combinandolos por sus claves](#arrayRebuilder)
-- [arrayRepeat = Retorna un array con indices númericos que contiene **\$nMultiplier** repeticiones del array **\$aInput**](#arrayRepeat)
-- [base64Cleaner = ](#base64Cleaner)
-- [between = Verifica si un valor en relación a un rango de valores](#between)
-- [clearPath = Elimina los slashes de mas en un path o url](#clearPath)
-- [colorHex = ](#colorHex)
-- [colorRGB = ](#colorRGB)
-- [coockie = Guarda y optiene el valor de una cookie del navegador](#coockie)
-- [dec2hex = ](#dec2hex)
-- [disarrange = Desordena de manera cíclica la Cadena o Array **\$mSource** según las posiciones de **\$aArrange**](#disarrange)
-- [dump = Retorna el contenido de una variable de acuerdo al tipo de la misma:<br /><ul><li>arrays -> print_r</li><li>cadenas -> echo</li><li>otros -> var_dump</li></ul>Los valores son capturados por métodos de control de salida y retornados, no se imprimen
-directamente en la pantalla](#dump)
-- [emptyToNull = Establece como NULL los valores de \$aData, cuyo indice se encuentre en \$aKeys, que retornen TRUE a la funcion empty](#emptyToNull)
-- [encoding = Verifica si la cadena **\$sString** se encuentra codificada en **\$mEncoding**
-**\$mEncoding** debe ser el nombre de una codificación válida o un array de nombres](#encoding)
-- [ensureVar = ](#ensureVar)
-- [explodeTrim = ](#explodeTrim)
-- [exploder = ](#exploder)
-- [headers = ](#headers)
-- [hex2dec = ](#hex2dec)
-- [imploder = Une elementos de un array multi dimensional en una cadena](#imploder)
-- [imya = ](#imya)
-- [intPart = ](#intPart)
-- [isArrayArray = Comprueba si **\$aArray** es un Array de Arrays](#isArrayArray)
-- [isEmpty = Comprueba si **\$mValue** esta vacío](#isEmpty)
-- [isInteger = ](#isInteger)
-- [isJSON = ](#isJSON)
-- [isLowerCase = Comprueba si **\$sString** son sólo letras minúsculas](#isLowerCase)
-- [isNull = Comprueba si un valor es NULL](#isNull)
-- [isNumber = Comprueba si **\$mNumber** es un valor númerico y retorna su valor en el formato correcto (float o int)](#isNumber)
-- [isSerialized = Comprueba si **\$sString** es un array serializado](#isSerialized)
-- [isTrue = Comprueba si **\$mValue** es TRUE o FALSE](#isTrue)
-- [isURL = ](#isURL)
-- [isUTF8 = ](#isUTF8)
-- [isUpperCase = Comprueba si **\$sString** son sólo letras mayúsculas](#isUpperCase)
-- [memory = ](#memory)
-- [mimeType = Retorna el Mime Type de la extensión proporcionada](#mimeType)
-- [once = Genera o chequea un código único guardado en la session activa](#once)
-- [round05 = Redondea un número al entero o punto medio mas cercano](#round05)
-- [secureName = ](#secureName)
-- [strBoxAppend = Añade \$sAppend a \$sString desde el final y hasta el largo de \$sString](#strBoxAppend)
-- [strBoxPrepend = Añade \$sPrepend a \$sString desde el inicio y hasta el largo de \$sString](#strBoxPrepend)
-- [strCommon = ](#strCommon)
-- [strOperator = ](#strOperator)
-- [strSizeDecode = Retorna el valor \$sSize en bytes](#strSizeDecode)
-- [strSizeEncode = ](#strSizeEncode)
-- [tokenDecode = ](#tokenDecode)
-- [tokenEncode = ](#tokenEncode)
-- [treeWalk = Aplica una función de usuario recursivamente a cada miembro del arbol,
-entrando en cada uno de los nodos \$sChildrenNode](#treeWalk)
-- [truelize = Crea un nuevo Array combinando los valores de \$aSource como claves y el booleano TRUE como valor de cada uno](#truelize)
-- [unaccented = ](#unaccented)
-- [unique = ](#unique)
-- [uriDecode = Decodifica una cadena codificada con **uriEncode**](#uriDecode)
-- [uriEncode = ](#uriEncode)
-- [urlExists = Comprueba si existe una URL](#urlExists)
+|Método|Descripción|
+|---|---|
+|[ArrayGrouper](#ArrayGrouper)||
+|[apacheMimeTypes](#apacheMimeTypes)|Retorna los Internet media types indexados por extención proporcionados por el sitio 
+http://svn|
+|[arrange](#arrange)|Restituye el orden original de la Cadena o Array **\$mSource** desordenado por **nglCommon::disarrange** según las posiciones de **\$aArrange**|
+|[arrayAppend](#arrayAppend)|Añade los indices de 1 o mas arrays al array principal, sin importar el tipo de dato y sin sobreescribir indices|
+|[arrayColumn](#arrayColumn)||
+|[arrayGoto](#arrayGoto)||
+|[arrayGroup](#arrayGroup)|Agrupa un array bidimensional|
+|[arrayIn](#arrayIn)|Comprueba si un valor se encuentra en un array utilizando in_array o 
+chequeando valor por valor utilizando expresiones regulares|
+|[arrayInsert](#arrayInsert)||
+|[arrayMerge](#arrayMerge)||
+|[arrayMultiSort](#arrayMultiSort)||
+|[arrayRebuilder](#arrayRebuilder)|Agrupa los índices **\$aIndexes** combinandolos por sus claves|
+|[arrayRepeat](#arrayRepeat)|Retorna un array con indices númericos que contiene **\$nMultiplier** repeticiones del array **\$aInput**|
+|[base64Cleaner](#base64Cleaner)||
+|[between](#between)|Verifica si un valor en relación a un rango de valores|
+|[clearPath](#clearPath)|Elimina los slashes de mas en un path o url|
+|[colorHex](#colorHex)||
+|[colorRGB](#colorRGB)||
+|[coockie](#coockie)|Guarda y optiene el valor de una cookie del navegador|
+|[dec2hex](#dec2hex)||
+|[disarrange](#disarrange)|Desordena de manera cíclica la Cadena o Array **\$mSource** según las posiciones de **\$aArrange**|
+|[dump](#dump)|Retorna el contenido de una variable de acuerdo al tipo de la misma:<br /><ul><li>arrays -> print_r</li><li>cadenas -> echo</li><li>otros -> var_dump</li></ul>Los valores son capturados por métodos de control de salida y retornados, no se imprimen
+directamente en la pantalla|
+|[emptyToNull](#emptyToNull)|Establece como NULL los valores de \$aData, cuyo indice se encuentre en \$aKeys, que retornen TRUE a la funcion empty|
+|[encoding](#encoding)|Verifica si la cadena **\$sString** se encuentra codificada en **\$mEncoding**
+**\$mEncoding** debe ser el nombre de una codificación válida o un array de nombres|
+|[ensureVar](#ensureVar)||
+|[explodeTrim](#explodeTrim)||
+|[exploder](#exploder)||
+|[headers](#headers)||
+|[hex2dec](#hex2dec)||
+|[imploder](#imploder)|Une elementos de un array multi dimensional en una cadena|
+|[imya](#imya)||
+|[intPart](#intPart)||
+|[isArrayArray](#isArrayArray)|Comprueba si **\$aArray** es un Array de Arrays|
+|[isEmpty](#isEmpty)|Comprueba si **\$mValue** esta vacío|
+|[isInteger](#isInteger)||
+|[isJSON](#isJSON)||
+|[isLowerCase](#isLowerCase)|Comprueba si **\$sString** son sólo letras minúsculas|
+|[isNull](#isNull)|Comprueba si un valor es NULL|
+|[isNumber](#isNumber)|Comprueba si **\$mNumber** es un valor númerico y retorna su valor en el formato correcto (float o int)|
+|[isSerialized](#isSerialized)|Comprueba si **\$sString** es un array serializado|
+|[isTrue](#isTrue)|Comprueba si **\$mValue** es TRUE o FALSE|
+|[isURL](#isURL)||
+|[isUTF8](#isUTF8)||
+|[isUpperCase](#isUpperCase)|Comprueba si **\$sString** son sólo letras mayúsculas|
+|[memory](#memory)||
+|[mimeType](#mimeType)|Retorna el Mime Type de la extensión proporcionada|
+|[once](#once)|Genera o chequea un código único guardado en la session activa|
+|[round05](#round05)|Redondea un número al entero o punto medio mas cercano|
+|[secureName](#secureName)||
+|[strBoxAppend](#strBoxAppend)|Añade \$sAppend a \$sString desde el final y hasta el largo de \$sString|
+|[strBoxPrepend](#strBoxPrepend)|Añade \$sPrepend a \$sString desde el inicio y hasta el largo de \$sString|
+|[strCommon](#strCommon)||
+|[strOperator](#strOperator)||
+|[strSizeDecode](#strSizeDecode)|Retorna el valor \$sSize en bytes|
+|[strSizeEncode](#strSizeEncode)||
+|[tokenDecode](#tokenDecode)||
+|[tokenEncode](#tokenEncode)||
+|[treeWalk](#treeWalk)|Aplica una función de usuario recursivamente a cada miembro del arbol,
+entrando en cada uno de los nodos \$sChildrenNode|
+|[truelize](#truelize)|Crea un nuevo Array combinando los valores de \$aSource como claves y el booleano TRUE como valor de cada uno|
+|[unaccented](#unaccented)||
+|[unique](#unique)||
+|[uriDecode](#uriDecode)|Decodifica una cadena codificada con **uriEncode**|
+|[uriEncode](#uriEncode)||
+|[urlExists](#urlExists)|Comprueba si existe una URL|
 
   
 &nbsp;

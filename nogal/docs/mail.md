@@ -74,6 +74,8 @@ Entre las funciones del objecto se encuentran:<ul><li>Revisar correos IMAP</li><
 &nbsp;
 
 # Métodos
+|Método|Descripción|
+|---|---|
 
   
 &nbsp;

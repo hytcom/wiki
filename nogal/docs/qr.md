@@ -19,7 +19,9 @@ Implementa https://github.com/aferrandini/PHPQRCode
 &nbsp;
 
 # Métodos
-- [image = ](#image)
+|Método|Descripción|
+|---|---|
+|[image](#image)||
 
   
 &nbsp;

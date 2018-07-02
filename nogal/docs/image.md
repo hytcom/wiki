@@ -58,24 +58,26 @@ Los filtros disponibles son:<ul><li>**blur** =  Pone borrosa la imagen</li><li>*
 &nbsp;
 
 # Métodos
-- [CalculatePosition = Calcula el TOP y LEFT en base al alto y ancho de la imagen y el alto y ancho del canvas en función del parámetro **\$sPosition**](#CalculatePosition)
-- [CalculateSizes = ](#CalculateSizes)
-- [CreateCopy = ](#CreateCopy)
-- [GetTransparency = ](#GetTransparency)
-- [base64 = ](#base64)
-- [canvas = ](#canvas)
-- [data = ](#data)
-- [filter = ](#filter)
-- [image = ](#image)
-- [load = Carga la imagen en el objeto](#load)
-- [margin = Añade un margen por fuera de los limites de la imagen](#margin)
-- [merge = ](#merge)
-- [padding = Añade un margen por dentro de los limites de la imagen](#padding)
-- [replace = Reemplaza un color por otro](#replace)
-- [resize = ](#resize)
-- [text = ](#text)
-- [view = ](#view)
-- [write = ](#write)
+|Método|Descripción|
+|---|---|
+|[CalculatePosition](#CalculatePosition)|Calcula el TOP y LEFT en base al alto y ancho de la imagen y el alto y ancho del canvas en función del parámetro **\$sPosition**|
+|[CalculateSizes](#CalculateSizes)||
+|[CreateCopy](#CreateCopy)||
+|[GetTransparency](#GetTransparency)||
+|[base64](#base64)||
+|[canvas](#canvas)||
+|[data](#data)||
+|[filter](#filter)||
+|[image](#image)||
+|[load](#load)|Carga la imagen en el objeto|
+|[margin](#margin)|Añade un margen por fuera de los limites de la imagen|
+|[merge](#merge)||
+|[padding](#padding)|Añade un margen por dentro de los limites de la imagen|
+|[replace](#replace)|Reemplaza un color por otro|
+|[resize](#resize)||
+|[text](#text)||
+|[view](#view)||
+|[write](#write)||
 
   
 &nbsp;

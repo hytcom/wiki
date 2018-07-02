@@ -21,15 +21,17 @@ Cuenta con dos valores de configuración que impactan en el procesamiento de la 
 &nbsp;
 
 # Métodos
-- [CheckValue = Aplica las reglas **\$vRules** sobre la variable **\$mSource**](#CheckValue)
-- [ClearCharacters = ](#ClearCharacters)
-- [GetRulesFile = Obtiene la configuración de un archivo **](#GetRulesFile)
-- [RequestFrom = ](#RequestFrom)
-- [ValidateByType = ](#ValidateByType)
-- [addvar = Almacena valores que luego pueden ser utilizados como variables dentro de las reglas](#addvar)
-- [request = Valida y reemplaza los valores de la variable global **\$_REQUEST** en base al archivo **REQUEST](#request)
-- [resetvars = ](#resetvars)
-- [validate = Valida la variable **\$mVariables** aplicando las reglas **\$mRules**](#validate)
+|Método|Descripción|
+|---|---|
+|[CheckValue](#CheckValue)|Aplica las reglas **\$vRules** sobre la variable **\$mSource**|
+|[ClearCharacters](#ClearCharacters)||
+|[GetRulesFile](#GetRulesFile)|Obtiene la configuración de un archivo **|
+|[RequestFrom](#RequestFrom)||
+|[ValidateByType](#ValidateByType)||
+|[addvar](#addvar)|Almacena valores que luego pueden ser utilizados como variables dentro de las reglas|
+|[request](#request)|Valida y reemplaza los valores de la variable global **\$_REQUEST** en base al archivo **REQUEST|
+|[resetvars](#resetvars)||
+|[validate](#validate)|Valida la variable **\$mVariables** aplicando las reglas **\$mRules**|
 
   
 &nbsp;
