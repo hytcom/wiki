@@ -40,19 +40,25 @@ Gestiona conexciones con bases de datos MySQL
 &nbsp;
 
 # Métodos
-- [Error](#Error)
-- [PrepareValues](#PrepareValues)
-- [close](#close)
-- [connect](#connect)
-- [destroy](#destroy)
-- [escape](#escape)
-- [exec](#exec)
-- [insert](#insert)
-- [jsqlParser](#jsqlParser)
-- [mexec](#mexec)
-- [mquery](#mquery)
-- [query](#query)
-- [update](#update)
+- [Nogal v1.0](#nogal-v10)
+- [mysql](#mysql)
+	- [nglDBMySQL *extends* nglStd [instanciable] [20160201]](#ngldbmysql-extends-nglstd-instanciable-20160201)
+	- [Variables](#variables)
+	- [Argumentos](#argumentos)
+- [Métodos](#metodos)
+	- [close](#close)
+	- [connect](#connect)
+	- [destroy](#destroy)
+	- [Error](#error)
+	- [escape](#escape)
+	- [exec](#exec)
+	- [insert](#insert)
+	- [jsqlParser](#jsqlparser)
+	- [mexec](#mexec)
+	- [mquery](#mquery)
+	- [PrepareValues](#preparevalues)
+	- [query](#query)
+	- [update](#update)
 
   
 &nbsp;
@@ -71,6 +77,7 @@ ___
 Establece la conexión con la base de datos  
 
 **[$this]** =  *public* function ( *string* \$sBase, *string* \$sPass, *string* \$nFlags );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sBase**|string|null|Nombre de la base de datos|
