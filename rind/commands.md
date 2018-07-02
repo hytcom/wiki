@@ -3,7 +3,7 @@
 ___
   
 
-# rindcmd
+# commands
 ## abcRindCommands [20170115]
 Rind es el sistema de plantillas de NOGAL. Esta compuesto por 16 comandos que permiten realizar todo tipo de operaciones en el ambito HTML.
 Las plantillas (documentos HTML) son procesados por Rind y cacheados hasta que sufran algun cambio en su estructura, ahorrando asi tiempo de procesamiento.
@@ -407,7 +407,7 @@ Al menos que los permisos a evaluar comiencen con "?|" (sin comillas) **RindComm
 Para que **RindCommands::alvin** pueda ejecutarse, el TOKEN de permisos deberá está almacenado en la variable:
 **\$_SESSION[NGL_SESSION_INDEX]["LOGIN"]["ALVIN_TOKEN"]**  
 
- *block* );
+);
   
 ### Ejemplos  
 #### Respuesta Booleana  
@@ -475,7 +475,7 @@ ___
 Vuelca en pantalla el contenido completo de una variable. Esto es especialmente util en los casos de arrays asociativos y punteros de MySQL en los cuales se desconocen los nombres de sus indices.
 Ante los diferentes tipos de variables **dump** mostrará:<ul><li>**Array** = Contenidos completo del mismo.</li><li>**Objecto del tipo iNglStdObject** = Obtendrá los datos del primer registro de datos y lo retornará como un **array**.</li><li>**Otras Variables** = Simplemete se mostrará el contenido de las mismas.</li></ul>  
 
- *block* 
+
 |Parámetro|Descripción|
 |---|---|
 |**content**|Variable o palabra clave.|
@@ -493,7 +493,7 @@ ___
 ## eco
 Imprime una expresión o resultado de otro comando como **datetime**, **math** o **length**.  
 
- *block* 
+
 |Parámetro|Descripción|
 |---|---|
 |**content**|Expresión.|
@@ -525,7 +525,7 @@ ___
 ## halt
 Aborta la ejecución de todas las acciones. Opcionalmente, al ejecutar **RindCommands::halt**, se puede mostrar un mensaje en pantalla.  
 
- *block* 
+
 |Parámetro|Descripción|
 |---|---|
 |**content**|Mensaje que se mostrará en pantalla|
@@ -557,7 +557,7 @@ HEREDOC;
 
 Cuando sea necesario utilizar variables dentro la cadena, estas se deberán escribir respetando la sintáxis habitual de PHP.  
 
- *block* 
+
 |Parámetro|Descripción|
 |---|---|
 |**content**|Cadena.|
@@ -597,21 +597,21 @@ Los modos **iff**, **isset** e **in/notin** pueden utilizarse simultaneamente, s
 
 También existe un modo en el que se utiliza **ifcase** como una estructura **switch**, para ello se deberá definir un identificador (**ID**) para cada parámetro de condición, y este deberá matchear con [a-zA-Z0-9_]+<ul><li>**iff:<u>ID</u>**&nbsp;</li><li>**isset:<u>ID</u>**&nbsp;</li><li>**in:<u>ID</u>**&nbsp;</li><li>**notin:<u>ID</u>**&nbsp;</li></ul>Todos los parámetros que compartan el mismo **ID** será evaluados en conjunto y ejecutaran las sentencias del parámetro **then:<u>ID</u>**  
 
- *block* 
+
 |Parámetro|Descripción|
 |---|---|
 |**iff**|Condición que se evaluará como TRUE o FALSE.|
 |**then**|Acciones que se ejecutarán o contenidos que se mostrarán cuando la evaluación del método retorne TRUE.|
 |**else**|Acciones que se ejecutarán o contenidos que se mostrarán cuando la evaluación del método retorne FALSE.|
-|**isset**|Espera una variable o grupo de ellas y evalúa si estas existen, es decir, si han sido previamente seteada.
-También es posible evaluar si la variable NO existe, anteponiendo el signo de admiración (!) al nombre de la misma.
+|**isset**|Espera una variable o grupo de ellas y evalúa si estas existen, es decir, si han sido previamente seteada.<br />
+También es posible evaluar si la variable NO existe, anteponiendo el signo de admiración (!) al nombre de la misma.<br />
 Este parámetro acepta ser combinado con **iff**, esto significa que para que **RindCommands::ifcase** retorne TRUE, ambas evaluaciones deberán ser TRUE.|
-|**in**|Espera una lista de valores en la que buscará el valor **needle**. Esta lista puede ser un array o una cadena separada por un caracter especifico (**splitter**).
+|**in**|Espera una lista de valores en la que buscará el valor **needle**. Esta lista puede ser un array o una cadena separada por un caracter especifico (**splitter**).<br />
 Devuelve TRUE si **needle** existe en **in**.|
 |**notin**|La inversa de **in**; espera que **needle** no se encuentre en **notin**.|
 |**needle**|Valor a buscar cuando se utiliza **in** o **notin**.|
 |**setmode**|Si **setmode** está activado el retorno de **RindCommands::ifcase** estará optimizado para ser utilizado como **value** del comando <a>SET</a>.|
-|**splitter**|En el caso de que **in** o **notin** no fuesen un array, este valor se usará como separador de la cadena de valores.
+|**splitter**|En el caso de que **in** o **notin** no fuesen un array, este valor se usará como separador de la cadena de valores.<br />
 El valor predeterminado es punto y coma ( ; ).|
 |**content**|Idem **then**|
 ### Ejemplos  
@@ -778,7 +778,7 @@ Incluye un archivo dentro de otro durante el proceso de datos. Este comando es e
 A diferencia de **include**, **RindCommands::incfile** trabaja con un array denominado **\$_SET.INCLUDES**, un índice de archivos que evita inclusiones no contempladas por el desarrollador.
 Este array es declarado en el archivo **ngl/conf/rind.conf**  
 
- *block* 
+
 |Parámetro|Descripción|
 |---|---|
 |**content**|ID del archivo a incluir en el indice **\\$_SET.INCLUDES**.|
@@ -806,7 +806,7 @@ ___
 **ESTE ES UN METODO DE NORMALIZACION DE DATOS**
 Es una variante de **heredoc**, pero a diferencia de este trata al valor como un cadena **json** y la convierte en un **array**:  
 
- *block* 
+
 |Parámetro|Descripción|
 |---|---|
 |**content**|Cadena.|
@@ -864,7 +864,7 @@ Este método retorna un resultado del tipo return.
 
 Los resultados para los diferentes tipos de variables son:<ul><li>**Array** = Cantidad de elementos del mismo.</li><li>**Object** = Cantidad de elementos del mismo, cuando sea del tipo Countable.</li><li>**Cadena de Texto** = Cantidad de caracteres.</li></ul>  
 
- *block* 
+
 |Parámetro|Descripción|
 |---|---|
 |**content**|Variable.|
@@ -901,30 +901,30 @@ Sin importar el **type** del bucle, todos los datos almacenados en el índice **
 
 Tambien serán aceptados como formatos de llamada, sobre todo para los casos en los cuales se produzca anidamiento de bucles con nombres de índices iguales:<ul><li>**{nombre_bucle.subindice}**&nbsp;</li><li>**{nombre_bucle:subindice}**&nbsp;</li><li>**{\$_SET.nombre_bucle.data.subindice}**&nbsp;</li><li>**{\$_SET["nombre_bucle"]["data"]["subindice"]}**&nbsp;</li></ul>  
 
- *block* 
+
 |Parámetro|Descripción|
 |---|---|
 |**name**|Nombre del **RindCommands::loop** y por consiguiente del indice de la variable **RindCommands::set**. Este parámetro no es obligatorio, pero se aconseja utilizarlo.|
 |**source**|Origen de datos del **RindCommands::loop**. Este puede ser una variable previamente seteada en PHP, una variable **RindCommands::set**, la salida de un **nglNut**, un path o URL de un archivo o simplemente texto plano.|
-|**type**|Tipo de bucle, esto determina que tratamiento se le deberá dar a los datos proporcionados por medio de **source**:<ul><li>**array** = array simple o multidimensional. En los casos de arrays simples, se dará una vuelta por cada índice. Valor por defecto.</li><li>**element** = objeto de datos.
-contenido = será el resultado de ejecutar el método **get** ó un array vacío cuando no exista
-numrows = será el resultado de ejecutar el método **rows** ó 0 si no existe
-resetear el objeto = será el resultado de ejecutar el método **reset**, cuando exista</li><li>**owl** = Objeto de Datos del tipo **nglOwl**.</li><li>**vector** = array simple, sólo se dará una vuelta.</li><li>**number** = genera un bucle de repetición basado en los parámetros **from** y **limit**.
-El mismo  consistirá en un contador iniciado en **from** y dará **limit** vueltas. Si **from** y **limit** no son especificados, sus valores serán 0 y 1 respectivamente.
+|**type**|Tipo de bucle, esto determina que tratamiento se le deberá dar a los datos proporcionados por medio de **source**:<ul><li>**array** = array simple o multidimensional. En los casos de arrays simples, se dará una vuelta por cada índice. Valor por defecto.</li><li>**element** = objeto de datos.<br />
+contenido = será el resultado de ejecutar el método **get** ó un array vacío cuando no exista<br />
+numrows = será el resultado de ejecutar el método **rows** ó 0 si no existe<br />
+resetear el objeto = será el resultado de ejecutar el método **reset**, cuando exista</li><li>**owl** = Objeto de Datos del tipo **nglOwl**.</li><li>**vector** = array simple, sólo se dará una vuelta.</li><li>**number** = genera un bucle de repetición basado en los parámetros **from** y **limit**.<br />
+El mismo  consistirá en un contador iniciado en **from** y dará **limit** vueltas. Si **from** y **limit** no son especificados, sus valores serán 0 y 1 respectivamente.<br />
 **limit** no podrá ser mayor al valor del argumento **loop_limit** del objeto **Rind**.</li><li>**object** = el contenido de **source** será tratado como un objeto, y se intentará convertirlo en un array asosiativo de manera recursiva.</li></ul>|
 |**debug**|Imprime todos los contenidos disponibles en la primer vuelta del loop. Esto es útil para conocer el nombre de los índices disponibles|
 |**index**|Reemplaza el índice natural del bucle y establece un nuevo orden de salida de datos. Este atributo espera como valor un **array** o una cadena separa por comas(,).|
-|**tree**|Especifica que los datos proporcionados por **source** deberán ser tratados como un árbol.
-El modo **tree** estará  disponible sólo si **source** es del tipo **array**.
-**tree** es además el índice del sub-array de **source** que contiene los datos de los sub-nodos. Si **tree** = 1 se asumirá que el nombre del índice es **_children**
-
+|**tree**|Especifica que los datos proporcionados por **source** deberán ser tratados como un árbol.<br />
+El modo **tree** estará  disponible sólo si **source** es del tipo **array**.<br />
+**tree** es además el índice del sub-array de **source** que contiene los datos de los sub-nodos. Si **tree** = 1 se asumirá que el nombre del índice es **_children**<br />
+<br />
 Parámetros adicionales del modo **tree**:<ul><li>**branch_open** = cadena de texto que se imprimirá al comienzo de cada rama. Por defecto **&lt;ul&gt;**</li><li>**branch_close** = cadena de texto que se imprimirá al finalizar cada rama. Por defecto **&lt;/ul&gt;**</li><li>**node_open** = cadena de texto que se imprimirá al comienzo de cada nodo. Por defecto **&lt;li&gt;**</li><li>**node_close** = cadena de texto que se imprimirá al finalizar cada nodo. Por defecto **&lt;/li&gt;**</li></ul>|
 |**from**|Indica el número de registro a partir del cual se mostrará el contenido de **content**.|
 |**limit**|Indica la cantidad máxima de vueltas que dará el loop a partir de **from**.|
 |**step**|Incremento del loop. Utilizar valores negativos para indicar decrementos. Por defecto **1**|
-|**order**|Orden en el que se mostrarán los resultados del bucle. Este atributo trabaja sobre el índice de los datos, no sobre los datos. 
-Para conseguir mejores resultados utilizar este atributo en convinación con el atributo **index**.
-
+|**order**|Orden en el que se mostrarán los resultados del bucle. Este atributo trabaja sobre el índice de los datos, no sobre los datos. <br />
+Para conseguir mejores resultados utilizar este atributo en convinación con el atributo **index**.<br />
+<br />
 Los valores admitidos son:<ul><li>**asc** = orden ascendente.</li><li>**desc** =  orden descendente.</li><li>**reverse** = invierte el orden natural del índice. Sino se emplea **index** es valor es equivalente a utilizar **DESC**.</li><li>**random** = mostrará los datos en orden aleatorio.</li></ul>|
 |**zerofill**|Cantidad de 0 con los que se completa por adelante **numrow** y **line**|
 |**content**|Contenidos que se mostrarán como resultado de cada vuelta del bucle.|
@@ -1152,21 +1152,21 @@ Para estos casos el parámetro **source** es utilizado para setear la ruta de in
 En la plantilla a incluir, las claves de estos valores deberán estar expresadas en el formato {%NOMBRECLAVE%}. Las claves que no tengan un valor asignado en **data**, serán reemplazadas por cadenas vacias.</li><li>**Modo Enriquecido Inline** = El concepto es el mismo que el del Modo Enriquecido, sólo que los datos se pasan por medio de la cola del archivo</li><li>**Modo Multiple** = Este permite incluir varios archivos que esten en la misma carpeta, especificada en la etiqueta **source** 
 Luego, en la etiqueta **multiple**, se especificarán las rutas y datos adicionales de cada uno de los archivos (ver ejemplo)</li></ul>Mergefile trabaja en conjunto con el modo de CACHE del objeto **rind**:<ul><li>**none** = como la plantilla principal es leída en cada llamada, las sub-plantillas también lo son</li><li>**dev** = las sub-plantillas son leídas únicamente en la primer lectura de la plantilla principal, o cuando esta es modificada</li><li>**use** = nunca se leen las sub-plantillas, se utiliza el contenido cacheado durante la primer lectura de la plantilla principal</li></ul>  
 
- *block* 
+
 |Parámetro|Descripción|
 |---|---|
 |**data**|Cadena JSON con las claves y valores que se desean pasar a la plantilla|
 |**source**|Ruta del archivo a ser incluído o carpeta contenedora para el caso de una inclución múltiple.|
-|**multiple**|Cadena JSON con las rutas relativas a **source** de cada plantilla y los datos enriquecidos para cada una de ellas
-Formato:
-<blockquote>
-[
-<blockquote>
-["template1.html", {"title":"foo", "text":"bar"},<br />
-["template2.html", {"value":"foo", "option":"bar"},<br />
-["templateN.html", {"name":"foo", "lastname":"bar"}
-</blockquote>
-]
+|**multiple**|Cadena JSON con las rutas relativas a **source** de cada plantilla y los datos enriquecidos para cada una de ellas<br />
+Formato:<br />
+<blockquote><br />
+[<br />
+<blockquote><br />
+["template1.html", {"title":"foo", "text":"bar"},<br /><br />
+["template2.html", {"value":"foo", "option":"bar"},<br /><br />
+["templateN.html", {"name":"foo", "lastname":"bar"}<br />
+</blockquote><br />
+]<br />
 </blockquote>|
 ### Ejemplos  
 #### Modo Simple  
@@ -1238,7 +1238,7 @@ ___
 Por razones de seguridad todas las expresiones utilizadas en los comandos son entrecomilladas por el sistema.
 Este comando prepara una expresión para ser utilizada dentro de otro, eliminando las comillas de apertura y cierre.  
 
- *block* 
+
 |Parámetro|Descripción|
 |---|---|
 |**content**|Expresión u otro método.|
@@ -1286,58 +1286,58 @@ Los nombres de variables deberán matchear con el patrón **[a-z0-9_{}%]**, cual
 
 Nota: Como **RindCommands::set** almacena en la variable todo lo que se encuentre entre <@value> y </@value>, se debe tener cuidado con las tabulaciones y saltos de linea.  
 
- *block* 
+
 |Parámetro|Descripción|
 |---|---|
 |**name**|Nombre de la variable a setear|
 |**value**|Nombre del índice el sub-array|
-|**operator**|Tipo de operador. Por defecto se utilizará el operador **=**, para dar inicio a la variable. Si el operador es diferente de **=**, el valor de la variable será alterado segun el caso.
-
-Se espera: ( = | . | + | - | * | / | % ).</i><ul><li>**.** = concatena el nuevo valor al valor actual. Unicamente válido para cadenas.</li><li>**+** = suma el nuevo valor al valor actual.</li><li>**-** = resta el nuevo valor al valor actual.</li><li>***** = multiplica el valor actual por el nuevo.</li><li>**/** = divide el valor actual por el nuevo.</li><li>**%** = modulo el valor actual y el nuevo.</li></ul>|
-|**method**|Establece el/los método/s con el/los que será tratado el valor de **value** antes de almacenarlo. 
-Se pueden especificar varios métodos separandos por coma (,) en este caso los métodos se aplicarán en secuencia.<br />
+|**operator**|Tipo de operador. Por defecto se utilizará el operador **=**, para dar inicio a la variable. Si el operador es diferente de **=**, el valor de la variable será alterado segun el caso.<br />
 <br />
-Métodos disponibles	:<br /><ul><li>
-**<i>N</i>** = el contenido alamcenado contendrá al elemento **<i>N</i>** del conjunto **value**, ya sea el valor de un índice cuando sea un array o un caracter cuando sea una cadena.<br />
-**<i>N</i>** comienza a contar desde 1, cuando el valor sea negativo se contará desde el final del conjunto.</li><li>
-**<i>N:L</i>** = el contenido alamcenado será la secuencia de elementos del conjunto **value** tal y como se especifiquen los valores **<i>N</i>** y **<i>L</i>**.<br />
-Donde el primero es la posición del primer elemento y el segundo la cantidad de elementos a capturar.<br />
-**<i>N</i>** comienza a contar desde 1, cuando el valor sea negativo se contará desde el final del conjunto.</li><li>**base64dec** = antes de ser almacenado el contenido será tratado con **base64_decode**</li><li>**base64enc** = antes de ser almacenado el contenido será tratado con **base64_encode**</li><li>**chkeys** = cuando el contenido sea un array, sus claves serán reemplazadas por los valores de la cadena <@keys></li><li>**element** = en caso de existir, el contenido alamcenado será el resultado de ejecutar el método **get** del objeto **value**</li><li>**elements** = en caso de existir, el contenido alamcenado será el resultado de ejecutar el método **getall** del objeto **value**</li><li>
-**explode** = antes de ser almacenado el contenido será explotado utilizando **splitter** como separador<br />
+Se espera: ( = | . | + | - | * | / | % ).</i><ul><li>**.** = concatena el nuevo valor al valor actual. Unicamente válido para cadenas.</li><li>**+** = suma el nuevo valor al valor actual.</li><li>**-** = resta el nuevo valor al valor actual.</li><li>***** = multiplica el valor actual por el nuevo.</li><li>**/** = divide el valor actual por el nuevo.</li><li>**%** = modulo el valor actual y el nuevo.</li></ul>|
+|**method**|Establece el/los método/s con el/los que será tratado el valor de **value** antes de almacenarlo. <br />
+Se pueden especificar varios métodos separandos por coma (,) en este caso los métodos se aplicarán en secuencia.<br /><br />
+<br /><br />
+Métodos disponibles	:<br /><ul><li><br />
+**<i>N</i>** = el contenido alamcenado contendrá al elemento **<i>N</i>** del conjunto **value**, ya sea el valor de un índice cuando sea un array o un caracter cuando sea una cadena.<br /><br />
+**<i>N</i>** comienza a contar desde 1, cuando el valor sea negativo se contará desde el final del conjunto.</li><li><br />
+**<i>N:L</i>** = el contenido alamcenado será la secuencia de elementos del conjunto **value** tal y como se especifiquen los valores **<i>N</i>** y **<i>L</i>**.<br /><br />
+Donde el primero es la posición del primer elemento y el segundo la cantidad de elementos a capturar.<br /><br />
+**<i>N</i>** comienza a contar desde 1, cuando el valor sea negativo se contará desde el final del conjunto.</li><li>**base64dec** = antes de ser almacenado el contenido será tratado con **base64_decode**</li><li>**base64enc** = antes de ser almacenado el contenido será tratado con **base64_encode**</li><li>**chkeys** = cuando el contenido sea un array, sus claves serán reemplazadas por los valores de la cadena <@keys></li><li>**element** = en caso de existir, el contenido alamcenado será el resultado de ejecutar el método **get** del objeto **value**</li><li>**elements** = en caso de existir, el contenido alamcenado será el resultado de ejecutar el método **getall** del objeto **value**</li><li><br />
+**explode** = antes de ser almacenado el contenido será explotado utilizando **splitter** como separador<br /><br />
 Opcionalmente se podrá especificar el parámetro **linebreak** como salto de línea, consiguiendo asi un array multidimensional</li><li>**file** = el valor será tratado como un path de archivo y se intentará obtener su contenido. Cuando se especifiquen mas de un método, sólo el primero de ellos podrá ser **file**.</li><li>**group** = agrupa los valores según la estructura **structure** Cuando no se proporcione una estructura, los valores únicos de cada columna formarán subgrupos</li><li>**implode** = antes de ser almacenado el contenido será tratado con **implode** utilizando **splitter** como caracter de unión</li><li>**jsondec** = antes de ser almacenado el contenido será tratado con **json_decode** y convertido en un array asociativo</li><li>**jsonenc** = antes de ser almacenado el contenido será tratado con **json_encode** con los flags:<br />JSON_HEX_TAG | JSON_NUMERIC_CHECK | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP | JSON_UNESCAPED_UNICODE</li><li>**keys** = trabaja sobre un array de datos el cual es tratado con **array_keys**, es decir, que retorna un vector con las claves del valor de origen</li><li>**object** = antes de ser almacenado el contenido será convertido en un array de manera recursiva</li><li>**querydec** = antes de ser almacenado el contenido será tratado con **parse_str** y convertido en un array</li><li>**queryenc** = antes de ser almacenado el contenido será tratado con **http_build_query**</li><li>**rawurldec** = antes de ser almacenado el contenido será tratado con **rawurldecode**</li><li>**rawurlenc** = antes de ser almacenado el contenido será tratado con **rawurlencode**</li><li>**serialenc** = antes de ser almacenado el contenido será tratado con **serialize**</li><li>**serialdec** = antes de ser almacenado el contenido será tratado con **unserialize** y convertido en un array</li><li>**urldec** = antes de ser almacenado el contenido será tratado con **urldecode**</li><li>**urlenc** = antes de ser almacenado el contenido será tratado con **urlencode**</li><li>**vector** = genera un vector clave/valor a partir de un array bidimensional, con **index** como clave y **column** como valor</li><li>**xml** = antes de ser almacenado el contenido será convertido en un array</li></ul>|
-|**userpwd**|Utilizado cuando **file** requiera autenticación HTTP.
+|**userpwd**|Utilizado cuando **file** requiera autenticación HTTP.<br />
 Formato: username:password|
 |**splitter**|Caracter utilizado como separador en **explode**, y caracter de concatenación en **implode**|
 |**linebreak**|Caracter utilizado como salto de línea para cuando **method** es **explode**|
-|**index**|Valor númerico que indica la posición del array que se desea obtener cuando se utiliza el **method** es **element**
+|**index**|Valor númerico que indica la posición del array que se desea obtener cuando se utiliza el **method** es **element**<br />
 ó nombre del indice del sub-array que hará de clave en el método **vector**|
-|**structure**|Cadena JSON que detemina la estructura de agrupamiento del método **group**
-Formato:
-<blockquote>
-{
-<blockquote>
-"MAIN": [ <note>nodo principal</note>
-<blockquote>
-"id", [ <note>id del nodo</note>
-<blockquote>
-"campo 1", <note>campos del nodo</note><br />
-"campo N"<br />
-</blockquote>
-]
-</blockquote>
-],<br />
-"id_secundario": [ <note>nodo de agrupamiento</note>
-<blockquote>
-"campo 5", [ <note>id del nodo</note>
-<blockquote>
-"campo 1", <note>campos del nodo</note><br />
-"campo N"
-</blockquote>
-]
-</blockquote>
+|**structure**|Cadena JSON que detemina la estructura de agrupamiento del método **group**<br />
+Formato:<br />
+<blockquote><br />
+{<br />
+<blockquote><br />
+"MAIN": [ <note>nodo principal</note><br />
+<blockquote><br />
+"id", [ <note>id del nodo</note><br />
+<blockquote><br />
+"campo 1", <note>campos del nodo</note><br /><br />
+"campo N"<br /><br />
+</blockquote><br />
 ]<br />
-</blockquote>
-}
+</blockquote><br />
+],<br /><br />
+"id_secundario": [ <note>nodo de agrupamiento</note><br />
+<blockquote><br />
+"campo 5", [ <note>id del nodo</note><br />
+<blockquote><br />
+"campo 1", <note>campos del nodo</note><br /><br />
+"campo N"<br />
+</blockquote><br />
+]<br />
+</blockquote><br />
+]<br /><br />
+</blockquote><br />
+}<br />
 </blockquote>|
 |**keys**|Lista de valores separados por coma (,) utilizados cuando se emplea el método **chkeys**|
 ### Ejemplos  
@@ -1739,7 +1739,7 @@ ___
 ## unique
 Genera un código único.  
 
- *block* 
+
 |Parámetro|Descripción|
 |---|---|
 |**content**|Longuitud del código|
@@ -1794,7 +1794,7 @@ ___
 ## unset
 Permite desetear variables seteadas por medio del método **RindCommands::set**. Los nombres de variables deberán matchear con el patrón **[a-z0-9_]**, cualquier caracter fuera del patrón será eliminado.  
 
- *block* 
+
 |Parámetro|Descripción|
 |---|---|
 |**content**|Nombre de variable a desetear.|
