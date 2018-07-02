@@ -45,6 +45,33 @@ Este método retorna el propio objeto, a fin de poder añadir varias variables c
 |---|---|---|---|
 |**\$sVarName**|string||Nombre que luego se utilizará para invocar el valor|
 |**\$mValue**|string||Valor|
+### Ejemplos  
+#### Modo de empleo  
+```php
+[b][u]Variables PHP[/u][/b]
+$var1 = "string";
+$var2 = "milk,rice,sugar,tea";
+
+
+[b][u]Añadiendo valores[/u][/b]
+$ngl("validate")
+	->addvar("type", $var1)
+	->addvar("minlen", "3")
+	->addvar("list", $var2)
+;
+
+
+[b][u]Archivo foobar.json[/u][/b]
+{
+	"type" : "{$type}",
+	"minlength" : "{$minlen}",
+	"in" : "{$list}"
+}
+
+
+[b][u]Execución[/u][/b]
+echo $ngl("validate")->validate("rice", "foobar");
+```
 
 &nbsp;
 ___
@@ -181,6 +208,85 @@ Cuando las reglas son del tipo JSON, archivo o texto, se pueden invocar valores 
 
 Nota: el grupo especial **SPACES** contiene a los caracteres:<ul><li>tabulación (ord:9)</li><li>salto de línea (ord:10)</li><li>retorno de carro (ord:13)</li><li>espacio (ord:32)</li></ul>|
 |**\$bIgnoreDefault**|boolean|false|Desactiva el uso de valores **default**|
+### Ejemplos  
+#### Reglas JSON en archivo .json  
+```php
+El archivo debe estar alojado en la carpeta <b>NGL_PATH_VALIDATE</b> del proyecto
+
+$age = 22; 
+$age = $ngl("validate")->validate($age, "rules_age");
+```
+#### Reglas JSON en línea  
+```php
+$rules = "{
+	"type" : "regex",
+	"options" : { "pattern" : "\\$[0-9]+" },
+	"minlength" : 5
+}";
+
+$var = "$522"; 
+$var = $ngl("validate")->validate($var, $rules);
+```
+#### Reglas en Array  
+```php
+$rules = array();
+$rules["type"] = "html";
+$rules["options"] = array(
+	"htmlentities" => "ENT_COMPAT,ENT_HTML401,ENT_QUOTES",
+	"striptags" => "<i>"
+);
+
+$var = "<b>prueba de 'validación' de datos <i>HTML</i></b>";
+$var = $ngl("validate")->validate($var, $rules);
+```
+#### Validación multiple  
+```php
+$rules = "{
+	"type" : "email",
+	"options" : { "multiple" : ";" }
+}";
+
+$emails = "mail1@foobar.com;mail2@foobar.com;mail3@foobar.com";
+print_r($ngl("validate")->validate($emails, $rules));
+```
+#### Validación de Arrays  
+```php
+$rules = "{
+	"product" : {
+		"type" : "string",
+		"default" : "milk",
+		"in" : "milk,rice,sugar,tea"
+	},
+	
+	"quantity" : {
+		"type" : "int",
+		"greaterthan" : "1",
+		"lessthan" : "20",
+	},
+	
+	"price" : {
+		"type" : "regex",
+		"options" : { "pattern" : "\\$[0-9]+" },
+		"minlength" : 5
+	}
+}";
+
+print_r($ngl("validate")->validate($_POST, $rules));
+```
+#### Tipo all customizado  
+```php
+$rules = array();
+$rules["type"] = "all";
+$rules["options"] = array(
+	"allow" => "LATIN_BASIC_LOWERCASE,LATIN_BASIC_NUMBERS",
+	"striptags" => true
+);
+
+$var = "<b>ESTA ES 'la prueba' <i>1234</i></b>";
+$var = $ngl("validate")->validate($var, $rules);
+
+# retornara: laprueba1234
+```
 
 &nbsp;
 ___

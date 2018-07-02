@@ -116,6 +116,45 @@ Formatos válidos y sus resultados<ul><li>**["TABLE1.FIELD1", "OPERATOR", "TABLE
 |---|---|---|---|
 |**\$aSource**|array||Array de condiciones en formato **JSQL**|
 |**\$bSetMode**|boolean|false|Determina el tipo de salida SQL:<ul><li>**true** =  genera una salida para ser utilizada en el SET en una sentencia INSERT o UPDATE</li><li>**false** =  genera una salida para ser utilizada como condición WHERE</li></ul>|
+### Ejemplos  
+#### condición MySQL WHERE  
+```php
+#entrada
+$a = Array(
+	array("tabla.campo1", "eq", "alias2.campo2"),
+	"and",
+	Array (
+		array("tabla.campo2", "gt", "alias2.campo3"), 
+		"or",
+		array("tabla.campo2", "lt", "alias2.campo4")
+	),
+	"and",
+	array("tabla.campo3", "eq", "(foobar)");
+);
+
+#ejecución
+echo $jsql->conditions($a);
+
+#salida
+`tabla`.`campo1` = `alias2`.`campo2` AND (
+	`tabla`.`campo2` > `alias2`.`campo3` OR 
+	`tabla`.`campo2` < `alias2`.`campo4`
+) AND `tabla`.`campo3` = 'foobar'
+```
+#### valores MySQL SET  
+```php
+#entrada
+$a = Array(
+	array("tabla.campo1", "eq", "alias2.campo2"),
+	array("tabla.campo3", "eq", "(foobar)");
+);
+
+#ejecución
+echo $jsql->conditions($a, true);
+
+#salida
+`tabla`.`campo1` = `alias2`.`campo2`, `tabla`.`campo3` = 'foobar'
+```
 
 &nbsp;
 ___

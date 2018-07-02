@@ -35,6 +35,23 @@ formatea un path como absoluto limpiando doble barras o referencias atras (..)
 |---|---|---|---|
 |**\$sPath**|string||Path|
 |**\$sSlash**|string|NGL_DIR_SLASH|Separador de directorios.|
+### Ejemplos  
+#### Ejemplo 1  
+```php
+$path = "/home/user/docs/../../user2/readme.txt";
+echo $ngl("files")->absPath($path, "/");
+
+#salida
+"/home/user2/readme.txt"
+```
+#### Ejemplo 2  
+```php
+$path = "/home/user/docs/../../user2/readme.txt";
+echo $ngl("files")->absPath($path, "_");
+
+#salida
+"home_user2_readme.txt"
+```
 
 &nbsp;
 ___
@@ -50,6 +67,16 @@ Retorna la porción común de dos paths desde el inicio. Previa a la comparació
 |**\$sPath1**|string||path 1|
 |**\$sPath2**|string||path 2|
 |**\$sSlash**|string|NGL_DIR_SLASH|Separador de directorios.|
+### Ejemplos  
+#### Ejemplo  
+```php
+$path1 = "/home/user/docs/readme.txt";
+$path2 = "/home/user/docs/images/picture.jpg";
+echo $ngl("files")->basePaths($path1, $path2);
+
+#salidas
+"/home/user/docs/"
+```
 
 &nbsp;
 ___
@@ -68,6 +95,52 @@ Copia archivos y directorios de manera recursiva. Retorna un Array de 2 indices:
 |**\$bRecursive**|boolean|true|Determina si se deben incluir carpetas y sub-carpetas|
 |**\$bIncludeHidden**|boolean|false|Determina si se deben copiar los archivos y carpetas ocultos|
 |**\$bLog**|boolean|false|Activa el log|
+### Ejemplos  
+#### Copia completa  
+```php
+$path1 = "/home/user/mydocs";
+$path2 = "/home/user2/mydocs";
+print_r($ngl("files")->copyr($path1, $path2));
+
+#salidas
+Array (
+	[0] => 13
+	[1] =>
+		copy	"/home/user/mydocs/data.pdf" => "/home/user2/mydocs/data.pdf"
+		mkdir	"/home/user2/mydocs/docs"
+		copy	"/home/user/mydocs/docs/bar.doc" => "/home/user2/mydocs/docs/bar.doc"
+		copy	"/home/user/mydocs/docs/foo.doc" => "/home/user2/mydocs/docs/foo.doc"
+		mkdir 	"/home/user2/mydocs/images"
+		copy	"/home/user/mydocs/images/image1.jpg" => "/home/user2/mydocs/images/image1.jpg"
+		copy	"/home/user/mydocs/images/image2.jpg" => "/home/user2/mydocs/images/image2.jpg"
+		copy	"/home/user/mydocs/images/image3.jpg" => "/home/user2/mydocs/images/image3.jpg"
+		copy	"/home/user/mydocs/images/picture1.jpg" => "/home/user2/mydocs/images/picture1.jpg"
+		copy	"/home/user/mydocs/images/picture2.jpg" => "/home/user2/mydocs/images/picture2.jpg"
+		copy	"/home/user/mydocs/images/picture3.jpg" => "/home/user2/mydocs/images/picture3.jpg"
+		copy	"/home/user/mydocs/images/picture4.jpg" => "/home/user2/mydocs/images/picture4.jpg"
+		copy	"/home/user/mydocs/readme.txt" => "/home/user2/mydocs/readme.txt"
+)
+```
+#### Copia selectiva  
+```php
+$path1 = "/home/user/mydocs";
+$path2 = "/home/user2/mydocs";
+$out = $ngl("files")->copyr($path1, $path2, array("*.doc", "image*"));
+print_r($out);
+
+#salidas
+Array (
+	[0] => 7
+	[1] =>
+		mkdir	"/home/user2/mydocs/docs"
+		copy	"/home/user/mydocs/docs/bar.doc" => "/home/user2/mydocs/docs/bar.doc"
+		copy	"/home/user/mydocs/docs/foo.doc" => "/home/user2/mydocs/docs/foo.doc"
+		mkdir 	"/home/user2/mydocs/images"
+		copy	"/home/user/mydocs/images/image1.jpg" => "/home/user2/mydocs/images/image1.jpg"
+		copy	"/home/user/mydocs/images/image2.jpg" => "/home/user2/mydocs/images/image2.jpg"
+		copy	"/home/user/mydocs/images/image3.jpg" => "/home/user2/mydocs/images/image3.jpg"
+)
+```
 
 &nbsp;
 ___
@@ -86,6 +159,100 @@ lista el contenido de un directorio
 |**\$bRecursive**|boolean|false|Búsqueda en modo recursivo|
 |**\$sChildren**|string|_children|Nombre del nodo que se utilizará para anidar resultados cuando \$bRecursive=true|
 |**\$bIni**|boolean|true|Reservada para uso interno de la función|
+### Ejemplos  
+#### Modo SINGLE (no recursivo)  
+```php
+$ls = $ngl("files")->ls("public_html");
+print_r($ls);
+
+# salida
+Array (
+	[0] => public_html/files
+	[1] => public_html/functions.js
+	[2] => public_html/gallery.html
+	[3] => public_html/images
+	[4] => public_html/index.html
+	[5] => public_html/robots.txt
+	[6] => public_html/styles.css
+)
+```
+#### Modo SINGLE (recursivo)  
+```php
+$ls = $ngl("files")->ls("public_html", "*", "single", true);
+print_r($ls);
+
+# salida
+Array (
+	[0] => public_html/files
+	[1] => public_html/files/document.docx
+	[2] => public_html/files/info.docx
+	[3] => public_html/functions.js
+	[4] => public_html/gallery.html
+	[5] => public_html/images
+	[6] => public_html/images/image1.gif
+	[7] => public_html/images/image2.gif
+	[8] => public_html/images/image3.gif
+	[9] => public_html/index.html
+	[10] => public_html/robots.txt
+	[11] => public_html/styles.css
+)
+```
+#### Modo SIGNED (no recursivo)  
+```php
+$ls = $ngl("files")->ls("public_html", "*", "signed");
+print_r($ls);
+
+# salida
+Array (
+	[0] => *public_html/files
+	[1] => public_html/functions.js
+	[2] => public_html/gallery.html
+	[3] => *public_html/images
+	[4] => public_html/index.html
+	[5] => public_html/robots.txt
+	[6] => public_html/styles.css
+)
+```
+#### Modo INFO (no recursivo)  
+```php
+$ls = $ngl("files")->ls("public_html/files", "*.docx", "info");
+print_r($ls);
+
+# salida
+Array (
+	[document.docx] => Array (
+		[type] => file
+		[basename] => document.docx
+		[extension] => docx
+		[filename] => document
+		[protocol] => filesystem
+		[path] => public_html/files/document.docx
+		[bytes] => 364495
+		[size] => 355.95KB
+		[chmod] => 0666
+		[timestamp] => 1361469382
+		[date] => 2013-02-21 14:56:22
+		[mime] => application/vnd.openxmlformats-officedocument.wordprocessingml.document
+		[image] => 
+	)
+
+	[info.docx] => Array (
+		[type] => file
+		[basename] => info.docx
+		[extension] => docx
+		[filename] => info
+		[protocol] => filesystem
+		[path] => public_html/files/info.docx
+		[bytes] => 87310
+		[size] => 85.26KB
+		[chmod] => 0666
+		[timestamp] => 1425914852
+		[date] => 2015-03-09 12:27:32
+		[mime] => application/vnd.openxmlformats-officedocument.wordprocessingml.document
+		[image] => 
+	)
+)
+```
 
 &nbsp;
 ___
@@ -101,6 +268,30 @@ imprime el árbol de un directorio de manera recursiva
 |**\$sPath**|string|.|Directorio|
 |**\$mMask**|string|null|Mascara de archivos. Una expresión regular o un array de ellas que será tratado con OR|
 |**\$sChildren**|string|_children|Nombre del nodo que se utilizará para anidar resultados cuando \$bRecursive=true|
+### Ejemplos  
+#### Ejemplo  
+```php
+echo $ngl("files")->lsprint("bootstrap");
+
+# salida
+bootstrap
+├── css/
+│   ├── bootstrap.css
+│   ├── bootstrap.css.map
+│   ├── bootstrap.min.css
+│   ├── bootstrap-theme.css
+│   ├── bootstrap-theme.css.map
+│   └── bootstrap-theme.min.css
+├── js/
+│   ├── bootstrap.js
+│   └── bootstrap.min.js
+└── fonts/
+	├── glyphicons-halflings-regular.eot
+	├── glyphicons-halflings-regular.svg
+	├── glyphicons-halflings-regular.ttf
+	├── glyphicons-halflings-regular.woff
+	└── glyphicons-halflings-regular.woff2
+```
 
 &nbsp;
 ___
@@ -156,6 +347,46 @@ Elimina archivos y directorios de manera recursiva. Retorna un Array de 2 indice
 |**\$bRecursive**|boolean|true|Determina si se deben incluir carpetas y sub-carpetas|
 |**\$bIncludeHidden**|boolean|false|Determina si se deben eliminar los archivos y carpetas ocultos|
 |**\$bLog**|boolean|true|Activa el log|
+### Ejemplos  
+#### Borrado completo  
+```php
+$del = $ngl("files")->unlinkr("/home/user2/mydocs");
+print_r($del);
+
+#salidas
+Array (
+	[0] => 9
+	[1] =>
+		delete	"/home/user2/mydocs/docs/bar.doc"
+		delete	"/home/user2/mydocs/docs/foo.doc"
+		delete 	"/home/user2/mydocs/docs"
+		delete	"/home/user2/mydocs/images/image1.jpg"
+		delete	"/home/user2/mydocs/images/image2.jpg"
+		delete	"/home/user2/mydocs/images/image3.jpg"
+		delete	"/home/user2/mydocs/images/image3.jpg"
+		delete 	"/home/user2/mydocs/images"
+		delete 	"/home/user2/mydocs"
+)
+```
+#### Borradon sólo el contenido  
+```php
+$del = $ngl("files")->unlinkr("/home/user2/mydocs/");
+print_r($del);
+
+#salidas
+Array (
+	[0] => 9
+	[1] =>
+		delete	"/home/user2/mydocs/docs/bar.doc"
+		delete	"/home/user2/mydocs/docs/foo.doc"
+		delete 	"/home/user2/mydocs/docs"
+		delete	"/home/user2/mydocs/images/image1.jpg"
+		delete	"/home/user2/mydocs/images/image2.jpg"
+		delete	"/home/user2/mydocs/images/image3.jpg"
+		delete	"/home/user2/mydocs/images/image3.jpg"
+		delete 	"/home/user2/mydocs/images"
+)
+```
 
 &nbsp;
 ___

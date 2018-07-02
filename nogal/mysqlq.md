@@ -108,6 +108,15 @@ Cuando se especifique **\$sColumn** y el valor sea el nombre una columna del gru
 En el método **getAll**, cuando el nombre este presedido de un **#**, el valor de la columna será utilizado como indice asociativo.
 Cuando el nombre este presedido de un **@**, el resultado será tratado con **nglCommon::arrayGroup** y el valor de la columna será utilizado como indice asociativo.|
 |**\$sMode**|string|assoc|Tipo de modo GET. Valores admitidos:<ul><li>**assoc** =  devuelve un array indexado por el nombre de columna</li><li>**num** =  devuelve un array indexado por el número de columna, empezando por la columna 0</li><li>**both** =  devuelve un array indexado tanto por el nombre como por el número de columna empezando por la columna 0</li></ul>|
+### Ejemplos  
+#### conexión  
+```php
+$foo = $ngl("mysql.foobar");
+$foo->base = "test";
+$foo->connect();
+$bar = $foo->query("SELECT * FROM `users`");
+print_r($bar->get());
+```
 
 &nbsp;
 ___
@@ -128,6 +137,58 @@ En el método **getAll**, cuando el nombre este presedido de un **#**, el valor 
 Cuando el nombre este presedido de un **@**, el resultado será tratado con **nglCommon::arrayGroup** y el valor de la columna será utilizado como indice asociativo.|
 |**\$sMode**|string|assoc|Tipo de modo GET. Valores admitidos:<ul><li>**assoc** =  devuelve un array indexado por el nombre de columna</li><li>**num** =  devuelve un array indexado por el número de columna, empezando por la columna 0</li><li>**both** =  devuelve un array indexado tanto por el nombre como por el número de columna empezando por la columna 0</li></ul>|
 |**\$aGroup**|array|null|Estructura de agrupamiento de **nglCommon::arrayGroup** utilizada en el método getAll cuando column está precedido por una **@**|
+### Ejemplos  
+#### simple  
+```php
+$foo = $ngl("mysql.foobar");
+$foo->base = "test";
+$foo->connect();
+$bar = $foo->query("SELECT * FROM `users`");
+
+print_r($bar->getall());
+Array (
+	0 => Array(id => 1, name => Juan, age => 36),
+	1 => Array(id => 2, name => Pedro, age => 28),
+	2 => Array(id => 3, name => Manuel, age => 36)
+);
+```
+#### valor de un campo específico  
+```php
+$foo = $ngl("mysql.foobar");
+$foo->base = "test";
+$foo->connect();
+$bar = $foo->query("SELECT * FROM `users`");
+
+# retorna solamente los valores del campo seleccionado
+<b>print_r($bar->getall(name));</b>
+Array (
+	0 => Juan,
+	1 => Pedro,
+	2 => Manuel
+);
+```
+#### agrupado por campo  
+```php
+$foo = $ngl("mysql.foobar");
+$foo->base = "test";
+$foo->connect();
+$bar = $foo->query("SELECT * FROM `users`");
+
+# agrupa todos los registros con igual valor en el campo #.. en varios arrays
+print_r($bar->getall(#age));
+Array (
+	36 => Array(
+		0 => Array(id => 1, name => Juan, age => 36),
+		1 => Array(id => 3, name => Manuel, age => 36)
+	),
+	
+	28 => Array(id => 2, name => Pedro, age => 28)
+);
+```
+#### agrupado especiales  
+```php
+Ver ejemplos de <b>nglCommon::arrayGroup</b>
+```
 
 &nbsp;
 ___
@@ -151,6 +212,15 @@ Obtiene una fila de resultados en forma de objeto stdClass y avanza el puntero.
 
 **[object]** =  *public* function ( );
   
+### Ejemplos  
+#### conexión  
+```php
+$foo = $ngl("mysql.foobar");
+$foo->base = "test";
+$foo->connect();
+$bar = $foo->query("SELECT * FROM `users`");
+var_dump($bar->getobj());
+```
 
 &nbsp;
 ___

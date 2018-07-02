@@ -176,6 +176,25 @@ Inserta un nuevo registro en una tabla
 |**\$sTable**|string|null|Nombre de la tabla activa en los métodos INSERT y UPDATE|
 |**\$mValues**|string|null|Datos enviados a los métodos INSERT y UPDATE. Valores admitidos:<ul><li>**array asociativo** =  donde cada clave es el nombre del campo en la tabla</li><li>**cadena de variables** =  con el mismo formato que las pasadas por medio de una URL. El valor será analizado utilizando **parse_str**</li></ul>|
 |**\$sMode**|string|INSERT|Tipo de modo INSERT. Valores admitidos:<ul><li>**INSERT** =  inserta nuevos registros</li><li>**REPLACE** =  si el nuevo registro duplica un valor PRIMARY KEY o UNIQUE, el antiguo registro es eliminado</li><li>**IGNORE** =  el comando no aborta incluso si ocurren errores durante la ejecución</li></ul>|
+### Ejemplos  
+#### datos en array  
+```php
+$foo = $ngl("sqlite.foobar");
+$foo->base = "shop.sqlite";
+$foo->connect();
+
+$data = array("foo"=>"foovalue", "bar"=>"barvalue");
+$foo->insert("tablename", $data);
+```
+#### datos como cadena de variables  
+```php
+$foo = $ngl("sqlite.foobar");
+$foo->base = "shop.sqlite";
+$foo->connect();
+
+$data="foobar&bar=barvalue"
+$foo->insert("tablename", $data, "replace");
+```
 
 &nbsp;
 ___
@@ -208,6 +227,14 @@ Ejecuta una sentencia SQL y retorna un objecto **nglDBSQLiteQuery**
 |---|---|---|---|
 |**\$sQuery**|string|null|Ultima sentencia SQL ejecutada o próxima a ejecutarse|
 |**\$bDO**|boolean|false|Cuando es TRUE el método query ejecuta la sentencia pero no retorna resultado|
+### Ejemplos  
+#### conexión  
+```php
+$foo = $ngl("sqlite.foobar");
+$foo->base = "shop.sqlite";
+$foo->connect();
+$bar = $foo->query("SELECT * FROM `users`");
+```
 
 &nbsp;
 ___
@@ -224,6 +251,25 @@ Actualiza todos los registros que cumplan con la condición **\$sWhere**
 |**\$mValues**|string|null|Datos enviados a los métodos INSERT y UPDATE. Valores admitidos:<ul><li>**array asociativo** =  donde cada clave es el nombre del campo en la tabla</li><li>**cadena de variables** =  con el mismo formato que las pasadas por medio de una URL. El valor será analizado utilizando **parse_str**</li></ul>|
 |**\$sWhere**|string|null|Cadena que representa una condición SQL WHERE|
 |**\$sMode**|string|UPDATE|Tipo de modo UPDATE. Valores admitidos:<ul><li>**UPDATE** =  actualiza los registros especificados</li><li>**REPLACE** =  crea un nuevo registro en caso de no hallar el registro especificados</li><li>**IGNORE** =  el comando no aborta incluso si ocurren errores durante la ejecución</li></ul>|
+### Ejemplos  
+#### datos en array  
+```php
+$foo = $ngl("sqlite.foobar");
+$foo->base = "shop.sqlite";
+$foo->connect();
+
+$data = array("foo"=>"foovalue", "bar"=>"barvalue");
+$foo->update("tablename", $data, "`id`='7'");
+```
+#### datos como cadena de variables  
+```php
+$foo = $ngl("sqlite.foobar");
+$foo->base = "shop.sqlite";
+$foo->connect();
+
+$data="foobar&bar=barvalue"
+$foo->update("tablename", $data, "`id`='7'", "ignore");
+```
 
 &nbsp;
 ___

@@ -68,6 +68,24 @@ Genera un array con el par de claves pública y privada cuando el modo de encrip
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$nBits**|int|512|Longuitud de las claves. Minima admitida: 32|
+### Ejemplos  
+#### Claves  
+```php
+$keys = $ngl("crypt")->type("rsa")->keys(32);
+
+#salida
+Array (
+	[private] =>
+		-----BEGIN RSA PRIVATE KEY-----
+		MC4CAQACBQDt4DWxAgMBAAECBAEQtUcCAwD4dwIDAPUXAgMA9DcCAwDQ3wIDAKeo
+		-----END RSA PRIVATE KEY-----
+
+	[public] =>
+		-----BEGIN PUBLIC KEY-----
+		MCAwDQYJKoZIhvcNAQEBBQADDwAwDAIFAO3gNbECAwEAAQ==
+		-----END PUBLIC KEY-----
+)
+```
 
 &nbsp;
 ___
@@ -81,6 +99,21 @@ Encripta una cadena con el método seleccionado
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sString**|mixed||Cadena a encriptar/desencriptar|
+### Ejemplos  
+#### AES  
+```php
+echo $ngl("crypt.")
+	->key("asd123")
+	->text("hola mundo!")
+	->encrypt()
+;
+```
+#### RSA  
+```php
+$cr = $ngl("crypt.");
+$keys = $cr->type("rsa")->keys();
+$cr->key($keys["private"])->encrypt("hola mundo!");
+```
 
 &nbsp;
 ___

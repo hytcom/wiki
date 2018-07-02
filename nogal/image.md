@@ -89,6 +89,11 @@ Exporta el contenido de imagen para ser usado como origen de datos de <img> o cs
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$bAlpha**|string| false|Determina si la siguiente copia tendra fondo transparente|
+### Ejemplos  
+#### Uso  
+```php
+echo "<img src='".$ngl("image.")->load("demo.jpg")->base64()."' />";
+```
 
 &nbsp;
 ___
@@ -142,6 +147,11 @@ Redimensiona el lienzo de la imagen
 |**\$sCanvasColor**|string|#FFFFFF|Valor hexadecimal del color del canvas|
 |**\$sPosition**|string|center center|Posición de la imagen en el canvas, este valor puede ser un par ordenado de coordenadas TOP y LEFT separados por ; (punto y coma) ó , (coma) ó alguna de las siguientes combinaciones:<ul><li>top left</li><li>top center</li><li>top right</li><li>center left</li><li>center center</li><li>center right</li><li>bottom left</li><li>bottom center</li><li>bottom right</li></ul>|
 |**\$bAlpha**|string| false|Determina si la siguiente copia tendra fondo transparente|
+### Ejemplos  
+#### Cambio del tamaño del canvas  
+```php
+$ngl("image.")->load("demo.jpg")->canvas(200,200)->view();
+```
 
 &nbsp;
 ___
@@ -171,6 +181,11 @@ Retorna los datos IPTC y EXIF que pueda contener la imagen
 
 **[array]** =  *public* function ( );
   
+### Ejemplos  
+#### Datos IPTC y EXIF  
+```php
+print_r($ngl("image.foo")->load("readme.txt")->data());
+```
 
 &nbsp;
 ___
@@ -186,6 +201,12 @@ Aplica un filtro o efecto sobre la imagen actual
 |**\$sFilter**|string|null|Filtro que se aplicará sobre la imagen
 Los filtros disponibles son:<ul><li>**blur** =  Pone borrosa la imagen</li><li>**brightness** =  Cambia el brillo de la imagen</li><li>**colorize** =  Como **grayscale**, excepto que se puede especificar el color</li><li>**contrast** =  Cambia el contraste de la imagen</li><li>**emboss** =  Pone en relieve la imagen</li><li>**gaussian_blur** =  Pone borrosa la imagen usando el método Gaussiano</li><li>**grayscale** =  Convierte la imagen a escala de grises</li><li>**negative** =  Invierte todos los colores de la imagen</li><li>**pixelate** =  grayscale</li><li>**sharpe** =  Utiliza detección de borde para resaltar los bordes de la imagen</li><li>**sketch** =  Utiliza eliminación media para lograr un efecto superficial</li><li>**smooth** =  Suaviza la imagen</li></ul>|
 |**\$mValue**|mixed|null|Argumento solicitado por algunos de los filtros<ul><li>**brightness** =  Nivel de brillo, rango: -255 a 255</li><li>**colorize** =  Color hexadecimal con canal alpha: #RRGGBBAA</li><li>**contrast** =  Nivel de contraste</li><li>**pixelate** =  Tamaño de bloque de pixelación</li><li>**smooth** =  Nivel de suavidad</li></ul>|
+### Ejemplos  
+#### Aplicando filtros  
+```php
+$img = $ngl("image.foo")->load("demo.jpg");
+$img->filter("blur")->filter("emboss")->filter("colorize", "#FF990066")->view();
+```
 
 &nbsp;
 ___
@@ -212,6 +233,14 @@ Retorna el puntero de la imagen para ser utilizado en otro proceso
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$bAlpha**|string| false|Determina si la siguiente copia tendra fondo transparente|
+### Ejemplos  
+#### Obtener el puntero de la imagen  
+```php
+$img = $ngl("image.foo")->load("demo.jpg");
+$img->filter("blur")->filter("emboss")->margin(10);
+
+imagepng($img->image(), "demo2.jpg");
+```
 
 &nbsp;
 ___
@@ -227,6 +256,23 @@ Si el parámetro \$mFile fuese null, se creará una imagen vacia de 1x1 px
 |---|---|---|---|
 |**\$mFile**|mixed|null|Ruta del archivo de imagen, puntero o null|
 |**\$sType**|string|jpeg|Tipo de imagen. Pueden ser: jpeg, jpg, png o gif|
+### Ejemplos  
+#### Archivo de imagen  
+```php
+$ngl("image.foo")->load("demo.jpg")->view();
+```
+#### Carga de puntero  
+```php
+$ngl("image.foo")->load(
+	$ngl("qr.bar")->image("test1234")
+)->view();
+```
+#### Imagen vacia  
+```php
+$img = $ngl("image.foo");
+$img->text_font = "./roboto.ttf";
+$img->load()->resize(120,40)->text("hola mundo!", "#ffffff")->view();
+```
 
 &nbsp;
 ___
@@ -242,6 +288,11 @@ Si una imagen mide 100px de ancho y se le añaden 10px de margen, el nuevo ancho
 |---|---|---|---|
 |**\$nMargin**|int|argument::margin||
 |**\$sCanvasColor**|string|#FFFFFF|Valor hexadecimal del color del canvas|
+### Ejemplos  
+#### Margen de 10 pixeles  
+```php
+$ngl("image.")->load("demo.jpg")->margin(10)->view();
+```
 
 &nbsp;
 ___
@@ -257,6 +308,11 @@ Si una imagen mide 100px de ancho y se le añaden 10px de padding, el ancho segu
 |---|---|---|---|
 |**\$nPadding**|int|argument::padding||
 |**\$sCanvasColor**|string|#FFFFFF|Valor hexadecimal del color del canvas|
+### Ejemplos  
+#### Padding de 10 pixeles  
+```php
+$ngl("image.")->load("demo.jpg")->padding(10)->view();
+```
 
 &nbsp;
 ___
@@ -272,6 +328,14 @@ Inserta una imagen dentro de otra
 |**\$image**|resource||Puntero de la imagen que se incorporará a la imagen actual|
 |**\$sPosition**|string|center center|Posición de la imagen **merge_image** en el canvas actual|
 |**\$bAlpha**|string| true|Determina si la imagen **merge_image** será incorporada en modo de transparencia|
+### Ejemplos  
+#### Marca de agua  
+```php
+$logo = $ngl("image.logo")->load("logo.png");
+$img = $ngl("image.photo")->load("demo.jpg");
+$img->merge($logo->image(), "center center", true);
+$img->view();
+```
 
 &nbsp;
 ___
@@ -287,6 +351,19 @@ Redimensiona una imagen
 |**\$nNewWidth**|string|0|Ancho que se aplicará en la próxima copia de la imagen actual|
 |**\$mNewHeight**|string|0|Alto que se aplicará en la próxima copia de la imagen actual|
 |**\$bAlpha**|string| false|Determina si la siguiente copia tendra fondo transparente|
+### Ejemplos  
+#### Cambio de alto y ancho  
+```php
+$ngl("image.")->load("demo.jpg")->resize(800,800)->view();
+```
+#### Ancho proporcional al alto  
+```php
+$ngl("image.")->load("demo.jpg")->resize(0,800)->view();
+```
+#### 300px para el lado mas grande de la imagen  
+```php
+$ngl("image.")->load("demo.jpg")->resize(300,"max")->view();
+```
 
 &nbsp;
 ___
@@ -304,6 +381,17 @@ Por ello este método es mas eficiente en el reemplazo de colores plenos en imag
 |**\$sFind**|string|#000000|Valor hexadecimal del color que se desea reemplazar en la imagen|
 |**\$sReplace**|string|#FFFFFF|Valor hexadecimal del color con el que será reemplazado **rc_find**|
 |**\$nTolerance**|string|0|Grado de tolerancia (0-255) aplicado a la hora reemplazar colores|
+### Ejemplos  
+#### Reemplazo sin tolerancia  
+```php
+# Reemplaza el blanco pleno por rojo
+$ngl("image.")->load("demo.jpg")->replace("#FFFFFF", "#FF0000", 0)->view();
+```
+#### Reemplazo con tolerancia  
+```php
+# Reemplaza tonalidades de azul por azul pletno
+$ngl("image.")->load("demo.jpg")->replace("#0000FF", "#0000FF", 50)->view();
+```
 
 &nbsp;
 ___
@@ -324,6 +412,19 @@ Inserta una imagen dentro de otra
 |**\$nAngle**|int|0|Angulo de escritura|
 |**\$bAlpha**|string| true|Determina si la imagen **merge_image** será incorporada en modo de transparencia|
 |**\$sFont**|string|null|Ruta del archivo TTF con la que se escribirá el texto|
+### Ejemplos  
+#### Imagen vacia con texto  
+```php
+$img = $ngl("image.");
+$img->text_font = "fonts/roboto.ttf";
+$img->load()->resize(120,40)->text("Foo Bar Text", "#FFFFFF", "bottom left")->view();
+```
+#### Texto sobre una imagen  
+```php
+$img = $ngl("image.");
+$img->text_font = "fonts/roboto.ttf";
+$img->load("demo.jpg")->text("www.mydomain.com", "#FFFF00", "bottom right", -10)->view();
+```
 
 &nbsp;
 ___
@@ -337,6 +438,11 @@ Exportar la imagen al navegador
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$bAlpha**|string| false|Determina si la siguiente copia tendra fondo transparente|
+### Ejemplos  
+#### Salida al navegador  
+```php
+$ngl("image.")->load("demo.jpg")->view();
+```
 
 &nbsp;
 ___
@@ -351,6 +457,11 @@ Exportar la imagen a un archivo
 |---|---|---|---|
 |**\$sFilePath**|mixed|null|Ruta del archivo de imagen, puntero o null|
 |**\$nQuality**|string|75|Calidad de la imagen en el método de salida nglImage::write|
+### Ejemplos  
+#### Generar una miniatura  
+```php
+$ngl("image.")->load("demo.jpg")->resize(140,"max")->write("images/thumb.jpg");
+```
 
 &nbsp;
 ___

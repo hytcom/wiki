@@ -36,6 +36,13 @@ Genera y retorna el puntero de la imagen del código QR
 |**\$nMargin**|int|0|Margen entre el borde de la imagen y el contenido del código|
 |**\$nPointSize**|int|4|Cantidad de pixels por punto|
 |**\$sECLevel**|int|L|Nivel de corrección de errores (L|M|Q|H)|
+### Ejemplos  
+#### impresión de imagen  
+```php
+$qr = $ngl("qr.");
+$qr->args(array("size" => 5, "margin" => 2));
+$ngl("image.code")->load($qr->image("test"))->view();
+```
 
 &nbsp;
 ___

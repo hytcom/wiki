@@ -110,6 +110,23 @@ Este método retornará el mismo tipo de dato que el valor de entrada **\$mSourc
 |---|---|---|---|
 |**\$mDisarrange**|mixed||String o Array a ordenar|
 |**\$aArrange**|array||Secuencia númerica que se utilizará para ordenar **\$mSource**.|
+### Ejemplos  
+#### ordenamiento  
+```php
+#array original
+$input = array("segundo","cuarto","primero","tercero");
+
+# ordenamiento
+$orderly = $ngl()->arrange($input, array(2,9,7,3));
+
+#array de salida
+Array (
+	[0] => primero
+	[1] => segundo
+	[2] => tercero
+	[3] => cuarto
+)
+```
 
 &nbsp;
 ___
@@ -196,6 +213,134 @@ array("campo11","campo11")
 La directiva MAIN debe estar expresada en mayusculas.
 Si es necesario determinar una estructura de sub-grupos, pero no redefinir el grupo principal, MAIN deberá ser un array
 que sólo contenga el campo_principal_de_agrupamiento|
+### Ejemplos  
+#### agrupamiento simple  
+```php
+# origen de datos
+$aSource = array(
+	array("id"=>1,"date"=>"2015-11-23","name"=>"Castro Hnos SRL","cuit"=>"30-36251478-9","product"=>1,"quantity"=>15,"price"=>20),
+	array("id"=>1,"date"=>"2015-11-23","name"=>"Castro Hnos SRL","cuit"=>"30-36251478-9","product"=>2,"quantity"=>10,"price"=>16),
+	array("id"=>1,"date"=>"2015-11-23","name"=>"Castro Hnos SRL","cuit"=>"30-36251478-9","product"=>3,"quantity"=>20,"price"=>20),
+	array("id"=>2,"date"=>"2015-11-24","name"=>"Ravelli S.A.","cuit"=>"33-58796321-8","product"=>2,"quantity"=>13,"price"=>16),
+	array("id"=>2,"date"=>"2015-11-24","name"=>"Ravelli S.A.","cuit"=>"33-58796321-8","product"=>3,"quantity"=>8,"price"=>20)
+);
+
+# ejecución
+$ngl()->arrayGroup($aSource);
+
+# resultado del agrupamiento
+array(
+	"1" => array(
+		"id" => 1,
+		"date" => "2015-11-23",
+		"name" => "Castro Hnos SRL",
+		"cuit" => "30-36251478-9",
+		"product" => array(1, 2, 3), # <-- agrupado
+		"quantity" => array(15, 10, 20), # <-- agrupado
+		"price" => array(20, 16) # <-- agrupado
+	),
+	"2" => array (
+		"id" => 2
+		"date" => "2015-11-24",
+		"name" => "Ravelli S.A.",
+		"cuit" => "33-58796321-8",
+		"product" => array(2, 3), # <-- agrupado
+		"quantity" => array(13, 8), # <-- agrupado
+		"price" => array(16, 20) # <-- agrupado
+	)
+)
+```
+#### sub-agrupamientos  
+```php
+# origen de datos
+$aSource = array(
+	array("id"=>1,"date"=>"2015-11-23","name"=>"Castro Hnos SRL","cuit"=>"30-36251478-9","product"=>1,"quantity"=>15,"price"=>20),
+	array("id"=>1,"date"=>"2015-11-23","name"=>"Castro Hnos SRL","cuit"=>"30-36251478-9","product"=>2,"quantity"=>10,"price"=>16),
+	array("id"=>1,"date"=>"2015-11-23","name"=>"Castro Hnos SRL","cuit"=>"30-36251478-9","product"=>3,"quantity"=>20,"price"=>20),
+	array("id"=>2,"date"=>"2015-11-24","name"=>"Ravelli S.A.","cuit"=>"33-58796321-8","product"=>2,"quantity"=>13,"price"=>16),
+	array("id"=>2,"date"=>"2015-11-24","name"=>"Ravelli S.A.","cuit"=>"33-58796321-8","product"=>3,"quantity"=>8,"price"=>20)
+);
+
+# ejecución
+$aStructure = array(
+	"MAIN" => array("id"),
+	"details" => array("product", array("product", "quantity", "price"))
+);
+$ngl()->arrayGroup($aSource, $aStructure);
+
+# resultado del agrupamiento
+array(
+	"1" => array(
+		"id" => 1,
+		"date" => "2015-11-23",
+		"name" => "Castro Hnos SRL",
+		"cuit" => "30-36251478-9",
+		"product" => 1,
+		"quantity" => 15,
+		"price" => 20,
+		"details" => array(
+			"1" => array("product" => 1, "quantity" => 15, "price" => 20),
+			"2" => array("product" => 2, "quantity" => 10, "price" => 16),
+			"3" => array("product" => 3, "quantity" => 20, "price" => 20)
+		)
+	),
+	"2" => array (
+		"id" => 2,
+		"date" => "2015-11-24",
+		"name" => "Ravelli S.A.",
+		"cuit" => "33-58796321-8",
+		"product" => 2,
+		"quantity" => 13,
+		"price" => 16,
+		"details" => array(
+			"2" => array("product" => 2, "quantity" => 13, "price" => 16),
+			"3" => array("product" => 3, "quantity" => 8, "price" => 20)
+		)
+	)
+)
+```
+#### grupo principal  
+```php
+# origen de datos
+$aSource = array(
+	array("id"=>1,"date"=>"2015-11-23","name"=>"Castro Hnos SRL","cuit"=>"30-36251478-9","product"=>1,"quantity"=>15,"price"=>20),
+	array("id"=>1,"date"=>"2015-11-23","name"=>"Castro Hnos SRL","cuit"=>"30-36251478-9","product"=>2,"quantity"=>10,"price"=>16),
+	array("id"=>1,"date"=>"2015-11-23","name"=>"Castro Hnos SRL","cuit"=>"30-36251478-9","product"=>3,"quantity"=>20,"price"=>20),
+	array("id"=>2,"date"=>"2015-11-24","name"=>"Ravelli S.A.","cuit"=>"33-58796321-8","product"=>2,"quantity"=>13,"price"=>16),
+	array("id"=>2,"date"=>"2015-11-24","name"=>"Ravelli S.A.","cuit"=>"33-58796321-8","product"=>3,"quantity"=>8,"price"=>20)
+);
+
+# ejecución
+$aStructure = array(
+	"MAIN" => array("id", array("name", "cuit", "date")),
+	"customers" => array("id", array("name", "cuit")),
+	"details" => array("product", array("product", "quantity", "price"))
+);
+$ngl()->arrayGroup($aSource, $aStructure);
+
+# resultado del agrupamiento
+array(
+	"1" => array(
+		"name" => "Castro Hnos SRL",
+		"cuit" => "30-36251478-9",
+		"date" => "2015-11-23",
+		"details" => array(
+			"1" => array("product" => 1, "quantity" => 15, "price" => 20),
+			"2" => array("product" => 2, "quantity" => 10, "price" => 16),
+			"3" => array("product" => 3, "quantity" => 20, "price" => 20)
+		)
+	),
+	"2" => array (
+		"name" => "Ravelli S.A.",
+		"cuit" => "33-58796321-8",
+		"date" => "2015-11-24",
+		"details" => array(
+			"2" => array("product" => 2, "quantity" => 13, "price" => 16),
+			"3" => array("product" => 3, "quantity" => 8, "price" => 20)
+		)
+	)
+)
+```
 
 &nbsp;
 ___
@@ -277,6 +422,20 @@ Ordena un array multi-dimensional considerando multiples indices, orden y tipos 
 formato: **array( array( field, [order], [type] ), ..., array( field, [order], [type] ) );**
 
 donde:<ul><li>**field** =  es el indice por el cual se ordenará</li><li>**order** =  dirección del ordenamiento:<ul><li>asc: orden ascendente (valor predeterminado)</li><li>desc: orden descendente</li></ul><li>**type** =  tipo de ordenamiento:<ul><li>0: orden natural sencible a mayúsculas (valor predeterminado)</li><li>1: orden natural insencible a mayúsculas</li><li>2: numerico</li><li>3: orden por cadena sencible a mayúsculas</li><li>4: orden por cadena insencible a mayúsculas</li></ul></li></ul>|
+### Ejemplos  
+#### $aFlags de un ordenamiento por 2 columnas  
+```php
+$aFruits = array(
+→array("name"=>"lemon", "color"=>"yellow"),
+→array("name"=>"orange", "color"=>"orange"),
+→array("name"=>"apple", "color"=>"red")
+);
+
+arrayMultiSort($aFruits, array(
+→array("field"=>"name", "order"=>"desc", "type"=>2),
+→array("field"=>"color", "type"=>3)
+));
+```
 
 &nbsp;
 ___
@@ -294,6 +453,99 @@ Si \$aIndexes = null y \$mNewIndexes es una cadena, el método retornará un arr
 |**\$aSource**|array||Array de datos|
 |**\$mIndexes**|mixed||Lista de indices a combinar o NULL|
 |**\$mNewIndexes**|mixed|$aIndexes|Lista con los nombres de los nuevos indices, que se reemplazarán uno a uno con **\$aIndexes** o una cadena|
+### Ejemplos  
+#### Ejemplo  
+```php
+#array original
+$input = array(
+	"entity" => "FooBar Inc.",
+	"start_date" => "2015-11-23",
+	"contact_surname" => array(
+		"Smith",
+		"Stewart",
+		"Astley"
+	),
+	"contact_firstname" => array(
+		"John",
+		"Sara",
+		"Ralph"
+	),
+);
+
+# llamada
+$output = $ngl()->arrayRebuilder($input, array("contact_surname", "contact_firstname"));
+
+#array de salida
+Array (
+	[0] => Array(
+		[contact_surname] = Smith
+		[contact_firstname] = John
+	),
+	[1] => Array(
+		[contact_surname] = Smith
+		[contact_firstname] = Astley
+	),
+	[2] => Array(
+		[contact_surname] = Smith
+		[contact_firstname] = Ralph
+	)
+)
+```
+#### Ejemplo anterior renombrando claves  
+```php
+# llamada
+$output = $ngl()->arrayRebuilder($input, array("contact_surname", "contact_firstname"), array("surname", "firstname"));
+
+#array de salida
+Array (
+	[0] => Array(
+		[surname] = Smith
+		[firstname] = John
+	),
+	[1] => Array(
+		[surname] = Smith
+		[firstname] = Astley
+	),
+	[2] => Array(
+		[surname] = Smith
+		[firstname] = Ralph
+	)
+)
+```
+#### Ejemplo con $mNewIndexes como cadena  
+```php
+#array original
+$input = array(
+	"0" => array("firstname"=>"John", "age"=>23),
+	"1" => array("firstname"=>"Sara", "age"=>24),
+	"2" => array("firstname"=>"Ralph", "age"=>25)
+);
+
+# llamada
+$output = $ngl()->arrayRebuilder($input, null, array("contact"));
+
+#array de salida
+Array (
+	[0] => Array(
+		[contact] => Array(
+			[firstname] => John
+			[age] => 23
+		)
+	),
+	[1] => Array(
+		[contact] => Array(
+			[firstname] => Sara
+			[age] => 24
+		)
+	),
+	[2] => Array(
+		[contact] => Array(
+			[firstname] => Ralph
+			[age] => 25
+		)
+	)
+)
+```
 
 &nbsp;
 ___
@@ -308,6 +560,46 @@ Retorna un array con indices númericos que contiene **\$nMultiplier** repeticio
 |---|---|---|---|
 |**\$aInput**|array||Array a ser repetido|
 |**\$nMultiplier**|int||Número de veces que **\$aInput** debe ser repetido.|
+### Ejemplos  
+#### array númerico  
+```php
+#array original
+$input = array("A", "B", "C");
+
+# repetición
+$output = $ngl()->arrayRepeat($input, 3);
+
+#array de salida
+Array (
+	[0] => A
+	[1] => B
+	[2] => C
+	[3] => A
+	[4] => B
+	[5] => C
+	[6] => A
+	[7] => B
+	[8] => C
+)
+```
+#### array asociativo  
+```php
+#array original
+$input = array("A"=>"ANANA", "B"=>"BANANA", "C"=>"CIRUELA");
+
+# repetición
+$output = $ngl()->arrayRepeat($input, 2);
+
+#array de salida
+Array (
+	[0] => ANANA
+	[1] => BANANA
+	[2] => CIRUELA
+	[3] => ANANA
+	[4] => BANANA
+	[5] => CIRUELA
+)
+```
 
 &nbsp;
 ___
@@ -430,6 +722,35 @@ Este método retornará el mismo tipo de dato que el valor de entrada **\$mSourc
 |---|---|---|---|
 |**\$mSource**|mixed||String o Array a desordenar|
 |**\$aArrange**|array||Secuencia númerica que se utilizará para desordenar **\$mSource**.|
+### Ejemplos  
+#### desordenamiento  
+```php
+#array original
+$input = array("primero","segundo","tercero","cuarto");
+
+#ordenamiento
+$disorderly = $ngl()->disarrange($input, array(2,9,7,3));
+
+#array de salida
+Array (
+	[0] => segundo
+	[1] => cuarto
+	[2] => primero
+	[3] => tercero
+)
+
+#explicación
+Array( primero, segundo, tercero, cuarto )
+	cuenta "2" posiciones y retorna "segundo"
+
+Array( primero, tercero, cuarto )
+	cuenta "9" posiciones y retorna "cuarto"
+
+Array( primero, tercero )
+	cuenta "7" posiciones y retorna "primero"
+
+por último retorna "tercero"
+```
 
 &nbsp;
 ___
@@ -841,6 +1162,15 @@ Según la presición el redondeo dará con .5 cuando:<ul><li>**0** =  cuando sea
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$nNumber**|int||Numero a redondear|
+### Ejemplos  
+#### Redondeos  
+```php
+round05(3.2, 1) => 3
+round05(3.2, 2) => 3
+round05(3.2, 3) => 3.5
+round05(3.2, 4) => 3.5
+round05(3.2, 5) => 3.5
+```
 
 &nbsp;
 ___
@@ -856,6 +1186,25 @@ Si \$sPrepend es mas corta que \$sString se conservarán los caracteres de esta 
 |---|---|---|---|
 |**\$sString**|string||Cadena contenedora|
 |**\$sAppend**|string||Cadena de reemplazo|
+### Ejemplos  
+#### $sString > $sAppend  
+```php
+$sString = "lorem";
+$sAppend = "sit";
+# emsit
+```
+#### $sString = $sAppend  
+```php
+$sString = "lorem";
+$sAppend = "ipsum";
+# ipsum
+```
+#### $sString < $sAppend  
+```php
+$sString = "lorem";
+$sAppend = "consectetuer";
+# etuer
+```
 
 &nbsp;
 ___
@@ -871,6 +1220,25 @@ Si \$sPrepend es mas corta que \$sString se conservarán los caracteres de esta 
 |---|---|---|---|
 |**\$sString**|string||Cadena contenedora|
 |**\$sPrepend**|string||Cadena de reemplazo|
+### Ejemplos  
+#### $sString > $sPrepend  
+```php
+$sString = "lorem";
+$sPrepend = "sit";
+sitlo
+```
+#### $sString = $sPrepend  
+```php
+$sString = "lorem";
+$sPrepend = "ipsum";
+ipsum
+```
+#### $sString < $sPrepend  
+```php
+$sString = "lorem";
+$sPrepend = "consectetuer";
+conse
+```
 
 &nbsp;
 ___
@@ -972,6 +1340,92 @@ entrando en cada uno de los nodos \$sChildrenNode. En cada interacción se ejecu
 |**\$aData**|array||Array de datos|
 |**\$fFunction**|function||Función del usuario que se ejecutará para cada nodo. En cada ejecución se pasarán los siguientes argumentos:<br /><ul><li>datos del nodo</li><li>nivel de profundidad</li><li>booleano que define si el nodo actual es el primer nodo de la rama</li><li>booleano que define si el nodo actual es el último nodo de la rama</li></ul>|
 |**\$sChildrenNode**|string||Nombre de nodo que contiene a los hijos|
+### Ejemplos  
+#### Formato de árbol #1  
+```php
+$aFamily = array(
+→ array(
+→→ "name" => "Emily Summer",
+→→ "age" => 78,
+→→ "_children" => array(
+→→→→ array(
+→→→→→ "name"=>"Marge Charles",
+→→→→→ "age" => 50,
+→→→→→ "_children" => array(
+→→→→→→ array("name"=>"Sara Smith", "age"=>20),
+→→→→→→ array("name"=>"Max Smith", "age"=>17)
+→→→→ )
+→→→ )
+→→ )
+→ ),
+→
+→ array(
+→→ "name" => "Rod Smith",
+→→ "age" => 80,
+→→ "_children" => array(
+→→→→ array(
+→→→→→ "name"=>"John Smith",
+→→→→→ "age" => 54,
+→→→→→ "_children" => array(
+→→→→→→ array("name"=>"Sara Smith", "age"=>20),
+→→→→→→ array("name"=>"Max Smith", "age"=>17)
+→→→→ )
+→→→ ),
+
+→→→ array(
+→→→→ "name"=>"Susan Smith",
+→→→→ "age" => 49,
+→→→→ "_children" => array(
+→→→→→ array("name"=>"Ralph Astley")
+→→→→ )
+→→→ )
+→→ )
+→ )
+);
+```
+#### Formato de árbol #2  
+```php
+$aFamily = array(
+→ "name" => "Emily Summer",
+→ "age" => 78,
+→ "_children" => array(
+→→→ array(
+→→→→ "name"=>"Marge Charles",
+→→→→ "age" => 50,
+→→→→ "_children" => array(
+→→→→→ array("name"=>"Sara Smith", "age"=>20),
+→→→→→ array("name"=>"Max Smith", "age"=>17)
+→→→ )
+→→ )
+→ )
+);
+```
+#### Ejemplo de función del usuario  
+```php
+$aLs = $ngl("files")->ls("mydocuments", "*", "info", true);
+
+echo "<pre>";
+$sColumn = "basename";
+$aList = $ngl()->treeWalk($aLs, function($aNode, $nLevel, $bFirst, $bLast) use ($sColumn) {
+		$sOutput  = ($nLevel) ? str_repeat("│   ", $nLevel) : "";
+		$sOutput .= ($bLast) ? "└─── " : "├─── ";
+		$sOutput .= (($aFile["type"]=="dir") ? $aFile[$sColumn]."/" : $aFile[$sColumn]);
+		$sOutput .= "\n";
+		return $sOutput;
+	}
+);
+echo implode($aList);
+echo "</pre>";
+
+# salida
+mydocuments/
+├── excel/
+├── mp3/
+│   ├── rock/
+│   └── pop/
+└── word/
+	└── personal/
+```
 
 &nbsp;
 ___
@@ -985,6 +1439,23 @@ Crea un nuevo Array combinando los valores de \$aSource como claves y el boolean
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$aSource**|array|||
+### Ejemplos  
+#### ejemplo #1  
+```php
+#array original
+$input = array("A", "B", "C", "D");
+
+# transformación
+$output = $ngl()->truelize($input);
+
+#array de salida
+Array (
+	["A"] => true
+	["B"] => true
+	["C"] => true
+	["D"] => true
+)
+```
 
 &nbsp;
 ___

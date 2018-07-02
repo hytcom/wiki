@@ -101,6 +101,53 @@ Prepara el objeto para trabajar con la dependencia **\$sChild** y lo retorna
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sChild**|string|null|Nombre del Objeto dependiente activo|
+### Ejemplos  
+#### inserción de datos dependientes  
+```php
+#creacion del objeto y conexion a la db
+$conn = $ngl('mysql.test');
+$foo = $ngl('owl.foo');
+$foo->connect($conn);
+
+#selección del registro principal con ID 1
+$foo->select('customers')->id = 1;
+
+#insercion de registros vinculados al registro principal
+$foo->child('customers_contacts')->insert(
+	array('firstname'=>'Martino', 'surname'=>'Herrera', 'age'=>'35', 'gender'=>'M'),
+	array('firstname'=>'Monica', 'surname'=>'Castillo', 'age'=>'29', 'gender'=>'F'),
+	array('firstname'=>'Juan', 'surname'=>'Rojas', 'age'=>'43', 'gender'=>'M')
+);
+```
+#### lectura de dependencias (hijos)  
+```php
+#consulta
+$foo->select('customers')->id(1);
+$data = $foo->child('customers_contacts')->get('2', 'all', true);
+print_r($data->get());
+
+#salida
+Array (
+	[customers_contacts_id] => 2
+	[customers_contacts_imya] => J7d66l11xyqk6vB1f691b2bbA5068993
+	[customers_contacts_state] => 1
+	[customers_contacts_pid] => 1
+	[customers_contacts_town] => 2
+	[customers_contacts_function] => 1
+	[customers_contacts_firstname] => Monica
+	[customers_contacts_surname] => Castillo
+	[customers_contacts_age] => 29
+	[customers_contacts_gender] => F
+	[functions_id] => 1
+	[functions_imya] => kak273b38cm4c5bfcaTe5fAec8S81xaC
+	[functions_state] => 1
+	[functions_name] => Tesorero
+	[towns_id] => 2
+	[towns_imya] => S5kR0d9cA4c9Ow8accd5aO4dBd62eX81
+	[towns_state] => 1
+	[towns_name] => Belgrano
+)
+```
 
 &nbsp;
 ___
@@ -176,6 +223,115 @@ Si el argumento **cascade** estuviese indicado como **true** y hubiese conflicto
 |---|---|---|---|
 |**\$aData1**|mixed|null|Selecciona un registro del objeto activo utilizando el propio ID o IMYA|
 |**\$...**|array||Lista variable de argumentos de tipo Array similares a **\$aData1**|
+### Ejemplos  
+#### por atributo ID  
+```php
+#creacion del objeto y conexion a la db
+$conn = $ngl('mysql.test');
+$foo = $ngl('owl.foo');
+$foo->connect($conn);
+
+#selección del registro con ID 1
+$foo->select('customers')->id = 1;
+$foo->delete();
+```
+#### por ID o IMYA a través de $aData1  
+```php
+$foo->select('customers')->delete(array('id'=>1));
+$foo->select('customers')->delete(array('imya'=>'wdoxbe6a2afqMbc7S0fy2f57hel61ec4'));
+```
+#### por ID o IMYA a través de $aData1, $aData2, $... (modo múltiple)  
+```php
+$foo->select('customers')->delete(
+	array('id'=>1),
+	array('id'=>2),
+	array('imya'=>'fq6213Xb5qf4c5a286e8rcOacf66b2rc')
+);
+```
+#### modo cascada FALSE  
+```php
+$foo->cascade = false;
+$ngl()->dump($foo->select('customers')->delete(array('id'=>1)));
+$ngl()->dump($foo->log, 'pre');
+
+//-- salida ------------
+bool(false)
+
+Array (
+	[status] => foreignkeys
+	[details] => Array (
+		[0] => 3 ROWS IN `customers_contacts` LINKED WITH `customers`
+		[1] => 1 ROWS IN `meeting` LINKED WITH `customers_contacts`
+	)
+)
+```
+#### modo cascada TRUE  
+```php
+$foo->cascade = true;
+$ngl()->dump($foo->select('customers')->delete(array('id'=>1)));
+$ngl()->dump($foo->log, 'pre');
+
+//-- salida ------------
+int(5)
+
+Array (
+	[status] => success
+	[details] => Array (
+		[0] => Array (
+			[table] => meeting
+			[row] => 1
+			[user] => 
+			[action] => delete
+			[date] => 2014-12-31 02:26:58
+			[ip] => 127.0.0.1
+		)
+		[1] => Array (
+			[table] => customers_contacts
+			[row] => 1
+			[user] => 
+			[action] => delete
+			[date] => 2014-12-31 02:26:58
+			[ip] => 127.0.0.1
+		)
+		[2] => Array (
+			[table] => customers_contacts
+			[row] => 2
+			[user] => 
+			[action] => delete
+			[date] => 2014-12-31 02:26:58
+			[ip] => 127.0.0.1
+		)
+		[3] => Array (
+			[table] => customers_contacts
+			[row] => 3
+			[user] => 
+			[action] => delete
+			[date] => 2014-12-31 02:26:58
+			[ip] => 127.0.0.1
+		)
+		[4] => Array (
+			[table] => customers
+			[row] => 1
+			[user] => 
+			[action] => delete
+			[date] => 2014-12-31 02:26:58
+			[ip] => 127.0.0.1
+		)
+	)
+)
+```
+#### el Contacto con ID 2 del Cliente con ID 1  
+```php
+$foo->select('customers')->id = 1;
+$foo->child('customers_contacts')->delete(array('id'=>2));
+
+// NOTA: si no se seleccionase un ID para el registro principal se producirá un error
+```
+#### todos los Contactos del Cliente con ID 1  
+```php
+$foo->select('customers')->id = 1;
+$foo->child('customers_contacts')->delete();
+```
 
 &nbsp;
 ___
@@ -220,6 +376,34 @@ El **ID** de la última inserción se guardará en el atributo **id**.
 |---|---|---|---|
 |**\$mID**|mixed||Cadena IMYA o número entero|
 |**\$bChildren**|boolean|duplicate_children|Activa y desactiva la copia de registros dependientes|
+### Ejemplos  
+#### principal CON dependencias  
+```php
+#creacion del objeto y conexion a la db
+$conn = $ngl('mysql.test');
+$foo = $ngl('owl.foo');
+$foo->connect($conn);
+
+$foo->select('customers');
+$foo->duplicate(1,true);
+```
+#### principal SIN dependencias  
+```php
+$foo->select('customers');
+$foo->duplicate(1,false);
+```
+#### dependencia específica  
+```php
+#duplica el contacto con ID 19 que depende del cliente 6
+$foo->select('customers')->id(6);
+$foo->child('customers_contacts')->duplicate(19);
+```
+#### todas las dependencias  
+```php
+#duplica todos los contactos del cliente 6
+$foo->select('customers')->id(6);
+$foo->child('customers_contacts')->duplicate();
+```
 
 &nbsp;
 ___
@@ -236,6 +420,31 @@ Retorna un objeto **iNglDataObjet** con los datos de un registro y todas sus rel
 |**\$sAliasMode**|string|auto|Política utilizada para nombrar los alias en el método **nglOwl::view**, se antepondrá el nombre de la tabla cuando:<ul><li>**all** =  en todos los campos de todas las tablas</li><li>**joins** =  en todos los campos, salvo en los de la tabla principal</li><li>**auto** =  sólo los campos que tengan un duplicado</li><li>**none** =  ningun campo</li></ul>|
 |**\$bJoins**|boolean|true|Activa y desactiva la unión con las tablas relacionadas (no dependientes) en el método **nglOwl::view**|
 |**\$mChildren**|mixed|false|Determina el tipo de unión con las tablas dependientes<ul><li>**true** =  todas las tablas</li><li>**false** =  ninguna tabla</li><li>**array** =  array con tablas seleccionadas</li></ul>|
+### Ejemplos  
+#### lectura por ID  
+```php
+#creacion del objeto y conexion a la db
+$conn = $ngl('mysql.test');
+$foo = $ngl('owl.foo');
+$foo->connect($conn);
+print_r($foo->select('customers')->get(1)->get());
+```
+#### lectura por IMYA con dependencias y relaciones  
+```php
+#creacion del objeto y conexion a la db
+$conn = $ngl('mysql.test');
+$foo = $ngl('owl.foo');
+$foo->connect($conn);
+$data = $foo->select('customers')->get('fq6213Xb5qf4c5a286e8rcOacf66b2rc', 'all', true, true);
+print_r($data->getall());
+```
+#### lectura de sólo dependencias (hijos) con relaciones  
+```php
+#con relaciones
+$foo->select('customers')->id('URI75pbceMb7ca85acLD7160Ze40Kb94');
+$data = $foo->child('customers_contacts')->get('J7d66l11xyqk6vB1f691b2bbA5068993', 'all', true);
+print_r($data->get());
+```
 
 &nbsp;
 ___
@@ -255,6 +464,28 @@ Retorna un objeto **iNglDataObjet** con todos registros y relaciones en base a s
 |**\$sColumns**|string|null|Cadena JSQL con los nombres de las columnas que deberá retornar el método **nglOwl::view**.
 Sintáxis: ["TABLE.COLUMN","ALIAS"] o "TABLE.COLUMN"
 Ej: [["tabla.campo1","foo"], "alias2.campo2", ["campo3","bar"]]|
+### Ejemplos  
+#### JSQL filter  
+```php
+#creacion del objeto y conexion a la db
+$conn = $ngl('mysql.test');
+$foo = $ngl('owl.foo');
+$foo->connect($conn);
+$get = $foo->select('customers')->getAll('{
+	'where': [['customers.id','eq','(1)']], 
+	'order': ['customers.tradename:ASC']
+}');
+print_r($get->getall());
+```
+#### Obtener todos los registros Hijos de un ID  
+```php
+$conn = $ngl('mysql.test');
+$foo = $ngl('owl.foo');
+$foo->connect($conn);
+$foo->select('customers')->id('URI75pbceMb7ca85acLD7160Ze40Kb94');
+$data = $foo->child('customers_contacts')->getAll();
+print_r($data->getall());
+```
 
 &nbsp;
 ___
@@ -289,6 +520,84 @@ El **ID** de la última inserción se guardará en el atributo **current**.
 |---|---|---|---|
 |**\$aData1**|array||Array asociativo (o bidimensional de ellos) con los datos del registro a insertar|
 |**\$...**|array||Lista variable de argumentos de tipo Array similares a **\$aData1**|
+### Ejemplos  
+#### inserción por array  
+```php
+#creacion del objeto y conexion a la db
+$conn = $ngl('mysql.test');
+$foo = $ngl('owl.foo');
+$foo->connect($conn);
+
+#preparando datos
+$a = array();
+$a['tradename'] = 'abcontenidos';
+$a['cuit'] = '30111111110';
+$a['email'] = 'info@abcontenidos.com';
+
+#insercion de datos
+$foo->select('customers');
+$foo->insert($a);
+
+#log de la operación
+Array (
+	[status] => success
+	[details] => Array (
+		[0] => Array (
+			[table] => customers
+			[row] => 5
+			[user] => 
+			[action] => insert
+			[date] => 2015-01-01 18:26:35
+			[ip] => 127.0.0.1
+		)
+	)
+)
+```
+#### inserción por objeto  
+```php
+$a = new stdClass();
+$a->tradename = 'abcontenidos';
+$a->cuit = '30111111110';
+$a->email = 'info@abcontenidos.com';
+$foo->select('customers')->insert($a);
+```
+#### inserción por argument::data  
+```php
+$vData = array();
+$vData['tradename'] = 'abcontenidos';
+$vData['cuit'] = '30111111110';
+$vData['email'] = 'info@abcontenidos.com';
+$foo->data = $vData;
+
+#insercion de datos
+$foo->select('customers')->insert();
+```
+#### inserción multiple  
+```php
+$foo->select('products');
+$foo->insert(
+	array('name'=>'Monitor', 'barcode'=>'00000001'),
+	array('name'=>'Mouse', 'barcode'=>'00000002'),
+	array('name'=>'Teclado', 'barcode'=>'00000003'),
+	array('name'=>'Gabinete', 'barcode'=>'00000004')
+);
+```
+#### inserción de registros dependientes (hijos)  
+```php
+// en un primer paso se debe seleccionar el registro de la tabla principal
+// al cual se asociaran los registros dependientes
+$foo->select('customers')->id = 1;
+
+// luego se procede a la inserción
+$foo->child('customers_contacts')->insert(array('firstname'=>'Alberto', 'surname'=>'Acosta'));
+
+// modo múltiple 
+$foo->child('customers_contacts')->insert(
+	array('firstname'=>'Martino', 'surname'=>'Herrera'),
+	array('firstname'=>'Alejo', 'surname'=>'Castillo'),
+	array('firstname'=>'Juan', 'surname'=>'Rojas')
+);
+```
 
 &nbsp;
 ___
@@ -333,6 +642,37 @@ Ejecuta una sentencia JSQL utilizando el método **query** del objeto **\$db** y
 |---|---|---|---|
 |**\$sJSQL**|string|null|Sentencia JSQL para ser ejecutada utilizando el método **nglOwl::query**|
 |**\$aArgs**|array|argument::jsql_args|Argumentos pasados al método, que serán traducidos a la sentencia utilizando vsprintf|
+### Ejemplos  
+#### MySQL  
+```php
+#creacion del objeto y conexion a la db
+$conn = $ngl('mysql.test');
+$foo = $ngl('owl.foo');
+$foo->connect($conn);
+
+#ejecución
+$bar = $foo->query('{
+		"columns":["id"], 
+		"tables":["customers"], 
+		"where":[["id","eq","(3)"]]
+	}
+);
+```
+#### SQLite  
+```php
+#creacion del objeto y conexion a la db
+$conn = $ngl('sqlite.test');
+$foo = $ngl('owl.foo');
+$foo->connect($conn);
+
+#ejecución
+$bar = $foo->query('{
+		"columns":["id"], 
+		"tables":["customers"], 
+		"where":[["id","eq","(3)"]]
+	}
+);
+```
 
 &nbsp;
 ___
@@ -356,6 +696,25 @@ Selecciona y establece como activo al objeto **\$sObjectName**
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sObjectName**|string||Nombre de la tabla/objecto que se establecerá como activo. Deberá respetar el patrón [a-zA-Z0-9_\-]+|
+### Ejemplos  
+#### selección por ID  
+```php
+#creacion del objeto y conexion a la db
+$conn = $ngl('mysql.test');
+$foo = $ngl('owl.foo');
+$foo->connect($conn);
+$foo->select('customers');
+$foo->id(156);
+```
+#### selección por IMYA  
+```php
+#creacion del objeto y conexion a la db
+$conn = $ngl('mysql.test');
+$foo = $ngl('owl.foo');
+$foo->connect($conn);
+$foo->select('customers');
+$foo->id('wdoxbe6a2afqMbc7S0fy2f57hel61ec4');
+```
 
 &nbsp;
 ___
@@ -366,6 +725,17 @@ Retorna un Array con los datos de todos los elementos que componen el sistema **
 
 **[array]** =  *public* function ( );
   
+### Ejemplos  
+#### por atributo ID  
+```php
+#creacion del objeto y conexion a la db
+$conn = $ngl('mysql.test');
+$foo = $ngl('owl.foo');
+$foo->connect($conn);
+
+#listado de tablas
+$ngl->dump($foo->showtables());
+```
 
 &nbsp;
 ___
@@ -384,6 +754,26 @@ El **ID** de la última suspensión se guardará en el atributo **id**.
 |---|---|---|---|
 |**\$aData1**|mixed|null|Selecciona un registro del objeto activo utilizando el propio ID o IMYA|
 |**\$...**|array||Lista variable de argumentos de tipo Array similares a **\$aData1**|
+### Ejemplos  
+#### suspención múltiple y basada en el ID o IMYA  
+```php
+#creacion del objeto y conexion a la db
+$conn = $ngl('mysql.test');
+$foo = $ngl('owl.foo');
+$foo->connect($conn);
+
+#suspención de registro principales
+$foo->select('customers')->suspend(
+	array('id'=>4),
+	array('imya'=>'wdoxbe6a2afqMbc7S0fy2f57hel61ec4')
+);
+
+#suspención de registro dependientes
+$foo->child('customers_contacts')->suspend(
+	array('imya'=>'J7d66l11xyqk6vB1f691b2bbA5068993'),
+	array('imya'=>'fq6213Xb5qf4c5a286e8rcOacf66b2rc')
+);
+```
 
 &nbsp;
 ___
@@ -402,6 +792,26 @@ El **ID** de la última suspensión se guardará en el atributo **id**.
 |---|---|---|---|
 |**\$aData1**|mixed|null|Selecciona un registro del objeto activo utilizando el propio ID o IMYA|
 |**\$...**|array||Lista variable de argumentos de tipo Array similares a **\$aData1**|
+### Ejemplos  
+#### campios de estado múltiples y basada en el ID o IMYA  
+```php
+#creacion del objeto y conexion a la db
+$conn = $ngl('mysql.test');
+$foo = $ngl('owl.foo');
+$foo->connect($conn);
+
+#suspención de registro principales
+$foo->select('customers')->toggle(
+	array('id'=>4),
+	array('imya'=>'wdoxbe6a2afqMbc7S0fy2f57hel61ec4')
+);
+
+#suspención de registro dependientes
+$foo->child('customers_contacts')->toggle(
+	array('imya'=>'J7d66l11xyqk6vB1f691b2bbA5068993'),
+	array('imya'=>'fq6213Xb5qf4c5a286e8rcOacf66b2rc')
+);
+```
 
 &nbsp;
 ___
@@ -420,6 +830,26 @@ El **ID** de la última reactivación se guardará en el atributo **id**.
 |---|---|---|---|
 |**\$aData1**|mixed|null|Selecciona un registro del objeto activo utilizando el propio ID o IMYA|
 |**\$...**|array||Lista variable de argumentos de tipo Array similares a **\$aData1**|
+### Ejemplos  
+#### reactivación múltiple y basada en el ID o IMYA  
+```php
+#creacion del objeto y conexion a la db
+$conn = $ngl('mysql.test');
+$foo = $ngl('owl.foo');
+$foo->connect($conn);
+
+#reactivación de registro principales
+$foo->select('customers')->unsuspend(
+	array('id'=>4),
+	array('imya'=>'wdoxbe6a2afqMbc7S0fy2f57hel61ec4')
+);
+
+#reactivación de registro dependientes
+$foo->child('customers_contacts')->unsuspend(
+	array('imya'=>'J7d66l11xyqk6vB1f691b2bbA5068993'),
+	array('imya'=>'fq6213Xb5qf4c5a286e8rcOacf66b2rc')
+);
+```
 
 &nbsp;
 ___
@@ -441,6 +871,54 @@ El **ID** de la última actualición se guardará en el atributo **id**.
 |---|---|---|---|
 |**\$aData1**|mixed|array|Objeto o array asociativo con los nombres de las columnas y datos que se usará en los métodos de escritura. Este argumento no es válido para escrituras múltiples|
 |**\$...**|array||Lista variable de argumentos de tipo Array similares a **\$aData1**|
+### Ejemplos  
+#### por atributo ID  
+```php
+#creacion del objeto y conexion a la db
+$conn = $ngl('mysql.test');
+$foo = $ngl('owl.foo');
+$foo->connect($conn);
+
+#selección del registro con ID 1
+$foo->select('customers')->id = 1;
+
+#preparando datos
+$a = array();
+$a['tradename'] = 'hytcom';
+$a['email'] = 'info@hytcom.net'; 
+
+#actualización
+$foo->update($a);
+```
+#### actualización múltiple y basada en el ID o IMYA pasado dentro del grupo de datos  
+```php
+#selección del objeto y actualización
+$foo->select('customers')->update(
+	array('id'=>1, 'town'=>2),
+	array('imya'=>'wdoxbe6a2afqMbc7S0fy2f57hel61ec4', 'town'=>2)
+);
+```
+#### actualización de registros dependientes (hijos)  
+```php
+// en un primer paso se debe seleccionar el registro de la tabla principal
+// al cual están asociados los registros dependientes
+$foo->select('customers')->id = 1;
+
+// luego se procede a la actualización
+$foo->child('customers_contacts')->update(array('id'=>1, 'firstname'=>'Carlos Alberto'));
+
+// modo múltiple 
+$foo->child('customers_contacts')->update(
+	array('id'=>2, 'email'=>'mherrera@hytcom.net'),
+	array('id'=>3, 'email'=>'acastillo@hytcom.net'),
+	array('id'=>4, 'email'=>'jrojas@hytcom.net')
+);
+```
+#### todos los Contactos del Cliente con ID 2  
+```php
+$foo->select('customers')->id = 2;
+$foo->child('customers_contacts')->update('town'=>'6');
+```
 
 &nbsp;
 ___

@@ -29,6 +29,13 @@ los índices son:<ul><li>**days** =  valores de Domingo a Sábado</li><li>**days
 
 **[array]** =  *public* function ( );
   
+### Ejemplos  
+#### ejemplo  
+```php
+$dt = $ngl("dates");
+echo $dt->settings()["days"][2]; // retornará Lunes
+echo $dt->settings()["months_short"][8]; // retornará Ago
+```
 
 &nbsp;
 ___
@@ -41,6 +48,13 @@ los índices son:<ul><li>**timestamp** =  candidad de segundos desde el 1/1/1970
 
 **[array]** =  *public* function ( );
   
+### Ejemplos  
+#### ejemplo  
+```php
+$dt = $ngl("dates");
+echo $dt->settings()["days"][2]; // retornará Lunes
+echo $dt->settings()["months_short"][8]; // retornará Ago
+```
 
 &nbsp;
 ___

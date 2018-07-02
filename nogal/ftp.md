@@ -91,6 +91,12 @@ Establece la conexión con el servidor remoto
 |---|---|---|---|
 |**\$sHost**|string|127.0.0.1|IP o dominio del servidor remoto|
 |**\$nPort**|int|21|Puerto del servidor remoto|
+### Ejemplos  
+#### Upload de archivo  
+```php
+$ftp = $ngl->c("ftp.")->connect("dominio.com")->login("userfoo", "passbar");
+$ftp->upload("files/demo.zip", "public_html/zipfiles/demo.zip");
+```
 
 &nbsp;
 ___
@@ -129,6 +135,43 @@ descarga un archivo o directorio del servidor a la maquina local
 |**\$sPath**|string|null|Nombre del archivo o directorio activo en el servidor remoto|
 |**\$sLocalPath**|string|null|Nombre del archivo o directorio en el servidor local|
 |**\$nTransfer**|int|FTP_BINARY|Establese el modo de transferencia de archivos: FTP_BINARY ó FTP_ASCII|
+### Ejemplos  
+#### Descarga de archivos y directorios  
+```php
+# conexión
+$ftp = $ngl->c("ftp.")->connect("dominio.com")->login("userfoo", "passbar");
+
+# listado de archivos
+$ftp->recursive = true;
+print_r($ftp->ls());
+
+# Salida
+Array (
+	[0] => public_html/functions.js
+	[1] => public_html/images
+	[2] => public_html/images/logo.jpg
+	[3] => public_html/images/header.jpg
+	[4] => public_html/index.html
+	[5] => public_html/style.css
+)
+
+# descarga
+$ftp->mkdir("css");
+$ftp->download("public_html", "c:/tmp");
+
+# listado local
+print_r($ngl("files")->ls("c:/tmp", null, null, true));
+
+# Salida
+Array (
+	[0] => c:/tmp/public_html/functions.js
+	[1] => c:/tmp/public_html/images
+	[2] => c:/tmp/public_html/images/logo.jpg
+	[3] => c:/tmp/public_html/images/header.jpg
+	[4] => c:/tmp/public_html/index.html
+	[5] => c:/tmp/public_html/style.css
+)
+```
 
 &nbsp;
 ___
@@ -225,6 +268,41 @@ Si el directorio ya existe y el argumento force_create es TRUE, mkdir le agregar
 |---|---|---|---|
 |**\$sPath**|string|null|Nombre del archivo o directorio activo en el servidor remoto|
 |**\$bForce**|boolean|false|Fuerza la creación de directorios en los métodos CD y MAKEDIR|
+### Ejemplos  
+#### Crea un directorio  
+```php
+# conexión
+$ftp = $ngl->c("ftp.")->connect("dominio.com")->login("userfoo", "passbar");
+
+# listado de archivos
+$ftp->ls_mode = "signed";
+print_r($ftp->ls());
+
+# Salida
+Array (
+	[0] => functions.js
+	[1] => *images
+	[2] => index.html
+	[3] => style.css
+)
+
+# nuevos directorios
+$ftp->mkdir("css");
+$ftp->mkdir("images", true);
+
+# listado
+print_r($ftp->ls());
+
+# Salida
+Array (
+	[0] => *css
+	[1] => functions.js
+	[2] => *images
+	[3] => *images_1
+	[4] => index.html
+	[5] => style.css
+)
+```
 
 &nbsp;
 ___
@@ -252,6 +330,38 @@ Cambia el nombre de un archivo o directorio
 |---|---|---|---|
 |**\$sPath**|string|null|Nombre del archivo o directorio activo en el servidor remoto|
 |**\$sNewName**|string|null|Nombre de archivo o directorio para el método REN|
+### Ejemplos  
+#### Cambiar nombre de un archivo  
+```php
+# conexión
+$ftp = $ngl->c("ftp.")->connect("dominio.com")->login("userfoo", "passbar");
+
+# listado de archivos
+$ftp->ls_mode = "signed";
+print_r($ftp->ls());
+
+# Salida
+Array (
+	[0] => functions.js
+	[1] => *images
+	[2] => index.html
+	[3] => style.css
+)
+
+# nuevos directorios
+$ftp->rename("index.html", "home.html");
+
+# listado
+print_r($ftp->ls());
+
+# Salida
+Array (
+	[0] => functions.js
+	[1] => *images
+	[2] => home.html
+	[3] => style.css
+)
+```
 
 &nbsp;
 ___
@@ -267,6 +377,12 @@ Sube un archivo o directorio al servidor remoto
 |**\$sLocalPath**|string|null|Nombre del archivo o directorio en el servidor local|
 |**\$sPath**|string|null|Nombre del archivo o directorio activo en el servidor remoto|
 |**\$nTransfer**|int|FTP_BINARY|Establese el modo de transferencia de archivos: FTP_BINARY ó FTP_ASCII|
+### Ejemplos  
+#### Upload de archivo  
+```php
+$ftp = $ngl->c("ftp.")->connect("dominio.com")->login("userfoo", "passbar");
+$ftp->upload("files/demo.zip", "public_html/zipfiles/demo.zip");
+```
 
 &nbsp;
 ___

@@ -50,6 +50,20 @@ Formatea el valor **\$mValue** según **\$sCastType**, siempre que se encuentre 
 |---|---|---|---|
 |**\$mValue**|mixed||Variable a formatear|
 |**\$sCastType**|string|text|tipo de formato:<br /><ul><li>**text** =  texto plano (valor predeterminado)</li><li>**html** =  se aplica htmlspecialchars</li><li>**htmlall** =  se aplica htmlentities</li></ul>|
+### Ejemplos  
+#### example  
+```php
+$text = <<<TXT <b>El 'río' de las "pirañas"</b> TXT;
+
+echo $ngl("shift")->cast($text);
+# Retorna: <b>El 'río' de las "pirañas"</b>
+
+echo $ngl("shift")->cast($text, "html");
+# Retorna: &lt;b&gt;El &#039;río&#039; de las &quot;pirañas&quot;&lt;/b&gt;
+
+echo $ngl("shift")->cast($text, "htmlall");
+# Retorna: &lt;b&gt;El &#039;r&iacute;o&#039; de las &quot;pira&ntilde;as&quot;&lt;/b&gt;
+```
 
 &nbsp;
 ___
@@ -83,6 +97,59 @@ Estructuras soportadas:<ul><li>array</li><li>csv</li><li>fixed</li><li>html</li>
 |**\$vOptions**|array||Array con las parametrizaciones de los métodos que intervienen en la conversión<ul><li>**class** =  nombre de la clase CSS aplicado en la salida como tabla HTML</li><li>**colnames** =  array con los nombres de las columnas (null)</li><li>**convert_spaces** =  Determina si deben convertirse los caracteres de espacio</li><li>**convert_unicode** =  Determina si los caracteres UTF-8 deberán ser convertidos a formato UNICODE (\uXXXX)</li><li>**joiner** =  caracter por el que se unirán los campos (,)</li><li>**enclose** =  caracter que se utilizará para encerrar los valores de los campos (&quot;)</li><li>**enclosed** =  caracter utilizado para encerrar los valores de los campos (&quot;)</li><li>**eol** =  fin de línea (\r\n)</li><li>**escape** =  caracter de escape para caracteres especiales (\) Salida de datos</li><li>**escaped** =  caracter para escapar los caracteres especiales (\) Entrada de datos</li><li>**format** =  formato de salida para el modo HTML (table|div|list)</li><li>**level** =  actual nivel de anidamiento (-1)</li><li>**splitter** =  caracter separador de campos (,)</li><li>**tag** =  nombre del siguiente tag XML (vacio)</li><li>**use_colnames** =  en combinación con **colnames**, establece los índices del array. 
 Con valor true y colnames = null, se utilizarán como índices los valores de la primera fila.
 (false)</li><li>**xml_attributes** =  determina si se deben procesar o no los atributos de las etiquetas XML (falso)</li></ul>|
+### Ejemplos  
+#### xml-csv  
+```php
+$data = "
+	<months>
+		<month><name>enero</name><number>01</number></month>
+		<month><name>febrero</name><number>02</number></month>
+		<month><name>marzo</name><number>03</number></month>
+		<month><name>abril</name><number>04</number></month>
+		<month><name>mayo</name><number>05</number></month>
+		<month><name>junio</name><number>06</number></month>
+		<month><name>julio</name><number>07</number></month>
+		<month><name>agosto</name><number>08</number></month>
+		<month><name>septiembre</name><number>09</number></month>
+		<month><name>octubre</name><number>10</number></month>
+		<month><name>noviembre</name><number>11</number></month>
+		<month><name>diciembre</name><number>12</number></month>
+	</months>
+";
+
+echo $ngl("shift")->convert($data, "xml-csv");
+
+# salida
+"enero","01"
+"febrero","02"
+"marzo","03"
+"abril","04"
+"mayo","05"
+"junio","06"
+"julio","07"
+"agosto","08"
+"septiembre","09"
+"octubre","10"
+"noviembre","11"
+"diciembre","12"
+```
+#### array-json  
+```php
+$data = array(
+	array("firstName" => "John" , "lastName" => "Doe", "age"=>36),
+	array("firstName" => "Anna" , "lastName" => "Smith", "age"=>15),
+	array("firstName" => "Peter" , "lastName" => "Jones", "age"=>42)
+);
+
+echo $ngl("shift")->convert($data, "array-json");
+
+# salida
+[
+	{"firstName":"John","lastName":"Doe","age":36},
+	{"firstName":"Anna","lastName":"Smith","age":15},
+	{"firstName":"Peter","lastName":"Jones","age":42}
+]
+```
 
 &nbsp;
 ___
@@ -143,6 +210,35 @@ Convierte una cadena en Array separando sus partes por caracter fijo
 |---|---|---|---|
 |**\$sString**|string||Cadena de datos|
 |**\$vOptions**|array||Array de opciones del método:<br /><ul><li>**positions** =  posiciones de corte (null)</li><li>**trim** =  determina si debe aplicarse el método trim a cada valor obtenido (false)</li><li>**eol** =  determina si debe tratarse a \$sString como una cadena multilinea (false)</li></ul>|
+### Ejemplos  
+#### sin TRIM  
+```php
+$data = "John            Doe       Director    36";
+$options = array("positions" => array(16,10,12,2));
+print_r($ngl("shift")->fixedExplode($data, $options));
+
+# salida
+Array (
+	[0] => "John            "
+	[1] => "Doe       "
+	[2] => "Director    "
+	[3] => 36
+)
+```
+#### con TRIM  
+```php
+$data = "John            Doe       Director    36";
+$options = array("positions" => array(16,10,12,2), "trim" => true);
+print_r($ngl("shift")->fixedExplode($data, $options));
+
+# salida
+Array (
+	[0] => "John"
+	[1] => "Doe"
+	[2] => "Director"
+	[3] => 36
+)
+```
 
 &nbsp;
 ___
@@ -157,6 +253,25 @@ Convierte un Array en una cadena respetando las logitudes de **positions**. Si l
 |---|---|---|---|
 |**\$aString**|array||Array de datos|
 |**\$vOptions**|array||Array de opciones del método:<br /><ul><li>**positions** =  posiciones de unión (null)</li><li>**fill** =  caracter de relleno ( espacio )</li><li>**eol** =  fin de línea (\r\n)</li></ul>|
+### Ejemplos  
+#### ejemplo #1  
+```php
+$data = array("John", "Doe", "Director", "36");
+$options = array("positions" => array(16,10,12,2), "fill" => ".");
+echo $ngl("shift")->fixedImplode($data, $options);
+
+# salida
+John............Doe.......Director....36
+```
+#### ejemplo #2  
+```php
+$data = array("ENERO", "FEBRERO", "MARZO", "ABRIL", "MAYO", "JUNIO");
+$options = array("positions" => array(5,5,5,5,5,5), "fill" => "-");
+echo $ngl("shift")->fixedImplode($data, $options);
+
+# salida
+ENEROFEBREMARZOABRILMAYO-JUNIO
+```
 
 &nbsp;
 ___
@@ -172,6 +287,106 @@ Genera una salida HTML a partir de un Array
 |**\$aData**|array||Array de datos|
 |**\$sFormat**|string|table|Tipo de salida HTML:<br /><ul><li>**table** =  tabla HTML</li><li>**div** =  estructura de DIVs</li><li>**list** =  estructura de UL, LI y SPAN</li></ul>|
 |**\$sClassName**|string|data|Nombre de la clase CSS que se asignara a la tabla, filas (*-head/*-row) y columnas (*-cell)|
+### Ejemplos  
+#### TABLA  
+```php
+$data = array(
+	array("firstName" => "John" , "lastName" => "Doe", "age"=>36),
+	array("firstName" => "Anna" , "lastName" => "Smith", "age"=>15),
+	array("firstName" => "Peter" , "lastName" => "Jones", "age"=>42)
+);
+echo $ngl("shift")->html($data, "table", "users");
+
+# salida
+<table class="users">
+	<tr class="users-head">
+		<th class="users-cell">firstName</th>
+		<th class="users-cell">lastName</th>
+		<th class="users-cell">age</th>
+	</tr>
+	<tr class="users-row">
+		<td class="users-cell">John</td>
+		<td class="users-cell">Doe</td>
+		<td class="users-cell">36</td>
+	</tr>
+	<tr class="users-row">
+		<td class="users-cell">Anna</td>
+		<td class="users-cell">Smith</td>
+		<td class="users-cell">15</td>
+	</tr>
+	<tr class="users-row">
+		<td class="users-cell">Peter</td>
+		<td class="users-cell">Jones</td>
+		<td class="users-cell">42</td>
+	</tr>
+</table>
+```
+#### Estructura de DIVs  
+```php
+$data = array(
+	array("firstName" => "John" , "lastName" => "Doe", "age"=>36),
+	array("firstName" => "Anna" , "lastName" => "Smith", "age"=>15),
+	array("firstName" => "Peter" , "lastName" => "Jones", "age"=>42)
+);
+echo $ngl("shift")->html($data, "div", "users");
+
+# salida
+<div class="users">
+	<div class="users-head">
+		<div class="users-cell">firstName</div>
+		<div class="users-cell">lastName</div>
+		<div class="users-cell">age</div>
+	</div>
+	<div class="users-row">
+		<div class="users-cell">John</div>
+		<div class="users-cell">Doe</div>
+		<div class="users-cell">36</div>
+	</div>
+	<div class="users-row">
+		<div class="users-cell">Anna</div>
+		<div class="users-cell">Smith</div>
+		<div class="users-cell">15</div>
+	</div>
+	<div class="users-row">
+		<div class="users-cell">Peter</div>
+		<div class="users-cell">Jones</div>
+		<div class="users-cell">42</div>
+	</div>
+</div>
+```
+#### Estructura de UL, LI y SPAN  
+```php
+$data = array(
+	array("firstName" => "John" , "lastName" => "Doe", "age"=>36),
+	array("firstName" => "Anna" , "lastName" => "Smith", "age"=>15),
+	array("firstName" => "Peter" , "lastName" => "Jones", "age"=>42)
+);
+echo $ngl("shift")->html($data, "list", "users");
+
+# salida
+<ul class="users">
+	<li class="users-head">
+		<span class="users-cell">firstName</span>
+		<span class="users-cell">lastName</span>
+		<span class="users-cell">age</span>
+	</li>
+	<li class="users-row">
+		<span class="users-cell">John</span>
+		<span class="users-cell">Doe</span>
+		<span class="users-cell">36</span>
+	</li>
+	<li class="users-row">
+		<span class="users-cell">Anna</span>
+		<span class="users-cell">Smith</span>
+		<span class="users-cell">15</span>
+	</li>
+	<li class="users-row">
+		<span class="users-cell">Peter</span>
+		<span class="users-cell">Jones</span>
+		<span class="users-cell">42</span>
+	</li>
+</ul>
+```
 
 &nbsp;
 ___

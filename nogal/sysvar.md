@@ -37,6 +37,15 @@ si no se especifica un nombre de variable se retornarán todas las variables de 
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sVarname**|string|null|Nombre de variable|
+### Ejemplos  
+#### llamada de variable  
+```php
+echo $ngl("sysvar")->foo;
+```
+#### llamada global  
+```php
+print_r($ngl("sysvar"));
+```
 
 &nbsp;
 ___
@@ -81,6 +90,27 @@ almacena los datos de la ruta del archivo actual en la variable **SELF**
 
 **[array]** =  *private* function ( );
   
+### Ejemplos  
+#### /www/htdocs/foo/bar.php  
+```php
+[b]basename:[/b] bar.php
+[b]dirname:[/b] foo
+[b]extension:[/b] php
+[b]filename:[/b] bar
+[b]fullpath:[/b] /www/htdocs/foo/bar.php
+[b]path:[/b] /www/htdocs/foo
+```
+#### http://localhost/foo/bar.php?val=demo  
+```php
+[b]basename:[/b] bar.php
+[b]dirname:[/b] foo
+[b]extension:[/b] php
+[b]filename:[/b] bar
+[b]fullpath:[/b] /www/htdocs/foo/bar.php
+[b]path:[/b] /www/htdocs/foo
+[b]query_string:[/b] val=demo
+[b]url:[/b] foo/bar.php?val=demo
+```
 
 &nbsp;
 ___
@@ -91,6 +121,23 @@ Almacena expresiones regulares de uso frecuente en la variable **REGEX**
 
 **[array]** =  *private* function ( );
   
+### Ejemplos  
+#### Expresiones  
+```php
+[b]base64:[/b] caracteres permitidos en una cadena base64
+[b]color:[/b] color en formato hexadecimal #RGB, #RRGGBB ó #RRGGBBAA
+[b]date:[/b] fecha en formato yyyy-mm-dd
+[b]datetime:[/b] fecha y hora en formato yyyy-mm-dd hh-ii-ss
+[b]email:[/b] dirección de correo
+[b]filename:[/b] formato windows y Linux
+[b]fulltag:[/b] etiqueta HTML completa: <div id="foo"...>Lorem ipsum dolor sit amet...</div>
+[b]imya:[/b] cadena imya
+[b]ip:[/b] dirección IPv4
+[b]phpvar:[/b] nombre de variable PHP
+[b]tag:[/b] etiqueta HTML, sólo apertura: <div id="foo"...>
+[b]time:[/b] hora en formato hh:ii o hh:ii:ss
+[b]url:[/b] dirección URL/FTP
+```
 
 &nbsp;
 ___

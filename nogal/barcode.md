@@ -100,6 +100,13 @@ Genera y retorna el puntero de la imagen del código de barras
 |**\$nSize**|string|2|Tamaño de la tipografía en el código|
 |**\$nMaxHeight**|int|30|Altura máxima de la imagen del código|
 |**\$sResolution**|string|1|Resolución de la imagen del código|
+### Ejemplos  
+#### impresión de imagen  
+```php
+$barcode = $ngl("barcode.");
+$barcode->args(array("size" => 5, "margin" => 2));
+$ngl("image.code")->load($barcode->image("test"))->view();
+```
 
 &nbsp;
 ___
@@ -114,6 +121,11 @@ Genera y retorna una secuencia de 0 y 1 del código de barras
 |---|---|---|---|
 |**\$sContent**|string|test1234|Contenido del código|
 |**\$sType**|string|code128|Algoritmo utilizado para generar el código. Códigos soportados:<ul><li>CODE_39</li><li>CODE_39_CHECKSUM</li><li>CODE_39E</li><li>CODE_39E_CHECKSUM</li><li>CODE_93</li><li>STANDARD_2_5</li><li>STANDARD_2_5_CHECKSUM</li><li>INTERLEAVED_2_5</li><li>INTERLEAVED_2_5_CHECKSUM</li><li>CODE_128</li><li>CODE_128_A</li><li>CODE_128_B</li><li>CODE_128_C</li><li>EAN_2</li><li>EAN_5</li><li>EAN_8</li><li>EAN_13</li><li>UPC_A</li><li>UPC_E</li><li>MSI</li><li>MSI_CHECKSUM</li><li>POSTNET</li><li>PLANET</li><li>RMS4CC</li><li>KIX</li><li>IMB</li><li>CODABAR</li><li>CODE_11</li><li>PHARMA_CODE</li><li>PHARMA_CODE_TWO_TRACKS</li></ul>|
+### Ejemplos  
+#### impresión del texto  
+```php
+echo $ngl("barcode.")->text("test")
+```
 
 &nbsp;
 ___

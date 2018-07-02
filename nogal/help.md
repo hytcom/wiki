@@ -43,6 +43,26 @@ Retorna un documento HTML con la ayuda solicitada
 |---|---|---|---|
 |**\$sWhat**|string|null|Clase, Método o Comando sobre del cual se desea ver el texto de ayuda.<ul><li>**HELP** =  Retorna el listado de Clases disponibles</li><li>**ClassName** =  para obtener ayuda acerca de una clase</li><li>**ClassName::MethodName** =  para obtener ayuda sobre el método **MethodName** de la clase **ClassName**</li></ul>Si existe la variable \$_SERVER["QUERY_STRING"] y es distinta de empty, su valor será asignado a **\$sWhat**|
 |**\$sBaseURL**|string|NGL_URL/help/|Especifica la URL predeterminada para todos los enlaces.|
+### Ejemplos  
+#### Tipos de llamados  
+```php
+# Listado de Clases
+echo $ngl("help")->about();
+
+# Listado de Clases (2)
+echo $ngl("help")->about("HELP");
+# los links serán del tipo: http://dominio.com/help/
+
+# Clases
+echo $ngl("help")->about("nglDBMySQL");
+
+# Método
+echo $ngl("help")->about("nglDBMySQL::query");
+
+# Cambio de baseURL
+echo $ngl("help")->about("HELP", "/projectname/docs/");
+# los links serán del tipo: http://dominio.com/projectname/docs/help/
+```
 
 &nbsp;
 ___

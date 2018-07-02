@@ -61,6 +61,12 @@ Añade el contenido **content** al final de un archivo. Si el archivo no existe 
 
 **[$this]** =  *public* function ( );
   
+### Ejemplos  
+#### Escritura  
+```php
+$ngl("file.foo")->load("readme.txt");
+$ngl("file.foo")->append("hola mundo!");
+```
 
 &nbsp;
 ___
@@ -84,6 +90,29 @@ Retorna al atributo **info**.
 
 **[array]** =  *public* function ( );
   
+### Ejemplos  
+#### Información del archivo  
+```php
+$ngl("file.foo")->load("readme.txt");
+print_r($ngl("file.foo")->fileinfo());
+
+#salida
+Array (
+	[type] => file
+	[basename] => readme.txt
+	[extension] => txt
+	[filename] => readme
+	[protocol] => filesystem
+	[path] => tmpeadme.txt
+	[bytes] => 4448
+	[size] => 4.34KB
+	[chmod] => 0666
+	[timestamp] => 1425693706
+	[date] => 2015-03-06 23:01:46
+	[mime] => text/plain
+	[image] => 
+)
+```
 
 &nbsp;
 ___
@@ -126,6 +155,30 @@ Lee y retorna el contenido del archivo cargado
 |---|---|---|---|
 |**\$nLength**|int|null|Tamaño máximo en bytes del archivo contemplado para lectura o escritura|
 |**\$aCurlOptions**|array||Opciones CURL para este tipo de conexiones, <a href="http://php.net/manual/en/function.curl-setopt.php" target="_blank">http://php.net/manual/en/function.curl-setopt.php</a>|
+### Ejemplos  
+#### Lectura local  
+```php
+$ngl("file.foo")->load("readme.txt");
+echo $ngl("file.foo")->read();
+echo $ngl("file.foo")->read(10);
+
+#salida
+"esto es una prueba"
+"esto es un"
+```
+#### Lectura de API usando CURL  
+```php
+$ngl("file.foo")->load("http://api.sumaprop.com/propiedad/search/?max_per_page=3&estad os_publicacion=1&tipo_operacion=1&order=direccion­asc");
+$options = array(
+	"CURLOPT_CUSTOMREQUEST" => "GET",
+	"CURLOPT_HTTPHEADER" => array("x­authtoken: 4d186321c1a7f0f354b297e8914ab240")
+);
+echo $ngl("file.foo")->read(null, $options);
+```
+#### Solicitud con variables POST  
+```php
+
+```
 
 &nbsp;
 ___
@@ -162,6 +215,12 @@ Escribe/reemplaza el contenido del archivo con **content**. Si el archivo no exi
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sContent**|string||Contenido del archivo|
+### Ejemplos  
+#### Escritura  
+```php
+$ngl("file.foo")->load("readme.txt");
+$ngl("file.foo")->write("hola mundo!");
+```
 
 &nbsp;
 ___

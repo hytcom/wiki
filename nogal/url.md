@@ -69,6 +69,34 @@ Descompone una URL en los atributos del objeto y retorna los datos en un array a
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sURL**|string||URL|
+### Ejemplos  
+#### Ejemplo  
+```php
+$url = "http://example:pass@hytcom.net:80/nogal/help/class.php?q=nglURL::parse#privates";
+$http = $ngl("url.foo")->parse($url)->parts();
+print_r($http);
+
+# resultado
+Array (
+	[basename] => "class.php"
+	[dirname] => "/nogal/help"
+	[extension] => "php"
+	[filename] => "class"
+	[fragment] => "privates"
+	[host] => "hytcom.net"
+	[pass] => "pass"
+	[params] => Array (
+		[ q ] => "nglURL::parse"
+	)
+	[path] => "/nogal/help/class.php"
+	[port] => "80"
+	[query] => "q=nglURL::parse"
+	[scheme] => "http"
+	[ssl] => false
+	[user] => "example"
+
+)
+```
 
 &nbsp;
 ___
@@ -104,6 +132,17 @@ Permite actualizar las distintas partes de la URL basandose en las partes genera
 |---|---|---|---|
 |**\$sPart**|string||Argumento que desea modificarse.|
 |**\$mValue**|mixed||Nuevo valor para Argument.|
+### Ejemplos  
+#### Ejemplo  
+```php
+$ngl("url.foo")->url = "http://www.hytcom.net/nogal/help/class.php?q=nglURL::parse#privates";
+$ngl("url.foo")->update("host", "hytcom.net");
+$ngl("url.foo")->update("fragment", "publics");
+echo $ngl("url.foo")->unparse();
+
+# salida
+"http://hytcom.net/nogal/help/class.php?q=nglURL::parse#publics"
+```
 
 &nbsp;
 ___

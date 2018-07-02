@@ -144,25 +144,21 @@ Inserta un nuevo registro en una tabla
 ### Ejemplos  
 #### datos en array  
 ```php
+$foo = $ngl("mysql.foobar");
+$foo->base = "test";
+$foo->connect();
 
-				$foo = $ngl("mysql.foobar");
-				$foo->base = "test";
-				$foo->connect();
-				
-				$data = array("foo"=>"foovalue", "bar"=>"barvalue");
-				$foo->insert("tablename", $data);
-			
+$data = array("foo"=>"foovalue", "bar"=>"barvalue");
+$foo->insert("tablename", $data);
 ```
 #### datos como cadena de variables  
 ```php
+$foo = $ngl("mysql.foobar");
+$foo->base = "test";
+$foo->connect();
 
-				$foo = $ngl("mysql.foobar");
-				$foo->base = "test";
-				$foo->connect();
-				
-				$data="foobar&bar=barvalue"
-				$foo->insert("tablename", $data, "replace");
-			
+$data="foobar&bar=barvalue"
+$foo->insert("tablename", $data, "replace");
 ```
 
 &nbsp;
@@ -240,12 +236,10 @@ Ejecuta una sentencia SQL y retorna un objecto **nglDBMySQLQuery**
 ### Ejemplos  
 #### conexión  
 ```php
-
-				$foo = $ngl("mysql.foobar");
-				$foo->base = "test";
-				$foo->connect();
-				$bar = $foo->query("SELECT * FROM `users`");
-			
+$foo = $ngl("mysql.foobar");
+$foo->base = "test";
+$foo->connect();
+$bar = $foo->query("SELECT * FROM `users`");
 ```
 
 &nbsp;
@@ -268,25 +262,21 @@ Actualiza todos los registros que cumplan con la condición **\$sWhere**
 ### Ejemplos  
 #### datos en array  
 ```php
+$foo = $ngl("mysql.foobar");
+$foo->base = "test";
+$foo->connect();
 
-				$foo = $ngl("mysql.foobar");
-				$foo->base = "test";
-				$foo->connect();
-				
-				$data = array("foo"=>"foovalue", "bar"=>"barvalue");
-				$foo->update("tablename", $data, "`id`='7'");
-			
+$data = array("foo"=>"foovalue", "bar"=>"barvalue");
+$foo->update("tablename", $data, "`id`='7'");
 ```
 #### datos como cadena de variables  
 ```php
+$foo = $ngl("mysql.foobar");
+$foo->base = "test";
+$foo->connect();
 
-				$foo = $ngl("mysql.foobar");
-				$foo->base = "test";
-				$foo->connect();
-				
-				$data="foobar&bar=barvalue"
-				$foo->update("tablename", $data, "`id`='7'", "ignore");
-			
+$data="foobar&bar=barvalue"
+$foo->update("tablename", $data, "`id`='7'", "ignore");
 ```
 
 &nbsp;
