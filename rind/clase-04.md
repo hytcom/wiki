@@ -1,8 +1,9 @@
 # Clase 4 - Seteo de Variables
-- [Variable $_SET](variable-$_set)
-- [Comando SET](comando-set)
-- [SET Métodos](set-metodos)
-- [SET Métodos Múltiples](set-metodos-multiples)
+- [Clase 4 - Seteo de Variables](#clase-4---seteo-de-variables)
+    - [Variable $_SET](#variable--set)
+    - [Comando SET](#comando-set)
+    - [SET Métodos](#set-metodos)
+    - [Métodos Múltiples](#metodos-multiples)
 <br />
 <br />
 
@@ -140,7 +141,7 @@ Dominio: <b>zaraza.com</b>
 <br />
 <br />
 
-Para ver la descripción completa del comando ver la [ayuda](set.md)
+Para ver la descripción completa del comando ver la [ayuda](commands.md#set)
 
 ---
 - [Clase 3 - Bucles](clase-03.md)

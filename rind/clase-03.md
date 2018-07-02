@@ -1,10 +1,11 @@
 # Clase 3 - Bucles
-- [Concepto General](#concepto-general)
-- [Comando LOOP](#comando-loop)
-- [LOOP indicadores](#loop-indicadores)
-- [LOOP índices](#loop-indices)
-- [Anidamiento de Bucles](#anidamiento-de-bucles)
-- [Referencias entre Bucles](#referencias-entre-bucles)
+- [Clase 3 - Bucles](#clase-3---bucles)
+    - [Concepto General](#concepto-general)
+    - [Comando LOOP](#comando-loop)
+    - [LOOP Indicadores](#loop-indicadores)
+    - [Indices](#indices)
+    - [Anidamiento de Bucles](#anidamiento-de-bucles)
+    - [Referencias entre Bucles](#referencias-entre-bucles)
 <br />
 <br />
 
@@ -237,7 +238,7 @@ Y se busca imprimir el último personaje con el que jugó.
 <br />
 <br />
 
-Para ver la descripción completa del comando ver la [ayuda](loop.md)
+Para ver la descripción completa del comando ver la [ayuda](commands.md#loop)
 
 ---
 - [Clase 2 - Condicional IF](clase-02.md)

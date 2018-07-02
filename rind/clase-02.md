@@ -1,8 +1,9 @@
 # Clase 2 - Condicional IF
-- [Concepto General](#concepto-general)
-- [Comando IFCASE](#Comando-IFCASE)
-- [Anidamiento](#anidamiento)
-- [Modo Swtich](#modo-swtich)
+- [Clase 2 - Condicional IF](#clase-2---condicional-if)
+    - [Concepto General](#concepto-general)
+    - [Comando IFCASE](#comando-ifcase)
+    - [Anidamiento](#anidamiento)
+    - [Modo Swtich](#modo-swtich)
 <br />
 <br />
 
@@ -141,7 +142,7 @@ Existen otra variantes de **ifcase**, como por ejemplo chequear si una variable 
 <br />
 <br />
 
-Para ver la descripción completa del comando ver la [ayuda](ifcase.md)
+Para ver la descripción completa del comando ver la [ayuda](commands.md#ifcase)
 
 ---
 - [Clase 1 - Conceptos Básicos](clase-01.md)
