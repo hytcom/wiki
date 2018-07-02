@@ -1,0 +1,308 @@
+# Nogal v1.0
+*the most simple PHP Framework* by hytcom.net
+___
+  
+
+# shift
+## nglShift *extends* nglTrunk [main] [20150225]
+Este objeto nuclea métodos de conversión de datos entre las siguientes escructuras:<ul><li>**array** =  Array de datos</li><li>**csv** =  Texto inline o multilinea de valores separados por comas</li><li>**fixed** =  Texto inline o multilinea de valores separados ancho fijo</li><li>**html** =  Tablas html, soporta tablas anidadas. Si se especifican thead se utilizarán como claves</li><li>**json** =  JSON</li><li>**object** =  Objecto de datos o un objeto del tipo iNglDataObjet</li><li>**serialize** =  valor serializado</li><li>**xml** =  XML</li></ul>
+  
+## Variables
+`private` $vCSV = Configuraciones para la lectura de cadenas CSV  
+
+  
+&nbsp;
+
+# Métodos
+- [CSVParseLine](#CSVParseLine)
+- [CastValue](#CastValue)
+- [HTMLTableParser](#HTMLTableParser)
+- [JSONChar](#JSONChar)
+- [JSONNameValuePair](#JSONNameValuePair)
+- [JSONReduceString](#JSONReduceString)
+- [XMLChildren](#XMLChildren)
+- [cast](#cast)
+- [convert](#convert)
+- [csvEncode](#csvEncode)
+- [csvToArray](#csvToArray)
+- [fixedExplode](#fixedExplode)
+- [fixedImplode](#fixedImplode)
+- [html](#html)
+- [htmlToArray](#htmlToArray)
+- [jsonDecode](#jsonDecode)
+- [jsonEncode](#jsonEncode)
+- [jsonFormat](#jsonFormat)
+- [objFromArray](#objFromArray)
+- [objToArray](#objToArray)
+- [xmlEncode](#xmlEncode)
+- [xmlToArray](#xmlToArray)
+
+  
+&nbsp;
+
+
+## cast
+Formatea el valor **\$mValue** según **\$sCastType**, siempre que se encuentre dentro de los tipos:<ul><li>array</li><li>boolean</li><li>double</li><li>integer</li><li>NULL</li><li>object</li><li>string</li></ul>  
+
+**[mixed]** =  *public* function ( *mixed* \$mValue, *string* \$sCastType );  
+|Argumento|Tipo|Default|Descripción|
+|---|---|---|---|
+|**\$mValue**|mixed||Variable a formatear|
+|**\$sCastType**|string|text|tipo de formato:<br /><ul><li>**text** =  texto plano (valor predeterminado)</li><li>**html** =  se aplica htmlspecialchars</li><li>**htmlall** =  se aplica htmlentities</li></ul>|
+&nbsp;
+___
+&nbsp;
+
+## CastValue
+Auxiliar del método **nglShift::cast**  
+
+**[mixed]** =  *private* function ( *mixed* \$mValue, *string* \$sCastType );  
+|Argumento|Tipo|Default|Descripción|
+|---|---|---|---|
+|**\$mValue**|mixed||Variable a formatear|
+|**\$sCastType**|string||tipo de formato:<br /><ul><li>**text** =  texto plano (valor predeterminado)</li><li>**html** =  se aplica htmlspecialchars</li><li>**htmlall** =  se aplica htmlentities</li></ul>|
+&nbsp;
+___
+&nbsp;
+
+## convert
+Convierte una estructura de datos en otra  
+
+**[mixed]** =  *public* function ( *mixed* \$mData, *string* \$sMethod, *array* \$vOptions );  
+|Argumento|Tipo|Default|Descripción|
+|---|---|---|---|
+|**\$mData**|mixed||Estructura de datos original|
+|**\$sMethod**|string|object-array|Método de conversión, que se indica separando los tipos de estruturas de origen y destino con un - (guión medio)
+
+Estructuras soportadas:<ul><li>array</li><li>csv</li><li>fixed</li><li>html</li><li>json</li><li>object</li><li>serialize</li><li>xml</li></ul>Ejemplos:<ul><li>array-csv</li><li>json-array</li><li>fixed-csv</li><li>html-json</li></ul>|
+|**\$vOptions**|array||Array con las parametrizaciones de los métodos que intervienen en la conversión<ul><li>**class** =  nombre de la clase CSS aplicado en la salida como tabla HTML</li><li>**colnames** =  array con los nombres de las columnas (null)</li><li>**convert_spaces** =  Determina si deben convertirse los caracteres de espacio</li><li>**convert_unicode** =  Determina si los caracteres UTF-8 deberán ser convertidos a formato UNICODE (\uXXXX)</li><li>**joiner** =  caracter por el que se unirán los campos (,)</li><li>**enclose** =  caracter que se utilizará para encerrar los valores de los campos (&quot;)</li><li>**enclosed** =  caracter utilizado para encerrar los valores de los campos (&quot;)</li><li>**eol** =  fin de línea (\r\n)</li><li>**escape** =  caracter de escape para caracteres especiales (\) Salida de datos</li><li>**escaped** =  caracter para escapar los caracteres especiales (\) Entrada de datos</li><li>**format** =  formato de salida para el modo HTML (table|div|list)</li><li>**level** =  actual nivel de anidamiento (-1)</li><li>**splitter** =  caracter separador de campos (,)</li><li>**tag** =  nombre del siguiente tag XML (vacio)</li><li>**use_colnames** =  en combinación con **colnames**, establece los índices del array. 
+Con valor true y colnames = null, se utilizarán como índices los valores de la primera fila.
+(false)</li><li>**xml_attributes** =  determina si se deben procesar o no los atributos de las etiquetas XML (falso)</li></ul>|
+&nbsp;
+___
+&nbsp;
+
+## csvEncode
+Genera una cadena formateada como CSV partiendo de un Array  
+
+**[string]** =  *public* function ( *array* \$aData, *array* \$vOptions );  
+|Argumento|Tipo|Default|Descripción|
+|---|---|---|---|
+|**\$aData**|array||Array de datos|
+|**\$vOptions**|array||Array de opciones del método:<br /><ul><li>**colnames** =  array con los nombres de las columnas (null)</li><li>**joiner** =  caracter por el que se unirán los campos (,)</li><li>**enclose** =  caracter que se utilizará para encerrar los valores de los campos (&quot;)</li><li>**escape** =  caracter de escape para caracteres especiales (\)</li><li>**eol** =  fin de línea (\r\n)</li></ul>|
+&nbsp;
+___
+&nbsp;
+
+## CSVParseLine
+auxiliar del método nglShift::csvToArray. convierte una linea CSV en un array  
+
+**[array]** =  *private* function ( *string* \$sSplitter, *string* \$sEnclosed, *string* \$sEscaped, *string* \$sEOL );  
+|Argumento|Tipo|Default|Descripción|
+|---|---|---|---|
+|**\$sSplitter**|string|,|caracter separador de campos|
+|**\$sEnclosed**|string|&quot;|caracter utilizado para encerrar los valores de los campos|
+|**\$sEscaped**|string|\|caracter para escapar los caracteres especiales|
+|**\$sEOL**|string|\r\n|fin de línea|
+&nbsp;
+___
+&nbsp;
+
+## csvToArray
+convierte un texto CSV (una línea o conjunto de ellas) en un array bidimensional  
+
+**[string]** =  *public* function ( *array* \$aData, *array* \$vOptions );  
+|Argumento|Tipo|Default|Descripción|
+|---|---|---|---|
+|**\$aData**|array||Array de datos|
+|**\$vOptions**|array||Array de opciones del método:<br /><ul><li>**use_colnames** =  en combinación con **colnames**, establece los índices del array. 
+Con valor true y colnames = null, se utilizarán como índices los valores de la primera fila.
+(false)</li><li>**columns** =  array con los nombres de las columnas (null)</li><li>**splitter** =  caracter separador de campos (,)</li><li>**enclosed** =  caracter utilizado para encerrar los valores de los campos (&quot;)</li><li>**escaped** =  caracter para escapar los caracteres especiales (\)</li><li>**eol** =  fin de línea (\r\n)</li></ul>|
+&nbsp;
+___
+&nbsp;
+
+## fixedExplode
+Convierte una cadena en Array separando sus partes por caracter fijo  
+
+**[array]** =  *public* function ( *string* \$sString, *array* \$vOptions );  
+|Argumento|Tipo|Default|Descripción|
+|---|---|---|---|
+|**\$sString**|string||Cadena de datos|
+|**\$vOptions**|array||Array de opciones del método:<br /><ul><li>**positions** =  posiciones de corte (null)</li><li>**trim** =  determina si debe aplicarse el método trim a cada valor obtenido (false)</li><li>**eol** =  determina si debe tratarse a \$sString como una cadena multilinea (false)</li></ul>|
+&nbsp;
+___
+&nbsp;
+
+## fixedImplode
+Convierte un Array en una cadena respetando las logitudes de **positions**. Si la longuitud de la cadena es superior al valor de **positions**, el valor será truncado.  
+
+**[array]** =  *public* function ( *array* \$aString, *array* \$vOptions );  
+|Argumento|Tipo|Default|Descripción|
+|---|---|---|---|
+|**\$aString**|array||Array de datos|
+|**\$vOptions**|array||Array de opciones del método:<br /><ul><li>**positions** =  posiciones de unión (null)</li><li>**fill** =  caracter de relleno ( espacio )</li><li>**eol** =  fin de línea (\r\n)</li></ul>|
+&nbsp;
+___
+&nbsp;
+
+## html
+Genera una salida HTML a partir de un Array  
+
+**[string]** =  *public* function ( *array* \$aData, *string* \$sFormat, *string* \$sClassName );  
+|Argumento|Tipo|Default|Descripción|
+|---|---|---|---|
+|**\$aData**|array||Array de datos|
+|**\$sFormat**|string|table|Tipo de salida HTML:<br /><ul><li>**table** =  tabla HTML</li><li>**div** =  estructura de DIVs</li><li>**list** =  estructura de UL, LI y SPAN</li></ul>|
+|**\$sClassName**|string|data|Nombre de la clase CSS que se asignara a la tabla, filas (*-head/*-row) y columnas (*-cell)|
+&nbsp;
+___
+&nbsp;
+
+## htmlToArray
+Convierte una Tabla HTML en un array, utilizando el objeto DOMDocument.
+Las tablas pueden o no tener THEAD y TBODY. En el caso de tener THEAD los valores de los TH serán 
+utilizados como indices alfanuméricos en el Array de salida.
+El método soporta multiples tablas y anidamiento de tablas; en este último caso generará sub-arrays  
+
+**[array]** =  *public* function ( *string* \$sHTML );  
+|Argumento|Tipo|Default|Descripción|
+|---|---|---|---|
+|**\$sHTML**|string||Código HTML que contiene la o las tablas|
+&nbsp;
+___
+&nbsp;
+
+## HTMLTableParser
+Auxiliar del método htmlToArray  
+
+**[DOMNodeList]** =  *private* function ( *string* \$table );  
+|Argumento|Tipo|Default|Descripción|
+|---|---|---|---|
+|**\$table**|string||Código HTML que contiene la o las tablas|
+&nbsp;
+___
+&nbsp;
+
+## JSONChar
+Auxiliar del método nglShift::jsonEncode encargado de codificar un caracter para que sea válido dentro de una cadena UTF-8  
+
+ *private* function ( );
+  
+&nbsp;
+___
+&nbsp;
+
+## jsonDecode
+Decodifica una cadena JSON de un Array  
+
+**[array]** =  *public* function ( *string* \$sString );  
+|Argumento|Tipo|Default|Descripción|
+|---|---|---|---|
+|**\$sString**|string||Cadena JSON|
+&nbsp;
+___
+&nbsp;
+
+## jsonEncode
+Codifica un valor en una cadena JSON  
+
+ *public* function ( );
+  
+&nbsp;
+___
+&nbsp;
+
+## jsonFormat
+Auxiliar del método nglShift::jsonEncode encargado generar un par ordenado NOMBRE:VALOR válido  
+
+**[string]** =  *public* function ( *string* \$sJson, *boolean* \$bCompress, *boolean* \$bHTML, *string* \$sTab, *string* \$sEOL );  
+|Argumento|Tipo|Default|Descripción|
+|---|---|---|---|
+|**\$sJson**|string||Cadena JSON|
+|**\$bCompress**|boolean||Cuando es TRUE, se retorna la cadena original sin saltos de líneas ni tabulaciones|
+|**\$bHTML**|boolean||Determina si el resultado debe ser tratado con htmlentities|
+|**\$sTab**|string|\t|Tabulador|
+|**\$sEOL**|string|\n|Salto de línea|
+&nbsp;
+___
+&nbsp;
+
+## JSONNameValuePair
+Auxiliar del método nglShift::jsonEncode encargado generar un par ordenado NOMBRE:VALOR válido  
+
+**[string]** =  *private* function ( *string* \$sName, *mixed* \$mValue );  
+|Argumento|Tipo|Default|Descripción|
+|---|---|---|---|
+|**\$sName**|string||Nombre del índice|
+|**\$mValue**|mixed||Valor|
+&nbsp;
+___
+&nbsp;
+
+## JSONReduceString
+Auxiliar del método nglShift::jsonDecode encargado limpiar el código antes de ser parseado  
+
+**[string]** =  *private* function ( *string* \$sString );  
+|Argumento|Tipo|Default|Descripción|
+|---|---|---|---|
+|**\$sString**|string||Cadena JSON|
+&nbsp;
+___
+&nbsp;
+
+## objToArray
+Convierte un objeto en un array asosiativo de manera recursiva  
+
+**[array]** =  *public* function ( *object* \$mObject );  
+|Argumento|Tipo|Default|Descripción|
+|---|---|---|---|
+|**\$mObject**|object||Objeto a convertir|
+&nbsp;
+___
+&nbsp;
+
+## objFromArray
+Convierte un Array en un Objeto de manera recursiva  
+
+**[object]** =  *public* function ( *array* \$mObject );  
+|Argumento|Tipo|Default|Descripción|
+|---|---|---|---|
+|**\$mObject**|array||Array a convertir|
+&nbsp;
+___
+&nbsp;
+
+## XMLChildren
+Auxiliar del método ngl:Babel::xmlToArray utilizado para recorrer el objeto XML de manera recursiva  
+
+**[array]** =  *private* function ( *object* \$vXML, *boolean* \$bAttributes, *int* \$x );  
+|Argumento|Tipo|Default|Descripción|
+|---|---|---|---|
+|**\$vXML**|object||Objecto XML|
+|**\$bAttributes**|boolean||Determina si se deben procesar o no los atributos de las etiquetas XML|
+|**\$x**|int||Contador interno|
+&nbsp;
+___
+&nbsp;
+
+## xmlEncode
+Convierte un array en una estructura XML  
+
+**[string]** =  *public* function ( );
+  
+&nbsp;
+___
+&nbsp;
+
+## xmlToArray
+Vuelca el contenido de un texto XML en un array asosiativo de manera recursiva  
+
+**[array]** =  *public* function ( *string* \$sXML, *array* \$vOptions );  
+|Argumento|Tipo|Default|Descripción|
+|---|---|---|---|
+|**\$sXML**|string||Estructura XML|
+|**\$vOptions**|array||Array de opciones del método:<br /><ul><li>**xml_attributes** =  determina si se deben procesar o no los atributos de las etiquetas XML (falso)</li></ul>|
+&nbsp;
+___
+&nbsp;
