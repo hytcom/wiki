@@ -17,8 +17,8 @@ Fechas.
 |---|---|
 |[format](#format)|Formatea un valor en segundos, según $sFormat|
 |[microtimer](#microtimer)|Retorna la cantidad de segundos transcurridos desde $nTimeIni|
-|[now](#now)|Retorna un array con los nombres de los días de la semana y meses del año en el array bidimensional basado en los valores de las constantes NGL_DATE...|
-|[settings](#settings)|Retorna un array con los nombres de los días de la semana y meses del año en el array bidimensional basado en los valores de las constantes NGL_DATE...|
+|[now](#now)|Retorna un array con los nombres de los días de la semana y meses del año en el array bidimensional ...|
+|[settings](#settings)|Retorna un array con los nombres de los días de la semana y meses del año en el array bidimensional ...|
 
   
 &nbsp;

@@ -28,10 +28,10 @@ Cuenta con dos valores de configuración que impactan en el procesamiento de la 
 |[GetRulesFile](#GetRulesFile)|Obtiene la configuración de un archivo .json y la retorna en como un Array|
 |[RequestFrom](#RequestFrom)|Analiza la cadena $sFrom y retorna un array de origines para ser utilizados en request|
 |[ValidateByType](#ValidateByType)|Validador de variables por tipo|
-|[addvar](#addvar)|Almacena valores que luego pueden ser utilizados como variables dentro de las reglas. Esto es especialmente util dentro de los archivos .json.Este mé...|
-|[request](#request)|Valida y reemplaza los valores de la variable global $_REQUEST en base al archivo REQUEST.jsonEste método sobreescribe los valores de $_REQUEST. Para...|
+|[addvar](#addvar)|Almacena valores que luego pueden ser utilizados como variables dentro de las reglas. Esto es especi...|
+|[request](#request)|Valida y reemplaza los valores de la variable global $_REQUEST en base al archivo REQUEST.jsonEste m...|
 |[resetvars](#resetvars)|Desetea las variables seteadas con ngl:Validate::addvar|
-|[validate](#validate)|Valida la variable $mVariables aplicando las reglas $mRules. Si $mRules no está definido, retornará NULL|
+|[validate](#validate)|Valida la variable $mVariables aplicando las reglas $mRules. Si $mRules no está definido, retornará ...|
 
   
 &nbsp;

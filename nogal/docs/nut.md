@@ -25,7 +25,7 @@ Este objeto es el gestor de nuts del sistema, construye el objeto \$nut dentro d
 |[load](#load)|Carga y retorna un nut listo para ser usado|
 |[ngl](#ngl)|Retorna un objeto del framework utilizando el método nglRoot::call|
 |[run](#run)|Ejecuta el método $sMethod del nut|
-|[safemode](#safemode)|Setea y/o retorna el valor de la variable nglNut::$bSafemodeCuando el valor de $bMode sea null simplemente se retornará el valor actual de la variabl...|
+|[safemode](#safemode)|Setea y/o retorna el valor de la variable nglNut::$bSafemodeCuando el valor de $bMode sea null simpl...|
 
   
 &nbsp;

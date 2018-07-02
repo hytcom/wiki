@@ -39,7 +39,7 @@ Gestiona conexciones con bases de datos SQLite.
 |Método|Descripción|
 |---|---|
 |[Error](#Error)|Muestra el mensaje de Error generado por el fallo más reciente|
-|[PrepareValues](#PrepareValues)|Auxiliar de los métodos insert y update.Prepara el array asociativo o la cadena de variables para ser utilizados en las sentencias.Cuando los valores...|
+|[PrepareValues](#PrepareValues)|Auxiliar de los métodos insert y update.Prepara el array asociativo o la cadena de variables para se...|
 |[close](#close)|Finaliza la conexión con la base de datos|
 |[connect](#connect)|Establece la conexión con la base de datos|
 |[destroy](#destroy)|Cierra la conexión y destruye el objeto|
@@ -48,7 +48,7 @@ Gestiona conexciones con bases de datos SQLite.
 |[insert](#insert)|Inserta un nuevo registro en una tabla|
 |[jsqlParser](#jsqlParser)|Convierte una sentencia JSQL y retorna una sentencia SQL|
 |[mexec](#mexec)|Ejecuta varias sentencias SQL separadas por ; y retorna un array de objectos SQLite3Result|
-|[mquery](#mquery)|Ejecuta varias sentencias SQL separadas por ; y retorna un array de objectos nglDBSQLiteQuery, o TRUE cuando DO esta activo|
+|[mquery](#mquery)|Ejecuta varias sentencias SQL separadas por ; y retorna un array de objectos nglDBSQLiteQuery, o TRU...|
 |[query](#query)|Ejecuta una sentencia SQL y retorna un objecto nglDBSQLiteQuery|
 |[update](#update)|Actualiza todos los registros que cumplan con la condición $sWhere|
 

@@ -60,8 +60,8 @@ Los filtros disponibles son:<ul><li>**blur** =  Pone borrosa la imagen</li><li>*
 # Métodos
 |Método|Descripción|
 |---|---|
-|[CalculatePosition](#CalculatePosition)|Calcula el TOP y LEFT en base al alto y ancho de la imagen y el alto y ancho del canvas en función del parámetro $sPosition.Cuando $nWidth = $nCanva...|
-|[CalculateSizes](#CalculateSizes)|Calcula el el ancho y alto de una imagen y su lienzo manteniendo la proporcionalidadEste método retorna un array de 4 indices:anchoaltoancho del lien...|
+|[CalculatePosition](#CalculatePosition)|Calcula el TOP y LEFT en base al alto y ancho de la imagen y el alto y ancho del canvas en función d...|
+|[CalculateSizes](#CalculateSizes)|Calcula el el ancho y alto de una imagen y su lienzo manteniendo la proporcionalidadEste método reto...|
 |[CreateCopy](#CreateCopy)|Redimensiona el lienzo de la imagen|
 |[GetTransparency](#GetTransparency)|Obtiene el grado de transparencia de la imagen|
 |[base64](#base64)|Exporta el contenido de imagen para ser usado como origen de datos de  o css|
@@ -69,11 +69,11 @@ Los filtros disponibles son:<ul><li>**blur** =  Pone borrosa la imagen</li><li>*
 |[data](#data)|Retorna los datos IPTC y EXIF que pueda contener la imagen|
 |[filter](#filter)|Aplica un filtro o efecto sobre la imagen actual|
 |[image](#image)|Retorna el puntero de la imagen para ser utilizado en otro proceso|
-|[load](#load)|Carga la imagen en el objeto.Si el parámetro $mFile fuese null, se creará una imagen vacia de 1x1 px|
-|[margin](#margin)|Añade un margen por fuera de los limites de la imagen.Si una imagen mide 100px de ancho y se le añaden 10px de margen, el nuevo ancho será de 120px|
+|[load](#load)|Carga la imagen en el objeto.Si el parámetro $mFile fuese null, se creará una imagen vacia de 1x1 px...|
+|[margin](#margin)|Añade un margen por fuera de los limites de la imagen.Si una imagen mide 100px de ancho y se le añad...|
 |[merge](#merge)|Inserta una imagen dentro de otra|
-|[padding](#padding)|Añade un margen por dentro de los limites de la imagen.Si una imagen mide 100px de ancho y se le añaden 10px de padding, el ancho seguirá siendo de...|
-|[replace](#replace)|Reemplaza un color por otro.El reemplazo de colores en una imagen no es algo sencillo, mucho colores pueden parecer iguales a la vista, pero no lo son...|
+|[padding](#padding)|Añade un margen por dentro de los limites de la imagen.Si una imagen mide 100px de ancho y se le aña...|
+|[replace](#replace)|Reemplaza un color por otro.El reemplazo de colores en una imagen no es algo sencillo, mucho colores...|
 |[resize](#resize)|Redimensiona una imagen|
 |[text](#text)|Inserta una imagen dentro de otra|
 |[view](#view)|Exportar la imagen al navegador|
