@@ -60,24 +60,24 @@ Los filtros disponibles son:<ul><li>**blur** =  Pone borrosa la imagen</li><li>*
 # Métodos
 |Método|Descripción|
 |---|---|
-|[CalculatePosition](#CalculatePosition)|Calcula el TOP y LEFT en base al alto y ancho de la imagen y el alto y ancho del canvas en función del parámetro **\$sPosition**|
-|[CalculateSizes](#CalculateSizes)||
-|[CreateCopy](#CreateCopy)||
-|[GetTransparency](#GetTransparency)||
-|[base64](#base64)||
-|[canvas](#canvas)||
-|[data](#data)||
-|[filter](#filter)||
-|[image](#image)||
-|[load](#load)|Carga la imagen en el objeto|
-|[margin](#margin)|Añade un margen por fuera de los limites de la imagen|
-|[merge](#merge)||
-|[padding](#padding)|Añade un margen por dentro de los limites de la imagen|
-|[replace](#replace)|Reemplaza un color por otro|
-|[resize](#resize)||
-|[text](#text)||
-|[view](#view)||
-|[write](#write)||
+|[CalculatePosition](#CalculatePosition)|			Calcula el TOP y LEFT en base al alto y ancho de la imagen y el alto y ancho del canvas en función del parámetro $sPosition|
+|[CalculateSizes](#CalculateSizes)|			Calcula el el ancho y alto de una imagen y su lienzo manteniendo la proporcionalidad			Este método retorna un array de 4 indices:							ancho				alto				ancho del lienzo				alto del lienzo					|
+|[CreateCopy](#CreateCopy)|Redimensiona el lienzo de la imagen|
+|[GetTransparency](#GetTransparency)|Obtiene el grado de transparencia de la imagen|
+|[base64](#base64)|Exporta el contenido de imagen para ser usado como origen de datos de  o css|
+|[canvas](#canvas)|Redimensiona el lienzo de la imagen|
+|[data](#data)|Retorna los datos IPTC y EXIF que pueda contener la imagen|
+|[filter](#filter)|Aplica un filtro o efecto sobre la imagen actual|
+|[image](#image)|Retorna el puntero de la imagen para ser utilizado en otro proceso|
+|[load](#load)|			Carga la imagen en el objeto|
+|[margin](#margin)|			Añade un margen por fuera de los limites de la imagen|
+|[merge](#merge)|Inserta una imagen dentro de otra|
+|[padding](#padding)|			Añade un margen por dentro de los limites de la imagen|
+|[replace](#replace)|			Reemplaza un color por otro|
+|[resize](#resize)|Redimensiona una imagen|
+|[text](#text)|Inserta una imagen dentro de otra|
+|[view](#view)|Exportar la imagen al navegador|
+|[write](#write)|Exportar la imagen a un archivo|
 
   
 &nbsp;

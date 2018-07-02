@@ -42,19 +42,19 @@ CREATE INDEX `persistent_idx` ON `__ngl_sessions__` (`persistent`);
 # Métodos
 |Método|Descripción|
 |---|---|
-|[GetPersistent](#GetPersistent)||
-|[close](#close)|Controlador requerido por PHP para el cierre de las sesiones|
+|[GetPersistent](#GetPersistent)|Chequea si la sesion $SID es o no una sesion persistente|
+|[close](#close)|			Controlador requerido por PHP para el cierre de las sesiones|
 |[count](#count)|Retorna el número de sesiones activas|
-|[destroy](#destroy)||
+|[destroy](#destroy)|Llamada de retorno ejecutada cuando una sesión es destruida|
 |[destroyAll](#destroyAll)|Destruye todas las sesiones, persistentes o no|
-|[gc](#gc)|Elimina las sesiones, no persistentes, cuyo tiempo de vida supere el establecido por la variable PHP **session|
-|[id](#id)||
-|[open](#open)|Llamada de retorno que se ejecutada cuando la sesión está siendo abierta|
-|[persistent](#persistent)||
-|[read](#read)||
-|[showSessions](#showSessions)|Retorna listado completo de las sesiones activas|
+|[gc](#gc)|Elimina las sesiones, no persistentes, cuyo tiempo de vida supere el establecido por la variable PHP session|
+|[id](#id)|Retorna el ID de la sesion activa|
+|[open](#open)|			Llamada de retorno que se ejecutada cuando la sesión está siendo abierta|
+|[persistent](#persistent)|Chequea si la sesion $SID es o no una sesion persistente|
+|[read](#read)|Retorna el contenidos de la sesion en forma de cadena serializada|
+|[showSessions](#showSessions)|			Retorna listado completo de las sesiones activas|
 |[start](#start)|Da inicio al objeto|
-|[write](#write)||
+|[write](#write)|Guarda los datos de la variable superglobal $_SESSION como contenido de la sesión $SID|
 
   
 &nbsp;

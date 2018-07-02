@@ -20,17 +20,17 @@ nglHelp construye el objeto \$help dentro del framework, el cual es accedido a t
 # Métodos
 |Método|Descripción|
 |---|---|
-|[ParamsBox](#ParamsBox)||
-|[PrintClass](#PrintClass)||
-|[PrintList](#PrintList)||
-|[PrintMethod](#PrintMethod)||
-|[Template](#Template)||
-|[VarsBlocks](#VarsBlocks)||
-|[VarsBlocksExplain](#VarsBlocksExplain)||
-|[VarsExplain](#VarsExplain)||
-|[about](#about)||
-|[language](#language)||
-|[varsFunctions](#varsFunctions)||
+|[ParamsBox](#ParamsBox)|Retorna la porción de código HTML que muestra los bloques de parámetros|
+|[PrintClass](#PrintClass)|Retorna el código HTML que muestra la ayuda de la clase solicitada|
+|[PrintList](#PrintList)|Retorna el código HTML que muestra el listado de clases disponibles|
+|[PrintMethod](#PrintMethod)|Retorna el código HTML que muestra la ayuda del método solicitado|
+|[Template](#Template)|Utilizado para enmarcar el código HTML de la ayuda soliticitada dentro de la plantilla HTML que se retorna al usuario|
+|[VarsBlocks](#VarsBlocks)|Retorna el código HTML con la variables de un comando para ser mostradas en la descrición del mismo|
+|[VarsBlocksExplain](#VarsBlocksExplain)|Retorna el código HTML con la variables de un comando formateadas para ser mostradas en el detalle del mismo|
+|[VarsExplain](#VarsExplain)|Retorna el código HTML con la variables de un método para ser mostradas en la descrición de la misma|
+|[about](#about)|Retorna un documento HTML con la ayuda solicitada|
+|[language](#language)|Setea el idioma en el cual se mostrará la ayuda|
+|[varsFunctions](#varsFunctions)|Retorna el código HTML con la variables de un método formateadas para ser mostradas en el detalle de la misma|
 
   
 &nbsp;

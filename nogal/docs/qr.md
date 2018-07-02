@@ -21,7 +21,7 @@ Implementa https://github.com/aferrandini/PHPQRCode
 # Métodos
 |Método|Descripción|
 |---|---|
-|[image](#image)||
+|[image](#image)|Genera y retorna el puntero de la imagen del código QR|
 
   
 &nbsp;

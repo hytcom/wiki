@@ -13,16 +13,16 @@ Métodos frecuentes para el manejo de archivos y directorios.
 # Métodos
 |Método|Descripción|
 |---|---|
-|[RebuildFILES](#RebuildFILES)||
+|[RebuildFILES](#RebuildFILES)|Toma el array $aFiles (de estructura igual a $_FILES) y lo reordena de manera recursiva, para optener una lectura mas natural|
 |[absPath](#absPath)|formatea un path como absoluto limpiando doble barras o referencias atras (|
 |[basePaths](#basePaths)|Retorna la porción común de dos paths desde el inicio|
-|[copyr](#copyr)|Copia archivos y directorios de manera recursiva|
-|[ls](#ls)||
-|[lsprint](#lsprint)||
-|[maxUploadSize](#maxUploadSize)||
+|[copyr](#copyr)|			Copia archivos y directorios de manera recursiva|
+|[ls](#ls)|lista el contenido de un directorio|
+|[lsprint](#lsprint)|imprime el árbol de un directorio de manera recursiva|
+|[maxUploadSize](#maxUploadSize)|Retorna el máximo tamaño de archivo soportado por al configuración del servidor|
 |[mkdirr](#mkdirr)|Crea un directorio|
-|[unlinkr](#unlinkr)|Elimina archivos y directorios de manera recursiva|
-|[upload](#upload)||
+|[unlinkr](#unlinkr)|			Elimina archivos y directorios de manera recursiva|
+|[upload](#upload)|			Aplica move_uploaded_file a los multiples archivos encontrados en $_FILES y retorna un reporte		|
 
   
 &nbsp;

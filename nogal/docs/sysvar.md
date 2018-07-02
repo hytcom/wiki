@@ -17,14 +17,14 @@ Establece y almacena las variables por sistema de NOGAL.<ul><li>**ERRORS** =  c�
 # Métodos
 |Método|Descripción|
 |---|---|
-|[AccentedChars](#AccentedChars)||
-|[SetErrors](#SetErrors)||
-|[SetIP](#SetIP)||
-|[SetRegexs](#SetRegexs)||
-|[SetSelf](#SetSelf)||
-|[SetUID](#SetUID)||
-|[SetVersion](#SetVersion)||
-|[__get](#__get)|Método mágico encargado de retornar los valores de la variable \$VARS cuando es invocada por medio de **\$ngl("sysvar")**si no se especifica un nombre de variable se retornarán todas las variables de sistema|
+|[AccentedChars](#AccentedChars)|			Retorna un array asociativo con los caracteres acentuados y su equivalente sin acento, 			donde la clave es el caracter acentuado y el valor el caracter sin acentuar		|
+|[SetErrors](#SetErrors)|			Setea los mensajes de error del sistema en la variable ERRORS			SetErrors leera los archivos de configuración de errores de __nogal__/data/errors			e intentará leer los archivos de la carpeta ngl/conf del proyecto		|
+|[SetIP](#SetIP)|			En caso de existir setea el valor de la variable $_SERVER["REMOTE_ADDR"] en la variable IP			de lo contrario la setea como NULL		|
+|[SetRegexs](#SetRegexs)|Almacena expresiones regulares de uso frecuente en la variable REGEX|
+|[SetSelf](#SetSelf)|almacena los datos de la ruta del archivo actual en la variable SELF|
+|[SetUID](#SetUID)|			En caso de existir setea el valor de la variable $_SESSION[NGL_SESSION_INDEX]["UID"] en la variable UID			de lo contrario la setea como NULL		|
+|[SetVersion](#SetVersion)|Almacena los datos de la versión de NOGAL en la variable VERSION|
+|[__get](#__get)|			Método mágico encargado de retornar los valores de la variable $VARS cuando es invocada por medio de $ngl("sysvar")			si no se especifica un nombre de variable se retornarán todas las variables de sistema|
 
   
 &nbsp;

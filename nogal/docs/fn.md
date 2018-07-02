@@ -16,70 +16,70 @@ Compendio de métodos utilizados para resolver tareas rutinarias vinculadas a:<u
 # Métodos
 |Método|Descripción|
 |---|---|
-|[ArrayGrouper](#ArrayGrouper)||
-|[apacheMimeTypes](#apacheMimeTypes)|Retorna los Internet media types indexados por extención proporcionados por el sitio http://svn|
-|[arrange](#arrange)|Restituye el orden original de la Cadena o Array **\$mSource** desordenado por **nglCommon::disarrange** según las posiciones de **\$aArrange**|
-|[arrayAppend](#arrayAppend)|Añade los indices de 1 o mas arrays al array principal, sin importar el tipo de dato y sin sobreescribir indices|
-|[arrayColumn](#arrayColumn)||
-|[arrayGoto](#arrayGoto)||
-|[arrayGroup](#arrayGroup)|Agrupa un array bidimensional|
-|[arrayIn](#arrayIn)|Comprueba si un valor se encuentra en un array utilizando in_array o chequeando valor por valor utilizando expresiones regulares|
-|[arrayInsert](#arrayInsert)||
-|[arrayMerge](#arrayMerge)||
-|[arrayMultiSort](#arrayMultiSort)||
-|[arrayRebuilder](#arrayRebuilder)|Agrupa los índices **\$aIndexes** combinandolos por sus claves|
-|[arrayRepeat](#arrayRepeat)|Retorna un array con indices númericos que contiene **\$nMultiplier** repeticiones del array **\$aInput**|
-|[base64Cleaner](#base64Cleaner)||
-|[between](#between)|Verifica si un valor en relación a un rango de valores|
+|[ArrayGrouper](#ArrayGrouper)|Método axuliar de nglCommon::arrayGroup|
+|[apacheMimeTypes](#apacheMimeTypes)|			Retorna los Internet media types indexados por extención proporcionados por el sitio 			http://svn|
+|[arrange](#arrange)|			Restituye el orden original de la Cadena o Array $mSource desordenado por nglCommon::disarrange según las posiciones de $aArrange|
+|[arrayAppend](#arrayAppend)|			Añade los indices de 1 o mas arrays al array principal, sin importar el tipo de dato y sin sobreescribir indices|
+|[arrayColumn](#arrayColumn)|			Devuelve los valores de una sola columna de $aSource, identificado por la clave de columna $mColumnKey			Opcionalmente, se puede proporcionar una clave de índice, $mIndexKey, para indexar los valores del array devuelto 		|
+|[arrayGoto](#arrayGoto)|Avanza el puntero del array hasta el índice indicado por $mKey y retorna los datos|
+|[arrayGroup](#arrayGroup)|			Agrupa un array bidimensional|
+|[arrayIn](#arrayIn)|			Comprueba si un valor se encuentra en un array utilizando in_array o 			chequeando valor por valor utilizando expresiones regulares|
+|[arrayInsert](#arrayInsert)|Añade un elemento al Array en la posición determinada|
+|[arrayMerge](#arrayMerge)|Agrega N arrays multi-dimensionales en uno|
+|[arrayMultiSort](#arrayMultiSort)|Ordena un array multi-dimensional considerando multiples indices, orden y tipos de orden|
+|[arrayRebuilder](#arrayRebuilder)|			Agrupa los índices $aIndexes combinandolos por sus claves|
+|[arrayRepeat](#arrayRepeat)|Retorna un array con indices númericos que contiene $nMultiplier repeticiones del array $aInput|
+|[base64Cleaner](#base64Cleaner)|Elimina de una cadena todos los caracteres que no sean válidos en una cadena base64 [a-zA-Z0-9+/=]|
+|[between](#between)|			Verifica si un valor en relación a un rango de valores|
 |[clearPath](#clearPath)|Elimina los slashes de mas en un path o url|
-|[colorHex](#colorHex)||
-|[colorRGB](#colorRGB)||
-|[coockie](#coockie)|Guarda y optiene el valor de una cookie del navegador|
-|[dec2hex](#dec2hex)||
-|[disarrange](#disarrange)|Desordena de manera cíclica la Cadena o Array **\$mSource** según las posiciones de **\$aArrange**|
-|[dump](#dump)|Retorna el contenido de una variable de acuerdo al tipo de la misma:<br /><ul><li>arrays -> print_r</li><li>cadenas -> echo</li><li>otros -> var_dump</li></ul>Los valores son capturados por métodos de control de salida y retornados, no se imprimendirectamente en la pantalla|
-|[emptyToNull](#emptyToNull)|Establece como NULL los valores de \$aData, cuyo indice se encuentre en \$aKeys, que retornen TRUE a la funcion empty|
-|[encoding](#encoding)|Verifica si la cadena **\$sString** se encuentra codificada en **\$mEncoding****\$mEncoding** debe ser el nombre de una codificación válida o un array de nombres|
-|[ensureVar](#ensureVar)||
-|[explodeTrim](#explodeTrim)||
-|[exploder](#exploder)||
-|[headers](#headers)||
-|[hex2dec](#hex2dec)||
-|[imploder](#imploder)|Une elementos de un array multi dimensional en una cadena|
-|[imya](#imya)||
-|[intPart](#intPart)||
-|[isArrayArray](#isArrayArray)|Comprueba si **\$aArray** es un Array de Arrays|
-|[isEmpty](#isEmpty)|Comprueba si **\$mValue** esta vacío|
-|[isInteger](#isInteger)||
-|[isJSON](#isJSON)||
-|[isLowerCase](#isLowerCase)|Comprueba si **\$sString** son sólo letras minúsculas|
-|[isNull](#isNull)|Comprueba si un valor es NULL|
-|[isNumber](#isNumber)|Comprueba si **\$mNumber** es un valor númerico y retorna su valor en el formato correcto (float o int)|
-|[isSerialized](#isSerialized)|Comprueba si **\$sString** es un array serializado|
-|[isTrue](#isTrue)|Comprueba si **\$mValue** es TRUE o FALSE|
-|[isURL](#isURL)||
-|[isUTF8](#isUTF8)||
-|[isUpperCase](#isUpperCase)|Comprueba si **\$sString** son sólo letras mayúsculas|
-|[memory](#memory)||
+|[colorHex](#colorHex)|Retorna un color en valores hexadecimales basandose en RGB|
+|[colorRGB](#colorRGB)|Retorna los valores RGB y Transparencia de un color en formato hexadecimal|
+|[coockie](#coockie)|			Guarda y optiene el valor de una cookie del navegador|
+|[dec2hex](#dec2hex)|Transforma un decimal en hexadecimal sin límite de tamaño y con la posibilidad de rellenar con 0 por delante|
+|[disarrange](#disarrange)|			Desordena de manera cíclica la Cadena o Array $mSource según las posiciones de $aArrange|
+|[dump](#dump)|			Retorna el contenido de una variable de acuerdo al tipo de la misma:							arrays -> print_r				cadenas -> echo				otros -> var_dump						Los valores son capturados por métodos de control de salida y retornados, no se imprimen			directamente en la pantalla|
+|[emptyToNull](#emptyToNull)|			Establece como NULL los valores de $aData, cuyo indice se encuentre en $aKeys, que retornen TRUE a la funcion empty|
+|[encoding](#encoding)|			Verifica si la cadena $sString se encuentra codificada en $mEncoding			$mEncoding debe ser el nombre de una codificación válida o un array de nombres|
+|[ensureVar](#ensureVar)|Retorna el valor de $mSure cuanto $mVar no esta seteada o es NULL|
+|[explodeTrim](#explodeTrim)|Ejecuta la función explode de PHP y a continuación trata a cada uno de los valores con la función trim|
+|[exploder](#exploder)|Ejecuta la función explode de PHP de manera recursiva, utilizando los delimitadores para armar un array multi-dimensional|
+|[headers](#headers)|Retorna un array con todas las cabeceras enviadas hasta el momento, un una cadena o false para cuando se especifique $sHeader|
+|[hex2dec](#hex2dec)|Transforma un hexadecimal en decimal sin límite de tamaño|
+|[imploder](#imploder)|			Une elementos de un array multi dimensional en una cadena|
+|[imya](#imya)|Retorna o valida un imya|
+|[intPart](#intPart)|Retorna la parte entera de un número|
+|[isArrayArray](#isArrayArray)|			Comprueba si $aArray es un Array de Arrays|
+|[isEmpty](#isEmpty)|			Comprueba si $mValue esta vacío|
+|[isInteger](#isInteger)|Comprueba si un valor es un número entero|
+|[isJSON](#isJSON)|Comprueba si un valor es una cadena JSON válida|
+|[isLowerCase](#isLowerCase)|			Comprueba si $sString son sólo letras minúsculas|
+|[isNull](#isNull)|			Comprueba si un valor es NULL|
+|[isNumber](#isNumber)|			Comprueba si $mNumber es un valor númerico y retorna su valor en el formato correcto (float o int)|
+|[isSerialized](#isSerialized)|Comprueba si $sString es un array serializado|
+|[isTrue](#isTrue)|			Comprueba si $mValue es TRUE o FALSE|
+|[isURL](#isURL)|			Retorna TRUE (o el protocolo) si $sFilePath es una URL http, ftp o comienza con //			Para este último caso, cuando se solicite el protocolo, se retornará "url"		|
+|[isUTF8](#isUTF8)|Comprueba si $sString es una cadena UTF-8|
+|[isUpperCase](#isUpperCase)|			Comprueba si $sString son sólo letras mayúsculas|
+|[memory](#memory)|Devuelve el valor de la cantidad de memoria asignada a PHP, formateado con strSizeEncode()|
 |[mimeType](#mimeType)|Retorna el Mime Type de la extensión proporcionada|
-|[once](#once)|Genera o chequea un código único guardado en la session activa|
-|[round05](#round05)|Redondea un número al entero o punto medio mas cercano|
-|[secureName](#secureName)||
-|[strBoxAppend](#strBoxAppend)|Añade \$sAppend a \$sString desde el final y hasta el largo de \$sString|
-|[strBoxPrepend](#strBoxPrepend)|Añade \$sPrepend a \$sString desde el inicio y hasta el largo de \$sString|
-|[strCommon](#strCommon)||
-|[strOperator](#strOperator)||
-|[strSizeDecode](#strSizeDecode)|Retorna el valor \$sSize en bytes|
-|[strSizeEncode](#strSizeEncode)||
-|[tokenDecode](#tokenDecode)||
-|[tokenEncode](#tokenEncode)||
-|[treeWalk](#treeWalk)|Aplica una función de usuario recursivamente a cada miembro del arbol,entrando en cada uno de los nodos \$sChildrenNode|
-|[truelize](#truelize)|Crea un nuevo Array combinando los valores de \$aSource como claves y el booleano TRUE como valor de cada uno|
-|[unaccented](#unaccented)||
-|[unique](#unique)||
-|[uriDecode](#uriDecode)|Decodifica una cadena codificada con **uriEncode**|
-|[uriEncode](#uriEncode)||
-|[urlExists](#urlExists)|Comprueba si existe una URL|
+|[once](#once)|			Genera o chequea un código único guardado en la session activa|
+|[round05](#round05)|			Redondea un número al entero o punto medio mas cercano|
+|[secureName](#secureName)|Limpia una cadena para que pueda ser utilizada como nombre de archivo, carpeta, tabla o campo de una base de datos|
+|[strBoxAppend](#strBoxAppend)|			Añade $sAppend a $sString desde el final y hasta el largo de $sString|
+|[strBoxPrepend](#strBoxPrepend)|			Añade $sPrepend a $sString desde el inicio y hasta el largo de $sString|
+|[strCommon](#strCommon)|Compara dos cadenas desde el inicio y retorna la subcadena en común|
+|[strOperator](#strOperator)|			Retorna un operador válido en función su codificación:							eq:= (Equal)				noteq:!= (Not equal)				lt: (Greater than)				lteq:= (Greater than or equal to)				like:LIKE				rlike:RLIKE				and:AND				or:OR				xor:XOR (Exclusive OR)				in:IN				notin:NOT IN				is:IS				isnot:IS NOT						Si $sSign no se encuentra entre las opciones, se retornará el signo =			Si $sSign no es especificado, se retornará un array asosiativo con todos los operadores		|
+|[strSizeDecode](#strSizeDecode)|Retorna el valor $sSize en bytes|
+|[strSizeEncode](#strSizeEncode)|Retorna el valor $nBytes con el formato KB o MB o GB etc|
+|[tokenDecode](#tokenDecode)|Decodifica una cadena codificada con tokenEncode|
+|[tokenEncode](#tokenEncode)|Codifica el valor de $sSource en un token de 2540 caracteres y aplicando el código de seguridad $sKey|
+|[treeWalk](#treeWalk)|			Aplica una función de usuario recursivamente a cada miembro del arbol,			entrando en cada uno de los nodos $sChildrenNode|
+|[truelize](#truelize)|Crea un nuevo Array combinando los valores de $aSource como claves y el booleano TRUE como valor de cada uno|
+|[unaccented](#unaccented)|Reemplaza los caracteres acentuados por su equivalente sin acento|
+|[unique](#unique)|Genera una cadena aleatoria de 4 a 4096 caracteres que matchea con el patrón: [a-zA-Z][a-zA-Z0-9]{4,4096}|
+|[uriDecode](#uriDecode)|			Decodifica una cadena codificada con uriEncode|
+|[uriEncode](#uriEncode)|Codifica una cadena o array para que pueda ser enviado de manera segura por GET o POST|
+|[urlExists](#urlExists)|			Comprueba si existe una URL|
 
   
 &nbsp;

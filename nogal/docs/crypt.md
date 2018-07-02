@@ -39,11 +39,11 @@ Implementa la clase 'phpseclib', de algoritmos de encriptación
 # Métodos
 |Método|Descripción|
 |---|---|
-|[SetKey](#SetKey)||
-|[decrypt](#decrypt)||
-|[encrypt](#encrypt)||
-|[keys](#keys)||
-|[type](#type)|Establece el método de encriptación|
+|[SetKey](#SetKey)|Aplica la clave de encriptación/desencriptación en el objeto principal, a traves del método setKey|
+|[decrypt](#decrypt)|Desencripta una cadena con el método seleccionado|
+|[encrypt](#encrypt)|Encripta una cadena con el método seleccionado|
+|[keys](#keys)|Genera un array con el par de claves pública y privada cuando el modo de encriptación es RSA|
+|[type](#type)|			Establece el método de encriptación|
 
   
 &nbsp;

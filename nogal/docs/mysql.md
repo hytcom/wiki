@@ -42,19 +42,19 @@ Gestiona conexciones con bases de datos MySQL
 # Métodos
 |Método|Descripción|
 |---|---|
-|[Error](#Error)||
-|[PrepareValues](#PrepareValues)|Auxiliar de los métodos **insert** y **update**|
-|[close](#close)||
-|[connect](#connect)||
-|[destroy](#destroy)||
-|[escape](#escape)||
-|[exec](#exec)||
-|[insert](#insert)||
-|[jsqlParser](#jsqlParser)||
-|[mexec](#mexec)||
-|[mquery](#mquery)||
-|[query](#query)||
-|[update](#update)||
+|[Error](#Error)|Muestra el mensaje de Error generado por el fallo más reciente|
+|[PrepareValues](#PrepareValues)|			Auxiliar de los métodos insert y update|
+|[close](#close)|Finaliza la conexión con la base de datos|
+|[connect](#connect)|Establece la conexión con la base de datos|
+|[destroy](#destroy)|Cierra la conexión y destruye el objeto|
+|[escape](#escape)|Escapa un valor para ser incluído de manera segura en una sentencia SQL|
+|[exec](#exec)|Ejecuta una sentencia SQL y retorna un objecto mysqli_result|
+|[insert](#insert)|Inserta un nuevo registro en una tabla|
+|[jsqlParser](#jsqlParser)|Convierte una sentencia JSQL y retorna una sentencia SQL|
+|[mexec](#mexec)|Ejecuta varias sentencias SQL separadas por ; y retorna un array de objectos mysqli_result|
+|[mquery](#mquery)|Ejecuta varias sentencias SQL separadas por ; y retorna un array de objectos nglDBMySQLQuery, o TRUE cuando DO esta activo|
+|[query](#query)|Ejecuta una sentencia SQL y retorna un objecto nglDBMySQLQuery|
+|[update](#update)|Actualiza todos los registros que cumplan con la condición $sWhere|
 
   
 &nbsp;

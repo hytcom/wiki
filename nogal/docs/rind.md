@@ -68,69 +68,69 @@ Motor de plantillas.
 # Métodos
 |Método|Descripción|
 |---|---|
-|[ClearCode](#ClearCode)|Realiza limpieza del código generado por la clase antes de devolverlo como plantilla|
+|[ClearCode](#ClearCode)|				Realiza limpieza del código generado por la clase antes de devolverlo como plantilla|
 |[ClearHyphenArguments](#ClearHyphenArguments)|Elimina de un array todos valores cuyo indice contenga un guión medio|
-|[CommentReservedConstants](#CommentReservedConstants)|Auxiliar de las **nglRind::ReservedWords**, comenta las constantes reservadas en las plantillas|
-|[CommentReservedFunctions](#CommentReservedFunctions)|Auxiliar de las **nglRind::ReservedWords**, comenta las funciones no permitidas|
-|[CommentReservedWords](#CommentReservedWords)|Auxiliar de las **nglRind::ReservedWords**, comenta las palabras reservadas en las plantillas|
-|[ConstantsAllowed](#ConstantsAllowed)|Parsea la cadena **\$sConstantsAllowed** y setea las constantes PHP permitidas en las plantillas en la variable **\$_SET["CONSTANTS"]**|
+|[CommentReservedConstants](#CommentReservedConstants)|Auxiliar de las nglRind::ReservedWords, comenta las constantes reservadas en las plantillas|
+|[CommentReservedFunctions](#CommentReservedFunctions)|Auxiliar de las nglRind::ReservedWords, comenta las funciones no permitidas|
+|[CommentReservedWords](#CommentReservedWords)|Auxiliar de las nglRind::ReservedWords, comenta las palabras reservadas en las plantillas|
+|[ConstantsAllowed](#ConstantsAllowed)|Parsea la cadena $sConstantsAllowed y setea las constantes PHP permitidas en las plantillas en la variable $_SET["CONSTANTS"]|
 |[FillURL](#FillURL)|Reemplaza las URLs relativas por absolutas en el código de las plantilas|
-|[FillURLParser](#FillURLParser)|Auxiliar del método **nglRind::FillURL** encargado de efectuar los reemplazos|
+|[FillURLParser](#FillURLParser)|Auxiliar del método nglRind::FillURL encargado de efectuar los reemplazos|
 |[FixCode](#FixCode)|Analiza el código HTML/NGL y genera un código de etiquetas previo al código PHP final|
-|[GetCommand](#GetCommand)|Captura los comandos **rind**:<ul><li>**cmd_ini** =  posición de inicio del comando en el código fuente|
-|[IfcaseInline](#IfcaseInline)|Auxiliar del método **nglRind::rindIfcase** para los casos de if inline|
-|[InNotInArgument](#InNotInArgument)|Auxiliar del método **nglRind::rindIfcase**, retorna el código que verifica la existencia de un argumento|
+|[GetCommand](#GetCommand)|				Captura los comandos rind:									cmd_ini: posición de inicio del comando en el código fuente|
+|[IfcaseInline](#IfcaseInline)|Auxiliar del método nglRind::rindIfcase para los casos de if inline|
+|[InNotInArgument](#InNotInArgument)|Auxiliar del método nglRind::rindIfcase, retorna el código que verifica la existencia de un argumento|
 |[IsTemplateFile](#IsTemplateFile)|Chequea si el path de la plantilla es válido|
-|[IssetArgument](#IssetArgument)|Auxiliar del método **nglRind::rindIfcase**, retorna el código que verifica la existencia de un argumento|
-|[LoopVarName](#LoopVarName)|Auxiliar del método **nglRind::rindLoop**, gestiona los nombres de **loops**|
-|[MakeMatch](#MakeMatch)|Auxiliar de **nglRind::TagReader**, genera el código de una variable|
-|[PHPFunctions](#PHPFunctions)|Parsea la cadena **\$sAllowedPHPFunctions** y setea las funciones PHP permitidas en las plantillas en la variable **\$_SET["PHP_FUNCTIONS"]**|
+|[IssetArgument](#IssetArgument)|Auxiliar del método nglRind::rindIfcase, retorna el código que verifica la existencia de un argumento|
+|[LoopVarName](#LoopVarName)|Auxiliar del método nglRind::rindLoop, gestiona los nombres de loops|
+|[MakeMatch](#MakeMatch)|Auxiliar de nglRind::TagReader, genera el código de una variable|
+|[PHPFunctions](#PHPFunctions)|Parsea la cadena $sAllowedPHPFunctions y setea las funciones PHP permitidas en las plantillas en la variable $_SET["PHP_FUNCTIONS"]|
 |[PathBuilder](#PathBuilder)|Construye el path de la plantilla activa en base a los argumentos y atributos cargados|
-|[ProcessCode](#ProcessCode)||
-|[ProcessConstants](#ProcessConstants)|Retorna el código con las llamadas a las constantes citadas en **\$_SET["CONSTANTS"]**|
-|[PutSlashes](#PutSlashes)|Auxiliar de **::InNotInArgument**, escapa con slashes los HTML QUOTES de los argumentos|
+|[ProcessCode](#ProcessCode)|				Procesa el código fuente aplicando:									Limpieza de comentarios					Reemplazo de comandos simples					Reemplazo de constantes					Limpieza de codigo PHP					Procesamiento de variables					Reemplazo de comandos rind							|
+|[ProcessConstants](#ProcessConstants)|Retorna el código con las llamadas a las constantes citadas en $_SET["CONSTANTS"]|
+|[PutSlashes](#PutSlashes)|Auxiliar de ::InNotInArgument, escapa con slashes los HTML QUOTES de los argumentos|
 |[QuoteArguments](#QuoteArguments)|Chequea y re-entrecomilla los argumentos de los comandos|
 |[ReadTemplate](#ReadTemplate)|Lee una plantilla a una variable|
 |[ReplaceCommands](#ReplaceCommands)|Reemplaza comandos RIND por código PHP|
-|[ReplaceConstants](#ReplaceConstants)|Auxiliar del método **nglRind::Constants** para el reemplazo de constantes|
-|[ReservedStrings](#ReservedStrings)|Reemplaza las palabras reservadas por las variables **\$RIND_|
+|[ReplaceConstants](#ReplaceConstants)|Auxiliar del método nglRind::Constants para el reemplazo de constantes|
+|[ReservedStrings](#ReservedStrings)|Reemplaza las palabras reservadas por las variables $RIND_|
 |[ReservedWords](#ReservedWords)|Detecta y reemplaza las funciones, las palabras reservadas y constantes en las plantillas|
-|[SetPaths](#SetPaths)|Arma y setea los paths utilizados por el objeto|
-|[SingleCommands](#SingleCommands)|Ejecuta los comandos simples: **abort**, **once** y **skip**|
+|[SetPaths](#SetPaths)|				Arma y setea los paths utilizados por el objeto|
+|[SingleCommands](#SingleCommands)|Ejecuta los comandos simples: abort, once y skip|
 |[StripPHP](#StripPHP)|Elimina el código PHP presente en las plantillas|
-|[TagConverter](#TagConverter)|Reemplaza las etiquetas **rind** por cadenas simplificadas y viceversa|
-|[TagReader](#TagReader)|Lee y parsea etiquetas **rind**|
-|[VarsDenyAllow](#VarsDenyAllow)|Establece la politica de variables PHP están permitidas en las plantillas|
+|[TagConverter](#TagConverter)|Reemplaza las etiquetas rind por cadenas simplificadas y viceversa|
+|[TagReader](#TagReader)|Lee y parsea etiquetas rind|
+|[VarsDenyAllow](#VarsDenyAllow)|				Establece la politica de variables PHP están permitidas en las plantillas|
 |[VarsEscape](#VarsEscape)|Detecta y reemplaza las funciones, las palabras reservadas y constantes en las plantillas|
 |[VarsParser](#VarsParser)|Parser de variables|
 |[VarsProcessor](#VarsProcessor)|Procesa los nombres de las variables|
 |[dynVar](#dynVar)|Genera un nombre de variable aleatorio o basado en una semilla de 8 caracteres de longuitud|
-|[flushCache](#flushCache)||
+|[flushCache](#flushCache)|Elimina todas las carpetas y archivos del cache|
 |[getRINDVariable](#getRINDVariable)|Retorna el valor hash asignado a cada una de las variables RIND|
-|[getSET](#getSET)|Retorna el valor de un índice de la variable **\$_SET**|
+|[getSET](#getSET)|				Retorna el valor de un índice de la variable $_SET|
 |[process](#process)|Procesa una plantilla, cachea el código PHP generado y retorna el path del cache|
-|[quick](#quick)|Ejecuta la plantilla \$sFileName sobre el archivo actual y retorna el código resultante|
-|[rindDump](#rindDump)|Retorna el código que genera volcados en pantalla **rind:dump** en las plantillas|
-|[rindEco](#rindEco)|Retorna el código que imprime un valor usando **rind:eco** en las plantillas|
-|[rindGet](#rindGet)|Retorna un id unico utilizando **ngl::unique** en las plantillas|
-|[rindHalt](#rindHalt)|Retorna el código que detiene un ejecución usuando **rind:halt** en las plantillas|
-|[rindHeredoc](#rindHeredoc)|Retorna el código de una expresión de **rind:rtn** en las plantillas|
-|[rindIfcase](#rindIfcase)|Genera el código PHP para el comando **rind:ifcase** del sistema de plantillas|
-|[rindIncFile](#rindIncFile)|Retorna el código que incluye un archivo válido en **\$_SET["INCLUDES"]**, en las plantillas|
+|[quick](#quick)|				Ejecuta la plantilla $sFileName sobre el archivo actual y retorna el código resultante|
+|[rindDump](#rindDump)|Retorna el código que genera volcados en pantalla rind:dump en las plantillas|
+|[rindEco](#rindEco)|Retorna el código que imprime un valor usando rind:eco en las plantillas|
+|[rindGet](#rindGet)|Retorna un id unico utilizando ngl::unique en las plantillas|
+|[rindHalt](#rindHalt)|Retorna el código que detiene un ejecución usuando rind:halt en las plantillas|
+|[rindHeredoc](#rindHeredoc)|Retorna el código de una expresión de rind:rtn en las plantillas|
+|[rindIfcase](#rindIfcase)|Genera el código PHP para el comando rind:ifcase del sistema de plantillas|
+|[rindIncFile](#rindIncFile)|Retorna el código que incluye un archivo válido en $_SET["INCLUDES"], en las plantillas|
 |[rindJoin](#rindJoin)|Convierte un string separado por comas en un array|
-|[rindJson](#rindJson)|Retorna el código de una variable string generada con **rind:strvar** en las plantillas|
-|[rindLength](#rindLength)|Retorna el código que devuelve el largo de un valor usando **rind:length** en las plantillas|
-|[rindLoop](#rindLoop)|Retorna los distintos códigos de bucles **rind:loop** en las plantillas|
+|[rindJson](#rindJson)|Retorna el código de una variable string generada con rind:strvar en las plantillas|
+|[rindLength](#rindLength)|Retorna el código que devuelve el largo de un valor usando rind:length en las plantillas|
+|[rindLoop](#rindLoop)|Retorna los distintos códigos de bucles rind:loop en las plantillas|
 |[rindMergeFile](#rindMergeFile)|Detecta y ejecuta las inclusiones de sub-plantillas en la plantilla principal|
-|[rindRtn](#rindRtn)|Retorna el código de una expresión de **rind:rtn** en las plantillas|
-|[rindSet](#rindSet)|Retorna el código que setea una variable en **\$_SET** usando **rind:set** en las plantillas|
+|[rindRtn](#rindRtn)|Retorna el código de una expresión de rind:rtn en las plantillas|
+|[rindSet](#rindSet)|Retorna el código que setea una variable en $_SET usando rind:set en las plantillas|
 |[rindSplit](#rindSplit)|Convierte un array en un string separado por comas|
-|[rindUnSet](#rindUnSet)|Retorna el código que desetea un índice de **\$_SET** usando **rind:unset** en las plantillas|
-|[rindUnique](#rindUnique)|Retorna un id unico utilizando **ngl::unique** en las plantillas|
-|[setSESS](#setSESS)||
-|[setSET](#setSET)|Setea un valor en la variable **\$_SET**, disponible en las plantillas|
+|[rindUnSet](#rindUnSet)|Retorna el código que desetea un índice de $_SET usando rind:unset en las plantillas|
+|[rindUnique](#rindUnique)|Retorna un id unico utilizando ngl::unique en las plantillas|
+|[setSESS](#setSESS)|Setea el contenido de la variable $_SESSION[NGL_SESSION_INDEX]["SESS"] en el índice SESS de la variable SET y lo retorna|
+|[setSET](#setSET)|				Setea un valor en la variable $_SET, disponible en las plantillas|
 |[showPaths](#showPaths)|Muestra los paths con los que está seteado el objeto|
-|[stamp](#stamp)|Ejecuta el método **nglRind::process** y ejecuta el archivo generado|
+|[stamp](#stamp)|Ejecuta el método nglRind::process y ejecuta el archivo generado|
 |[stripQuotes](#stripQuotes)|Elimina el primer par de comillas dobles del principio y fin|
 |[varName](#varName)|Genera un nombre de variable aleatorio de entre 1 y 32 caracteres de loguitud|
 

@@ -49,22 +49,22 @@ Características Principales:
 # Métodos
 |Método|Descripción|
 |---|---|
-|[DownloadTree](#DownloadTree)||
-|[GetChmod](#GetChmod)||
-|[GetTimestamp](#GetTimestamp)||
-|[Logger](#Logger)||
-|[UploadTree](#UploadTree)||
-|[cd](#cd)||
-|[connect](#connect)||
-|[curdir](#curdir)||
-|[delete](#delete)||
-|[download](#download)||
-|[login](#login)||
+|[DownloadTree](#DownloadTree)|Método auxiliar de DOWNLOAD ejecutado por medio del método nglCommon::treeWalk|
+|[GetChmod](#GetChmod)|Convierte una cadena de permisos RWX en un valor CHMOD|
+|[GetTimestamp](#GetTimestamp)|Convierte las fechas de ftp_rawlist en un valor timestamp|
+|[Logger](#Logger)|Registra una cadena en el atributo log|
+|[UploadTree](#UploadTree)|método auxiliar de UPLOAD ejecutado por medio del método treeWalk|
+|[cd](#cd)|Cambia de directorio en el servidor remoto|
+|[connect](#connect)|Establece la conexión con el servidor remoto|
+|[curdir](#curdir)|Retorna la ruta del directorio actual|
+|[delete](#delete)|Elimina un archivo o directorio|
+|[download](#download)|descarga un archivo o directorio del servidor a la maquina local|
+|[login](#login)|Autentica la sesion en el servidor remoto|
 |[ls](#ls)|Lista el contenido de un directorio|
-|[mkdir](#mkdir)|Crea un directorio|
+|[mkdir](#mkdir)|			Crea un directorio|
 |[passive](#passive)|Activa/desactiva el modo pasivo|
-|[rename](#rename)||
-|[upload](#upload)||
+|[rename](#rename)|Cambia el nombre de un archivo o directorio|
+|[upload](#upload)|Sube un archivo o directorio al servidor remoto|
 
   
 &nbsp;
