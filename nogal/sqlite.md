@@ -67,6 +67,7 @@ ___
 Establece la conexión con la base de datos  
 
 **[$this]** =  *public* function ( *string* \$sBase, *string* \$sPass, *string* \$nFlags );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sBase**|string|null|Ruta del archivo de base de datos|
@@ -98,6 +99,7 @@ ___
 Escapa un valor para ser incluído de manera segura en una sentencia SQL  
 
 **[mixed]** =  *public* function ( *string* \$mValues );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$mValues**|string|null|Datos enviados a los métodos INSERT y UPDATE. Valores admitidos:<ul><li>**array asociativo** =  donde cada clave es el nombre del campo en la tabla</li><li>**cadena de variables** =  con el mismo formato que las pasadas por medio de una URL. El valor será analizado utilizando **parse_str**</li></ul>|
@@ -109,6 +111,7 @@ ___
 Ejecuta una sentencia SQL y retorna un objecto **SQLite3Result**  
 
 **[SQLite3Result object]** =  *public* function ( *string* \$sQuery );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sQuery**|string|null|Ultima sentencia SQL ejecutada o próxima a ejecutarse|
@@ -120,6 +123,7 @@ ___
 Convierte una sentencia JSQL y retorna una sentencia SQL  
 
 **[string]** =  *public* function ( *mixed* \$mJSQL, *string* \$sEOL );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$mJSQL**|mixed|null|Sentencia SQL en formato JSON o Array:<ul><li>columns</li><li>tables</li><li>where</li><li>group</li><li>having</li><li>order</li><li>offset</li><li>limit</li></ul>|
@@ -132,6 +136,7 @@ ___
 Ejecuta varias sentencias SQL separadas por ; y retorna un array de objectos **SQLite3Result**  
 
 **[array]** =  *public* function ( *string* \$sQuery );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sQuery**|string|null|Ultima sentencia SQL ejecutada o próxima a ejecutarse|
@@ -143,6 +148,7 @@ ___
 Ejecuta varias sentencias SQL separadas por ; y retorna un array de objectos **nglDBSQLiteQuery**, o TRUE cuando DO esta activo  
 
 **[array]** =  *public* function ( *string* \$sQuery, *boolean* \$bDO );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sQuery**|string|null|Ultima sentencia SQL ejecutada o próxima a ejecutarse|
@@ -155,6 +161,7 @@ ___
 Inserta un nuevo registro en una tabla  
 
 **[SQLite3Result object]** =  *public* function ( *string* \$sTable, *string* \$mValues, *string* \$sMode );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sTable**|string|null|Nombre de la tabla activa en los métodos INSERT y UPDATE|
@@ -170,6 +177,7 @@ Prepara el **array asociativo** o la **cadena de variables** para ser utilizados
 Cuando los valores sean pasados como una **cadena de variables** estos serán tratados con **escape** para garantizar la seguridad del comando SQL.  
 
 **[SQLite3Result object]** =  *private* function ( *string* \$sType, *string* \$sTable, *mixed* \$mValues, *boolean* \$bCheckColumns );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sType**|string||Tipo de operación, INSERT o UPDATE|
@@ -184,6 +192,7 @@ ___
 Ejecuta una sentencia SQL y retorna un objecto **nglDBSQLiteQuery**  
 
 **[nglDBSQLiteQuery object]** =  *public* function ( *string* \$sQuery, *boolean* \$bDO );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sQuery**|string|null|Ultima sentencia SQL ejecutada o próxima a ejecutarse|
@@ -196,6 +205,7 @@ ___
 Actualiza todos los registros que cumplan con la condición **\$sWhere**  
 
 **[SQLite3Result object]** =  *public* function ( *string* \$sTable, *string* \$mValues, *string* \$sWhere, *string* \$sMode );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sTable**|string|null|Nombre de la tabla activa en los métodos INSERT y UPDATE|

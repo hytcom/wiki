@@ -30,6 +30,7 @@ Métodos frecuentes para el manejo de archivos y directorios.
 formatea un path como absoluto limpiando doble barras o referencias atras (..)  
 
 **[string]** =  *public* function ( *string* \$sPath, *string* \$sSlash );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sPath**|string||Path|
@@ -42,6 +43,7 @@ ___
 Retorna la porción común de dos paths desde el inicio. Previa a la comparación limpia los paths con **nglCommon::clearPath**  
 
 **[string]** =  *public* function ( *string* \$sPath1, *string* \$sPath2, *string* \$sSlash );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sPath1**|string||path 1|
@@ -55,6 +57,7 @@ ___
 Copia archivos y directorios de manera recursiva. Retorna un Array de 2 indices:<ul><li>**0** =  Cantidad de archivos copiados y directorios creados.</li><li>**1** =  Log con el detalla de cada una de las operaciones.</li></ul>  
 
 **[array]** =  *public* function ( *string* \$sSource, *string* \$sDestine, *string* \$sMask, *boolean* \$bRecursive, *boolean* \$bIncludeHidden, *boolean* \$bLog );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sSource**|string||Origen de la copia|
@@ -71,6 +74,7 @@ ___
 lista el contenido de un directorio  
 
 **[array]** =  *public* function ( *string* \$sPath, *string* \$mMask, *string* \$sMode, *boolean* \$bRecursive, *string* \$sChildren, *boolean* \$bIni );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sPath**|string|.|Directorio|
@@ -87,6 +91,7 @@ ___
 imprime el árbol de un directorio de manera recursiva  
 
 **[array]** =  *public* function ( *string* \$sPath, *string* \$mMask, *string* \$sChildren );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sPath**|string|.|Directorio|
@@ -109,6 +114,7 @@ ___
 Crea un directorio. Si el directorio ya existe y \$bForce es TRUE, mkdir le agregará al nombre del directorio el sufijo _N donde N es el número de directorio con el mismo nombre +1  
 
 **[boolean]** =  *public* function ( *string* \$sPath, *boolean* \$bForce );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sPath**|string|.|Directorio|
@@ -121,6 +127,7 @@ ___
 Toma el array \$aFiles (de estructura igual a \$_FILES) y lo reordena de manera recursiva, para optener una lectura mas natural  
 
 **[array]** =  *private* function ( *array* \$aFiles, *boolean* \$bTop );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$aFiles**|array||Array de archivos|
@@ -133,6 +140,7 @@ ___
 Elimina archivos y directorios de manera recursiva. Retorna un Array de 2 indices:<ul><li>**0** =  Cantidad de archivos y directorios eliminados</li><li>**1** =  Log con el detalla de cada una de las operaciones</li></ul>  
 
 **[array]** =  *public* function ( *string* \$sSource, *string* \$sMask, *boolean* \$bRecursive, *boolean* \$bIncludeHidden, *boolean* \$bLog );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sSource**|string||Target de borrado. Si el target es un directorio y la cadena NO termina con un slash, el mismo tambien será eliminado luego de vaciarse.|
@@ -148,6 +156,7 @@ ___
 Aplica move_uploaded_file a los multiples archivos encontrados en \$_FILES y retorna un reporte  
 
 **[array]** =  *public* function ( *mixed* \$mDestine, *int* \$nLimit );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$mDestine**|mixed||Ruta de destino o array asociativo de las mismas, donde cada índice será el mismo que en el array \$_FILES|

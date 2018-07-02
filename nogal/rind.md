@@ -140,6 +140,7 @@ Motor de plantillas.
 Realiza limpieza del código generado por la clase antes de devolverlo como plantilla.<ul><li>variables \$_SET</li><li>reemplazo de RIND_HTML_QUOTE por comillas doble</li><li>reemplazo de RIND_QUOTE por comillas doble</li><li>limpieza de doble comillas concatenadas</li><li>restitucion de caracteres RIND</li><li>palabras reservadas, variables y funciones denegadas</li><li>RIND_DOLLAR_SIGN por \$</li></ul>  
 
 **[string]** =  *private* function ( *string* \$sSource );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sSource**|string||Código fuente|
@@ -151,6 +152,7 @@ ___
 Elimina de un array todos valores cuyo indice contenga un guión medio.  
 
 **[array]** =  *private* function ( *array* \$aArguments );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$aArguments**|array||Array de valores.|
@@ -162,6 +164,7 @@ ___
 Auxiliar de las **nglRind::ReservedWords**, comenta las constantes reservadas en las plantillas.  
 
 **[array]** =  *private* function ( *array* \$aMatchs );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$aMatchs**|array||Constantes detectas en las plantillas.|
@@ -173,6 +176,7 @@ ___
 Auxiliar de las **nglRind::ReservedWords**, comenta las funciones no permitidas.  
 
 **[array]** =  *private* function ( *array* \$aMatchs );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$aMatchs**|array||Funciones de no permitidas detectas en las plantillas.|
@@ -184,6 +188,7 @@ ___
 Auxiliar de las **nglRind::ReservedWords**, comenta las palabras reservadas en las plantillas.  
 
 **[array]** =  *private* function ( *array* \$aMatchs );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$aMatchs**|array||Palabras reservadas detectas en las plantillas.|
@@ -195,6 +200,7 @@ ___
 Retorna el código con las llamadas a las constantes citadas en **\$_SET["CONSTANTS"]**.  
 
 **[string]** =  *private* function ( *string* \$sCode );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sCode**|string||Código a analizar.|
@@ -206,6 +212,7 @@ ___
 Parsea la cadena **\$sConstantsAllowed** y setea las constantes PHP permitidas en las plantillas en la variable **\$_SET["CONSTANTS"]**.  
 
 **[void]** =  *protected* function ( *string* \$sAllowedPHPFunctions );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sAllowedPHPFunctions**|string||Listado de constantes separado por comas.|
@@ -217,6 +224,7 @@ ___
 Genera un nombre de variable aleatorio o basado en una semilla de 8 caracteres de longuitud.  
 
 **[string]** =  *public* function ( *string* \$sNeedle );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sNeedle**|string||Base para el nombre de una variable dinámica.|
@@ -228,6 +236,7 @@ ___
 Reemplaza las URLs relativas por absolutas en el código de las plantilas.  
 
 **[string]** =  *private* function ( *string* \$sSource );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sSource**|string||Código a fuente.|
@@ -239,6 +248,7 @@ ___
 Auxiliar del método **nglRind::FillURL** encargado de efectuar los reemplazos.  
 
 **[string]** =  *private* function ( *string* \$sSource, *array* \$aURLs, *string* \$sURLSelf, *string* \$sTemplateURL );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sSource**|string||Código a fuente.|
@@ -253,6 +263,7 @@ ___
 Analiza el código HTML/NGL y genera un código de etiquetas previo al código PHP final.  
 
 **[array]** =  *private* function ( *array* \$aCode, *string* \$sType );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$aCode**|array||Código a analizar.|
@@ -284,6 +295,7 @@ Retorna el valor de un índice de la variable **\$_SET**.
 Cuando el valor sea NULL, se retornarán todo el array **\$_SET**.  
 
 **[mixed]** =  *public* function ( *string* \$sIndex );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sIndex**|string||Nombre del indice a retornar.|
@@ -295,6 +307,7 @@ ___
 Retorna el valor hash asignado a cada una de las variables RIND. Este método tiene aplicación dentro de las librerías XPS  
 
 **[mixed]** =  *public* function ( *string* \$sVarName );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sVarName**|string|null|Nombre de variable RIND<ul><li>**RIND_UID** =  = id único</li><li>**RIND_ME** =  = id único entrecomillado</li><li>**RIND_DOLLAR_SIGN** =  = signo \$ (variables)</li><li>**RIND_QUOTE** =  = comillas dentro del pseudo código</li><li>**RIND_HTML_QUOTE** =  = comillas dobles utilizadas en las plantillas</li><li>**RIND_RESERVED** =  = marca de palabras reservadas</li><li>**RIND_DC1** =  = dígito control 1</li><li>**RIND_DC2** =  = dígito control 2</li><li>**RIND_DC3** =  = dígito control 3</li><li>**RIND_LC_BRACKET** =  = llave de apertura {</li><li>**RIND_RC_BRACKET** =  = llave de cierre }</li><li>**RIND_FUN_OPEN** =  = apertura de función</li><li>**RIND_FUN_CLOSE** =  = cierre de función</li><li>**RIND_VAR_OPEN** =  = apertura de variable</li><li>**RIND_VAR_CLOSE** =  = cierre de variable</li><li>**RIND_PHP_OPEN** =  = apertura PHP</li><li>**RIND_PHP_CLOSE** =  = cierre PHP</li><li>**RIND_HDV_OPEN** =  = apertura de variable en JSON</li><li>**RIND_HDV_CLOSE** =  = cierre de variable en JSON</li></ul>|
@@ -306,6 +319,7 @@ ___
 Auxiliar del método **nglRind::rindIfcase** para los casos de if inline.  
 
 **[string]** =  *private* function ( *string* \$sString );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sString**|string||Código del IF.|
@@ -317,6 +331,7 @@ ___
 Auxiliar del método **nglRind::rindIfcase**, retorna el código que verifica la existencia de un argumento.  
 
 **[string]** =  *private* function ( *string* \$sIssetArgument );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sIssetArgument**|string||Código a evaluar.|
@@ -328,6 +343,7 @@ ___
 Auxiliar del método **nglRind::rindIfcase**, retorna el código que verifica la existencia de un argumento.  
 
 **[string]** =  *private* function ( *string* \$sIssetArgument );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sIssetArgument**|string||Código a evaluar.|
@@ -339,6 +355,7 @@ ___
 Chequea si el path de la plantilla es válido.  
 
 **[boolean]** =  *private* function ( *string* \$sTemplateFile );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sTemplateFile**|string||URL de la plantilla.|
@@ -350,6 +367,7 @@ ___
 Auxiliar del método **nglRind::rindLoop**, gestiona los nombres de **loops**.  
 
 **[string]** =  *private* function ( *string* \$sSource, *string* \$sLoopName );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sSource**|string||Código a evaluar.|
@@ -362,6 +380,7 @@ ___
 Auxiliar de **nglRind::TagReader**, genera el código de una variable.  
 
 **[string]** =  *private* function ( *int* \$nLength, *string* \$sBaseName, *int* \$sCounter );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$nLength**|int||Largo del nombre de la variable.|
@@ -375,6 +394,7 @@ ___
 Construye el path de la plantilla activa en base a los argumentos y atributos cargados.  
 
 **[string]** =  *protected* function ( *string* \$sFileName );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sFileName**|string||Nombre del archivo.|
@@ -386,6 +406,7 @@ ___
 Parsea la cadena **\$sAllowedPHPFunctions** y setea las funciones PHP permitidas en las plantillas en la variable **\$_SET["PHP_FUNCTIONS"]**.  
 
 **[void]** =  *protected* function ( *string* \$sAllowedPHPFunctions );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sAllowedPHPFunctions**|string||Listado de funciones separado por comas.|
@@ -397,6 +418,7 @@ ___
 Procesa una plantilla, cachea el código PHP generado y retorna el path del cache.  
 
 **[string]** =  *public* function ( *string* \$sFileName, *string* \$sCacheMode );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sFileName**|string||Nombre del archivo plantilla.|
@@ -415,6 +437,7 @@ variables atraves de la variable \$GLOBALS, por lo que las variables que se pase
 con la sintaxis: \$GLOBALS["foo"] = "asd123";  
 
 **[string]** =  *public* function ( *string* \$sFileName );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sFileName**|string||Nombre del archivo plantilla.|
@@ -426,6 +449,7 @@ ___
 Procesa el código fuente aplicando:<ul><li>Limpieza de comentarios</li><li>Reemplazo de comandos simples</li><li>Reemplazo de constantes</li><li>Limpieza de codigo PHP</li><li>Procesamiento de variables</li><li>Reemplazo de comandos **rind**</li></ul>  
 
 **[boolean]** =  *private* function ( *string* \$sCode );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sCode**|string||Código fuente.|
@@ -437,6 +461,7 @@ ___
 Auxiliar de **::InNotInArgument**, escapa con slashes los HTML QUOTES de los argumentos.  
 
 **[string]** =  *private* function ( *string* \$sString );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sString**|string||Cadena a escapar.|
@@ -448,6 +473,7 @@ ___
 Chequea y re-entrecomilla los argumentos de los comandos.  
 
 **[array]** =  *private* function ( *array* \$aArguments );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$aArguments**|array||Código fuente.|
@@ -459,6 +485,7 @@ ___
 Lee una plantilla a una variable.  
 
 **[string]** =  *private* function ( *string* \$sFileName, *boolean* \$bRINDagsConvert );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sFileName**|string||Path de la plantilla.|
@@ -471,6 +498,7 @@ ___
 Reemplaza comandos RIND por código PHP.  
 
 **[array]** =  *private* function ( *array* \$aCode, *array* \$vCommand );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$aCode**|array||Código fuente.|
@@ -483,6 +511,7 @@ ___
 Auxiliar del método **nglRind::Constants** para el reemplazo de constantes.  
 
 **[string]** =  *private* function ( *array* \$aMatches );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$aMatches**|array||Array con las constantes detectadas en el código original.|
@@ -494,6 +523,7 @@ ___
 Reemplaza las palabras reservadas por las variables **\$RIND_...** y viceversa.  
 
 **[string]** =  *private* function ( *string* \$sCode, *boolean* \$bRevert );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sCode**|string||Código fuente.|
@@ -506,6 +536,7 @@ ___
 Detecta y reemplaza las funciones, las palabras reservadas y constantes en las plantillas.  
 
 **[array]** =  *private* function ( *string* \$sCode );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sCode**|string||Código fuente.|
@@ -527,6 +558,7 @@ ___
 Setea el contenido de la variable \$_SESSION[NGL_SESSION_INDEX]["SESS"] en el índice **SESS** de la variable **SET** y lo retorna  
 
 **[$this]** =  *public* function ( *string* \$sIndex );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sIndex**|string||Nombre del indice a retornar.|
@@ -541,6 +573,7 @@ El método retornará el valor asignado a **\$sIndex**.
 Cuando se utilice setSET en el archivo PHP habrá que asignarle un nombre al objeto **rind**, ya que el utilizar la sintaxis **rind.** causará errores.  
 
 **[$this]** =  *public* function ( *string* \$sIndex, *string* \$mValue, *string* \$sRequested );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sIndex**|string||Nombre del indice a setear.|
@@ -563,6 +596,7 @@ ___
 Ejecuta los comandos simples: **abort**, **once** y **skip**.  
 
 **[string]** =  *private* function ( *string* \$sCode );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sCode**|string||Código fuente.|
@@ -574,6 +608,7 @@ ___
 Ejecuta el método **nglRind::process** y ejecuta el archivo generado.  
 
 **[string]** =  *public* function ( *string* \$sFileName, *string* \$sCacheMode );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sFileName**|string||Nombre del archivo plantilla.|
@@ -586,6 +621,7 @@ ___
 Elimina el código PHP presente en las plantillas.  
 
 **[array]** =  *private* function ( *string* \$sCode );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sCode**|string||Código fuente.|
@@ -597,6 +633,7 @@ ___
 Elimina el primer par de comillas dobles del principio y fin.  
 
 **[string]** =  *protected* function ( *string* \$sArgument );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sArgument**|string||Cadena a limpiar.|
@@ -608,6 +645,7 @@ ___
 Reemplaza las etiquetas **rind** por cadenas simplificadas y viceversa.  
 
 **[string]** =  *private* function ( *string* \$sCode, *boolean* \$bRevert );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sCode**|string||Código fuente.|
@@ -620,6 +658,7 @@ ___
 Lee y parsea etiquetas **rind**.  
 
 **[array]** =  *private* function ( *array* \$aCode, *int* \$nFrom, *string* \$sBreaker, *string* \$sJumper );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$aCode**|array||Código fuente.|
@@ -634,6 +673,7 @@ ___
 Genera un nombre de variable aleatorio de entre 1 y 32 caracteres de loguitud.  
 
 **[string]** =  *protected* function ( *int* \$nLength );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$nLength**|int||Largo del nombre de la variable.|
@@ -646,6 +686,7 @@ Establece la politica de variables PHP están permitidas en las plantillas.
 Si el valor de **\$sVariables** es NULL, se aplicara **\$sType** para todas las variables.  
 
 **[void]** =  *protected* function ( *string* \$sType, *string* \$sVariables );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sType**|string||Política a aplicar, **deny** o **allow**.|
@@ -658,6 +699,7 @@ ___
 Detecta y reemplaza las funciones, las palabras reservadas y constantes en las plantillas.  
 
 **[array]** =  *private* function ( *string* \$sCode );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sCode**|string||Código fuente.|
@@ -669,6 +711,7 @@ ___
 Parser de variables.  
 
 **[array]** =  *private* function ( *array* \$aCode );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$aCode**|array||Código fuente.|
@@ -680,6 +723,7 @@ ___
 Procesa los nombres de las variables.  
 
 **[array]** =  *private* function ( *string* \$sVarName );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sVarName**|string||Cadena que contiene el código de la variable.|
@@ -691,6 +735,7 @@ ___
 Retorna el código que genera volcados en pantalla **rind:dump** en las plantillas.  
 
 **[string]** =  *private* function ( *array* \$vArguments );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$vArguments**|array||Argumentos del comando.|
@@ -702,6 +747,7 @@ ___
 Retorna el código que imprime un valor usando **rind:eco** en las plantillas.  
 
 **[string]** =  *private* function ( *array* \$vArguments );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$vArguments**|array||Argumentos del comando.|
@@ -713,6 +759,7 @@ ___
 Retorna el código que detiene un ejecución usuando **rind:halt** en las plantillas.  
 
 **[string]** =  *private* function ( *array* \$vArguments );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$vArguments**|array||Argumentos del comando.|
@@ -724,6 +771,7 @@ ___
 Retorna el código de una variable string generada con **rind:strvar** en las plantillas.  
 
 **[string]** =  *private* function ( *array* \$vArguments );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$vArguments**|array||Argumentos del comando.|
@@ -735,6 +783,7 @@ ___
 Genera el código PHP para el comando **rind:ifcase** del sistema de plantillas.  
 
 **[string]** =  *private* function ( *array* \$vArguments );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$vArguments**|array||Argumentos del comando.|
@@ -746,6 +795,7 @@ ___
 Retorna el código que incluye un archivo válido en **\$_SET["INCLUDES"]**, en las plantillas.  
 
 **[string]** =  *private* function ( *array* \$vArguments );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$vArguments**|array||Argumentos del comando.|
@@ -757,6 +807,7 @@ ___
 Retorna el código que devuelve el largo de un valor usando **rind:length** en las plantillas.  
 
 **[string]** =  *private* function ( *array* \$vArguments );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$vArguments**|array||Argumentos del comando.|
@@ -768,6 +819,7 @@ ___
 Retorna los distintos códigos de bucles **rind:loop** en las plantillas.  
 
 **[string]** =  *private* function ( *array* \$vArguments );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$vArguments**|array||Argumentos del comando.|
@@ -779,6 +831,7 @@ ___
 Detecta y ejecuta las inclusiones de sub-plantillas en la plantilla principal.  
 
 **[string]** =  *private* function ( *array* \$vArguments );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$vArguments**|array||Argumentos del comando.|
@@ -790,6 +843,7 @@ ___
 Retorna el código de una expresión de **rind:rtn** en las plantillas.  
 
 **[string]** =  *private* function ( *array* \$vArguments );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$vArguments**|array||Argumentos del comando.|
@@ -801,6 +855,7 @@ ___
 Retorna el código que setea una variable en **\$_SET** usando **rind:set** en las plantillas.  
 
 **[string]** =  *private* function ( *array* \$vArguments );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$vArguments**|array||Argumentos del comando.|
@@ -812,6 +867,7 @@ ___
 Convierte un array en un string separado por comas.  
 
 **[string]** =  *private* function ( *content* \$vArguments );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$vArguments**|content||Array de datos.|
@@ -823,6 +879,7 @@ ___
 Convierte un string separado por comas en un array.  
 
 **[array]** =  *private* function ( *content* \$vArguments );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$vArguments**|content||Cadena de datos.|
@@ -834,6 +891,7 @@ ___
 Retorna el código de una expresión de **rind:rtn** en las plantillas.  
 
 **[string]** =  *private* function ( *array* \$vArguments );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$vArguments**|array||Argumentos del comando.|
@@ -845,6 +903,7 @@ ___
 Retorna un id unico utilizando **ngl::unique** en las plantillas.  
 
 **[string]** =  *private* function ( *array* \$vArguments );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$vArguments**|array||Argumentos del comando.|
@@ -856,6 +915,7 @@ ___
 Retorna un id unico utilizando **ngl::unique** en las plantillas.  
 
 **[string]** =  *private* function ( *array* \$vArguments );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$vArguments**|array||Argumentos del comando.|
@@ -867,6 +927,7 @@ ___
 Retorna el código que desetea un índice de **\$_SET** usando **rind:unset** en las plantillas.  
 
 **[string]** =  *private* function ( *array* \$vArguments );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$vArguments**|array||Argumentos del comando.|

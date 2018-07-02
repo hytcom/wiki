@@ -45,6 +45,7 @@ Este objeto nuclea métodos de conversión de datos entre las siguientes escruct
 Formatea el valor **\$mValue** según **\$sCastType**, siempre que se encuentre dentro de los tipos:<ul><li>array</li><li>boolean</li><li>double</li><li>integer</li><li>NULL</li><li>object</li><li>string</li></ul>  
 
 **[mixed]** =  *public* function ( *mixed* \$mValue, *string* \$sCastType );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$mValue**|mixed||Variable a formatear|
@@ -57,6 +58,7 @@ ___
 Auxiliar del método **nglShift::cast**  
 
 **[mixed]** =  *private* function ( *mixed* \$mValue, *string* \$sCastType );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$mValue**|mixed||Variable a formatear|
@@ -69,6 +71,7 @@ ___
 Convierte una estructura de datos en otra  
 
 **[mixed]** =  *public* function ( *mixed* \$mData, *string* \$sMethod, *array* \$vOptions );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$mData**|mixed||Estructura de datos original|
@@ -86,6 +89,7 @@ ___
 Genera una cadena formateada como CSV partiendo de un Array  
 
 **[string]** =  *public* function ( *array* \$aData, *array* \$vOptions );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$aData**|array||Array de datos|
@@ -98,6 +102,7 @@ ___
 auxiliar del método nglShift::csvToArray. convierte una linea CSV en un array  
 
 **[array]** =  *private* function ( *string* \$sSplitter, *string* \$sEnclosed, *string* \$sEscaped, *string* \$sEOL );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sSplitter**|string|,|caracter separador de campos|
@@ -112,6 +117,7 @@ ___
 convierte un texto CSV (una línea o conjunto de ellas) en un array bidimensional  
 
 **[string]** =  *public* function ( *array* \$aData, *array* \$vOptions );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$aData**|array||Array de datos|
@@ -126,6 +132,7 @@ ___
 Convierte una cadena en Array separando sus partes por caracter fijo  
 
 **[array]** =  *public* function ( *string* \$sString, *array* \$vOptions );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sString**|string||Cadena de datos|
@@ -138,6 +145,7 @@ ___
 Convierte un Array en una cadena respetando las logitudes de **positions**. Si la longuitud de la cadena es superior al valor de **positions**, el valor será truncado.  
 
 **[array]** =  *public* function ( *array* \$aString, *array* \$vOptions );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$aString**|array||Array de datos|
@@ -150,6 +158,7 @@ ___
 Genera una salida HTML a partir de un Array  
 
 **[string]** =  *public* function ( *array* \$aData, *string* \$sFormat, *string* \$sClassName );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$aData**|array||Array de datos|
@@ -166,6 +175,7 @@ utilizados como indices alfanuméricos en el Array de salida.
 El método soporta multiples tablas y anidamiento de tablas; en este último caso generará sub-arrays  
 
 **[array]** =  *public* function ( *string* \$sHTML );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sHTML**|string||Código HTML que contiene la o las tablas|
@@ -177,6 +187,7 @@ ___
 Auxiliar del método htmlToArray  
 
 **[DOMNodeList]** =  *private* function ( *string* \$table );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$table**|string||Código HTML que contiene la o las tablas|
@@ -197,6 +208,7 @@ ___
 Decodifica una cadena JSON de un Array  
 
 **[array]** =  *public* function ( *string* \$sString );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sString**|string||Cadena JSON|
@@ -217,6 +229,7 @@ ___
 Auxiliar del método nglShift::jsonEncode encargado generar un par ordenado NOMBRE:VALOR válido  
 
 **[string]** =  *public* function ( *string* \$sJson, *boolean* \$bCompress, *boolean* \$bHTML, *string* \$sTab, *string* \$sEOL );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sJson**|string||Cadena JSON|
@@ -232,6 +245,7 @@ ___
 Auxiliar del método nglShift::jsonEncode encargado generar un par ordenado NOMBRE:VALOR válido  
 
 **[string]** =  *private* function ( *string* \$sName, *mixed* \$mValue );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sName**|string||Nombre del índice|
@@ -244,6 +258,7 @@ ___
 Auxiliar del método nglShift::jsonDecode encargado limpiar el código antes de ser parseado  
 
 **[string]** =  *private* function ( *string* \$sString );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sString**|string||Cadena JSON|
@@ -255,6 +270,7 @@ ___
 Convierte un objeto en un array asosiativo de manera recursiva  
 
 **[array]** =  *public* function ( *object* \$mObject );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$mObject**|object||Objeto a convertir|
@@ -266,6 +282,7 @@ ___
 Convierte un Array en un Objeto de manera recursiva  
 
 **[object]** =  *public* function ( *array* \$mObject );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$mObject**|array||Array a convertir|
@@ -277,6 +294,7 @@ ___
 Auxiliar del método ngl:Babel::xmlToArray utilizado para recorrer el objeto XML de manera recursiva  
 
 **[array]** =  *private* function ( *object* \$vXML, *boolean* \$bAttributes, *int* \$x );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$vXML**|object||Objecto XML|
@@ -299,6 +317,7 @@ ___
 Vuelca el contenido de un texto XML en un array asosiativo de manera recursiva  
 
 **[array]** =  *public* function ( *string* \$sXML, *array* \$vOptions );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sXML**|string||Estructura XML|

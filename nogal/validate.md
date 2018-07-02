@@ -40,6 +40,7 @@ Almacena valores que luego pueden ser utilizados como variables dentro de las re
 Este método retorna el propio objeto, a fin de poder añadir varias variables con una sintaxis cómoda.  
 
 **[object]** =  *public* function ( *string* \$sVarName, *string* \$mValue );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sVarName**|string||Nombre que luego se utilizará para invocar el valor|
@@ -52,6 +53,7 @@ ___
 Aplica las reglas **\$vRules** sobre la variable **\$mSource**. Este método es auxiliar de **validate**  
 
 **[mixed]** =  *private* function ( *mixed* \$mSource, *array* \$vRules );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$mSource**|mixed||Variable o Array a validar|
@@ -64,6 +66,7 @@ ___
 Retorna una cadena despues de compararla contra **\$aToClean**  
 
 **[string]** =  *private* function ( *string* \$sString, *array* \$aToClean, *boolean* \$bInvert );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sString**|string||Valor|
@@ -77,6 +80,7 @@ ___
 Obtiene la configuración de un archivo **.json** y la retorna en como un Array  
 
 **[array]** =  *private* function ( *string* \$sRulesFile );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sRulesFile**|string||Nombre del archivo **.json** ubicado en la carpeta **NGL_PATH_VALIDATE**|
@@ -90,6 +94,7 @@ Este método sobreescribe los valores de **\$_REQUEST**. Para obtener los valore
 La parametrización del arranque de esta propiedad se efectua desde el archivo **NGL_PATH_CONF/validate.conf**  
 
 **[array]** =  *public* function ( *string* \$sFrom );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sFrom**|string|LOCAL|Especifica el origen válido de la solicitud, a fin de impedir consultas no autorizadas.
@@ -104,6 +109,7 @@ ___
 Analiza la cadena **\$sFrom** y retorna un array de origines para ser utilizados en **request**  
 
 **[array]** =  *private* function ( *string* \$sFrom );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sFrom**|string||Cadena de posibles origenes|
@@ -124,6 +130,7 @@ ___
 Valida la variable **\$mVariables** aplicando las reglas **\$mRules**. Si **\$mRules** no está definido, retornará **NULL**  
 
 **[mixed]** =  *public* function ( *mixed* \$mVariables, *mixed* \$mRules, *boolean* \$bIgnoreDefault );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$mVariables**|mixed||Variable o Array a validar|
@@ -175,6 +182,7 @@ ___
 Validador de variables por tipo  
 
 **[string]** =  *private* function ( *string* \$mValue, *string* \$sType, *array* \$vOptions );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$mValue**|string||Valor|

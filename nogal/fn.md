@@ -90,6 +90,7 @@ Los datos pueden ser leídos la base interna o directamente desde le sitio ofici
 Si la lectura local falla, el método intentará optenerlos desde el sitio oficial y guardarlos localmente.  
 
 **[array]** =  *public* function ( *boolean* \$bOnlineData );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$bOnlineData**|boolean|false|True para leer los datos desde le sitio oficial|
@@ -103,6 +104,7 @@ Es claro que si una cadena o array es desordena usando **nglCommon::arrange** el
 Este método retornará el mismo tipo de dato que el valor de entrada **\$mSource**.  
 
 **[array]** =  *public* function ( *mixed* \$mDisarrange, *array* \$aArrange );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$mDisarrange**|mixed||String o Array a ordenar|
@@ -116,6 +118,7 @@ Añade los indices de 1 o mas arrays al array principal, sin importar el tipo de
 Si los indices son del tipo alfanumericos agrupara los nuevos valores.  
 
 **[array]** =  *public* function ( *array* \$array1, *array* \$... );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$array1**|array||Array inicial|
@@ -129,6 +132,7 @@ Devuelve los valores de una sola columna de \$aSource, identificado por la clave
 Opcionalmente, se puede proporcionar una clave de índice, \$mIndexKey, para indexar los valores del array devuelto  
 
 **[array]** =  *public* function ( *array* \$aSource, *mixed* \$mColumnKey );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$aSource**|array||array de datos|
@@ -141,6 +145,7 @@ ___
 Avanza el puntero del array hasta el índice indicado por \$mKey y retorna los datos  
 
 **[array]** =  *public* function ( *array* \$aSource, *mixed* \$mKey );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$aSource**|array||array de datos|
@@ -155,6 +160,7 @@ Cuando la variable \$mStructure sea NULL, los valores únicos de cada columna se
 Cuando la variable \$mStructure sea distinto de NULL, los valores se agruparán según los grupos definidos en ella.  
 
 **[array]** =  *public* function ( *array* \$aSource, *mixed* \$aStructure );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$aSource**|array||array de datos|
@@ -193,6 +199,7 @@ ___
 Método axuliar de nglCommon::arrayGroup  
 
 **[boolean]** =  *private* function ( *string* \$aGrouped, *array* \$mValue, *boolean* \$aStructure );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$aGrouped**|string||Patron de búsqueda|
@@ -208,6 +215,7 @@ chequeando valor por valor utilizando expresiones regulares. en este último cas
 los patrones de búsqueda serán tratados con preg_quote()  
 
 **[boolean]** =  *public* function ( *string* \$sNeedle, *array* \$aHayStack, *boolean* \$bRegex, *string* \$sRegexFlags, *boolean* \$bInverseMode );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sNeedle**|string||Patron de búsqueda|
@@ -223,6 +231,7 @@ ___
 Añade un elemento al Array en la posición determinada  
 
 **[array]** =  *public* function ( *array* \$aArray, *mixed* \$mPosition, *mixed* \$aInsert, *boolean* \$bAfter );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$aArray**|array||Origen de datos|
@@ -237,6 +246,7 @@ ___
 Agrega N arrays multi-dimensionales en uno  
 
 **[array]** =  *public* function ( *array* \$array1, *array* \$... );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$array1**|array||Array inicial|
@@ -249,6 +259,7 @@ ___
 Ordena un array multi-dimensional considerando multiples indices, orden y tipos de orden  
 
 **[array]** =  *public* function ( *array* \$aData, *array* \$aFlags );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$aData**|array||origen de datos|
@@ -266,6 +277,7 @@ Si \$aIndexes = null y \$mNewIndexes es una cadena, el método retornará un arr
 único indice a \$mNewIndexes y cuyo valor será el valor del indice actual de \$aSource.  
 
 **[array]** =  *public* function ( *array* \$aSource, *mixed* \$mIndexes, *mixed* \$mNewIndexes );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$aSource**|array||Array de datos|
@@ -279,6 +291,7 @@ ___
 Retorna un array con indices númericos que contiene **\$nMultiplier** repeticiones del array **\$aInput**.  
 
 **[array]** =  *public* function ( *array* \$aInput, *int* \$nMultiplier );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$aInput**|array||Array a ser repetido|
@@ -291,6 +304,7 @@ ___
 Elimina de una cadena todos los caracteres que no sean válidos en una cadena base64 [a-zA-Z0-9+/=]  
 
 **[string]** =  *public* function ( *string* \$sString );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sString**|string||Cadena a limpiar|
@@ -305,6 +319,7 @@ between tambien puede ser utilizado para conocer si un valor es mayor o menor a 
 Los posibles valores retornados por between son:<ul><li>**0** =  cuando \$mValue es menor a \$sMinValue</li><li>**1** =  cuando \$mValue esta dentro del rango de valores</li><li>**2** =  cuando \$mValue es mayor a \$sMaxValue</li></ul>  
 
 **[integer]** =  *public* function ( *string* \$mValue, *string* \$sMinValue, *string* \$sMaxValue, *boolean* \$bCaseInsensitive );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$mValue**|string||Valor a chequear|
@@ -319,6 +334,7 @@ ___
 Elimina los slashes de mas en un path o url. Todos los **\$sSeparator** de cierre serán eliminados  
 
 **[string]** =  *public* function ( *string* \$sPath, *boolean* \$bSlashClose, *string* \$sSeparator, *boolean* \$bRealPath );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sPath**|string||Path a limpiar|
@@ -333,6 +349,7 @@ ___
 Retorna un color en valores hexadecimales basandose en RGB  
 
 **[string]** =  *public* function ( *int* \$nRed, *int* \$nGreen, *int* \$nBlue );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$nRed**|int|00|Valor de 0 a 255 para el color rojo|
@@ -346,6 +363,7 @@ ___
 Retorna los valores RGB y Transparencia de un color en formato hexadecimal  
 
 **[array]** =  *public* function ( *string* \$sHexacolor );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sHexacolor**|string|#00000000|Valor del color en formato #RRGGBBAA (rojo, verde, azul, alfa)|
@@ -358,6 +376,7 @@ Guarda y optiene el valor de una cookie del navegador.
 Los valores son analizados con ngl::passwd(), por lo que si NGL_PASSWORD_KEY esta activa, los valores serán enviados al navegador de manera encriptada.  
 
 **[mixed]** =  *public* function ( *string* \$sKey, *string* \$sValue, *mixed* \$mExpire );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sKey**|string||Nombre de la coockie|
@@ -371,6 +390,7 @@ ___
 Transforma un decimal en hexadecimal sin límite de tamaño y con la posibilidad de rellenar con 0 por delante  
 
 **[string]** =  *public* function ( *int* \$sDecimal, *int* \$nLength );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sDecimal**|int||Número decimal|
@@ -385,6 +405,7 @@ En la medida en que el desordenamiento avanza sobre **\$aArrange**, las posicion
 Este método retornará el mismo tipo de dato que el valor de entrada **\$mSource**.  
 
 **[array]** =  *public* function ( *mixed* \$mSource, *array* \$aArrange );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$mSource**|mixed||String o Array a desordenar|
@@ -398,6 +419,7 @@ Retorna el contenido de una variable de acuerdo al tipo de la misma:<br /><ul><l
 directamente en la pantalla.  
 
 **[string]** =  *public* function ( *mixed* \$mVariable1, *mixed* \$..., *mixed* \$mVariableN );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$mVariable1**|mixed||Variable a volcar|
@@ -412,6 +434,7 @@ Establece como NULL los valores de \$aData, cuyo indice se encuentre en \$aKeys,
 Si \$aKeys es NULL se evaluarán todos los indices.  
 
 **[array]** =  *public* function ( *array* \$aData, *array* \$aKeys );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$aData**|array||Array de datos|
@@ -429,6 +452,7 @@ Una lista completa de las codificaciones soportadas se encuentra en:
 https://www.gnu.org/software/libiconv  
 
 **[string o booleano]** =  *public* function ( *string* \$sString, *mixed* \$mEncoding, *boolean* \$bStrict );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sString**|string||Cadena a chequear|
@@ -442,6 +466,7 @@ ___
 Retorna el valor de \$mSure cuanto \$mVar no esta seteada o es NULL  
 
 **[mixed]** =  *public* function ( *mixed* \$mVar, *mixed* \$mSure );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$mVar**|mixed||Variable a evaluar|
@@ -454,6 +479,7 @@ ___
 Ejecuta la función **explode** de PHP de manera recursiva, utilizando los delimitadores para armar un array multi-dimensional  
 
 **[array]** =  *public* function ( *array* \$aDelimiters, *string* \$sSource, *int* \$nLimit );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$aDelimiters**|array||Delimitadores|
@@ -469,6 +495,7 @@ ___
 Ejecuta la función **explode** de PHP y a continuación trata a cada uno de los valores con la función **trim**  
 
 **[array]** =  *public* function ( *string* \$sDelimiter, *string* \$sSource, *int* \$nLimit );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sDelimiter**|string||Delimitador|
@@ -484,6 +511,7 @@ ___
 Retorna un array con todas las cabeceras enviadas hasta el momento, un una cadena o false para cuando se especifique \$sHeader  
 
 **[mixed]** =  *public* function ( *string* \$sHeader );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sHeader**|string||Chequea que esta cabecera haya sido enviada, retornando su valor o FALSE|
@@ -495,6 +523,7 @@ ___
 Transforma un hexadecimal en decimal sin límite de tamaño  
 
 **[string]** =  *public* function ( *string* \$sDecimal );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sDecimal**|string||Número hexadecimal|
@@ -509,6 +538,7 @@ y el segundo para unir los distintos niveles del array.
 Para mantener una relación con **implode**, si **\$mGlue** no es especificado se asumirá que el único valor pasado es **\$aSource**.  
 
 **[string]** =  *public* function ( *mixed* \$mGlue );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$mGlue**|mixed||Cadena o array de dos de ellas con las que se unirán los valores|
@@ -520,6 +550,7 @@ ___
 Retorna o valida un **imya**  
 
 **[string o null]** =  *public* function ( *string* \$sImya );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sImya**|string|null|Cuando el valor es NULL se genera un nuevo imya, equivalente a un valor unique(32)
@@ -533,6 +564,7 @@ ___
 Retorna la parte entera de un número  
 
 **[integer o NULL]** =  *public* function ( *mixed* \$mNumber );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$mNumber**|mixed||Valor númerico|
@@ -545,6 +577,7 @@ Comprueba si **\$aArray** es un Array de Arrays.
 Con **\$bStrict** FALSE sólo chequeará que el primer valor de **\$aArray** sea un array. Si es TRUE verificará que todos los valores sean del tipo array.  
 
 **[boolean]** =  *public* function ( *array* \$aArray, *boolean* \$bStrict );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$aArray**|array||Array a comprobar|
@@ -559,6 +592,7 @@ Comprueba si **\$mValue** esta vacío. en el caso de que
 uno de sus índices está vacío. Los arrays son examinados de manera recursiva  
 
 **[boolean]** =  *public* function ( *mixed* \$mValue );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$mValue**|mixed||Valor a comprobar|
@@ -570,6 +604,7 @@ ___
 Comprueba si un valor es un número entero  
 
 **[boolean]** =  *public* function ( *mixed* \$mNumber );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$mNumber**|mixed||Valor númerico|
@@ -581,6 +616,7 @@ ___
 Comprueba si un valor es una cadena JSON válida  
 
 **[mixed]** =  *public* function ( *string* \$sString, *string* \$mType );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sString**|string||Cadena a chequear|
@@ -596,6 +632,7 @@ uno de sus índices existen catacteres que no esten en minúsculas.
 Los arrays son examinados de manera recursiva  
 
 **[boolean]** =  *public* function ( *string* \$sString );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sString**|string||Cadena a comprobar|
@@ -608,6 +645,7 @@ Comprueba si un valor es NULL.
 Esto sucederá cuando el método nativo **is_null(\$mValue)** retorne true o cuando el valor **strtolower(\$mValue)** sea igual a **null**  
 
 **[boolean]** =  *public* function ( *mixed* \$mValue );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$mValue**|mixed||Cadena a comprobar|
@@ -620,6 +658,7 @@ Comprueba si **\$mNumber** es un valor númerico y retorna su valor en el format
 Seran considerados números los siguientes formatos:<br /><ul><li>123.456 (float)</li><li>123,456	(float)</li><li>123,456.78 (float)</li><li>123.456,78 (float)</li><li>123.456.789 (int)</li><li>123,456,789 (int)</li><li>123456789 (int)</li></ul>  
 
 **[integer, float o null]** =  *public* function ( *mixed* \$mNumber );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$mNumber**|mixed||Valor a comprobar|
@@ -631,6 +670,7 @@ ___
 Comprueba si **\$sString** es un array serializado. Si **\$bResult** es igual a TRUE el método retornará un array en caso de TRUE  
 
 **[mixed]** =  *public* function ( *string* \$sString, *boolean* \$bResult );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sString**|string||Cadena a chequear|
@@ -643,6 +683,7 @@ ___
 Comprueba si **\$mValue** es TRUE o FALSE. Si \$mValue es String y su valor es '0', 'false', 'null', 'no' u 'off', el valor de retorno será FALSE  
 
 **[boolean]** =  *public* function ( *mixed* \$mValue );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$mValue**|mixed||Valor a comprobar|
@@ -655,6 +696,7 @@ Comprueba si **\$sString** son sólo letras mayúsculas. En el caso de que \$mVa
 Los arrays son examinados de manera recursiva  
 
 **[boolean]** =  *public* function ( *string* \$sString );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sString**|string||Cadena a comprobar|
@@ -667,6 +709,7 @@ Retorna TRUE (o el protocolo) si **\$sFilePath** es una URL http, ftp o comienza
 Para este último caso, cuando se solicite el protocolo, se retornará "url"  
 
 **[mixed]** =  *public* function ( *string* \$sFilePath, *boolean* \$bScheme );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sFilePath**|string||URL a comprobar|
@@ -679,6 +722,7 @@ ___
 Comprueba si **\$sString** es una cadena UTF-8  
 
 **[boolean]** =  *public* function ( *string* \$sString );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sString**|string||Cadena a comprobar|
@@ -690,6 +734,7 @@ ___
 Devuelve el valor de la cantidad de memoria asignada a PHP, formateado con strSizeEncode()  
 
 **[string]** =  *public* function ( *boolean* \$bRealUsage, *int* \$nDecimals );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$bRealUsage**|boolean|false|True para obtener el tamaño real de memoria asignada por el sistema.|
@@ -702,6 +747,7 @@ ___
 Retorna el Mime Type de la extensión proporcionada.  
 
 **[string]** =  *public* function ( *string* \$sExtension );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sExtension**|string||Extensión.|
@@ -713,6 +759,7 @@ ___
 Limpia una cadena para que pueda ser utilizada como nombre de archivo, carpeta, tabla o campo de una base de datos  
 
 **[string]** =  *public* function ( *string* \$sName, *string* \$sLeave );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sName**|string||Nombre original.|
@@ -728,6 +775,7 @@ Cuando se pase un \$sCode al método, este chequeará si el mismo existe en la s
 La vigencia de los códigos en la session es de NGL_ONCECODE_TIMELIFE, en segundos.  
 
 **[mixed]** =  *public* function ( *string* \$sCode );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sCode**|string|null|ONCECODE generado por el método en una ejecución previa|
@@ -741,6 +789,7 @@ El parámetro \$nPrecition permite controlar la distancia del redondeo al punto 
 Según la presición el redondeo dará con .5 cuando:<ul><li>**0** =  cuando sea x.5</li><li>**1** =  cuando se encuentre entre x.4 y x.6</li><li>**2** =  cuando se encuentre entre x.3 y x.7</li><li>**3** =  cuando se encuentre entre x.2 y x.8</li><li>**4** =  cuando se encuentre entre x.1 y x.9</li><li>**&gt5** =  siempre</li></ul>  
 
 **[float]** =  *public* function ( *int* \$nNumber );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$nNumber**|int||Numero a redondear|
@@ -753,6 +802,7 @@ Añade \$sAppend a \$sString desde el final y hasta el largo de \$sString.
 Si \$sPrepend es mas corta que \$sString se conservarán los caracteres de esta última que no lleguen a ser desplazados  
 
 **[string]** =  *public* function ( *string* \$sString, *string* \$sAppend );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sString**|string||Cadena contenedora|
@@ -766,6 +816,7 @@ Añade \$sPrepend a \$sString desde el inicio y hasta el largo de \$sString.
 Si \$sPrepend es mas corta que \$sString se conservarán los caracteres de esta última que no lleguen a ser desplazados  
 
 **[string]** =  *public* function ( *string* \$sString, *string* \$sPrepend );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sString**|string||Cadena contenedora|
@@ -778,6 +829,7 @@ ___
 Compara dos cadenas desde el inicio y retorna la subcadena en común  
 
 **[string]** =  *public* function ( *string* \$sString1, *string* \$sString2 );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sString1**|string||Primer cadena para la comparación|
@@ -791,6 +843,7 @@ Retorna un operador válido en función su codificación:<ul><li>**eq** = <em>=<
 Si **\$sSign** no es especificado, se retornará un array asosiativo con todos los operadores  
 
 **[mixed]** =  *public* function ( *string* \$sSign, *boolean* \$bEmpty );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sSign**|string||Código del signo que se quiere obtener|
@@ -803,6 +856,7 @@ ___
 Retorna el valor \$sSize en bytes. Cuando existan decimales se redondeará el resultado  
 
 **[string]** =  *public* function ( *string* \$sSize );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sSize**|string||Tamaño a convertir|
@@ -814,6 +868,7 @@ ___
 Retorna el valor \$nBytes con el formato KB o MB o GB etc  
 
 **[string]** =  *public* function ( *int* \$nBytes, *int* \$nDecimals );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$nBytes**|int||Número de bytes|
@@ -826,6 +881,7 @@ ___
 Decodifica una cadena codificada con **tokenEncode**  
 
 **[string]** =  *public* function ( *string* \$sToken, *string* \$sKey );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sToken**|string||Cadena codificada|
@@ -838,6 +894,7 @@ ___
 Codifica el valor de **\$sSource** en un token de 2540 caracteres y aplicando el código de seguridad **\$sKey**  
 
 **[string]** =  *public* function ( *string* \$sSource, *string* \$sKey, *string* \$sTokenTitle );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sSource**|string||Cadena de hasta 16 caracteres que se desea tokenizar|
@@ -852,6 +909,7 @@ Aplica una función de usuario recursivamente a cada miembro del arbol,
 entrando en cada uno de los nodos \$sChildrenNode. En cada interacción se ejecutará los métodos:<ul><li>\$fFunction</li><li>\$vEvents[branchOpen]</li><li>\$vEvents[nodeOpen]</li><li>\$vEvents[nodeClose]</li><li>\$vEvents[branchClose]</li></ul>  
 
 **[void]** =  *public* function ( *array* \$aData, *function* \$fFunction, *string* \$sChildrenNode );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$aData**|array||Array de datos|
@@ -865,6 +923,7 @@ ___
 Crea un nuevo Array combinando los valores de \$aSource como claves y el booleano TRUE como valor de cada uno.  
 
 **[array]** =  *public* function ( *array* \$aSource );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$aSource**|array|||
@@ -876,6 +935,7 @@ ___
 Reemplaza los caracteres acentuados por su equivalente sin acento  
 
 **[string]** =  *public* function ( *string* \$sAccented );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sAccented**|string||Cadena acentuada|
@@ -887,6 +947,7 @@ ___
 Genera una cadena aleatoria de 4 a 4096 caracteres que matchea con el patrón: [a-zA-Z][a-zA-Z0-9]{4,4096}  
 
 **[string]** =  *public* function ( *int* \$nLength );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$nLength**|int|6|Loguitud de la cadena|
@@ -899,6 +960,7 @@ Decodifica una cadena codificada con **uriEncode**.
 El valor retornado podrá ser un string o un array, dependiendo del valor original de **\$sString**  
 
 **[string o array]** =  *public* function ( *string* \$sString );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sString**|string||Cadena codificada|
@@ -910,6 +972,7 @@ ___
 Codifica una cadena o array para que pueda ser enviado de manera segura por GET o POST  
 
 **[string]** =  *public* function ( *mixed* \$mValue );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$mValue**|mixed||Cadena o array que se quiere codificar|
@@ -922,6 +985,7 @@ Comprueba si existe una URL. El chequeo se intenta hacer mediante **get_headers*
 si no pueden llevarse a cabo retorna **NULL**  
 
 **[boolean]** =  *public* function ( *string* \$sURL );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sURL**|string||URL a chequear|

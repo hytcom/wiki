@@ -80,6 +80,7 @@ Transforma la representación **JSQL** de una columna y la retorna en formato **
 Formatos válidos y sus resultados<ul><li>**["TABLE.FIELD", "ALIAS"]** => `TABLE`.`FIELD` AS 'ALIAS'</li><li>**["TABLE.FIELD"]** => `TABLE`.`FIELD`</li><li>**["FIELD","ALIAS"]** => `FIELD` AS 'ALIAS'</li></ul>  
 
 **[string]** =  *public* function ( *string* \$mField, *string* \$sAliasQuote, *string* \$sQuote, *string* \$sTableColumnGlue );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$mField**|string||Cadena que representa la condición en formato **JSQL**|
@@ -95,6 +96,7 @@ Transforma la representación **JSQL** de una condición y la retorna en formato
 Formatos válidos y sus resultados<ul><li>**["TABLE1.FIELD1", "OPERATOR", "TABLE2.FIELD2"]** => `TABLE1`.`FIELD1` = `TABLE2`.`FIELD2`</li><li>**["TABLE1.FIELD1", "OPERATOR", "(STRING VALUE)"]** => `TABLE1`.`FIELD1` LIKE '%foobar%'</li></ul>  
 
 **[string]** =  *private* function ( *array* \$aCondition );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$aCondition**|array||Array con la condición en formato **JSQL**|
@@ -107,6 +109,7 @@ Transforma un array de condiciones **JSQL** en una sentencia **WHERE** o en un g
 Formatos válidos y sus resultados<ul><li>**["TABLE1.FIELD1", "OPERATOR", "TABLE2.FIELD2"]** => `TABLE1`.`FIELD1` = `TABLE2`.`FIELD2`</li><li>**["TABLE1.FIELD1", "OPERATOR", "(STRING VALUE)"]** => `TABLE1`.`FIELD1` LIKE '%foobar%'</li></ul>  
 
 **[string]** =  *public* function ( *array* \$aSource, *boolean* \$bSetMode );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$aSource**|array||Array de condiciones en formato **JSQL**|
@@ -120,6 +123,7 @@ Retorna un operador válido en función su codificación, invocando al método *
 Si **\$sSign** no es especificado, se retornará un array asosiativo con todos los operadores  
 
 **[mixed]** =  *public* function ( *string* \$sSign );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sSign**|string||Código del signo que se quiere obtener|
@@ -131,6 +135,7 @@ ___
 Transforma una cadena JSON en un Array asociativo  
 
 **[array]** =  *public* function ( *string* \$sString );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sString**|string||Valor a decodificar|
@@ -142,6 +147,7 @@ ___
 Transforma un Array asociativo en una cadena JSON  
 
 **[string]** =  *public* function ( *array* \$aArray );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$aArray**|array||Array a codificar|
@@ -153,6 +159,7 @@ ___
 Prepara un valor en formato **JSQL** para ser usado en una consulta **SQL**  
 
 **[string]** =  *public* function ( *string* \$sString, *boolean* \$bQuoted );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sString**|string||Valor a preparar|

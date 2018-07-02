@@ -64,6 +64,7 @@ ___
 Descompone una URL en los atributos del objeto y retorna los datos en un array asociativo. Si **\$sURL** no es una cadena, retornará FALSE  
 
 **[$this]** =  *public* function ( *string* \$sURL );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sURL**|string||URL|
@@ -94,6 +95,7 @@ Permite actualizar las distintas partes de la URL basandose en las partes genera
 **nglURL::parse** se autoejecutará si aún no ha sido ejecutado y está seteado el argumento **url**.  
 
 **[$this]** =  *public* function ( *string* \$sPart, *mixed* \$mValue );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sPart**|string||Argumento que desea modificarse.|

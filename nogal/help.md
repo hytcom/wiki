@@ -38,6 +38,7 @@ nglHelp construye el objeto \$help dentro del framework, el cual es accedido a t
 Retorna un documento HTML con la ayuda solicitada  
 
 **[string]** =  *public* function ( *string* \$sWhat, *string* \$sBaseURL );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sWhat**|string|null|Clase, Método o Comando sobre del cual se desea ver el texto de ayuda.<ul><li>**HELP** =  Retorna el listado de Clases disponibles</li><li>**ClassName** =  para obtener ayuda acerca de una clase</li><li>**ClassName::MethodName** =  para obtener ayuda sobre el método **MethodName** de la clase **ClassName**</li></ul>Si existe la variable \$_SERVER["QUERY_STRING"] y es distinta de empty, su valor será asignado a **\$sWhat**|
@@ -50,6 +51,7 @@ ___
 Setea el idioma en el cual se mostrará la ayuda  
 
 **[void]** =  *public* function ( *string* \$sLang );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sLang**|string|ES|Sigla de 2 letras que representa al idioma|
@@ -61,6 +63,7 @@ ___
 Retorna la porción de código HTML que muestra los bloques de parámetros  
 
 **[string]** =  *private* function ( *string* \$sTitle, *array* \$aData, *mixed* \$mSelected );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sTitle**|string||Título de la caja|
@@ -74,6 +77,7 @@ ___
 Retorna el código HTML que muestra la ayuda de la clase solicitada  
 
 **[string]** =  *private* function ( *string* \$sClassName );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sClassName**|string||Nombre de la clase|
@@ -94,6 +98,7 @@ ___
 Retorna el código HTML que muestra la ayuda del método solicitado  
 
 **[string]** =  *private* function ( *string* \$sMethod );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sMethod**|string||Nombre del método anteseguido por :: y el nombre de la clase a la cual pertenece|
@@ -105,6 +110,7 @@ ___
 Utilizado para enmarcar el código HTML de la ayuda soliticitada dentro de la plantilla HTML que se retorna al usuario  
 
 **[string]** =  *private* function ( *string* \$sContent );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sContent**|string||Contenido de la ayuda a enmarcar en la plantilla|
@@ -116,6 +122,7 @@ ___
 Retorna el código HTML con la variables de un comando para ser mostradas en la descrición del mismo  
 
 **[HTML]** =  *private* function ( *array* \$aData );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$aData**|array||Variables del comando|
@@ -127,6 +134,7 @@ ___
 Retorna el código HTML con la variables de un comando formateadas para ser mostradas en el detalle del mismo  
 
 **[string]** =  *private* function ( *array* \$aData );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$aData**|array||Variables del comando|
@@ -138,6 +146,7 @@ ___
 Retorna el código HTML con la variables de un método para ser mostradas en la descrición de la misma  
 
 **[HTML]** =  *private* function ( *array* \$aData, *boolean* \$bEncloseDiv );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$aData**|array||Variables del método|
@@ -150,6 +159,7 @@ ___
 Retorna el código HTML con la variables de un método formateadas para ser mostradas en el detalle de la misma  
 
 **[string]** =  *private* function ( *array* \$aData );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$aData**|array||Variables del método|

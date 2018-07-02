@@ -40,6 +40,7 @@ nglUnicode construye el objeto \$unicode dentro del framework, el cual es accedi
 Devuelve una cadena de un caracter que contiene el carácter especificado por \$nCode  
 
 **[string]** =  *public* function ( *int* \$nCode );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$nCode**|int||Código unicode del caracter buscado|
@@ -52,6 +53,7 @@ Escapa una cadena en formato UNICODE.
 Donde los caracteres que no sean UTF-8 serán reemplazados por su ORD en formato hexadecimal precedidos de una **\u**  
 
 **[string]** =  *public* function ( *string* \$sString );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sString**|string||Cadena a codificar|
@@ -63,6 +65,7 @@ ___
 Divide una cadena en varias  
 
 **[string]** =  *public* function ( *string* \$sSplitter, *string* \$sString, *int* \$nLimit );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sSplitter**|string||Cadena delimitadora de 1 caracter unicode de largo|
@@ -90,6 +93,7 @@ ___
 Devuelve información de un caracter dado<ul><li>**char** =  caracter</li><li>**type** =  tipo de caracter</li><li>**group** =  grupo UTF-8 al que pertenece</li><li>**bytes** =  bytes que ocupa</li><li>**decimal** =  valor decimal</li><li>**hexadecimal** =  valor hexadecimal</li><li>**html** =  código HTML</li><li>**escaped** =  valor UNICODE escapado</li></ul>  
 
 **[string]** =  *public* function ( *string* \$sChar );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sChar**|string||Caracter unicode del que se desea conocer el tipo|
@@ -101,6 +105,7 @@ ___
 Retorna el tipo, grupo y valor decimal de un caracter dado, o false en caso de error  
 
 **[array]** =  *public* function ( *string* \$sChar );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sChar**|string||Caracter unicode del que se desea conocer el tipo|
@@ -112,6 +117,7 @@ ___
 Devuelve el valor UNICODE del caracter \$sChar  
 
 **[integer]** =  *public* function ( *string* \$sChar );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sChar**|string||Caracter unicode del que se desea conocer el código|
@@ -123,6 +129,7 @@ ___
 Convierte \$mSource en un array de caracteres UTF-8. Si \$mSource es un array split retornara \$mSource  
 
 **[string]** =  *public* function ( *mixed* \$mSource );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$mSource**|mixed||Origen de datos, string o array|
@@ -134,6 +141,7 @@ ___
 Obtiene la longitud de una cadena  
 
 **[integer]** =  *public* function ( *string* \$sString );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sString**|string||Origen de datos|
@@ -145,6 +153,7 @@ ___
 Devuelve la subcadena de \$mSource comenzando en \$nStart y por un largo de \$nLength  
 
 **[string]** =  *public* function ( *mixed* \$mSource, *int* \$nStart, *int* \$nLength );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$mSource**|mixed||Origen de datos, string o array. Este método trabaja sobre un array, por lo que si \$mSource es 
@@ -165,6 +174,7 @@ ___
 Desescapa una cadena UNICODE  
 
 **[string]** =  *public* function ( *string* \$sString );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sString**|string||Cadena UNICODE a decodificar|
@@ -176,6 +186,7 @@ ___
 Auxiliar del método unescape  
 
 **[string]** =  *private* function ( *string* \$sString );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sString**|string||Cadena UNICODE a decodificar|

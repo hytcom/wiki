@@ -90,6 +90,7 @@ ___
 Llamada de retorno ejecutada cuando una sesión es destruida  
 
 **[boolean]** =  *public* function ( *string* \$SID );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$SID**|string|sesion activa|ID de sesion a destruir|
@@ -110,6 +111,7 @@ ___
 Chequea si la sesion **\$SID** es o no una sesion persistente  
 
 **[boolean]** =  *private* function ( *string* \$SID );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$SID**|string||ID de sesion a chequear|
@@ -140,6 +142,7 @@ ___
 Chequea si la sesion **\$SID** es o no una sesion persistente  
 
 **[boolean]** =  *public* function ( *boolean* \$bPersistent, *string* \$SID );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$bPersistent**|boolean|sesion activa|Indica si la sesion **\$SID** es una sesion persistente|
@@ -152,6 +155,7 @@ ___
 Retorna el contenidos de la sesion en forma de cadena serializada  
 
 **[boolean]** =  *public* function ( *string* \$SID );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$SID**|string|sesion activa|ID de sesion a leer|
@@ -173,6 +177,7 @@ ___
 Da inicio al objeto. Configura el modo de sesión y el tiempo máximo de vida de las mismas  
 
 **[void]** =  *public* function ( *mixed* \$handler, *int* \$nLifeTime );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$handler**|mixed|null|Determina el modo en el cual trabajarán las sesiones:<ul><li>**objecto de DB** =  configura las sesiones en base de datos</li><li>**string fs** =  modo filesystem, los archivos de sesión se almacenarán en **NGL_PATH_SESSIONS**</li><li>**null** =  modo nativo de PHP</li></ul>|
@@ -185,6 +190,7 @@ ___
 Guarda los datos de la variable superglobal **\$_SESSION** como contenido de la sesión **\$SID**  
 
 **[boolean]** =  *public* function ( *string* \$SID );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$SID**|string||ID de sesion a chequear|

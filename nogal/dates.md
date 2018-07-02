@@ -48,6 +48,7 @@ ___
 Formatea un valor en segundos, según **\$sFormat**  
 
 **[array o string]** =  *public* function ( *int* \$nTime, *string* \$sFormat );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$nTime**|int||Cantidad de segundos|
@@ -60,6 +61,7 @@ ___
 Retorna la cantidad de segundos transcurridos desde **\$nTimeIni**  
 
 **[float]** =  *public* function ( *float* \$nTimeIni );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$nTimeIni**|float|nogal->startime()|Indice de tiempo en sedundos/microsegundos.|

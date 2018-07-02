@@ -72,6 +72,7 @@ Características Principales:
 Cambia de directorio en el servidor remoto  
 
 **[array]** =  *public* function ( *string* \$sPath, *boolean* \$bForce );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sPath**|string|null|Nombre del archivo o directorio activo en el servidor remoto|
@@ -84,6 +85,7 @@ ___
 Establece la conexión con el servidor remoto  
 
 **[boolean]** =  *public* function ( *string* \$sHost, *int* \$nPort );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sHost**|string|127.0.0.1|IP o dominio del servidor remoto|
@@ -105,6 +107,7 @@ ___
 Elimina un archivo o directorio  
 
 **[boolean]** =  *public* function ( *string* \$sPath );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sPath**|string|null|Nombre del archivo o directorio activo en el servidor remoto|
@@ -116,6 +119,7 @@ ___
 descarga un archivo o directorio del servidor a la maquina local  
 
 **[boolean]** =  *public* function ( *string* \$sPath, *string* \$sLocalPath, *int* \$nTransfer );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sPath**|string|null|Nombre del archivo o directorio activo en el servidor remoto|
@@ -129,6 +133,7 @@ ___
 Método auxiliar de DOWNLOAD ejecutado por medio del método nglCommon::treeWalk  
 
 **[null]** =  *private* function ( *string* \$vFile, *int* \$nTransfer );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$vFile**|string||Array con los datos del nombre del archivo o directorio|
@@ -141,6 +146,7 @@ ___
 Convierte una cadena de permisos RWX en un valor CHMOD  
 
 **[number]** =  *private* function ( *string* \$sCHMOD );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sCHMOD**|string||Cadena de permisos RWX|
@@ -161,6 +167,7 @@ ___
 Autentica la sesion en el servidor remoto  
 
 **[$this]** =  *public* function ( *string* \$sUser, *string* \$sPass, *boolean* \$bPassive );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sUser**|string|anonymous|Nombre de usuario|
@@ -174,6 +181,7 @@ ___
 Registra una cadena en el atributo log  
 
  *private* function ( *string* \$sLog );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sLog**|string||Cadena que se añadira al log|
@@ -185,6 +193,7 @@ ___
 Lista el contenido de un directorio. Sino se especifica un directorio listará el directorio actual  
 
 **[array]** =  *public* function ( *string* \$sDirname, *string* \$sMask, *string* \$sMode, *boolean* \$bRecursive );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sDirname**|string|null|Nombre del archivo o directorio activo en el servidor remoto|
@@ -200,6 +209,7 @@ Crea un directorio.
 Si el directorio ya existe y el argumento force_create es TRUE, mkdir le agregará al nombre del directorio el sufijo _N donde N es el número de directorio con el mismo nombre +1  
 
 **[$this]** =  *public* function ( *string* \$sPath, *boolean* \$bForce );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sPath**|string|null|Nombre del archivo o directorio activo en el servidor remoto|
@@ -212,6 +222,7 @@ ___
 Activa/desactiva el modo pasivo. Por defecto todas las conexiones se inician en modo pasivo  
 
 **[$this]** =  *public* function ( *boolean* \$bPassive );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$bPassive**|boolean|true|Establese la conexión en modo pasivo|
@@ -223,6 +234,7 @@ ___
 Cambia el nombre de un archivo o directorio  
 
 **[boolean]** =  *public* function ( *string* \$sPath, *string* \$sNewName );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sPath**|string|null|Nombre del archivo o directorio activo en el servidor remoto|
@@ -235,6 +247,7 @@ ___
 Sube un archivo o directorio al servidor remoto  
 
 **[boolean]** =  *public* function ( *string* \$sLocalPath, *string* \$sPath, *int* \$nTransfer );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sLocalPath**|string|null|Nombre del archivo o directorio en el servidor local|
@@ -248,6 +261,7 @@ ___
 método auxiliar de UPLOAD ejecutado por medio del método treeWalk  
 
 **[boolean]** =  *private* function ( *array* \$vFile, *int* \$nTransfer );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$vFile**|array||Array con los datos del nombre del archivo o directorio|

@@ -69,6 +69,7 @@ ___
 Genera la descarga del archivo hacia el cliente.  
 
 **[string]** =  *public* function ( *string* \$sDownName );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sDownName**|string|argument:downname||
@@ -89,6 +90,7 @@ ___
 Rellena el archivo con **content** hasta **length**  
 
 **[$this]** =  *public* function ( *string* \$sContent, *string* \$nLength );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sContent**|string|argument:content||
@@ -102,6 +104,7 @@ Carga el archivo/directorio \$sFilePath en el objeto.
 Si \$sFilePath es igual a TRUE se trabajará con un archivo temporal en el directorio temporal del sistema  
 
 **[$this]** =  *public* function ( *string* \$sFilePath );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sFilePath**|string|argument:filepath||
@@ -113,6 +116,7 @@ ___
 Lee y retorna el contenido del archivo cargado  
 
 **[string]** =  *public* function ( *int* \$nLength, *array* \$aCurlOptions );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$nLength**|int|null|Tamaño máximo en bytes del archivo contemplado para lectura o escritura|
@@ -134,6 +138,7 @@ ___
 Genera una salida del contenido del archivo con el formato correspondiente a la extension especificada  
 
 **[string]** =  *public* function ( *string* \$sExtension );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sExtension**|string|argument:outtype|Extensión especificada para el formato de salida|
@@ -145,6 +150,7 @@ ___
 Escribe/reemplaza el contenido del archivo con **content**. Si el archivo no existe lo crea  
 
 **[$this]** =  *public* function ( *string* \$sContent );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sContent**|string||Contenido del archivo|
@@ -156,6 +162,7 @@ ___
 Escribe contenido en un archivo. Este método es utilizado por **append** y **write**  
 
 **[$this]** =  *protected* function ( *string* \$sFilePath, *string* \$sContent, *boolean* \$bReload, *string* \$sMode );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sFilePath**|string||Path del archivo de destino|

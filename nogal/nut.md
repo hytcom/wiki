@@ -33,6 +33,7 @@ Este objeto es el gestor de nuts del sistema, construye el objeto \$nut dentro d
 Obtiene el valor del argumento **\$sIndex** del array **\$vArguments**, si no existiese retorna **\$mDefault**  
 
 **[mixed]** =  *protected* function ( *array* \$vArguments, *mixed* \$mDefault );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$vArguments**|array|||
@@ -45,6 +46,7 @@ ___
 Retorna un objeto del framework utilizando el método **nglRoot::call**  
 
 **[object]** =  *public* function ( *string* \$sObjectName );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sObjectName**|string||Nombre del objeto|
@@ -56,6 +58,7 @@ ___
 Carga y retorna un nut listo para ser usado  
 
 **[object]** =  *public* function ( *string* \$sNutName, *array* \$sNutID );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sNutName**|string||Nombre del nut|
@@ -68,6 +71,7 @@ ___
 Verifica la existencia de un método en un nut  
 
 **[boolean]** =  *public* function ( *string* \$sFunction );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sFunction**|string||Nombre del método|
@@ -79,6 +83,7 @@ ___
 Ejecuta el método **\$sMethod** del nut  
 
 **[mixed]** =  *public* function ( *string* \$sMethod, *mixed* \$mArguments );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sMethod**|string||Nombre del método|
@@ -92,6 +97,7 @@ Setea y/o retorna el valor de la variable **nglNut::\$bSafemode**
 Cuando el valor de **\$bMode** sea **null** simplemente se retornará el valor actual de la variable.  
 
 **[boolean]** =  *public* function ( *boolean* \$bMode );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$bMode**|boolean|null|True o False|

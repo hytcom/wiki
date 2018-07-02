@@ -85,6 +85,7 @@ Los filtros disponibles son:<ul><li>**blur** =  Pone borrosa la imagen</li><li>*
 Exporta el contenido de imagen para ser usado como origen de datos de <img> o css  
 
 **[string]** =  *public* function ( *string* \$bAlpha );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$bAlpha**|string| false|Determina si la siguiente copia tendra fondo transparente|
@@ -98,6 +99,7 @@ Cuando \$nWidth = \$nCanvasWidth y \$nHeight = \$nCanvasHeight, el método reton
 Este método retorna un array de 2 indices:<ul><li>top</li><li>left</li></ul>  
 
 **[array]** =  *private* function ( *string* \$sPosition, *int* \$nWidth, *int* \$nHeight, *int* \$nCanvasWidth, *int* \$nCanvasHeight );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sPosition**|string||Valores de entrada TOP y LEFT, en el formato de argument::position|
@@ -114,6 +116,7 @@ Calcula el el ancho y alto de una imagen y su lienzo manteniendo la proporcional
 Este método retorna un array de 4 indices:<ul><li>ancho</li><li>alto</li><li>ancho del lienzo</li><li>alto del lienzo</li></ul>  
 
 **[array]** =  *private* function ( *int* \$nArgWidth, *int* \$nArgHeight, *int* \$nArgCanvasWidth, *int* \$nArgCanvasHeight );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$nArgWidth**|int||Nuevo ancho de la imagen|
@@ -128,6 +131,7 @@ ___
 Redimensiona el lienzo de la imagen  
 
 **[$this]** =  *public* function ( *string* \$nNewCanvasWidth, *string* \$nNewCanvasHeight, *string* \$sCanvasColor, *string* \$sPosition, *string* \$bAlpha );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$nNewCanvasWidth**|string|0|Ancho del canvas|
@@ -143,6 +147,7 @@ ___
 Redimensiona el lienzo de la imagen  
 
 **[boolean]** =  *private* function ( *int* \$nWidth, *int* \$nHeight, *int* \$nCanvasWidth, *int* \$nCanvasHeight, *boolean* \$bAlpha, *string* \$sPosition, *string* \$sCanvasColor );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$nWidth**|int||Ancho de la imagen|
@@ -169,6 +174,7 @@ ___
 Aplica un filtro o efecto sobre la imagen actual  
 
 **[$this]** =  *public* function ( *string* \$sFilter, *mixed* \$mValue );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sFilter**|string|null|Filtro que se aplicará sobre la imagen
@@ -182,6 +188,7 @@ ___
 Obtiene el grado de transparencia de la imagen  
 
 **[array]** =  *private* function ( *resource* \$hSourceImage );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$hSourceImage**|resource||Imagen|
@@ -193,6 +200,7 @@ ___
 Retorna el puntero de la imagen para ser utilizado en otro proceso  
 
 **[resource]** =  *public* function ( *string* \$bAlpha );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$bAlpha**|string| false|Determina si la siguiente copia tendra fondo transparente|
@@ -205,6 +213,7 @@ Carga la imagen en el objeto.
 Si el parámetro \$mFile fuese null, se creará una imagen vacia de 1x1 px  
 
 **[$this o FALSE]** =  *public* function ( *mixed* \$mFile, *string* \$sType );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$mFile**|mixed|null|Ruta del archivo de imagen, puntero o null|
@@ -218,6 +227,7 @@ Añade un margen por fuera de los limites de la imagen.
 Si una imagen mide 100px de ancho y se le añaden 10px de margen, el nuevo ancho será de 120px  
 
 **[$this]** =  *public* function ( *int* \$nMargin, *string* \$sCanvasColor );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$nMargin**|int|argument::margin||
@@ -231,6 +241,7 @@ Añade un margen por dentro de los limites de la imagen.
 Si una imagen mide 100px de ancho y se le añaden 10px de padding, el ancho seguirá siendo de 100px, pero el fotograma pasará a medir 80px de ancho  
 
 **[$this]** =  *public* function ( *int* \$nPadding, *string* \$sCanvasColor );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$nPadding**|int|argument::padding||
@@ -243,6 +254,7 @@ ___
 Inserta una imagen dentro de otra  
 
 **[$this]** =  *public* function ( *resource* \$image, *string* \$sPosition, *string* \$bAlpha );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$image**|resource||Puntero de la imagen que se incorporará a la imagen actual|
@@ -256,6 +268,7 @@ ___
 Redimensiona una imagen  
 
 **[$this]** =  *public* function ( *string* \$nNewWidth, *string* \$mNewHeight, *string* \$bAlpha );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$nNewWidth**|string|0|Ancho que se aplicará en la próxima copia de la imagen actual|
@@ -271,6 +284,7 @@ El reemplazo de colores en una imagen no es algo sencillo, mucho colores pueden 
 Por ello este método es mas eficiente en el reemplazo de colores plenos en imagenes simples, como códigos QR, de barras o textos  
 
 **[$this]** =  *public* function ( *string* \$sFind, *string* \$sReplace, *string* \$nTolerance );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sFind**|string|#000000|Valor hexadecimal del color que se desea reemplazar en la imagen|
@@ -284,6 +298,7 @@ ___
 Inserta una imagen dentro de otra  
 
 **[$this]** =  *public* function ( *string* \$sText, *string* \$sColor, *string* \$sPosition, *string* \$sMargin, *int* \$nFont, *int* \$nAngle, *string* \$bAlpha, *string* \$sFont );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sText**|string||Texto que se escribirá sobre la imagen actual|
@@ -302,6 +317,7 @@ ___
 Exportar la imagen al navegador  
 
 **[void]** =  *public* function ( *string* \$bAlpha );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$bAlpha**|string| false|Determina si la siguiente copia tendra fondo transparente|
@@ -313,6 +329,7 @@ ___
 Exportar la imagen a un archivo  
 
 **[$this]** =  *public* function ( *mixed* \$sFilePath, *string* \$nQuality );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sFilePath**|mixed|null|Ruta del archivo de imagen, puntero o null|

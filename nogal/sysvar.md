@@ -33,6 +33,7 @@ Método mágico encargado de retornar los valores de la variable \$VARS cuando e
 si no se especifica un nombre de variable se retornarán todas las variables de sistema.  
 
 **[mixed]** =  *public* function ( *string* \$sVarname );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sVarname**|string|null|Nombre de variable|

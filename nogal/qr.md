@@ -29,6 +29,7 @@ Implementa https://github.com/aferrandini/PHPQRCode
 Genera y retorna el puntero de la imagen del código QR  
 
 **[image resource]** =  *public* function ( *string* \$sContent, *int* \$nMargin, *int* \$nPointSize, *int* \$sECLevel );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sContent**|string|test1234|Contenido del código|

@@ -41,6 +41,7 @@ Implementa la clase 'barcode-generator', que genera códigos de barras (third-pa
 Genera y retorna el código de barras en formato HTML  
 
 **[string]** =  *public* function ( *string* \$sContent, *string* \$sType, *string* \$nSize, *int* \$nMaxHeight, *string* \$sColor );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sContent**|string|test1234|Contenido del código|
@@ -56,6 +57,7 @@ ___
 Genera y retorna el código de barras en formato SVG  
 
 **[string]** =  *public* function ( *string* \$sContent, *string* \$sType, *string* \$nSize, *int* \$nMaxHeight, *string* \$sColor );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sContent**|string|test1234|Contenido del código|
@@ -71,6 +73,7 @@ ___
 Genera y retorna el código de barras en formato PNG  
 
 **[string]** =  *public* function ( *string* \$sContent, *string* \$sType, *string* \$nSize, *int* \$nMaxHeight, *string* \$sColor );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sContent**|string|test1234|Contenido del código|
@@ -86,6 +89,7 @@ ___
 Genera y retorna el puntero de la imagen del código de barras  
 
 **[image resource]** =  *public* function ( *string* \$sType, *string* \$sContent, *string* \$nSize, *int* \$nMaxHeight, *string* \$sResolution );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sType**|string|code128|Algoritmo utilizado para generar el código. Códigos soportados:<ul><li>CODE_39</li><li>CODE_39_CHECKSUM</li><li>CODE_39E</li><li>CODE_39E_CHECKSUM</li><li>CODE_93</li><li>STANDARD_2_5</li><li>STANDARD_2_5_CHECKSUM</li><li>INTERLEAVED_2_5</li><li>INTERLEAVED_2_5_CHECKSUM</li><li>CODE_128</li><li>CODE_128_A</li><li>CODE_128_B</li><li>CODE_128_C</li><li>EAN_2</li><li>EAN_5</li><li>EAN_8</li><li>EAN_13</li><li>UPC_A</li><li>UPC_E</li><li>MSI</li><li>MSI_CHECKSUM</li><li>POSTNET</li><li>PLANET</li><li>RMS4CC</li><li>KIX</li><li>IMB</li><li>CODABAR</li><li>CODE_11</li><li>PHARMA_CODE</li><li>PHARMA_CODE_TWO_TRACKS</li></ul>|
@@ -101,6 +105,7 @@ ___
 Genera y retorna una secuencia de 0 y 1 del código de barras  
 
 **[string]** =  *public* function ( *string* \$sContent, *string* \$sType );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sContent**|string|test1234|Contenido del código|

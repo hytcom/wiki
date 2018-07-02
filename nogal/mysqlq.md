@@ -97,6 +97,7 @@ Obtiene una fila de resultados en forma de array y avanza el puntero.
 Cuando se especifique **\$sColumn** y el valor sea el nombre una columna del grupo de resultados, se retornará unicamente el valor de dicha columna  
 
 **[mixed]** =  *public* function ( *string* \$sColumn, *string* \$sMode );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sColumn**|string|null|Nombre de una columna del grupo de resultados.
@@ -114,6 +115,7 @@ excepto cuanto el nombre esté presedido de un **#**, en este caso se retornará
 Este método reinicia el conjunto de resultados a la primera fila.  
 
 **[mixed]** =  *public* function ( *string* \$mColumn, *string* \$sMode, *array* \$aGroup );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$mColumn**|string|null|Nombre de una columna del grupo de resultados.
@@ -129,6 +131,7 @@ ___
 Selecciona el modo de salida para los métodos **get** y **getall**  
 
 **[int]** =  *protected* function ( *string* \$sMode );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sMode**|string|assoc|Tipo de modo GET. Valores admitidos:<ul><li>**assoc** =  devuelve un array indexado por el nombre de columna</li><li>**num** =  devuelve un array indexado por el número de columna, empezando por la columna 0</li><li>**both** =  devuelve un array indexado tanto por el nombre como por el número de columna empezando por la columna 0</li></ul>|
@@ -167,6 +170,7 @@ ___
 Carga la ultima consulta ejecutada del driver.  
 
 **[boolean]** =  *public* function ( *resource* \$link, *object* \$query );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$link**|resource|null|Puntero del driver de base de datos|
