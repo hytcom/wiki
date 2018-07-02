@@ -17,15 +17,13 @@ Compendio de métodos utilizados para resolver tareas rutinarias vinculadas a:<u
 |Método|Descripción|
 |---|---|
 |[ArrayGrouper](#ArrayGrouper)||
-|[apacheMimeTypes](#apacheMimeTypes)|Retorna los Internet media types indexados por extención proporcionados por el sitio 
-http://svn|
+|[apacheMimeTypes](#apacheMimeTypes)|Retorna los Internet media types indexados por extención proporcionados por el sitio http://svn|
 |[arrange](#arrange)|Restituye el orden original de la Cadena o Array **\$mSource** desordenado por **nglCommon::disarrange** según las posiciones de **\$aArrange**|
 |[arrayAppend](#arrayAppend)|Añade los indices de 1 o mas arrays al array principal, sin importar el tipo de dato y sin sobreescribir indices|
 |[arrayColumn](#arrayColumn)||
 |[arrayGoto](#arrayGoto)||
 |[arrayGroup](#arrayGroup)|Agrupa un array bidimensional|
-|[arrayIn](#arrayIn)|Comprueba si un valor se encuentra en un array utilizando in_array o 
-chequeando valor por valor utilizando expresiones regulares|
+|[arrayIn](#arrayIn)|Comprueba si un valor se encuentra en un array utilizando in_array o chequeando valor por valor utilizando expresiones regulares|
 |[arrayInsert](#arrayInsert)||
 |[arrayMerge](#arrayMerge)||
 |[arrayMultiSort](#arrayMultiSort)||
@@ -39,11 +37,9 @@ chequeando valor por valor utilizando expresiones regulares|
 |[coockie](#coockie)|Guarda y optiene el valor de una cookie del navegador|
 |[dec2hex](#dec2hex)||
 |[disarrange](#disarrange)|Desordena de manera cíclica la Cadena o Array **\$mSource** según las posiciones de **\$aArrange**|
-|[dump](#dump)|Retorna el contenido de una variable de acuerdo al tipo de la misma:<br /><ul><li>arrays -> print_r</li><li>cadenas -> echo</li><li>otros -> var_dump</li></ul>Los valores son capturados por métodos de control de salida y retornados, no se imprimen
-directamente en la pantalla|
+|[dump](#dump)|Retorna el contenido de una variable de acuerdo al tipo de la misma:<br /><ul><li>arrays -> print_r</li><li>cadenas -> echo</li><li>otros -> var_dump</li></ul>Los valores son capturados por métodos de control de salida y retornados, no se imprimendirectamente en la pantalla|
 |[emptyToNull](#emptyToNull)|Establece como NULL los valores de \$aData, cuyo indice se encuentre en \$aKeys, que retornen TRUE a la funcion empty|
-|[encoding](#encoding)|Verifica si la cadena **\$sString** se encuentra codificada en **\$mEncoding**
-**\$mEncoding** debe ser el nombre de una codificación válida o un array de nombres|
+|[encoding](#encoding)|Verifica si la cadena **\$sString** se encuentra codificada en **\$mEncoding****\$mEncoding** debe ser el nombre de una codificación válida o un array de nombres|
 |[ensureVar](#ensureVar)||
 |[explodeTrim](#explodeTrim)||
 |[exploder](#exploder)||
@@ -77,8 +73,7 @@ directamente en la pantalla|
 |[strSizeEncode](#strSizeEncode)||
 |[tokenDecode](#tokenDecode)||
 |[tokenEncode](#tokenEncode)||
-|[treeWalk](#treeWalk)|Aplica una función de usuario recursivamente a cada miembro del arbol,
-entrando en cada uno de los nodos \$sChildrenNode|
+|[treeWalk](#treeWalk)|Aplica una función de usuario recursivamente a cada miembro del arbol,entrando en cada uno de los nodos \$sChildrenNode|
 |[truelize](#truelize)|Crea un nuevo Array combinando los valores de \$aSource como claves y el booleano TRUE como valor de cada uno|
 |[unaccented](#unaccented)||
 |[unique](#unique)||

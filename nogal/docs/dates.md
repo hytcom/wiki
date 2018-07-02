@@ -17,10 +17,8 @@ Fechas.
 |---|---|
 |[format](#format)||
 |[microtimer](#microtimer)||
-|[now](#now)|Retorna un array con los nombres de los días de la semana y meses del año en el array bidimensional 
-basado en los valores de las constantes **NGL_DATE_DAYS** y **NGL_DATE_MONTHS**|
-|[settings](#settings)|Retorna un array con los nombres de los días de la semana y meses del año en el array bidimensional 
-basado en los valores de las constantes **NGL_DATE_DAYS** y **NGL_DATE_MONTHS**|
+|[now](#now)|Retorna un array con los nombres de los días de la semana y meses del año en el array bidimensional basado en los valores de las constantes **NGL_DATE_DAYS** y **NGL_DATE_MONTHS**|
+|[settings](#settings)|Retorna un array con los nombres de los días de la semana y meses del año en el array bidimensional basado en los valores de las constantes **NGL_DATE_DAYS** y **NGL_DATE_MONTHS**|
 
   
 &nbsp;

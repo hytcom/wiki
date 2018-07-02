@@ -25,8 +25,7 @@ Este objeto es el gestor de nuts del sistema, construye el objeto \$nut dentro d
 |[load](#load)||
 |[ngl](#ngl)||
 |[run](#run)||
-|[safemode](#safemode)|Setea y/o retorna el valor de la variable **nglNut::\$bSafemode**
-Cuando el valor de **\$bMode** sea **null** simplemente se retornará el valor actual de la variable|
+|[safemode](#safemode)|Setea y/o retorna el valor de la variable **nglNut::\$bSafemode**Cuando el valor de **\$bMode** sea **null** simplemente se retornará el valor actual de la variable|
 
   
 &nbsp;

@@ -84,12 +84,9 @@ Ej: [["tabla.campo1","foo"], "alias2.campo2", ["campo3","bar"]]|
 |[relationship](#relationship)||
 |[select](#select)||
 |[showtables](#showtables)|Retorna un Array con los datos de todos los elementos que componen el sistema **DB**|
-|[suspend](#suspend)|Suspende uno o mas registros aplicando la misma lógica que el método **nglOwl::update**, con la diferencia de que sólo un campo es actualizado; **state = 0**
-Cuando un registro principal es suspendido, todos sus registros dependientes también lo son|
-|[toggle](#toggle)|Suspende y/o desuspende uno o mas registros aplicando la misma lógica que el método **nglOwl::update**, con la diferencia de que sólo un campo es actualizado; **state = 0**
-Cuando un registro principal es suspendido, todos sus registros dependientes también lo son|
-|[unsuspend](#unsuspend)|Reactiva registros suspendidos por **nglOwl::suspend**, actualizando **state = 1**
-Cuando un registro principal es reactivado, todos sus registros dependientes también lo son|
+|[suspend](#suspend)|Suspende uno o mas registros aplicando la misma lógica que el método **nglOwl::update**, con la diferencia de que sólo un campo es actualizado; **state = 0**Cuando un registro principal es suspendido, todos sus registros dependientes también lo son|
+|[toggle](#toggle)|Suspende y/o desuspende uno o mas registros aplicando la misma lógica que el método **nglOwl::update**, con la diferencia de que sólo un campo es actualizado; **state = 0**Cuando un registro principal es suspendido, todos sus registros dependientes también lo son|
+|[unsuspend](#unsuspend)|Reactiva registros suspendidos por **nglOwl::suspend**, actualizando **state = 1**Cuando un registro principal es reactivado, todos sus registros dependientes también lo son|
 |[update](#update)|Actualiza uno o mas registros en las tablas que componen los objetos|
 |[view](#view)||
 |[viewChildren](#viewChildren)||
