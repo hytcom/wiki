@@ -43,16 +43,16 @@ Crea un objeto sobre archivos y/o directorio.
 # Métodos
 |Método|Descripción|
 |---|---|
-|[WriteContent](#WriteContent)|Escribe contenido en un archivo|
-|[append](#append)|Añade el contenido content al final de un archivo|
-|[download](#download)|Genera la descarga del archivo hacia el cliente|
-|[fileinfo](#fileinfo)|Retorna al atributo info|
+|[WriteContent](#WriteContent)|Escribe contenido en un archivo. Este método es utilizado por append y write|
+|[append](#append)|Añade el contenido content al final de un archivo. Si el archivo no existe lo crea|
+|[download](#download)|Genera la descarga del archivo hacia el cliente.|
+|[fileinfo](#fileinfo)|Retorna al atributo info.|
 |[fill](#fill)|Rellena el archivo con content hasta length|
-|[load](#load)|			Carga el archivo/directorio $sFilePath en el objeto|
+|[load](#load)|Carga el archivo/directorio $sFilePath en el objeto.Si $sFilePath es igual a TRUE se trabajará con un archivo temporal en el directorio temporal del ...|
 |[read](#read)|Lee y retorna el contenido del archivo cargado|
 |[reload](#reload)|Actualiza la información del objeto releyendo el archivo/directorio de origen y vuelve a cargarlo|
 |[view](#view)|Genera una salida del contenido del archivo con el formato correspondiente a la extension especificada|
-|[write](#write)|Escribe/reemplaza el contenido del archivo con content|
+|[write](#write)|Escribe/reemplaza el contenido del archivo con content. Si el archivo no existe lo crea|
 
   
 &nbsp;

@@ -23,15 +23,15 @@ Cuenta con dos valores de configuración que impactan en el procesamiento de la 
 # Métodos
 |Método|Descripción|
 |---|---|
-|[CheckValue](#CheckValue)|Aplica las reglas $vRules sobre la variable $mSource|
+|[CheckValue](#CheckValue)|Aplica las reglas $vRules sobre la variable $mSource. Este método es auxiliar de validate|
 |[ClearCharacters](#ClearCharacters)|Retorna una cadena despues de compararla contra $aToClean|
-|[GetRulesFile](#GetRulesFile)|Obtiene la configuración de un archivo |
+|[GetRulesFile](#GetRulesFile)|Obtiene la configuración de un archivo .json y la retorna en como un Array|
 |[RequestFrom](#RequestFrom)|Analiza la cadena $sFrom y retorna un array de origines para ser utilizados en request|
 |[ValidateByType](#ValidateByType)|Validador de variables por tipo|
-|[addvar](#addvar)|			Almacena valores que luego pueden ser utilizados como variables dentro de las reglas|
-|[request](#request)|			Valida y reemplaza los valores de la variable global $_REQUEST en base al archivo REQUEST|
-|[resetvars](#resetvars)|Desetea las variables seteadas con ngl|
-|[validate](#validate)|Valida la variable $mVariables aplicando las reglas $mRules|
+|[addvar](#addvar)|Almacena valores que luego pueden ser utilizados como variables dentro de las reglas. Esto es especialmente util dentro de los archivos .json.Este mé...|
+|[request](#request)|Valida y reemplaza los valores de la variable global $_REQUEST en base al archivo REQUEST.jsonEste método sobreescribe los valores de $_REQUEST. Para...|
+|[resetvars](#resetvars)|Desetea las variables seteadas con ngl:Validate::addvar|
+|[validate](#validate)|Valida la variable $mVariables aplicando las reglas $mRules. Si $mRules no está definido, retornará NULL|
 
   
 &nbsp;

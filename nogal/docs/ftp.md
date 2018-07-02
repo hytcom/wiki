@@ -49,7 +49,7 @@ Características Principales:
 # Métodos
 |Método|Descripción|
 |---|---|
-|[DownloadTree](#DownloadTree)|Método auxiliar de DOWNLOAD ejecutado por medio del método nglCommon|
+|[DownloadTree](#DownloadTree)|Método auxiliar de DOWNLOAD ejecutado por medio del método nglCommon::treeWalk|
 |[GetChmod](#GetChmod)|Convierte una cadena de permisos RWX en un valor CHMOD|
 |[GetTimestamp](#GetTimestamp)|Convierte las fechas de ftp_rawlist en un valor timestamp|
 |[Logger](#Logger)|Registra una cadena en el atributo log|
@@ -60,9 +60,9 @@ Características Principales:
 |[delete](#delete)|Elimina un archivo o directorio|
 |[download](#download)|descarga un archivo o directorio del servidor a la maquina local|
 |[login](#login)|Autentica la sesion en el servidor remoto|
-|[ls](#ls)|Lista el contenido de un directorio|
-|[mkdir](#mkdir)|			Crea un directorio|
-|[passive](#passive)|Activa/desactiva el modo pasivo|
+|[ls](#ls)|Lista el contenido de un directorio. Sino se especifica un directorio listará el directorio actual|
+|[mkdir](#mkdir)|Crea un directorio.Si el directorio ya existe y el argumento force_create es TRUE, mkdir le agregará al nombre del directorio el sufijo _N donde N es...|
+|[passive](#passive)|Activa/desactiva el modo pasivo. Por defecto todas las conexiones se inician en modo pasivo|
 |[rename](#rename)|Cambia el nombre de un archivo o directorio|
 |[upload](#upload)|Sube un archivo o directorio al servidor remoto|
 

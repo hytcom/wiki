@@ -39,7 +39,7 @@ Gestiona conexciones con bases de datos SQLite.
 |Método|Descripción|
 |---|---|
 |[Error](#Error)|Muestra el mensaje de Error generado por el fallo más reciente|
-|[PrepareValues](#PrepareValues)|			Auxiliar de los métodos insert y update|
+|[PrepareValues](#PrepareValues)|Auxiliar de los métodos insert y update.Prepara el array asociativo o la cadena de variables para ser utilizados en las sentencias.Cuando los valores...|
 |[close](#close)|Finaliza la conexión con la base de datos|
 |[connect](#connect)|Establece la conexión con la base de datos|
 |[destroy](#destroy)|Cierra la conexión y destruye el objeto|

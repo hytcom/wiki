@@ -64,9 +64,9 @@ Ej: [["tabla.campo1","foo"], "alias2.campo2", ["campo3","bar"]]|
 |---|---|
 |[CrossRows](#CrossRows)|Verifica las referencias de la tabla $sTable con el resto de las tablas del objeto y retorna un array informandolas|
 |[DeleteInCascade](#DeleteInCascade)|Ejecuta las sentencias de borrado $aCascade y retorna el número de registros borrados|
-|[GetID](#GetID)|			Obtiene el ID del registro $mID de la tabla $sTable confirmando la existencia del mismo, en base a su IMYA o al propio ID|
-|[Logger](#Logger)|Registra la salida de LOG de un método en los atributos log y history|
-|[OwLog](#OwLog)|			Genera un log sobre cada acción de escritura|
+|[GetID](#GetID)|Obtiene el ID del registro $mID de la tabla $sTable confirmando la existencia del mismo, en base a su IMYA o al propio ID.Cuando $sTable sea distinto ...|
+|[Logger](#Logger)|Registra la salida de LOG de un método en los atributos log y history. Cuando $sStatus = NULL se reseteará el valor del atributo log|
+|[OwLog](#OwLog)|Genera un log sobre cada acción de escritura. El mismo es almacenado en la base datos en la tabla `__ngl_owl_log__` y pasado al método nglOwl::Logge...|
 |[UpdateData](#UpdateData)|Ejecuta las actualizaciones enviadas por los métodos|
 |[Validate](#Validate)|Realiza la validación de datos por medio del objeto nglValidate|
 |[child](#child)|Prepara el objeto para trabajar con la dependencia $sChild y lo retorna|
@@ -74,20 +74,20 @@ Ej: [["tabla.campo1","foo"], "alias2.campo2", ["campo3","bar"]]|
 |[close](#close)|Finaliza la conexión con la base de datos|
 |[columns](#columns)|Retorna los nombres de la columnas del objeto activo|
 |[connect](#connect)|Establece la conexión con la base de datos|
-|[delete](#delete)|			Utiliza el método nglOwl::UpdateData para intentar eliminar el o los registros seleccionados, ya sean del una tabla principal o de una dependiente (hijo)|
+|[delete](#delete)|Utiliza el método nglOwl::UpdateData para intentar eliminar el o los registros seleccionados, ya sean del una tabla principal o de una dependiente (h...|
 |[describe](#describe)|Detalles del objeto activo|
-|[duplicate](#duplicate)|			Duplica un registro con o sin sus dependencias (hijos)|
+|[duplicate](#duplicate)|Duplica un registro con o sin sus dependencias (hijos). Las diferentes metodologías de ejecución son:principal CON dependencias: cuando $bChildren =...|
 |[get](#get)|Retorna un objeto iNglDataObjet con los datos de un registro y todas sus relaciones en base a su ID o IMYA|
 |[getAll](#getAll)|Retorna un objeto iNglDataObjet con todos registros y relaciones en base a su $sFilter|
-|[insert](#insert)|			Inserta uno o mas registros en las tablas que componen los objetos|
+|[insert](#insert)|Inserta uno o mas registros en las tablas que componen los objetos. Este método también efectua las inserciones en las tablas dependientes (hijos).A...|
 |[query](#query)|Ejecuta una sentencia JSQL utilizando el método query del objeto $db y retorna un objecto del tipoiNglDBQuery|
 |[relationship](#relationship)|Muestra la estructura relacional del objeto seleccionado|
 |[select](#select)|Selecciona y establece como activo al objeto $sObjectName|
-|[showtables](#showtables)|			Retorna un Array con los datos de todos los elementos que componen el sistema DB|
-|[suspend](#suspend)|			Suspende uno o mas registros aplicando la misma lógica que el método nglOwl::update, con la diferencia de que sólo un campo es actualizado; state = 0			Cuando un registro principal es suspendido, todos sus registros dependientes también lo son|
-|[toggle](#toggle)|			Suspende y/o desuspende uno o mas registros aplicando la misma lógica que el método nglOwl::update, con la diferencia de que sólo un campo es actualizado; state = 0			Cuando un registro principal es suspendido, todos sus registros dependientes también lo son|
-|[unsuspend](#unsuspend)|			Reactiva registros suspendidos por nglOwl::suspend, actualizando state = 1			Cuando un registro principal es reactivado, todos sus registros dependientes también lo son|
-|[update](#update)|			Actualiza uno o mas registros en las tablas que componen los objetos|
+|[showtables](#showtables)|Retorna un Array con los datos de todos los elementos que componen el sistema DB. Cada indice del Array está compuesto por:name: String con el nombre...|
+|[suspend](#suspend)|Suspende uno o mas registros aplicando la misma lógica que el método nglOwl::update, con la diferencia de que sólo un campo es actualizado; state =...|
+|[toggle](#toggle)|Suspende y/o desuspende uno o mas registros aplicando la misma lógica que el método nglOwl::update, con la diferencia de que sólo un campo es actua...|
+|[unsuspend](#unsuspend)|Reactiva registros suspendidos por nglOwl::suspend, actualizando state = 1Cuando un registro principal es reactivado, todos sus registros dependientes...|
+|[update](#update)|Actualiza uno o mas registros en las tablas que componen los objetos. Este método también efectua las actualizaciones en las tablas dependientes (hi...|
 |[view](#view)|Retorna las partes SELECT y FROM de la consulta SQL necesaria para generar una VIEW del objeto activo|
 |[viewChildren](#viewChildren)|Retorna las partes SELECT y FROM de la consulta SQL necesaria para generar una VIEW de un hijo del objeto activo|
 

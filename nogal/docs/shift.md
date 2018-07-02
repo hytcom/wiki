@@ -16,24 +16,24 @@ Este objeto nuclea métodos de conversión de datos entre las siguientes escruct
 # Métodos
 |Método|Descripción|
 |---|---|
-|[CSVParseLine](#CSVParseLine)|auxiliar del método nglShift::csvToArray|
-|[CastValue](#CastValue)|Auxiliar del método nglShift|
+|[CSVParseLine](#CSVParseLine)|auxiliar del método nglShift::csvToArray. convierte una linea CSV en un array|
+|[CastValue](#CastValue)|Auxiliar del método nglShift::cast|
 |[HTMLTableParser](#HTMLTableParser)|Auxiliar del método htmlToArray|
-|[JSONChar](#JSONChar)|Auxiliar del método nglShift|
-|[JSONNameValuePair](#JSONNameValuePair)|Auxiliar del método nglShift|
-|[JSONReduceString](#JSONReduceString)|Auxiliar del método nglShift|
-|[XMLChildren](#XMLChildren)|Auxiliar del método ngl|
-|[cast](#cast)|			Formatea el valor $mValue según $sCastType, siempre que se encuentre dentro de los tipos|
+|[JSONChar](#JSONChar)|Auxiliar del método nglShift::jsonEncode encargado de codificar un caracter para que sea válido dentro de una cadena UTF-8|
+|[JSONNameValuePair](#JSONNameValuePair)|Auxiliar del método nglShift::jsonEncode encargado generar un par ordenado NOMBRE:VALOR válido|
+|[JSONReduceString](#JSONReduceString)|Auxiliar del método nglShift::jsonDecode encargado limpiar el código antes de ser parseado|
+|[XMLChildren](#XMLChildren)|Auxiliar del método ngl:Babel::xmlToArray utilizado para recorrer el objeto XML de manera recursiva|
+|[cast](#cast)|Formatea el valor $mValue según $sCastType, siempre que se encuentre dentro de los tipos:arraybooleandoubleintegerNULLobjectstring|
 |[convert](#convert)|Convierte una estructura de datos en otra|
 |[csvEncode](#csvEncode)|Genera una cadena formateada como CSV partiendo de un Array|
 |[csvToArray](#csvToArray)|convierte un texto CSV (una línea o conjunto de ellas) en un array bidimensional|
 |[fixedExplode](#fixedExplode)|Convierte una cadena en Array separando sus partes por caracter fijo|
-|[fixedImplode](#fixedImplode)|Convierte un Array en una cadena respetando las logitudes de positions|
+|[fixedImplode](#fixedImplode)|Convierte un Array en una cadena respetando las logitudes de positions. Si la longuitud de la cadena es superior al valor de positions, el valor será...|
 |[html](#html)|Genera una salida HTML a partir de un Array|
-|[htmlToArray](#htmlToArray)|			Convierte una Tabla HTML en un array, utilizando el objeto DOMDocument|
+|[htmlToArray](#htmlToArray)|Convierte una Tabla HTML en un array, utilizando el objeto DOMDocument.Las tablas pueden o no tener THEAD y TBODY. En el caso de tener THEAD los valor...|
 |[jsonDecode](#jsonDecode)|Decodifica una cadena JSON de un Array|
 |[jsonEncode](#jsonEncode)|Codifica un valor en una cadena JSON|
-|[jsonFormat](#jsonFormat)|Auxiliar del método nglShift|
+|[jsonFormat](#jsonFormat)|Auxiliar del método nglShift::jsonEncode encargado generar un par ordenado NOMBRE:VALOR válido|
 |[objFromArray](#objFromArray)|Convierte un Array en un Objeto de manera recursiva|
 |[objToArray](#objToArray)|Convierte un objeto en un array asosiativo de manera recursiva|
 |[xmlEncode](#xmlEncode)|Convierte un array en una estructura XML|

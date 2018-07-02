@@ -43,11 +43,11 @@ Parsea URLs en sus diferentes componentes, permite actualizarlos y volver confor
 |Método|Descripción|
 |---|---|
 |[QueryString](#QueryString)|Convierte un Array en una cadena de variables válidad para ser enviada vía GET o POST|
-|[get](#get)|Retorna la URL activa, ya sea la cargada por el aguamento URL o la última generada por el método nglURL::unparse|
-|[parse](#parse)|Descompone una URL en los atributos del objeto y retorna los datos en un array asociativo|
-|[parts](#parts)|Retorna todas las partes de la URL previamente generadas por nglURL::parse que estos pueden haber sufrido actualizaciones|
-|[unparse](#unparse)|Compone una URL uniendo los atributos del objeto|
-|[update](#update)|			Permite actualizar las distintas partes de la URL basandose en las partes generadas nglURL::parse|
+|[get](#get)|Retorna la URL activa, ya sea la cargada por el aguamento URL o la última generada por el método nglURL::unparse.|
+|[parse](#parse)|Descompone una URL en los atributos del objeto y retorna los datos en un array asociativo. Si $sURL no es una cadena, retornará FALSE|
+|[parts](#parts)|Retorna todas las partes de la URL previamente generadas por nglURL::parse que estos pueden haber sufrido actualizaciones.|
+|[unparse](#unparse)|Compone una URL uniendo los atributos del objeto. Si el parámetro query es ignorado si existe params, ya que estos pueden haber sufrido actualizacion...|
+|[update](#update)|Permite actualizar las distintas partes de la URL basandose en las partes generadas nglURL::parse.nglURL::parse se autoejecutará si aún no ha sido e...|
 
   
 &nbsp;

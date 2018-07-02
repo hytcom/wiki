@@ -22,13 +22,13 @@ nglUnicode construye el objeto \$unicode dentro del framework, el cual es accedi
 |Método|Descripción|
 |---|---|
 |[chr](#chr)|Devuelve una cadena de un caracter que contiene el carácter especificado por $nCode|
-|[escape](#escape)|			Escapa una cadena en formato UNICODE|
+|[escape](#escape)|Escapa una cadena en formato UNICODE.Donde los caracteres que no sean UTF-8 serán reemplazados por su ORD en formato hexadecimal precedidos de una \u|
 |[explode](#explode)|Divide una cadena en varias|
-|[groups](#groups)|			Retorna la información de los grupos de caracteres UTF-8						Tipos							ABC|
-|[info](#info)|			Devuelve información de un caracter dado							char|
+|[groups](#groups)|Retorna la información de los grupos de caracteres UTF-8TiposABC: alfabetoABU: abugidaNUM: númerosSYL: silabarioSYM: símbolosGruposSYM - CONTROL: C...|
+|[info](#info)|Devuelve información de un caracter dadochar: caractertype: tipo de caractergroup: grupo UTF-8 al que pertenecebytes: bytes que ocupadecimal: valor d...|
 |[is](#is)|Retorna el tipo, grupo y valor decimal de un caracter dado, o false en caso de error|
 |[ord](#ord)|Devuelve el valor UNICODE del caracter $sChar|
-|[split](#split)|Convierte $mSource en un array de caracteres UTF-8|
+|[split](#split)|Convierte $mSource en un array de caracteres UTF-8. Si $mSource es un array split retornara $mSource|
 |[strlen](#strlen)|Obtiene la longitud de una cadena|
 |[substr](#substr)|Devuelve la subcadena de $mSource comenzando en $nStart y por un largo de $nLength|
 |[unescape](#unescape)|Desescapa una cadena UNICODE|
