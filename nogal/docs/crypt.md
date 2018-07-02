@@ -37,11 +37,11 @@ Implementa la clase 'phpseclib', de algoritmos de encriptación
 &nbsp;
 
 # Métodos
-- [SetKey](#SetKey)
-- [decrypt](#decrypt)
-- [encrypt](#encrypt)
-- [keys](#keys)
-- [type](#type)
+- [SetKey = ](#SetKey)
+- [decrypt = ](#decrypt)
+- [encrypt = ](#encrypt)
+- [keys = ](#keys)
+- [type = Establece el método de encriptación](#type)
 
   
 &nbsp;

@@ -19,18 +19,18 @@ nglUnicode construye el objeto \$unicode dentro del framework, el cual es accedi
 &nbsp;
 
 # Métodos
-- [chr](#chr)
-- [escape](#escape)
-- [explode](#explode)
-- [groups](#groups)
-- [info](#info)
-- [is](#is)
-- [ord](#ord)
-- [split](#split)
-- [strlen](#strlen)
-- [substr](#substr)
-- [unescape](#unescape)
-- [unescapeChar](#unescapeChar)
+- [chr = ](#chr)
+- [escape = Escapa una cadena en formato UNICODE](#escape)
+- [explode = ](#explode)
+- [groups = ](#groups)
+- [info = ](#info)
+- [is = ](#is)
+- [ord = ](#ord)
+- [split = Convierte \$mSource en un array de caracteres UTF-8](#split)
+- [strlen = ](#strlen)
+- [substr = ](#substr)
+- [unescape = ](#unescape)
+- [unescapeChar = ](#unescapeChar)
 
   
 &nbsp;

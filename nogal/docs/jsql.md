@@ -63,13 +63,16 @@ Métodos auxiliares para el parseo de una cadena JSQL.
 &nbsp;
 
 # Métodos
-- [Condition](#Condition)
-- [column](#column)
-- [conditions](#conditions)
-- [decode](#decode)
-- [encode](#encode)
-- [operator](#operator)
-- [value](#value)
+- [Condition = Transforma la representación **JSQL** de una condición y la retorna en formato **SQL** aplicando los métodos **nglJSQL::column**, **nglJSQL::operator** y **nglJSQL::value**
+Formatos válidos y sus resultados<ul><li>**["TABLE1](#Condition)
+- [column = Transforma la representación **JSQL** de una columna y la retorna en formato **SQL**
+Formatos válidos y sus resultados<ul><li>**["TABLE](#column)
+- [conditions = Transforma un array de condiciones **JSQL** en una sentencia **WHERE** o en un grupo de par de valores **SQL SET**
+Formatos válidos y sus resultados<ul><li>**["TABLE1](#conditions)
+- [decode = ](#decode)
+- [encode = ](#encode)
+- [operator = ](#operator)
+- [value = ](#value)
 
   
 &nbsp;

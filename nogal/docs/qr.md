@@ -19,7 +19,7 @@ Implementa https://github.com/aferrandini/PHPQRCode
 &nbsp;
 
 # Métodos
-- [image](#image)
+- [image = ](#image)
 
   
 &nbsp;

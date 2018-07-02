@@ -35,20 +35,20 @@ Cuando el nombre este presedido de un **@**, el resultado será tratado con **ng
 &nbsp;
 
 # Métodos
-- [GetMode](#GetMode)
-- [allrows](#allrows)
-- [columns](#columns)
-- [count](#count)
-- [destroy](#destroy)
-- [free](#free)
-- [get](#get)
-- [getall](#getall)
-- [getobj](#getobj)
-- [lastid](#lastid)
-- [load](#load)
-- [reset](#reset)
-- [rows](#rows)
-- [toArray](#toArray)
+- [GetMode = ](#GetMode)
+- [allrows = ](#allrows)
+- [columns = ](#columns)
+- [count = Devuelve el número de filas involucradas en la última consulta ejecutada](#count)
+- [destroy = ](#destroy)
+- [free = ](#free)
+- [get = Obtiene una fila de resultados en forma de array y avanza el puntero](#get)
+- [getall = Obtiene todas las filas de resultados en forma de array bidimensional](#getall)
+- [getobj = Obtiene una fila de resultados en forma de objeto stdClass y avanza el puntero](#getobj)
+- [lastid = ](#lastid)
+- [load = Carga la ultima consulta ejecutada del driver](#load)
+- [reset = Reinicia el conjunto de resultados a la primera fila](#reset)
+- [rows = ](#rows)
+- [toArray = Obtiene todas las filas de resultados en forma de array bidimensional utilizando **SQLite3Result::fetchArray** en modo asociativo](#toArray)
 
   
 &nbsp;

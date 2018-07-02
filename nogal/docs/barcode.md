@@ -27,11 +27,11 @@ Implementa la clase 'barcode-generator', que genera códigos de barras (third-pa
 &nbsp;
 
 # Métodos
-- [html](#html)
-- [image](#image)
-- [png](#png)
-- [svg](#svg)
-- [text](#text)
+- [html = ](#html)
+- [image = ](#image)
+- [png = ](#png)
+- [svg = ](#svg)
+- [text = ](#text)
 
   
 &nbsp;

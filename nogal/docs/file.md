@@ -41,16 +41,16 @@ Crea un objeto sobre archivos y/o directorio.
 &nbsp;
 
 # Métodos
-- [WriteContent](#WriteContent)
-- [append](#append)
-- [download](#download)
-- [fileinfo](#fileinfo)
-- [fill](#fill)
-- [load](#load)
-- [read](#read)
-- [reload](#reload)
-- [view](#view)
-- [write](#write)
+- [WriteContent = Escribe contenido en un archivo](#WriteContent)
+- [append = Añade el contenido **content** al final de un archivo](#append)
+- [download = Genera la descarga del archivo hacia el cliente](#download)
+- [fileinfo = Retorna al atributo **info**](#fileinfo)
+- [fill = ](#fill)
+- [load = Carga el archivo/directorio \$sFilePath en el objeto](#load)
+- [read = ](#read)
+- [reload = ](#reload)
+- [view = ](#view)
+- [write = Escribe/reemplaza el contenido del archivo con **content**](#write)
 
   
 &nbsp;

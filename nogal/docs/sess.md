@@ -40,19 +40,19 @@ CREATE INDEX `persistent_idx` ON `__ngl_sessions__` (`persistent`);
 &nbsp;
 
 # Métodos
-- [GetPersistent](#GetPersistent)
-- [close](#close)
-- [count](#count)
-- [destroy](#destroy)
-- [destroyAll](#destroyAll)
-- [gc](#gc)
-- [id](#id)
-- [open](#open)
-- [persistent](#persistent)
-- [read](#read)
-- [showSessions](#showSessions)
-- [start](#start)
-- [write](#write)
+- [GetPersistent = ](#GetPersistent)
+- [close = Controlador requerido por PHP para el cierre de las sesiones](#close)
+- [count = Retorna el número de sesiones activas](#count)
+- [destroy = ](#destroy)
+- [destroyAll = Destruye todas las sesiones, persistentes o no](#destroyAll)
+- [gc = Elimina las sesiones, no persistentes, cuyo tiempo de vida supere el establecido por la variable PHP **session](#gc)
+- [id = ](#id)
+- [open = Llamada de retorno que se ejecutada cuando la sesión está siendo abierta](#open)
+- [persistent = ](#persistent)
+- [read = ](#read)
+- [showSessions = Retorna listado completo de las sesiones activas](#showSessions)
+- [start = Da inicio al objeto](#start)
+- [write = ](#write)
 
   
 &nbsp;

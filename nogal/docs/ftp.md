@@ -47,22 +47,22 @@ Características Principales:
 &nbsp;
 
 # Métodos
-- [DownloadTree](#DownloadTree)
-- [GetChmod](#GetChmod)
-- [GetTimestamp](#GetTimestamp)
-- [Logger](#Logger)
-- [UploadTree](#UploadTree)
-- [cd](#cd)
-- [connect](#connect)
-- [curdir](#curdir)
-- [delete](#delete)
-- [download](#download)
-- [login](#login)
-- [ls](#ls)
-- [mkdir](#mkdir)
-- [passive](#passive)
-- [rename](#rename)
-- [upload](#upload)
+- [DownloadTree = ](#DownloadTree)
+- [GetChmod = ](#GetChmod)
+- [GetTimestamp = ](#GetTimestamp)
+- [Logger = ](#Logger)
+- [UploadTree = ](#UploadTree)
+- [cd = ](#cd)
+- [connect = ](#connect)
+- [curdir = ](#curdir)
+- [delete = ](#delete)
+- [download = ](#download)
+- [login = ](#login)
+- [ls = Lista el contenido de un directorio](#ls)
+- [mkdir = Crea un directorio](#mkdir)
+- [passive = Activa/desactiva el modo pasivo](#passive)
+- [rename = ](#rename)
+- [upload = ](#upload)
 
   
 &nbsp;
