@@ -1423,6 +1423,8 @@ echo "</pre>";
 mydocuments/
 ├── excel/
 ├── mp3/
+│   ├── rock/
+│   └── pop/
 
 ```
 
