@@ -59,6 +59,7 @@ Finaliza la conexión con la base de datos
 
 **[boolean]** =  *public* function ( );
   
+
 &nbsp;
 ___
 &nbsp;
@@ -73,6 +74,7 @@ Establece la conexión con la base de datos
 |**\$sBase**|string|null|Ruta del archivo de base de datos|
 |**\$sPass**|string|null|Clave de encriptación opcional usada cuando se encripta o desencripta una base de datos|
 |**\$nFlags**|string|SQLITE3_OPEN_READWRITE | SQLITE3_OPEN_CREATE|Banderas opcionales para determinar cómo abrir la base de datos SQLite|
+
 &nbsp;
 ___
 &nbsp;
@@ -82,6 +84,7 @@ Cierra la conexión y destruye el objeto
 
 **[boolean]** =  *public* function ( );
   
+
 &nbsp;
 ___
 &nbsp;
@@ -91,6 +94,7 @@ Muestra el mensaje de Error generado por el fallo más reciente
 
 **[mixed]** =  *private* function ( );
   
+
 &nbsp;
 ___
 &nbsp;
@@ -103,6 +107,7 @@ Escapa un valor para ser incluído de manera segura en una sentencia SQL
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$mValues**|string|null|Datos enviados a los métodos INSERT y UPDATE. Valores admitidos:<ul><li>**array asociativo** =  donde cada clave es el nombre del campo en la tabla</li><li>**cadena de variables** =  con el mismo formato que las pasadas por medio de una URL. El valor será analizado utilizando **parse_str**</li></ul>|
+
 &nbsp;
 ___
 &nbsp;
@@ -115,6 +120,7 @@ Ejecuta una sentencia SQL y retorna un objecto **SQLite3Result**
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sQuery**|string|null|Ultima sentencia SQL ejecutada o próxima a ejecutarse|
+
 &nbsp;
 ___
 &nbsp;
@@ -128,6 +134,7 @@ Convierte una sentencia JSQL y retorna una sentencia SQL
 |---|---|---|---|
 |**\$mJSQL**|mixed|null|Sentencia SQL en formato JSON o Array:<ul><li>columns</li><li>tables</li><li>where</li><li>group</li><li>having</li><li>order</li><li>offset</li><li>limit</li></ul>|
 |**\$sEOL**|string||Salto de linea luego de cada parte de la sentencia|
+
 &nbsp;
 ___
 &nbsp;
@@ -140,6 +147,7 @@ Ejecuta varias sentencias SQL separadas por ; y retorna un array de objectos **S
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sQuery**|string|null|Ultima sentencia SQL ejecutada o próxima a ejecutarse|
+
 &nbsp;
 ___
 &nbsp;
@@ -153,6 +161,7 @@ Ejecuta varias sentencias SQL separadas por ; y retorna un array de objectos **n
 |---|---|---|---|
 |**\$sQuery**|string|null|Ultima sentencia SQL ejecutada o próxima a ejecutarse|
 |**\$bDO**|boolean|false|Cuando es TRUE el método query ejecuta la sentencia pero no retorna resultado|
+
 &nbsp;
 ___
 &nbsp;
@@ -167,6 +176,7 @@ Inserta un nuevo registro en una tabla
 |**\$sTable**|string|null|Nombre de la tabla activa en los métodos INSERT y UPDATE|
 |**\$mValues**|string|null|Datos enviados a los métodos INSERT y UPDATE. Valores admitidos:<ul><li>**array asociativo** =  donde cada clave es el nombre del campo en la tabla</li><li>**cadena de variables** =  con el mismo formato que las pasadas por medio de una URL. El valor será analizado utilizando **parse_str**</li></ul>|
 |**\$sMode**|string|INSERT|Tipo de modo INSERT. Valores admitidos:<ul><li>**INSERT** =  inserta nuevos registros</li><li>**REPLACE** =  si el nuevo registro duplica un valor PRIMARY KEY o UNIQUE, el antiguo registro es eliminado</li><li>**IGNORE** =  el comando no aborta incluso si ocurren errores durante la ejecución</li></ul>|
+
 &nbsp;
 ___
 &nbsp;
@@ -184,6 +194,7 @@ Cuando los valores sean pasados como una **cadena de variables** estos serán tr
 |**\$sTable**|string||Nombre de la tabla|
 |**\$mValues**|mixed||Datos en forma de array asociativo o cadena de variables|
 |**\$bCheckColumns**|boolean|true|Activa el chequeo de columnas en la tabla|
+
 &nbsp;
 ___
 &nbsp;
@@ -197,6 +208,7 @@ Ejecuta una sentencia SQL y retorna un objecto **nglDBSQLiteQuery**
 |---|---|---|---|
 |**\$sQuery**|string|null|Ultima sentencia SQL ejecutada o próxima a ejecutarse|
 |**\$bDO**|boolean|false|Cuando es TRUE el método query ejecuta la sentencia pero no retorna resultado|
+
 &nbsp;
 ___
 &nbsp;
@@ -212,6 +224,7 @@ Actualiza todos los registros que cumplan con la condición **\$sWhere**
 |**\$mValues**|string|null|Datos enviados a los métodos INSERT y UPDATE. Valores admitidos:<ul><li>**array asociativo** =  donde cada clave es el nombre del campo en la tabla</li><li>**cadena de variables** =  con el mismo formato que las pasadas por medio de una URL. El valor será analizado utilizando **parse_str**</li></ul>|
 |**\$sWhere**|string|null|Cadena que representa una condición SQL WHERE|
 |**\$sMode**|string|UPDATE|Tipo de modo UPDATE. Valores admitidos:<ul><li>**UPDATE** =  actualiza los registros especificados</li><li>**REPLACE** =  crea un nuevo registro en caso de no hallar el registro especificados</li><li>**IGNORE** =  el comando no aborta incluso si ocurren errores durante la ejecución</li></ul>|
+
 &nbsp;
 ___
 &nbsp;

@@ -55,6 +55,7 @@ Establece el método de encriptación. Métodos soportados:<ul><li>aes</li><li>b
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sCrypter**|string|aes|Método de encriptación|
+
 &nbsp;
 ___
 &nbsp;
@@ -67,6 +68,7 @@ Genera un array con el par de claves pública y privada cuando el modo de encrip
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$nBits**|int|512|Longuitud de las claves. Minima admitida: 32|
+
 &nbsp;
 ___
 &nbsp;
@@ -79,6 +81,7 @@ Encripta una cadena con el método seleccionado
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sString**|mixed||Cadena a encriptar/desencriptar|
+
 &nbsp;
 ___
 &nbsp;
@@ -91,6 +94,7 @@ Desencripta una cadena con el método seleccionado
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sString**|string||Cadena a desencriptar|
+
 &nbsp;
 ___
 &nbsp;
@@ -103,6 +107,7 @@ Aplica la clave de encriptación/desencriptación en el objeto principal, a trav
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sKey**|string|null|Clave de encriptación/desencriptación|
+
 &nbsp;
 ___
 &nbsp;

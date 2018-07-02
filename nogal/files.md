@@ -35,6 +35,7 @@ formatea un path como absoluto limpiando doble barras o referencias atras (..)
 |---|---|---|---|
 |**\$sPath**|string||Path|
 |**\$sSlash**|string|NGL_DIR_SLASH|Separador de directorios.|
+
 &nbsp;
 ___
 &nbsp;
@@ -49,6 +50,7 @@ Retorna la porción común de dos paths desde el inicio. Previa a la comparació
 |**\$sPath1**|string||path 1|
 |**\$sPath2**|string||path 2|
 |**\$sSlash**|string|NGL_DIR_SLASH|Separador de directorios.|
+
 &nbsp;
 ___
 &nbsp;
@@ -66,6 +68,7 @@ Copia archivos y directorios de manera recursiva. Retorna un Array de 2 indices:
 |**\$bRecursive**|boolean|true|Determina si se deben incluir carpetas y sub-carpetas|
 |**\$bIncludeHidden**|boolean|false|Determina si se deben copiar los archivos y carpetas ocultos|
 |**\$bLog**|boolean|false|Activa el log|
+
 &nbsp;
 ___
 &nbsp;
@@ -83,6 +86,7 @@ lista el contenido de un directorio
 |**\$bRecursive**|boolean|false|Búsqueda en modo recursivo|
 |**\$sChildren**|string|_children|Nombre del nodo que se utilizará para anidar resultados cuando \$bRecursive=true|
 |**\$bIni**|boolean|true|Reservada para uso interno de la función|
+
 &nbsp;
 ___
 &nbsp;
@@ -97,6 +101,7 @@ imprime el árbol de un directorio de manera recursiva
 |**\$sPath**|string|.|Directorio|
 |**\$mMask**|string|null|Mascara de archivos. Una expresión regular o un array de ellas que será tratado con OR|
 |**\$sChildren**|string|_children|Nombre del nodo que se utilizará para anidar resultados cuando \$bRecursive=true|
+
 &nbsp;
 ___
 &nbsp;
@@ -106,6 +111,7 @@ Retorna el máximo tamaño de archivo soportado por al configuración del servid
 
 **[int]** =  *public* function ( );
   
+
 &nbsp;
 ___
 &nbsp;
@@ -119,6 +125,7 @@ Crea un directorio. Si el directorio ya existe y \$bForce es TRUE, mkdir le agre
 |---|---|---|---|
 |**\$sPath**|string|.|Directorio|
 |**\$bForce**|boolean|false|Fuerza la creación del directorio|
+
 &nbsp;
 ___
 &nbsp;
@@ -132,6 +139,7 @@ Toma el array \$aFiles (de estructura igual a \$_FILES) y lo reordena de manera 
 |---|---|---|---|
 |**\$aFiles**|array||Array de archivos|
 |**\$bTop**|boolean|true|Indica cual es la primer iteración del método|
+
 &nbsp;
 ___
 &nbsp;
@@ -148,6 +156,7 @@ Elimina archivos y directorios de manera recursiva. Retorna un Array de 2 indice
 |**\$bRecursive**|boolean|true|Determina si se deben incluir carpetas y sub-carpetas|
 |**\$bIncludeHidden**|boolean|false|Determina si se deben eliminar los archivos y carpetas ocultos|
 |**\$bLog**|boolean|true|Activa el log|
+
 &nbsp;
 ___
 &nbsp;
@@ -161,6 +170,7 @@ Aplica move_uploaded_file a los multiples archivos encontrados en \$_FILES y ret
 |---|---|---|---|
 |**\$mDestine**|mixed||Ruta de destino o array asociativo de las mismas, donde cada índice será el mismo que en el array \$_FILES|
 |**\$nLimit**|int|null|Tamaño máximo soportado para los archivos. Si no se especifica se aplicará el valor de **nglFiles::maxUploadSize**|
+
 &nbsp;
 ___
 &nbsp;

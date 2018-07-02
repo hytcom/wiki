@@ -89,6 +89,7 @@ Exporta el contenido de imagen para ser usado como origen de datos de <img> o cs
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$bAlpha**|string| false|Determina si la siguiente copia tendra fondo transparente|
+
 &nbsp;
 ___
 &nbsp;
@@ -107,6 +108,7 @@ Este método retorna un array de 2 indices:<ul><li>top</li><li>left</li></ul>
 |**\$nHeight**|int||Alto de la imagen|
 |**\$nCanvasWidth**|int||Ancho del canvas|
 |**\$nCanvasHeight**|int||Alto del canvas|
+
 &nbsp;
 ___
 &nbsp;
@@ -123,6 +125,7 @@ Este método retorna un array de 4 indices:<ul><li>ancho</li><li>alto</li><li>an
 |**\$nArgHeight**|int||Nuevo alto de la imagen|
 |**\$nArgCanvasWidth**|int||Nuevo ancho del canvas|
 |**\$nArgCanvasHeight**|int||Nuevo alto del canvas|
+
 &nbsp;
 ___
 &nbsp;
@@ -139,6 +142,7 @@ Redimensiona el lienzo de la imagen
 |**\$sCanvasColor**|string|#FFFFFF|Valor hexadecimal del color del canvas|
 |**\$sPosition**|string|center center|Posición de la imagen en el canvas, este valor puede ser un par ordenado de coordenadas TOP y LEFT separados por ; (punto y coma) ó , (coma) ó alguna de las siguientes combinaciones:<ul><li>top left</li><li>top center</li><li>top right</li><li>center left</li><li>center center</li><li>center right</li><li>bottom left</li><li>bottom center</li><li>bottom right</li></ul>|
 |**\$bAlpha**|string| false|Determina si la siguiente copia tendra fondo transparente|
+
 &nbsp;
 ___
 &nbsp;
@@ -157,6 +161,7 @@ Redimensiona el lienzo de la imagen
 |**\$bAlpha**|boolean||Determina si la copia tendra fondo transparente|
 |**\$sPosition**|string|center center|Valores de entrada TOP y LEFT, en el formato de argument::position|
 |**\$sCanvasColor**|string|#FFFFFF|Valor hexadecimal para el color de fondo|
+
 &nbsp;
 ___
 &nbsp;
@@ -166,6 +171,7 @@ Retorna los datos IPTC y EXIF que pueda contener la imagen
 
 **[array]** =  *public* function ( );
   
+
 &nbsp;
 ___
 &nbsp;
@@ -180,6 +186,7 @@ Aplica un filtro o efecto sobre la imagen actual
 |**\$sFilter**|string|null|Filtro que se aplicará sobre la imagen
 Los filtros disponibles son:<ul><li>**blur** =  Pone borrosa la imagen</li><li>**brightness** =  Cambia el brillo de la imagen</li><li>**colorize** =  Como **grayscale**, excepto que se puede especificar el color</li><li>**contrast** =  Cambia el contraste de la imagen</li><li>**emboss** =  Pone en relieve la imagen</li><li>**gaussian_blur** =  Pone borrosa la imagen usando el método Gaussiano</li><li>**grayscale** =  Convierte la imagen a escala de grises</li><li>**negative** =  Invierte todos los colores de la imagen</li><li>**pixelate** =  grayscale</li><li>**sharpe** =  Utiliza detección de borde para resaltar los bordes de la imagen</li><li>**sketch** =  Utiliza eliminación media para lograr un efecto superficial</li><li>**smooth** =  Suaviza la imagen</li></ul>|
 |**\$mValue**|mixed|null|Argumento solicitado por algunos de los filtros<ul><li>**brightness** =  Nivel de brillo, rango: -255 a 255</li><li>**colorize** =  Color hexadecimal con canal alpha: #RRGGBBAA</li><li>**contrast** =  Nivel de contraste</li><li>**pixelate** =  Tamaño de bloque de pixelación</li><li>**smooth** =  Nivel de suavidad</li></ul>|
+
 &nbsp;
 ___
 &nbsp;
@@ -192,6 +199,7 @@ Obtiene el grado de transparencia de la imagen
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$hSourceImage**|resource||Imagen|
+
 &nbsp;
 ___
 &nbsp;
@@ -204,6 +212,7 @@ Retorna el puntero de la imagen para ser utilizado en otro proceso
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$bAlpha**|string| false|Determina si la siguiente copia tendra fondo transparente|
+
 &nbsp;
 ___
 &nbsp;
@@ -218,6 +227,7 @@ Si el parámetro \$mFile fuese null, se creará una imagen vacia de 1x1 px
 |---|---|---|---|
 |**\$mFile**|mixed|null|Ruta del archivo de imagen, puntero o null|
 |**\$sType**|string|jpeg|Tipo de imagen. Pueden ser: jpeg, jpg, png o gif|
+
 &nbsp;
 ___
 &nbsp;
@@ -232,6 +242,7 @@ Si una imagen mide 100px de ancho y se le añaden 10px de margen, el nuevo ancho
 |---|---|---|---|
 |**\$nMargin**|int|argument::margin||
 |**\$sCanvasColor**|string|#FFFFFF|Valor hexadecimal del color del canvas|
+
 &nbsp;
 ___
 &nbsp;
@@ -246,6 +257,7 @@ Si una imagen mide 100px de ancho y se le añaden 10px de padding, el ancho segu
 |---|---|---|---|
 |**\$nPadding**|int|argument::padding||
 |**\$sCanvasColor**|string|#FFFFFF|Valor hexadecimal del color del canvas|
+
 &nbsp;
 ___
 &nbsp;
@@ -260,6 +272,7 @@ Inserta una imagen dentro de otra
 |**\$image**|resource||Puntero de la imagen que se incorporará a la imagen actual|
 |**\$sPosition**|string|center center|Posición de la imagen **merge_image** en el canvas actual|
 |**\$bAlpha**|string| true|Determina si la imagen **merge_image** será incorporada en modo de transparencia|
+
 &nbsp;
 ___
 &nbsp;
@@ -274,6 +287,7 @@ Redimensiona una imagen
 |**\$nNewWidth**|string|0|Ancho que se aplicará en la próxima copia de la imagen actual|
 |**\$mNewHeight**|string|0|Alto que se aplicará en la próxima copia de la imagen actual|
 |**\$bAlpha**|string| false|Determina si la siguiente copia tendra fondo transparente|
+
 &nbsp;
 ___
 &nbsp;
@@ -290,6 +304,7 @@ Por ello este método es mas eficiente en el reemplazo de colores plenos en imag
 |**\$sFind**|string|#000000|Valor hexadecimal del color que se desea reemplazar en la imagen|
 |**\$sReplace**|string|#FFFFFF|Valor hexadecimal del color con el que será reemplazado **rc_find**|
 |**\$nTolerance**|string|0|Grado de tolerancia (0-255) aplicado a la hora reemplazar colores|
+
 &nbsp;
 ___
 &nbsp;
@@ -309,6 +324,7 @@ Inserta una imagen dentro de otra
 |**\$nAngle**|int|0|Angulo de escritura|
 |**\$bAlpha**|string| true|Determina si la imagen **merge_image** será incorporada en modo de transparencia|
 |**\$sFont**|string|null|Ruta del archivo TTF con la que se escribirá el texto|
+
 &nbsp;
 ___
 &nbsp;
@@ -321,6 +337,7 @@ Exportar la imagen al navegador
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$bAlpha**|string| false|Determina si la siguiente copia tendra fondo transparente|
+
 &nbsp;
 ___
 &nbsp;
@@ -334,6 +351,7 @@ Exportar la imagen a un archivo
 |---|---|---|---|
 |**\$sFilePath**|mixed|null|Ruta del archivo de imagen, puntero o null|
 |**\$nQuality**|string|75|Calidad de la imagen en el método de salida nglImage::write|
+
 &nbsp;
 ___
 &nbsp;

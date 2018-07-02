@@ -144,6 +144,7 @@ Realiza limpieza del código generado por la clase antes de devolverlo como plan
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sSource**|string||Código fuente|
+
 &nbsp;
 ___
 &nbsp;
@@ -156,6 +157,7 @@ Elimina de un array todos valores cuyo indice contenga un guión medio.
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$aArguments**|array||Array de valores.|
+
 &nbsp;
 ___
 &nbsp;
@@ -168,6 +170,7 @@ Auxiliar de las **nglRind::ReservedWords**, comenta las constantes reservadas en
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$aMatchs**|array||Constantes detectas en las plantillas.|
+
 &nbsp;
 ___
 &nbsp;
@@ -180,6 +183,7 @@ Auxiliar de las **nglRind::ReservedWords**, comenta las funciones no permitidas.
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$aMatchs**|array||Funciones de no permitidas detectas en las plantillas.|
+
 &nbsp;
 ___
 &nbsp;
@@ -192,6 +196,7 @@ Auxiliar de las **nglRind::ReservedWords**, comenta las palabras reservadas en l
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$aMatchs**|array||Palabras reservadas detectas en las plantillas.|
+
 &nbsp;
 ___
 &nbsp;
@@ -204,6 +209,7 @@ Retorna el código con las llamadas a las constantes citadas en **\$_SET["CONSTA
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sCode**|string||Código a analizar.|
+
 &nbsp;
 ___
 &nbsp;
@@ -216,6 +222,7 @@ Parsea la cadena **\$sConstantsAllowed** y setea las constantes PHP permitidas e
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sAllowedPHPFunctions**|string||Listado de constantes separado por comas.|
+
 &nbsp;
 ___
 &nbsp;
@@ -228,6 +235,7 @@ Genera un nombre de variable aleatorio o basado en una semilla de 8 caracteres d
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sNeedle**|string||Base para el nombre de una variable dinámica.|
+
 &nbsp;
 ___
 &nbsp;
@@ -240,6 +248,7 @@ Reemplaza las URLs relativas por absolutas en el código de las plantilas.
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sSource**|string||Código a fuente.|
+
 &nbsp;
 ___
 &nbsp;
@@ -255,6 +264,7 @@ Auxiliar del método **nglRind::FillURL** encargado de efectuar los reemplazos.
 |**\$aURLs**|array||Array con las urls detectadas en el código original.|
 |**\$sURLSelf**|string||URL del directorio del entorno gráfico.|
 |**\$sTemplateURL**|string||URL de la plantilla actual.|
+
 &nbsp;
 ___
 &nbsp;
@@ -268,6 +278,7 @@ Analiza el código HTML/NGL y genera un código de etiquetas previo al código P
 |---|---|---|---|
 |**\$aCode**|array||Código a analizar.|
 |**\$sType**|string|FUN|Tipo de etiqueta.|
+
 &nbsp;
 ___
 &nbsp;
@@ -277,6 +288,7 @@ Elimina todas las carpetas y archivos del cache
 
 **[array]** =  *public* function ( );
   
+
 &nbsp;
 ___
 &nbsp;
@@ -286,6 +298,7 @@ Captura los comandos **rind**:<ul><li>**cmd_ini** =  posición de inicio del com
 
 **[array]** =  *private* function ( );
   
+
 &nbsp;
 ___
 &nbsp;
@@ -299,6 +312,7 @@ Cuando el valor sea NULL, se retornarán todo el array **\$_SET**.
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sIndex**|string||Nombre del indice a retornar.|
+
 &nbsp;
 ___
 &nbsp;
@@ -311,6 +325,7 @@ Retorna el valor hash asignado a cada una de las variables RIND. Este método ti
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sVarName**|string|null|Nombre de variable RIND<ul><li>**RIND_UID** =  = id único</li><li>**RIND_ME** =  = id único entrecomillado</li><li>**RIND_DOLLAR_SIGN** =  = signo \$ (variables)</li><li>**RIND_QUOTE** =  = comillas dentro del pseudo código</li><li>**RIND_HTML_QUOTE** =  = comillas dobles utilizadas en las plantillas</li><li>**RIND_RESERVED** =  = marca de palabras reservadas</li><li>**RIND_DC1** =  = dígito control 1</li><li>**RIND_DC2** =  = dígito control 2</li><li>**RIND_DC3** =  = dígito control 3</li><li>**RIND_LC_BRACKET** =  = llave de apertura {</li><li>**RIND_RC_BRACKET** =  = llave de cierre }</li><li>**RIND_FUN_OPEN** =  = apertura de función</li><li>**RIND_FUN_CLOSE** =  = cierre de función</li><li>**RIND_VAR_OPEN** =  = apertura de variable</li><li>**RIND_VAR_CLOSE** =  = cierre de variable</li><li>**RIND_PHP_OPEN** =  = apertura PHP</li><li>**RIND_PHP_CLOSE** =  = cierre PHP</li><li>**RIND_HDV_OPEN** =  = apertura de variable en JSON</li><li>**RIND_HDV_CLOSE** =  = cierre de variable en JSON</li></ul>|
+
 &nbsp;
 ___
 &nbsp;
@@ -323,6 +338,7 @@ Auxiliar del método **nglRind::rindIfcase** para los casos de if inline.
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sString**|string||Código del IF.|
+
 &nbsp;
 ___
 &nbsp;
@@ -335,6 +351,7 @@ Auxiliar del método **nglRind::rindIfcase**, retorna el código que verifica la
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sIssetArgument**|string||Código a evaluar.|
+
 &nbsp;
 ___
 &nbsp;
@@ -347,6 +364,7 @@ Auxiliar del método **nglRind::rindIfcase**, retorna el código que verifica la
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sIssetArgument**|string||Código a evaluar.|
+
 &nbsp;
 ___
 &nbsp;
@@ -359,6 +377,7 @@ Chequea si el path de la plantilla es válido.
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sTemplateFile**|string||URL de la plantilla.|
+
 &nbsp;
 ___
 &nbsp;
@@ -372,6 +391,7 @@ Auxiliar del método **nglRind::rindLoop**, gestiona los nombres de **loops**.
 |---|---|---|---|
 |**\$sSource**|string||Código a evaluar.|
 |**\$sLoopName**|string||Parte dinámica del nombre.|
+
 &nbsp;
 ___
 &nbsp;
@@ -386,6 +406,7 @@ Auxiliar de **nglRind::TagReader**, genera el código de una variable.
 |**\$nLength**|int||Largo del nombre de la variable.|
 |**\$sBaseName**|string||Nombre base de la variable.|
 |**\$sCounter**|int||Base del contador de la variable.|
+
 &nbsp;
 ___
 &nbsp;
@@ -398,6 +419,7 @@ Construye el path de la plantilla activa en base a los argumentos y atributos ca
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sFileName**|string||Nombre del archivo.|
+
 &nbsp;
 ___
 &nbsp;
@@ -410,6 +432,7 @@ Parsea la cadena **\$sAllowedPHPFunctions** y setea las funciones PHP permitidas
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sAllowedPHPFunctions**|string||Listado de funciones separado por comas.|
+
 &nbsp;
 ___
 &nbsp;
@@ -423,6 +446,7 @@ Procesa una plantilla, cachea el código PHP generado y retorna el path del cach
 |---|---|---|---|
 |**\$sFileName**|string||Nombre del archivo plantilla.|
 |**\$sCacheMode**|string|dev|Estable el modo en el que trabajará el cache<ul><li>**none** =  no se utiliza cache, todas las plantilas se leen y procesan cada vez que son llamadas</li><li>**dev** =  se leen y procesan las nuevas y se leen las ya generadas, pero solo se procesan en caso de detectarse cambios</li><li>**use** =  se leen y procesan sólo las nuevas, las ya generadas simplemente se invocan</li><li>**cache** =  sólo se invocan las ya generadas, no se procesan nuevas</li></ul>|
+
 &nbsp;
 ___
 &nbsp;
@@ -441,6 +465,7 @@ con la sintaxis: \$GLOBALS["foo"] = "asd123";
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sFileName**|string||Nombre del archivo plantilla.|
+
 &nbsp;
 ___
 &nbsp;
@@ -453,6 +478,7 @@ Procesa el código fuente aplicando:<ul><li>Limpieza de comentarios</li><li>Reem
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sCode**|string||Código fuente.|
+
 &nbsp;
 ___
 &nbsp;
@@ -465,6 +491,7 @@ Auxiliar de **::InNotInArgument**, escapa con slashes los HTML QUOTES de los arg
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sString**|string||Cadena a escapar.|
+
 &nbsp;
 ___
 &nbsp;
@@ -477,6 +504,7 @@ Chequea y re-entrecomilla los argumentos de los comandos.
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$aArguments**|array||Código fuente.|
+
 &nbsp;
 ___
 &nbsp;
@@ -490,6 +518,7 @@ Lee una plantilla a una variable.
 |---|---|---|---|
 |**\$sFileName**|string||Path de la plantilla.|
 |**\$bRINDagsConvert**|boolean||Reemplaza las etiquetas RIND por cadenas simplificadas.|
+
 &nbsp;
 ___
 &nbsp;
@@ -503,6 +532,7 @@ Reemplaza comandos RIND por código PHP.
 |---|---|---|---|
 |**\$aCode**|array||Código fuente.|
 |**\$vCommand**|array||Parámetros del comando a reemplazar.|
+
 &nbsp;
 ___
 &nbsp;
@@ -515,6 +545,7 @@ Auxiliar del método **nglRind::Constants** para el reemplazo de constantes.
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$aMatches**|array||Array con las constantes detectadas en el código original.|
+
 &nbsp;
 ___
 &nbsp;
@@ -528,6 +559,7 @@ Reemplaza las palabras reservadas por las variables **\$RIND_...** y viceversa.
 |---|---|---|---|
 |**\$sCode**|string||Código fuente.|
 |**\$bRevert**|boolean||Indica la dirección del reemplazo, false = ida / true = vuelta.|
+
 &nbsp;
 ___
 &nbsp;
@@ -540,6 +572,7 @@ Detecta y reemplaza las funciones, las palabras reservadas y constantes en las p
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sCode**|string||Código fuente.|
+
 &nbsp;
 ___
 &nbsp;
@@ -550,6 +583,7 @@ Este método deberá ser ejecutado siempre que los valores de los argumentos inv
 
 **[$this]** =  *private* function ( );
   
+
 &nbsp;
 ___
 &nbsp;
@@ -562,6 +596,7 @@ Setea el contenido de la variable \$_SESSION[NGL_SESSION_INDEX]["SESS"] en el í
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sIndex**|string||Nombre del indice a retornar.|
+
 &nbsp;
 ___
 &nbsp;
@@ -579,6 +614,7 @@ Cuando se utilice setSET en el archivo PHP habrá que asignarle un nombre al obj
 |**\$sIndex**|string||Nombre del indice a setear.|
 |**\$mValue**|string||Valor a guardar en **\$sIndex**.|
 |**\$sRequested**|string||Nombre de un indice de la variable global **\$_REQUEST**.|
+
 &nbsp;
 ___
 &nbsp;
@@ -588,6 +624,7 @@ Muestra los paths con los que está seteado el objeto.
 
 **[string]** =  *public* function ( );
   
+
 &nbsp;
 ___
 &nbsp;
@@ -600,6 +637,7 @@ Ejecuta los comandos simples: **abort**, **once** y **skip**.
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sCode**|string||Código fuente.|
+
 &nbsp;
 ___
 &nbsp;
@@ -613,6 +651,7 @@ Ejecuta el método **nglRind::process** y ejecuta el archivo generado.
 |---|---|---|---|
 |**\$sFileName**|string||Nombre del archivo plantilla.|
 |**\$sCacheMode**|string|dev|Estable el modo en el que trabajará el cache<ul><li>**none** =  no se utiliza cache, todas las plantilas se leen y procesan cada vez que son llamadas</li><li>**dev** =  se leen y procesan las nuevas y se leen las ya generadas, pero solo se procesan en caso de detectarse cambios</li><li>**use** =  se leen y procesan sólo las nuevas, las ya generadas simplemente se invocan</li><li>**cache** =  sólo se invocan las ya generadas, no se procesan nuevas</li></ul>|
+
 &nbsp;
 ___
 &nbsp;
@@ -625,6 +664,7 @@ Elimina el código PHP presente en las plantillas.
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sCode**|string||Código fuente.|
+
 &nbsp;
 ___
 &nbsp;
@@ -637,6 +677,7 @@ Elimina el primer par de comillas dobles del principio y fin.
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sArgument**|string||Cadena a limpiar.|
+
 &nbsp;
 ___
 &nbsp;
@@ -650,6 +691,7 @@ Reemplaza las etiquetas **rind** por cadenas simplificadas y viceversa.
 |---|---|---|---|
 |**\$sCode**|string||Código fuente.|
 |**\$bRevert**|boolean||Indica la dirección del reemplazo, false = ida / true = vuelta.|
+
 &nbsp;
 ___
 &nbsp;
@@ -665,6 +707,7 @@ Lee y parsea etiquetas **rind**.
 |**\$nFrom**|int||Inicio de lectura.|
 |**\$sBreaker**|string||Indicador de stop de lectura.|
 |**\$sJumper**|string|null|Indicador anidamientos.|
+
 &nbsp;
 ___
 &nbsp;
@@ -677,6 +720,7 @@ Genera un nombre de variable aleatorio de entre 1 y 32 caracteres de loguitud.
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$nLength**|int||Largo del nombre de la variable.|
+
 &nbsp;
 ___
 &nbsp;
@@ -691,6 +735,7 @@ Si el valor de **\$sVariables** es NULL, se aplicara **\$sType** para todas las 
 |---|---|---|---|
 |**\$sType**|string||Política a aplicar, **deny** o **allow**.|
 |**\$sVariables**|string|null|Listado de variables (con el signo \$) separadas por comas.|
+
 &nbsp;
 ___
 &nbsp;
@@ -703,6 +748,7 @@ Detecta y reemplaza las funciones, las palabras reservadas y constantes en las p
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sCode**|string||Código fuente.|
+
 &nbsp;
 ___
 &nbsp;
@@ -715,6 +761,7 @@ Parser de variables.
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$aCode**|array||Código fuente.|
+
 &nbsp;
 ___
 &nbsp;
@@ -727,6 +774,7 @@ Procesa los nombres de las variables.
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sVarName**|string||Cadena que contiene el código de la variable.|
+
 &nbsp;
 ___
 &nbsp;
@@ -739,6 +787,7 @@ Retorna el código que genera volcados en pantalla **rind:dump** en las plantill
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$vArguments**|array||Argumentos del comando.|
+
 &nbsp;
 ___
 &nbsp;
@@ -751,6 +800,7 @@ Retorna el código que imprime un valor usando **rind:eco** en las plantillas.
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$vArguments**|array||Argumentos del comando.|
+
 &nbsp;
 ___
 &nbsp;
@@ -763,6 +813,7 @@ Retorna el código que detiene un ejecución usuando **rind:halt** en las planti
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$vArguments**|array||Argumentos del comando.|
+
 &nbsp;
 ___
 &nbsp;
@@ -775,6 +826,7 @@ Retorna el código de una variable string generada con **rind:strvar** en las pl
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$vArguments**|array||Argumentos del comando.|
+
 &nbsp;
 ___
 &nbsp;
@@ -787,6 +839,7 @@ Genera el código PHP para el comando **rind:ifcase** del sistema de plantillas.
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$vArguments**|array||Argumentos del comando.|
+
 &nbsp;
 ___
 &nbsp;
@@ -799,6 +852,7 @@ Retorna el código que incluye un archivo válido en **\$_SET["INCLUDES"]**, en 
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$vArguments**|array||Argumentos del comando.|
+
 &nbsp;
 ___
 &nbsp;
@@ -811,6 +865,7 @@ Retorna el código que devuelve el largo de un valor usando **rind:length** en l
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$vArguments**|array||Argumentos del comando.|
+
 &nbsp;
 ___
 &nbsp;
@@ -823,6 +878,7 @@ Retorna los distintos códigos de bucles **rind:loop** en las plantillas.
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$vArguments**|array||Argumentos del comando.|
+
 &nbsp;
 ___
 &nbsp;
@@ -835,6 +891,7 @@ Detecta y ejecuta las inclusiones de sub-plantillas en la plantilla principal.
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$vArguments**|array||Argumentos del comando.|
+
 &nbsp;
 ___
 &nbsp;
@@ -847,6 +904,7 @@ Retorna el código de una expresión de **rind:rtn** en las plantillas.
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$vArguments**|array||Argumentos del comando.|
+
 &nbsp;
 ___
 &nbsp;
@@ -859,6 +917,7 @@ Retorna el código que setea una variable en **\$_SET** usando **rind:set** en l
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$vArguments**|array||Argumentos del comando.|
+
 &nbsp;
 ___
 &nbsp;
@@ -871,6 +930,7 @@ Convierte un array en un string separado por comas.
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$vArguments**|content||Array de datos.|
+
 &nbsp;
 ___
 &nbsp;
@@ -883,6 +943,7 @@ Convierte un string separado por comas en un array.
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$vArguments**|content||Cadena de datos.|
+
 &nbsp;
 ___
 &nbsp;
@@ -895,6 +956,7 @@ Retorna el código de una expresión de **rind:rtn** en las plantillas.
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$vArguments**|array||Argumentos del comando.|
+
 &nbsp;
 ___
 &nbsp;
@@ -907,6 +969,7 @@ Retorna un id unico utilizando **ngl::unique** en las plantillas.
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$vArguments**|array||Argumentos del comando.|
+
 &nbsp;
 ___
 &nbsp;
@@ -919,6 +982,7 @@ Retorna un id unico utilizando **ngl::unique** en las plantillas.
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$vArguments**|array||Argumentos del comando.|
+
 &nbsp;
 ___
 &nbsp;
@@ -931,6 +995,7 @@ Retorna el código que desetea un índice de **\$_SET** usando **rind:unset** en
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$vArguments**|array||Argumentos del comando.|
+
 &nbsp;
 ___
 &nbsp;

@@ -56,6 +56,7 @@ Retorna la URL activa, ya sea la cargada por el aguamento URL o la última gener
 
 **[string]** =  *public* function ( );
   
+
 &nbsp;
 ___
 &nbsp;
@@ -68,6 +69,7 @@ Descompone una URL en los atributos del objeto y retorna los datos en un array a
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sURL**|string||URL|
+
 &nbsp;
 ___
 &nbsp;
@@ -77,6 +79,7 @@ Retorna todas las partes de la URL previamente generadas por **nglURL::parse** q
 
 **[array]** =  *public* function ( );
   
+
 &nbsp;
 ___
 &nbsp;
@@ -86,6 +89,7 @@ Compone una URL uniendo los atributos del objeto. Si el parámetro **query** es 
 
 **[string]** =  *public* function ( );
   
+
 &nbsp;
 ___
 &nbsp;
@@ -100,6 +104,7 @@ Permite actualizar las distintas partes de la URL basandose en las partes genera
 |---|---|---|---|
 |**\$sPart**|string||Argumento que desea modificarse.|
 |**\$mValue**|mixed||Nuevo valor para Argument.|
+
 &nbsp;
 ___
 &nbsp;
@@ -109,6 +114,7 @@ Convierte un Array en una cadena de variables válidad para ser enviada vía GET
 
 **[string]** =  *private* function ( );
   
+
 &nbsp;
 ___
 &nbsp;

@@ -43,6 +43,7 @@ Retorna un documento HTML con la ayuda solicitada
 |---|---|---|---|
 |**\$sWhat**|string|null|Clase, Método o Comando sobre del cual se desea ver el texto de ayuda.<ul><li>**HELP** =  Retorna el listado de Clases disponibles</li><li>**ClassName** =  para obtener ayuda acerca de una clase</li><li>**ClassName::MethodName** =  para obtener ayuda sobre el método **MethodName** de la clase **ClassName**</li></ul>Si existe la variable \$_SERVER["QUERY_STRING"] y es distinta de empty, su valor será asignado a **\$sWhat**|
 |**\$sBaseURL**|string|NGL_URL/help/|Especifica la URL predeterminada para todos los enlaces.|
+
 &nbsp;
 ___
 &nbsp;
@@ -55,6 +56,7 @@ Setea el idioma en el cual se mostrará la ayuda
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sLang**|string|ES|Sigla de 2 letras que representa al idioma|
+
 &nbsp;
 ___
 &nbsp;
@@ -69,6 +71,7 @@ Retorna la porción de código HTML que muestra los bloques de parámetros
 |**\$sTitle**|string||Título de la caja|
 |**\$aData**|array||Información que se mostrará en la caja|
 |**\$mSelected**|mixed|null|Array o cadena con los argumentos de entrada o salida|
+
 &nbsp;
 ___
 &nbsp;
@@ -81,6 +84,7 @@ Retorna el código HTML que muestra la ayuda de la clase solicitada
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sClassName**|string||Nombre de la clase|
+
 &nbsp;
 ___
 &nbsp;
@@ -90,6 +94,7 @@ Retorna el código HTML que muestra el listado de clases disponibles
 
 **[string]** =  *private* function ( );
   
+
 &nbsp;
 ___
 &nbsp;
@@ -102,6 +107,7 @@ Retorna el código HTML que muestra la ayuda del método solicitado
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sMethod**|string||Nombre del método anteseguido por :: y el nombre de la clase a la cual pertenece|
+
 &nbsp;
 ___
 &nbsp;
@@ -114,6 +120,7 @@ Utilizado para enmarcar el código HTML de la ayuda soliticitada dentro de la pl
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sContent**|string||Contenido de la ayuda a enmarcar en la plantilla|
+
 &nbsp;
 ___
 &nbsp;
@@ -126,6 +133,7 @@ Retorna el código HTML con la variables de un comando para ser mostradas en la 
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$aData**|array||Variables del comando|
+
 &nbsp;
 ___
 &nbsp;
@@ -138,6 +146,7 @@ Retorna el código HTML con la variables de un comando formateadas para ser most
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$aData**|array||Variables del comando|
+
 &nbsp;
 ___
 &nbsp;
@@ -151,6 +160,7 @@ Retorna el código HTML con la variables de un método para ser mostradas en la 
 |---|---|---|---|
 |**\$aData**|array||Variables del método|
 |**\$bEncloseDiv**|boolean|false|Determina si el codigo devuelto debe estar contenido en un DIV|
+
 &nbsp;
 ___
 &nbsp;
@@ -163,6 +173,7 @@ Retorna el código HTML con la variables de un método formateadas para ser most
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$aData**|array||Variables del método|
+
 &nbsp;
 ___
 &nbsp;

@@ -94,6 +94,7 @@ Si la lectura local falla, el método intentará optenerlos desde el sitio ofici
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$bOnlineData**|boolean|false|True para leer los datos desde le sitio oficial|
+
 &nbsp;
 ___
 &nbsp;
@@ -109,6 +110,7 @@ Este método retornará el mismo tipo de dato que el valor de entrada **\$mSourc
 |---|---|---|---|
 |**\$mDisarrange**|mixed||String o Array a ordenar|
 |**\$aArrange**|array||Secuencia númerica que se utilizará para ordenar **\$mSource**.|
+
 &nbsp;
 ___
 &nbsp;
@@ -123,6 +125,7 @@ Si los indices son del tipo alfanumericos agrupara los nuevos valores.
 |---|---|---|---|
 |**\$array1**|array||Array inicial|
 |**\$...**|array||Resto de arrays|
+
 &nbsp;
 ___
 &nbsp;
@@ -137,6 +140,7 @@ Opcionalmente, se puede proporcionar una clave de índice, \$mIndexKey, para ind
 |---|---|---|---|
 |**\$aSource**|array||array de datos|
 |**\$mColumnKey**|mixed|||
+
 &nbsp;
 ___
 &nbsp;
@@ -150,6 +154,7 @@ Avanza el puntero del array hasta el índice indicado por \$mKey y retorna los d
 |---|---|---|---|
 |**\$aSource**|array||array de datos|
 |**\$mKey**|mixed|0|Indice hasta donde se avanzará el puntero|
+
 &nbsp;
 ___
 &nbsp;
@@ -191,6 +196,7 @@ array("campo11","campo11")
 La directiva MAIN debe estar expresada en mayusculas.
 Si es necesario determinar una estructura de sub-grupos, pero no redefinir el grupo principal, MAIN deberá ser un array
 que sólo contenga el campo_principal_de_agrupamiento|
+
 &nbsp;
 ___
 &nbsp;
@@ -205,6 +211,7 @@ Método axuliar de nglCommon::arrayGroup
 |**\$aGrouped**|string||Patron de búsqueda|
 |**\$mValue**|array||Origen de datos|
 |**\$aStructure**|boolean|false|Habilita la búsqueda por expresiones regulares, donde \$sNeedle es tratado como un patron regex|
+
 &nbsp;
 ___
 &nbsp;
@@ -223,6 +230,7 @@ los patrones de búsqueda serán tratados con preg_quote()
 |**\$bRegex**|boolean|false|Habilita la búsqueda por expresiones regulares, donde \$sNeedle es tratado como un patron regex|
 |**\$sRegexFlags**|string|s|Flags utilizados en el patron de expresiones regulares|
 |**\$bInverseMode**|boolean|false|Activa el modo inverso, donde cada valor del array es tratado como un patron regex y comparadon contra \$sNeedle|
+
 &nbsp;
 ___
 &nbsp;
@@ -238,6 +246,7 @@ Añade un elemento al Array en la posición determinada
 |**\$mPosition**|mixed||Posición alfanúmerica de referencia en la que se insertará el nuevo valor|
 |**\$aInsert**|mixed||Valor a insertar|
 |**\$bAfter**|boolean|true|Determina si el nuevo valor se insertará antes o después del valor de referencia.|
+
 &nbsp;
 ___
 &nbsp;
@@ -251,6 +260,7 @@ Agrega N arrays multi-dimensionales en uno
 |---|---|---|---|
 |**\$array1**|array||Array inicial|
 |**\$...**|array||Resto de arrays|
+
 &nbsp;
 ___
 &nbsp;
@@ -267,6 +277,7 @@ Ordena un array multi-dimensional considerando multiples indices, orden y tipos 
 formato: **array( array( field, [order], [type] ), ..., array( field, [order], [type] ) );**
 
 donde:<ul><li>**field** =  es el indice por el cual se ordenará</li><li>**order** =  dirección del ordenamiento:<ul><li>asc: orden ascendente (valor predeterminado)</li><li>desc: orden descendente</li></ul><li>**type** =  tipo de ordenamiento:<ul><li>0: orden natural sencible a mayúsculas (valor predeterminado)</li><li>1: orden natural insencible a mayúsculas</li><li>2: numerico</li><li>3: orden por cadena sencible a mayúsculas</li><li>4: orden por cadena insencible a mayúsculas</li></ul></li></ul>|
+
 &nbsp;
 ___
 &nbsp;
@@ -283,6 +294,7 @@ Si \$aIndexes = null y \$mNewIndexes es una cadena, el método retornará un arr
 |**\$aSource**|array||Array de datos|
 |**\$mIndexes**|mixed||Lista de indices a combinar o NULL|
 |**\$mNewIndexes**|mixed|$aIndexes|Lista con los nombres de los nuevos indices, que se reemplazarán uno a uno con **\$aIndexes** o una cadena|
+
 &nbsp;
 ___
 &nbsp;
@@ -296,6 +308,7 @@ Retorna un array con indices númericos que contiene **\$nMultiplier** repeticio
 |---|---|---|---|
 |**\$aInput**|array||Array a ser repetido|
 |**\$nMultiplier**|int||Número de veces que **\$aInput** debe ser repetido.|
+
 &nbsp;
 ___
 &nbsp;
@@ -308,6 +321,7 @@ Elimina de una cadena todos los caracteres que no sean válidos en una cadena ba
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sString**|string||Cadena a limpiar|
+
 &nbsp;
 ___
 &nbsp;
@@ -326,6 +340,7 @@ Los posibles valores retornados por between son:<ul><li>**0** =  cuando \$mValue
 |**\$sMinValue**|string||Mínimo valor del rango|
 |**\$sMaxValue**|string|null|Máximo valor del rango|
 |**\$bCaseInsensitive**|boolean|false|Modo insensible a mayúsculas|
+
 &nbsp;
 ___
 &nbsp;
@@ -341,6 +356,7 @@ Elimina los slashes de mas en un path o url. Todos los **\$sSeparator** de cierr
 |**\$bSlashClose**|boolean|false|Cuando el valor es true añade un slash al final del path|
 |**\$sSeparator**|string|NGL_DIR_SLASH|Slash utilizado|
 |**\$bRealPath**|boolean|false|Cuando es TRUE aplica realpath() a la path|
+
 &nbsp;
 ___
 &nbsp;
@@ -355,6 +371,7 @@ Retorna un color en valores hexadecimales basandose en RGB
 |**\$nRed**|int|00|Valor de 0 a 255 para el color rojo|
 |**\$nGreen**|int|00|Valor de 0 a 255 para el color verde|
 |**\$nBlue**|int|00|Valor de 0 a 255 para el color azul|
+
 &nbsp;
 ___
 &nbsp;
@@ -367,6 +384,7 @@ Retorna los valores RGB y Transparencia de un color en formato hexadecimal
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sHexacolor**|string|#00000000|Valor del color en formato #RRGGBBAA (rojo, verde, azul, alfa)|
+
 &nbsp;
 ___
 &nbsp;
@@ -382,6 +400,7 @@ Los valores son analizados con ngl::passwd(), por lo que si NGL_PASSWORD_KEY est
 |**\$sKey**|string||Nombre de la coockie|
 |**\$sValue**|string|NULL|Valor de la cookie. Si el valor es NULL o es ignorado, el método intentará retornar el valor actual de la cookie|
 |**\$mExpire**|mixed|NULL|Indice de tiempo en el que expira la cookie:<ul><li>**null** =  establece el valor de expiració en 5 años</li><li>**string** =  el valor será tratado con strtotime</li><li>**int** =  valor en segundos</li></ul>|
+
 &nbsp;
 ___
 &nbsp;
@@ -395,6 +414,7 @@ Transforma un decimal en hexadecimal sin límite de tamaño y con la posibilidad
 |---|---|---|---|
 |**\$sDecimal**|int||Número decimal|
 |**\$nLength**|int|0|Largo total de la cadena. Si es inferior o igual a la longitud del string de entrada, no se realiza el rellenado|
+
 &nbsp;
 ___
 &nbsp;
@@ -410,6 +430,7 @@ Este método retornará el mismo tipo de dato que el valor de entrada **\$mSourc
 |---|---|---|---|
 |**\$mSource**|mixed||String o Array a desordenar|
 |**\$aArrange**|array||Secuencia númerica que se utilizará para desordenar **\$mSource**.|
+
 &nbsp;
 ___
 &nbsp;
@@ -425,6 +446,7 @@ directamente en la pantalla.
 |**\$mVariable1**|mixed||Variable a volcar|
 |**\$...**|mixed||Variable a volcar|
 |**\$mVariableN**|mixed||Variable a volcar|
+
 &nbsp;
 ___
 &nbsp;
@@ -439,6 +461,7 @@ Si \$aKeys es NULL se evaluarán todos los indices.
 |---|---|---|---|
 |**\$aData**|array||Array de datos|
 |**\$aKeys**|array|null|Array con los nombres de las claves del array \$aData que deberán ser evaluadas|
+
 &nbsp;
 ___
 &nbsp;
@@ -458,6 +481,7 @@ https://www.gnu.org/software/libiconv
 |**\$sString**|string||Cadena a chequear|
 |**\$mEncoding**|mixed|null|Nombre de una codificación válida o un array de nombres|
 |**\$bStrict**|boolean|false|Determina si, en caso afirmativo, el método debe retornar el nombre de la codificación o TRUE|
+
 &nbsp;
 ___
 &nbsp;
@@ -471,6 +495,7 @@ Retorna el valor de \$mSure cuanto \$mVar no esta seteada o es NULL
 |---|---|---|---|
 |**\$mVar**|mixed||Variable a evaluar|
 |**\$mSure**|mixed||Valor que se aplicará cuando \$mVar no exista o sea NULL|
+
 &nbsp;
 ___
 &nbsp;
@@ -487,6 +512,7 @@ Ejecuta la función **explode** de PHP de manera recursiva, utilizando los delim
 |**\$nLimit**|int||Si es positivo, el array devuelto contendrá el máximo de \$nLimit elementos, y el último elemento contendrá el resto de la cadena de origen.
 Si es negativo, se devolverán todos los componentes a excepción del último -\$nLimit.
 Si es cero, se tratará como 1.|
+
 &nbsp;
 ___
 &nbsp;
@@ -503,6 +529,7 @@ Ejecuta la función **explode** de PHP y a continuación trata a cada uno de los
 |**\$nLimit**|int||Si es positivo, el array devuelto contendrá el máximo de \$nLimit elementos, y el último elemento contendrá el resto de la cadena de origen.
 Si es negativo, se devolverán todos los componentes a excepción del último -\$nLimit.
 Si es cero, se tratará como 1.|
+
 &nbsp;
 ___
 &nbsp;
@@ -515,6 +542,7 @@ Retorna un array con todas las cabeceras enviadas hasta el momento, un una caden
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sHeader**|string||Chequea que esta cabecera haya sido enviada, retornando su valor o FALSE|
+
 &nbsp;
 ___
 &nbsp;
@@ -527,6 +555,7 @@ Transforma un hexadecimal en decimal sin límite de tamaño
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sDecimal**|string||Número hexadecimal|
+
 &nbsp;
 ___
 &nbsp;
@@ -542,6 +571,7 @@ Para mantener una relación con **implode**, si **\$mGlue** no es especificado s
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$mGlue**|mixed||Cadena o array de dos de ellas con las que se unirán los valores|
+
 &nbsp;
 ___
 &nbsp;
@@ -556,6 +586,7 @@ Retorna o valida un **imya**
 |**\$sImya**|string|null|Cuando el valor es NULL se genera un nuevo imya, equivalente a un valor unique(32)
 Cuando el valor es distinto de NULL limpia la cadena basandose en el patron [^a-zA-Z0-9] y la corta a los 32 caracteres
 Si la cadena resultante cuenta con menos de 32 carecteres el método retornará NULL|
+
 &nbsp;
 ___
 &nbsp;
@@ -568,6 +599,7 @@ Retorna la parte entera de un número
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$mNumber**|mixed||Valor númerico|
+
 &nbsp;
 ___
 &nbsp;
@@ -582,6 +614,7 @@ Con **\$bStrict** FALSE sólo chequeará que el primer valor de **\$aArray** sea
 |---|---|---|---|
 |**\$aArray**|array||Array a comprobar|
 |**\$bStrict**|boolean|false|Activa o desactiva el modo estricto|
+
 &nbsp;
 ___
 &nbsp;
@@ -596,6 +629,7 @@ uno de sus índices está vacío. Los arrays son examinados de manera recursiva
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$mValue**|mixed||Valor a comprobar|
+
 &nbsp;
 ___
 &nbsp;
@@ -608,6 +642,7 @@ Comprueba si un valor es un número entero
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$mNumber**|mixed||Valor númerico|
+
 &nbsp;
 ___
 &nbsp;
@@ -621,6 +656,7 @@ Comprueba si un valor es una cadena JSON válida
 |---|---|---|---|
 |**\$sString**|string||Cadena a chequear|
 |**\$mType**|string|null|Determina el tipo de respuesta (Boolean, Array u Object)<ul><li>**NULL** =  se retornará TRUE o FALSE</li><li>**array** =  se retornarán los datos como un array asociativo cuando el valor sea un JSON, o FALSE</li><li>**object** =  se retornarán los datos como un objeto cuando el valor sea un JSON, o FALSE/li></ul>|
+
 &nbsp;
 ___
 &nbsp;
@@ -636,6 +672,7 @@ Los arrays son examinados de manera recursiva
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sString**|string||Cadena a comprobar|
+
 &nbsp;
 ___
 &nbsp;
@@ -649,6 +686,7 @@ Esto sucederá cuando el método nativo **is_null(\$mValue)** retorne true o cua
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$mValue**|mixed||Cadena a comprobar|
+
 &nbsp;
 ___
 &nbsp;
@@ -662,6 +700,7 @@ Seran considerados números los siguientes formatos:<br /><ul><li>123.456 (float
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$mNumber**|mixed||Valor a comprobar|
+
 &nbsp;
 ___
 &nbsp;
@@ -675,6 +714,7 @@ Comprueba si **\$sString** es un array serializado. Si **\$bResult** es igual a 
 |---|---|---|---|
 |**\$sString**|string||Cadena a chequear|
 |**\$bResult**|boolean|false|Determina el tipo de respuesta|
+
 &nbsp;
 ___
 &nbsp;
@@ -687,6 +727,7 @@ Comprueba si **\$mValue** es TRUE o FALSE. Si \$mValue es String y su valor es '
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$mValue**|mixed||Valor a comprobar|
+
 &nbsp;
 ___
 &nbsp;
@@ -700,6 +741,7 @@ Los arrays son examinados de manera recursiva
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sString**|string||Cadena a comprobar|
+
 &nbsp;
 ___
 &nbsp;
@@ -714,6 +756,7 @@ Para este último caso, cuando se solicite el protocolo, se retornará "url"
 |---|---|---|---|
 |**\$sFilePath**|string||URL a comprobar|
 |**\$bScheme**|boolean|false|Determina si en caso de TRUE se debe o no retornar el protocolo|
+
 &nbsp;
 ___
 &nbsp;
@@ -726,6 +769,7 @@ Comprueba si **\$sString** es una cadena UTF-8
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sString**|string||Cadena a comprobar|
+
 &nbsp;
 ___
 &nbsp;
@@ -739,6 +783,7 @@ Devuelve el valor de la cantidad de memoria asignada a PHP, formateado con strSi
 |---|---|---|---|
 |**\$bRealUsage**|boolean|false|True para obtener el tamaño real de memoria asignada por el sistema.|
 |**\$nDecimals**|int|5|Cantidad de decimales despues de la coma|
+
 &nbsp;
 ___
 &nbsp;
@@ -751,6 +796,7 @@ Retorna el Mime Type de la extensión proporcionada.
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sExtension**|string||Extensión.|
+
 &nbsp;
 ___
 &nbsp;
@@ -764,6 +810,7 @@ Limpia una cadena para que pueda ser utilizada como nombre de archivo, carpeta, 
 |---|---|---|---|
 |**\$sName**|string||Nombre original.|
 |**\$sLeave**|string||Conserva estos caracteres|
+
 &nbsp;
 ___
 &nbsp;
@@ -779,6 +826,7 @@ La vigencia de los códigos en la session es de NGL_ONCECODE_TIMELIFE, en segund
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sCode**|string|null|ONCECODE generado por el método en una ejecución previa|
+
 &nbsp;
 ___
 &nbsp;
@@ -793,6 +841,7 @@ Según la presición el redondeo dará con .5 cuando:<ul><li>**0** =  cuando sea
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$nNumber**|int||Numero a redondear|
+
 &nbsp;
 ___
 &nbsp;
@@ -807,6 +856,7 @@ Si \$sPrepend es mas corta que \$sString se conservarán los caracteres de esta 
 |---|---|---|---|
 |**\$sString**|string||Cadena contenedora|
 |**\$sAppend**|string||Cadena de reemplazo|
+
 &nbsp;
 ___
 &nbsp;
@@ -821,6 +871,7 @@ Si \$sPrepend es mas corta que \$sString se conservarán los caracteres de esta 
 |---|---|---|---|
 |**\$sString**|string||Cadena contenedora|
 |**\$sPrepend**|string||Cadena de reemplazo|
+
 &nbsp;
 ___
 &nbsp;
@@ -834,6 +885,7 @@ Compara dos cadenas desde el inicio y retorna la subcadena en común
 |---|---|---|---|
 |**\$sString1**|string||Primer cadena para la comparación|
 |**\$sString2**|string||Segunda cadena para la comparación|
+
 &nbsp;
 ___
 &nbsp;
@@ -848,6 +900,7 @@ Si **\$sSign** no es especificado, se retornará un array asosiativo con todos l
 |---|---|---|---|
 |**\$sSign**|string||Código del signo que se quiere obtener|
 |**\$bEmpty**|boolean|false|Deterina si debe retornarse vacio en caso de no encontrar coincidencia|
+
 &nbsp;
 ___
 &nbsp;
@@ -860,6 +913,7 @@ Retorna el valor \$sSize en bytes. Cuando existan decimales se redondeará el re
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sSize**|string||Tamaño a convertir|
+
 &nbsp;
 ___
 &nbsp;
@@ -873,6 +927,7 @@ Retorna el valor \$nBytes con el formato KB o MB o GB etc
 |---|---|---|---|
 |**\$nBytes**|int||Número de bytes|
 |**\$nDecimals**|int|2|Cantidad de decimales despues de la coma|
+
 &nbsp;
 ___
 &nbsp;
@@ -886,6 +941,7 @@ Decodifica una cadena codificada con **tokenEncode**
 |---|---|---|---|
 |**\$sToken**|string||Cadena codificada|
 |**\$sKey**|string||Código se seguridad|
+
 &nbsp;
 ___
 &nbsp;
@@ -900,6 +956,7 @@ Codifica el valor de **\$sSource** en un token de 2540 caracteres y aplicando el
 |**\$sSource**|string||Cadena de hasta 16 caracteres que se desea tokenizar|
 |**\$sKey**|string||Código se seguridad|
 |**\$sTokenTitle**|string|NGL TOKEN|Título del token, este aparecera en la línea de encabezado|
+
 &nbsp;
 ___
 &nbsp;
@@ -915,6 +972,7 @@ entrando en cada uno de los nodos \$sChildrenNode. En cada interacción se ejecu
 |**\$aData**|array||Array de datos|
 |**\$fFunction**|function||Función del usuario que se ejecutará para cada nodo. En cada ejecución se pasarán los siguientes argumentos:<br /><ul><li>datos del nodo</li><li>nivel de profundidad</li><li>booleano que define si el nodo actual es el primer nodo de la rama</li><li>booleano que define si el nodo actual es el último nodo de la rama</li></ul>|
 |**\$sChildrenNode**|string||Nombre de nodo que contiene a los hijos|
+
 &nbsp;
 ___
 &nbsp;
@@ -927,6 +985,7 @@ Crea un nuevo Array combinando los valores de \$aSource como claves y el boolean
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$aSource**|array|||
+
 &nbsp;
 ___
 &nbsp;
@@ -939,6 +998,7 @@ Reemplaza los caracteres acentuados por su equivalente sin acento
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sAccented**|string||Cadena acentuada|
+
 &nbsp;
 ___
 &nbsp;
@@ -951,6 +1011,7 @@ Genera una cadena aleatoria de 4 a 4096 caracteres que matchea con el patrón: [
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$nLength**|int|6|Loguitud de la cadena|
+
 &nbsp;
 ___
 &nbsp;
@@ -964,6 +1025,7 @@ El valor retornado podrá ser un string o un array, dependiendo del valor origin
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sString**|string||Cadena codificada|
+
 &nbsp;
 ___
 &nbsp;
@@ -976,6 +1038,7 @@ Codifica una cadena o array para que pueda ser enviado de manera segura por GET 
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$mValue**|mixed||Cadena o array que se quiere codificar|
+
 &nbsp;
 ___
 &nbsp;
@@ -989,6 +1052,7 @@ si no pueden llevarse a cabo retorna **NULL**
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sURL**|string||URL a chequear|
+
 &nbsp;
 ___
 &nbsp;

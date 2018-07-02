@@ -101,6 +101,7 @@ Prepara el objeto para trabajar con la dependencia **\$sChild** y lo retorna
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sChild**|string|null|Nombre del Objeto dependiente activo|
+
 &nbsp;
 ___
 &nbsp;
@@ -110,6 +111,7 @@ Lista las tablas dependientes de objeto activo
 
 **[array]** =  *public* function ( );
   
+
 &nbsp;
 ___
 &nbsp;
@@ -119,6 +121,7 @@ Finaliza la conexión con la base de datos
 
 **[boolean]** =  *public* function ( );
   
+
 &nbsp;
 ___
 &nbsp;
@@ -128,6 +131,7 @@ Retorna los nombres de la columnas del objeto activo
 
 **[array]** =  *public* function ( );
   
+
 &nbsp;
 ___
 &nbsp;
@@ -140,6 +144,7 @@ Establece la conexión con la base de datos
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$driver**|object||Objecto de Base de Datos|
+
 &nbsp;
 ___
 &nbsp;
@@ -154,6 +159,7 @@ Verifica las referencias de la tabla **\$sTable** con el resto de las tablas del
 |**\$sTable**|string||Nombre de la tabla principal|
 |**\$sWhere**|string||Condición WHERE que determina el conjunto de resultados sobre el cual se analizará las referencias|
 |**\$aConditions**|array||Array de condiciones FROM y WHERE que determina el conjunto de resultados en modo recursivo|
+
 &nbsp;
 ___
 &nbsp;
@@ -170,6 +176,7 @@ Si el argumento **cascade** estuviese indicado como **true** y hubiese conflicto
 |---|---|---|---|
 |**\$aData1**|mixed|null|Selecciona un registro del objeto activo utilizando el propio ID o IMYA|
 |**\$...**|array||Lista variable de argumentos de tipo Array similares a **\$aData1**|
+
 &nbsp;
 ___
 &nbsp;
@@ -182,6 +189,7 @@ Ejecuta las sentencias de borrado \$aCascade y retorna el número de registros b
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$aCascade**|mixed|null|Selecciona un registro del objeto activo utilizando el propio ID o IMYA|
+
 &nbsp;
 ___
 &nbsp;
@@ -194,6 +202,7 @@ Detalles del objeto activo
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sObjectName**|string||Nombre de la tabla/objecto que se establecerá como activo|
+
 &nbsp;
 ___
 &nbsp;
@@ -211,6 +220,7 @@ El **ID** de la última inserción se guardará en el atributo **id**.
 |---|---|---|---|
 |**\$mID**|mixed||Cadena IMYA o número entero|
 |**\$bChildren**|boolean|duplicate_children|Activa y desactiva la copia de registros dependientes|
+
 &nbsp;
 ___
 &nbsp;
@@ -226,6 +236,7 @@ Retorna un objeto **iNglDataObjet** con los datos de un registro y todas sus rel
 |**\$sAliasMode**|string|auto|Política utilizada para nombrar los alias en el método **nglOwl::view**, se antepondrá el nombre de la tabla cuando:<ul><li>**all** =  en todos los campos de todas las tablas</li><li>**joins** =  en todos los campos, salvo en los de la tabla principal</li><li>**auto** =  sólo los campos que tengan un duplicado</li><li>**none** =  ningun campo</li></ul>|
 |**\$bJoins**|boolean|true|Activa y desactiva la unión con las tablas relacionadas (no dependientes) en el método **nglOwl::view**|
 |**\$mChildren**|mixed|false|Determina el tipo de unión con las tablas dependientes<ul><li>**true** =  todas las tablas</li><li>**false** =  ninguna tabla</li><li>**array** =  array con tablas seleccionadas</li></ul>|
+
 &nbsp;
 ___
 &nbsp;
@@ -244,6 +255,7 @@ Retorna un objeto **iNglDataObjet** con todos registros y relaciones en base a s
 |**\$sColumns**|string|null|Cadena JSQL con los nombres de las columnas que deberá retornar el método **nglOwl::view**.
 Sintáxis: ["TABLE.COLUMN","ALIAS"] o "TABLE.COLUMN"
 Ej: [["tabla.campo1","foo"], "alias2.campo2", ["campo3","bar"]]|
+
 &nbsp;
 ___
 &nbsp;
@@ -258,6 +270,7 @@ Cuando **\$sTable** sea distinto de **NULL** el valor retornado será almacenado
 |---|---|---|---|
 |**\$mID**|mixed||Cadena IMYA o número entero|
 |**\$sTable**|string|NULL|Nombre de la tabla en la cual buscar. Cuando el valor es **NULL** se trabajará sobre la tabla principal del objeto activo|
+
 &nbsp;
 ___
 &nbsp;
@@ -276,6 +289,7 @@ El **ID** de la última inserción se guardará en el atributo **current**.
 |---|---|---|---|
 |**\$aData1**|array||Array asociativo (o bidimensional de ellos) con los datos del registro a insertar|
 |**\$...**|array||Lista variable de argumentos de tipo Array similares a **\$aData1**|
+
 &nbsp;
 ___
 &nbsp;
@@ -289,6 +303,7 @@ Registra la salida de LOG de un método en los atributos **log** y **history**. 
 |---|---|---|---|
 |**\$sStatus**|string|NULL|Definición del estado|
 |**\$aDetails**|string|array|Detalles de la operación ejecutada|
+
 &nbsp;
 ___
 &nbsp;
@@ -304,6 +319,7 @@ Los datos que conforman el log son:<ul><li>**table** =  nombre de la tabla afect
 |**\$sTable**|string||Nombre de la tabla afectada|
 |**\$nRow**|int||Identificador del registro afectado|
 |**\$sAction**|string||Acción ejecutada: insert, update, suspend o delete|
+
 &nbsp;
 ___
 &nbsp;
@@ -317,6 +333,7 @@ Ejecuta una sentencia JSQL utilizando el método **query** del objeto **\$db** y
 |---|---|---|---|
 |**\$sJSQL**|string|null|Sentencia JSQL para ser ejecutada utilizando el método **nglOwl::query**|
 |**\$aArgs**|array|argument::jsql_args|Argumentos pasados al método, que serán traducidos a la sentencia utilizando vsprintf|
+
 &nbsp;
 ___
 &nbsp;
@@ -326,6 +343,7 @@ Muestra la estructura relacional del objeto seleccionado
 
 **[string]** =  *public* function ( );
   
+
 &nbsp;
 ___
 &nbsp;
@@ -338,6 +356,7 @@ Selecciona y establece como activo al objeto **\$sObjectName**
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sObjectName**|string||Nombre de la tabla/objecto que se establecerá como activo. Deberá respetar el patrón [a-zA-Z0-9_\-]+|
+
 &nbsp;
 ___
 &nbsp;
@@ -347,6 +366,7 @@ Retorna un Array con los datos de todos los elementos que componen el sistema **
 
 **[array]** =  *public* function ( );
   
+
 &nbsp;
 ___
 &nbsp;
@@ -364,6 +384,7 @@ El **ID** de la última suspensión se guardará en el atributo **id**.
 |---|---|---|---|
 |**\$aData1**|mixed|null|Selecciona un registro del objeto activo utilizando el propio ID o IMYA|
 |**\$...**|array||Lista variable de argumentos de tipo Array similares a **\$aData1**|
+
 &nbsp;
 ___
 &nbsp;
@@ -381,6 +402,7 @@ El **ID** de la última suspensión se guardará en el atributo **id**.
 |---|---|---|---|
 |**\$aData1**|mixed|null|Selecciona un registro del objeto activo utilizando el propio ID o IMYA|
 |**\$...**|array||Lista variable de argumentos de tipo Array similares a **\$aData1**|
+
 &nbsp;
 ___
 &nbsp;
@@ -398,6 +420,7 @@ El **ID** de la última reactivación se guardará en el atributo **id**.
 |---|---|---|---|
 |**\$aData1**|mixed|null|Selecciona un registro del objeto activo utilizando el propio ID o IMYA|
 |**\$...**|array||Lista variable de argumentos de tipo Array similares a **\$aData1**|
+
 &nbsp;
 ___
 &nbsp;
@@ -418,6 +441,7 @@ El **ID** de la última actualición se guardará en el atributo **id**.
 |---|---|---|---|
 |**\$aData1**|mixed|array|Objeto o array asociativo con los nombres de las columnas y datos que se usará en los métodos de escritura. Este argumento no es válido para escrituras múltiples|
 |**\$...**|array||Lista variable de argumentos de tipo Array similares a **\$aData1**|
+
 &nbsp;
 ___
 &nbsp;
@@ -431,6 +455,7 @@ Ejecuta las actualizaciones enviadas por los métodos
 |---|---|---|---|
 |**\$aArguments**|mixed|array|Objeto o array asociativo con los nombres de las columnas y datos que se usará en los métodos de escritura. Este argumento no es válido para escrituras múltiples|
 |**\$nState**|int||Estado al que se cambiaran los registros:<ul><li>**0** =  eliminado (en la base de datos setea `state` = NULL)</li><li>**1** =  activo (en la base de datos setea `state` = 1)</li><li>**2** =  suspendido (en la base de datos setea `state` = 0)</li></ul>|
+
 &nbsp;
 ___
 &nbsp;
@@ -444,6 +469,7 @@ Realiza la validación de datos por medio del objeto **nglValidate**
 |---|---|---|---|
 |**\$vData**|array||Datos a validar|
 |**\$sRules**|string||Conjunto de reglas para la validación|
+
 &nbsp;
 ___
 &nbsp;
@@ -453,6 +479,7 @@ Retorna las partes SELECT y FROM de la consulta SQL necesaria para generar una V
 
  *public* function ( );
   
+
 &nbsp;
 ___
 &nbsp;
@@ -467,6 +494,7 @@ Retorna las partes SELECT y FROM de la consulta SQL necesaria para generar una V
 |**\$sOutputMode**|string|jsql|Modo de salida de datos en el método **nglOwl::view**:<ul><li>**jsql** =  formato JSON</li><li>**sql** =  formato ANSI SQL</li></ul>|
 |**\$sAliasMode**|string|auto|Política utilizada para nombrar los alias en el método **nglOwl::view**, se antepondrá el nombre de la tabla cuando:<ul><li>**all** =  en todos los campos de todas las tablas</li><li>**joins** =  en todos los campos, salvo en los de la tabla principal</li><li>**auto** =  sólo los campos que tengan un duplicado</li><li>**none** =  ningun campo</li></ul>|
 |**\$bJoins**|boolean|true|Activa y desactiva la unión con las tablas relacionadas (no dependientes) en el método **nglOwl::view**|
+
 &nbsp;
 ___
 &nbsp;

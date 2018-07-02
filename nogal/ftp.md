@@ -77,6 +77,7 @@ Cambia de directorio en el servidor remoto
 |---|---|---|---|
 |**\$sPath**|string|null|Nombre del archivo o directorio activo en el servidor remoto|
 |**\$bForce**|boolean|false|Fuerza la creación de directorios en los métodos CD y MAKEDIR|
+
 &nbsp;
 ___
 &nbsp;
@@ -90,6 +91,7 @@ Establece la conexión con el servidor remoto
 |---|---|---|---|
 |**\$sHost**|string|127.0.0.1|IP o dominio del servidor remoto|
 |**\$nPort**|int|21|Puerto del servidor remoto|
+
 &nbsp;
 ___
 &nbsp;
@@ -99,6 +101,7 @@ Retorna la ruta del directorio actual
 
 **[string]** =  *public* function ( );
   
+
 &nbsp;
 ___
 &nbsp;
@@ -111,6 +114,7 @@ Elimina un archivo o directorio
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sPath**|string|null|Nombre del archivo o directorio activo en el servidor remoto|
+
 &nbsp;
 ___
 &nbsp;
@@ -125,6 +129,7 @@ descarga un archivo o directorio del servidor a la maquina local
 |**\$sPath**|string|null|Nombre del archivo o directorio activo en el servidor remoto|
 |**\$sLocalPath**|string|null|Nombre del archivo o directorio en el servidor local|
 |**\$nTransfer**|int|FTP_BINARY|Establese el modo de transferencia de archivos: FTP_BINARY ó FTP_ASCII|
+
 &nbsp;
 ___
 &nbsp;
@@ -138,6 +143,7 @@ Método auxiliar de DOWNLOAD ejecutado por medio del método nglCommon::treeWalk
 |---|---|---|---|
 |**\$vFile**|string||Array con los datos del nombre del archivo o directorio|
 |**\$nTransfer**|int|FTP_BINARY|Modo de transferencia de archivos, constantes FTP_BINARY ó FTP_ASCII|
+
 &nbsp;
 ___
 &nbsp;
@@ -150,6 +156,7 @@ Convierte una cadena de permisos RWX en un valor CHMOD
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sCHMOD**|string||Cadena de permisos RWX|
+
 &nbsp;
 ___
 &nbsp;
@@ -159,6 +166,7 @@ Convierte las fechas de ftp_rawlist en un valor timestamp
 
  *private* function ( );
   
+
 &nbsp;
 ___
 &nbsp;
@@ -173,6 +181,7 @@ Autentica la sesion en el servidor remoto
 |**\$sUser**|string|anonymous|Nombre de usuario|
 |**\$sPass**|string||Contraseña|
 |**\$bPassive**|boolean|argument::passive||
+
 &nbsp;
 ___
 &nbsp;
@@ -185,6 +194,7 @@ Registra una cadena en el atributo log
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sLog**|string||Cadena que se añadira al log|
+
 &nbsp;
 ___
 &nbsp;
@@ -200,6 +210,7 @@ Lista el contenido de un directorio. Sino se especifica un directorio listará e
 |**\$sMask**|string||Regex utilizada para filtrar el resultado del método LS|
 |**\$sMode**|string|single|Modo en el que se ejecutará el método LS:<br /><ul><li>**single** =  array con los paths completos de los archivos y directorios listados</li><li>**signed** =  idem anterior pero con un * antepuesto cuando el path corresponda a un directorio</li><li>**info** =  información detallada de los archivos y directorios listados, sujeto a la disponibilidad del dato<ul><li>**basename** =  nombre del archivo</li><li>**bytes** =  tamaño en bytes</li><li>**chmod** =  permisos</li><li>**date** =  fecha en formato Y-m-d H:i:s</li><li>**extension** =  extensión del archivo</li><li>**filename** =  nombre del archivo sin extensión</li><li>**image** =  true o false</li><li>**path** =  path completo desde \$sPath</li><li>**protocol** =  protocolo del archivo</li><li>**size** =  tamaño en la unidad de medida mas grande</li><li>**timestamp** =  fecha UNIX</li><li>**type** =  file o dir</li></ul></li></ul>|
 |**\$bRecursive**|boolean|false|Ejecuta LS en modo recursivo|
+
 &nbsp;
 ___
 &nbsp;
@@ -214,6 +225,7 @@ Si el directorio ya existe y el argumento force_create es TRUE, mkdir le agregar
 |---|---|---|---|
 |**\$sPath**|string|null|Nombre del archivo o directorio activo en el servidor remoto|
 |**\$bForce**|boolean|false|Fuerza la creación de directorios en los métodos CD y MAKEDIR|
+
 &nbsp;
 ___
 &nbsp;
@@ -226,6 +238,7 @@ Activa/desactiva el modo pasivo. Por defecto todas las conexiones se inician en 
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$bPassive**|boolean|true|Establese la conexión en modo pasivo|
+
 &nbsp;
 ___
 &nbsp;
@@ -239,6 +252,7 @@ Cambia el nombre de un archivo o directorio
 |---|---|---|---|
 |**\$sPath**|string|null|Nombre del archivo o directorio activo en el servidor remoto|
 |**\$sNewName**|string|null|Nombre de archivo o directorio para el método REN|
+
 &nbsp;
 ___
 &nbsp;
@@ -253,6 +267,7 @@ Sube un archivo o directorio al servidor remoto
 |**\$sLocalPath**|string|null|Nombre del archivo o directorio en el servidor local|
 |**\$sPath**|string|null|Nombre del archivo o directorio activo en el servidor remoto|
 |**\$nTransfer**|int|FTP_BINARY|Establese el modo de transferencia de archivos: FTP_BINARY ó FTP_ASCII|
+
 &nbsp;
 ___
 &nbsp;
@@ -266,6 +281,7 @@ método auxiliar de UPLOAD ejecutado por medio del método treeWalk
 |---|---|---|---|
 |**\$vFile**|array||Array con los datos del nombre del archivo o directorio|
 |**\$nTransfer**|int|FTP_ASCII|Modo de transferencia de archivos FTP_BINARY ó FTP_ASCII|
+
 &nbsp;
 ___
 &nbsp;

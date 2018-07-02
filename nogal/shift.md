@@ -50,6 +50,7 @@ Formatea el valor **\$mValue** según **\$sCastType**, siempre que se encuentre 
 |---|---|---|---|
 |**\$mValue**|mixed||Variable a formatear|
 |**\$sCastType**|string|text|tipo de formato:<br /><ul><li>**text** =  texto plano (valor predeterminado)</li><li>**html** =  se aplica htmlspecialchars</li><li>**htmlall** =  se aplica htmlentities</li></ul>|
+
 &nbsp;
 ___
 &nbsp;
@@ -63,6 +64,7 @@ Auxiliar del método **nglShift::cast**
 |---|---|---|---|
 |**\$mValue**|mixed||Variable a formatear|
 |**\$sCastType**|string||tipo de formato:<br /><ul><li>**text** =  texto plano (valor predeterminado)</li><li>**html** =  se aplica htmlspecialchars</li><li>**htmlall** =  se aplica htmlentities</li></ul>|
+
 &nbsp;
 ___
 &nbsp;
@@ -81,6 +83,7 @@ Estructuras soportadas:<ul><li>array</li><li>csv</li><li>fixed</li><li>html</li>
 |**\$vOptions**|array||Array con las parametrizaciones de los métodos que intervienen en la conversión<ul><li>**class** =  nombre de la clase CSS aplicado en la salida como tabla HTML</li><li>**colnames** =  array con los nombres de las columnas (null)</li><li>**convert_spaces** =  Determina si deben convertirse los caracteres de espacio</li><li>**convert_unicode** =  Determina si los caracteres UTF-8 deberán ser convertidos a formato UNICODE (\uXXXX)</li><li>**joiner** =  caracter por el que se unirán los campos (,)</li><li>**enclose** =  caracter que se utilizará para encerrar los valores de los campos (&quot;)</li><li>**enclosed** =  caracter utilizado para encerrar los valores de los campos (&quot;)</li><li>**eol** =  fin de línea (\r\n)</li><li>**escape** =  caracter de escape para caracteres especiales (\) Salida de datos</li><li>**escaped** =  caracter para escapar los caracteres especiales (\) Entrada de datos</li><li>**format** =  formato de salida para el modo HTML (table|div|list)</li><li>**level** =  actual nivel de anidamiento (-1)</li><li>**splitter** =  caracter separador de campos (,)</li><li>**tag** =  nombre del siguiente tag XML (vacio)</li><li>**use_colnames** =  en combinación con **colnames**, establece los índices del array. 
 Con valor true y colnames = null, se utilizarán como índices los valores de la primera fila.
 (false)</li><li>**xml_attributes** =  determina si se deben procesar o no los atributos de las etiquetas XML (falso)</li></ul>|
+
 &nbsp;
 ___
 &nbsp;
@@ -94,6 +97,7 @@ Genera una cadena formateada como CSV partiendo de un Array
 |---|---|---|---|
 |**\$aData**|array||Array de datos|
 |**\$vOptions**|array||Array de opciones del método:<br /><ul><li>**colnames** =  array con los nombres de las columnas (null)</li><li>**joiner** =  caracter por el que se unirán los campos (,)</li><li>**enclose** =  caracter que se utilizará para encerrar los valores de los campos (&quot;)</li><li>**escape** =  caracter de escape para caracteres especiales (\)</li><li>**eol** =  fin de línea (\r\n)</li></ul>|
+
 &nbsp;
 ___
 &nbsp;
@@ -109,6 +113,7 @@ auxiliar del método nglShift::csvToArray. convierte una linea CSV en un array
 |**\$sEnclosed**|string|&quot;|caracter utilizado para encerrar los valores de los campos|
 |**\$sEscaped**|string|\|caracter para escapar los caracteres especiales|
 |**\$sEOL**|string|\r\n|fin de línea|
+
 &nbsp;
 ___
 &nbsp;
@@ -124,6 +129,7 @@ convierte un texto CSV (una línea o conjunto de ellas) en un array bidimensiona
 |**\$vOptions**|array||Array de opciones del método:<br /><ul><li>**use_colnames** =  en combinación con **colnames**, establece los índices del array. 
 Con valor true y colnames = null, se utilizarán como índices los valores de la primera fila.
 (false)</li><li>**columns** =  array con los nombres de las columnas (null)</li><li>**splitter** =  caracter separador de campos (,)</li><li>**enclosed** =  caracter utilizado para encerrar los valores de los campos (&quot;)</li><li>**escaped** =  caracter para escapar los caracteres especiales (\)</li><li>**eol** =  fin de línea (\r\n)</li></ul>|
+
 &nbsp;
 ___
 &nbsp;
@@ -137,6 +143,7 @@ Convierte una cadena en Array separando sus partes por caracter fijo
 |---|---|---|---|
 |**\$sString**|string||Cadena de datos|
 |**\$vOptions**|array||Array de opciones del método:<br /><ul><li>**positions** =  posiciones de corte (null)</li><li>**trim** =  determina si debe aplicarse el método trim a cada valor obtenido (false)</li><li>**eol** =  determina si debe tratarse a \$sString como una cadena multilinea (false)</li></ul>|
+
 &nbsp;
 ___
 &nbsp;
@@ -150,6 +157,7 @@ Convierte un Array en una cadena respetando las logitudes de **positions**. Si l
 |---|---|---|---|
 |**\$aString**|array||Array de datos|
 |**\$vOptions**|array||Array de opciones del método:<br /><ul><li>**positions** =  posiciones de unión (null)</li><li>**fill** =  caracter de relleno ( espacio )</li><li>**eol** =  fin de línea (\r\n)</li></ul>|
+
 &nbsp;
 ___
 &nbsp;
@@ -164,6 +172,7 @@ Genera una salida HTML a partir de un Array
 |**\$aData**|array||Array de datos|
 |**\$sFormat**|string|table|Tipo de salida HTML:<br /><ul><li>**table** =  tabla HTML</li><li>**div** =  estructura de DIVs</li><li>**list** =  estructura de UL, LI y SPAN</li></ul>|
 |**\$sClassName**|string|data|Nombre de la clase CSS que se asignara a la tabla, filas (*-head/*-row) y columnas (*-cell)|
+
 &nbsp;
 ___
 &nbsp;
@@ -179,6 +188,7 @@ El método soporta multiples tablas y anidamiento de tablas; en este último cas
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sHTML**|string||Código HTML que contiene la o las tablas|
+
 &nbsp;
 ___
 &nbsp;
@@ -191,6 +201,7 @@ Auxiliar del método htmlToArray
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$table**|string||Código HTML que contiene la o las tablas|
+
 &nbsp;
 ___
 &nbsp;
@@ -200,6 +211,7 @@ Auxiliar del método nglShift::jsonEncode encargado de codificar un caracter par
 
  *private* function ( );
   
+
 &nbsp;
 ___
 &nbsp;
@@ -212,6 +224,7 @@ Decodifica una cadena JSON de un Array
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sString**|string||Cadena JSON|
+
 &nbsp;
 ___
 &nbsp;
@@ -221,6 +234,7 @@ Codifica un valor en una cadena JSON
 
  *public* function ( );
   
+
 &nbsp;
 ___
 &nbsp;
@@ -237,6 +251,7 @@ Auxiliar del método nglShift::jsonEncode encargado generar un par ordenado NOMB
 |**\$bHTML**|boolean||Determina si el resultado debe ser tratado con htmlentities|
 |**\$sTab**|string|\t|Tabulador|
 |**\$sEOL**|string|\n|Salto de línea|
+
 &nbsp;
 ___
 &nbsp;
@@ -250,6 +265,7 @@ Auxiliar del método nglShift::jsonEncode encargado generar un par ordenado NOMB
 |---|---|---|---|
 |**\$sName**|string||Nombre del índice|
 |**\$mValue**|mixed||Valor|
+
 &nbsp;
 ___
 &nbsp;
@@ -262,6 +278,7 @@ Auxiliar del método nglShift::jsonDecode encargado limpiar el código antes de 
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sString**|string||Cadena JSON|
+
 &nbsp;
 ___
 &nbsp;
@@ -274,6 +291,7 @@ Convierte un objeto en un array asosiativo de manera recursiva
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$mObject**|object||Objeto a convertir|
+
 &nbsp;
 ___
 &nbsp;
@@ -286,6 +304,7 @@ Convierte un Array en un Objeto de manera recursiva
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$mObject**|array||Array a convertir|
+
 &nbsp;
 ___
 &nbsp;
@@ -300,6 +319,7 @@ Auxiliar del método ngl:Babel::xmlToArray utilizado para recorrer el objeto XML
 |**\$vXML**|object||Objecto XML|
 |**\$bAttributes**|boolean||Determina si se deben procesar o no los atributos de las etiquetas XML|
 |**\$x**|int||Contador interno|
+
 &nbsp;
 ___
 &nbsp;
@@ -309,6 +329,7 @@ Convierte un array en una estructura XML
 
 **[string]** =  *public* function ( );
   
+
 &nbsp;
 ___
 &nbsp;
@@ -322,6 +343,7 @@ Vuelca el contenido de un texto XML en un array asosiativo de manera recursiva
 |---|---|---|---|
 |**\$sXML**|string||Estructura XML|
 |**\$vOptions**|array||Array de opciones del método:<br /><ul><li>**xml_attributes** =  determina si se deben procesar o no los atributos de las etiquetas XML (falso)</li></ul>|
+
 &nbsp;
 ___
 &nbsp;

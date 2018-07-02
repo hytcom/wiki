@@ -63,6 +63,7 @@ Elimina las sesiones, no persistentes, cuyo tiempo de vida supere el establecido
 
 **[boolean]** =  *public* function ( );
   
+
 &nbsp;
 ___
 &nbsp;
@@ -73,6 +74,7 @@ Este método es requerido por **PHP** pero carece de utilidad dentro del objeto.
 
 **[true]** =  *public* function ( );
   
+
 &nbsp;
 ___
 &nbsp;
@@ -82,6 +84,7 @@ Retorna el número de sesiones activas. Disponible cuando el modo de almacenamie
 
 **[int]** =  *public* function ( );
   
+
 &nbsp;
 ___
 &nbsp;
@@ -94,6 +97,7 @@ Llamada de retorno ejecutada cuando una sesión es destruida
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$SID**|string|sesion activa|ID de sesion a destruir|
+
 &nbsp;
 ___
 &nbsp;
@@ -103,6 +107,7 @@ Destruye todas las sesiones, persistentes o no. Disponible cuando el modo de alm
 
 **[void]** =  *public* function ( );
   
+
 &nbsp;
 ___
 &nbsp;
@@ -115,6 +120,7 @@ Chequea si la sesion **\$SID** es o no una sesion persistente
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$SID**|string||ID de sesion a chequear|
+
 &nbsp;
 ___
 &nbsp;
@@ -124,6 +130,7 @@ Retorna el ID de la sesion activa
 
 **[string]** =  *public* function ( );
   
+
 &nbsp;
 ___
 &nbsp;
@@ -134,6 +141,7 @@ Este método es requerido por **PHP** pero carece de utilidad dentro del objeto.
 
 **[boolean]** =  *public* function ( );
   
+
 &nbsp;
 ___
 &nbsp;
@@ -147,6 +155,7 @@ Chequea si la sesion **\$SID** es o no una sesion persistente
 |---|---|---|---|
 |**\$bPersistent**|boolean|sesion activa|Indica si la sesion **\$SID** es una sesion persistente|
 |**\$SID**|string|sesion activa|ID de sesion a chequear|
+
 &nbsp;
 ___
 &nbsp;
@@ -159,6 +168,7 @@ Retorna el contenidos de la sesion en forma de cadena serializada
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$SID**|string|sesion activa|ID de sesion a leer|
+
 &nbsp;
 ___
 &nbsp;
@@ -169,6 +179,7 @@ Cuando el objeto este configurado en modo **fs** retornara el listado de archivo
 
 **[array]** =  *public* function ( );
   
+
 &nbsp;
 ___
 &nbsp;
@@ -182,6 +193,7 @@ Da inicio al objeto. Configura el modo de sesión y el tiempo máximo de vida de
 |---|---|---|---|
 |**\$handler**|mixed|null|Determina el modo en el cual trabajarán las sesiones:<ul><li>**objecto de DB** =  configura las sesiones en base de datos</li><li>**string fs** =  modo filesystem, los archivos de sesión se almacenarán en **NGL_PATH_SESSIONS**</li><li>**null** =  modo nativo de PHP</li></ul>|
 |**\$nLifeTime**|int|session.gc_maxlifetime|Tiempo máximo de vida de una sesión|
+
 &nbsp;
 ___
 &nbsp;
@@ -194,6 +206,7 @@ Guarda los datos de la variable superglobal **\$_SESSION** como contenido de la 
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$SID**|string||ID de sesion a chequear|
+
 &nbsp;
 ___
 &nbsp;

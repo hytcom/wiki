@@ -59,6 +59,7 @@ retorna el número de registros del conjunto de resultados ignorando los valores
 
 **[int]** =  *public* function ( );
   
+
 &nbsp;
 ___
 &nbsp;
@@ -68,6 +69,7 @@ Retorna un array con los nombre de las columnas presentes en el resultado
 
 **[array]** =  *public* function ( );
   
+
 &nbsp;
 ___
 &nbsp;
@@ -79,6 +81,7 @@ Si en cambio se trata de un conjunto de resultados, devolverá la cantidad de fi
 
 **[int]** =  *public* function ( );
   
+
 &nbsp;
 ___
 &nbsp;
@@ -88,6 +91,7 @@ Libera la memoria asociada con el identificador del resultado y destruye el obje
 
 **[boolean]** =  *public* function ( );
   
+
 &nbsp;
 ___
 &nbsp;
@@ -104,6 +108,7 @@ Cuando se especifique **\$sColumn** y el valor sea el nombre una columna del gru
 En el método **getAll**, cuando el nombre este presedido de un **#**, el valor de la columna será utilizado como indice asociativo.
 Cuando el nombre este presedido de un **@**, el resultado será tratado con **nglCommon::arrayGroup** y el valor de la columna será utilizado como indice asociativo.|
 |**\$sMode**|string|assoc|tipo de modo GET. Valores admitidos:<ul><li>**assoc** =  devuelve un array indexado por el nombre de columna</li><li>**num** =  devuelve un array indexado por el número de columna, empezando por la columna 0</li><li>**both** =  devuelve un array indexado tanto por el nombre como por el número de columna empezando por la columna 0</li></ul>|
+
 &nbsp;
 ___
 &nbsp;
@@ -122,6 +127,7 @@ Este método reinicia el conjunto de resultados a la primera fila.
 En el método **getAll**, cuando el nombre este presedido de un **#**, el valor de la columna será utilizado como indice asociativo.
 Cuando el nombre este presedido de un **@**, el resultado será tratado con **nglCommon::arrayGroup** y el valor de la columna será utilizado como indice asociativo.|
 |**\$sMode**|string|assoc|tipo de modo GET. Valores admitidos:<ul><li>**assoc** =  devuelve un array indexado por el nombre de columna</li><li>**num** =  devuelve un array indexado por el número de columna, empezando por la columna 0</li><li>**both** =  devuelve un array indexado tanto por el nombre como por el número de columna empezando por la columna 0</li></ul>|
+
 &nbsp;
 ___
 &nbsp;
@@ -134,6 +140,7 @@ Selecciona el modo de salida para los métodos **get** y **getall**
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sMode**|string|assoc|tipo de modo GET. Valores admitidos:<ul><li>**assoc** =  devuelve un array indexado por el nombre de columna</li><li>**num** =  devuelve un array indexado por el número de columna, empezando por la columna 0</li><li>**both** =  devuelve un array indexado tanto por el nombre como por el número de columna empezando por la columna 0</li></ul>|
+
 &nbsp;
 ___
 &nbsp;
@@ -143,6 +150,7 @@ Obtiene una fila de resultados en forma de objeto stdClass y avanza el puntero.
 
 **[object]** =  *public* function ( );
   
+
 &nbsp;
 ___
 &nbsp;
@@ -152,6 +160,7 @@ Libera la memoria asociada con el identificador del resultado
 
 **[boolean]** =  *public* function ( );
   
+
 &nbsp;
 ___
 &nbsp;
@@ -161,6 +170,7 @@ Retorna el ID de la fila de la sentencia INSERT más reciente realizada en la ba
 
 **[int]** =  *public* function ( );
   
+
 &nbsp;
 ___
 &nbsp;
@@ -174,6 +184,7 @@ Carga la ultima consulta ejecutada del driver.
 |---|---|---|---|
 |**\$link**|resource|null|Puntero del driver de base de datos|
 |**\$query**|object|||
+
 &nbsp;
 ___
 &nbsp;
@@ -183,6 +194,7 @@ Reinicia el conjunto de resultados a la primera fila.
 
 **[boolean]** =  *public* function ( );
   
+
 &nbsp;
 ___
 &nbsp;
@@ -192,6 +204,7 @@ Alias de **nglDBSQLiteQuery::count**
 
 **[int]** =  *public* function ( );
   
+
 &nbsp;
 ___
 &nbsp;
@@ -202,6 +215,7 @@ Este método ignora los argumentos del objeto **nglDBSQLiteQuery** y al finaliza
 
 **[boolean]** =  *public* function ( );
   
+
 &nbsp;
 ___
 &nbsp;

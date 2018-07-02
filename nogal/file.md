@@ -61,6 +61,7 @@ Añade el contenido **content** al final de un archivo. Si el archivo no existe 
 
 **[$this]** =  *public* function ( );
   
+
 &nbsp;
 ___
 &nbsp;
@@ -73,6 +74,7 @@ Genera la descarga del archivo hacia el cliente.
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sDownName**|string|argument:downname||
+
 &nbsp;
 ___
 &nbsp;
@@ -82,6 +84,7 @@ Retorna al atributo **info**.
 
 **[array]** =  *public* function ( );
   
+
 &nbsp;
 ___
 &nbsp;
@@ -95,6 +98,7 @@ Rellena el archivo con **content** hasta **length**
 |---|---|---|---|
 |**\$sContent**|string|argument:content||
 |**\$nLength**|string|argument:length||
+
 &nbsp;
 ___
 &nbsp;
@@ -108,6 +112,7 @@ Si \$sFilePath es igual a TRUE se trabajará con un archivo temporal en el direc
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sFilePath**|string|argument:filepath||
+
 &nbsp;
 ___
 &nbsp;
@@ -121,6 +126,7 @@ Lee y retorna el contenido del archivo cargado
 |---|---|---|---|
 |**\$nLength**|int|null|Tamaño máximo en bytes del archivo contemplado para lectura o escritura|
 |**\$aCurlOptions**|array||Opciones CURL para este tipo de conexiones, <a href="http://php.net/manual/en/function.curl-setopt.php" target="_blank">http://php.net/manual/en/function.curl-setopt.php</a>|
+
 &nbsp;
 ___
 &nbsp;
@@ -130,6 +136,7 @@ Actualiza la información del objeto releyendo el archivo/directorio de origen y
 
 **[$this]** =  *public* function ( );
   
+
 &nbsp;
 ___
 &nbsp;
@@ -142,6 +149,7 @@ Genera una salida del contenido del archivo con el formato correspondiente a la 
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sExtension**|string|argument:outtype|Extensión especificada para el formato de salida|
+
 &nbsp;
 ___
 &nbsp;
@@ -154,6 +162,7 @@ Escribe/reemplaza el contenido del archivo con **content**. Si el archivo no exi
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sContent**|string||Contenido del archivo|
+
 &nbsp;
 ___
 &nbsp;
@@ -170,6 +179,7 @@ Escribe contenido en un archivo. Este método es utilizado por **append** y **wr
 |**\$bReload**|boolean|true|Determina si se aplicará el método nglFile::reload sobre el archivo para actualizar la información.
 Se recomienda usar **false** cuando se realicen sucesivos nglFile::append|
 |**\$sMode**|string|wb|Modo de escritura (según fopen)|
+
 &nbsp;
 ___
 &nbsp;

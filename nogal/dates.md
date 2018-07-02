@@ -29,6 +29,7 @@ los índices son:<ul><li>**days** =  valores de Domingo a Sábado</li><li>**days
 
 **[array]** =  *public* function ( );
   
+
 &nbsp;
 ___
 &nbsp;
@@ -40,6 +41,7 @@ los índices son:<ul><li>**timestamp** =  candidad de segundos desde el 1/1/1970
 
 **[array]** =  *public* function ( );
   
+
 &nbsp;
 ___
 &nbsp;
@@ -53,6 +55,7 @@ Formatea un valor en segundos, según **\$sFormat**
 |---|---|---|---|
 |**\$nTime**|int||Cantidad de segundos|
 |**\$sFormat**|string|1|Modo de salida<ul><li>**1** =  array de datos con los indices<ul><li>year</li><li>month</li><li>day</li><li>hour</li><li>minute</li><li>second</li></ul></li><li>**2** =  cadena textual: 1 year 4 months 1 day 3 hours 45 minutes 10 seconds</li><li>**string** =  cadena con el formato de salida según los estandares del método **date** de PHP</li>|
+
 &nbsp;
 ___
 &nbsp;
@@ -65,6 +68,7 @@ Retorna la cantidad de segundos transcurridos desde **\$nTimeIni**
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$nTimeIni**|float|nogal->startime()|Indice de tiempo en sedundos/microsegundos.|
+
 &nbsp;
 ___
 &nbsp;

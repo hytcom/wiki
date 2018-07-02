@@ -44,6 +44,7 @@ Devuelve una cadena de un caracter que contiene el carácter especificado por \$
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$nCode**|int||Código unicode del caracter buscado|
+
 &nbsp;
 ___
 &nbsp;
@@ -57,6 +58,7 @@ Donde los caracteres que no sean UTF-8 serán reemplazados por su ORD en formato
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sString**|string||Cadena a codificar|
+
 &nbsp;
 ___
 &nbsp;
@@ -74,6 +76,7 @@ Divide una cadena en varias
 Si es positivo, el array devuelto contendrá el máximo de elementos en el limit y el último elemento contendrá el resto del string.
 Si es negativo, se devolverán todos los componentes a excepción de los últimos -limit.
 Si es cero, actuará como si su valor fuera 1.|
+
 &nbsp;
 ___
 &nbsp;
@@ -85,6 +88,7 @@ Retorna la información de los grupos de caracteres UTF-8
 
 **[array]** =  *public* function ( );
   
+
 &nbsp;
 ___
 &nbsp;
@@ -97,6 +101,7 @@ Devuelve información de un caracter dado<ul><li>**char** =  caracter</li><li>**
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sChar**|string||Caracter unicode del que se desea conocer el tipo|
+
 &nbsp;
 ___
 &nbsp;
@@ -109,6 +114,7 @@ Retorna el tipo, grupo y valor decimal de un caracter dado, o false en caso de e
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sChar**|string||Caracter unicode del que se desea conocer el tipo|
+
 &nbsp;
 ___
 &nbsp;
@@ -121,6 +127,7 @@ Devuelve el valor UNICODE del caracter \$sChar
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sChar**|string||Caracter unicode del que se desea conocer el código|
+
 &nbsp;
 ___
 &nbsp;
@@ -133,6 +140,7 @@ Convierte \$mSource en un array de caracteres UTF-8. Si \$mSource es un array sp
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$mSource**|mixed||Origen de datos, string o array|
+
 &nbsp;
 ___
 &nbsp;
@@ -145,6 +153,7 @@ Obtiene la longitud de una cadena
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sString**|string||Origen de datos|
+
 &nbsp;
 ___
 &nbsp;
@@ -166,6 +175,7 @@ Si la longitud del string es menor o igual a \$nStart, la función devolverá FA
 Si se especifica \$nLength y es negativo, entonces ese número de caracteres se omiten al final de la cadena
 Si se omite el \$nLength, la subcadena empezará en \$nStart hasta el final de la cadena
 Si se especifica \$nLength y es 0, FALSE o NULL se devolverá la subcadena comprendida entre \$nStart y el final de la cadena|
+
 &nbsp;
 ___
 &nbsp;
@@ -178,6 +188,7 @@ Desescapa una cadena UNICODE
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sString**|string||Cadena UNICODE a decodificar|
+
 &nbsp;
 ___
 &nbsp;
@@ -190,6 +201,7 @@ Auxiliar del método unescape
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sString**|string||Cadena UNICODE a decodificar|
+
 &nbsp;
 ___
 &nbsp;

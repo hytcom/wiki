@@ -37,6 +37,7 @@ si no se especifica un nombre de variable se retornarán todas las variables de 
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sVarname**|string|null|Nombre de variable|
+
 &nbsp;
 ___
 &nbsp;
@@ -47,6 +48,7 @@ donde la clave es el caracter acentuado y el valor el caracter sin acentuar
 
 **[array]** =  *private* function ( );
   
+
 &nbsp;
 ___
 &nbsp;
@@ -58,6 +60,7 @@ e intentará leer los archivos de la carpeta **ngl/conf** del proyecto
 
 **[array]** =  *private* function ( );
   
+
 &nbsp;
 ___
 &nbsp;
@@ -68,6 +71,7 @@ de lo contrario la setea como NULL
 
 **[string o null]** =  *private* function ( );
   
+
 &nbsp;
 ___
 &nbsp;
@@ -77,6 +81,7 @@ almacena los datos de la ruta del archivo actual en la variable **SELF**
 
 **[array]** =  *private* function ( );
   
+
 &nbsp;
 ___
 &nbsp;
@@ -86,6 +91,7 @@ Almacena expresiones regulares de uso frecuente en la variable **REGEX**
 
 **[array]** =  *private* function ( );
   
+
 &nbsp;
 ___
 &nbsp;
@@ -96,6 +102,7 @@ de lo contrario la setea como NULL
 
 **[int o null]** =  *private* function ( );
   
+
 &nbsp;
 ___
 &nbsp;
@@ -105,6 +112,7 @@ Almacena los datos de la versión de NOGAL en la variable **VERSION**
 
 **[array]** =  *private* function ( );
   
+
 &nbsp;
 ___
 &nbsp;

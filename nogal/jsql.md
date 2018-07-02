@@ -87,6 +87,7 @@ Formatos válidos y sus resultados<ul><li>**["TABLE.FIELD", "ALIAS"]** => `TABLE
 |**\$sAliasQuote**|string|'|Caracter utilizado para encerrar los alias|
 |**\$sQuote**|string|`|Caracter utilizado para encerrar los nombres de tablas y columnas|
 |**\$sTableColumnGlue**|string|.|Caracter utilizado para unir el nombre de la tabla con el de la columna|
+
 &nbsp;
 ___
 &nbsp;
@@ -100,6 +101,7 @@ Formatos válidos y sus resultados<ul><li>**["TABLE1.FIELD1", "OPERATOR", "TABLE
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$aCondition**|array||Array con la condición en formato **JSQL**|
+
 &nbsp;
 ___
 &nbsp;
@@ -114,6 +116,7 @@ Formatos válidos y sus resultados<ul><li>**["TABLE1.FIELD1", "OPERATOR", "TABLE
 |---|---|---|---|
 |**\$aSource**|array||Array de condiciones en formato **JSQL**|
 |**\$bSetMode**|boolean|false|Determina el tipo de salida SQL:<ul><li>**true** =  genera una salida para ser utilizada en el SET en una sentencia INSERT o UPDATE</li><li>**false** =  genera una salida para ser utilizada como condición WHERE</li></ul>|
+
 &nbsp;
 ___
 &nbsp;
@@ -127,6 +130,7 @@ Si **\$sSign** no es especificado, se retornará un array asosiativo con todos l
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sSign**|string||Código del signo que se quiere obtener|
+
 &nbsp;
 ___
 &nbsp;
@@ -139,6 +143,7 @@ Transforma una cadena JSON en un Array asociativo
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sString**|string||Valor a decodificar|
+
 &nbsp;
 ___
 &nbsp;
@@ -151,6 +156,7 @@ Transforma un Array asociativo en una cadena JSON
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$aArray**|array||Array a codificar|
+
 &nbsp;
 ___
 &nbsp;
@@ -164,6 +170,7 @@ Prepara un valor en formato **JSQL** para ser usado en una consulta **SQL**
 |---|---|---|---|
 |**\$sString**|string||Valor a preparar|
 |**\$bQuoted**|boolean||Determina si el valor debe retornarse entrecomillado|
+
 &nbsp;
 ___
 &nbsp;

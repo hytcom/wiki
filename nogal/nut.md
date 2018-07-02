@@ -38,6 +38,7 @@ Obtiene el valor del argumento **\$sIndex** del array **\$vArguments**, si no ex
 |---|---|---|---|
 |**\$vArguments**|array|||
 |**\$mDefault**|mixed|null|Valor por defecto|
+
 &nbsp;
 ___
 &nbsp;
@@ -50,6 +51,7 @@ Retorna un objeto del framework utilizando el método **nglRoot::call**
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sObjectName**|string||Nombre del objeto|
+
 &nbsp;
 ___
 &nbsp;
@@ -63,6 +65,7 @@ Carga y retorna un nut listo para ser usado
 |---|---|---|---|
 |**\$sNutName**|string||Nombre del nut|
 |**\$sNutID**|array||Id del nut|
+
 &nbsp;
 ___
 &nbsp;
@@ -75,6 +78,7 @@ Verifica la existencia de un método en un nut
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sFunction**|string||Nombre del método|
+
 &nbsp;
 ___
 &nbsp;
@@ -88,6 +92,7 @@ Ejecuta el método **\$sMethod** del nut
 |---|---|---|---|
 |**\$sMethod**|string||Nombre del método|
 |**\$mArguments**|mixed||Argumentos que se pasarán al método|
+
 &nbsp;
 ___
 &nbsp;
@@ -101,6 +106,7 @@ Cuando el valor de **\$bMode** sea **null** simplemente se retornará el valor a
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$bMode**|boolean|null|True o False|
+
 &nbsp;
 ___
 &nbsp;

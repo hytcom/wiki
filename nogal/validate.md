@@ -45,6 +45,7 @@ Este método retorna el propio objeto, a fin de poder añadir varias variables c
 |---|---|---|---|
 |**\$sVarName**|string||Nombre que luego se utilizará para invocar el valor|
 |**\$mValue**|string||Valor|
+
 &nbsp;
 ___
 &nbsp;
@@ -58,6 +59,7 @@ Aplica las reglas **\$vRules** sobre la variable **\$mSource**. Este método es 
 |---|---|---|---|
 |**\$mSource**|mixed||Variable o Array a validar|
 |**\$vRules**|array||Reglas de validación|
+
 &nbsp;
 ___
 &nbsp;
@@ -72,6 +74,7 @@ Retorna una cadena despues de compararla contra **\$aToClean**
 |**\$sString**|string||Valor|
 |**\$aToClean**|array||Array con los caracteres a conservar/eliminar|
 |**\$bInvert**|boolean|false|Indica si deben retornarse los valores que se encuentran en **\$aToClean** o los que no se encuentran|
+
 &nbsp;
 ___
 &nbsp;
@@ -84,6 +87,7 @@ Obtiene la configuración de un archivo **.json** y la retorna en como un Array
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sRulesFile**|string||Nombre del archivo **.json** ubicado en la carpeta **NGL_PATH_VALIDATE**|
+
 &nbsp;
 ___
 &nbsp;
@@ -101,6 +105,7 @@ La parametrización del arranque de esta propiedad se efectua desde el archivo *
 En caso de que la solicitud provenga de un origen inválido se vaciará **\$_REQUEST**
 
 **Origenes válidos**<ul><li>**ALL** =  Cualquier origen</li><li>**LOCAL** =  Solicitudes provenientes del propio servidor. Este es el comportamiento predeterminado</li><li>**Especificas** =  **Hostnames** y/o direcciones **IP** separados por comas (,)</li></ul>|
+
 &nbsp;
 ___
 &nbsp;
@@ -113,6 +118,7 @@ Analiza la cadena **\$sFrom** y retorna un array de origines para ser utilizados
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sFrom**|string||Cadena de posibles origenes|
+
 &nbsp;
 ___
 &nbsp;
@@ -122,6 +128,7 @@ Desetea las variables seteadas con **ngl:Validate::addvar**
 
 **[void]** =  *public* function ( );
   
+
 &nbsp;
 ___
 &nbsp;
@@ -174,6 +181,7 @@ Cuando las reglas son del tipo JSON, archivo o texto, se pueden invocar valores 
 
 Nota: el grupo especial **SPACES** contiene a los caracteres:<ul><li>tabulación (ord:9)</li><li>salto de línea (ord:10)</li><li>retorno de carro (ord:13)</li><li>espacio (ord:32)</li></ul>|
 |**\$bIgnoreDefault**|boolean|false|Desactiva el uso de valores **default**|
+
 &nbsp;
 ___
 &nbsp;
@@ -188,6 +196,7 @@ Validador de variables por tipo
 |**\$mValue**|string||Valor|
 |**\$sType**|string||Tipo de validación|
 |**\$vOptions**|array|array()|Parámetros auxiliares de la validación|
+
 &nbsp;
 ___
 &nbsp;

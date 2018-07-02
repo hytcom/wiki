@@ -36,6 +36,7 @@ Genera y retorna el puntero de la imagen del código QR
 |**\$nMargin**|int|0|Margen entre el borde de la imagen y el contenido del código|
 |**\$nPointSize**|int|4|Cantidad de pixels por punto|
 |**\$sECLevel**|int|L|Nivel de corrección de errores (L|M|Q|H)|
+
 &nbsp;
 ___
 &nbsp;
