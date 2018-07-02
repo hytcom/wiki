@@ -141,6 +141,29 @@ Inserta un nuevo registro en una tabla
 |**\$sMode**|string|INSERT|tipo de modo INSERT. Valores admitidos:<ul><li>**INSERT** =  inserta nuevos registros</li><li>**REPLACE** =  si el nuevo registro duplica un valor PRIMARY KEY o UNIQUE, el antiguo registro es eliminado</li><li>**IGNORE** =  el comando no aborta incluso si ocurren errores durante la ejecución</li></ul>|
 |**\$bCheckColumns**|boolean|true|Activa el chequeo de los nombre de las columnas en la tabla activa|
 |**\$bDO**|boolean|false|Cuando es TRUE el método query ejecuta la sentencia pero no retorna resultado|
+### Ejemplos  
+#### datos en array  
+```php
+
+				$foo = $ngl("mysql.foobar");
+				$foo->base = "test";
+				$foo->connect();
+				
+				$data = array("foo"=>"foovalue", "bar"=>"barvalue");
+				$foo->insert("tablename", $data);
+			
+```
+#### datos como cadena de variables  
+```php
+
+				$foo = $ngl("mysql.foobar");
+				$foo->base = "test";
+				$foo->connect();
+				
+				$data="foobar&bar=barvalue"
+				$foo->insert("tablename", $data, "replace");
+			
+```
 
 &nbsp;
 ___
@@ -214,6 +237,16 @@ Ejecuta una sentencia SQL y retorna un objecto **nglDBMySQLQuery**
 |---|---|---|---|
 |**\$sQuery**|string|null|Ultima sentencia SQL ejecutada o próxima a ejecutarse|
 |**\$bDO**|boolean|false|Cuando es TRUE el método query ejecuta la sentencia pero no retorna resultado|
+### Ejemplos  
+#### conexión  
+```php
+
+				$foo = $ngl("mysql.foobar");
+				$foo->base = "test";
+				$foo->connect();
+				$bar = $foo->query("SELECT * FROM `users`");
+			
+```
 
 &nbsp;
 ___
@@ -232,6 +265,29 @@ Actualiza todos los registros que cumplan con la condición **\$sWhere**
 |**\$sMode**|string|UPDATE|tipo de modo UPDATE. Valores admitidos:<ul><li>**UPDATE** =  actualiza los registros especificados</li><li>**REPLACE** =  crea un nuevo registro en caso de no hallar el registro especificados</li><li>**IGNORE** =  el comando no aborta incluso si ocurren errores durante la ejecución</li></ul>|
 |**\$bCheckColumns**|boolean|true|Activa el chequeo de los nombre de las columnas en la tabla activa|
 |**\$bDO**|boolean|false|Cuando es TRUE el método query ejecuta la sentencia pero no retorna resultado|
+### Ejemplos  
+#### datos en array  
+```php
+
+				$foo = $ngl("mysql.foobar");
+				$foo->base = "test";
+				$foo->connect();
+				
+				$data = array("foo"=>"foovalue", "bar"=>"barvalue");
+				$foo->update("tablename", $data, "`id`='7'");
+			
+```
+#### datos como cadena de variables  
+```php
+
+				$foo = $ngl("mysql.foobar");
+				$foo->base = "test";
+				$foo->connect();
+				
+				$data="foobar&bar=barvalue"
+				$foo->update("tablename", $data, "`id`='7'", "ignore");
+			
+```
 
 &nbsp;
 ___
