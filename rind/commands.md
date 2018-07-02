@@ -3,8 +3,8 @@
 ___
   
 
-# commands
-## abcRindCommands [20170115]
+# Rind Commands
+## Conceptos Básicos [20170115]
 Rind es el sistema de plantillas de NOGAL. Esta compuesto por 16 comandos que permiten realizar todo tipo de operaciones en el ambito HTML.
 Las plantillas (documentos HTML) son procesados por Rind y cacheados hasta que sufran algun cambio en su estructura, ahorrando asi tiempo de procesamiento.
   
