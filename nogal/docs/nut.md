@@ -21,11 +21,11 @@ Este objeto es el gestor de nuts del sistema, construye el objeto \$nut dentro d
 |M√©todo|Descripci√≥n|
 |---|---|
 |[arg](#arg)|Obtiene el valor del argumento $sIndex del array $vArguments, si no existiese retorna $mDefault|
-|[ifmethod](#ifmethod)|Verifica la existencia de un mÈtodo en un nut|
+|[ifmethod](#ifmethod)|Verifica la existencia de un m√©todo en un nut|
 |[load](#load)|Carga y retorna un nut listo para ser usado|
-|[ngl](#ngl)|Retorna un objeto del framework utilizando el mÈtodo nglRoot::call|
-|[run](#run)|Ejecuta el mÈtodo $sMethod del nut|
-|[safemode](#safemode)|Setea y/o retorna el valor de la variable nglNut::$bSafemodeCuando el valor de $bMode sea null simplemente se retornar· el valor actual de la variabl...|
+|[ngl](#ngl)|Retorna un objeto del framework utilizando el m√©todo nglRoot::call|
+|[run](#run)|Ejecuta el m√©todo $sMethod del nut|
+|[safemode](#safemode)|Setea y/o retorna el valor de la variable nglNut::$bSafemodeCuando el valor de $bMode sea null simplemente se retornar√° el valor actual de la variabl...|
 
   
 &nbsp;

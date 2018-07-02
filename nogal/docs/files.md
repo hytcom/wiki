@@ -15,12 +15,12 @@ MÃ©todos frecuentes para el manejo de archivos y directorios.
 |---|---|
 |[RebuildFILES](#RebuildFILES)|Toma el array $aFiles (de estructura igual a $_FILES) y lo reordena de manera recursiva, para optener una lectura mas natural|
 |[absPath](#absPath)|formatea un path como absoluto limpiando doble barras o referencias atras (..)|
-|[basePaths](#basePaths)|Retorna la porción común de dos paths desde el inicio. Previa a la comparación limpia los paths con nglCommon::clearPath|
+|[basePaths](#basePaths)|Retorna la porciÃ³n comÃºn de dos paths desde el inicio. Previa a la comparaciÃ³n limpia los paths con nglCommon::clearPath|
 |[copyr](#copyr)|Copia archivos y directorios de manera recursiva. Retorna un Array de 2 indices:0: Cantidad de archivos copiados y directorios creados.1: Log con el d...|
 |[ls](#ls)|lista el contenido de un directorio|
-|[lsprint](#lsprint)|imprime el árbol de un directorio de manera recursiva|
-|[maxUploadSize](#maxUploadSize)|Retorna el máximo tamaño de archivo soportado por al configuración del servidor|
-|[mkdirr](#mkdirr)|Crea un directorio. Si el directorio ya existe y $bForce es TRUE, mkdir le agregará al nombre del directorio el sufijo _N donde N es el número de di...|
+|[lsprint](#lsprint)|imprime el Ã¡rbol de un directorio de manera recursiva|
+|[maxUploadSize](#maxUploadSize)|Retorna el mÃ¡ximo tamaÃ±o de archivo soportado por al configuraciÃ³n del servidor|
+|[mkdirr](#mkdirr)|Crea un directorio. Si el directorio ya existe y $bForce es TRUE, mkdir le agregarÃ¡ al nombre del directorio el sufijo _N donde N es el nÃºmero de di...|
 |[unlinkr](#unlinkr)|Elimina archivos y directorios de manera recursiva. Retorna un Array de 2 indices:0: Cantidad de archivos y directorios eliminados1: Log con el detall...|
 |[upload](#upload)|Aplica move_uploaded_file a los multiples archivos encontrados en $_FILES y retorna un reporte|
 

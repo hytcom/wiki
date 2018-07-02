@@ -20,17 +20,17 @@ nglHelp construye el objeto \$help dentro del framework, el cual es accedido a t
 # M√©todos
 |M√©todo|Descripci√≥n|
 |---|---|
-|[ParamsBox](#ParamsBox)|Retorna la porciÛn de cÛdigo HTML que muestra los bloques de par·metros|
-|[PrintClass](#PrintClass)|Retorna el cÛdigo HTML que muestra la ayuda de la clase solicitada|
-|[PrintList](#PrintList)|Retorna el cÛdigo HTML que muestra el listado de clases disponibles|
-|[PrintMethod](#PrintMethod)|Retorna el cÛdigo HTML que muestra la ayuda del mÈtodo solicitado|
-|[Template](#Template)|Utilizado para enmarcar el cÛdigo HTML de la ayuda soliticitada dentro de la plantilla HTML que se retorna al usuario|
-|[VarsBlocks](#VarsBlocks)|Retorna el cÛdigo HTML con la variables de un comando para ser mostradas en la descriciÛn del mismo|
-|[VarsBlocksExplain](#VarsBlocksExplain)|Retorna el cÛdigo HTML con la variables de un comando formateadas para ser mostradas en el detalle del mismo|
-|[VarsExplain](#VarsExplain)|Retorna el cÛdigo HTML con la variables de un mÈtodo para ser mostradas en la descriciÛn de la misma|
+|[ParamsBox](#ParamsBox)|Retorna la porci√≥n de c√≥digo HTML que muestra los bloques de par√°metros|
+|[PrintClass](#PrintClass)|Retorna el c√≥digo HTML que muestra la ayuda de la clase solicitada|
+|[PrintList](#PrintList)|Retorna el c√≥digo HTML que muestra el listado de clases disponibles|
+|[PrintMethod](#PrintMethod)|Retorna el c√≥digo HTML que muestra la ayuda del m√©todo solicitado|
+|[Template](#Template)|Utilizado para enmarcar el c√≥digo HTML de la ayuda soliticitada dentro de la plantilla HTML que se retorna al usuario|
+|[VarsBlocks](#VarsBlocks)|Retorna el c√≥digo HTML con la variables de un comando para ser mostradas en la descrici√≥n del mismo|
+|[VarsBlocksExplain](#VarsBlocksExplain)|Retorna el c√≥digo HTML con la variables de un comando formateadas para ser mostradas en el detalle del mismo|
+|[VarsExplain](#VarsExplain)|Retorna el c√≥digo HTML con la variables de un m√©todo para ser mostradas en la descrici√≥n de la misma|
 |[about](#about)|Retorna un documento HTML con la ayuda solicitada|
-|[language](#language)|Setea el idioma en el cual se mostrar· la ayuda|
-|[varsFunctions](#varsFunctions)|Retorna el cÛdigo HTML con la variables de un mÈtodo formateadas para ser mostradas en el detalle de la misma|
+|[language](#language)|Setea el idioma en el cual se mostrar√° la ayuda|
+|[varsFunctions](#varsFunctions)|Retorna el c√≥digo HTML con la variables de un m√©todo formateadas para ser mostradas en el detalle de la misma|
 
   
 &nbsp;

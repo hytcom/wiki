@@ -23,15 +23,15 @@ Cuenta con dos valores de configuraci√≥n que impactan en el procesamiento de la 
 # M√©todos
 |M√©todo|Descripci√≥n|
 |---|---|
-|[CheckValue](#CheckValue)|Aplica las reglas $vRules sobre la variable $mSource. Este mÈtodo es auxiliar de validate|
+|[CheckValue](#CheckValue)|Aplica las reglas $vRules sobre la variable $mSource. Este m√©todo es auxiliar de validate|
 |[ClearCharacters](#ClearCharacters)|Retorna una cadena despues de compararla contra $aToClean|
-|[GetRulesFile](#GetRulesFile)|Obtiene la configuraciÛn de un archivo .json y la retorna en como un Array|
+|[GetRulesFile](#GetRulesFile)|Obtiene la configuraci√≥n de un archivo .json y la retorna en como un Array|
 |[RequestFrom](#RequestFrom)|Analiza la cadena $sFrom y retorna un array de origines para ser utilizados en request|
 |[ValidateByType](#ValidateByType)|Validador de variables por tipo|
-|[addvar](#addvar)|Almacena valores que luego pueden ser utilizados como variables dentro de las reglas. Esto es especialmente util dentro de los archivos .json.Este mÈ...|
-|[request](#request)|Valida y reemplaza los valores de la variable global $_REQUEST en base al archivo REQUEST.jsonEste mÈtodo sobreescribe los valores de $_REQUEST. Para...|
+|[addvar](#addvar)|Almacena valores que luego pueden ser utilizados como variables dentro de las reglas. Esto es especialmente util dentro de los archivos .json.Este m√©...|
+|[request](#request)|Valida y reemplaza los valores de la variable global $_REQUEST en base al archivo REQUEST.jsonEste m√©todo sobreescribe los valores de $_REQUEST. Para...|
 |[resetvars](#resetvars)|Desetea las variables seteadas con ngl:Validate::addvar|
-|[validate](#validate)|Valida la variable $mVariables aplicando las reglas $mRules. Si $mRules no est· definido, retornar· NULL|
+|[validate](#validate)|Valida la variable $mVariables aplicando las reglas $mRules. Si $mRules no est√° definido, retornar√° NULL|
 
   
 &nbsp;

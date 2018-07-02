@@ -21,18 +21,18 @@ nglUnicode construye el objeto \$unicode dentro del framework, el cual es accedi
 # M√©todos
 |M√©todo|Descripci√≥n|
 |---|---|
-|[chr](#chr)|Devuelve una cadena de un caracter que contiene el car·cter especificado por $nCode|
-|[escape](#escape)|Escapa una cadena en formato UNICODE.Donde los caracteres que no sean UTF-8 ser·n reemplazados por su ORD en formato hexadecimal precedidos de una \u|
+|[chr](#chr)|Devuelve una cadena de un caracter que contiene el car√°cter especificado por $nCode|
+|[escape](#escape)|Escapa una cadena en formato UNICODE.Donde los caracteres que no sean UTF-8 ser√°n reemplazados por su ORD en formato hexadecimal precedidos de una \u|
 |[explode](#explode)|Divide una cadena en varias|
-|[groups](#groups)|Retorna la informaciÛn de los grupos de caracteres UTF-8TiposABC: alfabetoABU: abugidaNUM: n˙merosSYL: silabarioSYM: sÌmbolosGruposSYM - CONTROL: C...|
-|[info](#info)|Devuelve informaciÛn de un caracter dadochar: caractertype: tipo de caractergroup: grupo UTF-8 al que pertenecebytes: bytes que ocupadecimal: valor d...|
+|[groups](#groups)|Retorna la informaci√≥n de los grupos de caracteres UTF-8TiposABC: alfabetoABU: abugidaNUM: n√∫merosSYL: silabarioSYM: s√≠mbolosGruposSYM - CONTROL: C...|
+|[info](#info)|Devuelve informaci√≥n de un caracter dadochar: caractertype: tipo de caractergroup: grupo UTF-8 al que pertenecebytes: bytes que ocupadecimal: valor d...|
 |[is](#is)|Retorna el tipo, grupo y valor decimal de un caracter dado, o false en caso de error|
 |[ord](#ord)|Devuelve el valor UNICODE del caracter $sChar|
 |[split](#split)|Convierte $mSource en un array de caracteres UTF-8. Si $mSource es un array split retornara $mSource|
 |[strlen](#strlen)|Obtiene la longitud de una cadena|
 |[substr](#substr)|Devuelve la subcadena de $mSource comenzando en $nStart y por un largo de $nLength|
 |[unescape](#unescape)|Desescapa una cadena UNICODE|
-|[unescapeChar](#unescapeChar)|Auxiliar del mÈtodo unescape|
+|[unescapeChar](#unescapeChar)|Auxiliar del m√©todo unescape|
 
   
 &nbsp;
