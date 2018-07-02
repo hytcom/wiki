@@ -24,13 +24,13 @@ nglHelp construye el objeto \$help dentro del framework, el cual es accedido a t
 |[PrintClass](#PrintClass)|Retorna el código HTML que muestra la ayuda de la clase solicitada|
 |[PrintList](#PrintList)|Retorna el código HTML que muestra el listado de clases disponibles|
 |[PrintMethod](#PrintMethod)|Retorna el código HTML que muestra la ayuda del método solicitado|
-|[Template](#Template)|Utilizado para enmarcar el código HTML de la ayuda soliticitada dentro de la plantilla HTML que se r...|
-|[VarsBlocks](#VarsBlocks)|Retorna el código HTML con la variables de un comando para ser mostradas en la descrición del mismo...|
-|[VarsBlocksExplain](#VarsBlocksExplain)|Retorna el código HTML con la variables de un comando formateadas para ser mostradas en el detalle d...|
-|[VarsExplain](#VarsExplain)|Retorna el código HTML con la variables de un método para ser mostradas en la descrición de la misma...|
+|[Template](#Template)|Utilizado para enmarcar el código HTML de la ayuda soliticitada dentro de la pla...|
+|[VarsBlocks](#VarsBlocks)|Retorna el código HTML con la variables de un comando para ser mostradas en la d...|
+|[VarsBlocksExplain](#VarsBlocksExplain)|Retorna el código HTML con la variables de un comando formateadas para ser mostr...|
+|[VarsExplain](#VarsExplain)|Retorna el código HTML con la variables de un método para ser mostradas en la de...|
 |[about](#about)|Retorna un documento HTML con la ayuda solicitada|
 |[language](#language)|Setea el idioma en el cual se mostrará la ayuda|
-|[varsFunctions](#varsFunctions)|Retorna el código HTML con la variables de un método formateadas para ser mostradas en el detalle de...|
+|[varsFunctions](#varsFunctions)|Retorna el código HTML con la variables de un método formateadas para ser mostra...|
 
   
 &nbsp;

@@ -60,9 +60,9 @@ Características Principales:
 |[delete](#delete)|Elimina un archivo o directorio|
 |[download](#download)|descarga un archivo o directorio del servidor a la maquina local|
 |[login](#login)|Autentica la sesion en el servidor remoto|
-|[ls](#ls)|Lista el contenido de un directorio. Sino se especifica un directorio listará el directorio actual|
-|[mkdir](#mkdir)|Crea un directorio.Si el directorio ya existe y el argumento force_create es TRUE, mkdir le agregará...|
-|[passive](#passive)|Activa/desactiva el modo pasivo. Por defecto todas las conexiones se inician en modo pasivo|
+|[ls](#ls)|Lista el contenido de un directorio. Sino se especifica un directorio listará el...|
+|[mkdir](#mkdir)|Crea un directorio.Si el directorio ya existe y el argumento force_create es TRU...|
+|[passive](#passive)|Activa/desactiva el modo pasivo. Por defecto todas las conexiones se inician en ...|
 |[rename](#rename)|Cambia el nombre de un archivo o directorio|
 |[upload](#upload)|Sube un archivo o directorio al servidor remoto|
 

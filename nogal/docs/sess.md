@@ -43,18 +43,18 @@ CREATE INDEX `persistent_idx` ON `__ngl_sessions__` (`persistent`);
 |Método|Descripción|
 |---|---|
 |[GetPersistent](#GetPersistent)|Chequea si la sesion $SID es o no una sesion persistente|
-|[close](#close)|Controlador requerido por PHP para el cierre de las sesiones.Este método es requerido por PHP pero c...|
-|[count](#count)|Retorna el número de sesiones activas. Disponible cuando el modo de almacenamiento no sea php|
+|[close](#close)|Controlador requerido por PHP para el cierre de las sesiones.Este método es requ...|
+|[count](#count)|Retorna el número de sesiones activas. Disponible cuando el modo de almacenamien...|
 |[destroy](#destroy)|Llamada de retorno ejecutada cuando una sesión es destruida|
-|[destroyAll](#destroyAll)|Destruye todas las sesiones, persistentes o no. Disponible cuando el modo de almacenamiento no sea p...|
-|[gc](#gc)|Elimina las sesiones, no persistentes, cuyo tiempo de vida supere el establecido por la variable PHP...|
+|[destroyAll](#destroyAll)|Destruye todas las sesiones, persistentes o no. Disponible cuando el modo de alm...|
+|[gc](#gc)|Elimina las sesiones, no persistentes, cuyo tiempo de vida supere el establecido...|
 |[id](#id)|Retorna el ID de la sesion activa|
-|[open](#open)|Llamada de retorno que se ejecutada cuando la sesión está siendo abierta.Este método es requerido po...|
+|[open](#open)|Llamada de retorno que se ejecutada cuando la sesión está siendo abierta.Este mé...|
 |[persistent](#persistent)|Chequea si la sesion $SID es o no una sesion persistente|
 |[read](#read)|Retorna el contenidos de la sesion en forma de cadena serializada|
-|[showSessions](#showSessions)|Retorna listado completo de las sesiones activas. Cuando el objeto este configurado en modo fs retor...|
-|[start](#start)|Da inicio al objeto. Configura el modo de sesión y el tiempo máximo de vida de las mismas|
-|[write](#write)|Guarda los datos de la variable superglobal $_SESSION como contenido de la sesión $SID|
+|[showSessions](#showSessions)|Retorna listado completo de las sesiones activas. Cuando el objeto este configur...|
+|[start](#start)|Da inicio al objeto. Configura el modo de sesión y el tiempo máximo de vida de l...|
+|[write](#write)|Guarda los datos de la variable superglobal $_SESSION como contenido de la sesió...|
 
   
 &nbsp;

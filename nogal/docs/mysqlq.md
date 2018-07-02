@@ -38,19 +38,19 @@ Cuando el nombre este presedido de un **@**, el resultado será tratado con **ng
 |Método|Descripción|
 |---|---|
 |[GetMode](#GetMode)|Selecciona el modo de salida para los métodos get y getall|
-|[allrows](#allrows)|Retorna el número de registros del conjunto de resultados ignorando los valores LIMIT|
+|[allrows](#allrows)|Retorna el número de registros del conjunto de resultados ignorando los valores ...|
 |[columns](#columns)|Retorna un array con los nombre de las columnas presentes en el resultado|
-|[count](#count)|Devuelve el número de filas involucradas en la última consulta ejecutada.Si la consulta es de los ti...|
-|[destroy](#destroy)|Libera la memoria asociada con el identificador del resultado y destruye el objeto|
+|[count](#count)|Devuelve el número de filas involucradas en la última consulta ejecutada.Si la c...|
+|[destroy](#destroy)|Libera la memoria asociada con el identificador del resultado y destruye el obje...|
 |[free](#free)|Libera la memoria asociada con el identificador del resultado|
-|[get](#get)|Obtiene una fila de resultados en forma de array y avanza el puntero.Cuando se especifique $sColumn ...|
-|[getall](#getall)|Obtiene todas las filas de resultados en forma de array bidimensional.Cuando se especifique $sColumn...|
+|[get](#get)|Obtiene una fila de resultados en forma de array y avanza el puntero.Cuando se e...|
+|[getall](#getall)|Obtiene todas las filas de resultados en forma de array bidimensional.Cuando se ...|
 |[getobj](#getobj)|Obtiene una fila de resultados en forma de objeto stdClass y avanza el puntero.|
-|[lastid](#lastid)|Retorna el ID de la fila de la sentencia INSERT más reciente realizada en la base de datos|
+|[lastid](#lastid)|Retorna el ID de la fila de la sentencia INSERT más reciente realizada en la bas...|
 |[load](#load)|Carga la ultima consulta ejecutada del driver.|
 |[reset](#reset)|Reinicia el conjunto de resultados a la primera fila.|
 |[rows](#rows)|Alias de nglDBMySQLQuery::count|
-|[toArray](#toArray)|Obtiene todas las filas de resultados en forma de array bidimensional utilizando mysqli_result::fetc...|
+|[toArray](#toArray)|Obtiene todas las filas de resultados en forma de array bidimensional utilizando...|
 
   
 &nbsp;

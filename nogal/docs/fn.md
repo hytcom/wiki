@@ -17,69 +17,69 @@ Compendio de métodos utilizados para resolver tareas rutinarias vinculadas a:<u
 |Método|Descripción|
 |---|---|
 |[ArrayGrouper](#ArrayGrouper)|Método axuliar de nglCommon::arrayGroup|
-|[apacheMimeTypes](#apacheMimeTypes)|Retorna los Internet media types indexados por extención proporcionados por el sitio http://svn.apac...|
-|[arrange](#arrange)|Restituye el orden original de la Cadena o Array $mSource desordenado por nglCommon::disarrange segú...|
-|[arrayAppend](#arrayAppend)|Añade los indices de 1 o mas arrays al array principal, sin importar el tipo de dato y sin sobreescr...|
-|[arrayColumn](#arrayColumn)|Devuelve los valores de una sola columna de $aSource, identificado por la clave de columna $mColumnK...|
-|[arrayGoto](#arrayGoto)|Avanza el puntero del array hasta el índice indicado por $mKey y retorna los datos|
-|[arrayGroup](#arrayGroup)|Agrupa un array bidimensional.Cuando la variable $mStructure sea NULL, los valores únicos de cada co...|
-|[arrayIn](#arrayIn)|Comprueba si un valor se encuentra en un array utilizando in_array o chequeando valor por valor util...|
+|[apacheMimeTypes](#apacheMimeTypes)|Retorna los Internet media types indexados por extención proporcionados por el s...|
+|[arrange](#arrange)|Restituye el orden original de la Cadena o Array $mSource desordenado por nglCom...|
+|[arrayAppend](#arrayAppend)|Añade los indices de 1 o mas arrays al array principal, sin importar el tipo de ...|
+|[arrayColumn](#arrayColumn)|Devuelve los valores de una sola columna de $aSource, identificado por la clave ...|
+|[arrayGoto](#arrayGoto)|Avanza el puntero del array hasta el índice indicado por $mKey y retorna los dat...|
+|[arrayGroup](#arrayGroup)|Agrupa un array bidimensional.Cuando la variable $mStructure sea NULL, los valor...|
+|[arrayIn](#arrayIn)|Comprueba si un valor se encuentra en un array utilizando in_array o chequeando ...|
 |[arrayInsert](#arrayInsert)|Añade un elemento al Array en la posición determinada|
 |[arrayMerge](#arrayMerge)|Agrega N arrays multi-dimensionales en uno|
-|[arrayMultiSort](#arrayMultiSort)|Ordena un array multi-dimensional considerando multiples indices, orden y tipos de orden|
-|[arrayRebuilder](#arrayRebuilder)|Agrupa los índices $aIndexes combinandolos por sus claves. Con la opción de reenombrar estas últimas...|
-|[arrayRepeat](#arrayRepeat)|Retorna un array con indices númericos que contiene $nMultiplier repeticiones del array $aInput.|
-|[base64Cleaner](#base64Cleaner)|Elimina de una cadena todos los caracteres que no sean válidos en una cadena base64 [a-zA-Z0-9+/=]|
-|[between](#between)|Verifica si un valor en relación a un rango de valores.between tambien puede ser utilizado para cono...|
-|[clearPath](#clearPath)|Elimina los slashes de mas en un path o url. Todos los $sSeparator de cierre serán eliminados|
+|[arrayMultiSort](#arrayMultiSort)|Ordena un array multi-dimensional considerando multiples indices, orden y tipos ...|
+|[arrayRebuilder](#arrayRebuilder)|Agrupa los índices $aIndexes combinandolos por sus claves. Con la opción de reen...|
+|[arrayRepeat](#arrayRepeat)|Retorna un array con indices númericos que contiene $nMultiplier repeticiones de...|
+|[base64Cleaner](#base64Cleaner)|Elimina de una cadena todos los caracteres que no sean válidos en una cadena bas...|
+|[between](#between)|Verifica si un valor en relación a un rango de valores.between tambien puede ser...|
+|[clearPath](#clearPath)|Elimina los slashes de mas en un path o url. Todos los $sSeparator de cierre ser...|
 |[colorHex](#colorHex)|Retorna un color en valores hexadecimales basandose en RGB|
 |[colorRGB](#colorRGB)|Retorna los valores RGB y Transparencia de un color en formato hexadecimal|
-|[coockie](#coockie)|Guarda y optiene el valor de una cookie del navegador.Los valores son analizados con ngl::passwd(), ...|
-|[dec2hex](#dec2hex)|Transforma un decimal en hexadecimal sin límite de tamaño y con la posibilidad de rellenar con 0 por...|
-|[disarrange](#disarrange)|Desordena de manera cíclica la Cadena o Array $mSource según las posiciones de $aArrange.En la medid...|
-|[dump](#dump)|Retorna el contenido de una variable de acuerdo al tipo de la misma:arrays -> print_rcadenas -> echo...|
-|[emptyToNull](#emptyToNull)|Establece como NULL los valores de $aData, cuyo indice se encuentre en $aKeys, que retornen TRUE a l...|
-|[encoding](#encoding)|Verifica si la cadena $sString se encuentra codificada en $mEncoding$mEncoding debe ser el nombre de...|
+|[coockie](#coockie)|Guarda y optiene el valor de una cookie del navegador.Los valores son analizados...|
+|[dec2hex](#dec2hex)|Transforma un decimal en hexadecimal sin límite de tamaño y con la posibilidad d...|
+|[disarrange](#disarrange)|Desordena de manera cíclica la Cadena o Array $mSource según las posiciones de $...|
+|[dump](#dump)|Retorna el contenido de una variable de acuerdo al tipo de la misma:arrays -> pr...|
+|[emptyToNull](#emptyToNull)|Establece como NULL los valores de $aData, cuyo indice se encuentre en $aKeys, q...|
+|[encoding](#encoding)|Verifica si la cadena $sString se encuentra codificada en $mEncoding$mEncoding d...|
 |[ensureVar](#ensureVar)|Retorna el valor de $mSure cuanto $mVar no esta seteada o es NULL|
-|[explodeTrim](#explodeTrim)|Ejecuta la función explode de PHP y a continuación trata a cada uno de los valores con la función tr...|
-|[exploder](#exploder)|Ejecuta la función explode de PHP de manera recursiva, utilizando los delimitadores para armar un ar...|
-|[headers](#headers)|Retorna un array con todas las cabeceras enviadas hasta el momento, un una cadena o false para cuand...|
+|[explodeTrim](#explodeTrim)|Ejecuta la función explode de PHP y a continuación trata a cada uno de los valor...|
+|[exploder](#exploder)|Ejecuta la función explode de PHP de manera recursiva, utilizando los delimitado...|
+|[headers](#headers)|Retorna un array con todas las cabeceras enviadas hasta el momento, un una caden...|
 |[hex2dec](#hex2dec)|Transforma un hexadecimal en decimal sin límite de tamaño|
-|[imploder](#imploder)|Une elementos de un array multi dimensional en una cadena.Cuando $mGlue sea declarado como un array,...|
+|[imploder](#imploder)|Une elementos de un array multi dimensional en una cadena.Cuando $mGlue sea decl...|
 |[imya](#imya)|Retorna o valida un imya|
 |[intPart](#intPart)|Retorna la parte entera de un número|
-|[isArrayArray](#isArrayArray)|Comprueba si $aArray es un Array de Arrays. Con $bStrict FALSE sólo chequeará que el primer valor de...|
-|[isEmpty](#isEmpty)|Comprueba si $mValue esta vacío. en el caso de que $mValue sea del tipo Array, isEmpty devolverá FAL...|
+|[isArrayArray](#isArrayArray)|Comprueba si $aArray es un Array de Arrays. Con $bStrict FALSE sólo chequeará qu...|
+|[isEmpty](#isEmpty)|Comprueba si $mValue esta vacío. en el caso de que $mValue sea del tipo Array, i...|
 |[isInteger](#isInteger)|Comprueba si un valor es un número entero|
 |[isJSON](#isJSON)|Comprueba si un valor es una cadena JSON válida|
-|[isLowerCase](#isLowerCase)|Comprueba si $sString son sólo letras minúsculas. En el caso de que $mValue sea del tipo Array, isLo...|
-|[isNull](#isNull)|Comprueba si un valor es NULL.Esto sucederá cuando el método nativo is_null($mValue) retorne true o ...|
-|[isNumber](#isNumber)|Comprueba si $mNumber es un valor númerico y retorna su valor en el formato correcto (float o int).S...|
-|[isSerialized](#isSerialized)|Comprueba si $sString es un array serializado. Si $bResult es igual a TRUE el método retornará un ar...|
-|[isTrue](#isTrue)|Comprueba si $mValue es TRUE o FALSE. Si $mValue es String y su valor es '0', 'false', 'null', 'no' ...|
-|[isURL](#isURL)|Retorna TRUE (o el protocolo) si $sFilePath es una URL http, ftp o comienza con //Para este último c...|
+|[isLowerCase](#isLowerCase)|Comprueba si $sString son sólo letras minúsculas. En el caso de que $mValue sea ...|
+|[isNull](#isNull)|Comprueba si un valor es NULL.Esto sucederá cuando el método nativo is_null($mVa...|
+|[isNumber](#isNumber)|Comprueba si $mNumber es un valor númerico y retorna su valor en el formato corr...|
+|[isSerialized](#isSerialized)|Comprueba si $sString es un array serializado. Si $bResult es igual a TRUE el mé...|
+|[isTrue](#isTrue)|Comprueba si $mValue es TRUE o FALSE. Si $mValue es String y su valor es '0', 'f...|
+|[isURL](#isURL)|Retorna TRUE (o el protocolo) si $sFilePath es una URL http, ftp o comienza con ...|
 |[isUTF8](#isUTF8)|Comprueba si $sString es una cadena UTF-8|
-|[isUpperCase](#isUpperCase)|Comprueba si $sString son sólo letras mayúsculas. En el caso de que $mValue sea del tipo Array, isUp...|
-|[memory](#memory)|Devuelve el valor de la cantidad de memoria asignada a PHP, formateado con strSizeEncode()|
+|[isUpperCase](#isUpperCase)|Comprueba si $sString son sólo letras mayúsculas. En el caso de que $mValue sea ...|
+|[memory](#memory)|Devuelve el valor de la cantidad de memoria asignada a PHP, formateado con strSi...|
 |[mimeType](#mimeType)|Retorna el Mime Type de la extensión proporcionada.|
-|[once](#once)|Genera o chequea un código único guardado en la session activa.Cuando se ejecuta el método sin el ar...|
-|[round05](#round05)|Redondea un número al entero o punto medio mas cercano.El parámetro $nPrecition permite controlar la...|
-|[secureName](#secureName)|Limpia una cadena para que pueda ser utilizada como nombre de archivo, carpeta, tabla o campo de una...|
-|[strBoxAppend](#strBoxAppend)|Añade $sAppend a $sString desde el final y hasta el largo de $sString.Si $sPrepend es mas corta que ...|
-|[strBoxPrepend](#strBoxPrepend)|Añade $sPrepend a $sString desde el inicio y hasta el largo de $sString.Si $sPrepend es mas corta qu...|
+|[once](#once)|Genera o chequea un código único guardado en la session activa.Cuando se ejecuta...|
+|[round05](#round05)|Redondea un número al entero o punto medio mas cercano.El parámetro $nPrecition ...|
+|[secureName](#secureName)|Limpia una cadena para que pueda ser utilizada como nombre de archivo, carpeta, ...|
+|[strBoxAppend](#strBoxAppend)|Añade $sAppend a $sString desde el final y hasta el largo de $sString.Si $sPrepe...|
+|[strBoxPrepend](#strBoxPrepend)|Añade $sPrepend a $sString desde el inicio y hasta el largo de $sString.Si $sPre...|
 |[strCommon](#strCommon)|Compara dos cadenas desde el inicio y retorna la subcadena en común|
-|[strOperator](#strOperator)|Retorna un operador válido en función su codificación:eq:= (Equal)noteq:!= (Not equal)lt: (Greater t...|
-|[strSizeDecode](#strSizeDecode)|Retorna el valor $sSize en bytes. Cuando existan decimales se redondeará el resultado|
+|[strOperator](#strOperator)|Retorna un operador válido en función su codificación:eq:= (Equal)noteq:!= (Not ...|
+|[strSizeDecode](#strSizeDecode)|Retorna el valor $sSize en bytes. Cuando existan decimales se redondeará el resu...|
 |[strSizeEncode](#strSizeEncode)|Retorna el valor $nBytes con el formato KB o MB o GB etc|
 |[tokenDecode](#tokenDecode)|Decodifica una cadena codificada con tokenEncode|
-|[tokenEncode](#tokenEncode)|Codifica el valor de $sSource en un token de 2540 caracteres y aplicando el código de seguridad $sKe...|
-|[treeWalk](#treeWalk)|Aplica una función de usuario recursivamente a cada miembro del arbol,entrando en cada uno de los no...|
-|[truelize](#truelize)|Crea un nuevo Array combinando los valores de $aSource como claves y el booleano TRUE como valor de ...|
+|[tokenEncode](#tokenEncode)|Codifica el valor de $sSource en un token de 2540 caracteres y aplicando el códi...|
+|[treeWalk](#treeWalk)|Aplica una función de usuario recursivamente a cada miembro del arbol,entrando e...|
+|[truelize](#truelize)|Crea un nuevo Array combinando los valores de $aSource como claves y el booleano...|
 |[unaccented](#unaccented)|Reemplaza los caracteres acentuados por su equivalente sin acento|
-|[unique](#unique)|Genera una cadena aleatoria de 4 a 4096 caracteres que matchea con el patrón: [a-zA-Z][a-zA-Z0-9]{4,...|
-|[uriDecode](#uriDecode)|Decodifica una cadena codificada con uriEncode.El valor retornado podrá ser un string o un array, de...|
-|[uriEncode](#uriEncode)|Codifica una cadena o array para que pueda ser enviado de manera segura por GET o POST|
-|[urlExists](#urlExists)|Comprueba si existe una URL. El chequeo se intenta hacer mediante get_headers o curl_init, si no pue...|
+|[unique](#unique)|Genera una cadena aleatoria de 4 a 4096 caracteres que matchea con el patrón: [a...|
+|[uriDecode](#uriDecode)|Decodifica una cadena codificada con uriEncode.El valor retornado podrá ser un s...|
+|[uriEncode](#uriEncode)|Codifica una cadena o array para que pueda ser enviado de manera segura por GET ...|
+|[urlExists](#urlExists)|Comprueba si existe una URL. El chequeo se intenta hacer mediante get_headers o ...|
 
   
 &nbsp;

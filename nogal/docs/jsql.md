@@ -65,12 +65,12 @@ Métodos auxiliares para el parseo de una cadena JSQL.
 # Métodos
 |Método|Descripción|
 |---|---|
-|[Condition](#Condition)|Transforma la representación JSQL de una condición y la retorna en formato SQL aplicando los métodos...|
-|[column](#column)|Transforma la representación JSQL de una columna y la retorna en formato SQLFormatos válidos y sus r...|
-|[conditions](#conditions)|Transforma un array de condiciones JSQL en una sentencia WHERE o en un grupo de par de valores SQL S...|
+|[Condition](#Condition)|Transforma la representación JSQL de una condición y la retorna en formato SQL a...|
+|[column](#column)|Transforma la representación JSQL de una columna y la retorna en formato SQLForm...|
+|[conditions](#conditions)|Transforma un array de condiciones JSQL en una sentencia WHERE o en un grupo de ...|
 |[decode](#decode)|Transforma una cadena JSON en un Array asociativo|
 |[encode](#encode)|Transforma un Array asociativo en una cadena JSON|
-|[operator](#operator)|Retorna un operador válido en función su codificación, invocando al método nglCommon::strOperator:eq...|
+|[operator](#operator)|Retorna un operador válido en función su codificación, invocando al método nglCo...|
 |[value](#value)|Prepara un valor en formato JSQL para ser usado en una consulta SQL|
 
   

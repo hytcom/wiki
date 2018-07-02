@@ -17,14 +17,14 @@ Establece y almacena las variables por sistema de NOGAL.<ul><li>**ERRORS** =  c�
 # Métodos
 |Método|Descripción|
 |---|---|
-|[AccentedChars](#AccentedChars)|Retorna un array asociativo con los caracteres acentuados y su equivalente sin acento, donde la clav...|
-|[SetErrors](#SetErrors)|Setea los mensajes de error del sistema en la variable ERRORSSetErrors leera los archivos de configu...|
-|[SetIP](#SetIP)|En caso de existir setea el valor de la variable $_SERVER["REMOTE_ADDR"] en la variable IPde lo cont...|
+|[AccentedChars](#AccentedChars)|Retorna un array asociativo con los caracteres acentuados y su equivalente sin a...|
+|[SetErrors](#SetErrors)|Setea los mensajes de error del sistema en la variable ERRORSSetErrors leera los...|
+|[SetIP](#SetIP)|En caso de existir setea el valor de la variable $_SERVER["REMOTE_ADDR"] en la v...|
 |[SetRegexs](#SetRegexs)|Almacena expresiones regulares de uso frecuente en la variable REGEX|
 |[SetSelf](#SetSelf)|almacena los datos de la ruta del archivo actual en la variable SELF|
-|[SetUID](#SetUID)|En caso de existir setea el valor de la variable $_SESSION[NGL_SESSION_INDEX]["UID"] en la variable ...|
+|[SetUID](#SetUID)|En caso de existir setea el valor de la variable $_SESSION[NGL_SESSION_INDEX]["U...|
 |[SetVersion](#SetVersion)|Almacena los datos de la versión de NOGAL en la variable VERSION|
-|[__get](#__get)|Método mágico encargado de retornar los valores de la variable $VARS cuando es invocada por medio de...|
+|[__get](#__get)|Método mágico encargado de retornar los valores de la variable $VARS cuando es i...|
 
   
 &nbsp;
