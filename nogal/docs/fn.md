@@ -1425,6 +1425,7 @@ mydocuments/
 ├── mp3/
 │   ├── rock/
 │   └── pop/
+└── word/
 
 ```
 
