@@ -114,9 +114,9 @@ $foo->select('customers')->id = 1;
 
 #insercion de registros vinculados al registro principal
 $foo->child('customers_contacts')->insert(
-	array('firstname'=>'Martino', 'surname'=>'Herrera', 'age'=>'35', 'gender'=>'M'),
-	array('firstname'=>'Monica', 'surname'=>'Castillo', 'age'=>'29', 'gender'=>'F'),
-	array('firstname'=>'Juan', 'surname'=>'Rojas', 'age'=>'43', 'gender'=>'M')
+    array('firstname'=>'Martino', 'surname'=>'Herrera', 'age'=>'35', 'gender'=>'M'),
+    array('firstname'=>'Monica', 'surname'=>'Castillo', 'age'=>'29', 'gender'=>'F'),
+    array('firstname'=>'Juan', 'surname'=>'Rojas', 'age'=>'43', 'gender'=>'M')
 );
 ```
 #### lectura de dependencias (hijos)  
@@ -128,24 +128,24 @@ print_r($data->get());
 
 #salida
 Array (
-	[customers_contacts_id] => 2
-	[customers_contacts_imya] => J7d66l11xyqk6vB1f691b2bbA5068993
-	[customers_contacts_state] => 1
-	[customers_contacts_pid] => 1
-	[customers_contacts_town] => 2
-	[customers_contacts_function] => 1
-	[customers_contacts_firstname] => Monica
-	[customers_contacts_surname] => Castillo
-	[customers_contacts_age] => 29
-	[customers_contacts_gender] => F
-	[functions_id] => 1
-	[functions_imya] => kak273b38cm4c5bfcaTe5fAec8S81xaC
-	[functions_state] => 1
-	[functions_name] => Tesorero
-	[towns_id] => 2
-	[towns_imya] => S5kR0d9cA4c9Ow8accd5aO4dBd62eX81
-	[towns_state] => 1
-	[towns_name] => Belgrano
+    [customers_contacts_id] => 2
+    [customers_contacts_imya] => J7d66l11xyqk6vB1f691b2bbA5068993
+    [customers_contacts_state] => 1
+    [customers_contacts_pid] => 1
+    [customers_contacts_town] => 2
+    [customers_contacts_function] => 1
+    [customers_contacts_firstname] => Monica
+    [customers_contacts_surname] => Castillo
+    [customers_contacts_age] => 29
+    [customers_contacts_gender] => F
+    [functions_id] => 1
+    [functions_imya] => kak273b38cm4c5bfcaTe5fAec8S81xaC
+    [functions_state] => 1
+    [functions_name] => Tesorero
+    [towns_id] => 2
+    [towns_imya] => S5kR0d9cA4c9Ow8accd5aO4dBd62eX81
+    [towns_state] => 1
+    [towns_name] => Belgrano
 )
 ```
 
@@ -243,9 +243,9 @@ $foo->select('customers')->delete(array('imya'=>'wdoxbe6a2afqMbc7S0fy2f57hel61ec
 #### por ID o IMYA a través de $aData1, $aData2, $... (modo múltiple)  
 ```php
 $foo->select('customers')->delete(
-	array('id'=>1),
-	array('id'=>2),
-	array('imya'=>'fq6213Xb5qf4c5a286e8rcOacf66b2rc')
+    array('id'=>1),
+    array('id'=>2),
+    array('imya'=>'fq6213Xb5qf4c5a286e8rcOacf66b2rc')
 );
 ```
 #### modo cascada FALSE  
@@ -258,11 +258,11 @@ $ngl()->dump($foo->log, 'pre');
 bool(false)
 
 Array (
-	[status] => foreignkeys
-	[details] => Array (
-		[0] => 3 ROWS IN `customers_contacts` LINKED WITH `customers`
-		[1] => 1 ROWS IN `meeting` LINKED WITH `customers_contacts`
-	)
+    [status] => foreignkeys
+    [details] => Array (
+        [0] => 3 ROWS IN `customers_contacts` LINKED WITH `customers`
+        [1] => 1 ROWS IN `meeting` LINKED WITH `customers_contacts`
+    )
 )
 ```
 #### modo cascada TRUE  
@@ -275,49 +275,49 @@ $ngl()->dump($foo->log, 'pre');
 int(5)
 
 Array (
-	[status] => success
-	[details] => Array (
-		[0] => Array (
-			[table] => meeting
-			[row] => 1
-			[user] => 
-			[action] => delete
-			[date] => 2014-12-31 02:26:58
-			[ip] => 127.0.0.1
-		)
-		[1] => Array (
-			[table] => customers_contacts
-			[row] => 1
-			[user] => 
-			[action] => delete
-			[date] => 2014-12-31 02:26:58
-			[ip] => 127.0.0.1
-		)
-		[2] => Array (
-			[table] => customers_contacts
-			[row] => 2
-			[user] => 
-			[action] => delete
-			[date] => 2014-12-31 02:26:58
-			[ip] => 127.0.0.1
-		)
-		[3] => Array (
-			[table] => customers_contacts
-			[row] => 3
-			[user] => 
-			[action] => delete
-			[date] => 2014-12-31 02:26:58
-			[ip] => 127.0.0.1
-		)
-		[4] => Array (
-			[table] => customers
-			[row] => 1
-			[user] => 
-			[action] => delete
-			[date] => 2014-12-31 02:26:58
-			[ip] => 127.0.0.1
-		)
-	)
+    [status] => success
+    [details] => Array (
+        [0] => Array (
+            [table] => meeting
+            [row] => 1
+            [user] => 
+            [action] => delete
+            [date] => 2014-12-31 02:26:58
+            [ip] => 127.0.0.1
+        )
+        [1] => Array (
+            [table] => customers_contacts
+            [row] => 1
+            [user] => 
+            [action] => delete
+            [date] => 2014-12-31 02:26:58
+            [ip] => 127.0.0.1
+        )
+        [2] => Array (
+            [table] => customers_contacts
+            [row] => 2
+            [user] => 
+            [action] => delete
+            [date] => 2014-12-31 02:26:58
+            [ip] => 127.0.0.1
+        )
+        [3] => Array (
+            [table] => customers_contacts
+            [row] => 3
+            [user] => 
+            [action] => delete
+            [date] => 2014-12-31 02:26:58
+            [ip] => 127.0.0.1
+        )
+        [4] => Array (
+            [table] => customers
+            [row] => 1
+            [user] => 
+            [action] => delete
+            [date] => 2014-12-31 02:26:58
+            [ip] => 127.0.0.1
+        )
+    )
 )
 ```
 #### el Contacto con ID 2 del Cliente con ID 1  
@@ -472,8 +472,8 @@ $conn = $ngl('mysql.test');
 $foo = $ngl('owl.foo');
 $foo->connect($conn);
 $get = $foo->select('customers')->getAll('{
-	'where': [['customers.id','eq','(1)']], 
-	'order': ['customers.tradename:ASC']
+    'where': [['customers.id','eq','(1)']], 
+    'order': ['customers.tradename:ASC']
 }');
 print_r($get->getall());
 ```
@@ -540,17 +540,17 @@ $foo->insert($a);
 
 #log de la operación
 Array (
-	[status] => success
-	[details] => Array (
-		[0] => Array (
-			[table] => customers
-			[row] => 5
-			[user] => 
-			[action] => insert
-			[date] => 2015-01-01 18:26:35
-			[ip] => 127.0.0.1
-		)
-	)
+    [status] => success
+    [details] => Array (
+        [0] => Array (
+            [table] => customers
+            [row] => 5
+            [user] => 
+            [action] => insert
+            [date] => 2015-01-01 18:26:35
+            [ip] => 127.0.0.1
+        )
+    )
 )
 ```
 #### inserción por objeto  
@@ -576,10 +576,10 @@ $foo->select('customers')->insert();
 ```php
 $foo->select('products');
 $foo->insert(
-	array('name'=>'Monitor', 'barcode'=>'00000001'),
-	array('name'=>'Mouse', 'barcode'=>'00000002'),
-	array('name'=>'Teclado', 'barcode'=>'00000003'),
-	array('name'=>'Gabinete', 'barcode'=>'00000004')
+    array('name'=>'Monitor', 'barcode'=>'00000001'),
+    array('name'=>'Mouse', 'barcode'=>'00000002'),
+    array('name'=>'Teclado', 'barcode'=>'00000003'),
+    array('name'=>'Gabinete', 'barcode'=>'00000004')
 );
 ```
 #### inserción de registros dependientes (hijos)  
@@ -593,9 +593,9 @@ $foo->child('customers_contacts')->insert(array('firstname'=>'Alberto', 'surname
 
 // modo múltiple 
 $foo->child('customers_contacts')->insert(
-	array('firstname'=>'Martino', 'surname'=>'Herrera'),
-	array('firstname'=>'Alejo', 'surname'=>'Castillo'),
-	array('firstname'=>'Juan', 'surname'=>'Rojas')
+    array('firstname'=>'Martino', 'surname'=>'Herrera'),
+    array('firstname'=>'Alejo', 'surname'=>'Castillo'),
+    array('firstname'=>'Juan', 'surname'=>'Rojas')
 );
 ```
 
@@ -652,10 +652,10 @@ $foo->connect($conn);
 
 #ejecución
 $bar = $foo->query('{
-		"columns":["id"], 
-		"tables":["customers"], 
-		"where":[["id","eq","(3)"]]
-	}
+        "columns":["id"], 
+        "tables":["customers"], 
+        "where":[["id","eq","(3)"]]
+    }
 );
 ```
 #### SQLite  
@@ -667,10 +667,10 @@ $foo->connect($conn);
 
 #ejecución
 $bar = $foo->query('{
-		"columns":["id"], 
-		"tables":["customers"], 
-		"where":[["id","eq","(3)"]]
-	}
+        "columns":["id"], 
+        "tables":["customers"], 
+        "where":[["id","eq","(3)"]]
+    }
 );
 ```
 
@@ -764,14 +764,14 @@ $foo->connect($conn);
 
 #suspención de registro principales
 $foo->select('customers')->suspend(
-	array('id'=>4),
-	array('imya'=>'wdoxbe6a2afqMbc7S0fy2f57hel61ec4')
+    array('id'=>4),
+    array('imya'=>'wdoxbe6a2afqMbc7S0fy2f57hel61ec4')
 );
 
 #suspención de registro dependientes
 $foo->child('customers_contacts')->suspend(
-	array('imya'=>'J7d66l11xyqk6vB1f691b2bbA5068993'),
-	array('imya'=>'fq6213Xb5qf4c5a286e8rcOacf66b2rc')
+    array('imya'=>'J7d66l11xyqk6vB1f691b2bbA5068993'),
+    array('imya'=>'fq6213Xb5qf4c5a286e8rcOacf66b2rc')
 );
 ```
 
@@ -802,14 +802,14 @@ $foo->connect($conn);
 
 #suspención de registro principales
 $foo->select('customers')->toggle(
-	array('id'=>4),
-	array('imya'=>'wdoxbe6a2afqMbc7S0fy2f57hel61ec4')
+    array('id'=>4),
+    array('imya'=>'wdoxbe6a2afqMbc7S0fy2f57hel61ec4')
 );
 
 #suspención de registro dependientes
 $foo->child('customers_contacts')->toggle(
-	array('imya'=>'J7d66l11xyqk6vB1f691b2bbA5068993'),
-	array('imya'=>'fq6213Xb5qf4c5a286e8rcOacf66b2rc')
+    array('imya'=>'J7d66l11xyqk6vB1f691b2bbA5068993'),
+    array('imya'=>'fq6213Xb5qf4c5a286e8rcOacf66b2rc')
 );
 ```
 
@@ -840,14 +840,14 @@ $foo->connect($conn);
 
 #reactivación de registro principales
 $foo->select('customers')->unsuspend(
-	array('id'=>4),
-	array('imya'=>'wdoxbe6a2afqMbc7S0fy2f57hel61ec4')
+    array('id'=>4),
+    array('imya'=>'wdoxbe6a2afqMbc7S0fy2f57hel61ec4')
 );
 
 #reactivación de registro dependientes
 $foo->child('customers_contacts')->unsuspend(
-	array('imya'=>'J7d66l11xyqk6vB1f691b2bbA5068993'),
-	array('imya'=>'fq6213Xb5qf4c5a286e8rcOacf66b2rc')
+    array('imya'=>'J7d66l11xyqk6vB1f691b2bbA5068993'),
+    array('imya'=>'fq6213Xb5qf4c5a286e8rcOacf66b2rc')
 );
 ```
 
@@ -894,8 +894,8 @@ $foo->update($a);
 ```php
 #selección del objeto y actualización
 $foo->select('customers')->update(
-	array('id'=>1, 'town'=>2),
-	array('imya'=>'wdoxbe6a2afqMbc7S0fy2f57hel61ec4', 'town'=>2)
+    array('id'=>1, 'town'=>2),
+    array('imya'=>'wdoxbe6a2afqMbc7S0fy2f57hel61ec4', 'town'=>2)
 );
 ```
 #### actualización de registros dependientes (hijos)  
@@ -909,9 +909,9 @@ $foo->child('customers_contacts')->update(array('id'=>1, 'firstname'=>'Carlos Al
 
 // modo múltiple 
 $foo->child('customers_contacts')->update(
-	array('id'=>2, 'email'=>'mherrera@hytcom.net'),
-	array('id'=>3, 'email'=>'acastillo@hytcom.net'),
-	array('id'=>4, 'email'=>'jrojas@hytcom.net')
+    array('id'=>2, 'email'=>'mherrera@hytcom.net'),
+    array('id'=>3, 'email'=>'acastillo@hytcom.net'),
+    array('id'=>4, 'email'=>'jrojas@hytcom.net')
 );
 ```
 #### todos los Contactos del Cliente con ID 2  

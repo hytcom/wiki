@@ -55,17 +55,17 @@ $var2 = "milk,rice,sugar,tea";
 
 [b][u]Añadiendo valores[/u][/b]
 $ngl("validate")
-	->addvar("type", $var1)
-	->addvar("minlen", "3")
-	->addvar("list", $var2)
+    ->addvar("type", $var1)
+    ->addvar("minlen", "3")
+    ->addvar("list", $var2)
 ;
 
 
 [b][u]Archivo foobar.json[/u][/b]
 {
-	"type" : "{$type}",
-	"minlength" : "{$minlen}",
-	"in" : "{$list}"
+    "type" : "{$type}",
+    "minlength" : "{$minlen}",
+    "in" : "{$list}"
 }
 
 
@@ -219,9 +219,9 @@ $age = $ngl("validate")->validate($age, "rules_age");
 #### Reglas JSON en línea  
 ```php
 $rules = "{
-	"type" : "regex",
-	"options" : { "pattern" : "\\$[0-9]+" },
-	"minlength" : 5
+    "type" : "regex",
+    "options" : { "pattern" : "\\$[0-9]+" },
+    "minlength" : 5
 }";
 
 $var = "$522"; 
@@ -232,8 +232,8 @@ $var = $ngl("validate")->validate($var, $rules);
 $rules = array();
 $rules["type"] = "html";
 $rules["options"] = array(
-	"htmlentities" => "ENT_COMPAT,ENT_HTML401,ENT_QUOTES",
-	"striptags" => "<i>"
+    "htmlentities" => "ENT_COMPAT,ENT_HTML401,ENT_QUOTES",
+    "striptags" => "<i>"
 );
 
 $var = "<b>prueba de 'validación' de datos <i>HTML</i></b>";
@@ -242,8 +242,8 @@ $var = $ngl("validate")->validate($var, $rules);
 #### Validación multiple  
 ```php
 $rules = "{
-	"type" : "email",
-	"options" : { "multiple" : ";" }
+    "type" : "email",
+    "options" : { "multiple" : ";" }
 }";
 
 $emails = "mail1@foobar.com;mail2@foobar.com;mail3@foobar.com";
@@ -252,23 +252,23 @@ print_r($ngl("validate")->validate($emails, $rules));
 #### Validación de Arrays  
 ```php
 $rules = "{
-	"product" : {
-		"type" : "string",
-		"default" : "milk",
-		"in" : "milk,rice,sugar,tea"
-	},
-	
-	"quantity" : {
-		"type" : "int",
-		"greaterthan" : "1",
-		"lessthan" : "20",
-	},
-	
-	"price" : {
-		"type" : "regex",
-		"options" : { "pattern" : "\\$[0-9]+" },
-		"minlength" : 5
-	}
+    "product" : {
+        "type" : "string",
+        "default" : "milk",
+        "in" : "milk,rice,sugar,tea"
+    },
+    
+    "quantity" : {
+        "type" : "int",
+        "greaterthan" : "1",
+        "lessthan" : "20",
+    },
+    
+    "price" : {
+        "type" : "regex",
+        "options" : { "pattern" : "\\$[0-9]+" },
+        "minlength" : 5
+    }
 }";
 
 print_r($ngl("validate")->validate($_POST, $rules));
@@ -278,8 +278,8 @@ print_r($ngl("validate")->validate($_POST, $rules));
 $rules = array();
 $rules["type"] = "all";
 $rules["options"] = array(
-	"allow" => "LATIN_BASIC_LOWERCASE,LATIN_BASIC_NUMBERS",
-	"striptags" => true
+    "allow" => "LATIN_BASIC_LOWERCASE,LATIN_BASIC_NUMBERS",
+    "striptags" => true
 );
 
 $var = "<b>ESTA ES 'la prueba' <i>1234</i></b>";

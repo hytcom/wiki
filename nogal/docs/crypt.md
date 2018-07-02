@@ -75,15 +75,15 @@ $keys = $ngl("crypt")->type("rsa")->keys(32);
 
 #salida
 Array (
-	[private] =>
-		-----BEGIN RSA PRIVATE KEY-----
-		MC4CAQACBQDt4DWxAgMBAAECBAEQtUcCAwD4dwIDAPUXAgMA9DcCAwDQ3wIDAKeo
-		-----END RSA PRIVATE KEY-----
+    [private] =>
+        -----BEGIN RSA PRIVATE KEY-----
+        MC4CAQACBQDt4DWxAgMBAAECBAEQtUcCAwD4dwIDAPUXAgMA9DcCAwDQ3wIDAKeo
+        -----END RSA PRIVATE KEY-----
 
-	[public] =>
-		-----BEGIN PUBLIC KEY-----
-		MCAwDQYJKoZIhvcNAQEBBQADDwAwDAIFAO3gNbECAwEAAQ==
-		-----END PUBLIC KEY-----
+    [public] =>
+        -----BEGIN PUBLIC KEY-----
+        MCAwDQYJKoZIhvcNAQEBBQADDwAwDAIFAO3gNbECAwEAAQ==
+        -----END PUBLIC KEY-----
 )
 ```
 
@@ -103,9 +103,9 @@ Encripta una cadena con el método seleccionado
 #### AES  
 ```php
 echo $ngl("crypt.")
-	->key("asd123")
-	->text("hola mundo!")
-	->encrypt()
+    ->key("asd123")
+    ->text("hola mundo!")
+    ->encrypt()
 ;
 ```
 #### RSA  

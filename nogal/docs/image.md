@@ -264,7 +264,7 @@ $ngl("image.foo")->load("demo.jpg")->view();
 #### Carga de puntero  
 ```php
 $ngl("image.foo")->load(
-	$ngl("qr.bar")->image("test1234")
+    $ngl("qr.bar")->image("test1234")
 )->view();
 ```
 #### Imagen vacia  

@@ -78,22 +78,22 @@ print_r($http);
 
 # resultado
 Array (
-	[basename] => "class.php"
-	[dirname] => "/nogal/help"
-	[extension] => "php"
-	[filename] => "class"
-	[fragment] => "privates"
-	[host] => "hytcom.net"
-	[pass] => "pass"
-	[params] => Array (
-		[ q ] => "nglURL::parse"
-	)
-	[path] => "/nogal/help/class.php"
-	[port] => "80"
-	[query] => "q=nglURL::parse"
-	[scheme] => "http"
-	[ssl] => false
-	[user] => "example"
+    [basename] => "class.php"
+    [dirname] => "/nogal/help"
+    [extension] => "php"
+    [filename] => "class"
+    [fragment] => "privates"
+    [host] => "hytcom.net"
+    [pass] => "pass"
+    [params] => Array (
+        [ q ] => "nglURL::parse"
+    )
+    [path] => "/nogal/help/class.php"
+    [port] => "80"
+    [query] => "q=nglURL::parse"
+    [scheme] => "http"
+    [ssl] => false
+    [user] => "example"
 
 )
 ```

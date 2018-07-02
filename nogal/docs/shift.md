@@ -101,20 +101,20 @@ Con valor true y colnames = null, se utilizarán como índices los valores de la
 #### xml-csv  
 ```php
 $data = "
-	<months>
-		<month><name>enero</name><number>01</number></month>
-		<month><name>febrero</name><number>02</number></month>
-		<month><name>marzo</name><number>03</number></month>
-		<month><name>abril</name><number>04</number></month>
-		<month><name>mayo</name><number>05</number></month>
-		<month><name>junio</name><number>06</number></month>
-		<month><name>julio</name><number>07</number></month>
-		<month><name>agosto</name><number>08</number></month>
-		<month><name>septiembre</name><number>09</number></month>
-		<month><name>octubre</name><number>10</number></month>
-		<month><name>noviembre</name><number>11</number></month>
-		<month><name>diciembre</name><number>12</number></month>
-	</months>
+    <months>
+        <month><name>enero</name><number>01</number></month>
+        <month><name>febrero</name><number>02</number></month>
+        <month><name>marzo</name><number>03</number></month>
+        <month><name>abril</name><number>04</number></month>
+        <month><name>mayo</name><number>05</number></month>
+        <month><name>junio</name><number>06</number></month>
+        <month><name>julio</name><number>07</number></month>
+        <month><name>agosto</name><number>08</number></month>
+        <month><name>septiembre</name><number>09</number></month>
+        <month><name>octubre</name><number>10</number></month>
+        <month><name>noviembre</name><number>11</number></month>
+        <month><name>diciembre</name><number>12</number></month>
+    </months>
 ";
 
 echo $ngl("shift")->convert($data, "xml-csv");
@@ -136,18 +136,18 @@ echo $ngl("shift")->convert($data, "xml-csv");
 #### array-json  
 ```php
 $data = array(
-	array("firstName" => "John" , "lastName" => "Doe", "age"=>36),
-	array("firstName" => "Anna" , "lastName" => "Smith", "age"=>15),
-	array("firstName" => "Peter" , "lastName" => "Jones", "age"=>42)
+    array("firstName" => "John" , "lastName" => "Doe", "age"=>36),
+    array("firstName" => "Anna" , "lastName" => "Smith", "age"=>15),
+    array("firstName" => "Peter" , "lastName" => "Jones", "age"=>42)
 );
 
 echo $ngl("shift")->convert($data, "array-json");
 
 # salida
 [
-	{"firstName":"John","lastName":"Doe","age":36},
-	{"firstName":"Anna","lastName":"Smith","age":15},
-	{"firstName":"Peter","lastName":"Jones","age":42}
+    {"firstName":"John","lastName":"Doe","age":36},
+    {"firstName":"Anna","lastName":"Smith","age":15},
+    {"firstName":"Peter","lastName":"Jones","age":42}
 ]
 ```
 
@@ -219,10 +219,10 @@ print_r($ngl("shift")->fixedExplode($data, $options));
 
 # salida
 Array (
-	[0] => "John            "
-	[1] => "Doe       "
-	[2] => "Director    "
-	[3] => 36
+    [0] => "John            "
+    [1] => "Doe       "
+    [2] => "Director    "
+    [3] => 36
 )
 ```
 #### con TRIM  
@@ -233,10 +233,10 @@ print_r($ngl("shift")->fixedExplode($data, $options));
 
 # salida
 Array (
-	[0] => "John"
-	[1] => "Doe"
-	[2] => "Director"
-	[3] => 36
+    [0] => "John"
+    [1] => "Doe"
+    [2] => "Director"
+    [3] => 36
 )
 ```
 
@@ -291,100 +291,100 @@ Genera una salida HTML a partir de un Array
 #### TABLA  
 ```php
 $data = array(
-	array("firstName" => "John" , "lastName" => "Doe", "age"=>36),
-	array("firstName" => "Anna" , "lastName" => "Smith", "age"=>15),
-	array("firstName" => "Peter" , "lastName" => "Jones", "age"=>42)
+    array("firstName" => "John" , "lastName" => "Doe", "age"=>36),
+    array("firstName" => "Anna" , "lastName" => "Smith", "age"=>15),
+    array("firstName" => "Peter" , "lastName" => "Jones", "age"=>42)
 );
 echo $ngl("shift")->html($data, "table", "users");
 
 # salida
 <table class="users">
-	<tr class="users-head">
-		<th class="users-cell">firstName</th>
-		<th class="users-cell">lastName</th>
-		<th class="users-cell">age</th>
-	</tr>
-	<tr class="users-row">
-		<td class="users-cell">John</td>
-		<td class="users-cell">Doe</td>
-		<td class="users-cell">36</td>
-	</tr>
-	<tr class="users-row">
-		<td class="users-cell">Anna</td>
-		<td class="users-cell">Smith</td>
-		<td class="users-cell">15</td>
-	</tr>
-	<tr class="users-row">
-		<td class="users-cell">Peter</td>
-		<td class="users-cell">Jones</td>
-		<td class="users-cell">42</td>
-	</tr>
+    <tr class="users-head">
+        <th class="users-cell">firstName</th>
+        <th class="users-cell">lastName</th>
+        <th class="users-cell">age</th>
+    </tr>
+    <tr class="users-row">
+        <td class="users-cell">John</td>
+        <td class="users-cell">Doe</td>
+        <td class="users-cell">36</td>
+    </tr>
+    <tr class="users-row">
+        <td class="users-cell">Anna</td>
+        <td class="users-cell">Smith</td>
+        <td class="users-cell">15</td>
+    </tr>
+    <tr class="users-row">
+        <td class="users-cell">Peter</td>
+        <td class="users-cell">Jones</td>
+        <td class="users-cell">42</td>
+    </tr>
 </table>
 ```
 #### Estructura de DIVs  
 ```php
 $data = array(
-	array("firstName" => "John" , "lastName" => "Doe", "age"=>36),
-	array("firstName" => "Anna" , "lastName" => "Smith", "age"=>15),
-	array("firstName" => "Peter" , "lastName" => "Jones", "age"=>42)
+    array("firstName" => "John" , "lastName" => "Doe", "age"=>36),
+    array("firstName" => "Anna" , "lastName" => "Smith", "age"=>15),
+    array("firstName" => "Peter" , "lastName" => "Jones", "age"=>42)
 );
 echo $ngl("shift")->html($data, "div", "users");
 
 # salida
 <div class="users">
-	<div class="users-head">
-		<div class="users-cell">firstName</div>
-		<div class="users-cell">lastName</div>
-		<div class="users-cell">age</div>
-	</div>
-	<div class="users-row">
-		<div class="users-cell">John</div>
-		<div class="users-cell">Doe</div>
-		<div class="users-cell">36</div>
-	</div>
-	<div class="users-row">
-		<div class="users-cell">Anna</div>
-		<div class="users-cell">Smith</div>
-		<div class="users-cell">15</div>
-	</div>
-	<div class="users-row">
-		<div class="users-cell">Peter</div>
-		<div class="users-cell">Jones</div>
-		<div class="users-cell">42</div>
-	</div>
+    <div class="users-head">
+        <div class="users-cell">firstName</div>
+        <div class="users-cell">lastName</div>
+        <div class="users-cell">age</div>
+    </div>
+    <div class="users-row">
+        <div class="users-cell">John</div>
+        <div class="users-cell">Doe</div>
+        <div class="users-cell">36</div>
+    </div>
+    <div class="users-row">
+        <div class="users-cell">Anna</div>
+        <div class="users-cell">Smith</div>
+        <div class="users-cell">15</div>
+    </div>
+    <div class="users-row">
+        <div class="users-cell">Peter</div>
+        <div class="users-cell">Jones</div>
+        <div class="users-cell">42</div>
+    </div>
 </div>
 ```
 #### Estructura de UL, LI y SPAN  
 ```php
 $data = array(
-	array("firstName" => "John" , "lastName" => "Doe", "age"=>36),
-	array("firstName" => "Anna" , "lastName" => "Smith", "age"=>15),
-	array("firstName" => "Peter" , "lastName" => "Jones", "age"=>42)
+    array("firstName" => "John" , "lastName" => "Doe", "age"=>36),
+    array("firstName" => "Anna" , "lastName" => "Smith", "age"=>15),
+    array("firstName" => "Peter" , "lastName" => "Jones", "age"=>42)
 );
 echo $ngl("shift")->html($data, "list", "users");
 
 # salida
 <ul class="users">
-	<li class="users-head">
-		<span class="users-cell">firstName</span>
-		<span class="users-cell">lastName</span>
-		<span class="users-cell">age</span>
-	</li>
-	<li class="users-row">
-		<span class="users-cell">John</span>
-		<span class="users-cell">Doe</span>
-		<span class="users-cell">36</span>
-	</li>
-	<li class="users-row">
-		<span class="users-cell">Anna</span>
-		<span class="users-cell">Smith</span>
-		<span class="users-cell">15</span>
-	</li>
-	<li class="users-row">
-		<span class="users-cell">Peter</span>
-		<span class="users-cell">Jones</span>
-		<span class="users-cell">42</span>
-	</li>
+    <li class="users-head">
+        <span class="users-cell">firstName</span>
+        <span class="users-cell">lastName</span>
+        <span class="users-cell">age</span>
+    </li>
+    <li class="users-row">
+        <span class="users-cell">John</span>
+        <span class="users-cell">Doe</span>
+        <span class="users-cell">36</span>
+    </li>
+    <li class="users-row">
+        <span class="users-cell">Anna</span>
+        <span class="users-cell">Smith</span>
+        <span class="users-cell">15</span>
+    </li>
+    <li class="users-row">
+        <span class="users-cell">Peter</span>
+        <span class="users-cell">Jones</span>
+        <span class="users-cell">42</span>
+    </li>
 </ul>
 ```
 

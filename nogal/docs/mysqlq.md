@@ -147,9 +147,9 @@ $bar = $foo->query("SELECT * FROM `users`");
 
 print_r($bar->getall());
 Array (
-	0 => Array(id => 1, name => Juan, age => 36),
-	1 => Array(id => 2, name => Pedro, age => 28),
-	2 => Array(id => 3, name => Manuel, age => 36)
+    0 => Array(id => 1, name => Juan, age => 36),
+    1 => Array(id => 2, name => Pedro, age => 28),
+    2 => Array(id => 3, name => Manuel, age => 36)
 );
 ```
 #### valor de un campo específico  
@@ -162,9 +162,9 @@ $bar = $foo->query("SELECT * FROM `users`");
 # retorna solamente los valores del campo seleccionado
 <b>print_r($bar->getall(name));</b>
 Array (
-	0 => Juan,
-	1 => Pedro,
-	2 => Manuel
+    0 => Juan,
+    1 => Pedro,
+    2 => Manuel
 );
 ```
 #### agrupado por campo  
@@ -177,12 +177,12 @@ $bar = $foo->query("SELECT * FROM `users`");
 # agrupa todos los registros con igual valor en el campo #.. en varios arrays
 print_r($bar->getall(#age));
 Array (
-	36 => Array(
-		0 => Array(id => 1, name => Juan, age => 36),
-		1 => Array(id => 3, name => Manuel, age => 36)
-	),
-	
-	28 => Array(id => 2, name => Pedro, age => 28)
+    36 => Array(
+        0 => Array(id => 1, name => Juan, age => 36),
+        1 => Array(id => 3, name => Manuel, age => 36)
+    ),
+    
+    28 => Array(id => 2, name => Pedro, age => 28)
 );
 ```
 #### agrupado especiales  

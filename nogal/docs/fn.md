@@ -121,10 +121,10 @@ $orderly = $ngl()->arrange($input, array(2,9,7,3));
 
 #array de salida
 Array (
-	[0] => primero
-	[1] => segundo
-	[2] => tercero
-	[3] => cuarto
+    [0] => primero
+    [1] => segundo
+    [2] => tercero
+    [3] => cuarto
 )
 ```
 
@@ -218,11 +218,11 @@ que sólo contenga el campo_principal_de_agrupamiento|
 ```php
 # origen de datos
 $aSource = array(
-	array("id"=>1,"date"=>"2015-11-23","name"=>"Castro Hnos SRL","cuit"=>"30-36251478-9","product"=>1,"quantity"=>15,"price"=>20),
-	array("id"=>1,"date"=>"2015-11-23","name"=>"Castro Hnos SRL","cuit"=>"30-36251478-9","product"=>2,"quantity"=>10,"price"=>16),
-	array("id"=>1,"date"=>"2015-11-23","name"=>"Castro Hnos SRL","cuit"=>"30-36251478-9","product"=>3,"quantity"=>20,"price"=>20),
-	array("id"=>2,"date"=>"2015-11-24","name"=>"Ravelli S.A.","cuit"=>"33-58796321-8","product"=>2,"quantity"=>13,"price"=>16),
-	array("id"=>2,"date"=>"2015-11-24","name"=>"Ravelli S.A.","cuit"=>"33-58796321-8","product"=>3,"quantity"=>8,"price"=>20)
+    array("id"=>1,"date"=>"2015-11-23","name"=>"Castro Hnos SRL","cuit"=>"30-36251478-9","product"=>1,"quantity"=>15,"price"=>20),
+    array("id"=>1,"date"=>"2015-11-23","name"=>"Castro Hnos SRL","cuit"=>"30-36251478-9","product"=>2,"quantity"=>10,"price"=>16),
+    array("id"=>1,"date"=>"2015-11-23","name"=>"Castro Hnos SRL","cuit"=>"30-36251478-9","product"=>3,"quantity"=>20,"price"=>20),
+    array("id"=>2,"date"=>"2015-11-24","name"=>"Ravelli S.A.","cuit"=>"33-58796321-8","product"=>2,"quantity"=>13,"price"=>16),
+    array("id"=>2,"date"=>"2015-11-24","name"=>"Ravelli S.A.","cuit"=>"33-58796321-8","product"=>3,"quantity"=>8,"price"=>20)
 );
 
 # ejecución
@@ -230,115 +230,115 @@ $ngl()->arrayGroup($aSource);
 
 # resultado del agrupamiento
 array(
-	"1" => array(
-		"id" => 1,
-		"date" => "2015-11-23",
-		"name" => "Castro Hnos SRL",
-		"cuit" => "30-36251478-9",
-		"product" => array(1, 2, 3), # <-- agrupado
-		"quantity" => array(15, 10, 20), # <-- agrupado
-		"price" => array(20, 16) # <-- agrupado
-	),
-	"2" => array (
-		"id" => 2
-		"date" => "2015-11-24",
-		"name" => "Ravelli S.A.",
-		"cuit" => "33-58796321-8",
-		"product" => array(2, 3), # <-- agrupado
-		"quantity" => array(13, 8), # <-- agrupado
-		"price" => array(16, 20) # <-- agrupado
-	)
+    "1" => array(
+        "id" => 1,
+        "date" => "2015-11-23",
+        "name" => "Castro Hnos SRL",
+        "cuit" => "30-36251478-9",
+        "product" => array(1, 2, 3), # <-- agrupado
+        "quantity" => array(15, 10, 20), # <-- agrupado
+        "price" => array(20, 16) # <-- agrupado
+    ),
+    "2" => array (
+        "id" => 2
+        "date" => "2015-11-24",
+        "name" => "Ravelli S.A.",
+        "cuit" => "33-58796321-8",
+        "product" => array(2, 3), # <-- agrupado
+        "quantity" => array(13, 8), # <-- agrupado
+        "price" => array(16, 20) # <-- agrupado
+    )
 )
 ```
 #### sub-agrupamientos  
 ```php
 # origen de datos
 $aSource = array(
-	array("id"=>1,"date"=>"2015-11-23","name"=>"Castro Hnos SRL","cuit"=>"30-36251478-9","product"=>1,"quantity"=>15,"price"=>20),
-	array("id"=>1,"date"=>"2015-11-23","name"=>"Castro Hnos SRL","cuit"=>"30-36251478-9","product"=>2,"quantity"=>10,"price"=>16),
-	array("id"=>1,"date"=>"2015-11-23","name"=>"Castro Hnos SRL","cuit"=>"30-36251478-9","product"=>3,"quantity"=>20,"price"=>20),
-	array("id"=>2,"date"=>"2015-11-24","name"=>"Ravelli S.A.","cuit"=>"33-58796321-8","product"=>2,"quantity"=>13,"price"=>16),
-	array("id"=>2,"date"=>"2015-11-24","name"=>"Ravelli S.A.","cuit"=>"33-58796321-8","product"=>3,"quantity"=>8,"price"=>20)
+    array("id"=>1,"date"=>"2015-11-23","name"=>"Castro Hnos SRL","cuit"=>"30-36251478-9","product"=>1,"quantity"=>15,"price"=>20),
+    array("id"=>1,"date"=>"2015-11-23","name"=>"Castro Hnos SRL","cuit"=>"30-36251478-9","product"=>2,"quantity"=>10,"price"=>16),
+    array("id"=>1,"date"=>"2015-11-23","name"=>"Castro Hnos SRL","cuit"=>"30-36251478-9","product"=>3,"quantity"=>20,"price"=>20),
+    array("id"=>2,"date"=>"2015-11-24","name"=>"Ravelli S.A.","cuit"=>"33-58796321-8","product"=>2,"quantity"=>13,"price"=>16),
+    array("id"=>2,"date"=>"2015-11-24","name"=>"Ravelli S.A.","cuit"=>"33-58796321-8","product"=>3,"quantity"=>8,"price"=>20)
 );
 
 # ejecución
 $aStructure = array(
-	"MAIN" => array("id"),
-	"details" => array("product", array("product", "quantity", "price"))
+    "MAIN" => array("id"),
+    "details" => array("product", array("product", "quantity", "price"))
 );
 $ngl()->arrayGroup($aSource, $aStructure);
 
 # resultado del agrupamiento
 array(
-	"1" => array(
-		"id" => 1,
-		"date" => "2015-11-23",
-		"name" => "Castro Hnos SRL",
-		"cuit" => "30-36251478-9",
-		"product" => 1,
-		"quantity" => 15,
-		"price" => 20,
-		"details" => array(
-			"1" => array("product" => 1, "quantity" => 15, "price" => 20),
-			"2" => array("product" => 2, "quantity" => 10, "price" => 16),
-			"3" => array("product" => 3, "quantity" => 20, "price" => 20)
-		)
-	),
-	"2" => array (
-		"id" => 2,
-		"date" => "2015-11-24",
-		"name" => "Ravelli S.A.",
-		"cuit" => "33-58796321-8",
-		"product" => 2,
-		"quantity" => 13,
-		"price" => 16,
-		"details" => array(
-			"2" => array("product" => 2, "quantity" => 13, "price" => 16),
-			"3" => array("product" => 3, "quantity" => 8, "price" => 20)
-		)
-	)
+    "1" => array(
+        "id" => 1,
+        "date" => "2015-11-23",
+        "name" => "Castro Hnos SRL",
+        "cuit" => "30-36251478-9",
+        "product" => 1,
+        "quantity" => 15,
+        "price" => 20,
+        "details" => array(
+            "1" => array("product" => 1, "quantity" => 15, "price" => 20),
+            "2" => array("product" => 2, "quantity" => 10, "price" => 16),
+            "3" => array("product" => 3, "quantity" => 20, "price" => 20)
+        )
+    ),
+    "2" => array (
+        "id" => 2,
+        "date" => "2015-11-24",
+        "name" => "Ravelli S.A.",
+        "cuit" => "33-58796321-8",
+        "product" => 2,
+        "quantity" => 13,
+        "price" => 16,
+        "details" => array(
+            "2" => array("product" => 2, "quantity" => 13, "price" => 16),
+            "3" => array("product" => 3, "quantity" => 8, "price" => 20)
+        )
+    )
 )
 ```
 #### grupo principal  
 ```php
 # origen de datos
 $aSource = array(
-	array("id"=>1,"date"=>"2015-11-23","name"=>"Castro Hnos SRL","cuit"=>"30-36251478-9","product"=>1,"quantity"=>15,"price"=>20),
-	array("id"=>1,"date"=>"2015-11-23","name"=>"Castro Hnos SRL","cuit"=>"30-36251478-9","product"=>2,"quantity"=>10,"price"=>16),
-	array("id"=>1,"date"=>"2015-11-23","name"=>"Castro Hnos SRL","cuit"=>"30-36251478-9","product"=>3,"quantity"=>20,"price"=>20),
-	array("id"=>2,"date"=>"2015-11-24","name"=>"Ravelli S.A.","cuit"=>"33-58796321-8","product"=>2,"quantity"=>13,"price"=>16),
-	array("id"=>2,"date"=>"2015-11-24","name"=>"Ravelli S.A.","cuit"=>"33-58796321-8","product"=>3,"quantity"=>8,"price"=>20)
+    array("id"=>1,"date"=>"2015-11-23","name"=>"Castro Hnos SRL","cuit"=>"30-36251478-9","product"=>1,"quantity"=>15,"price"=>20),
+    array("id"=>1,"date"=>"2015-11-23","name"=>"Castro Hnos SRL","cuit"=>"30-36251478-9","product"=>2,"quantity"=>10,"price"=>16),
+    array("id"=>1,"date"=>"2015-11-23","name"=>"Castro Hnos SRL","cuit"=>"30-36251478-9","product"=>3,"quantity"=>20,"price"=>20),
+    array("id"=>2,"date"=>"2015-11-24","name"=>"Ravelli S.A.","cuit"=>"33-58796321-8","product"=>2,"quantity"=>13,"price"=>16),
+    array("id"=>2,"date"=>"2015-11-24","name"=>"Ravelli S.A.","cuit"=>"33-58796321-8","product"=>3,"quantity"=>8,"price"=>20)
 );
 
 # ejecución
 $aStructure = array(
-	"MAIN" => array("id", array("name", "cuit", "date")),
-	"customers" => array("id", array("name", "cuit")),
-	"details" => array("product", array("product", "quantity", "price"))
+    "MAIN" => array("id", array("name", "cuit", "date")),
+    "customers" => array("id", array("name", "cuit")),
+    "details" => array("product", array("product", "quantity", "price"))
 );
 $ngl()->arrayGroup($aSource, $aStructure);
 
 # resultado del agrupamiento
 array(
-	"1" => array(
-		"name" => "Castro Hnos SRL",
-		"cuit" => "30-36251478-9",
-		"date" => "2015-11-23",
-		"details" => array(
-			"1" => array("product" => 1, "quantity" => 15, "price" => 20),
-			"2" => array("product" => 2, "quantity" => 10, "price" => 16),
-			"3" => array("product" => 3, "quantity" => 20, "price" => 20)
-		)
-	),
-	"2" => array (
-		"name" => "Ravelli S.A.",
-		"cuit" => "33-58796321-8",
-		"date" => "2015-11-24",
-		"details" => array(
-			"2" => array("product" => 2, "quantity" => 13, "price" => 16),
-			"3" => array("product" => 3, "quantity" => 8, "price" => 20)
-		)
-	)
+    "1" => array(
+        "name" => "Castro Hnos SRL",
+        "cuit" => "30-36251478-9",
+        "date" => "2015-11-23",
+        "details" => array(
+            "1" => array("product" => 1, "quantity" => 15, "price" => 20),
+            "2" => array("product" => 2, "quantity" => 10, "price" => 16),
+            "3" => array("product" => 3, "quantity" => 20, "price" => 20)
+        )
+    ),
+    "2" => array (
+        "name" => "Ravelli S.A.",
+        "cuit" => "33-58796321-8",
+        "date" => "2015-11-24",
+        "details" => array(
+            "2" => array("product" => 2, "quantity" => 13, "price" => 16),
+            "3" => array("product" => 3, "quantity" => 8, "price" => 20)
+        )
+    )
 )
 ```
 
@@ -458,18 +458,18 @@ Si \$aIndexes = null y \$mNewIndexes es una cadena, el método retornará un arr
 ```php
 #array original
 $input = array(
-	"entity" => "FooBar Inc.",
-	"start_date" => "2015-11-23",
-	"contact_surname" => array(
-		"Smith",
-		"Stewart",
-		"Astley"
-	),
-	"contact_firstname" => array(
-		"John",
-		"Sara",
-		"Ralph"
-	),
+    "entity" => "FooBar Inc.",
+    "start_date" => "2015-11-23",
+    "contact_surname" => array(
+        "Smith",
+        "Stewart",
+        "Astley"
+    ),
+    "contact_firstname" => array(
+        "John",
+        "Sara",
+        "Ralph"
+    ),
 );
 
 # llamada
@@ -477,18 +477,18 @@ $output = $ngl()->arrayRebuilder($input, array("contact_surname", "contact_first
 
 #array de salida
 Array (
-	[0] => Array(
-		[contact_surname] = Smith
-		[contact_firstname] = John
-	),
-	[1] => Array(
-		[contact_surname] = Smith
-		[contact_firstname] = Astley
-	),
-	[2] => Array(
-		[contact_surname] = Smith
-		[contact_firstname] = Ralph
-	)
+    [0] => Array(
+        [contact_surname] = Smith
+        [contact_firstname] = John
+    ),
+    [1] => Array(
+        [contact_surname] = Smith
+        [contact_firstname] = Astley
+    ),
+    [2] => Array(
+        [contact_surname] = Smith
+        [contact_firstname] = Ralph
+    )
 )
 ```
 #### Ejemplo anterior renombrando claves  
@@ -498,27 +498,27 @@ $output = $ngl()->arrayRebuilder($input, array("contact_surname", "contact_first
 
 #array de salida
 Array (
-	[0] => Array(
-		[surname] = Smith
-		[firstname] = John
-	),
-	[1] => Array(
-		[surname] = Smith
-		[firstname] = Astley
-	),
-	[2] => Array(
-		[surname] = Smith
-		[firstname] = Ralph
-	)
+    [0] => Array(
+        [surname] = Smith
+        [firstname] = John
+    ),
+    [1] => Array(
+        [surname] = Smith
+        [firstname] = Astley
+    ),
+    [2] => Array(
+        [surname] = Smith
+        [firstname] = Ralph
+    )
 )
 ```
 #### Ejemplo con $mNewIndexes como cadena  
 ```php
 #array original
 $input = array(
-	"0" => array("firstname"=>"John", "age"=>23),
-	"1" => array("firstname"=>"Sara", "age"=>24),
-	"2" => array("firstname"=>"Ralph", "age"=>25)
+    "0" => array("firstname"=>"John", "age"=>23),
+    "1" => array("firstname"=>"Sara", "age"=>24),
+    "2" => array("firstname"=>"Ralph", "age"=>25)
 );
 
 # llamada
@@ -526,24 +526,24 @@ $output = $ngl()->arrayRebuilder($input, null, array("contact"));
 
 #array de salida
 Array (
-	[0] => Array(
-		[contact] => Array(
-			[firstname] => John
-			[age] => 23
-		)
-	),
-	[1] => Array(
-		[contact] => Array(
-			[firstname] => Sara
-			[age] => 24
-		)
-	),
-	[2] => Array(
-		[contact] => Array(
-			[firstname] => Ralph
-			[age] => 25
-		)
-	)
+    [0] => Array(
+        [contact] => Array(
+            [firstname] => John
+            [age] => 23
+        )
+    ),
+    [1] => Array(
+        [contact] => Array(
+            [firstname] => Sara
+            [age] => 24
+        )
+    ),
+    [2] => Array(
+        [contact] => Array(
+            [firstname] => Ralph
+            [age] => 25
+        )
+    )
 )
 ```
 
@@ -571,15 +571,15 @@ $output = $ngl()->arrayRepeat($input, 3);
 
 #array de salida
 Array (
-	[0] => A
-	[1] => B
-	[2] => C
-	[3] => A
-	[4] => B
-	[5] => C
-	[6] => A
-	[7] => B
-	[8] => C
+    [0] => A
+    [1] => B
+    [2] => C
+    [3] => A
+    [4] => B
+    [5] => C
+    [6] => A
+    [7] => B
+    [8] => C
 )
 ```
 #### array asociativo  
@@ -592,12 +592,12 @@ $output = $ngl()->arrayRepeat($input, 2);
 
 #array de salida
 Array (
-	[0] => ANANA
-	[1] => BANANA
-	[2] => CIRUELA
-	[3] => ANANA
-	[4] => BANANA
-	[5] => CIRUELA
+    [0] => ANANA
+    [1] => BANANA
+    [2] => CIRUELA
+    [3] => ANANA
+    [4] => BANANA
+    [5] => CIRUELA
 )
 ```
 
@@ -733,21 +733,21 @@ $disorderly = $ngl()->disarrange($input, array(2,9,7,3));
 
 #array de salida
 Array (
-	[0] => segundo
-	[1] => cuarto
-	[2] => primero
-	[3] => tercero
+    [0] => segundo
+    [1] => cuarto
+    [2] => primero
+    [3] => tercero
 )
 
 #explicación
 Array( primero, segundo, tercero, cuarto )
-	cuenta "2" posiciones y retorna "segundo"
+    cuenta "2" posiciones y retorna "segundo"
 
 Array( primero, tercero, cuarto )
-	cuenta "9" posiciones y retorna "cuarto"
+    cuenta "9" posiciones y retorna "cuarto"
 
 Array( primero, tercero )
-	cuenta "7" posiciones y retorna "primero"
+    cuenta "7" posiciones y retorna "primero"
 
 por último retorna "tercero"
 ```
@@ -1407,12 +1407,12 @@ $aLs = $ngl("files")->ls("mydocuments", "*", "info", true);
 echo "<pre>";
 $sColumn = "basename";
 $aList = $ngl()->treeWalk($aLs, function($aNode, $nLevel, $bFirst, $bLast) use ($sColumn) {
-		$sOutput  = ($nLevel) ? str_repeat("│   ", $nLevel) : "";
-		$sOutput .= ($bLast) ? "└─── " : "├─── ";
-		$sOutput .= (($aFile["type"]=="dir") ? $aFile[$sColumn]."/" : $aFile[$sColumn]);
-		$sOutput .= "\n";
-		return $sOutput;
-	}
+        $sOutput  = ($nLevel) ? str_repeat("│   ", $nLevel) : "";
+        $sOutput .= ($bLast) ? "└─── " : "├─── ";
+        $sOutput .= (($aFile["type"]=="dir") ? $aFile[$sColumn]."/" : $aFile[$sColumn]);
+        $sOutput .= "\n";
+        return $sOutput;
+    }
 );
 echo implode($aList);
 echo "</pre>";
@@ -1424,7 +1424,7 @@ mydocuments/
 │   ├── rock/
 │   └── pop/
 └── word/
-	└── personal/
+    └── personal/
 ```
 
 &nbsp;
@@ -1450,10 +1450,10 @@ $output = $ngl()->truelize($input);
 
 #array de salida
 Array (
-	["A"] => true
-	["B"] => true
-	["C"] => true
-	["D"] => true
+    ["A"] => true
+    ["B"] => true
+    ["C"] => true
+    ["D"] => true
 )
 ```
 

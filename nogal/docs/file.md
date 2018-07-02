@@ -98,19 +98,19 @@ print_r($ngl("file.foo")->fileinfo());
 
 #salida
 Array (
-	[type] => file
-	[basename] => readme.txt
-	[extension] => txt
-	[filename] => readme
-	[protocol] => filesystem
-	[path] => tmpeadme.txt
-	[bytes] => 4448
-	[size] => 4.34KB
-	[chmod] => 0666
-	[timestamp] => 1425693706
-	[date] => 2015-03-06 23:01:46
-	[mime] => text/plain
-	[image] => 
+    [type] => file
+    [basename] => readme.txt
+    [extension] => txt
+    [filename] => readme
+    [protocol] => filesystem
+    [path] => tmpeadme.txt
+    [bytes] => 4448
+    [size] => 4.34KB
+    [chmod] => 0666
+    [timestamp] => 1425693706
+    [date] => 2015-03-06 23:01:46
+    [mime] => text/plain
+    [image] => 
 )
 ```
 
@@ -170,8 +170,8 @@ echo $ngl("file.foo")->read(10);
 ```php
 $ngl("file.foo")->load("http://api.sumaprop.com/propiedad/search/?max_per_page=3&estad os_publicacion=1&tipo_operacion=1&order=direccion­asc");
 $options = array(
-	"CURLOPT_CUSTOMREQUEST" => "GET",
-	"CURLOPT_HTTPHEADER" => array("x­authtoken: 4d186321c1a7f0f354b297e8914ab240")
+    "CURLOPT_CUSTOMREQUEST" => "GET",
+    "CURLOPT_HTTPHEADER" => array("x­authtoken: 4d186321c1a7f0f354b297e8914ab240")
 );
 echo $ngl("file.foo")->read(null, $options);
 ```

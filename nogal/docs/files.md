@@ -104,21 +104,21 @@ print_r($ngl("files")->copyr($path1, $path2));
 
 #salidas
 Array (
-	[0] => 13
-	[1] =>
-		copy	"/home/user/mydocs/data.pdf" => "/home/user2/mydocs/data.pdf"
-		mkdir	"/home/user2/mydocs/docs"
-		copy	"/home/user/mydocs/docs/bar.doc" => "/home/user2/mydocs/docs/bar.doc"
-		copy	"/home/user/mydocs/docs/foo.doc" => "/home/user2/mydocs/docs/foo.doc"
-		mkdir 	"/home/user2/mydocs/images"
-		copy	"/home/user/mydocs/images/image1.jpg" => "/home/user2/mydocs/images/image1.jpg"
-		copy	"/home/user/mydocs/images/image2.jpg" => "/home/user2/mydocs/images/image2.jpg"
-		copy	"/home/user/mydocs/images/image3.jpg" => "/home/user2/mydocs/images/image3.jpg"
-		copy	"/home/user/mydocs/images/picture1.jpg" => "/home/user2/mydocs/images/picture1.jpg"
-		copy	"/home/user/mydocs/images/picture2.jpg" => "/home/user2/mydocs/images/picture2.jpg"
-		copy	"/home/user/mydocs/images/picture3.jpg" => "/home/user2/mydocs/images/picture3.jpg"
-		copy	"/home/user/mydocs/images/picture4.jpg" => "/home/user2/mydocs/images/picture4.jpg"
-		copy	"/home/user/mydocs/readme.txt" => "/home/user2/mydocs/readme.txt"
+    [0] => 13
+    [1] =>
+        copy    "/home/user/mydocs/data.pdf" => "/home/user2/mydocs/data.pdf"
+        mkdir    "/home/user2/mydocs/docs"
+        copy    "/home/user/mydocs/docs/bar.doc" => "/home/user2/mydocs/docs/bar.doc"
+        copy    "/home/user/mydocs/docs/foo.doc" => "/home/user2/mydocs/docs/foo.doc"
+        mkdir     "/home/user2/mydocs/images"
+        copy    "/home/user/mydocs/images/image1.jpg" => "/home/user2/mydocs/images/image1.jpg"
+        copy    "/home/user/mydocs/images/image2.jpg" => "/home/user2/mydocs/images/image2.jpg"
+        copy    "/home/user/mydocs/images/image3.jpg" => "/home/user2/mydocs/images/image3.jpg"
+        copy    "/home/user/mydocs/images/picture1.jpg" => "/home/user2/mydocs/images/picture1.jpg"
+        copy    "/home/user/mydocs/images/picture2.jpg" => "/home/user2/mydocs/images/picture2.jpg"
+        copy    "/home/user/mydocs/images/picture3.jpg" => "/home/user2/mydocs/images/picture3.jpg"
+        copy    "/home/user/mydocs/images/picture4.jpg" => "/home/user2/mydocs/images/picture4.jpg"
+        copy    "/home/user/mydocs/readme.txt" => "/home/user2/mydocs/readme.txt"
 )
 ```
 #### Copia selectiva  
@@ -130,15 +130,15 @@ print_r($out);
 
 #salidas
 Array (
-	[0] => 7
-	[1] =>
-		mkdir	"/home/user2/mydocs/docs"
-		copy	"/home/user/mydocs/docs/bar.doc" => "/home/user2/mydocs/docs/bar.doc"
-		copy	"/home/user/mydocs/docs/foo.doc" => "/home/user2/mydocs/docs/foo.doc"
-		mkdir 	"/home/user2/mydocs/images"
-		copy	"/home/user/mydocs/images/image1.jpg" => "/home/user2/mydocs/images/image1.jpg"
-		copy	"/home/user/mydocs/images/image2.jpg" => "/home/user2/mydocs/images/image2.jpg"
-		copy	"/home/user/mydocs/images/image3.jpg" => "/home/user2/mydocs/images/image3.jpg"
+    [0] => 7
+    [1] =>
+        mkdir    "/home/user2/mydocs/docs"
+        copy    "/home/user/mydocs/docs/bar.doc" => "/home/user2/mydocs/docs/bar.doc"
+        copy    "/home/user/mydocs/docs/foo.doc" => "/home/user2/mydocs/docs/foo.doc"
+        mkdir     "/home/user2/mydocs/images"
+        copy    "/home/user/mydocs/images/image1.jpg" => "/home/user2/mydocs/images/image1.jpg"
+        copy    "/home/user/mydocs/images/image2.jpg" => "/home/user2/mydocs/images/image2.jpg"
+        copy    "/home/user/mydocs/images/image3.jpg" => "/home/user2/mydocs/images/image3.jpg"
 )
 ```
 
@@ -167,13 +167,13 @@ print_r($ls);
 
 # salida
 Array (
-	[0] => public_html/files
-	[1] => public_html/functions.js
-	[2] => public_html/gallery.html
-	[3] => public_html/images
-	[4] => public_html/index.html
-	[5] => public_html/robots.txt
-	[6] => public_html/styles.css
+    [0] => public_html/files
+    [1] => public_html/functions.js
+    [2] => public_html/gallery.html
+    [3] => public_html/images
+    [4] => public_html/index.html
+    [5] => public_html/robots.txt
+    [6] => public_html/styles.css
 )
 ```
 #### Modo SINGLE (recursivo)  
@@ -183,18 +183,18 @@ print_r($ls);
 
 # salida
 Array (
-	[0] => public_html/files
-	[1] => public_html/files/document.docx
-	[2] => public_html/files/info.docx
-	[3] => public_html/functions.js
-	[4] => public_html/gallery.html
-	[5] => public_html/images
-	[6] => public_html/images/image1.gif
-	[7] => public_html/images/image2.gif
-	[8] => public_html/images/image3.gif
-	[9] => public_html/index.html
-	[10] => public_html/robots.txt
-	[11] => public_html/styles.css
+    [0] => public_html/files
+    [1] => public_html/files/document.docx
+    [2] => public_html/files/info.docx
+    [3] => public_html/functions.js
+    [4] => public_html/gallery.html
+    [5] => public_html/images
+    [6] => public_html/images/image1.gif
+    [7] => public_html/images/image2.gif
+    [8] => public_html/images/image3.gif
+    [9] => public_html/index.html
+    [10] => public_html/robots.txt
+    [11] => public_html/styles.css
 )
 ```
 #### Modo SIGNED (no recursivo)  
@@ -204,13 +204,13 @@ print_r($ls);
 
 # salida
 Array (
-	[0] => *public_html/files
-	[1] => public_html/functions.js
-	[2] => public_html/gallery.html
-	[3] => *public_html/images
-	[4] => public_html/index.html
-	[5] => public_html/robots.txt
-	[6] => public_html/styles.css
+    [0] => *public_html/files
+    [1] => public_html/functions.js
+    [2] => public_html/gallery.html
+    [3] => *public_html/images
+    [4] => public_html/index.html
+    [5] => public_html/robots.txt
+    [6] => public_html/styles.css
 )
 ```
 #### Modo INFO (no recursivo)  
@@ -220,37 +220,37 @@ print_r($ls);
 
 # salida
 Array (
-	[document.docx] => Array (
-		[type] => file
-		[basename] => document.docx
-		[extension] => docx
-		[filename] => document
-		[protocol] => filesystem
-		[path] => public_html/files/document.docx
-		[bytes] => 364495
-		[size] => 355.95KB
-		[chmod] => 0666
-		[timestamp] => 1361469382
-		[date] => 2013-02-21 14:56:22
-		[mime] => application/vnd.openxmlformats-officedocument.wordprocessingml.document
-		[image] => 
-	)
+    [document.docx] => Array (
+        [type] => file
+        [basename] => document.docx
+        [extension] => docx
+        [filename] => document
+        [protocol] => filesystem
+        [path] => public_html/files/document.docx
+        [bytes] => 364495
+        [size] => 355.95KB
+        [chmod] => 0666
+        [timestamp] => 1361469382
+        [date] => 2013-02-21 14:56:22
+        [mime] => application/vnd.openxmlformats-officedocument.wordprocessingml.document
+        [image] => 
+    )
 
-	[info.docx] => Array (
-		[type] => file
-		[basename] => info.docx
-		[extension] => docx
-		[filename] => info
-		[protocol] => filesystem
-		[path] => public_html/files/info.docx
-		[bytes] => 87310
-		[size] => 85.26KB
-		[chmod] => 0666
-		[timestamp] => 1425914852
-		[date] => 2015-03-09 12:27:32
-		[mime] => application/vnd.openxmlformats-officedocument.wordprocessingml.document
-		[image] => 
-	)
+    [info.docx] => Array (
+        [type] => file
+        [basename] => info.docx
+        [extension] => docx
+        [filename] => info
+        [protocol] => filesystem
+        [path] => public_html/files/info.docx
+        [bytes] => 87310
+        [size] => 85.26KB
+        [chmod] => 0666
+        [timestamp] => 1425914852
+        [date] => 2015-03-09 12:27:32
+        [mime] => application/vnd.openxmlformats-officedocument.wordprocessingml.document
+        [image] => 
+    )
 )
 ```
 
@@ -286,11 +286,11 @@ bootstrap
 │   ├── bootstrap.js
 │   └── bootstrap.min.js
 └── fonts/
-	├── glyphicons-halflings-regular.eot
-	├── glyphicons-halflings-regular.svg
-	├── glyphicons-halflings-regular.ttf
-	├── glyphicons-halflings-regular.woff
-	└── glyphicons-halflings-regular.woff2
+    ├── glyphicons-halflings-regular.eot
+    ├── glyphicons-halflings-regular.svg
+    ├── glyphicons-halflings-regular.ttf
+    ├── glyphicons-halflings-regular.woff
+    └── glyphicons-halflings-regular.woff2
 ```
 
 &nbsp;
@@ -355,17 +355,17 @@ print_r($del);
 
 #salidas
 Array (
-	[0] => 9
-	[1] =>
-		delete	"/home/user2/mydocs/docs/bar.doc"
-		delete	"/home/user2/mydocs/docs/foo.doc"
-		delete 	"/home/user2/mydocs/docs"
-		delete	"/home/user2/mydocs/images/image1.jpg"
-		delete	"/home/user2/mydocs/images/image2.jpg"
-		delete	"/home/user2/mydocs/images/image3.jpg"
-		delete	"/home/user2/mydocs/images/image3.jpg"
-		delete 	"/home/user2/mydocs/images"
-		delete 	"/home/user2/mydocs"
+    [0] => 9
+    [1] =>
+        delete    "/home/user2/mydocs/docs/bar.doc"
+        delete    "/home/user2/mydocs/docs/foo.doc"
+        delete     "/home/user2/mydocs/docs"
+        delete    "/home/user2/mydocs/images/image1.jpg"
+        delete    "/home/user2/mydocs/images/image2.jpg"
+        delete    "/home/user2/mydocs/images/image3.jpg"
+        delete    "/home/user2/mydocs/images/image3.jpg"
+        delete     "/home/user2/mydocs/images"
+        delete     "/home/user2/mydocs"
 )
 ```
 #### Borradon sólo el contenido  
@@ -375,16 +375,16 @@ print_r($del);
 
 #salidas
 Array (
-	[0] => 9
-	[1] =>
-		delete	"/home/user2/mydocs/docs/bar.doc"
-		delete	"/home/user2/mydocs/docs/foo.doc"
-		delete 	"/home/user2/mydocs/docs"
-		delete	"/home/user2/mydocs/images/image1.jpg"
-		delete	"/home/user2/mydocs/images/image2.jpg"
-		delete	"/home/user2/mydocs/images/image3.jpg"
-		delete	"/home/user2/mydocs/images/image3.jpg"
-		delete 	"/home/user2/mydocs/images"
+    [0] => 9
+    [1] =>
+        delete    "/home/user2/mydocs/docs/bar.doc"
+        delete    "/home/user2/mydocs/docs/foo.doc"
+        delete     "/home/user2/mydocs/docs"
+        delete    "/home/user2/mydocs/images/image1.jpg"
+        delete    "/home/user2/mydocs/images/image2.jpg"
+        delete    "/home/user2/mydocs/images/image3.jpg"
+        delete    "/home/user2/mydocs/images/image3.jpg"
+        delete     "/home/user2/mydocs/images"
 )
 ```
 

@@ -147,12 +147,12 @@ print_r($ftp->ls());
 
 # Salida
 Array (
-	[0] => public_html/functions.js
-	[1] => public_html/images
-	[2] => public_html/images/logo.jpg
-	[3] => public_html/images/header.jpg
-	[4] => public_html/index.html
-	[5] => public_html/style.css
+    [0] => public_html/functions.js
+    [1] => public_html/images
+    [2] => public_html/images/logo.jpg
+    [3] => public_html/images/header.jpg
+    [4] => public_html/index.html
+    [5] => public_html/style.css
 )
 
 # descarga
@@ -164,12 +164,12 @@ print_r($ngl("files")->ls("c:/tmp", null, null, true));
 
 # Salida
 Array (
-	[0] => c:/tmp/public_html/functions.js
-	[1] => c:/tmp/public_html/images
-	[2] => c:/tmp/public_html/images/logo.jpg
-	[3] => c:/tmp/public_html/images/header.jpg
-	[4] => c:/tmp/public_html/index.html
-	[5] => c:/tmp/public_html/style.css
+    [0] => c:/tmp/public_html/functions.js
+    [1] => c:/tmp/public_html/images
+    [2] => c:/tmp/public_html/images/logo.jpg
+    [3] => c:/tmp/public_html/images/header.jpg
+    [4] => c:/tmp/public_html/index.html
+    [5] => c:/tmp/public_html/style.css
 )
 ```
 
@@ -280,10 +280,10 @@ print_r($ftp->ls());
 
 # Salida
 Array (
-	[0] => functions.js
-	[1] => *images
-	[2] => index.html
-	[3] => style.css
+    [0] => functions.js
+    [1] => *images
+    [2] => index.html
+    [3] => style.css
 )
 
 # nuevos directorios
@@ -295,12 +295,12 @@ print_r($ftp->ls());
 
 # Salida
 Array (
-	[0] => *css
-	[1] => functions.js
-	[2] => *images
-	[3] => *images_1
-	[4] => index.html
-	[5] => style.css
+    [0] => *css
+    [1] => functions.js
+    [2] => *images
+    [3] => *images_1
+    [4] => index.html
+    [5] => style.css
 )
 ```
 
@@ -342,10 +342,10 @@ print_r($ftp->ls());
 
 # Salida
 Array (
-	[0] => functions.js
-	[1] => *images
-	[2] => index.html
-	[3] => style.css
+    [0] => functions.js
+    [1] => *images
+    [2] => index.html
+    [3] => style.css
 )
 
 # nuevos directorios
@@ -356,10 +356,10 @@ print_r($ftp->ls());
 
 # Salida
 Array (
-	[0] => functions.js
-	[1] => *images
-	[2] => home.html
-	[3] => style.css
+    [0] => functions.js
+    [1] => *images
+    [2] => home.html
+    [3] => style.css
 )
 ```
 

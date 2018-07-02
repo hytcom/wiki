@@ -146,25 +146,25 @@ $bar = $foo->query("SELECT * FROM `users`");
 
 [b]print_r($bar->getall());[/b]
 Array (
-	0 => Array(id => 1, name => Juan, age => 36),
-	1 => Array(id => 2, name => Pedro, age => 28),
-	2 => Array(id => 3, name => Manuel, age => 36)
+    0 => Array(id => 1, name => Juan, age => 36),
+    1 => Array(id => 2, name => Pedro, age => 28),
+    2 => Array(id => 3, name => Manuel, age => 36)
 );
 
 [b]print_r($bar->getall(name));[/b]
 Array (
-	0 => Juan,
-	1 => Pedro,
-	2 => Manuel
+    0 => Juan,
+    1 => Pedro,
+    2 => Manuel
 );
 
 [b]print_r($bar->getall(#age));[/b]
 Array (
-	36 => Array(
-		0 => Array(id => 1, name => Juan, age => 36),
-		1 => Array(id => 3, name => Manuel, age => 36)
-	),
-	28 => Array(id => 2, name => Pedro, age => 28)
+    36 => Array(
+        0 => Array(id => 1, name => Juan, age => 36),
+        1 => Array(id => 3, name => Manuel, age => 36)
+    ),
+    28 => Array(id => 2, name => Pedro, age => 28)
 );
 ```
 
