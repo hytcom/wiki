@@ -15,10 +15,10 @@ Fechas.
 # MÃ©todos
 |MÃ©todo|DescripciÃ³n|
 |---|---|
-|[format](#format)|Formatea un valor en segundos, segÃºn $sFormat|
+|[format](#format)|Formatea un valor en segundos, según $sFormat|
 |[microtimer](#microtimer)|Retorna la cantidad de segundos transcurridos desde $nTimeIni|
-|[now](#now)|Retorna un array con los nombres de los dÃ­as de la semana y meses del aÃ±o en el array bidimensional basado en los valores de las constantes NGL_DATE...|
-|[settings](#settings)|Retorna un array con los nombres de los dÃ­as de la semana y meses del aÃ±o en el array bidimensional basado en los valores de las constantes NGL_DATE...|
+|[now](#now)|Retorna un array con los nombres de los días de la semana y meses del año en el array bidimensional basado en los valores de las constantes NGL_DATE...|
+|[settings](#settings)|Retorna un array con los nombres de los días de la semana y meses del año en el array bidimensional basado en los valores de las constantes NGL_DATE...|
 
   
 &nbsp;

@@ -65,12 +65,12 @@ M茅todos auxiliares para el parseo de una cadena JSQL.
 # M茅todos
 |M茅todo|Descripci贸n|
 |---|---|
-|[Condition](#Condition)|Transforma la representaci贸n JSQL de una condici贸n y la retorna en formato SQL aplicando los m茅todos nglJSQL::column, nglJSQL::operator y nglJSQL::...|
-|[column](#column)|Transforma la representaci贸n JSQL de una columna y la retorna en formato SQLFormatos v谩lidos y sus resultados["TABLE.FIELD", "ALIAS"] => `TABLE`.`FI...|
-|[conditions](#conditions)|Transforma un array de condiciones JSQL en una sentencia WHERE o en un grupo de par de valores SQL SETFormatos v谩lidos y sus resultados["TABLE1.FIELD...|
+|[Condition](#Condition)|Transforma la representaci髇 JSQL de una condici髇 y la retorna en formato SQL aplicando los m閠odos nglJSQL::column, nglJSQL::operator y nglJSQL::...|
+|[column](#column)|Transforma la representaci髇 JSQL de una columna y la retorna en formato SQLFormatos v醠idos y sus resultados["TABLE.FIELD", "ALIAS"] => `TABLE`.`FI...|
+|[conditions](#conditions)|Transforma un array de condiciones JSQL en una sentencia WHERE o en un grupo de par de valores SQL SETFormatos v醠idos y sus resultados["TABLE1.FIELD...|
 |[decode](#decode)|Transforma una cadena JSON en un Array asociativo|
 |[encode](#encode)|Transforma un Array asociativo en una cadena JSON|
-|[operator](#operator)|Retorna un operador v谩lido en funci贸n su codificaci贸n, invocando al m茅todo nglCommon::strOperator:eq: = (Equal)noteq: != (Not equal)lt:  (Greater ...|
+|[operator](#operator)|Retorna un operador v醠ido en funci髇 su codificaci髇, invocando al m閠odo nglCommon::strOperator:eq: = (Equal)noteq: != (Not equal)lt:  (Greater ...|
 |[value](#value)|Prepara un valor en formato JSQL para ser usado en una consulta SQL|
 
   

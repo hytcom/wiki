@@ -39,11 +39,11 @@ Implementa la clase 'phpseclib', de algoritmos de encriptaci贸n
 # M茅todos
 |M茅todo|Descripci贸n|
 |---|---|
-|[SetKey](#SetKey)|Aplica la clave de encriptaci贸n/desencriptaci贸n en el objeto principal, a traves del m茅todo setKey|
-|[decrypt](#decrypt)|Desencripta una cadena con el m茅todo seleccionado|
-|[encrypt](#encrypt)|Encripta una cadena con el m茅todo seleccionado|
-|[keys](#keys)|Genera un array con el par de claves p煤blica y privada cuando el modo de encriptaci贸n es RSA|
-|[type](#type)|Establece el m茅todo de encriptaci贸n. M茅todos soportados:aesblowfishdestripledesrc2rc4rijndaelrsatwofish|
+|[SetKey](#SetKey)|Aplica la clave de encriptaci髇/desencriptaci髇 en el objeto principal, a traves del m閠odo setKey|
+|[decrypt](#decrypt)|Desencripta una cadena con el m閠odo seleccionado|
+|[encrypt](#encrypt)|Encripta una cadena con el m閠odo seleccionado|
+|[keys](#keys)|Genera un array con el par de claves p鷅lica y privada cuando el modo de encriptaci髇 es RSA|
+|[type](#type)|Establece el m閠odo de encriptaci髇. M閠odos soportados:aesblowfishdestripledesrc2rc4rijndaelrsatwofish|
 
   
 &nbsp;

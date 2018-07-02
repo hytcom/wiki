@@ -16,24 +16,24 @@ Este objeto nuclea m√©todos de conversi√≥n de datos entre las siguientes escruct
 # M√©todos
 |M√©todo|Descripci√≥n|
 |---|---|
-|[CSVParseLine](#CSVParseLine)|auxiliar del m√©todo nglShift::csvToArray. convierte una linea CSV en un array|
-|[CastValue](#CastValue)|Auxiliar del m√©todo nglShift::cast|
-|[HTMLTableParser](#HTMLTableParser)|Auxiliar del m√©todo htmlToArray|
-|[JSONChar](#JSONChar)|Auxiliar del m√©todo nglShift::jsonEncode encargado de codificar un caracter para que sea v√°lido dentro de una cadena UTF-8|
-|[JSONNameValuePair](#JSONNameValuePair)|Auxiliar del m√©todo nglShift::jsonEncode encargado generar un par ordenado NOMBRE:VALOR v√°lido|
-|[JSONReduceString](#JSONReduceString)|Auxiliar del m√©todo nglShift::jsonDecode encargado limpiar el c√≥digo antes de ser parseado|
-|[XMLChildren](#XMLChildren)|Auxiliar del m√©todo ngl:Babel::xmlToArray utilizado para recorrer el objeto XML de manera recursiva|
-|[cast](#cast)|Formatea el valor $mValue seg√∫n $sCastType, siempre que se encuentre dentro de los tipos:arraybooleandoubleintegerNULLobjectstring|
+|[CSVParseLine](#CSVParseLine)|auxiliar del mÈtodo nglShift::csvToArray. convierte una linea CSV en un array|
+|[CastValue](#CastValue)|Auxiliar del mÈtodo nglShift::cast|
+|[HTMLTableParser](#HTMLTableParser)|Auxiliar del mÈtodo htmlToArray|
+|[JSONChar](#JSONChar)|Auxiliar del mÈtodo nglShift::jsonEncode encargado de codificar un caracter para que sea v·lido dentro de una cadena UTF-8|
+|[JSONNameValuePair](#JSONNameValuePair)|Auxiliar del mÈtodo nglShift::jsonEncode encargado generar un par ordenado NOMBRE:VALOR v·lido|
+|[JSONReduceString](#JSONReduceString)|Auxiliar del mÈtodo nglShift::jsonDecode encargado limpiar el cÛdigo antes de ser parseado|
+|[XMLChildren](#XMLChildren)|Auxiliar del mÈtodo ngl:Babel::xmlToArray utilizado para recorrer el objeto XML de manera recursiva|
+|[cast](#cast)|Formatea el valor $mValue seg˙n $sCastType, siempre que se encuentre dentro de los tipos:arraybooleandoubleintegerNULLobjectstring|
 |[convert](#convert)|Convierte una estructura de datos en otra|
 |[csvEncode](#csvEncode)|Genera una cadena formateada como CSV partiendo de un Array|
-|[csvToArray](#csvToArray)|convierte un texto CSV (una l√≠nea o conjunto de ellas) en un array bidimensional|
+|[csvToArray](#csvToArray)|convierte un texto CSV (una lÌnea o conjunto de ellas) en un array bidimensional|
 |[fixedExplode](#fixedExplode)|Convierte una cadena en Array separando sus partes por caracter fijo|
-|[fixedImplode](#fixedImplode)|Convierte un Array en una cadena respetando las logitudes de positions. Si la longuitud de la cadena es superior al valor de positions, el valor ser√°...|
+|[fixedImplode](#fixedImplode)|Convierte un Array en una cadena respetando las logitudes de positions. Si la longuitud de la cadena es superior al valor de positions, el valor ser·...|
 |[html](#html)|Genera una salida HTML a partir de un Array|
 |[htmlToArray](#htmlToArray)|Convierte una Tabla HTML en un array, utilizando el objeto DOMDocument.Las tablas pueden o no tener THEAD y TBODY. En el caso de tener THEAD los valor...|
 |[jsonDecode](#jsonDecode)|Decodifica una cadena JSON de un Array|
 |[jsonEncode](#jsonEncode)|Codifica un valor en una cadena JSON|
-|[jsonFormat](#jsonFormat)|Auxiliar del m√©todo nglShift::jsonEncode encargado generar un par ordenado NOMBRE:VALOR v√°lido|
+|[jsonFormat](#jsonFormat)|Auxiliar del mÈtodo nglShift::jsonEncode encargado generar un par ordenado NOMBRE:VALOR v·lido|
 |[objFromArray](#objFromArray)|Convierte un Array en un Objeto de manera recursiva|
 |[objToArray](#objToArray)|Convierte un objeto en un array asosiativo de manera recursiva|
 |[xmlEncode](#xmlEncode)|Convierte un array en una estructura XML|

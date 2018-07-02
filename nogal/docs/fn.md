@@ -428,14 +428,14 @@ donde:<ul><li>**field** =  es el indice por el cual se ordenará</li><li>**order
 #### $aFlags de un ordenamiento por 2 columnas  
 ```php
 $aFruits = array(
-→array("name"=>"lemon", "color"=>"yellow"),
-→array("name"=>"orange", "color"=>"orange"),
-→array("name"=>"apple", "color"=>"red")
+    array("name"=>"lemon", "color"=>"yellow"),
+    array("name"=>"orange", "color"=>"orange"),
+    array("name"=>"apple", "color"=>"red")
 );
 
 arrayMultiSort($aFruits, array(
-→array("field"=>"name", "order"=>"desc", "type"=>2),
-→array("field"=>"color", "type"=>3)
+    array("field"=>"name", "order"=>"desc", "type"=>2),
+    array("field"=>"color", "type"=>3)
 ));
 ```
 
@@ -1346,60 +1346,60 @@ entrando en cada uno de los nodos \$sChildrenNode. En cada interacción se ejecu
 #### Formato de árbol #1  
 ```php
 $aFamily = array(
-→ array(
-→→ "name" => "Emily Summer",
-→→ "age" => 78,
-→→ "_children" => array(
-→→→→ array(
-→→→→→ "name"=>"Marge Charles",
-→→→→→ "age" => 50,
-→→→→→ "_children" => array(
-→→→→→→ array("name"=>"Sara Smith", "age"=>20),
-→→→→→→ array("name"=>"Max Smith", "age"=>17)
-→→→→ )
-→→→ )
-→→ )
-→ ),
-→
-→ array(
-→→ "name" => "Rod Smith",
-→→ "age" => 80,
-→→ "_children" => array(
-→→→→ array(
-→→→→→ "name"=>"John Smith",
-→→→→→ "age" => 54,
-→→→→→ "_children" => array(
-→→→→→→ array("name"=>"Sara Smith", "age"=>20),
-→→→→→→ array("name"=>"Max Smith", "age"=>17)
-→→→→ )
-→→→ ),
+     array(
+         "name" => "Emily Summer",
+         "age" => 78,
+         "_children" => array(
+                 array(
+                     "name"=>"Marge Charles",
+                     "age" => 50,
+                     "_children" => array(
+                         array("name"=>"Sara Smith", "age"=>20),
+                         array("name"=>"Max Smith", "age"=>17)
+                 )
+             )
+         )
+     ),
+    
+     array(
+         "name" => "Rod Smith",
+         "age" => 80,
+         "_children" => array(
+                 array(
+                     "name"=>"John Smith",
+                     "age" => 54,
+                     "_children" => array(
+                         array("name"=>"Sara Smith", "age"=>20),
+                         array("name"=>"Max Smith", "age"=>17)
+                 )
+             ),
 
-→→→ array(
-→→→→ "name"=>"Susan Smith",
-→→→→ "age" => 49,
-→→→→ "_children" => array(
-→→→→→ array("name"=>"Ralph Astley")
-→→→→ )
-→→→ )
-→→ )
-→ )
+             array(
+                 "name"=>"Susan Smith",
+                 "age" => 49,
+                 "_children" => array(
+                     array("name"=>"Ralph Astley")
+                 )
+             )
+         )
+     )
 );
 ```
 #### Formato de árbol #2  
 ```php
 $aFamily = array(
-→ "name" => "Emily Summer",
-→ "age" => 78,
-→ "_children" => array(
-→→→ array(
-→→→→ "name"=>"Marge Charles",
-→→→→ "age" => 50,
-→→→→ "_children" => array(
-→→→→→ array("name"=>"Sara Smith", "age"=>20),
-→→→→→ array("name"=>"Max Smith", "age"=>17)
-→→→ )
-→→ )
-→ )
+     "name" => "Emily Summer",
+     "age" => 78,
+     "_children" => array(
+             array(
+                 "name"=>"Marge Charles",
+                 "age" => 50,
+                 "_children" => array(
+                     array("name"=>"Sara Smith", "age"=>20),
+                     array("name"=>"Max Smith", "age"=>17)
+             )
+         )
+     )
 );
 ```
 #### Ejemplo de función del usuario  

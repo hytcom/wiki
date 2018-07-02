@@ -18,13 +18,13 @@ Establece y almacena las variables por sistema de NOGAL.<ul><li>**ERRORS** =  c√
 |M√©todo|Descripci√≥n|
 |---|---|
 |[AccentedChars](#AccentedChars)|Retorna un array asociativo con los caracteres acentuados y su equivalente sin acento, donde la clave es el caracter acentuado y el valor el caracter ...|
-|[SetErrors](#SetErrors)|Setea los mensajes de error del sistema en la variable ERRORSSetErrors leera los archivos de configuraci√≥n de errores de __nogal__/data/errorse inten...|
+|[SetErrors](#SetErrors)|Setea los mensajes de error del sistema en la variable ERRORSSetErrors leera los archivos de configuraciÛn de errores de __nogal__/data/errorse inten...|
 |[SetIP](#SetIP)|En caso de existir setea el valor de la variable $_SERVER["REMOTE_ADDR"] en la variable IPde lo contrario la setea como NULL|
 |[SetRegexs](#SetRegexs)|Almacena expresiones regulares de uso frecuente en la variable REGEX|
 |[SetSelf](#SetSelf)|almacena los datos de la ruta del archivo actual en la variable SELF|
 |[SetUID](#SetUID)|En caso de existir setea el valor de la variable $_SESSION[NGL_SESSION_INDEX]["UID"] en la variable UIDde lo contrario la setea como NULL|
-|[SetVersion](#SetVersion)|Almacena los datos de la versi√≥n de NOGAL en la variable VERSION|
-|[__get](#__get)|M√©todo m√°gico encargado de retornar los valores de la variable $VARS cuando es invocada por medio de $ngl("sysvar")si no se especifica un nombre de ...|
+|[SetVersion](#SetVersion)|Almacena los datos de la versiÛn de NOGAL en la variable VERSION|
+|[__get](#__get)|MÈtodo m·gico encargado de retornar los valores de la variable $VARS cuando es invocada por medio de $ngl("sysvar")si no se especifica un nombre de ...|
 
   
 &nbsp;

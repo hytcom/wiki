@@ -29,11 +29,11 @@ Implementa la clase 'barcode-generator', que genera c贸digos de barras (third-pa
 # M茅todos
 |M茅todo|Descripci贸n|
 |---|---|
-|[html](#html)|Genera y retorna el c贸digo de barras en formato HTML|
-|[image](#image)|Genera y retorna el puntero de la imagen del c贸digo de barras|
-|[png](#png)|Genera y retorna el c贸digo de barras en formato PNG|
-|[svg](#svg)|Genera y retorna el c贸digo de barras en formato SVG|
-|[text](#text)|Genera y retorna una secuencia de 0 y 1 del c贸digo de barras|
+|[html](#html)|Genera y retorna el c骴igo de barras en formato HTML|
+|[image](#image)|Genera y retorna el puntero de la imagen del c骴igo de barras|
+|[png](#png)|Genera y retorna el c骴igo de barras en formato PNG|
+|[svg](#svg)|Genera y retorna el c骴igo de barras en formato SVG|
+|[text](#text)|Genera y retorna una secuencia de 0 y 1 del c骴igo de barras|
 
   
 &nbsp;

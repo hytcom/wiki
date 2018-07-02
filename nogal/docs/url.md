@@ -42,12 +42,12 @@ Parsea URLs en sus diferentes componentes, permite actualizarlos y volver confor
 # M√©todos
 |M√©todo|Descripci√≥n|
 |---|---|
-|[QueryString](#QueryString)|Convierte un Array en una cadena de variables v√°lidad para ser enviada v√≠a GET o POST|
-|[get](#get)|Retorna la URL activa, ya sea la cargada por el aguamento URL o la √∫ltima generada por el m√©todo nglURL::unparse.|
-|[parse](#parse)|Descompone una URL en los atributos del objeto y retorna los datos en un array asociativo. Si $sURL no es una cadena, retornar√° FALSE|
+|[QueryString](#QueryString)|Convierte un Array en una cadena de variables v·lidad para ser enviada vÌa GET o POST|
+|[get](#get)|Retorna la URL activa, ya sea la cargada por el aguamento URL o la ˙ltima generada por el mÈtodo nglURL::unparse.|
+|[parse](#parse)|Descompone una URL en los atributos del objeto y retorna los datos en un array asociativo. Si $sURL no es una cadena, retornar· FALSE|
 |[parts](#parts)|Retorna todas las partes de la URL previamente generadas por nglURL::parse que estos pueden haber sufrido actualizaciones.|
-|[unparse](#unparse)|Compone una URL uniendo los atributos del objeto. Si el par√°metro query es ignorado si existe params, ya que estos pueden haber sufrido actualizacion...|
-|[update](#update)|Permite actualizar las distintas partes de la URL basandose en las partes generadas nglURL::parse.nglURL::parse se autoejecutar√° si a√∫n no ha sido e...|
+|[unparse](#unparse)|Compone una URL uniendo los atributos del objeto. Si el par·metro query es ignorado si existe params, ya que estos pueden haber sufrido actualizacion...|
+|[update](#update)|Permite actualizar las distintas partes de la URL basandose en las partes generadas nglURL::parse.nglURL::parse se autoejecutar· si a˙n no ha sido e...|
 
   
 &nbsp;

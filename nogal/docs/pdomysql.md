@@ -40,19 +40,19 @@ Gestiona conexciones con bases de datos MySQL
 # M茅todos
 |M茅todo|Descripci贸n|
 |---|---|
-|[Error](#Error)|Muestra el mensaje de Error generado por el fallo m谩s reciente|
-|[PrepareValues](#PrepareValues)|Auxiliar de los m茅todos insert y update.Prepara el array asociativo o la cadena de variables para ser utilizados en las sentencias.Cuando los valores...|
-|[close](#close)|Finaliza la conexi贸n con la base de datos|
-|[connect](#connect)|Establece la conexi贸n con la base de datos|
-|[destroy](#destroy)|Cierra la conexi贸n y destruye el objeto|
-|[escape](#escape)|Escapa un valor para ser inclu铆do de manera segura en una sentencia SQL|
+|[Error](#Error)|Muestra el mensaje de Error generado por el fallo m醩 reciente|
+|[PrepareValues](#PrepareValues)|Auxiliar de los m閠odos insert y update.Prepara el array asociativo o la cadena de variables para ser utilizados en las sentencias.Cuando los valores...|
+|[close](#close)|Finaliza la conexi髇 con la base de datos|
+|[connect](#connect)|Establece la conexi髇 con la base de datos|
+|[destroy](#destroy)|Cierra la conexi髇 y destruye el objeto|
+|[escape](#escape)|Escapa un valor para ser inclu韉o de manera segura en una sentencia SQL|
 |[exec](#exec)|Ejecuta una sentencia SQL y retorna un objecto mysqli_result|
 |[insert](#insert)|Inserta un nuevo registro en una tabla|
 |[jsqlParser](#jsqlParser)|Convierte una sentencia JSQL y retorna una sentencia SQL|
 |[mexec](#mexec)|Ejecuta varias sentencias SQL separadas por ; y retorna un array de objectos mysqli_result|
 |[mquery](#mquery)|Ejecuta varias sentencias SQL separadas por ; y retorna un array de objectos nglDBMySQLQuery, o TRUE cuando DO esta activo|
 |[query](#query)|Ejecuta una sentencia SQL y retorna un objecto nglDBMySQLQuery|
-|[update](#update)|Actualiza todos los registros que cumplan con la condici贸n $sWhere|
+|[update](#update)|Actualiza todos los registros que cumplan con la condici髇 $sWhere|
 
   
 &nbsp;
