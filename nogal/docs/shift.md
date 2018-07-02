@@ -17,13 +17,13 @@ Este objeto nuclea métodos de conversión de datos entre las siguientes escruct
 |Método|Descripción|
 |---|---|
 |[CSVParseLine](#CSVParseLine)|auxiliar del método nglShift::csvToArray|
-|[CastValue](#CastValue)|Auxiliar del método nglShift::cast|
+|[CastValue](#CastValue)|Auxiliar del método nglShift|
 |[HTMLTableParser](#HTMLTableParser)|Auxiliar del método htmlToArray|
-|[JSONChar](#JSONChar)|Auxiliar del método nglShift::jsonEncode encargado de codificar un caracter para que sea válido dentro de una cadena UTF-8|
-|[JSONNameValuePair](#JSONNameValuePair)|Auxiliar del método nglShift::jsonEncode encargado generar un par ordenado NOMBRE:VALOR válido|
-|[JSONReduceString](#JSONReduceString)|Auxiliar del método nglShift::jsonDecode encargado limpiar el código antes de ser parseado|
-|[XMLChildren](#XMLChildren)|Auxiliar del método ngl:Babel::xmlToArray utilizado para recorrer el objeto XML de manera recursiva|
-|[cast](#cast)|			Formatea el valor $mValue según $sCastType, siempre que se encuentre dentro de los tipos:							array				boolean				double				integer				NULL				object				string					|
+|[JSONChar](#JSONChar)|Auxiliar del método nglShift|
+|[JSONNameValuePair](#JSONNameValuePair)|Auxiliar del método nglShift|
+|[JSONReduceString](#JSONReduceString)|Auxiliar del método nglShift|
+|[XMLChildren](#XMLChildren)|Auxiliar del método ngl|
+|[cast](#cast)|			Formatea el valor $mValue según $sCastType, siempre que se encuentre dentro de los tipos|
 |[convert](#convert)|Convierte una estructura de datos en otra|
 |[csvEncode](#csvEncode)|Genera una cadena formateada como CSV partiendo de un Array|
 |[csvToArray](#csvToArray)|convierte un texto CSV (una línea o conjunto de ellas) en un array bidimensional|
@@ -33,7 +33,7 @@ Este objeto nuclea métodos de conversión de datos entre las siguientes escruct
 |[htmlToArray](#htmlToArray)|			Convierte una Tabla HTML en un array, utilizando el objeto DOMDocument|
 |[jsonDecode](#jsonDecode)|Decodifica una cadena JSON de un Array|
 |[jsonEncode](#jsonEncode)|Codifica un valor en una cadena JSON|
-|[jsonFormat](#jsonFormat)|Auxiliar del método nglShift::jsonEncode encargado generar un par ordenado NOMBRE:VALOR válido|
+|[jsonFormat](#jsonFormat)|Auxiliar del método nglShift|
 |[objFromArray](#objFromArray)|Convierte un Array en un Objeto de manera recursiva|
 |[objToArray](#objToArray)|Convierte un objeto en un array asosiativo de manera recursiva|
 |[xmlEncode](#xmlEncode)|Convierte un array en una estructura XML|

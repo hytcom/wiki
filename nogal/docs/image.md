@@ -61,7 +61,7 @@ Los filtros disponibles son:<ul><li>**blur** =  Pone borrosa la imagen</li><li>*
 |Método|Descripción|
 |---|---|
 |[CalculatePosition](#CalculatePosition)|			Calcula el TOP y LEFT en base al alto y ancho de la imagen y el alto y ancho del canvas en función del parámetro $sPosition|
-|[CalculateSizes](#CalculateSizes)|			Calcula el el ancho y alto de una imagen y su lienzo manteniendo la proporcionalidad			Este método retorna un array de 4 indices:							ancho				alto				ancho del lienzo				alto del lienzo					|
+|[CalculateSizes](#CalculateSizes)|			Calcula el el ancho y alto de una imagen y su lienzo manteniendo la proporcionalidad			Este método retorna un array de 4 indices|
 |[CreateCopy](#CreateCopy)|Redimensiona el lienzo de la imagen|
 |[GetTransparency](#GetTransparency)|Obtiene el grado de transparencia de la imagen|
 |[base64](#base64)|Exporta el contenido de imagen para ser usado como origen de datos de  o css|

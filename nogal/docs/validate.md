@@ -30,7 +30,7 @@ Cuenta con dos valores de configuración que impactan en el procesamiento de la 
 |[ValidateByType](#ValidateByType)|Validador de variables por tipo|
 |[addvar](#addvar)|			Almacena valores que luego pueden ser utilizados como variables dentro de las reglas|
 |[request](#request)|			Valida y reemplaza los valores de la variable global $_REQUEST en base al archivo REQUEST|
-|[resetvars](#resetvars)|Desetea las variables seteadas con ngl:Validate::addvar|
+|[resetvars](#resetvars)|Desetea las variables seteadas con ngl|
 |[validate](#validate)|Valida la variable $mVariables aplicando las reglas $mRules|
 
   

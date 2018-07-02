@@ -86,7 +86,7 @@ Motor de plantillas.
 |[MakeMatch](#MakeMatch)|Auxiliar de nglRind::TagReader, genera el código de una variable|
 |[PHPFunctions](#PHPFunctions)|Parsea la cadena $sAllowedPHPFunctions y setea las funciones PHP permitidas en las plantillas en la variable $_SET["PHP_FUNCTIONS"]|
 |[PathBuilder](#PathBuilder)|Construye el path de la plantilla activa en base a los argumentos y atributos cargados|
-|[ProcessCode](#ProcessCode)|				Procesa el código fuente aplicando:									Limpieza de comentarios					Reemplazo de comandos simples					Reemplazo de constantes					Limpieza de codigo PHP					Procesamiento de variables					Reemplazo de comandos rind							|
+|[ProcessCode](#ProcessCode)|				Procesa el código fuente aplicando|
 |[ProcessConstants](#ProcessConstants)|Retorna el código con las llamadas a las constantes citadas en $_SET["CONSTANTS"]|
 |[PutSlashes](#PutSlashes)|Auxiliar de ::InNotInArgument, escapa con slashes los HTML QUOTES de los argumentos|
 |[QuoteArguments](#QuoteArguments)|Chequea y re-entrecomilla los argumentos de los comandos|

@@ -49,7 +49,7 @@ Características Principales:
 # Métodos
 |Método|Descripción|
 |---|---|
-|[DownloadTree](#DownloadTree)|Método auxiliar de DOWNLOAD ejecutado por medio del método nglCommon::treeWalk|
+|[DownloadTree](#DownloadTree)|Método auxiliar de DOWNLOAD ejecutado por medio del método nglCommon|
 |[GetChmod](#GetChmod)|Convierte una cadena de permisos RWX en un valor CHMOD|
 |[GetTimestamp](#GetTimestamp)|Convierte las fechas de ftp_rawlist en un valor timestamp|
 |[Logger](#Logger)|Registra una cadena en el atributo log|

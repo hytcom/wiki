@@ -49,7 +49,7 @@ Cuando el nombre este presedido de un **@**, el resultado será tratado con **ng
 |[lastid](#lastid)|Retorna el ID de la fila de la sentencia INSERT más reciente realizada en la base de datos|
 |[load](#load)|Carga la ultima consulta ejecutada del driver|
 |[reset](#reset)|Reinicia el conjunto de resultados a la primera fila|
-|[rows](#rows)|Alias de nglDBMySQLQuery::count|
+|[rows](#rows)|Alias de nglDBMySQLQuery|
 |[toArray](#toArray)|			Obtiene todas las filas de resultados en forma de array bidimensional utilizando mysqli_result::fetch_array en modo asociativo|
 
   

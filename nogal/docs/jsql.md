@@ -70,7 +70,7 @@ Métodos auxiliares para el parseo de una cadena JSQL.
 |[conditions](#conditions)|			Transforma un array de condiciones JSQL en una sentencia WHERE o en un grupo de par de valores SQL SET			Formatos válidos y sus resultados							["TABLE1|
 |[decode](#decode)|Transforma una cadena JSON en un Array asociativo|
 |[encode](#encode)|Transforma un Array asociativo en una cadena JSON|
-|[operator](#operator)|			Retorna un operador válido en función su codificación, invocando al método nglCommon::strOperator:							eq: = (Equal)				noteq: != (Not equal)				lt:  (Greater than)				lteq: = (Greater than or equal to)				like: LIKE (Like)				rlike: RLIKE (Rlike)				and: AND (And)				or: OR (Or)				xor: XOR (Exclusive OR)				in: IN (Exclusive OR)				notin: NOT (Exclusive OR)				is: IS (Is)				isnot: IS NOT (Is Not)						Si $sSign no se encuentra entre las opciones, se retornará el signo =			Si $sSign no es especificado, se retornará un array asosiativo con todos los operadores		|
+|[operator](#operator)|			Retorna un operador válido en función su codificación, invocando al método nglCommon|
 |[value](#value)|Prepara un valor en formato JSQL para ser usado en una consulta SQL|
 
   
