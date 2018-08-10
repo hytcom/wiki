@@ -125,6 +125,12 @@ echo $ngl("rind")->stamp();
 {$foobar->foo.bar} <br />
 ```
 <br />
+En caso de que querramos utilizar un texto que represente una variable, y que éste no sea reemplazado por su valor, debemos utilizar llaves dobles a modo de escape. Esto mismo aplica para las palabras claves dentro de los loops.
+
+``` html
+{$foo} = imprime el valor de la variable $foo<br />
+{{$foo}} = imprime el texto literal {$foo}
+```
 
 Existen otros tipos de datos predefinidos en las plantillas con sus propios atajos para ser impresos, pero los iremos viendo más adelante, en la medida en que avancemos.
 <br />

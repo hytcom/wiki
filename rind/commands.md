@@ -40,8 +40,6 @@ Las plantillas (documentos HTML) son procesados por Rind y cacheados hasta que s
 
 ## ABC
 Nociones y fundamentos básicos del sistema  
-
- *explain* function ( );
   
 ### Ejemplos  
 #### Llamadas a Variables/Constantes  
@@ -127,6 +125,14 @@ $current = "text";
 {$colors[{$preferences.back}]["R"]}
 {$colors[{$preferences.($current)}]["B"]}
 ```
+
+En caso de que querramos utilizar un texto que represente una variable, y que éste no sea reemplazado por su valor, debemos utilizar llaves dobles a modo de escape. Esto mismo aplica para las palabras claves dentro de los loops.
+
+``` html
+{$foo} = imprime el valor de la variable $foo<br />
+{{$foo}} = imprime el texto literal {$foo}
+```
+
 #### Comandos  
 ```php
 # Todos los comandos respetan la sintaxis

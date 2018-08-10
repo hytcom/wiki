@@ -473,6 +473,7 @@ Lista desplegable de opciones
 - **source** = opciones en formato `{label,value}` donde *label* será el texto a mostrar y *value* el valor del option. También se puede utilizar `{group,label,value}` para agrupar opciones
 #### opcionales
 - **empty** = texto que se mostrará cuando no se encuentren opciones en *source*, utilizado con *selects* dinámicos
+- **nodefault** = si tiene seteado cualquier valor, no se mostrará la opción por defecto **--** con valor **0**
 - **lnk-source** = URL del origen de datos de un **combo relacionado**, que se ejecutará al seleccionar un valor
 - **lnk-target** = jquery selector del combo relacionado, *select*, *radio** o *checkbox*
 - **attribs**
@@ -536,6 +537,7 @@ Cada llamada al elemento que contenga unicamente el atributo *title*, cerrará e
 #### opcionales
 - **open** = indica el inicio del grupo de tabs, se espera *1* o *true*
 - **close** = indica el cierre del grupo de tabs, se espera *1* o *true*
+- **id** = valor que se asignará al atributo **ID** del elemento **LI** utilizado como pestaña
 
 ```json
 ```json
@@ -624,7 +626,8 @@ Selector de año. Variante de **date** con `"type":"yearpicker"`
 # Elementos Avanzados
 ## relation
 El elemento se muestra como un botón que abre un diálogo en el que se pueden cargar diferentes tipos de documentos.
-El propósito del elemento es generar vinculos entre el formulario actual y datos adyacentes. Conceptualmente es identico a un elemento combo (select, radios, etc), pero ofrece un mayor control y versatilidad.  
+El propósito del elemento es generar vinculos entre el formulario actual y datos adyacentes. Conceptualmente es identico a un elemento combo (select, radios, etc), pero ofrece un mayor control y versatilidad. Los valores seleccionados son pasados al formulario principal por medio de los eventos de los elementos que tengan el atributo **data-relation**, en cuyo caso se agregará a **target** el contenido del comentario del mismo.
+
 Hay diferentes variantes para este elmento, algunos de sus usos:
 - dar de alta un registro *hijo* y vincularlo al *padre*. Ej: datos de la persona responsable de una empresa (ver ejemplo #2)
 - seleccionar uno o varios valores de un grupo de resultados. Ej: vincular rubro/s a un producto
@@ -635,11 +638,11 @@ Hay diferentes variantes para este elmento, algunos de sus usos:
 - **button** = texto que se mostrará en el botón
 - **source** = URL del formulario. Puede contener variables, esto permite, por ejemplo, pasar el **id** de un registro maestro
 #### opcionales
-- **value** = URL de un documento que contiene los valores previamentes cargados (ej: tabla con contactos). Este documento se cargará en *target* al inicio (excepto con *skipfirst =* **true**) y después de cada envio satisfactorio
+- **value** = URL de un documento que contiene los valores previamentes cargados (ej: tabla con contactos). Este documento se cargará en *target* al inicio (excepto con *skipfirst =* **true**) y después de cada envio satisfactorio. Si el valor es **true** la respuesta de *source* será tratada como un JSON y se intentarán actualizar el contenido HTML de los elementos, que dentro de *target*, tengo el valor del atributo **data-id** igual a alguna de las **key** del JSON (ver ejemplo #4)
 - **target** = selector jquery de la zona en donde se cargará *value*
 - **skipfirst** = evita el primer llamado al domumento *value*. Valore aceptados "true" y "false"
 - **closebutton** = determina si debe mostrarse el botón "cerrar" en el diálogo, se espera *1* o *true*, por defecto: *false*
-- **noform** = determina si el contenido de el diálogo debe presentarse como un formulario, se espera *1* o *true* por defecto: *false*
+- **isform** = determina si el contenido de el diálogo debe presentarse como un formulario, se espera *0* o *false* por defecto: *true*
 - **size** = tamaño del dialogo (hg xl lg md sm xs)
 #### en los documentos *source*
 - **data-relation** = por medio de este atributo se puede asignar funcionalidades a los elementos de los documentos cargados en el diálogo
@@ -647,6 +650,8 @@ Hay diferentes variantes para este elmento, algunos de sus usos:
 	- **multiple** = añade a *target* el contenido del comentario del elemento (ver ejemplo #2)
 	- **once** = setea de manera única el contenido del comentario en el *target* (aplicable al ejemplo #2)
 	- **onceclose** = identico al anterior, pero luego de setearlo cierra el diálogo (ver ejemplo #3)
+- **data-relation-tag** = cuando el contenido 
+
 
 ##### [ Ejemplo 1 ]
 ```json
@@ -657,6 +662,7 @@ Hay diferentes variantes para este elmento, algunos de sus usos:
 	"value": "contacts.php?parent=1234",
 	"source": "new_contact.php?parent=1234", 
 	"target": "#contzone",
+	"isform": "true",
 	"skipfirst": "true",
 	"size": "md"
 }]
@@ -715,7 +721,6 @@ Hay diferentes variantes para este elmento, algunos de sus usos:
     "class": "btn btn-primary",
     "source": "categories.php", 
     "target": "#categories",
-    "noform": "true",
     "size": "md"
 }],
 ```
@@ -751,7 +756,6 @@ Hay diferentes variantes para este elmento, algunos de sus usos:
     "class": "btn btn-primary",
     "source": "search.php", 
     "target": "#marks",
-    "noform": "true",
     "size": "md"
 }]
 ```
@@ -801,6 +805,61 @@ Hay diferentes variantes para este elmento, algunos de sus usos:
         <td class="text-center"><a class="btn btn-xs btn-primary" data-relation="onceclose">seleccionar<!-- <span><input type="hidden" name="mark" value="3" />Reebok<br /></span> --></a></td>
     </tr>
 </table>
+```
+
+#### [ ejemplo 4 ]
+```html
+*** Tabla de datos ***
+
+<table class='table table-bordered'>
+	<thead>
+		<tr>
+			<th>#</th>
+			<th>Nombre</th>
+			<th>Apellido</th>
+			<th>Usuario</th>
+			<th>Acciones</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr id='user-1'>
+			<th>1</th>
+			<td>Mark</td>
+			<td>Otto</td>
+			<td data-id='username'>@motto</td>
+			<td class='text-center'>
+				<input type='button' value='editar' class='btn btn-primary btn-sm form-relation' 
+					data-target='#user-1' 
+					data-source='relation_form_update?id=1234' 
+					data-value='true' 
+					data-isform='true' 
+					data-skipfirst='true' 
+				/>
+			</td>
+		</tr>
+	</tbody>
+</table>
+```
+```html
+*** Formulario de Edición (result.php) ***
+
+<form action="demo/action" method="post">
+	<input type="hidden" name="NGL_ONCECODE" value="<rind:once />" />
+	<div class="row margin-md margin-only-bottom">
+		<div class="col">
+			<rind:mergefile>
+				<@source>/bithive/forms</@source>
+				<@multiple json>
+					[
+						["input", {"name":"firstname", "label":"Nombre", "value":"Mark", "attribs": {"readonly":"readonly"}}],
+						["input", {"name":"lastname", "label":"Apellido", "value":"Otto", "attribs": {"readonly":"readonly"}}],
+						["input", {"name":"username", "label":"Usuario", "value":"@motomoto", "attribs": {"readonly":"readonly"}}]
+					]
+				</@multiple>
+			</rind:mergefile>
+		</div>
+	</div>
+</form>
 ```
 
 &nbsp;

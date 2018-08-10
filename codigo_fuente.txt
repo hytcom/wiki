@@ -1,0 +1,422 @@
+
+                                </> abcontenidos®
+
+                           SINTAXIS DEL CODIGO FUENTE
+                                   v20100326
+
+                        los ejemplos están basados en PHP
+                     pero deberán adaptarse a cada lenguaje.
+
+================================================================================
+ Referencias
+================================================================================
+
+	CamelCase:
+	----------
+
+		CamelCase es la práctica de escribir frases o palabras compuestas
+		eliminando los espacios y poniendo en mayúscula la primera letra de cada
+		palabra. El nombre viene del parecido de estas mayúsculas, entre las
+		demás letras, con las jorobas de los camellos.
+
+		Existen dos tipos de CamelCase:
+
+		- UpperCamelCase
+			cuando la primer letra de todas las palabras está escrita en 
+			mayúscula.
+				Ej: EjemploDeUpperCamelCase
+
+		- lowerCamelCase
+			cuando la primer letra de la primer palabra está escrita en 
+			minúscula y las primeras letras de las demás palabras están escritas
+			en mayúsculas.
+				Ej: ejemploDeLowerCamelCase
+
+	Patrones:
+	---------
+
+		En el presente documento, al utilizar patrones de expresiones de matcheo 
+		se utilizan alunas palabras clave que hacen referencia a conjuntos 
+		especificos de caracteres:
+
+			SYMBOLS = todos los caracteres listados en "simbolos_utf-8.txt".
+			CHARS = todos los caracteres que NO aparecen en dicho listado.
+
+
+================================================================================
+ Comentarios
+================================================================================
+
+	Los comentarios dentro del código fuente deberán ser siempre en el idioma
+	nativo del proyecto. En el caso de un producto del tipo CANNED (enlatado)
+	se deberá agregar a cada comentario su traducción al inglés, separada esta 
+	por un doble pipe (||), salvo cuando el idioma nativo sea el inglés.
+	Los comentarios, no deberán superar el caracter 80 de cada línea.
+
+	Modos de comentar:
+	------------------
+		Usualmente podemos encontrarnos con dos maneras de comentar, una lineal
+		y otra en bloque.
+		
+		En el caso de comentarios lineales el ó los caracteres de inicio y fin
+		del comentario deberán estar en la misma línea que el texto del
+		comentario.
+		
+		Para el caso de los comentarios en bloque, el o los caracteres de inicio
+		deben estar una línea más arriba que el texto del comentario y el o los
+		caracteres de cierre una linea mas abajo. Tanto el inicio como el cierre
+		del comentario deben comenzar en la misma columna que el primer párrafo
+		del comentario.
+
+
+	Hay 5 tipos de comentarios:
+	---------------------------
+		
+		- Encabezados
+			ubicados en la parte superior del archivo, describen la utilidad del
+			mismo y en el caso de ser necesario, dan nota de las variables de
+			entrada y salida.
+			
+			En el caso de las clases este encabezado hace referencia al objetivo
+			de las mismas, requisitos, clases externas, licencia y aviso legal.
+			Modelo de encabezado en el archivo: encabezado_de_clases.txt
+
+		- Sección:
+			dan inicio a una sección dentro del código fuente, son especialmente
+			utiles para subdividir de manera organizadas las clases o archivos
+			de configuración. Deben estar conformados por 3 líneas:
+				- una línea de signos igual (=).
+				- tabulación y denominación en mayúsculas en idioma nativo.
+				- una línea de signos igual (=).
+			
+			Al igual que los demás, estos comentarios no podrán superar la
+			columna 80.
+
+		- Títulos:
+			son los encabezados para una porción determinada de código, deben
+			estar enteramente en mayúsculas seguidos de un espacio y una línea 
+			de guiones medios hasta el caracter 80.
+
+		- Subtítulos:
+			utilizados para subdividir una porción de código que ya posee un
+			comentario del tipo Título. El formato de los subtitulos es: primer 
+			letra de la primer palabra en mayúscula, el resto de la frase 
+			enteramente en minúsculas, un espacio y una línea de guiones medios 
+			hasta el caracter 80.
+
+		- Acciones:
+			describen una porción específica del código, deben estar por 
+			completo en minúsculas.
+
+		- Funciones (métodos):
+			darán nota del objetivo de la misma, datos de entrada (parámetros) y
+			los datos de salida.
+
+
+	Ejemplos:
+	---------
+		comentario lineal:
+			// texto del comentario
+
+		comentario en bloque:
+			/*	
+			texto del comentario
+			texto del comentario
+			texto del comentario
+			*/
+
+		comentario con traducción:
+			// texto del comentario || comment text
+
+		sección
+			#===================================================================
+			#	SECCION
+			#===================================================================
+
+		título:
+			// TITULO ----------------------------------------------------------
+
+		subtítulo:
+			// Subtitulo -------------------------------------------------------
+
+		acciones:
+			// acciones --------------------------------------------------------
+
+		comentario de función, en formato JSON:
+			name = nombre de la funcion
+			type = tipo de función: public | private | protected | static
+			description = descripción de las acciones de la función
+			arguments = argumentos de la clase utilizados por la función 
+				separados por coma (,)
+			attributes = atributos de la clase utilizados por la función 
+				separados por coma (,)
+			setattributes = atributos del objecto que son modificados durante 
+				la ejecución de la función separador por coma (,)
+			
+		
+			/** FUNCTION {
+				"name" : "nombreFuncion",
+				"type" : "public",
+				"description" : "descripción de la función de ejemplo",
+				"arguments" : "arg1,arg1,argn",
+				"setattributes" : "
+					. ej: handler, tmp, etc
+				",
+				"return" : "boolean | string | number | array | object"
+			} **/
+			CODIGO DE LA FUNCION
+
+
+================================================================================
+ Tabulación
+================================================================================
+
+	La estructura de tabulación deberá ser jerárquica.
+
+		correcto:
+			$sFoo = "foo bar";
+			echo $sFoo."es una frase de prueba";
+			unset($sFoo);
+
+		incorrecto:
+			$sFoo = "foo bar";
+				echo $sFoo."es una frase de prueba";
+					unset($sFoo);
+			
+	
+	En el caso de las estructuras de control, bucles, declaración de funciones y
+	clases, la llave de apertura "{" deberá colocarse en la misma fila que el
+	inicio del bloque y a un espacio del paréntesis de cierre ")" de la
+	declaración de parámetros en el caso de tenerlos.
+	Por su lado la llave de cierre "}" deberá ser colocada una línea por debajo
+	de la última línea del bloque de instrucciones y en la misma columna que el 
+	inicio de dicho bloque, por ejemplo:
+
+		correcto:
+			function fooBar() {
+				...
+			}
+
+		incorrecto:
+			function fooBar()
+			{
+				...
+			}
+
+	Cuando el bloque de instrucciones esté compuesto por una única instrucción,
+	se admitirá la siguiente sintaxis:
+	
+		for($x=0; $<10; $x++) { echo "el valor de x es $x\n"; }
+
+	ACLARACION
+	----------
+	A pesar de que el lenguaje lo permita, por una cuestión de normalización no
+	se admitirá una sintaxis del tipo:
+	
+		for($x=0; $<10; $x++) echo "el valor de x es $x\n";
+	
+	(Notese la ausencia de llaves)
+
+
+================================================================================
+ Variables
+================================================================================
+
+	Por varios motivos, las variables siempre deberán ser denominadas en idioma 
+	inglés. Entre ellos se encuentran:
+
+		- la internaciolización del código fuente.
+		- por lo general las palabras en inglés son más cortas y descriptivas.
+		- por consiguiente el código fuente ocupará menos bytes.
+	
+	Salvo algunas excepciones detalladas mas adelante, los nombres deberán 
+	matchear con el patrón:
+		
+		/(r)?(a|b|e|f|h|m|n|o|s|t|u)([A-Z][a-zA-Z0-9]*)+/ (lowerCamelCase)
+	
+	donde el primer caracter del nombre expresa el tipo de variable:
+		a = matriz (Array)
+		b = boolean (Boolean)
+		e = elemento (Element)
+		f = nombre de función (Function Name)
+		h = apuntador (Handler)
+		m = indeterminada (Mixed)
+		n = número (Int | Float)
+		o = objeto (Object)
+		s = cadena de texto (String)
+		u = tipo indefinida (Undefined)
+		v = matriz cuyos indices no son ofuscados por el compilador (Vector)
+	
+	y el resto de los caracteres son una combinación de palabras que describen
+	el dato; en donde el primer caracter de cada palabra debe estar en
+	mayúscula, por ejemplo:
+
+		$sFontFamily:
+			con sólo ver el nombre de la variable sabemos que el dato es
+			del tipo cadena (s) y que alberga el nombre de una tipografía.
+			
+		$sVariable1:
+			no es una sintáxis aceptable, ya que "sVariable1" no expresa
+			nada con respecto al dato, a pesar de que sepamos que es del tipo 
+			cadena (s).
+	
+	Cuando el nombre de una variable comience con la letra r, siginifica que es
+	una variable del tipo reservada para el compilador hytCompiler, por lo tanto
+	este no alterará su nombre al momento de ofuscar. Si además esta variable es
+	del tipo a (Array), el compilador no alterará sus índices alfanuméricos, por
+	ejemplo:
+
+		$raXMLValues:
+			este es un array del tipo reservado a los efectos del compilador.
+	
+	esto mismo ocurrirá con los arrays del tipo v, con la diferencia de que el
+	nombre del array si será ofuscado, ejemplo:
+	
+		Antes de ofuscar	=> Despues de ofuscar
+		$aFile["basename"]	=> $Ox1A["Ox69"]
+		$raFile["basename"] => $raFile["basename"]
+		$vFile["basename"]	=> $Ox1A["basename"]
+	
+	Excepciones:
+	------------
+		Se asumirá que toda variable que matchee con /[a-z]{1}/ dentro de un
+		entorno de bucle (FOR, FOREACH, WHILE, DO) es del tipo "n" y es un
+		contador, por ejemplo:
+			$x, $i
+		
+		Se admitirán denominaciones del tipo /(o)?([a-z][a-zA-Z0-9])+/ para 
+		objetos, por ejemplo:
+			$ngl y $db son equivalentes a $oNgl y $oDB
+		
+		es decir, que en el caso de los objetos, no es necesario utilizar el 
+		caracter de denominación "o". Si el nombre de la variable no posee
+		caracter alguno de denominación se asumirá que es un objeto, ya que no
+		es usual encontrar un objeto que no esté seguido de un nombre de
+		variable o método.
+		
+		Las variables de configuración deberán ser del tipo array (a) y su
+		nombre deberá matchear con /[A-Z][A-Z\_]+(s)?/, utilizando el guión bajo
+		"_" para separar palabras. Ejemplos:
+
+			$CONFIG
+			$SYSTEM_VARS
+
+	Matrices:
+	---------
+		En el caso de matrices alfanuméricas los índices de las mismas deberán 
+		matchear con el patrón:
+		
+			/[a-z][a-z0-9_]*/  (sensible a mayúsculas)
+		
+		utilizando el guión bajo "_" para separar palabras, por ejemplo:
+			
+			$aTextProperties["font_size"]
+
+
+	ACLARACION:
+	-----------
+		A estas reglas se le deberán adicionar los requisitos de la sintáxis 
+		para variables del lenguaje.
+
+
+================================================================================
+ Clases y Funciones
+================================================================================
+
+	Los nombres de las clases y funciones siempre deberán ser denominadas en 
+	idioma inglés.
+	
+	Para las clases, los nombres deberán matchear con el patrón:
+
+		/([a-z]{3})?[A-Z][a-zA-Z0-9]+/  (lowerCamelCase)
+	
+	Donde, cuando sea necesario, los tres primeros caracteres deberán ser un 
+	trigrama que identifique a la clase dentro de un proyecto.
+
+	En el caso de los nombres de las funciones se debe hacer diferencia entre
+	los métodos públicos. Por ello se deberá usar: 
+
+		Publicas/Protegidas: /[a-z]+[a-zA-Z0-9]*/  (lowerCamelCase)
+		Privadas: /[A-Z]+[a-zA-Z0-9]*/  (UpperCamelCase)
+
+	Los nombres deberán ser una combinación de palabras que describan la acción
+	de la función, ejemplos:
+
+		getWidth():
+			claramente da nota de la acción que desempeña.
+
+		newFunction():
+			no es una sintaxis aceptable, ya que "newFunction" no expresa
+			nada con respecto a la acción.
+
+	El tipo de dato devuelto por la función se verá reflejado en la acción de
+	retorno, o para el caso de funciones que modifiquen un dato externo, en el
+	nombre de las variables de entrada.
+
+	Excepciones:
+	------------
+		Existen dos casos de excepciones a esta última regla:
+			- cuando la función retorna: TRUE, FALSE o NULL.
+			- aquellas funciones que retornen códigos de error, o éxito, y 
+			  tengan un diccionario de códigos definido.
+
+
+	Dentro de una clase las funciones deberán estar ordenadas alfabeticamente.
+
+
+	En el caso de las clases, el nombre de estas deberá coincidir con el nombre
+	del archivo que las contiene sin sufijos ni extención.
+	Por ejemplo, en el caso de una clase denominada "nglMail", el nombre del
+	archivo deberá ser "nglMail.php"
+
+
+================================================================================
+ Constantes
+================================================================================
+
+	Al igual que las variables, las constantes siempre deberán ser denominadas
+	en idioma inglés.
+
+	Sin excepción los nombres deberán matchear con el patrón:
+		
+		/([A-Z]_)([A-Z0-9_])+/ (sensible a mayúsculas)
+
+
+================================================================================
+ Bases de Datos
+================================================================================
+
+	Los nombres de las tablas, vistas y campos siempre deberán ser denominados 
+	en idioma inglés.
+	
+	Estos deberán matchear con los patrones:
+	
+		Tablas y Vistas:
+		/([a-z]{3}_)?[a-z0-9_]+/  (sensible a mayúsculas)
+		
+		Campos:
+		/[a-z][a-z0-9_]+/  (sensible a mayúsculas)
+	
+	Para Tablas y Vistas, cuando sea necesario, los primeros tres caracteres 
+	deberán ser un trigrama que haga referencia al módulo al cual pertenecen.
+	
+	Todos los nombres deberán ser significativos y estar conformados por una
+	combinación de palabras que describan el dato, utilizando el guión bajo "_"
+	para separar palabras, ejemplos:
+	
+		Tablas y Vistas:
+			ent_entities
+			ent_entities_contacts
+		
+		Campos:
+			id_entity
+			name
+			added
+			zip_code
+	
+	Para aquellos casos en los que el campo de una tabla tenga como fin
+	establecer un estado, se deberán utilizar los valores:
+
+			NULL = eliminado
+			1 = activo
+			0 = inactivo
