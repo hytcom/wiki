@@ -2,7 +2,6 @@
 *the most simple PHP Framework* by hytcom.net
 ___
   
-
 # crypt
 ## nglCrypt *extends* nglStd [instanciable] [20160127]
 Implementa la clase 'phpseclib', de algoritmos de encriptación
@@ -23,7 +22,6 @@ Implementa la clase 'phpseclib', de algoritmos de encriptación
 				<li>rsa</li>
 				<li>twofish</li>
 			</ul>
-		  
 
 ## Argumentos
 |Argumento|Tipo|Default|Descripción|
@@ -31,8 +29,7 @@ Implementa la clase 'phpseclib', de algoritmos de encriptación
 |**text**|mixed||Cadena a encriptar/desencriptar|
 |**type**|string|aes|Método de encriptación|
 |**key**|mixed|null|Clave de encriptación|
-|**keyslen**|int|512|Longuitud de las claves. Minima admitida: 32|
-
+|**keyslen**|int|512|Longuitud de las claves. Minima admitida: 256|
   
 &nbsp;
 
