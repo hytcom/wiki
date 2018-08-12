@@ -1,10 +1,10 @@
 # Nogal v1.0
 *the most simple PHP Framework* by hytcom.net
+GitHub @arielbottero
 ___
   
-
 # barcode
-## nglBarCode *extends* nglStd [instanciable] [2018-08-11]
+## nglBarCode *extends* nglStd [instanciable] [2018-08-12]
 Implementa la clase 'barcode-generator' para generar códigos de barras
   
 ## Variables
@@ -16,13 +16,10 @@ Implementa la clase 'barcode-generator' para generar códigos de barras
 |---|---|---|---|
 |**color**|string|#000000|Color de las barras en formato #RRGGBB|
 |**content**|string|test1234|Contenido del código|
-|**margin**|int|2|Margen de la imagen generada|
 |**height**|int|30|Altura máxima de la imagen del código|
-|**options**|mixed|null|Argumento opcional empleado en algunos algoritmos:<ul><li>**code128** =  letra del comienzo del código (A, B ó C)</li><li>**code39** =  checksum (true ó false)</li><li>**ean13** =  book (true ó false)</li><li>**i25** =  checksum (true ó false)</li><li>**s25** =  checksum (true ó false)</li></ul>|
-|**resolution**|string|1|Resolución de la imagen del código|
+|**margin**|int|2|Margen de la imagen generada|
 |**size**|string|2|Tamaño de la tipografía en el código|
 |**type**|string|code128|Algoritmo utilizado para generar el código. Códigos soportados:<ul><li>CODE_39</li><li>CODE_39_CHECKSUM</li><li>CODE_39E</li><li>CODE_39E_CHECKSUM</li><li>CODE_93</li><li>STANDARD_2_5</li><li>STANDARD_2_5_CHECKSUM</li><li>INTERLEAVED_2_5</li><li>INTERLEAVED_2_5_CHECKSUM</li><li>CODE_128</li><li>CODE_128_A</li><li>CODE_128_B</li><li>CODE_128_C</li><li>EAN_2</li><li>EAN_5</li><li>EAN_8</li><li>EAN_13</li><li>UPC_A</li><li>UPC_E</li><li>MSI</li><li>MSI_CHECKSUM</li><li>POSTNET</li><li>PLANET</li><li>RMS4CC</li><li>KIX</li><li>IMB</li><li>CODABAR</li><li>CODE_11</li><li>PHARMA_CODE</li><li>PHARMA_CODE_TWO_TRACKS</li></ul>|
-
   
 &nbsp;
 
@@ -36,9 +33,7 @@ Implementa la clase 'barcode-generator' para generar códigos de barras
 |[svg](#svg)|Genera y retorna el código de barras en formato SVG|
 |[text](#text)|Genera y retorna una secuencia de 0 y 1 del código de barras|
 
-  
 &nbsp;
-
 
 ## base64
 Genera y retorna el código de barras en formato PNG Basa64  
@@ -56,7 +51,7 @@ Genera y retorna el código de barras en formato PNG Basa64
 #### impresión de código
 ```php
 # 50px de alto
-echo $ngl("barcode.")->height(50)->text("test")
+echo $ngl("barcode")->height(50)->text("test")
 ```
 
 &nbsp;
@@ -65,40 +60,6 @@ ___
 
 ## html
 Genera y retorna el código de barras en formato HTML  
-
-**[string]** =  *public* function ( *string* \$sContent, *string* \$sType, *string* \$nSize, *int* \$nHeight, *string* \$sColor );  
-
-|Argumento|Tipo|Default|Descripción|
-|---|---|---|---|
-|**\$sContent**|string|test1234|Contenido del código|
-|**\$sType**|string|code128|Algoritmo utilizado para generar el código. Códigos soportados:<ul><li>CODE_39</li><li>CODE_39_CHECKSUM</li><li>CODE_39E</li><li>CODE_39E_CHECKSUM</li><li>CODE_93</li><li>STANDARD_2_5</li><li>STANDARD_2_5_CHECKSUM</li><li>INTERLEAVED_2_5</li><li>INTERLEAVED_2_5_CHECKSUM</li><li>CODE_128</li><li>CODE_128_A</li><li>CODE_128_B</li><li>CODE_128_C</li><li>EAN_2</li><li>EAN_5</li><li>EAN_8</li><li>EAN_13</li><li>UPC_A</li><li>UPC_E</li><li>MSI</li><li>MSI_CHECKSUM</li><li>POSTNET</li><li>PLANET</li><li>RMS4CC</li><li>KIX</li><li>IMB</li><li>CODABAR</li><li>CODE_11</li><li>PHARMA_CODE</li><li>PHARMA_CODE_TWO_TRACKS</li></ul>|
-|**\$nSize**|string|2|Tamaño de la tipografía en el código|
-|**\$nHeight**|int|30|Altura máxima de la imagen del código|
-|**\$sColor**|string|#000000|Color de las barras en formato #RRGGBB|
-
-&nbsp;
-___
-&nbsp;
-
-## svg
-Genera y retorna el código de barras en formato SVG  
-
-**[string]** =  *public* function ( *string* \$sContent, *string* \$sType, *string* \$nSize, *int* \$nHeight, *string* \$sColor );  
-
-|Argumento|Tipo|Default|Descripción|
-|---|---|---|---|
-|**\$sContent**|string|test1234|Contenido del código|
-|**\$sType**|string|code128|Algoritmo utilizado para generar el código. Códigos soportados:<ul><li>CODE_39</li><li>CODE_39_CHECKSUM</li><li>CODE_39E</li><li>CODE_39E_CHECKSUM</li><li>CODE_93</li><li>STANDARD_2_5</li><li>STANDARD_2_5_CHECKSUM</li><li>INTERLEAVED_2_5</li><li>INTERLEAVED_2_5_CHECKSUM</li><li>CODE_128</li><li>CODE_128_A</li><li>CODE_128_B</li><li>CODE_128_C</li><li>EAN_2</li><li>EAN_5</li><li>EAN_8</li><li>EAN_13</li><li>UPC_A</li><li>UPC_E</li><li>MSI</li><li>MSI_CHECKSUM</li><li>POSTNET</li><li>PLANET</li><li>RMS4CC</li><li>KIX</li><li>IMB</li><li>CODABAR</li><li>CODE_11</li><li>PHARMA_CODE</li><li>PHARMA_CODE_TWO_TRACKS</li></ul>|
-|**\$nSize**|string|2|Tamaño de la tipografía en el código|
-|**\$nHeight**|int|30|Altura máxima de la imagen del código|
-|**\$sColor**|string|#000000|Color de las barras en formato #RRGGBB|
-
-&nbsp;
-___
-&nbsp;
-
-## png
-Genera y retorna el código de barras en formato PNG  
 
 **[string]** =  *public* function ( *string* \$sContent, *string* \$sType, *string* \$nSize, *int* \$nHeight, *string* \$sColor );  
 
@@ -138,6 +99,49 @@ $ngl("image.code")->load($barcode->image("test"))->view();
 ___
 &nbsp;
 
+## png
+Genera y retorna el código de barras en formato PNG  
+
+**[string]** =  *public* function ( *string* \$sContent, *string* \$sType, *string* \$nSize, *int* \$nHeight, *string* \$sColor );  
+
+|Argumento|Tipo|Default|Descripción|
+|---|---|---|---|
+|**\$sContent**|string|test1234|Contenido del código|
+|**\$sType**|string|code128|Algoritmo utilizado para generar el código. Códigos soportados:<ul><li>CODE_39</li><li>CODE_39_CHECKSUM</li><li>CODE_39E</li><li>CODE_39E_CHECKSUM</li><li>CODE_93</li><li>STANDARD_2_5</li><li>STANDARD_2_5_CHECKSUM</li><li>INTERLEAVED_2_5</li><li>INTERLEAVED_2_5_CHECKSUM</li><li>CODE_128</li><li>CODE_128_A</li><li>CODE_128_B</li><li>CODE_128_C</li><li>EAN_2</li><li>EAN_5</li><li>EAN_8</li><li>EAN_13</li><li>UPC_A</li><li>UPC_E</li><li>MSI</li><li>MSI_CHECKSUM</li><li>POSTNET</li><li>PLANET</li><li>RMS4CC</li><li>KIX</li><li>IMB</li><li>CODABAR</li><li>CODE_11</li><li>PHARMA_CODE</li><li>PHARMA_CODE_TWO_TRACKS</li></ul>|
+|**\$nSize**|string|2|Tamaño de la tipografía en el código|
+|**\$nHeight**|int|30|Altura máxima de la imagen del código|
+|**\$sColor**|string|#000000|Color de las barras en formato #RRGGBB|
+
+&nbsp;
+___
+&nbsp;
+
+## svg
+Genera y retorna el código de barras en formato SVG  
+
+**[string]** =  *public* function ( *string* \$sContent, *string* \$sType, *string* \$nSize, *int* \$nHeight, *string* \$sColor );  
+
+|Argumento|Tipo|Default|Descripción|
+|---|---|---|---|
+|**\$sContent**|string|test1234|Contenido del código|
+|**\$sType**|string|code128|Algoritmo utilizado para generar el código. Códigos soportados:<ul><li>CODE_39</li><li>CODE_39_CHECKSUM</li><li>CODE_39E</li><li>CODE_39E_CHECKSUM</li><li>CODE_93</li><li>STANDARD_2_5</li><li>STANDARD_2_5_CHECKSUM</li><li>INTERLEAVED_2_5</li><li>INTERLEAVED_2_5_CHECKSUM</li><li>CODE_128</li><li>CODE_128_A</li><li>CODE_128_B</li><li>CODE_128_C</li><li>EAN_2</li><li>EAN_5</li><li>EAN_8</li><li>EAN_13</li><li>UPC_A</li><li>UPC_E</li><li>MSI</li><li>MSI_CHECKSUM</li><li>POSTNET</li><li>PLANET</li><li>RMS4CC</li><li>KIX</li><li>IMB</li><li>CODABAR</li><li>CODE_11</li><li>PHARMA_CODE</li><li>PHARMA_CODE_TWO_TRACKS</li></ul>|
+|**\$nSize**|string|2|Tamaño de la tipografía en el código|
+|**\$nHeight**|int|30|Altura máxima de la imagen del código|
+|**\$sColor**|string|#000000|Color de las barras en formato #RRGGBB|
+
+&nbsp;
+___
+&nbsp;
+
+## SetType
+Establece el algoritmo utilizado para generar el códigoal invocar al argumento **type**.
+
+**[int]** =  *private* function ( *string* \$sType );  
+
+&nbsp;
+___
+&nbsp;
+
 ## text
 Genera y retorna una secuencia de 0 y 1 del código de barras  
 
@@ -152,7 +156,3 @@ Genera y retorna una secuencia de 0 y 1 del código de barras
 ```php
 echo $ngl("barcode.")->text("test")
 ```
-
-&nbsp;
-___
-&nbsp;

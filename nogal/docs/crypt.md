@@ -1,9 +1,10 @@
 # Nogal v1.0
 *the most simple PHP Framework* by hytcom.net
+GitHub @arielbottero
 ___
   
 # crypt
-## nglCrypt *extends* nglStd [instanciable] [20160127]
+## nglCrypt *extends* nglStd [instanciable] [2018-08-12]
 Implementa la clase 'phpseclib', de algoritmos de encriptación
   
 ## Variables
@@ -39,9 +40,9 @@ Implementa la clase 'phpseclib', de algoritmos de encriptación
 |[decrypt](#decrypt)|Desencripta una cadena con el método seleccionado|
 |[encrypt](#encrypt)|Encripta una cadena con el método seleccionado|
 |[keys](#keys)|Genera un array con el par de claves pública y privada cuando el modo de encriptación es RSA|
-|[rsamode](#RSAMode)|Prepara el objeto para utilizar el método de encriptación RSA|
-|[setkey](#SetKey)|Aplica la clave de encriptación/desencriptación al invocar al argumento **key**|
-|[settype](#SetType)|Establece el método de encriptación al invocar al argumento **type**|
+|[RSAMode](#rsamode)|Prepara el objeto para utilizar el método de encriptación RSA|
+|[SetKey](#setkey)|Aplica la clave de encriptación/desencriptación al invocar al argumento **key**|
+|[SetType](#settype)|Establece el método de encriptación al invocar al argumento **type**|
 
 &nbsp;
 
