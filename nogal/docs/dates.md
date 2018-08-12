@@ -1,15 +1,10 @@
-# Nogal v1.0
-*the most simple PHP Framework* by hytcom.net
-___
-  
-
-# dates
+# nogal::dates
 ## nglDates *extends* nglStd [main] [20160127]
 Fechas.
   
 ## Variables
+`private` $aSettings = Array bidimensional con los nombres de los días de la semana y meses del año
 
-  
 &nbsp;
 
 # Métodos
@@ -17,17 +12,20 @@ Fechas.
 |---|---|
 |[format](#format)|Formatea un valor en segundos, según $sFormat|
 |[microtimer](#microtimer)|Retorna la cantidad de segundos transcurridos desde $nTimeIni|
-|[now](#now)|Retorna un array con los nombres de los días de la semana y meses del año en el ...|
+|[info](#info)|Retorna un array con los nombres de los días de la semana y meses del año en el ...|
 |[settings](#settings)|Retorna un array con los nombres de los días de la semana y meses del año en el ...|
-
   
 &nbsp;
 
-
 ## settings
-Retorna un array con los nombres de los días de la semana y meses del año en el array bidimensional 
+Retorna un array con los nombres de los días de la semana y meses del año en un array bidimensional 
 basado en los valores de las constantes **NGL_DATE_DAYS** y **NGL_DATE_MONTHS**.
-los índices son:<ul><li>**days** =  valores de Domingo a Sábado</li><li>**days_short** =  Dom a Sáb</li><li>**months** =  valores de Enero a Diciembre</li><li>**months_short** =  valores de Ene a Dic</li></ul>todos sub-arrays comienzan en el índice 1  
+los índices son:
+- **days** =  valores de Domingo a Sábado
+- **days_short** =  Dom a Sáb
+- **months** =  valores de Enero a Diciembre
+- **months_short** =  valores de Ene a Dic
+todos sub-arrays comienzan en el índice 1  
 
 **[array]** =  *public* function ( );
   
@@ -43,19 +41,65 @@ echo $dt->settings()["months_short"][8]; // retornará Ago
 ___
 &nbsp;
 
-## now
-Retorna un array con los nombres de los días de la semana y meses del año en el array bidimensional 
-basado en los valores de las constantes **NGL_DATE_DAYS** y **NGL_DATE_MONTHS**.
-los índices son:<ul><li>**timestamp** =  candidad de segundos desde el 1/1/1970</li><li>**year** =  año en 4 dígitos</li><li>**month** =  mes en 2 dígitos</li><li>**day** =  día en 2 dígitos</li><li>**date** =  fecha en formato Y-m-d</li><li>**time** =  fecha en formato H:i:s</li><li>**hour** =  fecha en formato H:i</li><li>**datetime** =  fecha en formato Y-m-d H:i:s</li><li>**days** =  valores de Domingo a Sábado</li><li>**days_short** =  Dom a Sáb</li><li>**months** =  valores de Enero a Diciembre</li><li>**months_short** =  valores de Ene a Dic</li></ul>todos sub-arrays comienzan en el índice 1  
+## info
+Retorna un array con la información de una fecha determinada. Esta fecha puede ser un TIMESTAMP o cualquier formato soportado por strtotime().
+Los datos retornados son:
+- **timestamp:** candidad de segundos desde el 1/1/1970
+- **date:** en formato Y-m-d
+- **datetime:** Y-m-d H:i:s
+- **number:** número del día
+- **month:** mes en 2 dígitos
+- **year:** año en 4 dígitos
+- **week:** número de semana del año
+- **day_week:** número de día en la semana (0-6)
+- **single_month:** mes en 1 ó 2 dígitos
+- **single_year:** año en 2 dígitos
+- **day_name:** nombre del día basado en **settings**
+- **day_shortname:** nombre del día (tres letras) basado en **settings**
+- **month_name:** nombre del mes basado en **settings**
+- **month_shortname:** nombre corto del mes (tres letras) basado en **settings**
+- **ampm:** sigla AM ó PM
+- **hour_12:** hora en formato AM/PM
+- **hour:** hora en formato 24hs
+- **time:** hora completa en formato H:i:s
+- **minutes:** cantidad de minutos
+- **seconds:** cantidad de minutos
 
-**[array]** =  *public* function ( );
+**[array]** =  *public* function ( *mixed* \$mTime );  
+
+|Argumento|Tipo|Default|Descripción|
+|---|---|---|---|
+|**\$mTime**|mixed|now|Fecha en formato timestamp o una cadena que pueda ser decodificada por **strtotime**|
   
 ### Ejemplos  
 #### ejemplo  
 ```php
-$dt = $ngl("dates");
-echo $dt->settings()["days"][2]; // retornará Lunes
-echo $dt->settings()["months_short"][8]; // retornará Ago
+$now = $ngl("dates")->info();
+print_r($now);
+
+# salida
+Array (
+    [timestamp] => 1534359486
+    [date] => 2018-08-15
+    [datetime] => 2018-08-15 15:58:06
+    [number] => 15
+    [day] => 15
+    [month] => 08
+    [year] => 2018
+    [week] => 33
+    [day_week] => 3
+    [single_month] => 8
+    [single_year] => 18
+    [day_name] => Miércoles
+    [day_shortname] => Mié
+    [month_name] => Agosto
+    [month_shortname] => Ago
+    [ampm] => PM
+    [hour_12] => 03
+    [hour] => 15
+    [time] => 15:58:06
+    [minutes] => 06
+);
 ```
 
 &nbsp;
@@ -88,3 +132,8 @@ Retorna la cantidad de segundos transcurridos desde **\$nTimeIni**
 &nbsp;
 ___
 &nbsp;
+
+&nbsp;
+___
+<sub><b>nogal v1.0** - <em>the most simple PHP Framework</em></sub><br />
+<sup>&copy; 2018 by <a href="http://hytcom.net/nogal">hytcom.net/nogal</a> - <a href="https://github.com/arielbottero">@arielbottero</a></sup><br />
