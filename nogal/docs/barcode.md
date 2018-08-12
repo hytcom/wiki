@@ -160,6 +160,8 @@ echo $ngl("barcode")->text("test");
 
 &nbsp;
 ___
+<small>
 **nogal v1.0**<br />
 *the most simple PHP Framework*<br />
-hytcom.net/nogal
+[hytcom.net/nogal](http://hytcom.net/nogal)
+</small>

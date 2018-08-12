@@ -1,8 +1,4 @@
-# Nogal v1.0
-*the most simple PHP Framework* by hytcom.net
-___
-  
-# crypt
+# nogal::crypt
 ## nglCrypt *extends* nglStd [instanciable] [2018-08-12]
 Implementa la clase 'phpseclib', de algoritmos de encriptación
   
@@ -159,3 +155,11 @@ Métodos Soportados:
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sCrypter**|string|aes|Método de encriptación|
+
+&nbsp;
+___
+<small>
+**nogal v1.0**<br />
+*the most simple PHP Framework*<br />
+[hytcom.net/nogal](http://hytcom.net/nogal)
+</small>
