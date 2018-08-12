@@ -71,7 +71,7 @@ Los datos retornados son:
 
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
-|**\$mTime**|mixed|now|Fecha en formato timestamp o una cadena que pueda ser decodificada por **strtotime**|
+|**\$mTime**|mixed|now|Fecha en formato timestamp o una cadena que pueda ser decodificada por [strtotime](http://php.net/strtotime)|
   
 ### Ejemplos  
 #### ejemplo  

@@ -114,6 +114,7 @@ Array (
 ___
 &nbsp;
 
+# Privados
 ## RSAMode
 Prepara el objeto para utilizar el método de encriptación RSA. Chequeando y parseando la clave pública/privada
 
