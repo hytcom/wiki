@@ -158,6 +158,8 @@ echo $ngl("barcode")->text("test");
 # 1101001000010011110100101100100001011110010010011110100111100101001100011101011
 ```
 
+&nbsp;
 ___
-### Nogal v1.0
-*the most simple PHP Framework*<br />by hytcom.net
+**nogal v1.0**<br />
+*the most simple PHP Framework*<br />
+hytcom.net/nogal
