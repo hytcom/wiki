@@ -29,7 +29,7 @@ Implementa la clase 'phpseclib', de algoritmos de encriptación
 |**key**|mixed|null|Clave de encriptación|
 |**keyslen**|int|512|Longuitud de las claves. Minima admitida: 256|
 |**text**|mixed||Cadena a encriptar/desencriptar|
-|**type**|string|aes|Método de encriptación|
+|**type**|string|aes|Método de encriptación:<ul><li>aes</li><li>blowfish</li><li>des</li><li>tripledes</li><li>rc2</li><li>rc4</li><li>rijndael</li><li>rsa</li><li>twofish</li></ul>|
   
 &nbsp;
 
@@ -39,8 +39,9 @@ Implementa la clase 'phpseclib', de algoritmos de encriptación
 |[decrypt](#decrypt)|Desencripta una cadena con el método seleccionado|
 |[encrypt](#encrypt)|Encripta una cadena con el método seleccionado|
 |[keys](#keys)|Genera un array con el par de claves pública y privada cuando el modo de encriptación es RSA|
-|[SetKey](#SetKey)|Aplica la clave de encriptación/desencriptación en el objeto principal, a traves del método setKey del mismo|
-|[type](#type)|Establece el método de encriptación. Métodos soportados: aes, blowfish, des, tripledes, rc2, rc4, rijndael, rsa, twofish|
+|[RSAMode](#RSAMode)|Prepara el objeto para utilizar el método de encriptación RSA|
+|[SetKey](#SetKey)|Aplica la clave de encriptación/desencriptación al invocar al argumento **key**|
+|[SetType](#SetType)|Establece el método de encriptación al invocar al argumento **type**|
 
 &nbsp;
 
@@ -116,10 +117,18 @@ Array (
 ___
 &nbsp;
 
+## RSAMode
+Prepara el objeto para utilizar el método de encriptación RSA. Chequeando y parseando la clave pública/privada
+
+**[boolean]** =  *private* function ();  
+&nbsp;
+___
+&nbsp;
+
 ## SetKey
 Aplica la clave de encriptación/desencriptación en el objeto principal, a traves del método setKey del mismo
 
-**[boolean]** =  *protected* function ( *string* \$sKey );  
+**[boolean]** =  *private* function ( *string* \$sKey );  
 
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
@@ -129,10 +138,22 @@ Aplica la clave de encriptación/desencriptación en el objeto principal, a trav
 ___
 &nbsp;
 
-## type
-Establece el método de encriptación. Métodos soportados:<ul><li>aes</li><li>blowfish</li><li>des</li><li>tripledes</li><li>rc2</li><li>rc4</li><li>rijndael</li><li>rsa</li><li>twofish</li></ul>  
+## SetType
+Establece el método de encriptación al invocar al argumento **type**.
+Métodos Soportados:
+<ul>
+	<li>aes</li>
+	<li>blowfish</li>
+	<li>des</li>
+	<li>tripledes</li>
+	<li>rc2</li>
+	<li>rc4</li>
+	<li>rijndael</li>
+	<li>rsa</li>
+	<li>twofish</li>
+</ul>  
 
-**[$this]** =  *public* function ( *string* \$sCrypter );  
+**[$this]** =  *private* function ( *string* \$sCrypter );  
 
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
