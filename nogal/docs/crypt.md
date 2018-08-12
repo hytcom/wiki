@@ -158,6 +158,7 @@ Métodos Soportados:
 
 &nbsp;
 ___
-<small><b>nogal v1.0</b></small><br />
-<sup><em>the most simple PHP Framework</em></sup><br />
-<sub>by <a href="http://hytcom.net/nogal">hytcom.net/nogal</a></sub>
+<sup><b>nogal v1.0</b></sup><br />
+<sub><em>the most simple PHP Framework</em></sub><br />
+<sup>by <a href="http://hytcom.net/nogal">hytcom.net/nogal</a></sup><br />
+<sub><a href="https://github.com/arielbottero">@arielbottero</a><br />
