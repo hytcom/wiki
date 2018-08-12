@@ -1,8 +1,4 @@
-# Nogal v1.0
-*the most simple PHP Framework* by hytcom.net
-___
-  
-# barcode
+# nogal::barcode
 ## nglBarCode *extends* nglStd [instanciable] [2018-08-12]
 Implementa la clase 'barcode-generator' para generar códigos de barras
 ___
@@ -161,3 +157,7 @@ echo $ngl("barcode")->text("test");
 #salida
 # 1101001000010011110100101100100001011110010010011110100111100101001100011101011
 ```
+
+___
+### Nogal v1.0
+*the most simple PHP Framework*<br />by hytcom.net
