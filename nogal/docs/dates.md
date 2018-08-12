@@ -65,6 +65,8 @@ Los datos retornados son:
 - **minutes:** cantidad de minutos
 - **seconds:** cantidad de minutos
 
+&nbsp;
+
 **[array]** =  *public* function ( *mixed* \$mTime );  
 
 |Argumento|Tipo|Default|Descripción|
