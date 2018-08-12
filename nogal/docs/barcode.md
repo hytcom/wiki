@@ -31,7 +31,7 @@ Implementa la clase 'barcode-generator' para generar códigos de barras
 |[png](#png)|Genera y retorna el código de barras en formato PNG|
 |[svg](#svg)|Genera y retorna el código de barras en formato SVG|
 |[text](#text)|Genera y retorna una secuencia de 0 y 1 del código de barras|
-||**Privados**|
+|**Privados**||
 |[SetType](#settype)|Establece el algoritmo utilizado para generar el códigoal invocar al argumento **type**.|
 
 &nbsp;
@@ -91,7 +91,7 @@ Genera y retorna el puntero de la imagen del código de barras
 ### Ejemplos  
 #### impresión de imagen  
 ```php
-$barcode = $ngl("barcode.");
+$barcode = $ngl("barcode");
 $barcode->args(array("size" => 5, "margin" => 2));
 $ngl("image.code")->load($barcode->image("test"))->view();
 ```
@@ -144,7 +144,7 @@ ___
 &nbsp;
 
 ## text
-Genera y retorna una secuencia de 0 y 1 del código de barras  
+Genera y retorna una secuencia de 0 y 1 que representa código de barras. Donde cada valor equivale a un pixel de ancho y donde 1 significa barra y 0 significa espacio vacio
 
 **[string]** =  *public* function ( *string* \$sContent, *string* \$sType );  
 
@@ -155,5 +155,8 @@ Genera y retorna una secuencia de 0 y 1 del código de barras
 ### Ejemplos  
 #### impresión del texto  
 ```php
-echo $ngl("barcode.")->text("test")
+echo $ngl("barcode")->text("test1234");
+
+#salida
+# 1101001000010011110100101100100001011110010010011110100101110111101011001110010001011000100001001101100011101011 
 ```
