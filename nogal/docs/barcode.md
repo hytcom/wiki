@@ -30,8 +30,12 @@ Implementa la clase 'barcode-generator' para generar códigos de barras
 |[image](#image)|Genera y retorna el puntero de la imagen del código de barras|
 |[png](#png)|Genera y retorna el código de barras en formato PNG|
 |[svg](#svg)|Genera y retorna el código de barras en formato SVG|
-|[SetType](#settype)|Establece el algoritmo utilizado para generar el códigoal invocar al argumento **type**.|
 |[text](#text)|Genera y retorna una secuencia de 0 y 1 del código de barras|
+
+# Métodos Privados
+|Método|Descripción|
+|---|---|
+|[SetType](#settype)|Establece el algoritmo utilizado para generar el códigoal invocar al argumento **type**.|
 
 &nbsp;
 
