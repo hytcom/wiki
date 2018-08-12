@@ -41,10 +41,8 @@ Implementa la clase 'phpseclib', de algoritmos de encriptación
 |[encrypt](#encrypt)|Encripta una cadena con el método seleccionado|
 |[keys](#keys)|Genera un array con el par de claves pública y privada cuando el modo de encript...|
 |[type](#type)|Establece el método de encriptación. Métodos soportados:aesblowfishdestripledesr...|
-
   
 &nbsp;
-
 
 ## type
 Establece el método de encriptación. Métodos soportados:<ul><li>aes</li><li>blowfish</li><li>des</li><li>tripledes</li><li>rc2</li><li>rc4</li><li>rijndael</li><li>rsa</li><li>twofish</li></ul>  
