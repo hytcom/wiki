@@ -160,5 +160,5 @@ echo $ngl("barcode")->text("test");
 
 &nbsp;
 ___
-<sup><b>nogal v1.0</b> | <em>the most simple PHP Framework</em></sup><br />
-<sub>by <a href="http://hytcom.net/nogal">hytcom.net/nogal</a> | <a href="https://github.com/arielbottero">@arielbottero</a></sub><br />
+<sub><b>nogal v1.0</b> - <em>the most simple PHP Framework</em></sub><br />
+<sup>&copy; 2018 by <a href="http://hytcom.net/nogal">hytcom.net/nogal</a> - <a href="https://github.com/arielbottero">@arielbottero</a></sup><br />
