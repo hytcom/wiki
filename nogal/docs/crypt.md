@@ -26,32 +26,60 @@ Implementa la clase 'phpseclib', de algoritmos de encriptación
 ## Argumentos
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
-|**text**|mixed||Cadena a encriptar/desencriptar|
-|**type**|string|aes|Método de encriptación|
 |**key**|mixed|null|Clave de encriptación|
 |**keyslen**|int|512|Longuitud de las claves. Minima admitida: 256|
+|**text**|mixed||Cadena a encriptar/desencriptar|
+|**type**|string|aes|Método de encriptación|
   
 &nbsp;
 
 # Métodos
 |Método|Descripción|
 |---|---|
-|[SetKey](#SetKey)|Aplica la clave de encriptación/desencriptación en el objeto principal, a traves...|
 |[decrypt](#decrypt)|Desencripta una cadena con el método seleccionado|
 |[encrypt](#encrypt)|Encripta una cadena con el método seleccionado|
-|[keys](#keys)|Genera un array con el par de claves pública y privada cuando el modo de encript...|
-|[type](#type)|Establece el método de encriptación. Métodos soportados:aesblowfishdestripledesr...|
-  
+|[keys](#keys)|Genera un array con el par de claves pública y privada cuando el modo de encriptación es RSA|
+|[SetKey](#SetKey)|Aplica la clave de encriptación/desencriptación en el objeto principal, a traves del método setKey del mismo|
+|[type](#type)|Establece el método de encriptación. Métodos soportados: aes, blowfish, des, tripledes, rc2, rc4, rijndael, rsa, twofish|
+
 &nbsp;
 
-## type
-Establece el método de encriptación. Métodos soportados:<ul><li>aes</li><li>blowfish</li><li>des</li><li>tripledes</li><li>rc2</li><li>rc4</li><li>rijndael</li><li>rsa</li><li>twofish</li></ul>  
+## decrypt
+Desencripta una cadena con el método seleccionado  
 
-**[$this]** =  *public* function ( *string* \$sCrypter );  
+**[string]** =  *public* function ( *string* \$sString );  
 
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
-|**\$sCrypter**|string|aes|Método de encriptación|
+|**\$sString**|string||Cadena a desencriptar|
+
+&nbsp;
+___
+&nbsp;
+
+## encrypt
+Encripta una cadena con el método seleccionado  
+
+**[string]** =  *public* function ( *mixed* \$sString );  
+
+|Argumento|Tipo|Default|Descripción|
+|---|---|---|---|
+|**\$sString**|mixed||Cadena a encriptar/desencriptar|
+### Ejemplos  
+#### AES  
+```php
+echo $ngl("crypt.")
+    ->key("asd123")
+    ->text("hola mundo!")
+    ->encrypt()
+;
+```
+#### RSA  
+```php
+$cr = $ngl("crypt.");
+$keys = $cr->type("rsa")->keys();
+$cr->key($keys["private"])->encrypt("hola mundo!");
+```
 
 &nbsp;
 ___
@@ -88,49 +116,8 @@ Array (
 ___
 &nbsp;
 
-## encrypt
-Encripta una cadena con el método seleccionado  
-
-**[string]** =  *public* function ( *mixed* \$sString );  
-
-|Argumento|Tipo|Default|Descripción|
-|---|---|---|---|
-|**\$sString**|mixed||Cadena a encriptar/desencriptar|
-### Ejemplos  
-#### AES  
-```php
-echo $ngl("crypt.")
-    ->key("asd123")
-    ->text("hola mundo!")
-    ->encrypt()
-;
-```
-#### RSA  
-```php
-$cr = $ngl("crypt.");
-$keys = $cr->type("rsa")->keys();
-$cr->key($keys["private"])->encrypt("hola mundo!");
-```
-
-&nbsp;
-___
-&nbsp;
-
-## decrypt
-Desencripta una cadena con el método seleccionado  
-
-**[string]** =  *public* function ( *string* \$sString );  
-
-|Argumento|Tipo|Default|Descripción|
-|---|---|---|---|
-|**\$sString**|string||Cadena a desencriptar|
-
-&nbsp;
-___
-&nbsp;
-
 ## SetKey
-Aplica la clave de encriptación/desencriptación en el objeto principal, a traves del método setKey  
+Aplica la clave de encriptación/desencriptación en el objeto principal, a traves del método setKey del mismo
 
 **[boolean]** =  *protected* function ( *string* \$sKey );  
 
@@ -141,3 +128,12 @@ Aplica la clave de encriptación/desencriptación en el objeto principal, a trav
 &nbsp;
 ___
 &nbsp;
+
+## type
+Establece el método de encriptación. Métodos soportados:<ul><li>aes</li><li>blowfish</li><li>des</li><li>tripledes</li><li>rc2</li><li>rc4</li><li>rijndael</li><li>rsa</li><li>twofish</li></ul>  
+
+**[$this]** =  *public* function ( *string* \$sCrypter );  
+
+|Argumento|Tipo|Default|Descripción|
+|---|---|---|---|
+|**\$sCrypter**|string|aes|Método de encriptación|
