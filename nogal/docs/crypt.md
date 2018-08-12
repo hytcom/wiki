@@ -158,8 +158,8 @@ Métodos Soportados:
 
 &nbsp;
 ___
-<sub><sup>
-<b>nogal v1.0</b><br />
-<em>*the most simple PHP Framework*</em><br />
-<a href="http://hytcom.net/nogal">hytcom.net/nogal</a>
-</sup></sub>
+<small><b>nogal v1.0</b></small>
+<sup>
+<em>the most simple PHP Framework</em><br />
+by <a href="http://hytcom.net/nogal">hytcom.net/nogal</a>
+</sup>
