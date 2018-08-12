@@ -5,6 +5,7 @@ ___
 # barcode
 ## nglBarCode *extends* nglStd [instanciable] [2018-08-12]
 Implementa la clase 'barcode-generator' para generar códigos de barras
+___
   
 ## Variables
 `public` $barcode = Objeto original 'barcode-generator'  
@@ -155,8 +156,8 @@ Genera y retorna una secuencia de 0 y 1 que representa código de barras. Donde 
 ### Ejemplos  
 #### impresión del texto  
 ```php
-echo $ngl("barcode")->text("test1234");
+echo $ngl("barcode")->text("test");
 
 #salida
-# 1101001000010011110100101100100001011110010010011110100101110111101011001110010001011000100001001101100011101011 
+# 1101001000010011110100101100100001011110010010011110100111100101001100011101011
 ```
