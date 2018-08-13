@@ -10,11 +10,42 @@ Fechas.
 # Métodos
 |Método|Descripción|
 |---|---|
+|[calendar](#calendar)|Genera un array bidimensional con los datos necesarios para imprimir un calendario|
 |[format](#format)|Formatea un valor en segundos, según $sFormat|
 |[microtimer](#microtimer)|Retorna la cantidad de segundos transcurridos desde $nTimeIni|
 |[info](#info)|Retorna un array con los nombres de los días de la semana y meses del año en el ...|
 |[settings](#settings)|Retorna un array con los nombres de los días de la semana y meses del año en el ...|
   
+&nbsp;
+
+## calendar
+Genera un array bidimensional con los datos necesarios para imprimir un calendario, donde elemento principal del Array corresponde a una semana del mes y cada sub-elemento a un día en particular.
+Cada sub-elemento tiene almacenada toda la información retornada por el método [info](#info) para esa fecha, más un indice llamado **day_of_month** util para los casos en que el calendario se pida *completo*, que indica si el día corresponde al mes solicitado, al anterior ó al siguiente.
+
+
+**[array o string]** =  *public* function ( *int* \$nTime, *string* \$sFormat );  
+
+|Argumento|Tipo|Default|Descripción|
+|---|---|---|---|
+|**\$nTime**|int||Cantidad de segundos|
+|**\$sFormat**|string|1|Modo de salida<ul><li>**1** =  array de datos con los indices<ul><li>year</li><li>month</li><li>day</li><li>hour</li><li>minute</li><li>second</li></ul></li><li>**2** =  cadena textual: 1 year 4 months 1 day 3 hours 45 minutes 10 seconds</li><li>**string** =  cadena con el formato de salida según los estandares del método **date** de PHP</li>|
+
+&nbsp;
+___
+&nbsp;
+
+## format
+Formatea un valor en segundos, según **\$sFormat**  
+
+**[array o string]** =  *public* function ( *int* \$nTime, *string* \$sFormat );  
+
+|Argumento|Tipo|Default|Descripción|
+|---|---|---|---|
+|**\$nTime**|int||Cantidad de segundos|
+|**\$sFormat**|string|1|Modo de salida<ul><li>**1** =  array de datos con los indices<ul><li>year</li><li>month</li><li>day</li><li>hour</li><li>minute</li><li>second</li></ul></li><li>**2** =  cadena textual: 1 year 4 months 1 day 3 hours 45 minutes 10 seconds</li><li>**string** =  cadena con el formato de salida según los estandares del método **date** de PHP</li>|
+
+&nbsp;
+___
 &nbsp;
 
 ## settings
@@ -108,19 +139,7 @@ Array (
 ___
 &nbsp;
 
-## format
-Formatea un valor en segundos, según **\$sFormat**  
 
-**[array o string]** =  *public* function ( *int* \$nTime, *string* \$sFormat );  
-
-|Argumento|Tipo|Default|Descripción|
-|---|---|---|---|
-|**\$nTime**|int||Cantidad de segundos|
-|**\$sFormat**|string|1|Modo de salida<ul><li>**1** =  array de datos con los indices<ul><li>year</li><li>month</li><li>day</li><li>hour</li><li>minute</li><li>second</li></ul></li><li>**2** =  cadena textual: 1 year 4 months 1 day 3 hours 45 minutes 10 seconds</li><li>**string** =  cadena con el formato de salida según los estandares del método **date** de PHP</li>|
-
-&nbsp;
-___
-&nbsp;
 
 ## microtimer
 Retorna la cantidad de segundos transcurridos desde **\$nTimeIni**  
@@ -134,6 +153,8 @@ Retorna la cantidad de segundos transcurridos desde **\$nTimeIni**
 &nbsp;
 ___
 &nbsp;
+
+# Privados
 
 &nbsp;
 ___
