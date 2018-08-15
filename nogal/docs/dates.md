@@ -23,26 +23,48 @@ Genera un array bidimensional con los datos necesarios para imprimir un calendar
 Cada sub-elemento tiene almacenada toda la información retornada por el método [info](#info) para esa fecha, más un indice llamado **day_of_month** util para los casos en que el calendario se pida *completo*, que indica si el día corresponde al mes solicitado, al anterior ó al siguiente.
 
 
-**[array o string]** =  *public* function ( *int* \$nTime, *string* \$sFormat );  
+**[array]** =  *public* function ( *mixed* \$mDate, *boolean* \$bComplete );  
 
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
-|**\$nTime**|int||Cantidad de segundos|
-|**\$sFormat**|string|1|Modo de salida<ul><li>**1** =  array de datos con los indices<ul><li>year</li><li>month</li><li>day</li><li>hour</li><li>minute</li><li>second</li></ul></li><li>**2** =  cadena textual: 1 year 4 months 1 day 3 hours 45 minutes 10 seconds</li><li>**string** =  cadena con el formato de salida según los estandares del método **date** de PHP</li>|
+|**\$mDate**|mixed|now|Fecha en formato timestamp o una cadena que pueda ser decodificada por [strtotime](http://php.net/strtotime)|
+|**\$bComplete**|boolean|false|Determina si el calendario debe calcularse ó no, con los meses adyacentes|
+
+### Ejemplos  
+#### Calendario Simple del mes en curso 
+```php
+$calendar = $ngl("dates")->calendar();
+print_r($calendar);
+```
+
+#### Calendario Completo del mes que viene
+```php
+$calendar = $ngl("dates")->calendar("+1 month", true);
+print_r($calendar);
+```
 
 &nbsp;
 ___
 &nbsp;
 
-## format
-Formatea un valor en segundos, según **\$sFormat**  
+## elapsed
+Retorna el tiempo transcurrido desde una fecha en formato humano.
+También puede utilizarse para expresar el tiempo al que equivale una x cantidad de tiempo expresado en cualquier medida, por ejemplo: a cuanto tiempo equivalen 12456 horas 
 
-**[array o string]** =  *public* function ( *int* \$nTime, *string* \$sFormat );  
+**[array o string]** =  *public* function ( *mixed* \$mTime, *string* \$sFrom, *boolean* \$bReturnString );
 
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
-|**\$nTime**|int||Cantidad de segundos|
-|**\$sFormat**|string|1|Modo de salida<ul><li>**1** =  array de datos con los indices<ul><li>year</li><li>month</li><li>day</li><li>hour</li><li>minute</li><li>second</li></ul></li><li>**2** =  cadena textual: 1 year 4 months 1 day 3 hours 45 minutes 10 seconds</li><li>**string** =  cadena con el formato de salida según los estandares del método **date** de PHP</li>|
+|**\$mTime**|int||Cantidad de segundos|
+|**\$sFrom**|string|second|<ul><li>**date:** fecha en formato válido para **strtotime()**</li><li>**year:** número entero</li><li>**month:** número entero</li><li>**day:** número entero</li><li>**hour:** número entero</li><li>**minute:** número entero</li><li>**second:** número entero</li></ul>|
+|**\$bReturnString**|boolean|false|Si es *true* retorna el resultado como una cadena, ej: 1 year 4 months 1 day 3 hours 45 minutes 10 seconds|
+
+### Ejemplos  
+#### ejemplo  
+```php
+echo $ngl("dates")->elapsed("1977-08-15", "date", true); // cuanto tiempo pasó desde el 15 de agosto de 1977
+echo $ngl("dates")->elapsed(35840, "day"); // a cuanto tiempo equivalen 35840 días
+```
 
 &nbsp;
 ___
@@ -158,5 +180,5 @@ ___
 
 &nbsp;
 ___
-<sub><b>nogal v1.0** - <em>the most simple PHP Framework</em></sub><br />
+<sub><b>nogal v1.0</b> - <em>the most simple PHP Framework</em></sub><br />
 <sup>&copy; 2018 by <a href="http://hytcom.net/nogal">hytcom.net/nogal</a> - <a href="https://github.com/arielbottero">@arielbottero</a></sup><br />
