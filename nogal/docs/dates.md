@@ -124,7 +124,7 @@ Los datos retornados son:
 
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
-|**\$mTime**|mixed|now|Fecha en formato timestamp o una cadena que pueda ser decodificada por [strtotime](http://php.net/strtotime){:target="_blank"}|
+|**\$mTime**|mixed|now|Fecha en formato timestamp o una cadena que pueda ser decodificada por [strtotime{target="_blank"}](http://php.net/strtotime)|
   
 ### Ejemplos  
 #### ejemplo  
