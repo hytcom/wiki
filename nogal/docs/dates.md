@@ -1,5 +1,5 @@
 # nogal::dates
-## nglDates *extends* nglStd [main] [20160127]
+## nglDates *extends* nglStd [main] [20180815]
 Fechas.
   
 ## Variables
