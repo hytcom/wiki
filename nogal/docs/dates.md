@@ -42,6 +42,19 @@ print_r($calendar);
 $calendar = $ngl("dates")->calendar("+1 month", true);
 print_r($calendar);
 ```
+&nbsp;
+___
+&nbsp;
+
+## daysdiff
+Retorna la cantidad de días transcurridos entre 2 fechas, expresadas en notación [strtotime](http://php.net/strtotime)
+
+**[int]** =  *public* function ( *string* \$sDate1, *string* \$sDate2 );  
+
+|Argumento|Tipo|Default|Descripción|
+|---|---|---|---|
+|**\$sDate1**|string||Fecha incial.|
+|**\$sDate2**|string|now|Fecha final.|
 
 &nbsp;
 ___
@@ -55,14 +68,14 @@ También puede utilizarse para expresar el tiempo al que equivale una x cantidad
 
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
-|**\$mTime**|int||Cantidad de segundos|
-|**\$sFrom**|string|second|<ul><li>**date:** fecha en formato válido para [strtotime](http://php.net/strtotime)</li><li>**year:** número entero</li><li>**month:** número entero</li><li>**day:** número entero</li><li>**hour:** número entero</li><li>**minute:** número entero</li><li>**second:** número entero</li></ul>|
+|**\$mTime**|mixed||Número entero ó fecha en notación [strtotime](http://php.net/strtotime)|
+|**\$sFrom**|string|second|<ul><li>**fecha** fecha en notación **strtotime**, unicamente cuando *\$mTime* también lo sea</li><li>year</li><li>month</li><li>day</li><li>hour</li><li>minute:</li><li>second</li></ul>|
 |**\$bReturnString**|boolean|false|Si es *true* retorna el resultado como una cadena, ej: 1 year 4 months 1 day 3 hours 45 minutes 10 seconds|
 
 ### Ejemplos  
 #### ejemplo  
 ```php
-echo $ngl("dates")->elapsed("1977-08-15", "date", true); // cuanto tiempo pasó desde el 15 de agosto de 1977
+echo $ngl("dates")->elapsed("1977-08-15", "now", true); // cuanto tiempo pasó desde el 15 de agosto de 1977
 echo $ngl("dates")->elapsed(35840, "day"); // a cuanto tiempo equivalen 35840 días
 ```
 
@@ -161,7 +174,7 @@ Array (
 ___
 &nbsp;
 
-## microtimer
+## monthsdiff
 Retorna la cantidad de meses transcurridos entre 2 fechas, expresadas en notación [strtotime](http://php.net/strtotime)
 
 **[int]** =  *public* function ( *string* \$sDate1, *string* \$sDate2 );  
