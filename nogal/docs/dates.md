@@ -162,6 +162,26 @@ ___
 &nbsp;
 
 ## microtimer
+Retorna la cantidad de meses transcurridos entre 2 fechas, expresadas en notación [strtotime](http://php.net/strtotime)
+
+**[int]** =  *public* function ( *string* \$sDate1, *string* \$sDate2 );  
+
+|Argumento|Tipo|Default|Descripción|
+|---|---|---|---|
+|**\$sDate1**|string||Fecha incial.|
+|**\$sDate2**|string|now|Fecha final.|
+
+### Ejemplos  
+#### cuantos meses pasaron desde la crisis del 30 a la fecha
+```php
+echo $ngl("dates")->monthsdiff("1929-10-29");
+```
+
+&nbsp;
+___
+&nbsp;
+
+## microtimer
 Retorna la cantidad de segundos transcurridos desde **\$nTimeIni**  
 
 **[float]** =  *public* function ( *float* \$nTimeIni );  
