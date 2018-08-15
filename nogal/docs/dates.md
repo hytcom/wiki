@@ -124,7 +124,7 @@ Los datos retornados son:
 
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
-|**\$mTime**|mixed|now|Fecha en formato timestamp o una cadena que pueda ser decodificada por [strtotime](http://php.net/strtotime)|
+|**\$mTime**|mixed|now|Fecha en formato timestamp o una cadena que pueda ser decodificada por [strtotime](http://php.net/strtotime){:target="_blank"}|
   
 ### Ejemplos  
 #### ejemplo  
@@ -161,8 +161,6 @@ Array (
 ___
 &nbsp;
 
-
-
 ## microtimer
 Retorna la cantidad de segundos transcurridos desde **\$nTimeIni**  
 
@@ -176,7 +174,30 @@ Retorna la cantidad de segundos transcurridos desde **\$nTimeIni**
 ___
 &nbsp;
 
+## timesdiff
+Retorna la diferencia, en segundos, entre 2 horas. Cuando la segunda hora sea menor a la primera, el método asume que se trata de 2 días diferentes.
+
+**[float]** =  *public* function ( *float* \$nTimeIni );  
+
+|Argumento|Tipo|Default|Descripción|
+|---|---|---|---|
+|**\$sTime1**|string||Hora en notación [strtotime](http://php.net/manual/es/datetime.formats.time.php){:target="_blank"}|
+
+&nbsp;
+___
+&nbsp;
+
 # Privados
+## CalendarMonth
+Genera el array bidimensional retornado por el método [calendar](#calendar)
+
+**[float]** =  *public* CalendarMonth ( *int* \$nYear, *int* \$nMonth, *boolean* \$bComplete );  
+
+|Argumento|Tipo|Default|Descripción|
+|---|---|---|---|
+|**\$nYear**|int||Año del calendario a generar.|
+|**\$nMonth**|int||Mes del calendario a generar.|
+|**\$bComplete**|boolean||Determina si el calendario debe calcularse ó no, con los meses adyacentes|
 
 &nbsp;
 ___
