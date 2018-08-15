@@ -11,11 +11,16 @@ Fechas.
 |Método|Descripción|
 |---|---|
 |[calendar](#calendar)|Genera un array bidimensional con los datos necesarios para imprimir un calendario|
-|[format](#format)|Formatea un valor en segundos, según $sFormat|
-|[microtimer](#microtimer)|Retorna la cantidad de segundos transcurridos desde $nTimeIni|
-|[info](#info)|Retorna un array con los nombres de los días de la semana y meses del año en el ...|
-|[settings](#settings)|Retorna un array con los nombres de los días de la semana y meses del año en el ...|
-  
+|[daysdiff](#daysdiff)|Retorna la cantidad de días transcurridos entre 2 fechas|
+|[elapsed](#elapsed)|Retorna el tiempo transcurrido (en formato literal) desde una fecha, entre dos fechas ó de una **x** cantidad de una medida de tiempo|
+|[info](#info)|Retorna un array con la información de una fecha determinada|
+|[microtimer](#microtimer)|Retorna la cantidad de segundos transcurridos desde **\$nTimeIni**|
+|[monthsdiff](#monthsdiff)|Retorna la cantidad de meses transcurridos entre 2 fechas|
+|[settings](#settings)|Retorna un array bidimensional con los nombres de los días de la semana y meses del año|
+|[timesdiff](#timesdiff)|Retorna la diferencia, en segundos, entre 2 horas|
+|Privados||
+|[CalendarMonth](#calendarmonth)|Genera el array bidimensional retornado por el método **calendar**|
+ 
 &nbsp;
 
 ## calendar
@@ -61,8 +66,7 @@ ___
 &nbsp;
 
 ## elapsed
-Retorna el tiempo transcurrido desde una fecha en formato humano.
-También puede utilizarse para expresar el tiempo al que equivale una x cantidad de tiempo expresado en cualquier medida, por ejemplo: a cuanto tiempo equivalen 12456 horas 
+Retorna el tiempo transcurrido (en formato literal) desde una fecha, entre dos fechas ó de una **x** cantidad de una medida de tiempo, por ejemplo: a cuanto tiempo equivalen 12456 horas 
 
 **[array o string]** =  *public* function ( *mixed* \$mTime, *string* \$sFrom, *boolean* \$bReturnString );
 
@@ -77,30 +81,6 @@ También puede utilizarse para expresar el tiempo al que equivale una x cantidad
 ```php
 echo $ngl("dates")->elapsed("1977-08-15", "now", true); // cuanto tiempo pasó desde el 15 de agosto de 1977
 echo $ngl("dates")->elapsed(35840, "day"); // a cuanto tiempo equivalen 35840 días
-```
-
-&nbsp;
-___
-&nbsp;
-
-## settings
-Retorna un array con los nombres de los días de la semana y meses del año en un array bidimensional 
-basado en los valores de las constantes **NGL_DATE_DAYS** y **NGL_DATE_MONTHS**.
-los índices son:
-- **days** =  valores de Domingo a Sábado
-- **days_short** =  Dom a Sáb
-- **months** =  valores de Enero a Diciembre
-- **months_short** =  valores de Ene a Dic
-todos sub-arrays comienzan en el índice 1  
-
-**[array]** =  *public* function ( );
-  
-### Ejemplos  
-#### ejemplo  
-```php
-$dt = $ngl("dates");
-echo $dt->settings()["days"][2]; // retornará Lunes
-echo $dt->settings()["months_short"][8]; // retornará Ago
 ```
 
 &nbsp;
@@ -174,6 +154,19 @@ Array (
 ___
 &nbsp;
 
+## microtimer
+Retorna la cantidad de segundos transcurridos desde **\$nTimeIni**  
+
+**[float]** =  *public* function ( *float* \$nTimeIni );  
+
+|Argumento|Tipo|Default|Descripción|
+|---|---|---|---|
+|**\$nTimeIni**|float|nogal->startime()|Indice de tiempo en sedundos/microsegundos.|
+
+&nbsp;
+___
+&nbsp;
+
 ## monthsdiff
 Retorna la cantidad de meses transcurridos entre 2 fechas, expresadas en notación [strtotime](http://php.net/strtotime)
 
@@ -194,14 +187,25 @@ echo $ngl("dates")->monthsdiff("1929-10-29");
 ___
 &nbsp;
 
-## microtimer
-Retorna la cantidad de segundos transcurridos desde **\$nTimeIni**  
+## settings
+Retorna un array bidimensional con los nombres de los días de la semana y meses del año 
+basado en los valores de las constantes **NGL_DATE_DAYS** y **NGL_DATE_MONTHS**.
+los índices son:
+- **days** =  valores de Domingo a Sábado
+- **days_short** =  Dom a Sáb
+- **months** =  valores de Enero a Diciembre
+- **months_short** =  valores de Ene a Dic
+todos sub-arrays comienzan en el índice 1  
 
-**[float]** =  *public* function ( *float* \$nTimeIni );  
-
-|Argumento|Tipo|Default|Descripción|
-|---|---|---|---|
-|**\$nTimeIni**|float|nogal->startime()|Indice de tiempo en sedundos/microsegundos.|
+**[array]** =  *public* function ( );
+  
+### Ejemplos  
+#### ejemplo  
+```php
+$dt = $ngl("dates");
+echo $dt->settings()["days"][2]; // retornará Lunes
+echo $dt->settings()["months_short"][8]; // retornará Ago
+```
 
 &nbsp;
 ___
