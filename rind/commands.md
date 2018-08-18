@@ -14,10 +14,10 @@ Las plantillas (documentos HTML) son procesados por Rind y cacheados hasta que s
 # Métodos
 |Método|Descripción|
 |---|---|
-|[/*...*](#/*...*)|Rind cuenta con una manera de añadir comentarios al código fuente.Los comentario...|
-|[ABC](#ABC)|Nociones y fundamentos básicos del sistema|
+|[ABC](#abc)|Nociones y fundamentos básicos del sistema|
 |[abort](#abort)|Disponible sólo dentro del comando RindCommands::loop. Termina con la ejecución ...|
 |[alvin](#alvin)|Ejecuta una evaluación de permisos a traves de la clase nogal::nglAlvinCuenta co...|
+|[comments](comments)|Rind cuenta con una manera de añadir comentarios al código fuente.Los comentario...|
 |[dump](#dump)|Vuelca en pantalla el contenido completo de una variable. Esto es especialmente ...|
 |[eco](#eco)|Imprime una expresión o resultado de otro comando como datetime, math o length.|
 |[halt](#halt)|Aborta la ejecución de todas las acciones. Opcionalmente, al ejecutar RindComman...|
@@ -608,12 +608,14 @@ También existe un modo en el que se utiliza **ifcase** como una estructura **sw
 |**iff**|Condición que se evaluará como TRUE o FALSE.|
 |**then**|Acciones que se ejecutarán o contenidos que se mostrarán cuando la evaluación del método retorne TRUE.|
 |**else**|Acciones que se ejecutarán o contenidos que se mostrarán cuando la evaluación del método retorne FALSE.|
-|**isset**|<br /><br />Espera una variable o grupo de ellas y evalúa si estas existen, es decir, si han sido previamente seteada.<br /><br />También es posible evaluar si la variable NO existe, anteponiendo el signo de admiración (!) al nombre de la misma.<br /><br />Este parámetro acepta ser combinado con **iff**, esto significa que para que **RindCommands::ifcase** retorne TRUE, ambas evaluaciones deberán ser TRUE.<br /><br />|
-|**in**|<br /><br />Espera una lista de valores en la que buscará el valor **needle**. Esta lista puede ser un array o una cadena separada por un caracter especifico (**splitter**).<br /><br />Devuelve TRUE si **needle** existe en **in**.<br /><br />|
+|**isset**|Espera una variable o grupo de ellas y evalúa si estas existen, es decir, si han sido previamente seteada. También es posible evaluar si la variable NO existe, anteponiendo el signo de admiración (!) al nombre de la misma. Este parámetro acepta ser combinado con **iff**, esto significa que para que **RindCommands::ifcase** retorne TRUE, ambas evaluaciones deberán ser TRUE.|
+|**empty**|Devuelve TRUE cuando el contenido del argumento es vacío: 0, null ó cadena vacía|
+|**noempty**|Devuelve TRUE cuando el contenido del argumento es distinto de vacío|
+|**in**|Espera una lista de valores en la que buscará el valor **needle**. Esta lista puede ser un array o una cadena separada por un caracter especifico (**splitter**). Devuelve TRUE si **needle** existe en **in**. |
 |**notin**|La inversa de **in**; espera que **needle** no se encuentre en **notin**.|
 |**needle**|Valor a buscar cuando se utiliza **in** o **notin**.|
-|**setmode**|Si **setmode** está activado el retorno de **RindCommands::ifcase** estará optimizado para ser utilizado como **value** del comando <a>SET</a>.|
-|**splitter**|<br /><br />En el caso de que **in** o **notin** no fuesen un array, este valor se usará como separador de la cadena de valores.<br /><br />El valor predeterminado es punto y coma ( ; ).<br /><br />|
+|**setmode**|Si **setmode** está activado el retorno de **RindCommands::ifcase** estará optimizado para ser utilizado como **value** del comando **RindCommands::set**.|
+|**splitter**| En el caso de que **in** o **notin** no fuesen un array, este valor se usará como separador de la cadena de valores. El valor predeterminado es punto y coma ( ; ). |
 |**content**|Idem **then**|
 ### Ejemplos  
 #### Ejecución de ifcase  
