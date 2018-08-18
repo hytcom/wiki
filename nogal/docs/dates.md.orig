@@ -1,11 +1,10 @@
 # nogal::dates
-<<<<<<< HEAD
-## nglDates *extends* nglStd [main] [20160127]
-Utilidades para operaciones con fechas y horas
-=======
 ## nglDates *extends* nglStd [main] [20180815]
-Fechas.
->>>>>>> 686b5562d1534f48a56c1a24812c8aaba1b52e43
+Utilidades para operaciones con fechas y horas
+<<<<<<< HEAD
+=======
+Generación de Calendarios
+>>>>>>> c4ea57d2258404f9d0ef9f00d6c7e819f4085547
   
 ## Variables
 `private` $aSettings = Array bidimensional con los nombres de los días de la semana y meses del año

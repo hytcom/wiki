@@ -40,11 +40,12 @@ Genera y retorna el código de barras en formato PNG Basa64
 
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
-|**\$sContent**|string|test1234|Contenido del código|
-|**\$sType**|string|code128|Algoritmo utilizado para generar el código. Códigos soportados:<ul><li>CODE_39</li><li>CODE_39_CHECKSUM</li><li>CODE_39E</li><li>CODE_39E_CHECKSUM</li><li>CODE_93</li><li>STANDARD_2_5</li><li>STANDARD_2_5_CHECKSUM</li><li>INTERLEAVED_2_5</li><li>INTERLEAVED_2_5_CHECKSUM</li><li>CODE_128</li><li>CODE_128_A</li><li>CODE_128_B</li><li>CODE_128_C</li><li>EAN_2</li><li>EAN_5</li><li>EAN_8</li><li>EAN_13</li><li>UPC_A</li><li>UPC_E</li><li>MSI</li><li>MSI_CHECKSUM</li><li>POSTNET</li><li>PLANET</li><li>RMS4CC</li><li>KIX</li><li>IMB</li><li>CODABAR</li><li>CODE_11</li><li>PHARMA_CODE</li><li>PHARMA_CODE_TWO_TRACKS</li></ul>|
-|**\$nSize**|string|2|Tamaño de la tipografía en el código|
-|**\$nHeight**|int|30|Altura máxima de la imagen del código|
-|**\$sColor**|string|#000000|Color de las barras en formato #RRGGBB|
+|**\$sContent**|string|*arg::content*|Contenido del código|
+|**\$sType**|string|*arg::type*|Algoritmo utilizado para generar el código. Códigos soportados:<ul><li>CODE_39</li><li>CODE_39_CHECKSUM</li><li>CODE_39E</li><li>CODE_39E_CHECKSUM</li><li>CODE_93</li><li>STANDARD_2_5</li><li>STANDARD_2_5_CHECKSUM</li><li>INTERLEAVED_2_5</li><li>INTERLEAVED_2_5_CHECKSUM</li><li>CODE_128</li><li>CODE_128_A</li><li>CODE_128_B</li><li>CODE_128_C</li><li>EAN_2</li><li>EAN_5</li><li>EAN_8</li><li>EAN_13</li><li>UPC_A</li><li>UPC_E</li><li>MSI</li><li>MSI_CHECKSUM</li><li>POSTNET</li><li>PLANET</li><li>RMS4CC</li><li>KIX</li><li>IMB</li><li>CODABAR</li><li>CODE_11</li><li>PHARMA_CODE</li><li>PHARMA_CODE_TWO_TRACKS</li></ul>|
+|**\$nSize**|string|*arg::size*Tamaño de la tipografía en el código|
+|**\$nHeight**|int|*arg::height*|Altura máxima de la imagen del código|
+|**\$sColor**|string|*arg::color*|Color de las barras en formato #RRGGBB|
+
 ### Ejemplos  
 #### impresión de código
 ```php
@@ -63,11 +64,11 @@ Genera y retorna el código de barras en formato HTML
 
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
-|**\$sContent**|string|test1234|Contenido del código|
-|**\$sType**|string|code128|Algoritmo utilizado para generar el código. Códigos soportados:<ul><li>CODE_39</li><li>CODE_39_CHECKSUM</li><li>CODE_39E</li><li>CODE_39E_CHECKSUM</li><li>CODE_93</li><li>STANDARD_2_5</li><li>STANDARD_2_5_CHECKSUM</li><li>INTERLEAVED_2_5</li><li>INTERLEAVED_2_5_CHECKSUM</li><li>CODE_128</li><li>CODE_128_A</li><li>CODE_128_B</li><li>CODE_128_C</li><li>EAN_2</li><li>EAN_5</li><li>EAN_8</li><li>EAN_13</li><li>UPC_A</li><li>UPC_E</li><li>MSI</li><li>MSI_CHECKSUM</li><li>POSTNET</li><li>PLANET</li><li>RMS4CC</li><li>KIX</li><li>IMB</li><li>CODABAR</li><li>CODE_11</li><li>PHARMA_CODE</li><li>PHARMA_CODE_TWO_TRACKS</li></ul>|
-|**\$nSize**|string|2|Tamaño de la tipografía en el código|
-|**\$nHeight**|int|30|Altura máxima de la imagen del código|
-|**\$sColor**|string|#000000|Color de las barras en formato #RRGGBB|
+|**\$sContent**|string|*arg::content*|Contenido del código|
+|**\$sType**|string|*arg::type*|Algoritmo utilizado para generar el código. Códigos soportados:<ul><li>CODE_39</li><li>CODE_39_CHECKSUM</li><li>CODE_39E</li><li>CODE_39E_CHECKSUM</li><li>CODE_93</li><li>STANDARD_2_5</li><li>STANDARD_2_5_CHECKSUM</li><li>INTERLEAVED_2_5</li><li>INTERLEAVED_2_5_CHECKSUM</li><li>CODE_128</li><li>CODE_128_A</li><li>CODE_128_B</li><li>CODE_128_C</li><li>EAN_2</li><li>EAN_5</li><li>EAN_8</li><li>EAN_13</li><li>UPC_A</li><li>UPC_E</li><li>MSI</li><li>MSI_CHECKSUM</li><li>POSTNET</li><li>PLANET</li><li>RMS4CC</li><li>KIX</li><li>IMB</li><li>CODABAR</li><li>CODE_11</li><li>PHARMA_CODE</li><li>PHARMA_CODE_TWO_TRACKS</li></ul>|
+|**\$nSize**|string|*arg::size*Tamaño de la tipografía en el código|
+|**\$nHeight**|int|*arg::height*|Altura máxima de la imagen del código|
+|**\$sColor**|string|*arg::color*|Color de las barras en formato #RRGGBB|
 
 &nbsp;
 ___
@@ -76,15 +77,16 @@ ___
 ## image
 Genera y retorna el puntero de la imagen del código de barras  
 
-**[image resource]** =  *public* function ( *string* \$sType, *string* \$sContent, *string* \$nSize, *int* \$nHeight, *string* \$sResolution );  
+**[image resource]** =  *public* function ( *string* \$sType, *string* \$sContent, *string* \$nSize, *int* \$nHeight, *string* \$sColor );  
 
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
-|**\$sType**|string|code128|Algoritmo utilizado para generar el código. Códigos soportados:<ul><li>CODE_39</li><li>CODE_39_CHECKSUM</li><li>CODE_39E</li><li>CODE_39E_CHECKSUM</li><li>CODE_93</li><li>STANDARD_2_5</li><li>STANDARD_2_5_CHECKSUM</li><li>INTERLEAVED_2_5</li><li>INTERLEAVED_2_5_CHECKSUM</li><li>CODE_128</li><li>CODE_128_A</li><li>CODE_128_B</li><li>CODE_128_C</li><li>EAN_2</li><li>EAN_5</li><li>EAN_8</li><li>EAN_13</li><li>UPC_A</li><li>UPC_E</li><li>MSI</li><li>MSI_CHECKSUM</li><li>POSTNET</li><li>PLANET</li><li>RMS4CC</li><li>KIX</li><li>IMB</li><li>CODABAR</li><li>CODE_11</li><li>PHARMA_CODE</li><li>PHARMA_CODE_TWO_TRACKS</li></ul>|
-|**\$sContent**|string|test1234|Contenido del código|
-|**\$nSize**|string|2|Tamaño de la tipografía en el código|
-|**\$nHeight**|int|30|Altura máxima de la imagen del código|
-|**\$sResolution**|string|1|Resolución de la imagen del código|
+|**\$sContent**|string|*arg::content*|Contenido del código|
+|**\$sType**|string|*arg::type*|Algoritmo utilizado para generar el código. Códigos soportados:<ul><li>CODE_39</li><li>CODE_39_CHECKSUM</li><li>CODE_39E</li><li>CODE_39E_CHECKSUM</li><li>CODE_93</li><li>STANDARD_2_5</li><li>STANDARD_2_5_CHECKSUM</li><li>INTERLEAVED_2_5</li><li>INTERLEAVED_2_5_CHECKSUM</li><li>CODE_128</li><li>CODE_128_A</li><li>CODE_128_B</li><li>CODE_128_C</li><li>EAN_2</li><li>EAN_5</li><li>EAN_8</li><li>EAN_13</li><li>UPC_A</li><li>UPC_E</li><li>MSI</li><li>MSI_CHECKSUM</li><li>POSTNET</li><li>PLANET</li><li>RMS4CC</li><li>KIX</li><li>IMB</li><li>CODABAR</li><li>CODE_11</li><li>PHARMA_CODE</li><li>PHARMA_CODE_TWO_TRACKS</li></ul>|
+|**\$nSize**|string|*arg::size*Tamaño de la tipografía en el código|
+|**\$nHeight**|int|*arg::height*|Altura máxima de la imagen del código|
+|**\$sColor**|string|*arg::color*|Color de las barras en formato #RRGGBB|
+
 ### Ejemplos  
 #### impresión de imagen  
 ```php
@@ -104,11 +106,11 @@ Genera y retorna el código de barras en formato PNG
 
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
-|**\$sContent**|string|test1234|Contenido del código|
-|**\$sType**|string|code128|Algoritmo utilizado para generar el código. Códigos soportados:<ul><li>CODE_39</li><li>CODE_39_CHECKSUM</li><li>CODE_39E</li><li>CODE_39E_CHECKSUM</li><li>CODE_93</li><li>STANDARD_2_5</li><li>STANDARD_2_5_CHECKSUM</li><li>INTERLEAVED_2_5</li><li>INTERLEAVED_2_5_CHECKSUM</li><li>CODE_128</li><li>CODE_128_A</li><li>CODE_128_B</li><li>CODE_128_C</li><li>EAN_2</li><li>EAN_5</li><li>EAN_8</li><li>EAN_13</li><li>UPC_A</li><li>UPC_E</li><li>MSI</li><li>MSI_CHECKSUM</li><li>POSTNET</li><li>PLANET</li><li>RMS4CC</li><li>KIX</li><li>IMB</li><li>CODABAR</li><li>CODE_11</li><li>PHARMA_CODE</li><li>PHARMA_CODE_TWO_TRACKS</li></ul>|
-|**\$nSize**|string|2|Tamaño de la tipografía en el código|
-|**\$nHeight**|int|30|Altura máxima de la imagen del código|
-|**\$sColor**|string|#000000|Color de las barras en formato #RRGGBB|
+|**\$sContent**|string|*arg::content*|Contenido del código|
+|**\$sType**|string|*arg::type*|Algoritmo utilizado para generar el código. Códigos soportados:<ul><li>CODE_39</li><li>CODE_39_CHECKSUM</li><li>CODE_39E</li><li>CODE_39E_CHECKSUM</li><li>CODE_93</li><li>STANDARD_2_5</li><li>STANDARD_2_5_CHECKSUM</li><li>INTERLEAVED_2_5</li><li>INTERLEAVED_2_5_CHECKSUM</li><li>CODE_128</li><li>CODE_128_A</li><li>CODE_128_B</li><li>CODE_128_C</li><li>EAN_2</li><li>EAN_5</li><li>EAN_8</li><li>EAN_13</li><li>UPC_A</li><li>UPC_E</li><li>MSI</li><li>MSI_CHECKSUM</li><li>POSTNET</li><li>PLANET</li><li>RMS4CC</li><li>KIX</li><li>IMB</li><li>CODABAR</li><li>CODE_11</li><li>PHARMA_CODE</li><li>PHARMA_CODE_TWO_TRACKS</li></ul>|
+|**\$nSize**|string|*arg::size*Tamaño de la tipografía en el código|
+|**\$nHeight**|int|*arg::height*|Altura máxima de la imagen del código|
+|**\$sColor**|string|*arg::color*|Color de las barras en formato #RRGGBB|
 
 &nbsp;
 ___
@@ -121,11 +123,11 @@ Genera y retorna el código de barras en formato SVG
 
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
-|**\$sContent**|string|test1234|Contenido del código|
-|**\$sType**|string|code128|Algoritmo utilizado para generar el código. Códigos soportados:<ul><li>CODE_39</li><li>CODE_39_CHECKSUM</li><li>CODE_39E</li><li>CODE_39E_CHECKSUM</li><li>CODE_93</li><li>STANDARD_2_5</li><li>STANDARD_2_5_CHECKSUM</li><li>INTERLEAVED_2_5</li><li>INTERLEAVED_2_5_CHECKSUM</li><li>CODE_128</li><li>CODE_128_A</li><li>CODE_128_B</li><li>CODE_128_C</li><li>EAN_2</li><li>EAN_5</li><li>EAN_8</li><li>EAN_13</li><li>UPC_A</li><li>UPC_E</li><li>MSI</li><li>MSI_CHECKSUM</li><li>POSTNET</li><li>PLANET</li><li>RMS4CC</li><li>KIX</li><li>IMB</li><li>CODABAR</li><li>CODE_11</li><li>PHARMA_CODE</li><li>PHARMA_CODE_TWO_TRACKS</li></ul>|
-|**\$nSize**|string|2|Tamaño de la tipografía en el código|
-|**\$nHeight**|int|30|Altura máxima de la imagen del código|
-|**\$sColor**|string|#000000|Color de las barras en formato #RRGGBB|
+|**\$sContent**|string|*arg::content*|Contenido del código|
+|**\$sType**|string|*arg::type*|Algoritmo utilizado para generar el código. Códigos soportados:<ul><li>CODE_39</li><li>CODE_39_CHECKSUM</li><li>CODE_39E</li><li>CODE_39E_CHECKSUM</li><li>CODE_93</li><li>STANDARD_2_5</li><li>STANDARD_2_5_CHECKSUM</li><li>INTERLEAVED_2_5</li><li>INTERLEAVED_2_5_CHECKSUM</li><li>CODE_128</li><li>CODE_128_A</li><li>CODE_128_B</li><li>CODE_128_C</li><li>EAN_2</li><li>EAN_5</li><li>EAN_8</li><li>EAN_13</li><li>UPC_A</li><li>UPC_E</li><li>MSI</li><li>MSI_CHECKSUM</li><li>POSTNET</li><li>PLANET</li><li>RMS4CC</li><li>KIX</li><li>IMB</li><li>CODABAR</li><li>CODE_11</li><li>PHARMA_CODE</li><li>PHARMA_CODE_TWO_TRACKS</li></ul>|
+|**\$nSize**|string|*arg::size*Tamaño de la tipografía en el código|
+|**\$nHeight**|int|*arg::height*|Altura máxima de la imagen del código|
+|**\$sColor**|string|*arg::color*|Color de las barras en formato #RRGGBB|
 
 &nbsp;
 ___
@@ -138,8 +140,9 @@ Genera y retorna una secuencia de 0 y 1 que representa código de barras. Donde 
 
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
-|**\$sContent**|string|test1234|Contenido del código|
-|**\$sType**|string|code128|Algoritmo utilizado para generar el código. Códigos soportados:<ul><li>CODE_39</li><li>CODE_39_CHECKSUM</li><li>CODE_39E</li><li>CODE_39E_CHECKSUM</li><li>CODE_93</li><li>STANDARD_2_5</li><li>STANDARD_2_5_CHECKSUM</li><li>INTERLEAVED_2_5</li><li>INTERLEAVED_2_5_CHECKSUM</li><li>CODE_128</li><li>CODE_128_A</li><li>CODE_128_B</li><li>CODE_128_C</li><li>EAN_2</li><li>EAN_5</li><li>EAN_8</li><li>EAN_13</li><li>UPC_A</li><li>UPC_E</li><li>MSI</li><li>MSI_CHECKSUM</li><li>POSTNET</li><li>PLANET</li><li>RMS4CC</li><li>KIX</li><li>IMB</li><li>CODABAR</li><li>CODE_11</li><li>PHARMA_CODE</li><li>PHARMA_CODE_TWO_TRACKS</li></ul>|
+|**\$sContent**|string|*arg::content*|Contenido del código|
+|**\$sType**|string|*arg::type*|Algoritmo utilizado para generar el código. Códigos soportados:<ul><li>CODE_39</li><li>CODE_39_CHECKSUM</li><li>CODE_39E</li><li>CODE_39E_CHECKSUM</li><li>CODE_93</li><li>STANDARD_2_5</li><li>STANDARD_2_5_CHECKSUM</li><li>INTERLEAVED_2_5</li><li>INTERLEAVED_2_5_CHECKSUM</li><li>CODE_128</li><li>CODE_128_A</li><li>CODE_128_B</li><li>CODE_128_C</li><li>EAN_2</li><li>EAN_5</li><li>EAN_8</li><li>EAN_13</li><li>UPC_A</li><li>UPC_E</li><li>MSI</li><li>MSI_CHECKSUM</li><li>POSTNET</li><li>PLANET</li><li>RMS4CC</li><li>KIX</li><li>IMB</li><li>CODABAR</li><li>CODE_11</li><li>PHARMA_CODE</li><li>PHARMA_CODE_TWO_TRACKS</li></ul>|
+
 ### Ejemplos  
 #### impresión del texto  
 ```php
