@@ -49,7 +49,7 @@ Desencripta una cadena con el método seleccionado
 
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
-|**\$sString**|string||Cadena a desencriptar|
+|**\$sString**|string|*arg::text*|Cadena a desencriptar|
 
 &nbsp;
 ___
@@ -62,7 +62,7 @@ Encripta una cadena con el método seleccionado
 
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
-|**\$sString**|mixed||Cadena a encriptar/desencriptar|
+|**\$sString**|mixed|*arg::text*|Cadena a encriptar/desencriptar|
 ### Ejemplos  
 #### AES  
 ```php
@@ -90,7 +90,7 @@ Genera un array con el par de claves pública y privada cuando el modo de encrip
 
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
-|**\$nBits**|int|512|Longuitud de las claves. Minima admitida: 32|
+|**\$nBits**|int|*arg::keyslen*|Longuitud de las claves. Minima admitida: 32|
 ### Ejemplos  
 #### Claves  
 ```php
@@ -130,7 +130,7 @@ Aplica la clave de encriptación/desencriptación en el objeto principal, a trav
 
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
-|**\$sKey**|string|null|Clave de encriptación/desencriptación|
+|**\$sKey**|string|*arg::key*|Clave de encriptación/desencriptación|
 
 &nbsp;
 ___
@@ -155,7 +155,7 @@ Métodos Soportados:
 
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
-|**\$sCrypter**|string|aes|Método de encriptación|
+|**\$sCrypter**|string|*arg::type*|Método de encriptación|
 
 &nbsp;
 ___
