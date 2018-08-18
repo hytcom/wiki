@@ -131,15 +131,6 @@ Genera y retorna el código de barras en formato SVG
 ___
 &nbsp;
 
-## SetType
-Establece el algoritmo utilizado para generar el códigoal invocar al argumento **type**.
-
-**[int]** =  *private* function ( *string* \$sType );  
-
-&nbsp;
-___
-&nbsp;
-
 ## text
 Genera y retorna una secuencia de 0 y 1 que representa código de barras. Donde cada valor equivale a un pixel de ancho y donde 1 significa barra y 0 significa espacio vacio
 
@@ -157,6 +148,16 @@ echo $ngl("barcode")->text("test");
 #salida
 # 1101001000010011110100101100100001011110010010011110100111100101001100011101011
 ```
+
+&nbsp;
+___
+&nbsp;
+
+# Privados
+## SetType
+Establece el algoritmo utilizado para generar el códigoal invocar al argumento **type**.
+
+**[int]** =  *private* function ( *string* \$sType );  
 
 &nbsp;
 ___
