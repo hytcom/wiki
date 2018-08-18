@@ -8,11 +8,11 @@
 - Una vez generada la imagen se debe crear el contenedor ejecutando
 ```bash
 docker run -d -it -p 80:80 -v PATH_LOCAL:/var/www --name=NOMBRE_CONTENEDOR php:nogal
-
-# donde PATH_LOCAL es la ruta de la carpeta donde se instalará nogal
-# y NOMBRE_CONTENEDOR es el nombre que se le dará al proyecto
-# por ejemplo:
-
+```
+> donde PATH_LOCAL es la ruta de la carpeta donde se instalará nogal
+> y NOMBRE_CONTENEDOR es el nombre que se le dará al proyecto
+> por ejemplo:
+```
 docker run -d -it -p 80:80 -v /c/mydockers/nogaltest:/var/www --name=nogaltest php:nogal
 ```
 - Ya creado el contenedor, verificar su estado ejecutando: ```docker ps -a```
