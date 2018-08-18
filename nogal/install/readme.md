@@ -19,7 +19,7 @@ docker run -d -it -p 80:80 -v /c/mydockers/nogaltest:/var/www --name=nogaltest p
 - Ya creado el contenedor, verificar su estado ejecutando: ```docker ps -a```
 - Si se encuentra detenido ejecutar: ```docker start NOMBRE_CONTENEDOR```
 - Copiar en la carpeta **PATH_LOCAL** la distribución de nogal
-- Abrir en el navegador ```http://localhost```
+- Abrir en el navegador [http://localhost](http://localhost)
 
 ### MariaDB
 - Instalar MariaDB de manera local [https://mariadb.org/download](https://mariadb.org/download)
