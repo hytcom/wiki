@@ -5,7 +5,10 @@
 - Instalar Docker [https://www.docker.com/get-started](https://www.docker.com/get-started)
 - Crear una carpeta y copiar en ella los archivos *dockerfile* y *php.ini*
 - Abrir PowerShell o el CMD y situarse en esa carpeta
-- Ejecutar el archivo dockerfile tipeando: ```docker build -t php:nogal -f dockerfile .``` (punto incluído)
+- Ejecutar el archivo dockerfile
+```bash
+docker build -t php:nogal -f dockerfile .
+```
 - Una vez generada la imagen se debe crear el contenedor ejecutando
 ```bash
 docker run -d -it -p 80:80 -v PATH_LOCAL:/var/www --name=NOMBRE_CONTENEDOR php:nogal
@@ -17,7 +20,10 @@ docker run -d -it -p 80:80 -v PATH_LOCAL:/var/www --name=NOMBRE_CONTENEDOR php:n
 docker run -d -it -p 80:80 -v /c/mydockers/nogaltest:/var/www --name=nogaltest php:nogal
 ```
 - Ya creado el contenedor, verificar su estado ejecutando: ```docker ps -a```
-- Si se encuentra detenido ejecutar: ```docker start NOMBRE_CONTENEDOR```
+- Si se encuentra detenido ejecutar
+```bash
+docker start NOMBRE_CONTENEDOR
+```
 - Copiar en la carpeta **PATH_LOCAL** la distribución de nogal
 - Abrir en el navegador [http://localhost](http://localhost)
 
@@ -25,7 +31,6 @@ Si por algún motivo fuese necesario ingresar al contenedor como si estuvieramos
 ```bash
 docker exec -i -t NOMBRE_CONTENEDOR /bin/bash
 ```
-&nbsp;
 
 ### MariaDB
 - Instalar MariaDB de manera local [https://mariadb.org/download](https://mariadb.org/download)
