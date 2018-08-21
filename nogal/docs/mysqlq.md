@@ -206,36 +206,18 @@ Ver [fn::arrayGroup](https://github.com/arielbottero/wiki/blob/master/nogal/docs
 ___
 &nbsp;
 
-## GetMode
-Selecciona el modo de salida para los métodos **get** y **getall**  
-
-**[int]** =  *protected* function ( *string* \$sMode );  
-
-|Argumento|Tipo|Default|Descripción|
-|---|---|---|---|
-|**\$sMode**|string|assoc|Tipo de modo GET. Valores admitidos:<ul><li>**assoc** =  devuelve un array indexado por el nombre de columna</li><li>**num** =  devuelve un array indexado por el número de columna, empezando por la columna 0</li><li>**both** =  devuelve un array indexado tanto por el nombre como por el número de columna empezando por la columna 0</li></ul>|
-
-&nbsp;
-___
-&nbsp;
-
 ## getobj
-Obtiene una fila de resultados en forma de objeto stdClass y avanza el puntero.  
+> Obtiene una fila de resultados en forma de objeto stdClass y avanza el puntero.  
 
 **[object]** =  *public* function ( );
   
 ### Ejemplos  
-#### conexión  
+#### objeto de datos  
 ```php
-$foo = $ngl("mysql.foobar");
-$foo->base = "test";
-$foo->connect();
+$foo = $ngl("mysql")->connect();
 $bar = $foo->query("SELECT * FROM `users`");
 var_dump($bar->getobj());
 ```
-
-
-  
 
 &nbsp;
 ___
@@ -252,46 +234,61 @@ ___
 &nbsp;
 
 ## load
-Carga la ultima consulta ejecutada del driver.  
+> Carga la ultima consulta ejecutada del driver.  
 
-**[boolean]** =  *public* function ( *resource* \$link, *object* \$query );  
+**[boolean]** =  *public* function ( *resource* \$link, *object* \$query, *string* \$sQuery, *int* \$nQueryTime );  
 
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
-|**\$link**|resource|null|Puntero del driver de base de datos|
-|**\$query**|object|||
+|**\$link**|resource||*arg::link*|Puntero del driver de base de datos|
+|**\$query**|object||*arg::query*|Resultado de la última consulta ejecutada|
+|**\$sQuery**|string||*arg::sentence*|Última consulta ejecutada|
+|**\$nQueryTime**|int||*arg::query_time*|Tiempo que tomó la última consulta ejecutada|
 
 &nbsp;
 ___
 &nbsp;
 
 ## reset
-Reinicia el conjunto de resultados a la primera fila.  
+> Reinicia el conjunto de resultados a la primera fila.  
 
 **[boolean]** =  *public* function ( );
   
-
 &nbsp;
 ___
 &nbsp;
 
 ## rows
-Alias de **nglDBMySQLQuery::count**  
+Alias de [count](#count)
 
 **[int]** =  *public* function ( );
-  
 
 &nbsp;
 ___
 &nbsp;
 
 ## toArray
+Una versión simplificada de [getall](#getall)
 Obtiene todas las filas de resultados en forma de array bidimensional utilizando **mysqli_result::fetch_array** en modo asociativo.
 Este método ignora los argumentos del objeto **nglDBMySQLQuery** y al finalizar reinicia el conjunto de resultados a la primera fila.  
 
 **[boolean]** =  *public* function ( );
-  
 
 &nbsp;
 ___
 &nbsp;
+
+# Privados
+## GetMode
+> Selecciona el modo de salida para los métodos **get** y **getall**  
+
+**[int]** =  *protected* function ( *string* \$sMode );  
+
+|Argumento|Tipo|Default|Descripción|
+|---|---|---|---|
+|**\$sMode**|string|assoc|Tipo de modo GET. Valores admitidos:<ul><li>**assoc** =  devuelve un array indexado por el nombre de columna</li><li>**num** =  devuelve un array indexado por el número de columna, empezando por la columna 0</li><li>**both** =  devuelve un array indexado tanto por el nombre como por el número de columna empezando por la columna 0</li></ul>|
+
+&nbsp;
+___
+<sub><b>nogal</b> - <em>the most simple PHP Framework</em></sub><br />
+<sup>&copy; 2018 by <a href="http://hytcom.net/nogal">hytcom.net/nogal</a> - <a href="https://github.com/arielbottero">@arielbottero</a></sup><br />
