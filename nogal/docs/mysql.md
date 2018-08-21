@@ -124,7 +124,7 @@ ___
 &nbsp;
 
 ## exec
-Ejecuta una sentencia SQL y retorna un objecto [mysqli_result](http://php.net/mysqli_result)  
+> Ejecuta una sentencia SQL y retorna un objecto [mysqli_result](http://php.net/mysqli_result)  
 
 **object** =  *public* function ( *string* \$sQuery );  
 
@@ -169,7 +169,7 @@ ___
 &nbsp;
 
 ## insert
-Inserta un nuevo registro en una tabla  
+> Inserta un nuevo registro en una tabla  
 
 **[nglDBMySQLQuery object]** =  *public* function ( *string* \$sTable, *string* \$mValues, *string* \$sMode, *boolean* \$bCheckColumns, *boolean* \$bDO );  
 

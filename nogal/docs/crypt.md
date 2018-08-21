@@ -43,7 +43,7 @@ Implementa la clase 'phpseclib', de algoritmos de encriptación
 &nbsp;
 
 ## decrypt
-Desencripta una cadena con el método seleccionado  
+> Desencripta una cadena con el método seleccionado  
 
 **[string]** =  *public* function ( *string* \$sString );  
 
@@ -56,7 +56,7 @@ ___
 &nbsp;
 
 ## encrypt
-Encripta una cadena con el método seleccionado  
+> Encripta una cadena con el método seleccionado  
 
 **[string]** =  *public* function ( *mixed* \$sString );  
 
@@ -84,7 +84,7 @@ ___
 &nbsp;
 
 ## keys
-Genera un array con el par de claves pública y privada cuando el modo de encriptación es RSA  
+> Genera un array con el par de claves pública y privada cuando el modo de encriptación es RSA  
 
 **[array]** =  *public* function ( *int* \$nBits );  
 
@@ -116,7 +116,7 @@ ___
 
 # Privados
 ## RSAMode
-Prepara el objeto para utilizar el método de encriptación RSA. Chequeando y parseando la clave pública/privada
+> Prepara el objeto para utilizar el método de encriptación RSA. Chequeando y parseando la clave pública/privada
 
 **[boolean]** =  *private* function ();  
 &nbsp;
@@ -124,7 +124,7 @@ ___
 &nbsp;
 
 ## SetKey
-Aplica la clave de encriptación/desencriptación en el objeto principal, a traves del método setKey del mismo
+> Aplica la clave de encriptación/desencriptación en el objeto principal, a traves del método setKey del mismo
 
 **[boolean]** =  *private* function ( *string* \$sKey );  
 
@@ -137,19 +137,19 @@ ___
 &nbsp;
 
 ## SetType
-Establece el método de encriptación al invocar al argumento **type**.
-Métodos Soportados:
-<ul>
-	<li>aes</li>
-	<li>blowfish</li>
-	<li>des</li>
-	<li>tripledes</li>
-	<li>rc2</li>
-	<li>rc4</li>
-	<li>rijndael</li>
-	<li>rsa</li>
-	<li>twofish</li>
-</ul>  
+> Establece el método de encriptación al invocar al argumento **type**.
+> Métodos Soportados:
+> <ul>
+> 	<li>aes</li>
+> 	<li>blowfish</li>
+> 	<li>des</li>
+> 	<li>tripledes</li>
+> 	<li>rc2</li>
+> 	<li>rc4</li>
+> 	<li>rijndael</li>
+> 	<li>rsa</li>
+> 	<li>twofish</li>
+> </ul>  
 
 **[$this]** =  *private* function ( *string* \$sCrypter );  
 
@@ -159,5 +159,5 @@ Métodos Soportados:
 
 &nbsp;
 ___
-<sub><b>nogal v1.0</b> - <em>the most simple PHP Framework</em></sub><br />
+<sub><b>nogal</b> - <em>the most simple PHP Framework</em></sub><br />
 <sup>&copy; 2018 by <a href="http://hytcom.net/nogal">hytcom.net/nogal</a> - <a href="https://github.com/arielbottero">@arielbottero</a></sup><br />

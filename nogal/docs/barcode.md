@@ -34,7 +34,7 @@ ___
 &nbsp;
 
 ## base64
-Genera y retorna el código de barras en formato PNG Basa64  
+> Genera y retorna el código de barras en formato PNG Basa64  
 
 **[string]** =  *public* function ( *string* \$sContent, *string* \$sType, *string* \$nSize, *int* \$nHeight, *string* \$sColor );  
 
@@ -58,7 +58,7 @@ ___
 &nbsp;
 
 ## html
-Genera y retorna el código de barras en formato HTML  
+> Genera y retorna el código de barras en formato HTML  
 
 **[string]** =  *public* function ( *string* \$sContent, *string* \$sType, *string* \$nSize, *int* \$nHeight, *string* \$sColor );  
 
@@ -75,7 +75,7 @@ ___
 &nbsp;
 
 ## image
-Genera y retorna el puntero de la imagen del código de barras  
+> Genera y retorna el puntero de la imagen del código de barras  
 
 **[image resource]** =  *public* function ( *string* \$sType, *string* \$sContent, *string* \$nSize, *int* \$nHeight, *string* \$sColor );  
 
@@ -100,7 +100,7 @@ ___
 &nbsp;
 
 ## png
-Genera y retorna el código de barras en formato PNG  
+> Genera y retorna el código de barras en formato PNG  
 
 **[string]** =  *public* function ( *string* \$sContent, *string* \$sType, *string* \$nSize, *int* \$nHeight, *string* \$sColor );  
 
@@ -117,7 +117,7 @@ ___
 &nbsp;
 
 ## svg
-Genera y retorna el código de barras en formato SVG  
+> Genera y retorna el código de barras en formato SVG  
 
 **[string]** =  *public* function ( *string* \$sContent, *string* \$sType, *string* \$nSize, *int* \$nHeight, *string* \$sColor );  
 
@@ -134,7 +134,7 @@ ___
 &nbsp;
 
 ## text
-Genera y retorna una secuencia de 0 y 1 que representa código de barras. Donde cada valor equivale a un pixel de ancho y donde 1 significa barra y 0 significa espacio vacio
+> Genera y retorna una secuencia de 0 y 1 que representa código de barras. Donde cada valor equivale a un pixel de ancho y donde 1 significa barra y 0 significa espacio vacio
 
 **[string]** =  *public* function ( *string* \$sContent, *string* \$sType );  
 
@@ -158,11 +158,11 @@ ___
 
 # Privados
 ## SetType
-Establece el algoritmo utilizado para generar el códigoal invocar al argumento **type**.
+> Establece el algoritmo utilizado para generar el códigoal invocar al argumento **type**.
 
 **[int]** =  *private* function ( *string* \$sType );  
 
 &nbsp;
 ___
-<sub><b>nogal v1.0</b> - <em>the most simple PHP Framework</em></sub><br />
+<sub><b>nogal</b> - <em>the most simple PHP Framework</em></sub><br />
 <sup>&copy; 2018 by <a href="http://hytcom.net/nogal">hytcom.net/nogal</a> - <a href="https://github.com/arielbottero">@arielbottero</a></sup><br />
