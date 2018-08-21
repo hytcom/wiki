@@ -494,14 +494,15 @@ ___
 &nbsp;
 
 ## GetID
-Obtiene el ID del registro **\$mID** de la tabla **\$sTable** confirmando la existencia del mismo, en base a su IMYA o al propio ID.
+Obtiene el ID del registro **\$mID** de la tabla **\$sTable** confirmando la existencia del mismo, en base a su IMYA, a una condicion SQL o al propio ID.
+Cuando **\$mID** es un array se espera: array("campo", "signo", "valor")
 Cuando **\$sTable** sea distinto de **NULL** el valor retornado será almacenado en el atributo **id**  
 
 **[none]** =  *private* function ( *mixed* \$mID, *string* \$sTable );  
 
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
-|**\$mID**|mixed||Cadena IMYA o número entero|
+|**\$mID**|mixed||Cadena IMYA, array o número entero|
 |**\$sTable**|string|NULL|Nombre de la tabla en la cual buscar. Cuando el valor es **NULL** se trabajará sobre la tabla principal del objeto activo|
 
 &nbsp;
