@@ -35,7 +35,7 @@ Gestor de conexiones con bases de datos MySQL
 
 ## Atributos
 |Atributo|Tipo|Descripción|
-|---|---|---|---|
+|---|---|---|
 |**last_query**|string|Ultima consulta SQL ejecutada|
 
 &nbsp;

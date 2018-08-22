@@ -5,7 +5,7 @@
 - Instalar Docker [https://www.docker.com/get-started](https://www.docker.com/get-started)
 - Configurar Docker para que utilice [Contenedores Linux](https://docs.docker.com/docker-for-windows/#switch-between-windows-and-linux-containers)
 - Crear una carpeta y copiar en ella los archivos *dockerfile* y *php.ini*
-- Abrir PowerShell o el CMD y situarse en esa carpeta
+- Abrir PowerShell y situarse en esa carpeta
 - Ejecutar el archivo dockerfile
 ```bash
 docker build -t php:nogal -f dockerfile .
@@ -35,7 +35,14 @@ docker exec -i -t NOMBRE_CONTENEDOR /bin/bash
 
 ### MariaDB
 - Instalar MariaDB de manera local [https://mariadb.org/download](https://mariadb.org/download)
-- Para acceder desde los contenedores se debe averiguar la IP de la maquina local desde Docker. Para ello se debe ejecutar: ```ipconfig /all``` y buscar el adaptador "Hyper-V Virtual Ethernet Adapter" (el nombre puede variar)
+- Para acceder desde los contenedores se debe averiguar la IP de la maquina local desde Docker. Para ello se puede utilizar algunos de estos comandos en PowerShell
+```bash
+Get-NetIPAddress -InterfaceAlias "vEthernet (Modificador pre)" -AddressFamily IPv4
+```
+```bash
+Get-NetIPAddress -InterfaceAlias "vEthernet (Default Switch)" -AddressFamily IPv4
+```
+
 - En caso de querer modificar la carpeta en donde se guardan las bases de datos seguir estos pasos:
 	- reemplazar el archivo my.ini de la instalación, por ejemplo: **c:\Program Files\MariaDB 5.5\data\my.ini** por el archivo **my.ini**
 	- en el nuevo archivo **my.ini** configurar el path de la carpeta de bases de datos
