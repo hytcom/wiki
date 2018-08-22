@@ -1,6 +1,5 @@
 # mysql
-Gestor de conexiones con bases de datos MySQL.
-
+Gestor de conexiones con bases de datos MySQL.<br />
 Las consultas SQL se ejecutan a través del método [query](#query), que en caso de exito retornará un objeto [mysqlq](https://github.com/arielbottero/wiki/blob/master/nogal/docs/mysql.md)
   
 ## Variables
