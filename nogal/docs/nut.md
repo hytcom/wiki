@@ -1,14 +1,11 @@
-# Nogal v1.0
-*the most simple PHP Framework* by hytcom.net
-___
-  
-
 # nut
-## nglNut *extends* nglTrunk [main] [20150608]
-Este objeto es el gestor de nuts del sistema, construye el objeto \$nut dentro del framework, el cual es accedido a través de: **\$ngl("nut.NOMBRE_DEL_NUT")->run("NOMBRE_DE_METODO", ...)**
+Gestor de los **nuts** del sistema, construye el objeto \$nut dentro del framework, el cual es accedido a través de:
+```php
+$ngl("nut.NOMBRE_DEL_NUT")->run("NOMBRE_DE_METODO", $Array);
+```
   
 ## Variables
-`public` $safemethods = Listado de método que pueden ser ejecutados con <b>nglNut::$bSafemode</b> en <b>true</b>  
+`public` $safemethods = Listado de método que pueden ser ejecutados con **\$bSafemode** en **true**
 `public` $sNut = Nombre del nut actual  
 `private` $bSafemode = Determina si el modo seguro está o no activo  
 `protected` $ID = ID del nut  
@@ -20,33 +17,32 @@ Este objeto es el gestor de nuts del sistema, construye el objeto \$nut dentro d
 # Métodos
 |Método|Descripción|
 |---|---|
-|[arg](#arg)|Obtiene el valor del argumento $sIndex del array $vArguments, si no existiese re...|
-|[ifmethod](#ifmethod)|Verifica la existencia de un método en un nut|
-|[load](#load)|Carga y retorna un nut listo para ser usado|
-|[ngl](#ngl)|Retorna un objeto del framework utilizando el método nglRoot::call|
+|[arg](#arg)|Obtiene el valor del obtiene el valor de uno de los índices del array de argumentos|
+|[ifmethod](#ifmethod)|Verifica la existencia de un método dentro de un **nut**|
+|[load](#load)|Carga y retorna un **nut** listo para ser usado|
+|[ngl](#ngl)|Retorna un objeto del framework utilizando el método [root::call](https://github.com/arielbottero/wiki/blob/master/nogal/docs/root.md#call)|
 |[run](#run)|Ejecuta el método $sMethod del nut|
-|[safemode](#safemode)|Setea y/o retorna el valor de la variable nglNut::$bSafemodeCuando el valor de $...|
+|[safemode](#safemode)|Setea y/o retorna el valor de la variable **\$bSafemode**|
 
-  
 &nbsp;
 
-
 ## arg
-Obtiene el valor del argumento **\$sIndex** del array **\$vArguments**, si no existiese retorna **\$mDefault**  
+> Obtiene el valor del argumento **\$sIndex** del array **\$vArguments**, si no existiese retorna **\$mDefault**  
 
 **[mixed]** =  *protected* function ( *array* \$vArguments, *mixed* \$mDefault );  
 
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
-|**\$vArguments**|array|||
-|**\$mDefault**|mixed|null|Valor por defecto|
+|**\$vArguments**|array||Argumentos del nut"|
+|**\$sIndex**|string||Nombre del argumento buscado"|
+|**\$mDefault**|mixed|null|Valor por defecto"|
 
 &nbsp;
 ___
 &nbsp;
 
 ## ngl
-Retorna un objeto del framework utilizando el método **nglRoot::call**  
+> Retorna un objeto del framework utilizando el método [root::call](https://github.com/arielbottero/wiki/blob/master/nogal/docs/root.md#call)
 
 **[object]** =  *public* function ( *string* \$sObjectName );  
 
@@ -59,21 +55,28 @@ ___
 &nbsp;
 
 ## load
-Carga y retorna un nut listo para ser usado  
+> Carga y retorna un nut listo para ser usado
+> Al no ser este un objeto instanciable, si se pasa el argumento **\$NutID** el método intentará recuperar un **nut** previamente ejecutado
 
-**[object]** =  *public* function ( *string* \$sNutName, *array* \$sNutID );  
+**[object]** =  *public* function ( *string* \$sNutName, *string* \$sNutID );  
 
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**\$sNutName**|string||Nombre del nut|
-|**\$sNutID**|array||Id del nut|
+|**\$sNutID**|string||Id del nut|
+### Ejemplos
+Supongamos la existencia de un **nut* denomninado **foobar**
+#### carga del nut foobar
+```php
+$my = $ngl("nut.foobar");
+```
 
 &nbsp;
 ___
 &nbsp;
 
 ## ifmethod
-Verifica la existencia de un método en un nut  
+> Verifica la existencia de un método en un **nut** 
 
 **[boolean]** =  *public* function ( *string* \$sFunction );  
 
@@ -86,7 +89,7 @@ ___
 &nbsp;
 
 ## run
-Ejecuta el método **\$sMethod** del nut  
+> Ejecuta el método **\$sMethod** del **nut**
 
 **[mixed]** =  *public* function ( *string* \$sMethod, *mixed* \$mArguments );  
 
@@ -94,14 +97,21 @@ Ejecuta el método **\$sMethod** del nut
 |---|---|---|---|
 |**\$sMethod**|string||Nombre del método|
 |**\$mArguments**|mixed||Argumentos que se pasarán al método|
+### Ejemplos
+Supongamos que el método **lorem** imprime un texto aleatorio en función del idioma especificado
+#### nut foobar método lorem
+```php
+$my = $ngl("nut.foobar")->run("lorem", array("lang"=>"es"));
+```
 
 &nbsp;
 ___
 &nbsp;
 
 ## safemode
-Setea y/o retorna el valor de la variable **nglNut::\$bSafemode**
-Cuando el valor de **\$bMode** sea **null** simplemente se retornará el valor actual de la variable.  
+> Setea y/o retorna el valor de la variable **\$bSafemode**
+> Los **nuts** son accesesibles desde las plantillas **rind**. Cuando **\bSafemode** = **true** sólo podrán ejecutarse desde las plantillas aquellos métodos declarados en **\$safemethods**
+> Cuando el valor de **\$bMode** sea **null** simplemente se retornará el valor actual de la variable.
 
 **[boolean]** =  *public* function ( *boolean* \$bMode );  
 
@@ -111,4 +121,5 @@ Cuando el valor de **\$bMode** sea **null** simplemente se retornará el valor a
 
 &nbsp;
 ___
-&nbsp;
+<sub><b>nogal</b> - <em>the most simple PHP Framework</em></sub><br />
+<sup>&copy; 2018 by <a href="http://hytcom.net/nogal">hytcom.net/nogal</a> - <a href="https://github.com/arielbottero">@arielbottero</a></sup><br />
