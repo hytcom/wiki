@@ -259,7 +259,7 @@ ___
 &nbsp;
 
 ## rows
-Alias de [count](#count)
+> Alias de [count](#count)
 
 **[int]** =  *public* function ( );
 
