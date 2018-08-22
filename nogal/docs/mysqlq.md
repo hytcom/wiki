@@ -224,7 +224,7 @@ ___
 &nbsp;
 
 ## lastid
-Retorna el ID de la fila de la sentencia INSERT más reciente realizada en la base de datos  
+> Retorna el ID de la fila de la sentencia INSERT más reciente realizada en la base de datos  
 
 **[int]** =  *public* function ( );
   
@@ -268,9 +268,9 @@ ___
 &nbsp;
 
 ## toArray
-Una versión simplificada de [getall](#getall)
-Obtiene todas las filas de resultados en forma de array bidimensional utilizando **mysqli_result::fetch_array** en modo asociativo.
-Este método ignora los argumentos del objeto **nglDBMySQLQuery** y al finalizar reinicia el conjunto de resultados a la primera fila.  
+> Una versión simplificada de [getall](#getall)
+> Obtiene todas las filas de resultados en forma de array bidimensional utilizando [mysqli_result::fetch_array](http://php.net/manual/es/mysqli-result.fetch-array.php) en modo asociativo.
+> Este método ignora los argumentos del objeto **nglDBMySQLQuery** y al finalizar reinicia el conjunto de resultados a la primera fila.  
 
 **[boolean]** =  *public* function ( );
 
@@ -280,7 +280,7 @@ ___
 
 # Privados
 ## GetMode
-> Selecciona el modo de salida para los métodos **get** y **getall**  
+> Selecciona el modo de salida para los métodos [get](#get) y [getall](#getall)
 
 **[int]** =  *protected* function ( *string* \$sMode );  
 
