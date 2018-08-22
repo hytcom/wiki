@@ -1,6 +1,6 @@
 # Nogal
-*the most simple PHP Framework* by hytcom.net
-<small>ver 1.0</small>
+*the most simple PHP Framework* by hytcom.net<br />
+<sup>ver 1.0</sup>
 ___
   
 
