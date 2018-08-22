@@ -1,5 +1,4 @@
 # mysqlq
-## nglDBMySQLQuery *extends* nglStd *implements* iNglDBQuery [instanciable] [20160201]
 Controla los resultados generados por consultas a la bases de datos MySQL.
   
 ## Variables
@@ -33,15 +32,15 @@ Controla los resultados generados por consultas a la bases de datos MySQL.
 |[count](#count)|Devuelve el número de filas involucradas en la última consulta ejecutada|
 |[destroy](#destroy)|Libera la memoria asociada con el identificador del resultado y destruye el objeto|
 |[free](#free)|Libera la memoria asociada con el identificador del resultado|
-|[get](#get)|Obtiene una fila de resultados en forma de array y avanza el puntero.Cuando se e...|
-|[getall](#getall)|Obtiene todas las filas de resultados en forma de array bidimensional.Cuando se ...|
-|[getobj](#getobj)|Obtiene una fila de resultados en forma de objeto stdClass y avanza el puntero.|
-|[lastid](#lastid)|Retorna el ID de la fila de la sentencia INSERT más reciente realizada en la bas...|
-|[load](#load)|Carga la ultima consulta ejecutada del driver.|
-|[reset](#reset)|Reinicia el conjunto de resultados a la primera fila.|
+|[get](#get)|Obtiene una fila de resultados en forma de array y avanza el puntero|
+|[getall](#getall)|Obtiene todas las filas de resultados en forma de array bidimensional|
+|[getobj](#getobj)|Obtiene una fila de resultados en forma de objeto stdClass y avanza el puntero|
+|[lastid](#lastid)|Retorna el ID del último INSERT realizado con éxito|
+|[load](#load)|Carga la ultima consulta ejecutada del driver|
+|[reset](#reset)|Reinicia el conjunto de resultados a la primera fila|
 |[rows](#rows)|Alias de nglDBMySQLQuery::count|
-|[toArray](#toArray)|Obtiene todas las filas de resultados en forma de array bidimensional utilizando...|
-|[GetMode](#GetMode)|Selecciona el modo de salida para los métodos get y getall|
+|[toArray](#toArray)|Obtiene todas las filas de resultados en forma de array bidimensional|
+|[GetMode](#GetMode)|Selecciona el modo de salida para los métodos **get** y **getall**|
 
   
 &nbsp;
@@ -224,7 +223,7 @@ ___
 &nbsp;
 
 ## lastid
-> Retorna el ID de la fila de la sentencia INSERT más reciente realizada en la base de datos  
+> Retorna el ID del último INSERT realizado con éxito.
 
 **[int]** =  *public* function ( );
   

@@ -1,5 +1,4 @@
 # mysql
-## nglDBMySQL *extends* nglStd *implements* iNglDataBase [instanciable] [20180821]
 Gestor de conexiones con bases de datos MySQL
   
 ## Variables

@@ -1,5 +1,4 @@
 # nogal::barcode
-## nglBarCode *extends* nglStd [instanciable] [2018-08-12]
 Implementa la clase 'barcode-generator' para generar códigos de barras
 ___
   

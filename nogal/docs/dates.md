@@ -1,5 +1,4 @@
 # nogal::dates
-## nglDates *extends* nglStd [main] [20180815]
 Utilidades para operaciones con fechas y horas
 Generación de Calendarios
   

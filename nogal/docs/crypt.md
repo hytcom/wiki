@@ -1,5 +1,4 @@
 # nogal::crypt
-## nglCrypt *extends* nglStd [instanciable] [2018-08-12]
 Implementa la clase 'phpseclib', de algoritmos de encriptación
   
 ## Variables
