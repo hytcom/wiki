@@ -110,7 +110,7 @@ ___
 
 ## safemode
 > Setea y/o retorna el valor de la variable **\$bSafemode**
-> Los **nuts** son accesesibles desde las plantillas **rind**. Cuando **\bSafemode** = **true** sólo podrán ejecutarse desde las plantillas aquellos métodos declarados en **\$safemethods**
+> Los **nuts** son accesesibles desde las plantillas **rind**. Cuando **$bSafemode** = **true** sólo podrán ejecutarse desde las plantillas aquellos métodos declarados en **\$safemethods**
 > Cuando el valor de **\$bMode** sea **null** simplemente se retornará el valor actual de la variable.
 
 **[boolean]** =  *public* function ( *boolean* \$bMode );  
