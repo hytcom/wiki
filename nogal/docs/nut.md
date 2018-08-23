@@ -9,11 +9,10 @@ $ngl("nut.NOMBRE_DEL_NUT")->run("NOMBRE_DE_METODO", $Array);
 El sistema tiene algunos **nuts** genéricos, pero el usuario también puede definir los propios (ver [Cómo crear NUTS](https://github.com/arielbottero/wiki/blob/master/nogal/docs/nuts.md))
   
 ## Variables
-`public` $safemethods = Listado de método que pueden ser ejecutados con **$bSafemode** en **true** 
 `public` $sNut = Nombre del nut actual  
 `private` $bSafemode = Determina si el modo seguro está o no activo  
 `protected` $ID = ID del nut  
-`protected` $storage = Array vacio para almacenar datos que luego pueden ser obtenidos mediante nutid  
+`protected` $aSafeMethods = Listado de métodos seguros
 
   
 &nbsp;
@@ -27,6 +26,8 @@ El sistema tiene algunos **nuts** genéricos, pero el usuario también puede def
 |[ngl](#ngl)|Retorna un objeto del framework utilizando el método [root::call](https://github.com/arielbottero/wiki/blob/master/nogal/docs/root.md#call)|
 |[run](#run)|Ejecuta el método $sMethod del nut|
 |[safemode](#safemode)|Setea y/o retorna el valor de la variable **$bSafemode**|
+|Privados||
+|[SafeMethods](#safemethods)|Establece/retorna el valor de la variable **$aSafeMethods**|
 
 &nbsp;
 
@@ -143,6 +144,21 @@ ___
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**$bMode**|boolean|null|True o False|
+
+&nbsp;
+___
+&nbsp;
+
+# Privados
+## SafeMethods
+> Establece/retorna el valor de la variable **$aSafeMethods**
+> Cuando el valor de **$aSafeMethods** sea **null** simplemente se retornará el valor actual de la variable.
+
+**[boolean]** =  *protected* function ( *boolean* $aSafeMethods );  
+
+|Argumento|Tipo|Default|Descripción|
+|---|---|---|---|
+|**$aSafeMethods**|array|null|Array de métodos seguros|
 
 &nbsp;
 ___
