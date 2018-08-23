@@ -1,8 +1,12 @@
 # nut
-Gestor de los **nuts** del sistema, construye el objeto $nut dentro del framework, el cual es accedido a través de:
+Gestor de los **nuts**.<br />
+Los **nuts** son clases php cuyo objetivo es agrupar procedimientos que pueden o no invocar a otros objetos del **nogal**<br />
+A diferencia de los otros objetos, los **nuts** pueden ser utilizados dentro de las plantillas [rind](https://github.com/arielbottero/wiki/blob/master/nogal/docs/rind.md) como origen de datos.
+Todos los **nuts** son heredados del objeto principal. La forma de invocar un **nut** es:
 ```php
 $ngl("nut.NOMBRE_DEL_NUT")->run("NOMBRE_DE_METODO", $Array);
 ```
+El sistema tiene algunos **nuts** genéricos, pero el usuario también puede definir los propios (ver [Cómo crear NUTS](https://github.com/arielbottero/wiki/blob/master/nogal/docs/nuts.md))
   
 ## Variables
 `public` $safemethods = Listado de método que pueden ser ejecutados con **$bSafemode** en **true**
@@ -110,7 +114,7 @@ ___
 
 ## safemode
 > Setea y/o retorna el valor de la variable **$bSafemode**
-> Los **nuts** son accesesibles desde las plantillas **rind**. Cuando **$bSafemode** = **true** sólo podrán ejecutarse desde las plantillas aquellos métodos declarados en **$safemethods**
+> Los **nuts** son accesesibles desde las plantillas [rind](https://github.com/arielbottero/wiki/blob/master/nogal/docs/rind.md). Cuando **$bSafemode** = **true** sólo podrán ejecutarse desde las plantillas aquellos métodos declarados en **$safemethods**
 > Cuando el valor de **$bMode** sea **null** simplemente se retornará el valor actual de la variable.
 
 **[boolean]** =  *public* function ( *boolean* $bMode );  
