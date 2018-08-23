@@ -9,7 +9,7 @@ $ngl("nut.NOMBRE_DEL_NUT")->run("NOMBRE_DE_METODO", $Array);
 El sistema tiene algunos **nuts** genéricos, pero el usuario también puede definir los propios (ver [Cómo crear NUTS](https://github.com/arielbottero/wiki/blob/master/nogal/docs/nuts.md))
   
 ## Variables
-`public` $safemethods = Listado de método que pueden ser ejecutados con **$bSafemode** en **true**
+`public` $safemethods = Listado de método que pueden ser ejecutados con **$bSafemode** en **true** 
 `public` $sNut = Nombre del nut actual  
 `private` $bSafemode = Determina si el modo seguro está o no activo  
 `protected` $ID = ID del nut  
