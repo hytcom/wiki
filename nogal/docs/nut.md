@@ -56,7 +56,7 @@ ___
 
 ## load
 > Carga y retorna un nut listo para ser usado
-> Al no ser este un objeto instanciable, si se pasa el argumento **$NutID** el método intentará recuperar un **nut** previamente ejecutado
+> Al no ser este un objeto instanciable, si se pasa el argumento **$sNutID** el método intentará recuperar un **nut** previamente ejecutado
 
 **[object]** =  *public* function ( *string* $sNutName, *string* $sNutID );  
 

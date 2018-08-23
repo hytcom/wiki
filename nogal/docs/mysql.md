@@ -75,15 +75,15 @@ ___
 ## connect
 > Establece la conexión con la base de datos  
 
-**[$this]** =  *public* function ( *string* \$sHost, *string* \$sUser, *string* \$sPass, *int* \$nPort, *string* \$sSocket );  
+**[$this]** =  *public* function ( *string* $sHost, *string* $sUser, *string* $sPass, *int* $nPort, *string* $sSocket );  
 
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
-|**\$sHost**|string|*arg::host*|Puede ser o un nombre de host o una dirección IP. Pasando el valor NULL o la cadena "localhost" se asumirá el host local|
-|**\$sUser**|string|*arg::user*|Nombre de usuario para acceder a la base de datos|
-|**\$sPass**|string|*arg::pass*|Contraseña para acceder a la base de datos|
-|**\$nPort**|string|*arg::port*|Puerto donde escucha el servidor MySQL|
-|**\$sSocket**|string|*arg::socket*|Contraseña para acceder a la base de datos|
+|**$sHost**|string|*arg::host*|Puede ser o un nombre de host o una dirección IP. Pasando el valor NULL o la cadena "localhost" se asumirá el host local|
+|**$sUser**|string|*arg::user*|Nombre de usuario para acceder a la base de datos|
+|**$sPass**|string|*arg::pass*|Contraseña para acceder a la base de datos|
+|**$nPort**|string|*arg::port*|Puerto donde escucha el servidor MySQL|
+|**$sSocket**|string|*arg::socket*|Contraseña para acceder a la base de datos|
 
 ### Ejemplos  
 #### conexión especificando parámetros (sin archivo .conf)
@@ -113,11 +113,11 @@ ___
 ## escape
 > Escapa un valor para ser incluído de manera segura en una sentencia SQL  
 
-**[mixed]** =  *public* function ( *mixed* \$mValues );  
+**[mixed]** =  *public* function ( *mixed* $mValues );  
 
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
-|**\$mValues**|string|*arg::values*|Datos enviados a los métodos [insert](#insert) y [update](#update). Valores admitidos:<ul><li>**array**</li><li>**number**</li><li>**string**</li></ul>|
+|**$mValues**|string|*arg::values*|Datos enviados a los métodos [insert](#insert) y [update](#update). Valores admitidos:<ul><li>**array**</li><li>**number**</li><li>**string**</li></ul>|
 
 &nbsp;
 ___
@@ -126,11 +126,11 @@ ___
 ## exec
 > Ejecuta una sentencia SQL y retorna un objecto [mysqli_result](http://php.net/mysqli_result)  
 
-**object** =  *public* function ( *string* \$sQuery );  
+**object** =  *public* function ( *string* $sQuery );  
 
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
-|**\$sQuery**|string|*arg::sql*|Sentencia SQL|
+|**$sQuery**|string|*arg::sql*|Sentencia SQL|
 
 ### Ejemplos  
 #### ejecución 
@@ -152,12 +152,12 @@ ___
 > - datos encerrados entre: **"** *(comillas dobles)*
 > - caracter de escape: **\\** *(barra invertida)*
 
-**string** =  *public* function ( *string* \$sQuery, *string* \$sFilePath );  
+**string** =  *public* function ( *string* $sQuery, *string* $sFilePath );  
 
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
-|**\$sQuery**|string|*arg::sql*|Sentencia SQL|
-|**\$sFilePath**|string|*arg::file*|Ruta del archivo de salida de datos. Si no se especifica se generará un archivo en **tmp**|
+|**$sQuery**|string|*arg::sql*|Sentencia SQL|
+|**$sFilePath**|string|*arg::file*|Ruta del archivo de salida de datos. Si no se especifica se generará un archivo en **tmp**|
 
 ### Ejemplos  
 #### todas las ventas de enero
@@ -180,12 +180,12 @@ ___
 > - datos encerrados entre: **"** *(comillas dobles)*
 > - caracter de escape: **\\** *(barra invertida)*
 
-**boolean** =  *public* function ( *string* \$sFilePath, *string* \$sTable );  
+**boolean** =  *public* function ( *string* $sFilePath, *string* $sTable );  
 
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
-|**\$sFilePath**|string|*arg::file*|Ruta del archivo de datos a importar|
-|**\$sTable**|string|*arg::table*|Tabla en la que se importarán los datos|
+|**$sFilePath**|string|*arg::file*|Ruta del archivo de datos a importar|
+|**$sTable**|string|*arg::table*|Tabla en la que se importarán los datos|
 
 ### Ejemplos  
 #### carga de ventas de febrero 
@@ -202,15 +202,15 @@ ___
 ## insert
 > Inserta un nuevo registro en una tabla  
 
-**[nglDBMySQLQuery object]** =  *public* function ( *string* \$sTable, *string* \$mValues, *string* \$sMode, *boolean* \$bCheckColumns, *boolean* \$bDO );  
+**[nglDBMySQLQuery object]** =  *public* function ( *string* $sTable, *string* $mValues, *string* $sMode, *boolean* $bCheckColumns, *boolean* $bDO );  
 
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
-|**\$sTable**|string|*arg::table*|Nombre de la tabla activa en los métodos INSERT y UPDATE|
-|**\$mValues**|string|*arg::values*|Datos a insertar: <ul><li>**array asociativo** =  donde cada clave es el nombre del campo en la tabla</li><li>**cadena de variables** =  con el mismo formato que las pasadas por medio de una URL. El valor será analizado utilizando **parse_str**</li></ul>|
-|**\$sMode**|string|*arg::insert_mode*|tipo de modo INSERT. Valores admitidos:<ul><li>**INSERT** =  inserta nuevos registros</li><li>**REPLACE** =  si el nuevo registro duplica un valor PRIMARY KEY o UNIQUE, el antiguo registro es eliminado</li><li>**IGNORE** =  el comando no aborta incluso si ocurren errores durante la ejecución</li></ul>|
-|**\$bCheckColumns**|boolean|*arg::check_colnames*|Activa el chequeo de los nombre de las columnas en la tabla activa|
-|**\$bDO**|boolean|*arg::do*|Cuando es TRUE el método query ejecuta la sentencia pero no retorna resultado|
+|**$sTable**|string|*arg::table*|Nombre de la tabla activa en los métodos INSERT y UPDATE|
+|**$mValues**|string|*arg::values*|Datos a insertar: <ul><li>**array asociativo** =  donde cada clave es el nombre del campo en la tabla</li><li>**cadena de variables** =  con el mismo formato que las pasadas por medio de una URL. El valor será analizado utilizando **parse_str**</li></ul>|
+|**$sMode**|string|*arg::insert_mode*|tipo de modo INSERT. Valores admitidos:<ul><li>**INSERT** =  inserta nuevos registros</li><li>**REPLACE** =  si el nuevo registro duplica un valor PRIMARY KEY o UNIQUE, el antiguo registro es eliminado</li><li>**IGNORE** =  el comando no aborta incluso si ocurren errores durante la ejecución</li></ul>|
+|**$bCheckColumns**|boolean|*arg::check_colnames*|Activa el chequeo de los nombre de las columnas en la tabla activa|
+|**$bDO**|boolean|*arg::do*|Cuando es TRUE el método query ejecuta la sentencia pero no retorna resultado|
 ### Ejemplos  
 #### datos en array  
 ```php
@@ -239,12 +239,12 @@ ___
 > Convierte una cadena JSQL una sentencia SQL utilizando el objeto [jsql](https://github.com/arielbottero/wiki/blob/master/nogal/docs/jsql.md)
 > Este método es utilizado por lo general por otros objetos, como por ejemplo [owl](https://github.com/arielbottero/wiki/blob/master/nogal/docs/owl.md)
 
-**[string]** =  *public* function ( *mixed* \$mJSQL, *string* \$sEOL );  
+**[string]** =  *public* function ( *mixed* $mJSQL, *string* $sEOL );  
 
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
-|**\$mJSQL**|mixed|*arg::jsql*|Sentencia SQL en formato JSON o Array:<ul><li>columns</li><li>tables</li><li>where</li><li>group</li><li>having</li><li>order</li><li>offset</li><li>limit</li></ul>|
-|**\$sEOL**|string|*arg::jsql_eol*|Salto de linea luego de cada parte de la sentencia|
+|**$mJSQL**|mixed|*arg::jsql*|Sentencia SQL en formato JSON o Array:<ul><li>columns</li><li>tables</li><li>where</li><li>group</li><li>having</li><li>order</li><li>offset</li><li>limit</li></ul>|
+|**$sEOL**|string|*arg::jsql_eol*|Salto de linea luego de cada parte de la sentencia|
 
 &nbsp;
 ___
@@ -253,11 +253,11 @@ ___
 ## mexec
 > Ejecuta varias sentencias SQL separadas por ; y retorna un array de objectos **mysqli_result**  
 
-**[array]** =  *public* function ( *string* \$sQuery );  
+**[array]** =  *public* function ( *string* $sQuery );  
 
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
-|**\$sQuery**|string|*arg::sql*|Ultima sentencia SQL ejecutada o próxima a ejecutarse|
+|**$sQuery**|string|*arg::sql*|Ultima sentencia SQL ejecutada o próxima a ejecutarse|
 
 &nbsp;
 ___
@@ -266,12 +266,12 @@ ___
 ## mquery
 > Ejecuta varias sentencias SQL separadas por ; y retorna un array de objectos **nglDBMySQLQuery**, o TRUE cuando DO esta activo  
 
-**[array OR true]** =  *public* function ( *string* \$sQuery, *boolean* \$bDO );  
+**[array OR true]** =  *public* function ( *string* $sQuery, *boolean* $bDO );  
 
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
-|**\$sQuery**|string|null|Ultima sentencia SQL ejecutada o próxima a ejecutarse|
-|**\$bDO**|boolean|false|Cuando es TRUE el método query ejecuta la sentencia pero no retorna resultado|
+|**$sQuery**|string|null|Ultima sentencia SQL ejecutada o próxima a ejecutarse|
+|**$bDO**|boolean|false|Cuando es TRUE el método query ejecuta la sentencia pero no retorna resultado|
 ### Ejemplos  
 #### datos en array  
 ```php
@@ -292,12 +292,12 @@ ___
 ## query
 > Ejecuta una sentencia SQL y retorna un objecto **nglDBMySQLQuery**  
 
-**[nglDBMySQLQuery object]** =  *public* function ( *string* \$sQuery, *boolean* \$bDO );  
+**[nglDBMySQLQuery object]** =  *public* function ( *string* $sQuery, *boolean* $bDO );  
 
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
-|**\$sQuery**|string|*arg::sql*|Sentencia SQL próxima a ejecutarse|
-|**\$bDO**|boolean|*arg::do*|Cuando es TRUE el método query ejecuta la sentencia pero no retorna resultado|
+|**$sQuery**|string|*arg::sql*|Sentencia SQL próxima a ejecutarse|
+|**$bDO**|boolean|*arg::do*|Cuando es TRUE el método query ejecuta la sentencia pero no retorna resultado|
 ### Ejemplos  
 #### conexión  
 ```php
@@ -312,18 +312,18 @@ ___
 &nbsp;
 
 ## update
-> Actualiza todos los registros que cumplan con la condición **\$sWhere**  
+> Actualiza todos los registros que cumplan con la condición **$sWhere**  
 
-**[nglDBMySQLQuery object]** =  *public* function ( *string* \$sTable, *string* \$mValues, *string* \$sWhere, *string* \$sMode, *boolean* \$bCheckColumns, *boolean* \$bDO );  
+**[nglDBMySQLQuery object]** =  *public* function ( *string* $sTable, *string* $mValues, *string* $sWhere, *string* $sMode, *boolean* $bCheckColumns, *boolean* $bDO );  
 
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
-|**\$sTable**|string|*arg::table*|Nombre de la tabla activa|
-|**\$mValues**|string|*arg::values*|Datos a actualizar. Valores admitidos:<ul><li>**array asociativo** =  donde cada clave es el nombre del campo en la tabla</li><li>**cadena de variables** =  con el mismo formato que las pasadas por medio de una URL. El valor será analizado utilizando **parse_str**</li></ul>|
-|**\$sWhere**|string|nu*arg::where*ll|Cadena que representa una condición SQL WHERE|
-|**\$sMode**|string|*arg::update_mode*|Tipo de modo UPDATE. Valores admitidos:<ul><li>**UPDATE** =  actualiza los registros especificados</li><li>**REPLACE** =  crea un nuevo registro en caso de no hallar el registro especificados</li><li>**IGNORE** =  el comando no aborta incluso si ocurren errores durante la ejecución</li></ul>|
-|**\$bCheckColumns**|boolean|*arg::check_colnames*|Activa el chequeo de los nombre de las columnas en la tabla activa|
-|**\$bDO**|boolean|*arg::do*|Cuando es TRUE el método query ejecuta la sentencia pero no retorna resultado|
+|**$sTable**|string|*arg::table*|Nombre de la tabla activa|
+|**$mValues**|string|*arg::values*|Datos a actualizar. Valores admitidos:<ul><li>**array asociativo** =  donde cada clave es el nombre del campo en la tabla</li><li>**cadena de variables** =  con el mismo formato que las pasadas por medio de una URL. El valor será analizado utilizando **parse_str**</li></ul>|
+|**$sWhere**|string|nu*arg::where*ll|Cadena que representa una condición SQL WHERE|
+|**$sMode**|string|*arg::update_mode*|Tipo de modo UPDATE. Valores admitidos:<ul><li>**UPDATE** =  actualiza los registros especificados</li><li>**REPLACE** =  crea un nuevo registro en caso de no hallar el registro especificados</li><li>**IGNORE** =  el comando no aborta incluso si ocurren errores durante la ejecución</li></ul>|
+|**$bCheckColumns**|boolean|*arg::check_colnames*|Activa el chequeo de los nombre de las columnas en la tabla activa|
+|**$bDO**|boolean|*arg::do*|Cuando es TRUE el método query ejecuta la sentencia pero no retorna resultado|
 ### Ejemplos  
 #### datos en array  
 ```php
@@ -363,14 +363,14 @@ Auxiliar de los métodos [insert](#insert) y [update](#update).
 Prepara el **array asociativo** o la **cadena de variables** para ser utilizados en las sentencias.
 Cuando los valores sean pasados como una **cadena de variables** estos serán tratados con **escape** para garantizar la seguridad del comando SQL.  
 
-**[mysqli_result object]** =  *private* function ( *string* \$sType, *string* \$sTable, *mixed* \$mValues, *boolean* \$bCheckColumns );  
+**[mysqli_result object]** =  *private* function ( *string* $sType, *string* $sTable, *mixed* $mValues, *boolean* $bCheckColumns );  
 
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
-|**\$sType**|string||Tipo de operación, INSERT o UPDATE|
-|**\$sTable**|string||Nombre de la tabla|
-|**\$mValues**|mixed||Datos en forma de array asociativo o cadena de variables|
-|**\$bCheckColumns**|boolean|true|Activa el chequeo de columnas en la tabla|
+|**$sType**|string||Tipo de operación, INSERT o UPDATE|
+|**$sTable**|string||Nombre de la tabla|
+|**$mValues**|mixed||Datos en forma de array asociativo o cadena de variables|
+|**$bCheckColumns**|boolean|true|Activa el chequeo de columnas en la tabla|
 
 &nbsp;
 ___

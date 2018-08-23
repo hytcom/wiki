@@ -44,11 +44,11 @@ Implementa la clase 'phpseclib', de algoritmos de encriptación
 ## decrypt
 > Desencripta una cadena con el método seleccionado  
 
-**[string]** =  *public* function ( *string* \$sString );  
+**[string]** =  *public* function ( *string* $sString );  
 
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
-|**\$sString**|string|*arg::text*|Cadena a desencriptar|
+|**$sString**|string|*arg::text*|Cadena a desencriptar|
 
 &nbsp;
 ___
@@ -57,11 +57,11 @@ ___
 ## encrypt
 > Encripta una cadena con el método seleccionado  
 
-**[string]** =  *public* function ( *mixed* \$sString );  
+**[string]** =  *public* function ( *mixed* $sString );  
 
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
-|**\$sString**|mixed|*arg::text*|Cadena a encriptar/desencriptar|
+|**$sString**|mixed|*arg::text*|Cadena a encriptar/desencriptar|
 ### Ejemplos  
 #### AES  
 ```php
@@ -85,11 +85,11 @@ ___
 ## keys
 > Genera un array con el par de claves pública y privada cuando el modo de encriptación es RSA  
 
-**[array]** =  *public* function ( *int* \$nBits );  
+**[array]** =  *public* function ( *int* $nBits );  
 
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
-|**\$nBits**|int|*arg::keyslen*|Longuitud de las claves. Minima admitida: 32|
+|**$nBits**|int|*arg::keyslen*|Longuitud de las claves. Minima admitida: 32|
 ### Ejemplos  
 #### Claves  
 ```php
@@ -125,11 +125,11 @@ ___
 ## SetKey
 > Aplica la clave de encriptación/desencriptación en el objeto principal, a traves del método setKey del mismo
 
-**[boolean]** =  *private* function ( *string* \$sKey );  
+**[boolean]** =  *private* function ( *string* $sKey );  
 
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
-|**\$sKey**|string|*arg::key*|Clave de encriptación/desencriptación|
+|**$sKey**|string|*arg::key*|Clave de encriptación/desencriptación|
 
 &nbsp;
 ___
@@ -150,11 +150,11 @@ ___
 > 	<li>twofish</li>
 > </ul>  
 
-**[$this]** =  *private* function ( *string* \$sCrypter );  
+**[$this]** =  *private* function ( *string* $sCrypter );  
 
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
-|**\$sCrypter**|string|*arg::type*|Método de encriptación|
+|**$sCrypter**|string|*arg::type*|Método de encriptación|
 
 &nbsp;
 ___

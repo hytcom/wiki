@@ -100,14 +100,14 @@ ___
 
 ## get
 > Obtiene una fila de resultados en forma de array y avanza el puntero.
-> Cuando se especifique **\$sColumn** y el valor sea el nombre una columna del grupo de resultados, se retornará unicamente el valor de dicha columna  
+> Cuando se especifique **$sColumn** y el valor sea el nombre una columna del grupo de resultados, se retornará unicamente el valor de dicha columna  
 
-**[mixed]** =  *public* function ( *string* \$sColumn, *string* \$sMode );  
+**[mixed]** =  *public* function ( *string* $sColumn, *string* $sMode );  
 
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
-|**\$sColumn**|string|*arg::column*|Nombre de una columna del grupo de resultados|
-|**\$sMode**|string|*arg::get_mode*|Tipo de modo GET. Valores admitidos:<ul><li>**assoc** =  devuelve un array indexado por el nombre de columna</li><li>**num** =  devuelve un array indexado por el número de columna, empezando por la columna 0</li><li>**both** =  devuelve un array indexado tanto por el nombre como por el número de columna empezando por la columna 0</li></ul>|
+|**$sColumn**|string|*arg::column*|Nombre de una columna del grupo de resultados|
+|**$sMode**|string|*arg::get_mode*|Tipo de modo GET. Valores admitidos:<ul><li>**assoc** =  devuelve un array indexado por el nombre de columna</li><li>**num** =  devuelve un array indexado por el número de columna, empezando por la columna 0</li><li>**both** =  devuelve un array indexado tanto por el nombre como por el número de columna empezando por la columna 0</li></ul>|
 ### Ejemplos  
 #### todas las columnas  
 ```php
@@ -128,17 +128,17 @@ ___
 > Obtiene todas las filas de resultados en forma de array bidimensional o vector.
 > Si se especifica un valor para $mColumn, el conjunto de resultados puede ser agrupado de 4 maneras diferentes:
 > - **nombre_columna** en este caso se retornará un vector númerico donde el valor de cada índice será el valor de la columna.
-> - **#nombre_columna** en este caso se retornará un array multidimensional donde el valor de la columna será utilizado como indice asociativo del primer nivel. En un segundo nivel se agruparan los registros que tengan igual valor en el campo **\$sColumn**.
+> - **#nombre_columna** en este caso se retornará un array multidimensional donde el valor de la columna será utilizado como indice asociativo del primer nivel. En un segundo nivel se agruparan los registros que tengan igual valor en el campo **$sColumn**.
 > - **@nombre_columna** retornará un vector asociativo CLAVE-VALOR. Para ello se explotará el valor de column por una punto y coma (;), el primer indice será utilizado como indice del vector, y el segundo como valor. Si no se encontrase una coma se usará el valor de column para ambas partes. En el caso de que hubiera mas de un valor para un indice, sólo se tendrá en cuenta la primer aparción del mismo.
 > - **Cuando column sea un Array** será utilizado como estructura de agrupamiento de [fn::arrayGroup](https://github.com/arielbottero/wiki/blob/master/nogal/docs/fn.md#arraygroup)
 > Este método reinicia el conjunto de resultados a la primera fila.  
 
-**[mixed]** =  *public* function ( *string* \$mColumn, *string* \$sMode, *array* \$aGroup );  
+**[mixed]** =  *public* function ( *string* $mColumn, *string* $sMode, *array* $aGroup );  
 
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
-|**\$mColumn**|string|*arg::column*|Nombre de una columna del grupo de resultados|
-|**\$sMode**|string|*arg::get_mode*|Tipo de modo GET. Valores admitidos:<ul><li>**assoc** =  devuelve un array indexado por el nombre de columna</li><li>**num** =  devuelve un array indexado por el número de columna, empezando por la columna 0</li><li>**both** =  devuelve un array indexado tanto por el nombre como por el número de columna empezando por la columna 0</li></ul>|
+|**$mColumn**|string|*arg::column*|Nombre de una columna del grupo de resultados|
+|**$sMode**|string|*arg::get_mode*|Tipo de modo GET. Valores admitidos:<ul><li>**assoc** =  devuelve un array indexado por el nombre de columna</li><li>**num** =  devuelve un array indexado por el número de columna, empezando por la columna 0</li><li>**both** =  devuelve un array indexado tanto por el nombre como por el número de columna empezando por la columna 0</li></ul>|
 ### Ejemplos  
 #### simple  
 ```php
@@ -235,14 +235,14 @@ ___
 ## load
 > Carga la ultima consulta ejecutada del driver.  
 
-**[boolean]** =  *public* function ( *resource* \$link, *object* \$query, *string* \$sQuery, *int* \$nQueryTime );  
+**[boolean]** =  *public* function ( *resource* $link, *object* $query, *string* $sQuery, *int* $nQueryTime );  
 
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
-|**\$link**|resource||*arg::link*|Puntero del driver de base de datos|
-|**\$query**|object||*arg::query*|Resultado de la última consulta ejecutada|
-|**\$sQuery**|string||*arg::sentence*|Última consulta ejecutada|
-|**\$nQueryTime**|int||*arg::query_time*|Tiempo que tomó la última consulta ejecutada|
+|**$link**|resource||*arg::link*|Puntero del driver de base de datos|
+|**$query**|object||*arg::query*|Resultado de la última consulta ejecutada|
+|**$sQuery**|string||*arg::sentence*|Última consulta ejecutada|
+|**$nQueryTime**|int||*arg::query_time*|Tiempo que tomó la última consulta ejecutada|
 
 &nbsp;
 ___
@@ -281,11 +281,11 @@ ___
 ## GetMode
 > Selecciona el modo de salida para los métodos [get](#get) y [getall](#getall)
 
-**[int]** =  *protected* function ( *string* \$sMode );  
+**[int]** =  *protected* function ( *string* $sMode );  
 
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
-|**\$sMode**|string|assoc|Tipo de modo GET. Valores admitidos:<ul><li>**assoc** =  devuelve un array indexado por el nombre de columna</li><li>**num** =  devuelve un array indexado por el número de columna, empezando por la columna 0</li><li>**both** =  devuelve un array indexado tanto por el nombre como por el número de columna empezando por la columna 0</li></ul>|
+|**$sMode**|string|assoc|Tipo de modo GET. Valores admitidos:<ul><li>**assoc** =  devuelve un array indexado por el nombre de columna</li><li>**num** =  devuelve un array indexado por el número de columna, empezando por la columna 0</li><li>**both** =  devuelve un array indexado tanto por el nombre como por el número de columna empezando por la columna 0</li></ul>|
 
 &nbsp;
 ___
