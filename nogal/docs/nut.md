@@ -1,11 +1,11 @@
 # nut
-Gestor de los **nuts** del sistema, construye el objeto \$nut dentro del framework, el cual es accedido a través de:
+Gestor de los **nuts** del sistema, construye el objeto $nut dentro del framework, el cual es accedido a través de:
 ```php
 $ngl("nut.NOMBRE_DEL_NUT")->run("NOMBRE_DE_METODO", $Array);
 ```
   
 ## Variables
-`public` $safemethods = Listado de método que pueden ser ejecutados con **\$bSafemode** en **true**
+`public` $safemethods = Listado de método que pueden ser ejecutados con **$bSafemode** en **true**
 `public` $sNut = Nombre del nut actual  
 `private` $bSafemode = Determina si el modo seguro está o no activo  
 `protected` $ID = ID del nut  
@@ -22,20 +22,20 @@ $ngl("nut.NOMBRE_DEL_NUT")->run("NOMBRE_DE_METODO", $Array);
 |[load](#load)|Carga y retorna un **nut** listo para ser usado|
 |[ngl](#ngl)|Retorna un objeto del framework utilizando el método [root::call](https://github.com/arielbottero/wiki/blob/master/nogal/docs/root.md#call)|
 |[run](#run)|Ejecuta el método $sMethod del nut|
-|[safemode](#safemode)|Setea y/o retorna el valor de la variable **\$bSafemode**|
+|[safemode](#safemode)|Setea y/o retorna el valor de la variable **$bSafemode**|
 
 &nbsp;
 
 ## arg
-> Obtiene el valor del argumento **\$sIndex** del array **\$vArguments**, si no existiese retorna **\$mDefault**  
+> Obtiene el valor del argumento **$sIndex** del array **$vArguments**, si no existiese retorna **$mDefault**  
 
-**[mixed]** =  *protected* function ( *array* \$vArguments, *mixed* \$mDefault );  
+**[mixed]** =  *protected* function ( *array* $vArguments, *mixed* $mDefault );  
 
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
-|**\$vArguments**|array||Argumentos del nut"|
-|**\$sIndex**|string||Nombre del argumento buscado"|
-|**\$mDefault**|mixed|null|Valor por defecto"|
+|**$vArguments**|array||Argumentos del nut"|
+|**$sIndex**|string||Nombre del argumento buscado"|
+|**$mDefault**|mixed|null|Valor por defecto"|
 
 &nbsp;
 ___
@@ -44,11 +44,11 @@ ___
 ## ngl
 > Retorna un objeto del framework utilizando el método [root::call](https://github.com/arielbottero/wiki/blob/master/nogal/docs/root.md#call)
 
-**[object]** =  *public* function ( *string* \$sObjectName );  
+**[object]** =  *public* function ( *string* $sObjectName );  
 
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
-|**\$sObjectName**|string||Nombre del objeto|
+|**$sObjectName**|string||Nombre del objeto|
 
 &nbsp;
 ___
@@ -56,14 +56,14 @@ ___
 
 ## load
 > Carga y retorna un nut listo para ser usado
-> Al no ser este un objeto instanciable, si se pasa el argumento **\$NutID** el método intentará recuperar un **nut** previamente ejecutado
+> Al no ser este un objeto instanciable, si se pasa el argumento **$NutID** el método intentará recuperar un **nut** previamente ejecutado
 
-**[object]** =  *public* function ( *string* \$sNutName, *string* \$sNutID );  
+**[object]** =  *public* function ( *string* $sNutName, *string* $sNutID );  
 
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
-|**\$sNutName**|string||Nombre del nut|
-|**\$sNutID**|string||Id del nut|
+|**$sNutName**|string||Nombre del nut|
+|**$sNutID**|string||Id del nut|
 ### Ejemplos
 Supongamos la existencia de un **nut* denomninado **foobar**
 #### carga del nut foobar
@@ -78,25 +78,25 @@ ___
 ## ifmethod
 > Verifica la existencia de un método en un **nut** 
 
-**[boolean]** =  *public* function ( *string* \$sFunction );  
+**[boolean]** =  *public* function ( *string* $sFunction );  
 
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
-|**\$sFunction**|string||Nombre del método|
+|**$sFunction**|string||Nombre del método|
 
 &nbsp;
 ___
 &nbsp;
 
 ## run
-> Ejecuta el método **\$sMethod** del **nut**
+> Ejecuta el método **$sMethod** del **nut**
 
-**[mixed]** =  *public* function ( *string* \$sMethod, *mixed* \$mArguments );  
+**[mixed]** =  *public* function ( *string* $sMethod, *mixed* $mArguments );  
 
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
-|**\$sMethod**|string||Nombre del método|
-|**\$mArguments**|mixed||Argumentos que se pasarán al método|
+|**$sMethod**|string||Nombre del método|
+|**$mArguments**|mixed||Argumentos que se pasarán al método|
 ### Ejemplos
 Supongamos que el método **lorem** imprime un texto aleatorio en función del idioma especificado
 #### nut foobar método lorem
@@ -109,15 +109,15 @@ ___
 &nbsp;
 
 ## safemode
-> Setea y/o retorna el valor de la variable **\$bSafemode**
-> Los **nuts** son accesesibles desde las plantillas **rind**. Cuando **$bSafemode** = **true** sólo podrán ejecutarse desde las plantillas aquellos métodos declarados en **\$safemethods**
-> Cuando el valor de **\$bMode** sea **null** simplemente se retornará el valor actual de la variable.
+> Setea y/o retorna el valor de la variable **$bSafemode**
+> Los **nuts** son accesesibles desde las plantillas **rind**. Cuando **$bSafemode** = **true** sólo podrán ejecutarse desde las plantillas aquellos métodos declarados en **$safemethods**
+> Cuando el valor de **$bMode** sea **null** simplemente se retornará el valor actual de la variable.
 
-**[boolean]** =  *public* function ( *boolean* \$bMode );  
+**[boolean]** =  *public* function ( *boolean* $bMode );  
 
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
-|**\$bMode**|boolean|null|True o False|
+|**$bMode**|boolean|null|True o False|
 
 &nbsp;
 ___
