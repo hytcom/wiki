@@ -89,23 +89,27 @@ ___
 
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
-|**$nBits**|int|*arg::keyslen*|Longuitud de las claves. Minima admitida: 32|
+|**$nBits**|int|*arg::keyslen*|Longuitud de las claves. Minima admitida: 256|
 ### Ejemplos  
 #### Claves  
 ```php
-$keys = $ngl("crypt")->type("rsa")->keys(32);
+$keys = $ngl("crypt")->type("rsa")->keys(256);
 
 #salida
 Array (
-    [private] =>
-        -----BEGIN RSA PRIVATE KEY-----
-        MC4CAQACBQDt4DWxAgMBAAECBAEQtUcCAwD4dwIDAPUXAgMA9DcCAwDQ3wIDAKeo
-        -----END RSA PRIVATE KEY-----
+	[private] =>
+		-----BEGIN RSA PRIVATE KEY-----
+		MIGoAgEAAiEAuVxGKBvOd7UqRRTp7k9WSbsIKhZPHW+yufySCWdePJ8CAwEAAQIf
+		aq1bCGT4bpcqZ0JMtNpJeIAUNToWFU/MNp0z3bn6sQIRANyc1D3hGqnqk/wCBCeH
+		JxUCEQDXF9xDpacmIisUHIHlwYHjAhBV625tuyHbU1TXLSHZEzYRAhAhi6IZlsM7
+		ykZnq46Cs6w7AhAUaAwFtzctOcvARCt/GWGb
+		-----END RSA PRIVATE KEY-----
 
-    [public] =>
-        -----BEGIN PUBLIC KEY-----
-        MCAwDQYJKoZIhvcNAQEBBQADDwAwDAIFAO3gNbECAwEAAQ==
-        -----END PUBLIC KEY-----
+	[public] =>
+		-----BEGIN PUBLIC KEY-----
+		MDwwDQYJKoZIhvcNAQEBBQADKwAwKAIhALlcRigbzne1KkUU6e5PVkm7CCoWTx1v
+		srn8kglnXjyfAgMBAAE=
+		-----END PUBLIC KEY-----
 )
 ```
 
@@ -125,7 +129,7 @@ ___
 ## SetKey
 > Aplica la clave de encriptación/desencriptación en el objeto principal, a traves del método setKey del mismo
 
-**[boolean]** =  *private* function ( *string* $sKey );  
+**[boolean]** =  *protected* function ( *string* $sKey );  
 
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
@@ -150,7 +154,7 @@ ___
 > 	<li>twofish</li>
 > </ul>  
 
-**[$this]** =  *private* function ( *string* $sCrypter );  
+**[$this]** =  *protected* function ( *string* $sCrypter );  
 
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
