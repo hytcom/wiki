@@ -18,7 +18,7 @@ ___
 - *[md](docs/md.md)
 - [mysql](docs/mysql.md)
 - [mysqlq](docs/mysqlq.md)
-- *[nut](docs/nut.md)
+- [nut](docs/nut.md)
 - *[owl](docs/owl.md)
 - *[pdf](docs/pdf.md)
 - *[pdomysql](docs/pdomysql.md)
