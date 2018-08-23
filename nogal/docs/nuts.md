@@ -68,7 +68,7 @@ print_r($ngl("nut.web")->run("subcategorias", array("parent"=>2)));
 ?>
 ```
 
-Para ejecutar este método desde las plantillas es necesario que se lo defina como un método seguro
+Para ejecutar un método desde las plantillas es necesario que se lo defina como un método seguro
 ```php
 <?php
 
@@ -77,20 +77,10 @@ namespace nogal;
 class nutWeb extends nglNut {
 
 	protected function init() {
-		$this->SafeMethods("subcategorias", "query");
+		$this->SafeMethods("ventas");
 	}
 
-	protected function subcategorias($aArguments) {
-		$db = $this->ngl("mysql");
-		$nParent = (int)$aArguments["parent"];
-		$data = $db->query("SELECT * FROM `categorias` WHERE `parent`='".$nParent."'");
-		if($data->rows()) {
-			return $data->getall();
-		}
-		return array();
-	}
-
-	protected function query($aArguments) {
+	protected function ventas($aArguments) {
 		$db = $this->ngl("mysql");
 		$sTable = preg_replace("/[^a-z0-9_]/i", "", $aArguments["table"]);
 		$aWhere = $db->escape($aArguments["DATA"]);
@@ -110,20 +100,13 @@ class nutWeb extends nglNut {
 ?>
 ```
 
-Llamada desde plantillas
+Llamada desde plantillas. Este ejemplo también usa argumentos del tipo DATA
 ```html 
-<rind:nut.web.subcategorias>
-	<@parent>2</@parent>
-</rind:nut.web.subcategorias>
-```
-
-Si el nut esperase argumentos del tipo DATA
-```html 
-<rind:nut.web.query>
+<rind:nut.web.ventas>
 	<@tabla>ventas</@tabla>
 	<@data-sucursal>Central</@data-sucursal>
 	<@data-estado>pagada</@data-estado>
-</rind:nut.web.query>
+</rind:nut.web.ventas>
 ```
 
 &nbsp;
