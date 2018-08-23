@@ -100,12 +100,33 @@ ___
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**$sMethod**|string||Nombre del método|
-|**$aArguments**|array||Argumentos que se pasarán al método.<ul><li>Todos los índices alfanuméricos serán convertidos a minúsculas</li><li>Si el nombre de uno o más índices comienzan con "data-", serán reagrupados dentro de un único índice DATA</li></ul>|
+|**$aArguments**|array||Argumentos que se pasarán al método.<ul><li>Todos los índices alfanuméricos serán convertidos a minúsculas</li><li>Si el nombre de uno o más índices comienzan con "data-", serán reagrupados dentro de un único índice DATA y eliminados del array principal</li></ul>|
 ### Ejemplos
 Supongamos que el método **lorem** imprime un texto aleatorio en función del idioma especificado
 #### nut foobar método lorem
 ```php
 $my = $ngl("nut.foobar")->run("lorem", array("lang"=>"es"));
+```
+#### ejemplo de re-agrupación de índices data
+```php
+Array (
+	BASE => "test",
+	tabla => "ventas",
+	data-sucursal => "Central",
+	data-monto => "1500",
+	data-mes => "08"
+)
+
+# se re-agrupa como
+Array (
+	base => "test",
+	tabla => "ventas",
+	data => Array (
+		sucursal => "Central",
+		monto => "1500",
+		mes => "08"
+	)
+)
 ```
 
 &nbsp;
