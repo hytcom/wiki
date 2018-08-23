@@ -77,13 +77,24 @@ namespace nogal;
 class nutWeb extends nglNut {
 
 	protected function init() {
-		$this->SafeMethods("subcategorias");
+		$this->SafeMethods("subcategorias", "query");
 	}
 
 	protected function subcategorias($aArguments) {
 		$db = $this->ngl("mysql");
 		$nParent = (int)$aArguments["parent"];
 		$data = $db->query("SELECT * FROM `categorias` WHERE `parent`='".$nParent."'");
+		if($data->rows()) {
+			return $data->getall();
+		}
+		return array();
+	}
+
+	protected function query($aArguments) {
+		$db = $this->ngl("mysql");
+		$sTable = preg_replace("/[^a-z0-9_]/i", "", $aArguments["table"]);
+		$aWhere = $db->escape($aArguments["DATA"]);
+		$data = $db->query("SELECT * FROM `".$sTable."` WHERE `sucursal`='".$aWhere["sucursal"]."' AND `estado`='".$aWhere["estado"]."'");
 		if($data->rows()) {
 			return $data->getall();
 		}
@@ -103,9 +114,9 @@ Llamada desde plantillas
 Si el nut esperase argumentos del tipo DATA
 ```html 
 <rind:nut.web.query>
-	<@table>2</@table>
-	<@data-id>123</@data-id>
-	<@data-state>active</@data-state>
+	<@tabla>sventas</@tabla>
+	<@data-sucursal>Central</@data-sucursal>
+	<@data-estado>pagada</@data-estado>
 </rind:nut.web.query>
 ```
 
