@@ -1,6 +1,6 @@
 # nut
 Gestor de los **nuts**.<br />
-Los **nuts** son clases php cuyo objetivo es agrupar procedimientos que pueden o no invocar a otros objetos del **nogal**<br />
+Los **nuts** son clases php cuyo objetivo es agrupar procedimientos que pueden o no invocar a otros objetos del **nogal**. Son las *vistas* del modelo.<br />
 A diferencia de los otros objetos, los **nuts** pueden ser utilizados dentro de las plantillas [rind](https://github.com/arielbottero/wiki/blob/master/nogal/docs/rind.md) como origen de datos.
 Todos los **nuts** son heredados del objeto principal. La forma de invocar un **nut** es:
 ```php
@@ -93,14 +93,14 @@ ___
 &nbsp;
 
 ## run
-> Ejecuta el método **$sMethod** del **nut**
+> Ejecuta el método **$sMethod** del **nut** pasandole como único argumento **$aArguments**
 
-**[mixed]** =  *public* function ( *string* $sMethod, *mixed* $mArguments );  
+**[mixed]** =  *public* function ( *string* $sMethod, *array* $aArguments );  
 
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**$sMethod**|string||Nombre del método|
-|**$mArguments**|mixed||Argumentos que se pasarán al método|
+|**$aArguments**|array||Argumentos que se pasarán al método.<ul><li>Todos los índices alfanuméricos serán convertidos a minúsculas</li><li>Si el nombre de uno o más índices comienzan con "data-", serán reagrupados dentro de un único índice DATA</li></ul>|
 ### Ejemplos
 Supongamos que el método **lorem** imprime un texto aleatorio en función del idioma especificado
 #### nut foobar método lorem
