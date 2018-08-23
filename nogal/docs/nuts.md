@@ -68,6 +68,7 @@ print_r($ngl("nut.web")->run("subcategorias", array("parent"=>2)));
 ?>
 ```
 
+### Ejecución desde Rind
 Para ejecutar un método desde las plantillas es necesario que se lo defina como un método seguro
 ```php
 <?php
@@ -101,7 +102,7 @@ class nutWeb extends nglNut {
 ```
 
 Llamada desde plantillas. Este ejemplo también usa argumentos del tipo DATA
-```html 
+```xml 
 <rind:nut.web.ventas>
 	<@tabla>ventas</@tabla>
 	<@data-sucursal>Central</@data-sucursal>
