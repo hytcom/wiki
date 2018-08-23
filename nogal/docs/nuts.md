@@ -94,7 +94,13 @@ class nutWeb extends nglNut {
 		$db = $this->ngl("mysql");
 		$sTable = preg_replace("/[^a-z0-9_]/i", "", $aArguments["table"]);
 		$aWhere = $db->escape($aArguments["DATA"]);
-		$data = $db->query("SELECT * FROM `".$sTable."` WHERE `sucursal`='".$aWhere["sucursal"]."' AND `estado`='".$aWhere["estado"]."'");
+		$data = $db->query("
+			SELECT * 
+			FROM `".$sTable."` 
+			WHERE 
+				`sucursal`='".$aWhere["sucursal"]."' AND 
+				`estado`='".$aWhere["estado"]."'
+		");
 		if($data->rows()) {
 			return $data->getall();
 		}
