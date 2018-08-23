@@ -120,7 +120,7 @@ Llamada desde plantillas
 Si el nut esperase argumentos del tipo DATA
 ```html 
 <rind:nut.web.query>
-	<@tabla>sventas</@tabla>
+	<@tabla>ventas</@tabla>
 	<@data-sucursal>Central</@data-sucursal>
 	<@data-estado>pagada</@data-estado>
 </rind:nut.web.query>
