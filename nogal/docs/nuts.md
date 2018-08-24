@@ -1,4 +1,4 @@
-# Cómo crear NUTS
+# Creando NUTS
 Los [nuts](https://github.com/arielbottero/wiki/blob/master/nogal/docs/nut.md) son clases php cuyo objetivo es agrupar procedimientos que pueden o no invocar a otros objetos del **nogal**<br />
 Estas clases son las *vistas* del modelo, por lo que los **nuts** no deberían incluir operaciones de escritura, para ello están los [tutores](https://github.com/arielbottero/wiki/blob/master/nogal/docs/tutor.md)
 
