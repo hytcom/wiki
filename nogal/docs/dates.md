@@ -18,7 +18,7 @@ Generación de Calendarios
 |[monthsdiff](#monthsdiff)|Retorna la cantidad de meses transcurridos entre 2 fechas|
 |[settings](#settings)|Retorna un array bidimensional con los nombres de los días de la semana y meses del año|
 |[timesdiff](#timesdiff)|Retorna la diferencia, en segundos, entre 2 horas|
-|Privados||
+|Internos||
 |[CalendarMonth](#calendarmonth)|Genera el array bidimensional retornado por el método **calendar**|
  
 &nbsp;
@@ -222,7 +222,7 @@ ___
 ___
 &nbsp;
 
-# Privados
+# Internos
 ## CalendarMonth
 > Genera el array bidimensional retornado por el método [calendar](#calendar)
 

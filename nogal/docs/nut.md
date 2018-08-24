@@ -27,7 +27,7 @@ El sistema tiene algunos **nuts** genéricos, pero el usuario también puede def
 |[ngl](#ngl)|Retorna un objeto del framework utilizando el método [root::call](https://github.com/arielbottero/wiki/blob/master/nogal/docs/root.md#call)|
 |[run](#run)|Ejecuta el método $sMethod del nut|
 |[safemode](#safemode)|Setea y/o retorna el valor de la variable **$bSafemode**|
-|Privados||
+|Internos||
 |[SafeMethods](#safemethods)|Establece/retorna el valor de la variable **$aSafeMethods**|
 
 &nbsp;
@@ -150,7 +150,7 @@ ___
 ___
 &nbsp;
 
-# Privados
+# Internos
 ## SafeMethods
 > Establece/retorna el valor de la variable **$aSafeMethods**
 > Cuando el valor de **$aSafeMethods** sea **null** simplemente se retornará el valor actual de la variable.

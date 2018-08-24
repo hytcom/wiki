@@ -3,13 +3,13 @@ Los [nuts](https://github.com/arielbottero/wiki/blob/master/nogal/docs/nut.md) s
 Estas clases son las *vistas* del modelo, por lo que los **nuts** no deberían incluir operaciones de escritura, para ello están los [tutores](https://github.com/arielbottero/wiki/blob/master/nogal/docs/tutor.md)
 
 ## Declaración
-Para declarar un **nut**  hay que tener presente sólo 2 reglas
+Para declarar un **nut** hay que tener presente:
 - Todos los **nuts** son heredados del objeto principal
 - Los **nuts** admiten únicamente métodos *protected* y *private*. La declaración de un método *public* anula al **nut**
 - Los métodos accesibles desde el método [run]() del objeto principal son únicamente los **protected**
 - Al momento de cargar el nut se ejecuta, de existir, el método **init**, utilizado generalmente para configuraciones iniciales
 
-Otro factor a tener en cuenta, es que a diferencia de los otros objetos, los **nuts** pueden ser utilizados dentro de las plantillas [rind](https://github.com/arielbottero/wiki/blob/master/nogal/docs/rind.md) como origen de datos, pero por seguridad sólo pueden ejecutarse los métodos listados en el array **$safemethods**
+Otro factor a tener en cuenta, es que a diferencia de los otros objetos, los **nuts** pueden ser utilizados dentro de las plantillas [rind](https://github.com/arielbottero/wiki/blob/master/nogal/docs/rind.md) como origen de datos, pero por seguridad sólo pueden ejecutarse los métodos autorizado por medio de [safemethods](https://github.com/arielbottero/wiki/blob/master/nogal/docs/nut.md#safemethods)
 
 La sintáxsis básica de los **nuts** es:
 

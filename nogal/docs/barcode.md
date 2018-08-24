@@ -27,7 +27,7 @@ ___
 |[png](#png)|Genera y retorna el código de barras en formato PNG|
 |[svg](#svg)|Genera y retorna el código de barras en formato SVG|
 |[text](#text)|Genera y retorna una secuencia de 0 y 1 del código de barras|
-|**Privados**||
+|**Internos**||
 |[SetType](#settype)|Establece el algoritmo utilizado para generar el códigoal invocar al argumento **type**.|
 
 &nbsp;
@@ -155,7 +155,7 @@ echo $ngl("barcode")->text("test");
 ___
 &nbsp;
 
-# Privados
+# Internos
 ## SetType
 > Establece el algoritmo utilizado para generar el códigoal invocar al argumento **type**.
 

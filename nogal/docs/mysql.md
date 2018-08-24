@@ -57,7 +57,7 @@ Las consultas SQL se ejecutan a través del método [query](#query), que en caso
 |[mquery](#mquery)|Ejecuta varias sentencias SQL separadas por ; y retorna un array de objectos[nglDBMySQLQuery](https://github.com/arielbottero/wiki/blob/master/nogal/docs/mysqlq.md) o TRUE cuando DO esta activo|
 |[query](#query)|Ejecuta una sentencia SQL y retorna un objecto [nglDBMySQLQuery](https://github.com/arielbottero/wiki/blob/master/nogal/docs/mysqlq.md)|
 |[update](#update)|Actualiza todos los registros que cumplan con la condición $sWhere|
-|Privados||
+|Internos||
 |[Error](#Error)|Muestra el mensaje de Error generado por el fallo más reciente|
 |[PrepareValues](#PrepareValues)|Auxiliar de los métodos [insert](#insert) y [update](#update). Prepara el array asociativo o la cadena ...|
   
@@ -348,7 +348,7 @@ $foo->update("tablename", $data, "`id`='7'", "ignore");
 ___
 &nbsp;
 
-# Privados
+# Internos
 ## Error
 Muestra el mensaje de Error generado por el fallo más reciente  
 

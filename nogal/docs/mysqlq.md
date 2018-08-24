@@ -40,6 +40,7 @@ Controla los resultados generados por consultas a la bases de datos MySQL.
 |[reset](#reset)|Reinicia el conjunto de resultados a la primera fila|
 |[rows](#rows)|Alias de nglDBMySQLQuery::count|
 |[toArray](#toArray)|Obtiene todas las filas de resultados en forma de array bidimensional|
+|Internos||
 |[GetMode](#GetMode)|Selecciona el modo de salida para los métodos **get** y **getall**|
 
   
@@ -277,7 +278,7 @@ ___
 ___
 &nbsp;
 
-# Privados
+# Internos
 ## GetMode
 > Selecciona el modo de salida para los métodos [get](#get) y [getall](#getall)
 

@@ -34,7 +34,7 @@ Implementa la clase 'phpseclib', de algoritmos de encriptación
 |[decrypt](#decrypt)|Desencripta una cadena con el método seleccionado|
 |[encrypt](#encrypt)|Encripta una cadena con el método seleccionado|
 |[keys](#keys)|Genera un array con el par de claves pública y privada cuando el modo de encriptación es RSA|
-|**Privados**||
+|**Internos**||
 |[RSAMode](#rsamode)|Prepara el objeto para utilizar el método de encriptación RSA|
 |[SetKey](#setkey)|Aplica la clave de encriptación/desencriptación al invocar al argumento **key**|
 |[SetType](#settype)|Establece el método de encriptación al invocar al argumento **type**|
@@ -117,7 +117,7 @@ Array (
 ___
 &nbsp;
 
-# Privados
+# Internos
 ## RSAMode
 > Prepara el objeto para utilizar el método de encriptación RSA. Chequeando y parseando la clave pública/privada
 
