@@ -1,5 +1,4 @@
 # nogal::crypt
-## nglCrypt *extends* nglStd [instanciable] [2018-08-12]
 Implementa la clase 'phpseclib', de algoritmos de encriptación
   
 ## Variables
@@ -35,7 +34,7 @@ Implementa la clase 'phpseclib', de algoritmos de encriptación
 |[decrypt](#decrypt)|Desencripta una cadena con el método seleccionado|
 |[encrypt](#encrypt)|Encripta una cadena con el método seleccionado|
 |[keys](#keys)|Genera un array con el par de claves pública y privada cuando el modo de encriptación es RSA|
-|**Privados**||
+|**Internos**||
 |[RSAMode](#rsamode)|Prepara el objeto para utilizar el método de encriptación RSA|
 |[SetKey](#setkey)|Aplica la clave de encriptación/desencriptación al invocar al argumento **key**|
 |[SetType](#settype)|Establece el método de encriptación al invocar al argumento **type**|
@@ -43,26 +42,26 @@ Implementa la clase 'phpseclib', de algoritmos de encriptación
 &nbsp;
 
 ## decrypt
-Desencripta una cadena con el método seleccionado  
+> Desencripta una cadena con el método seleccionado  
 
-**[string]** =  *public* function ( *string* \$sString );  
+**[string]** =  *public* function ( *string* $sString );  
 
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
-|**\$sString**|string|*arg::text*|Cadena a desencriptar|
+|**$sString**|string|*arg::text*|Cadena a desencriptar|
 
 &nbsp;
 ___
 &nbsp;
 
 ## encrypt
-Encripta una cadena con el método seleccionado  
+> Encripta una cadena con el método seleccionado  
 
-**[string]** =  *public* function ( *mixed* \$sString );  
+**[string]** =  *public* function ( *mixed* $sString );  
 
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
-|**\$sString**|mixed|*arg::text*|Cadena a encriptar/desencriptar|
+|**$sString**|mixed|*arg::text*|Cadena a encriptar/desencriptar|
 ### Ejemplos  
 #### AES  
 ```php
@@ -84,29 +83,33 @@ ___
 &nbsp;
 
 ## keys
-Genera un array con el par de claves pública y privada cuando el modo de encriptación es RSA  
+> Genera un array con el par de claves pública y privada cuando el modo de encriptación es RSA  
 
-**[array]** =  *public* function ( *int* \$nBits );  
+**[array]** =  *public* function ( *int* $nBits );  
 
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
-|**\$nBits**|int|*arg::keyslen*|Longuitud de las claves. Minima admitida: 32|
+|**$nBits**|int|*arg::keyslen*|Longuitud de las claves. Minima admitida: 256|
 ### Ejemplos  
 #### Claves  
 ```php
-$keys = $ngl("crypt")->type("rsa")->keys(32);
+$keys = $ngl("crypt")->type("rsa")->keys(256);
 
 #salida
 Array (
-    [private] =>
-        -----BEGIN RSA PRIVATE KEY-----
-        MC4CAQACBQDt4DWxAgMBAAECBAEQtUcCAwD4dwIDAPUXAgMA9DcCAwDQ3wIDAKeo
-        -----END RSA PRIVATE KEY-----
+	[private] =>
+		-----BEGIN RSA PRIVATE KEY-----
+		MIGoAgEAAiEAuVxGKBvOd7UqRRTp7k9WSbsIKhZPHW+yufySCWdePJ8CAwEAAQIf
+		aq1bCGT4bpcqZ0JMtNpJeIAUNToWFU/MNp0z3bn6sQIRANyc1D3hGqnqk/wCBCeH
+		JxUCEQDXF9xDpacmIisUHIHlwYHjAhBV625tuyHbU1TXLSHZEzYRAhAhi6IZlsM7
+		ykZnq46Cs6w7AhAUaAwFtzctOcvARCt/GWGb
+		-----END RSA PRIVATE KEY-----
 
-    [public] =>
-        -----BEGIN PUBLIC KEY-----
-        MCAwDQYJKoZIhvcNAQEBBQADDwAwDAIFAO3gNbECAwEAAQ==
-        -----END PUBLIC KEY-----
+	[public] =>
+		-----BEGIN PUBLIC KEY-----
+		MDwwDQYJKoZIhvcNAQEBBQADKwAwKAIhALlcRigbzne1KkUU6e5PVkm7CCoWTx1v
+		srn8kglnXjyfAgMBAAE=
+		-----END PUBLIC KEY-----
 )
 ```
 
@@ -114,9 +117,9 @@ Array (
 ___
 &nbsp;
 
-# Privados
+# Internos
 ## RSAMode
-Prepara el objeto para utilizar el método de encriptación RSA. Chequeando y parseando la clave pública/privada
+> Prepara el objeto para utilizar el método de encriptación RSA. Chequeando y parseando la clave pública/privada
 
 **[boolean]** =  *private* function ();  
 &nbsp;
@@ -124,40 +127,40 @@ ___
 &nbsp;
 
 ## SetKey
-Aplica la clave de encriptación/desencriptación en el objeto principal, a traves del método setKey del mismo
+> Aplica la clave de encriptación/desencriptación en el objeto principal, a traves del método setKey del mismo
 
-**[boolean]** =  *private* function ( *string* \$sKey );  
+**[boolean]** =  *protected* function ( *string* $sKey );  
 
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
-|**\$sKey**|string|*arg::key*|Clave de encriptación/desencriptación|
+|**$sKey**|string|*arg::key*|Clave de encriptación/desencriptación|
 
 &nbsp;
 ___
 &nbsp;
 
 ## SetType
-Establece el método de encriptación al invocar al argumento **type**.
-Métodos Soportados:
-<ul>
-	<li>aes</li>
-	<li>blowfish</li>
-	<li>des</li>
-	<li>tripledes</li>
-	<li>rc2</li>
-	<li>rc4</li>
-	<li>rijndael</li>
-	<li>rsa</li>
-	<li>twofish</li>
-</ul>  
+> Establece el método de encriptación al invocar al argumento **type**.
+> Métodos Soportados:
+> <ul>
+> 	<li>aes</li>
+> 	<li>blowfish</li>
+> 	<li>des</li>
+> 	<li>tripledes</li>
+> 	<li>rc2</li>
+> 	<li>rc4</li>
+> 	<li>rijndael</li>
+> 	<li>rsa</li>
+> 	<li>twofish</li>
+> </ul>  
 
-**[$this]** =  *private* function ( *string* \$sCrypter );  
+**[$this]** =  *protected* function ( *string* $sCrypter );  
 
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
-|**\$sCrypter**|string|*arg::type*|Método de encriptación|
+|**$sCrypter**|string|*arg::type*|Método de encriptación|
 
 &nbsp;
 ___
-<sub><b>nogal v1.0</b> - <em>the most simple PHP Framework</em></sub><br />
+<sub><b>nogal</b> - <em>the most simple PHP Framework</em></sub><br />
 <sup>&copy; 2018 by <a href="http://hytcom.net/nogal">hytcom.net/nogal</a> - <a href="https://github.com/arielbottero">@arielbottero</a></sup><br />
