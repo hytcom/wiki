@@ -1,6 +1,15 @@
 # Nogal - Constantes
 Constantes predefinidas disponibles en cualquier script en ejecucción  
 
+- [Proyecto](#proyecto)
+- [Rutas](#rutas)
+- [Seguridad](#seguridad)
+- [Errores](#errores)
+- [Separadores de Cadenas](#separadores-de-cadenas)
+- [Fechas e Idioma](#fechas-e-idioma)
+- [Otras](#otras)
+- [Opcionales](#opcionales)
+
 ## Proyecto
 |Constante|Definición|
 |---|---|
@@ -45,7 +54,7 @@ Constantes predefinidas disponibles en cualquier script en ejecucción
 
 &nbsp;
 
-## Controladores
+## Errores
 |Constante|Definición|
 |---|---|
 |NGL_HANDLING_ERRORS|Manipulacion de errores (true o false)|
