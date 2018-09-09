@@ -2,11 +2,7 @@
 Crea un objeto sobre archivos y/o directorio
 
 ## Variables
-`private` $sSandbox = Entorno dentro del cual se establecerá el dominio del objeto, es decir, establece el directorio dentro del cual estará contenido el accionar del método, cualquier intento de leer o escribir un archivo fuera de este entorno resultará en error. Por seguridad, **$sSandbox** toma el valor de la constante **NGL_SANDBOX** y en caso de que ella no estuviera definida asumirá el valor de [NGL_PATH_PROJECT](https://github.com/arielbottero/wiki/blob/master/nogal/docs/constants.md#otras)
-
-
-SANDBOX EN CONFIG
-
+`private` $sSandbox = Entorno dentro del cual se establecerá el dominio del objeto, es decir, establece el directorio dentro del cual estará contenido el accionar del método, cualquier intento de leer o escribir un archivo fuera de este entorno resultará en error. Por seguridad, **$sSandbox** toma el valor de la constante [NGL_SANDBOX](https://github.com/arielbottero/wiki/blob/master/nogal/docs/constants.md#otras) y en caso de que ella no estuviera definida asumirá el valor de [NGL_PATH_PROJECT](https://github.com/arielbottero/wiki/blob/master/nogal/docs/constants.md#rutas)
   
 ## Argumentos
 |Argumento|Tipo|Default|Descripción|
@@ -154,51 +150,84 @@ ___
 &nbsp;
 
 ## load
-> Carga el archivo/directorio *$sFilePath* en el objeto  
+> Carga el archivo/directorio **$sFilePath** en el objeto  
 > En este método juega un papel importante el valor
 
 **[$this]** =  *public* function ( *string* $sFilePath);  
 
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
-|**$sFilePath**|string|*arg::filepath*|Ruta del archivo o directorio.<ul><li>Si la ruta comienza con un **DIRECTORY_SEPARATOR**, dos puntos .. ó un punto seguido de un **DIRECTORY_SEPARATOR** la ruta será comprendida dentro de **arg::sandbox**</li><li>Si la ruta compienza con cualquier otro caracter, será comprendida dentro del directorio **NGL_PATH_PUBLIC**</li><li>Si hace referencia a un archivo inexistente, **load** intentará crearlo</li><li>Si es exactamente igual a TRUE se trabajará con un archivo temporal en el directorio temporal del sistema</li></ul>|
+|**$sFilePath**|string|*arg::filepath*|Ruta del archivo o directorio.<ul><li>Si la ruta comienza con un **DIRECTORY_SEPARATOR**, dos puntos .. ó un punto seguido de un **DIRECTORY_SEPARATOR** la ruta será comprendida dentro de **$sSandbox**</li><li>Si la ruta compienza con cualquier otro caracter, será comprendida dentro del directorio [NGL_PATH_PUBLIC](https://github.com/arielbottero/wiki/blob/master/nogal/docs/constants.md#rutas)</li><li>Si hace referencia a un archivo inexistente, **load** intentará crearlo</li><li>Si es exactamente igual a TRUE se trabajará con un archivo temporal en el directorio temporal del sistema</li></ul>|
+
+### Ejemplos  
+#### Carga de archivo local público
+```php
+$ngl("file")->load("test.txt");
+```
+
+#### Carga de archivo local en SANDBOX
+```php
+$ngl("file")->load("/somedir/test.txt");
+```
+
+#### Archivo WEB
+```php
+$ngl("file")->load("http://cdn.bithive.cloud/json/material-design-colors.json");
+```
 
 &nbsp;
 ___
 &nbsp;
 
 ## read
-Lee y retorna el contenido del archivo cargado  
+> Lee y retorna el contenido del archivo cargado  
+> Si se especifica un valor para **$nLength**, se leerán los primeros **$nLength** caracteres del archivo  
+> Para el caso de conexiones CURL, las opciones podrán ser pasada por medio de un segundo argumento
 
-**[string]** =  *public* function ( *int* \$nLength, *array* \$aCurlOptions );  
+**[string]** =  *public* function ( *int* $nLength, *array* $aCurlOptions );  
 
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
-|**\$nLength**|int|null|Tamaño máximo en bytes del archivo contemplado para lectura o escritura|
-|**\$aCurlOptions**|array||Opciones CURL para este tipo de conexiones, <a href="http://php.net/manual/en/function.curl-setopt.php" target="_blank">http://php.net/manual/en/function.curl-setopt.php</a>|
+|**$nLength**|int|*arg::length*|Tamaño máximo en bytes del archivo contemplado para lectura o escritura|
+|**$aCurlOptions**|array|*arg::curl_options*|Opciones CURL para este tipo de conexiones, [curl-setopt](http://php.net/manual/en/function.curl-setopt.php)|
+
 ### Ejemplos  
 #### Lectura local  
 ```php
-$ngl("file.foo")->load("readme.txt");
-echo $ngl("file.foo")->read();
-echo $ngl("file.foo")->read(10);
+$file = $ngl("file")->load("readme.txt");
+echo $file->read()."\n";
+echo $file->read(10);
 
 #salida
 "esto es una prueba"
 "esto es un"
 ```
+
 #### Lectura de API usando CURL  
 ```php
-$ngl("file.foo")->load("http://api.sumaprop.com/propiedad/search/?max_per_page=3&estad os_publicacion=1&tipo_operacion=1&order=direccion­asc");
+$curl = $ngl("file.foo")->load("http://api.sumaprop.com/propiedad/search/?max_per_page=3&estad os_publicacion=1&tipo_operacion=1&order=direccion­asc");
 $options = array(
     "CURLOPT_CUSTOMREQUEST" => "GET",
     "CURLOPT_HTTPHEADER" => array("x­authtoken: 4d186321c1a7f0f354b297e8914ab240")
 );
-echo $ngl("file.foo")->read(null, $options);
+echo $curl->read(null, $options);
 ```
+
 #### Solicitud con variables POST  
 ```php
+$post = $ngl("file")->load("http://domain.com/contact.php");
+$options = array(
+    "CURLOPT_CUSTOMREQUEST" => "POST",
+    "CURLOPT_POST" => 1,
+    "CURLOPT_SAFE_UPLOAD" => false, // a partir de PHP 5.6.0
+    "CURLOPT_POSTFIELDS" => array(
+        "name" => "John Smith",
+        "email" => "jsmith@foobar.com",
+        "message" => "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+    )
+);
 
+echo $post->read(null, $options);
 ```
 
 &nbsp;
@@ -206,59 +235,59 @@ ___
 &nbsp;
 
 ## reload
-Actualiza la información del objeto releyendo el archivo/directorio de origen y vuelve a cargarlo  
+> Actualiza la información del objeto releyendo el archivo/directorio de origen y vuelve a cargarlo  
 
 **[$this]** =  *public* function ( );
-  
 
 &nbsp;
 ___
 &nbsp;
 
 ## view
-Genera una salida del contenido del archivo con el formato correspondiente a la extension especificada  
+> Genera una salida del contenido del archivo con el formato correspondiente a la extension especificada  
+> Si no se especifica una extensión el contenido será mostrado con el formato detectado por [load](#load)
 
 **[string]** =  *public* function ( *string* \$sExtension );  
 
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
-|**\$sExtension**|string|argument:outtype|Extensión especificada para el formato de salida|
+|**$sExtension**|string|*arg:outtype*|Extensión especificada para el formato de salida|
 
 &nbsp;
 ___
 &nbsp;
 
 ## write
-Escribe/reemplaza el contenido del archivo con **content**. Si el archivo no existe lo crea  
+> Escribe/reemplaza el contenido del archivo con **$sContent**. Si el archivo no existe lo crea.
 
 **[$this]** =  *public* function ( *string* \$sContent );  
 
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
-|**\$sContent**|string||Contenido del archivo|
+|**$sContent**|string|*arg::content*|Contenido del archivo|
+
 ### Ejemplos  
 #### Escritura  
 ```php
-$ngl("file.foo")->load("readme.txt");
-$ngl("file.foo")->write("hola mundo!");
+$ngl("file")->load("test.txt")->write("hola mundo!");
 ```
 
 &nbsp;
 ___
 &nbsp;
 
+# Internos
 ## WriteContent
-Escribe contenido en un archivo. Este método es utilizado por **append** y **write**  
+> Escribe contenido en un archivo. Este método es utilizado por [append](#append) y [write](#write)
 
-**[$this]** =  *protected* function ( *string* \$sFilePath, *string* \$sContent, *boolean* \$bReload, *string* \$sMode );  
+**[$this]** =  *protected* function ( *string* $sFilePath, *string* $sContent, *boolean* $bReload, *string* $sMode );  
 
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
-|**\$sFilePath**|string||Path del archivo de destino|
-|**\$sContent**|string||Contenido a escribir|
-|**\$bReload**|boolean|true|Determina si se aplicará el método nglFile::reload sobre el archivo para actualizar la información.
-Se recomienda usar **false** cuando se realicen sucesivos nglFile::append|
-|**\$sMode**|string|wb|Modo de escritura (según fopen)|
+|**$sFilePath**|string||Path del archivo de destino|
+|**$sContent**|string||Contenido a escribir|
+|**$bReload**|boolean|true|Determina si se aplicará el método nglFile::reload sobre el archivo para actualizar la información. Para una mejor performance se recomienda usar **false** cuando se realicen sucesivos [append](#append|
+|**$sMode**|string|wb|Modo de escritura (según fopen)|
 
 &nbsp;
 ___
