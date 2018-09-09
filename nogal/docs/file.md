@@ -53,7 +53,7 @@ Crea un objeto sobre archivos y/o directorio
 &nbsp;
 
 ## append
-> Añade el contenido **content** al final de un archivo. Si el archivo no existe lo crea
+> Añade el contenido **content** al final de un archivo. Si el archivo no existe lo crea  
 > Este método es unicamente válido cuando se trata de un archivo local. Ver tambien [write](#write)
 
 **[$this]** =  *public* function ( *string* $sContent, *boolean* $bReload );
@@ -127,7 +127,7 @@ ___
 &nbsp;
 
 ## fill
-> Rellena el archivo con **content** hasta **length** 
+> Rellena el archivo con **content** hasta **length**  
 > Puede ser utilizado para reservar espacio en el disco para un futuro archivo
 
 **[$this]** =  *public* function ( *string* $sContent, *int* $nLength );  
@@ -148,8 +148,8 @@ ___
 &nbsp;
 
 ## load
-> Carga el archivo/directorio *$sFilePath* en el objeto
-> Si *$sFilePath* hace referencia a un archivo inexistente, **load** intentará crearlo
+> Carga el archivo/directorio *$sFilePath* en el objeto  
+> Si *$sFilePath* hace referencia a un archivo inexistente, **load** intentará crearlo  
 > Si *$sFilePath* es igual a TRUE se trabajará con un archivo temporal en el directorio temporal del sistema  
 
 **[$this]** =  *public* function ( *string* \$sFilePath );  
