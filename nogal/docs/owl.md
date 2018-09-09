@@ -6,18 +6,24 @@ ___
 # owl
 ## nglOwl *extends* nglStd [instanciable] [%REVISION%]
 Owl es el ORM de NOGAL y permite ejecutar operaciones sobre distintos objetos de base de datos.
-Entre las funciones del objecto se encuentran:<ul><li>consulta de listados de registros directos y con referencias cruzadas</li><li>consulta de un registro en particular</li><li>administración de objetos depentientes, como por ejemplo los datos una empresa y sus empleados</li><li>uso de foreignkeys a nivel objeto, sin importar el driver de base de datos</li><li>validación de datos por medio del objeto **nglValidate**</li><li>permite añadir, modificar, suspender y eliminar (eliminado lógico) registros</li><li>eliminación de registros en cascada</li></ul>Por todo ello, nglOwl trabaja con estructura de base de datos determinada.
+Entre las funciones del objecto se encuentran:
+    <ul>
+    <li>consulta de listados de registros directos y con referencias cruzadas</li>
+    <li>consulta de un registro en particular</li>
+    <li>administración de objetos depentientes, como por ejemplo los datos una empresa y sus empleados</li><li>uso de foreignkeys a nivel objeto, sin importar el driver de base de datos</li><li>validación de datos por medio del objeto **nglValidate**</li><li>permite añadir, modificar, suspender y eliminar (eliminado lógico) registros</li><li>eliminación de registros en cascada</li></ul>Por todo ello, nglOwl trabaja con estructura de base de datos determinada.
 Para mas inforamción consultar owl_setup.txt
   
 ## Variables
-`private` $db = Objeto de base de datos  
-`private` $sObject = Nombre del Objeto activo  
-`private` $vObjects = Objetos cargados durante la ejecución  
-`private` $sChildTable = Nombre de la tabla del objeto dependiente activo  
-`private` $bChildMode = Establece el modo Child para los métodos de escritura  
-`private` $bInternalCall = Señala que llamada al método es interna. Usada para evitar el log  
-`private` $aCascade = Almacena las sentencias SQL para el borrado logico en cascada del último CrossRows  
-`private` $aTmpChildren = Almacena temporalmente los hijos durante nglOwl::select  
+|Argumento|Tipo|Descripción|
+|---|---|---|
+|$db|private|Objeto de base de datos|
+|$sObject|private|Nombre del Objeto activo|
+|$vObjects|private|Objetos cargados durante la ejecución|
+|$sChildTable|private|Nombre de la tabla del objeto dependiente activo|
+|$bChildMode|private|Establece el modo Child para los métodos de escritura|
+|$bInternalCall|private|Señala que llamada al método es interna. Usada para evitar el log|
+|$aCascade|private|Almacena las sentencias SQL para el borrado logico en cascada del último CrossRows|
+|$aTmpChildren|private|Almacena temporalmente los hijos durante nglOwl::select|
 
 ## Argumentos
 |Argumento|Tipo|Default|Descripción|

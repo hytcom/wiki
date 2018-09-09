@@ -1,8 +1,11 @@
 # nogal::file
 Crea un objeto sobre archivos y/o directorio
+___
 
 ## Variables
-`private` $sSandbox = Entorno dentro del cual se establecerá el dominio del objeto, es decir, establece el directorio dentro del cual estará contenido el accionar del método, cualquier intento de leer o escribir un archivo fuera de este entorno resultará en error. Por seguridad, **$sSandbox** toma el valor de la constante [NGL_SANDBOX](https://github.com/arielbottero/wiki/blob/master/nogal/docs/constants.md#otras) y en caso de que ella no estuviera definida asumirá el valor de [NGL_PATH_PROJECT](https://github.com/arielbottero/wiki/blob/master/nogal/docs/constants.md#rutas)
+|Argumento|Tipo|Descripción|
+|---|---|---|
+|**$sSandbox**|private|Entorno dentro del cual se establecerá el dominio del objeto, es decir, establece el directorio dentro del cual estará contenido el accionar del método, cualquier intento de leer o escribir un archivo fuera de este entorno resultará en error. Por seguridad, **$sSandbox** toma el valor de la constante [NGL_SANDBOX](https://github.com/arielbottero/wiki/blob/master/nogal/docs/constants.md#otras) y en caso de que ella no estuviera definida asumirá el valor de [NGL_PATH_PROJECT](https://github.com/arielbottero/wiki/blob/master/nogal/docs/constants.md#rutas)|
   
 ## Argumentos
 |Argumento|Tipo|Default|Descripción|

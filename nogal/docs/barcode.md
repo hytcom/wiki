@@ -1,10 +1,11 @@
 # nogal::barcode
 Implementa la clase 'barcode-generator' para generar códigos de barras
 ___
-  
+
 ## Variables
-`public` $barcode = Objeto original 'barcode-generator'  
-`private` $vtypenologies = Tecnologías de códigos de barras soportadas  
+|Argumento|Tipo|Descripción|
+|---|---|---|
+|**$barcode**|public|Objeto original 'barcode-generator'|
 
 ## Argumentos
 |Argumento|Tipo|Default|Descripción|
