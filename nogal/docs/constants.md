@@ -1,11 +1,13 @@
 # nogal::file
 Constantes
 
+## DEL PROYECTO
 |Constante|Definición|
 |---|---|
 |NGL_PROJECT|Nombre del proyecto|
 |NGL_PROJECT_RELEASE|Version del proyecto|
-
+  
+  
 ## RUTAS
 |Constante|Definición|
 |---|---|
@@ -27,6 +29,7 @@ Constantes
 |NGL_URL_HOST|Dominio de la URL, en caso de existir|
 |NGL_URL_PROTOCOL|Protocolo de la URL, en caso de existir|
 |NGL_URL_ROOT|Conjunción de NGL_URL_PROTOCOL y NGL_URL_HOST|
+  
 
 ## SEGURIDAD
 |Constante|Definición|
