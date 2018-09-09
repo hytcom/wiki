@@ -1,7 +1,7 @@
-# nogal::file
-Constantes
+# nogal - Constantes
 
-## DEL PROYECTO
+
+## Proyecto
 |Constante|Definición|
 |---|---|
 |NGL_PROJECT|Nombre del proyecto|
@@ -9,7 +9,7 @@ Constantes
 
 &nbsp;
 
-## RUTAS
+## Rutas
 |Constante|Definición|
 |---|---|
 |NGL_DOCUMENT_ROOT|document_root|
@@ -33,7 +33,7 @@ Constantes
 
 &nbsp;
 
-## SEGURIDAD
+## Seguridad
 |Constante|Definición|
 |---|---|
 |NGL_ALVIN|Activa el control de accesos (NULL para desactivar)|
@@ -45,7 +45,7 @@ Constantes
 
 &nbsp;
 
-## CONTROLADORES
+## Controladores
 |Constante|Definición|
 |---|---|
 |NGL_HANDLING_ERRORS|Manipulacion de errores (true o false)|
@@ -55,7 +55,7 @@ Constantes
 
 &nbsp;
 
-## DIVISORES DE CADENAS
+## Separadores de Cadenas
 |Constante|Definición|
 |---|---|
 |NGL_STRING_LINEBREAK|Separador de filas|
@@ -64,7 +64,7 @@ Constantes
 
 &nbsp;
 
-## FECHAS E IDIOMA
+## Fechas e Idioma
 |Constante|Definición|
 |---|---|
 |NGL_ACCEPTED_LANGUAGES|Idiomas aceptados separados por coma|
@@ -74,7 +74,7 @@ Constantes
 
 &nbsp;
 
-## OTRAS
+## Otras
 |Constante|Definición|
 |---|---|
 |NGL_CHMOD_FILE|Permisos aplicados a los nuevos archivos (ambientes linux)|

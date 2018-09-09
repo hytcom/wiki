@@ -1,5 +1,4 @@
 # Nogal
-___
 
 ## Estructura y Sintaxis
 - [constantes](docs/constants.md)
