@@ -85,6 +85,7 @@ Constantes
 |NGL_GOOGLE_API_KEY|Google api key|
 |NGL_NULL|Indica valor nulo pudiendo ser o no NULL|
 |NGL_RUN_ANYWAY|Inicia el framework ignorando los chequeos de compatibilidad|
+|NGL_SANDBOX|**OPCIONAL** Ruta dentro de la cual se establecerá el dominio de los objetos que trabajan con el FileSystem|
 
 &nbsp;
 ___
