@@ -1,22 +1,18 @@
-# Nogal v1.0
-*the most simple PHP Framework* by hytcom.net
-___
-  
-
-# file
-## nglFile *extends* nglStd [instanciable] [20160201]
-Crea un objeto sobre archivos y/o directorio.
+# nogal::file
+Crea un objeto sobre archivos y/o directorio
   
 ## Argumentos
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**content**|string||Contenido del archivo|
-|**curl_options**|array||Opciones CURL para este tipo de conexiones, <a href="http://php.net/manual/en/function.curl-setopt.php" target="_blank">http://php.net/manual/en/function.curl-setopt.php</a>|
-|**downname**|string|attribute::basename|Nombre que se asignará al archivo en caso de download|
+|**curl_options**|array||Opciones CURL para este tipo de conexiones, [curl-setopt](http://php.net/manual/en/function.curl-setopt.php)|
+|**downname**|string|*attr::basename*|Nombre que se asignará al archivo en caso de download|
 |**filepath**|string||Ruta del archivo o directorio|
 |**length**|int|null|Tamaño máximo en bytes del archivo contemplado para lectura o escritura|
-|**outtype**|string||Formato de salida para el método view|
-|**reload**|boolean||Determina si se aplicará nuevamente el método nglFile::load sobre el archivo para actualizar la información|
+|**mimetype**|string|text/plain|Formato de archivo|
+|**outtype**|string|null|Formato de salida para el método view|
+|**reload**|boolean|true|Determina si se aplicará nuevamente el método [load](#load) sobre el archivo para actualizar la información|
+|**sandbox**|string|const *NGL_PATH_PROJECT*|Directorio de confinamiento para el accionar de los métodos|
 
 ## Atributos
 |Atributo|Tipo|Descripción|
@@ -36,14 +32,12 @@ Crea un objeto sobre archivos y/o directorio.
 |**size**|string|Tamaño del archivo en la mayor unidad de medida|
 |**timestamp**|int|Fecha UNIX|
 |**type**|string|file o dir|
-
   
 &nbsp;
 
 # Métodos
 |Método|Descripción|
 |---|---|
-|[WriteContent](#WriteContent)|Escribe contenido en un archivo. Este método es utilizado por append y write|
 |[append](#append)|Añade el contenido content al final de un archivo. Si el archivo no existe lo cr...|
 |[download](#download)|Genera la descarga del archivo hacia el cliente.|
 |[fileinfo](#fileinfo)|Retorna al atributo info.|
@@ -53,21 +47,25 @@ Crea un objeto sobre archivos y/o directorio.
 |[reload](#reload)|Actualiza la información del objeto releyendo el archivo/directorio de origen y ...|
 |[view](#view)|Genera una salida del contenido del archivo con el formato correspondiente a la ...|
 |[write](#write)|Escribe/reemplaza el contenido del archivo con content. Si el archivo no existe ...|
-
+|Internos||
+|[WriteContent](#WriteContent)|Escribe contenido en un archivo. Este método es utilizado por append y write|
   
 &nbsp;
 
-
 ## append
-Añade el contenido **content** al final de un archivo. Si el archivo no existe lo crea  
+> Añade el contenido **content** al final de un archivo. Si el archivo no existe lo crea
+> Este método es unicamente válido cuando se trata de un archivo local. Ver tambien [write](#write)
 
-**[$this]** =  *public* function ( );
+**[$this]** =  *public* function ( *string* $sContent, *boolean* $bReload );
+|Argumento|Tipo|Default|Descripción|
+|---|---|---|---|
+|**$sContent**|string|*arg::content*|Contenido del archivo|
+|**$bReload**|boolean|*arg::reload*|Determina si se aplicará nuevamente el método [load](#load) sobre el archivo para actualizar la información|
   
 ### Ejemplos  
 #### Escritura  
 ```php
-$ngl("file.foo")->load("readme.txt");
-$ngl("file.foo")->append("hola mundo!");
+$ngl("file")->load("readme.txt")->append("hola mundo!");
 ```
 
 &nbsp;
@@ -75,43 +73,51 @@ ___
 &nbsp;
 
 ## download
-Genera la descarga del archivo hacia el cliente.  
+> Genera la descarga del archivo hacia el cliente.  
 
-**[string]** =  *public* function ( *string* \$sDownName );  
+**[string]** =  *public* function ( *string* $sDownName, *string* $sMimeType );  
 
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
-|**\$sDownName**|string|argument:downname||
+|**$sDownName**|string|*arg::downname*|Contenido del archivo|
+|**$sMimeType**|boolean|*arg::mimetype*|Formato de archivo. Si no se especifica uno diferente, se utilizará el informado por [load](#load)|
+
+### Ejemplos  
+#### Descarga directa  
+```php
+$ngl("file")->load("readme.txt")->download();
+```
 
 &nbsp;
 ___
 &nbsp;
 
 ## fileinfo
-Retorna al atributo **info**.  
+> Retorna al atributo **info**, que contiene toda la información del archivo  
 
 **[array]** =  *public* function ( );
   
 ### Ejemplos  
 #### Información del archivo  
 ```php
-$ngl("file.foo")->load("readme.txt");
-print_r($ngl("file.foo")->fileinfo());
+$info = $ngl("file")->load("readme.txt")->fileinfo();
+print_r($info);
 
 #salida
 Array (
     [type] => file
-    [basename] => readme.txt
-    [extension] => txt
-    [filename] => readme
+    [basename] => manifest.json
+    [extension] => json
+    [filename] => manifest
     [protocol] => filesystem
-    [path] => tmpeadme.txt
-    [bytes] => 4448
-    [size] => 4.34KB
-    [chmod] => 0666
-    [timestamp] => 1425693706
-    [date] => 2015-03-06 23:01:46
-    [mime] => text/plain
+    [path] => /var/www/html/manifest.json
+    [bytes] => 1153
+    [size] => 1.13KB
+    [chmod] => 0755
+    [timestamp] => 1527605517
+    [date] => 2018-05-29 11:51:57
+    [query] => 
+    [mime] => application/json
     [image] => 
 )
 ```
@@ -121,22 +127,30 @@ ___
 &nbsp;
 
 ## fill
-Rellena el archivo con **content** hasta **length**  
+> Rellena el archivo con **content** hasta **length** 
+> Puede ser utilizado para reservar espacio en el disco para un futuro archivo
 
-**[$this]** =  *public* function ( *string* \$sContent, *string* \$nLength );  
+**[$this]** =  *public* function ( *string* $sContent, *int* $nLength );  
 
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
-|**\$sContent**|string|argument:content||
-|**\$nLength**|string|argument:length||
+|**$sContent**|string|*arg::content*|Contenido del archivo|
+|**$nLength**|int|*arg::length*|Tamaño máximo en bytes del archivo contemplado para lectura o escritura|
+
+### Ejemplos  
+#### Archivo de 100kb
+```php
+$ngl("file")->load("zeros.txt")->fill("0", 100000);
+```
 
 &nbsp;
 ___
 &nbsp;
 
 ## load
-Carga el archivo/directorio \$sFilePath en el objeto.
-Si \$sFilePath es igual a TRUE se trabajará con un archivo temporal en el directorio temporal del sistema  
+> Carga el archivo/directorio *$sFilePath* en el objeto
+> Si *$sFilePath* hace referencia a un archivo inexistente, **load** intentará crearlo
+> Si *$sFilePath* es igual a TRUE se trabajará con un archivo temporal en el directorio temporal del sistema  
 
 **[$this]** =  *public* function ( *string* \$sFilePath );  
 
@@ -243,4 +257,5 @@ Se recomienda usar **false** cuando se realicen sucesivos nglFile::append|
 
 &nbsp;
 ___
-&nbsp;
+<sub><b>nogal</b> - <em>the most simple PHP Framework</em></sub><br />
+<sup>&copy; 2018 by <a href="http://hytcom.net/nogal">hytcom.net/nogal</a> - <a href="https://github.com/arielbottero">@arielbottero</a></sup><br />
