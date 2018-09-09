@@ -149,14 +149,12 @@ ___
 
 ## load
 > Carga el archivo/directorio *$sFilePath* en el objeto  
-> Si *$sFilePath* hace referencia a un archivo inexistente, **load** intentará crearlo  
-> Si *$sFilePath* es igual a TRUE se trabajará con un archivo temporal en el directorio temporal del sistema  
 
 **[$this]** =  *public* function ( *string* \$sFilePath );  
 
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
-|**\$sFilePath**|string|argument:filepath||
+|**$sFilePath**|string|*arg::filepath*|Ruta del archivo o directorio.<ul><li>Si la ruta comienza con un *DIRECTORY_SEPARATOR *, dos puntos .. ó un punto seguido de un *DIRECTORY_SEPARATOR* la ruta será comprendida dentro de *arg::sandbox*</li><li>Si la ruta compienza con cualquier otro caracter, será comprendida dentro del directorio **NGL_PATH_PUBLIC**</li><li>Si hace referencia a un archivo inexistente, **load** intentará crearlo</li><li>Si es exactamente igual a TRUE se trabajará con un archivo temporal en el directorio temporal del sistema</li></ul>|
 
 &nbsp;
 ___
