@@ -28,7 +28,7 @@ Constantes
 |NGL_URL_PROTOCOL|Protocolo de la URL, en caso de existir|
 |NGL_URL_ROOT|Conjunción de NGL_URL_PROTOCOL y NGL_URL_HOST|
 
-##SEGURIDAD
+## SEGURIDAD
 |Constante|Definición|
 |---|---|
 |NGL_ALVIN|Activa el control de accesos (NULL para desactivar)|
@@ -38,7 +38,7 @@ Constantes
 |NGL_REFERER|Valida que el referer sea del mismo dominio|
 |NGL_SESSION_INDEX|ID de session|
 
-##CONTROLADORES
+## CONTROLADORES
 |Constante|Definición|
 |---|---|
 |NGL_HANDLING_ERRORS|Manipulacion de errores (true o false)|
