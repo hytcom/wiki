@@ -6,8 +6,9 @@ Constantes
 |---|---|
 |NGL_PROJECT|Nombre del proyecto|
 |NGL_PROJECT_RELEASE|Version del proyecto|
-  
-  
+
+&nbsp;
+
 ## RUTAS
 |Constante|Definición|
 |---|---|
@@ -29,7 +30,8 @@ Constantes
 |NGL_URL_HOST|Dominio de la URL, en caso de existir|
 |NGL_URL_PROTOCOL|Protocolo de la URL, en caso de existir|
 |NGL_URL_ROOT|Conjunción de NGL_URL_PROTOCOL y NGL_URL_HOST|
-  
+
+&nbsp;
 
 ## SEGURIDAD
 |Constante|Definición|
@@ -41,6 +43,8 @@ Constantes
 |NGL_REFERER|Valida que el referer sea del mismo dominio|
 |NGL_SESSION_INDEX|ID de session|
 
+&nbsp;
+
 ## CONTROLADORES
 |Constante|Definición|
 |---|---|
@@ -49,12 +53,16 @@ Constantes
 |NGL_HANDLING_ERRORS_FORMAT|formato de impresion de errores cuando NGL_HANDLING_ERRORS es true (html o text)|
 |NGL_HANDLING_ERRORS_MODE|Tipo de salida de errores cuando NGL_HANDLING_ERRORS es true (boolean, code, die, print o return)|
 
+&nbsp;
+
 ## DIVISORES DE CADENAS
 |Constante|Definición|
 |---|---|
 |NGL_STRING_LINEBREAK|Separador de filas|
 |NGL_STRING_SPLITTER|Separador de columnas|
 |NGL_STRING_NUMBERS_SPLITTER|Separador de números|
+
+&nbsp;
 
 ## FECHAS E IDIOMA
 |Constante|Definición|
@@ -63,6 +71,8 @@ Constantes
 |NGL_DATE_DAYS|Nombre de los días de la semana separados por coma|
 |NGL_DATE_MONTHS|Nombre de los meses del año separados por coma|
 |NGL_TIMEZONE|Zona horaria [http://php.net/manual/es/timezones.php](http://php.net/manual/es/timezones.php)|
+
+&nbsp;
 
 ## OTRAS
 |Constante|Definición|
