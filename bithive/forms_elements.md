@@ -313,6 +313,22 @@ Selector de fecha y/u hora
 - **attribs**
 	- **data-min** = menor valor posible, sólo para los tipo *picker*
 	- **data-max** = máximo valor posible, sólo para los tipo *picker*
+- **selector** = selector de rangos de fechas (sólo disponible en **date-range**) Cadena separada por comas, las opciones son:
+	- | = separador
+	- week = semana actual
+	- month = mes actual
+	- pastWeek = última semana
+	- pastFortnight = última quincena
+	- pastMonth = último mes
+	- pastQuarter = último trimestre
+	- pastSemester = último semestre
+	- pastYear = último año
+	- nextWeek = próxima semana
+	- nextFortnight = próxima quincena
+	- nextMonth = próximo mes
+	- nextQuarter = próximo trimestre
+	- nextSemester = próximo semestre
+	- nextYear = próximo año
 
 ```json
 ["date", {"type":"datepicker", "name":"name", "label":"Fecha"}]
@@ -324,6 +340,7 @@ Selector de fecha y/u hora
 	"name": "name",
 	"name2": "name2",
 	"label": "Fechas",
+	"selector": "pastWeek,pastMonth,pastSemester,pastYear",
 	"attribs": {
 		"data-min": "2018-01-01",
 		"data-max": "2018-12-01"
