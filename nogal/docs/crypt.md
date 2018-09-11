@@ -1,22 +1,13 @@
 # nogal::crypt
 Implementa la clase 'phpseclib', de algoritmos de encriptación
-  
+___
+
 ## Variables
-`public` $crypter = Objeto phpseclib  
-`private` $sCrypter = Algoritmo de encriptación  
-`private` $vAlgorithms = 
-			Metodos de encriptación soportados
-			<ul>
-				<li>aes</li>
-				<li>blowfish</li>
-				<li>des</li>
-				<li>tripledes</li>
-				<li>rc2</li>
-				<li>rc4</li>
-				<li>rijndael</li>
-				<li>rsa</li>
-				<li>twofish</li>
-			</ul>
+|Argumento|Tipo|Descripción|
+|---|---|---|
+|**$crypter**|public|Objeto phpseclib|
+|**$sCrypter**|private|Algoritmo de encriptación|
+|**$vAlgorithms**|private|Metodos de encriptación soportados:  <ul><li>aes</li><li>blowfish</li><li>des</li><li>tripledes</li><li>rc2</li><li>rc4</li><li>rijndael</li><li>rsa</li><li>twofish</li></ul>|
 
 ## Argumentos
 |Argumento|Tipo|Default|Descripción|

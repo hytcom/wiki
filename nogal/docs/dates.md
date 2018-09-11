@@ -1,9 +1,12 @@
 # nogal::dates
 Utilidades para operaciones con fechas y horas<br />
 Generación de Calendarios
-  
+___
+
 ## Variables
-`private` $aSettings = Array bidimensional con los nombres de los días de la semana y meses del año
+|Argumento|Tipo|Descripción|
+|---|---|---|
+|**$aSettings**|private|Array bidimensional con los nombres de los días de la semana y meses del año|
 
 &nbsp;
 

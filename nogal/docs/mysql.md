@@ -1,10 +1,12 @@
 # mysql
-Gestor de conexiones con bases de datos MySQL<br />
+Gestor de conexiones con bases de datos MySQL  
 Las consultas SQL se ejecutan a través del método [query](#query), que en caso de exito retornarán un objeto [mysqlq](https://github.com/arielbottero/wiki/blob/master/nogal/docs/mysql.md)
   
 ## Variables
-`private` $link = Puntero MySQL
-`private` $vModes = Modos de INSERT y UPDATE  
+|Argumento|Tipo|Descripción|
+|---|---|---|
+|$link|private|Puntero MySQL|
+|$vModes|private|Modos de INSERT y UPDATE|
 
 ## Argumentos
 |Argumento|Tipo|Default|Descripción|

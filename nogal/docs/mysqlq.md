@@ -1,9 +1,12 @@
 # mysqlq
 Controla los resultados generados por consultas a la bases de datos MySQL.
-  
+___
+
 ## Variables
-`private` $db = Objeto mysqli_result  
-`private` $cursor = Modos de INSERT y UPDATE  
+|Argumento|Tipo|Descripción|
+|---|---|---|
+|**$db**|private|Objeto mysqli|
+|**$cursor**|private|Objeto mysqli_result|
 
 ## Argumentos
 |Argumento|Tipo|Default|Descripción|
