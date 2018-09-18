@@ -124,9 +124,10 @@ Es posible relacionar 2 ó mas combos, para ello se deberan utilizar los siguien
 
 ### Validación "On The Fly"
 Para validar un dato contra el servidor, en tiempo real, se pueden utilizar los sub-atributos: *data-checker* y *data-checker-text* dentro del atributo **attribs**
-- **data-checker** = URL del script verificador, al cual se le pasará la variable **q**  con el valor actual del campo. La respuesta deberá ser retornada en formato JSON y deberá tener la siguiente estructura: &nbsp; `{"success": "1", "message": "Mensaje de error", "values":{}}`  
-  El indice **values** es opcional, pero si se encuentra presente será tratado como un objeto JSON y se intentará actualizar en el documento los valores de los campos o los contenidos HTML de los elementos, que tengan el valor del atributo **data-id** igual a alguna de las **key** del JSON. Algo similar al [ejemplo #4](#relation---ejemplo-4) del elemento [relation](#relation)
-- **data-checker-text** = mensaje que se mostrará cuando *data-checker* retorne **1** en el campo **value**. Se puede utilizar *** para imprimir el valor retornado en el campo **message**
+- **data-checker** = URL del script verificador, al cual se le pasará la variable **q**  con el valor actual del campo. La respuesta deberá ser retornada en formato JSON y deberá tener la siguiente estructura: &nbsp; `{"success": "1", "message": "Mensaje de error", "values":{}}` Los índices **message** y **values** son opcionales
+	- **message** = mostrará un cuadro de diálogo con el mensaje **data-checker-text** 
+	- **values** = será tratado como un objeto JSON y se intentará actualizar en el documento los valores de los campos o los contenidos HTML de los elementos, que tengan el valor del atributo **data-id** igual a alguna de las **key** del JSON. Algo similar al [ejemplo #4](#relation---ejemplo-4) del elemento [relation](#relation)
+- **data-checker-text** = mensaje que se mostrará cuando *data-checker* retorne **1** en el índice **success** y se encuentre presente el índice **message**. Se puede utilizar *** para imprimir el valor retornado en el campo **message**
 
 
 ``` json	
