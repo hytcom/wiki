@@ -6,6 +6,7 @@
     - [Indices](#indices)
     - [Anidamiento de Bucles](#anidamiento-de-bucles)
     - [Referencias entre Bucles](#referencias-entre-bucles)
+    - [Ejemplo de Bucle Complejo](#ejemplo-de-bucle-complejo)
 <br />
 <br />
 
@@ -208,6 +209,65 @@ Supongamos que en 3 bucles anidados y en todos existe un campo llamado **name**,
 
 En el siguiente ejemplo supone un nivel superior a los usuarios, donde se agrupan los mismos por juego.
 Y se busca imprimir el último personaje con el que jugó.
+
+``` php
+*** index.php ***
+
+<?php
+require_once("config.php");
+
+// puntajes
+$aGames		= array();
+$aGames[]	= array("game"=>"Street Fighter II",
+					"users" => array(
+						array("top"=>1, "username"=>"B-L-A-K-E", "score"=>872195, "characters"=>array("KEN","RYU","RYU")),
+						array("top"=>2, "username"=>"DrWho", "score"=>814751, "characters"=>array("KEN","RYU","KEN")),
+						array("top"=>3, "username"=>"Th3Ev1l", "score"=>759725, "characters"=>array("BLANKA","ZANGIEF","HONDA"))
+					)
+				);
+
+$aGames[]	= array("game"=>"Street Fighter III",
+				"users" => array(
+					array("top"=>1, "username"=>"DrWho", "score"=>814751, "characters"=>array("KEN","RYU","KEN")),
+					array("top"=>2, "username"=>"Mountain666", "score"=>679134, "characters"=>array("ZANGIEF","RYU","ZANGIEF")),
+					array("top"=>3, "username"=>"ElBarto", "score"=>541455, "characters"=>array("GUILE","GUILE","KEN"))
+				)
+			);
+
+echo $ngl("rind")->stamp();
+?>
+```
+
+``` html
+*** index.html ***
+
+<rind:loop>
+    <@source>{$aGames}</@source>
+    <@content>
+        <rind:loop>
+            <@source>{users}</@source>
+            <@content>
+                <rind:loop>
+                    <@source>{self.characters}</@source>
+                    <@limit>1</@limit>
+                    <@content>
+                        <div>
+                            Juego {game}<br />
+                            Usuario: {parent.username}<br />
+                            Personaje: {self.#current}<br />
+                        </div>
+                    </@content>
+                </rind:loop>
+            </@content>
+        </rind:loop>
+    </@content>
+</rind:loop>
+```
+
+&nbsp;
+
+## Ejemplo de Bucle Complejo
+Este caso utiliza los datos del ejemplo anterior, pero el bucle utiliza más niveles de anidamiento.
 
 ``` php
 *** index.php ***
