@@ -124,8 +124,11 @@ Es posible relacionar 2 ó mas combos, para ello se deberan utilizar los siguien
 
 ### Validación "On The Fly"
 Para validar un dato contra el servidor, en tiempo real, se pueden utilizar los sub-atributos: *data-checker* y *data-checker-text* dentro del atributo **attribs**
-- **data-checker** = URL del script verificador, al cual se le pasará la variable **q**  con el valor actual del campo. La respuesta deberá ser retornada en formato JSON y deberá tener la siguiente estructura: &nbsp; `{"value": "1", "message": "Mensaje de error"}`
-- **data-checker-text** = mensaje que se mostrará cuando *data-checker* retorne **1** en el campo **value**. Se puede utilizar *** para imprimir el valor retornado en el campo **message**
+- **data-checker** = URL del script verificador, al cual se le pasará la variable **q**  con el valor actual del campo. La respuesta deberá ser retornada en formato JSON y deberá tener la siguiente estructura: &nbsp; `{"success": "1", "message": "Mensaje de error", "values":{}}` Los índices **message** y **values** son opcionales
+	- **message** = mostrará un cuadro de diálogo con el mensaje **data-checker-text** 
+	- **values** = será tratado como un objeto JSON y se intentará actualizar en el documento los valores de los campos o los contenidos HTML de los elementos, que tengan el valor del atributo **data-id** igual a alguna de las **key** del JSON. Algo similar al [ejemplo #4](#relation---ejemplo-4) del elemento [relation](#relation)
+- **data-checker-text** = mensaje que se mostrará cuando *data-checker* retorne **1** en el índice **success** y se encuentre presente el índice **message**. Se puede utilizar *** para imprimir el valor retornado en el campo **message**
+
 
 ``` json	
 "attribs": {
@@ -313,6 +316,22 @@ Selector de fecha y/u hora
 - **attribs**
 	- **data-min** = menor valor posible, sólo para los tipo *picker*
 	- **data-max** = máximo valor posible, sólo para los tipo *picker*
+- **selector** = selector de rangos de fechas (sólo disponible en **date-range**) Cadena separada por comas, las opciones son:
+	- | = separador
+	- week = semana actual
+	- month = mes actual
+	- pastWeek = última semana
+	- pastFortnight = última quincena
+	- pastMonth = último mes
+	- pastQuarter = último trimestre
+	- pastSemester = último semestre
+	- pastYear = último año
+	- nextWeek = próxima semana
+	- nextFortnight = próxima quincena
+	- nextMonth = próximo mes
+	- nextQuarter = próximo trimestre
+	- nextSemester = próximo semestre
+	- nextYear = próximo año
 
 ```json
 ["date", {"type":"datepicker", "name":"name", "label":"Fecha"}]
@@ -324,6 +343,7 @@ Selector de fecha y/u hora
 	"name": "name",
 	"name2": "name2",
 	"label": "Fechas",
+	"selector": "pastWeek,pastMonth,pastSemester,pastYear",
 	"attribs": {
 		"data-min": "2018-01-01",
 		"data-max": "2018-12-01"
@@ -629,16 +649,16 @@ El elemento se muestra como un botón que abre un diálogo en el que se pueden c
 El propósito del elemento es generar vinculos entre el formulario actual y datos adyacentes. Conceptualmente es identico a un elemento combo (select, radios, etc), pero ofrece un mayor control y versatilidad. Los valores seleccionados son pasados al formulario principal por medio de los eventos de los elementos que tengan el atributo **data-relation**, en cuyo caso se agregará a **target** el contenido del comentario del mismo.
 
 Hay diferentes variantes para este elmento, algunos de sus usos:
-- dar de alta un registro *hijo* y vincularlo al *padre*. Ej: datos de la persona responsable de una empresa (ver ejemplo #2)
+- dar de alta un registro *hijo* y vincularlo al *padre*. Ej: datos de la persona responsable de una empresa [ver ejemplo #2](#relation---ejemplo-2)
 - seleccionar uno o varios valores de un grupo de resultados. Ej: vincular rubro/s a un producto
 - buscar un valor, si no existe darlo de alta, si existe seleccionarlo del grupo de resultados. Ej: seleccionar el cliente en una factura
 
 ### Atributos
-- **id** = id del objeto del *diaolog* en donde se cargarán los contenidos dinámcicos. **IMPORTANTE** Luego de cargar nuevos contenidos deberá ejecutarse el método `$("#VALOR_ID").trigger("relation");` para que sean parseados. (ver ejemplo #3)
+- **id** = id del objeto del *diaolog* en donde se cargarán los contenidos dinámcicos. **IMPORTANTE** Luego de cargar nuevos contenidos deberá ejecutarse el método `$("#VALOR_ID").trigger("relation");` para que sean parseados. [ver ejemplo #3](#relation---ejemplo-3)
 - **button** = texto que se mostrará en el botón
 - **source** = URL del formulario. Puede contener variables, esto permite, por ejemplo, pasar el **id** de un registro maestro
 #### opcionales
-- **value** = URL de un documento que contiene los valores previamentes cargados (ej: tabla con contactos). Este documento se cargará en *target* al inicio (excepto con *skipfirst =* **true**) y después de cada envio satisfactorio. Si el valor es **true** la respuesta de *source* será tratada como un JSON y se intentarán actualizar el contenido HTML de los elementos, que dentro de *target*, tengo el valor del atributo **data-id** igual a alguna de las **key** del JSON (ver ejemplo #4)
+- **value** = URL de un documento que contiene los valores previamentes cargados (ej: tabla con contactos). Este documento se cargará en *target* al inicio (excepto con *skipfirst =* **true**) y después de cada envio satisfactorio. Si el valor es **true** la respuesta de *source* será tratada como un JSON y se intentará actualizar en el documento los valores de los campos o los contenidos HTML de los elementos, que dentro de *target*, tengan el valor del atributo **data-id** igual a alguna de las **key** del JSON [ver ejemplo #4](#relation---ejemplo-4)
 - **target** = selector jquery de la zona en donde se cargará *value*
 - **skipfirst** = evita el primer llamado al domumento *value*. Valore aceptados "true" y "false"
 - **closebutton** = determina si debe mostrarse el botón "cerrar" en el diálogo, se espera *1* o *true*, por defecto: *false*
@@ -647,13 +667,13 @@ Hay diferentes variantes para este elmento, algunos de sus usos:
 #### en los documentos *source*
 - **data-relation** = por medio de este atributo se puede asignar funcionalidades a los elementos de los documentos cargados en el diálogo
 	- **close** = al hacer click sobre el elemento se cerrará el diálogo
-	- **multiple** = añade a *target* el contenido del comentario del elemento (ver ejemplo #2)
-	- **once** = setea de manera única el contenido del comentario en el *target* (aplicable al ejemplo #2)
-	- **onceclose** = identico al anterior, pero luego de setearlo cierra el diálogo (ver ejemplo #3)
+	- **multiple** = añade a *target* el contenido del comentario del elemento [ver ejemplo #2](#relation---ejemplo-2)
+	- **once** = setea de manera única el contenido del comentario en el *target* [aplicable al ejemplo #2](#relation---ejemplo-2)
+	- **onceclose** = identico al anterior, pero luego de setearlo cierra el diálogo [ver ejemplo #3](#relation---ejemplo-3)
 - **data-relation-tag** = cuando el contenido 
 
 
-##### [ Ejemplo 1 ]
+##### [relation - ejemplo 1]
 ```json
 ["html", {"code": "<div id='contzone'></div>"}],
 ["relation", {
@@ -712,7 +732,7 @@ Hay diferentes variantes para este elmento, algunos de sus usos:
 </form>
 ```
 
-##### [ Ejemplo 2 ]
+##### [relation - ejemplo 2]
 ```json
 ["html", {"code":"<div id='categories' class='padding-sm brd-solid brd-gray brd-xs brd-round-xs'></div>"}],
 ["relation", {
@@ -747,7 +767,7 @@ Hay diferentes variantes para este elmento, algunos de sus usos:
 </table>
 ```
 
-#### [ ejemplo 3 ]
+#### [relation - ejemplo 3]
 ```json
 ["html", {"code":"<div id='marks' class='padding-sm brd-solid brd-gray brd-xs brd-round-xs'></div>"}],
 ["relation", {
@@ -807,7 +827,7 @@ Hay diferentes variantes para este elmento, algunos de sus usos:
 </table>
 ```
 
-#### [ ejemplo 4 ]
+#### [relation - ejemplo 4]
 ```html
 *** Tabla de datos ***
 
@@ -899,7 +919,7 @@ Ej: ingredientes de una receta
 	- **update** = cuando existe bloquea la edición de los campos y la eliminacion del sub-formulario. Al hacer click activa la edición y crea un campo oculto que tiene por nombre el valor del atributo *data-subform-id* + *_update* y le asigna el valor el almacenado en *value* para ese indice. Esto actua como FLAG de modificación. (ver ejemplo)
 	- **remove** = remueve el sub-formulario y de existir *data-subform-id* crea un campo oculto que tiene por nombre el valor del atributo + *_update* y le asigna el valor el almacenado en *value* para ese indice. Esto actua como FLAG de eliminación. (ver ejemplo)
 
-##### [ Ejemplo ]
+##### [subform - ejemplo 1]
 ```json
 	["section", {"title":"Ingredientes"}],
 	["subform", {"button":"agregar ingrediente", "source":"ingredients.php", "class": "btn btn-primary", "default":"0", "value":"{$aIngredients}"}]
