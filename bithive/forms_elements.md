@@ -42,7 +42,9 @@
 - **name** = nombre del campo
 - **value** = valor previo del campo (opcionalmente). En el caso de valores multiples (selects, checkboxs y radios), utilizar una cadena de valores separados por ;
 - **notes** = text/html que se colocará despues del campo (exepto hidden)
-- **attribs** = json con atributos extras:
+- **attribs** = json con atributos extras
+- **disabled** = deshabilita el campo
+- **readonly** = establece el campo como solo lectura
 
 ```json
 	"attribs": {
@@ -124,16 +126,17 @@ Es posible relacionar 2 ó mas combos, para ello se deberan utilizar los siguien
 
 ### Validación "On The Fly"
 Para validar un dato contra el servidor, en tiempo real, se pueden utilizar los sub-atributos: *data-checker* y *data-checker-text* dentro del atributo **attribs**
-- **data-checker** = URL del script verificador, al cual se le pasará la variable **q**  con el valor actual del campo. La respuesta deberá ser retornada en formato JSON y deberá tener la siguiente estructura: &nbsp; `{"success": "1", "message": "Mensaje de error", "values":{}}` Los índices **message** y **values** son opcionales
+- **data-checker** = URL del script verificador, al cual se le pasará la variable **q**  con el valor actual del campo. La respuesta deberá ser retornada en formato JSON y deberá tener la siguiente estructura: &nbsp; `{"success": "0 o 1", "message": "Mensaje de error", "values":{"foo":"bar"}}` Los índices **message** y **values** son opcionales
 	- **message** = mostrará un cuadro de diálogo con el mensaje **data-checker-text** 
 	- **values** = será tratado como un objeto JSON y se intentará actualizar en el documento los valores de los campos o los contenidos HTML de los elementos, que tengan el valor del atributo **data-id** igual a alguna de las **key** del JSON. Algo similar al [ejemplo #4](#relation---ejemplo-4) del elemento [relation](#relation)
-- **data-checker-text** = mensaje que se mostrará cuando *data-checker* retorne **1** en el índice **success** y se encuentre presente el índice **message**. Se puede utilizar *** para imprimir el valor retornado en el campo **message**
+- **data-checker-success** = mensaje que se mostrará cuando *data-checker* retorne **1** en el índice **success** y se encuentre presente el índice **message**. Se puede utilizar *** para imprimir el valor retornado en el campo **message**
+- **data-checker-fail** = mensaje que se mostrará cuando *data-checker* retorne **0** en el índice **success** y se encuentre presente el índice **message**. Se puede utilizar *** para imprimir el valor retornado en el campo **message**
 
 
 ``` json	
 "attribs": {
 	"data-checker": "__knot?imya=fUyqGMP1vTnvECn2zRHCtjj5RIHVtgdz",
-	"data-checker-text": "El nombre de usuario *** ya está siendo utilizado"
+	"data-checker-fail": "El nombre de usuario *** ya está siendo utilizado"
 }
 ```
 &nbsp;
@@ -397,6 +400,10 @@ En si mismo, este elemento no añade contenido alguno. Es una herramienta para a
 
 ## input
 Clásico input text
+### Atributos
+#### opcionales
+- **prepend** = antepone al campo una caja para código HTML
+- **append** = coloca después al campo una caja para código HTML
 
 ```json
 ["input", {"name":"name", "label":"Nombre"}]
@@ -525,6 +532,30 @@ Selector desplazable de valores
 	"name":"name",
 	"label":"Barrio",
 	"source":"__knot?imya=uEdVChLkoZkKbHsYQtiiulHQNwnihLxd"
+}]
+```
+&nbsp;
+
+## Social
+Clásico input text con un icono de red social que lo antecede.
+### Atributos
+- **type** = nombre de la red social
+	- behance
+	- facebook
+	- flickr
+	- google-plus
+	- instagram
+	- linkedin
+	- pinterest
+	- snapchat
+	- twitter
+	- youtube
+
+```json
+["social", {
+	"type":"twitter",
+	"name":"name",
+	"label":"Usuario de Twitter"
 }]
 ```
 &nbsp;
