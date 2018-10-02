@@ -22,6 +22,7 @@
 - [readonly](#readonly)
 - [section](#section)
 - [select](#select)
+- [social](#social)
 - [slider](#slider)
 - [switch](#switch)
 - [tabs](#tabs)
