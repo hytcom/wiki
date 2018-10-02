@@ -1,27 +1,35 @@
 
 # Nogal
-Nogal intenta ser el framework de PHP con la curva de aprendisaje mas rápida  
-Pensado para aquellos que tienen una idea esfimera de programación, **nogal** nace como un sistema de plantillas y simplificación para maquetadores web. Sin embargo con el tiempo ha ido creciendo hasta convertirse en una herramienta muy completa para cualquier seniority de desarrollador  
+Pensado para aquellos que tienen una pequeña idea de los conceptos básicos de programación, **nogal** intenta ser el framework de PHP con la curva de aprendisaje mas rápida.  
+En sus comienzos, **nogal** nace como un sistema de plantillas y simplificación para maquetadores web, sin embargo con el tiempo ha ido creciendo hasta convertirse en una herramienta muy completa para cualquier seniority de desarrollador  
 
-Por la naturaleza de su origen, y teniendo en cuenta que la mayoría de los maquetadores conoce jQuery, todo el framework está centralizado en un único objeto, que se encarga llamar e inicializar a todos sus componentes a demanda. Este objeto es la variable **\$ngl**
+Por la naturaleza de su origen, y teniendo en cuenta que la mayoría de los maquetadores conocen jQuery, **nogal** centraliza todas sus herramientas en un único objeto, que se encarga llamar e inicializar a todos sus componentes a demanda. Este objeto es la variable **\$ngl**  
 
-&nbsp;
+Existen dos tipos de componentes dentro de **nogal**, los instanciables y los no instanciables.  
+Los no instanciables son aquellos que realizan operaciones particulares y concretas, que no requieren copias de si mismos. Son librerias de herramientas.  
+Por el contrario, los componentes instanciables son aquellos que gestionan entidades o grupos de datos, como las conexiones a bases de datos o archivos.  
 
-## Variable $ngl
-Una vez finalizada la carga del framework todas sus objetos serán accesibles desde la variable **\$ngl**. Esta es en sí el objeto principal del sistema, y es el encargado de hacer las llamadas a los diferentes objetos  
-
-Existen dos tipos de objeto dentro de **nogal**, los instanciables y los no instanciables.
-Los no instanciables son aquellos que realizan operaciones particulares, que no requieren un instanciamiento, son librerias de herramientas
-Por el contrario, los objetos instanciables son aquellos que administran grupos concretos de datos.
-			
-Un ejemplo de esto son los objetos:
-- [files](https://github.com/arielbottero/wiki/blob/master/nogal/docs/files.md) lista y ejecuta acciones entre archivos
+Un claro ejemplo de esto son los componentes:
+- [files](https://github.com/arielbottero/wiki/blob/master/nogal/docs/files.md) que lista y ejecuta acciones entre archivos
 - [file](https://github.com/arielbottero/wiki/blob/master/nogal/docs/file.md) contiene la información de un archivo específico y ejecuta acciones sobre el mismo
 
 &nbsp;
 
+## Variable $ngl
+Una vez finalizada la carga del framework todos sus componentes serán accesibles desde la variable-función **\$ngl**. Este es en sí el objeto principal del sistema, y el encargado de autocargar las clases e iniciar las instancias.    
+Para llamar a un componente sólo se debe pasar el nombre del mismo como argumento del objeto **\$ngl**
+``` php
+$ngl("NOMBRE_COMPONENTE");
+```
+Cuando no se proporcione un nombre de componente el sistema asumirá que se trata de una llamada al objeto principal o al componente [fn](https://github.com/arielbottero/wiki/blob/master/nogal/docs/fn.md). Para ver una lista de los componentes disponibles podrá ejecutarse: 
+``` php
+print_r($ngl()->availables());
+```
+
+&nbsp;
+
 ## Ejecución de Métodos
-Como dijimos, todos los llamados a los objetos se realizan por medio del objeto **\$ngl**, para ello solo vasta con colocar el nombre del objeto dentro de la variable-función **\$ngl()**.  
+Para ejecutar un método de un componente, 
 ``` php
 $ngl("files");
 $ngl("file");
