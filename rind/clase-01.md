@@ -1,10 +1,15 @@
-# Clase 1 - Conceptos Básicos
+# nogal::rind - Clase 1 - Conceptos Básicos
+Plantillas HTML
+___
+
+# Contenidos
 - [Estructura de Archivos](#estructura-de-archivos)
 - [Variables](#variables)
 - [Comandos](#comandos)
 - [Variables Anidadas](#variables-anidadas)
 - [Comandos Anidados](#comandos-anidados)
-<br />
+
+&nbsp;
 
 ## Estructura de Archivos
 ### Concepto de plantilla
@@ -331,6 +336,11 @@ Rind ignorará todos los parámetros del **COMANDO2** hasta llegar a `<@name></@
 </rind:COMANDO1>
 ```
 
----
+___
 - [Indice](readme.md)
 - [Clase 2 - Condicional IF](clase-02.md)
+
+&nbsp;
+___
+<sub><b>nogal</b> - <em>the most simple PHP Framework</em></sub><br />
+<sup>&copy; 2018 by <a href="http://hytcom.net/nogal">hytcom.net/nogal</a> - <a href="https://github.com/arielbottero">@arielbottero</a></sup><br />

@@ -407,8 +407,9 @@ ___
 
 ## alvin
 Ejecuta una evaluación de permisos a traves de la clase **nogal::nglAlvin**
-Cuenta con dos modos de ejecución:<ul><li>Respuesta booleana: para ser utilizado como condición de **RindCommands::ifcase**</li><li>Autoriza contenidos: en caso de una respuesta afirmativa autorizará la carga del contenido encerrado en el bloque</li></ul>En ambos casos, los permisos a ser evaluados deben estar encerrados entre paréntesis y ubicados en la misma línea que el inicio del bloquee **RindCommands::alvin**.
+Cuenta con dos modos de ejecución:<ul><li>Respuesta booleana: para ser utilizado como condición de **RindCommands::ifcase**</li><li>Autoriza contenidos: en caso de una respuesta afirmativa autorizará la carga del contenido encerrado en el bloque</li></ul>En ambos casos, los permisos a ser evaluados deben estar encerrados entre paréntesis y ubicados en la misma línea que el inicio del bloquee **RindCommands::alvin**.  
 Al menos que los permisos a evaluar comiencen con "?|" (sin comillas) **RindCommands::alvin** retornará TRUE sólo si TODOS los permisos son válidos.
+Para cuando se quiera evaluar la inexistencia de uno ó mas permisos se deberá utilizar "!|" (sin comillas)
 
 Para que **RindCommands::alvin** pueda ejecutarse, el TOKEN de permisos deberá está almacenado en la variable:
 **\$_SESSION[NGL_SESSION_INDEX]["LOGIN"]["ALVIN_TOKEN"]**  
@@ -418,12 +419,32 @@ Para que **RindCommands::alvin** pueda ejecutarse, el TOKEN de permisos deberá 
 ### Ejemplos  
 #### Respuesta Booleana  
 ```php
+/* concede acceso al perfil que tenga los dos permisos */
+<rind:ifcase>
+    <@iff><rind:alvin>(?|SALES>VIEW,SALES>ADD)</rind:alvin></@iff>
+    <@then>PUEDE VERME</@then>
+    <@else>NO PUEDE VERME</@else>
+</rind:ifcase>
+```
+
+```php
+/* concede acceso a los perfiles que tengan cualquiera de los 2 permisos */
 <rind:ifcase>
     <@iff><rind:alvin>(?|SALES>VIEW,BUY>VIEW)</rind:alvin></@iff>
     <@then>PUEDE VERME</@then>
     <@else>NO PUEDE VERME</@else>
 </rind:ifcase>
 ```
+
+```php
+/* concede acceso a los perfiles que no tengan el permiso */
+<rind:ifcase>
+    <@iff><rind:alvin>(!|SALES>REPORT)</rind:alvin></@iff>
+    <@then>PUEDE VERME</@then>
+    <@else>NO PUEDE VERME</@else>
+</rind:ifcase>
+```
+
 #### Autoriza contenidos  
 ```php
 <rind:alvin>(SALES,BUY)
