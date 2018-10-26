@@ -14,6 +14,7 @@
 - [days](#days)
 - [divider](#divider)
 - [file](#file)
+- [coords](#coords)
 - [hidden](#hidden)
 - [html](#html)
 - [input](#input)
@@ -386,6 +387,15 @@ Clásico input file
 
 ```json
 ["file", {"name":"document", "label":"Documento"}]
+```
+&nbsp;
+
+## coords
+Mapa de Google con un PIN que puede ser arrastrado para obtener un par de coordenadas, las cuales se almacenan en un campo oculto separadas por un ;  
+También es posible pegar el link corto que genera Google Maps para compartir una ubicación
+
+```json
+["coords", {"label":"Coordenadas", "name":"coords"}]
 ```
 &nbsp;
 
