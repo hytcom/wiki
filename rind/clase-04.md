@@ -1,10 +1,12 @@
-# Clase 4 - Seteo de Variables
-- [Clase 4 - Seteo de Variables](#clase-4---seteo-de-variables)
-    - [Variable $_SET](#variable--set)
-    - [Comando SET](#comando-set)
-    - [SET Métodos](#set-metodos)
-    - [Métodos Múltiples](#metodos-multiples)
-<br />
+# nogal::rind - Clase 4 - Seteo de Variables
+Plantillas HTML
+___
+
+# Contenidos
+- [Variable $_SET](#variable--set)
+- [Comando SET](#comando-set)
+- [SET Métodos](#set-metodos)
+- [Métodos Múltiples](#metodos-multiples)
 <br />
 
 ## Variable $_SET

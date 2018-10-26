@@ -1,11 +1,14 @@
-# Clase 2 - Condicional IF
-- [Clase 2 - Condicional IF](#clase-2---condicional-if)
-    - [Concepto General](#concepto-general)
-    - [Comando IFCASE](#comando-ifcase)
-    - [Anidamiento](#anidamiento)
-    - [Modo Swtich](#modo-swtich)
-<br />
-<br />
+# nogal::rind -  Clase 2 - Condicional IF
+Plantillas HTML
+___
+
+# Contenidos
+- [Concepto General](#concepto-general)
+- [Comando IFCASE](#comando-ifcase)
+- [Anidamiento](#anidamiento)
+- [Modo Switch](#modo-switch)
+
+&nbsp;
 
 ## Concepto General
 El condicional **if**, es una estructura de control que nos permite determinar que acciones tomar dada o no cierta condición.
@@ -108,10 +111,10 @@ La única recomendación es ser cuidadosos con los cierres y aperturas de las co
     </@else>
 </rind:ifcase> 
 ```
-<br />
-<br />
 
-## Modo Swtich
+&nbsp;
+
+## Modo Switch
 Como mensionamos al comienzo de esta clase, la estructura **if** cuenta con la variante **else if**; en **Rind** esta funcionalidad se logra colocando un identificador alfanumérico a los componentes `<@iff>` y `<@then>` separado por dos puntos **(:)**
 
 - <@iff:identificador>...</@iff:identificador>
