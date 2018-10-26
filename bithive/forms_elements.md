@@ -11,6 +11,7 @@
 - [colsgroup](#colsgroup)
 - [date](#date)
 - [date-range](#date)
+- [days](#days)
 - [divider](#divider)
 - [file](#file)
 - [hidden](#hidden)
@@ -353,6 +354,22 @@ Selector de fecha y/u hora
 		"data-max": "2018-12-01"
 	}
 }]
+```
+&nbsp;
+
+## days
+Selector de los días de la semana.  
+El formato de los datos guardados es una cadena de 7 caracteres donde:
+- **D** = Domingo
+- **L** = Lunes
+- **M** = Martes
+- **X** = Miércoles
+- **J** = Jueves
+- **V** = Viernes
+- **S** = Sábado
+
+```json
+["days", {"name":"days", "label":"Días de la semana"}]
 ```
 &nbsp;
 
