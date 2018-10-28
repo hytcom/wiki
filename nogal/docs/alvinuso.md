@@ -1,8 +1,8 @@
-# nogal::alvin
+# alvin
 Tutorial de uso de los tokens Alvin
 ___
 
-# Pasos
+# Indice
 - [Generar Claves](#generar-claves)
 - [Guardar Claves](#guardar-claves)
 - [Definir Permisos](#definir-permisos)
