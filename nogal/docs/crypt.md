@@ -1,4 +1,4 @@
-# nogal::crypt
+# crypt
 Implementa la clase 'phpseclib', de algoritmos de encriptación
 ___
 

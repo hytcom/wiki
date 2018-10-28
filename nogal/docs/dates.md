@@ -1,4 +1,4 @@
-# nogal::dates
+# dates
 Utilidades para operaciones con fechas y horas<br />
 Generación de Calendarios
 ___

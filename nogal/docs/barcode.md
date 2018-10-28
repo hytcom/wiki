@@ -1,4 +1,4 @@
-# nogal::barcode
+# barcode
 Implementa la clase 'barcode-generator' para generar códigos de barras
 ___
 

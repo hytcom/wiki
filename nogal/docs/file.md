@@ -1,4 +1,4 @@
-# nogal::file
+# file
 Crea un objeto sobre archivos y/o directorio
 ___
 

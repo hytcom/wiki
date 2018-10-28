@@ -1,7 +1,8 @@
 # mysql
 Gestor de conexiones con bases de datos MySQL  
 Las consultas SQL se ejecutan a través del método [query](#query), que en caso de exito retornarán un objeto [mysqlq](https://github.com/arielbottero/wiki/blob/master/nogal/docs/mysql.md)
-  
+___
+
 ## Variables
 |Argumento|Tipo|Descripción|
 |---|---|---|
@@ -352,7 +353,7 @@ ___
 
 # Internos
 ## Error
-Muestra el mensaje de Error generado por el fallo más reciente  
+> Muestra el mensaje de Error generado por el fallo más reciente  
 
 **[mixed]** =  *private* function ( );
 
@@ -361,9 +362,9 @@ ___
 &nbsp;
 
 ## PrepareValues
-Auxiliar de los métodos [insert](#insert) y [update](#update).
-Prepara el **array asociativo** o la **cadena de variables** para ser utilizados en las sentencias.
-Cuando los valores sean pasados como una **cadena de variables** estos serán tratados con **escape** para garantizar la seguridad del comando SQL.  
+> Auxiliar de los métodos [insert](#insert) y [update](#update).
+> Prepara el **array asociativo** o la **cadena de variables** para ser utilizados en las sentencias.
+> Cuando los valores sean pasados como una **cadena de variables** estos serán tratados con **escape** para garantizar la seguridad del comando SQL.  
 
 **[mysqli_result object]** =  *private* function ( *string* $sType, *string* $sTable, *mixed* $mValues, *boolean* $bCheckColumns );  
 

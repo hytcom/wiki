@@ -1,12 +1,14 @@
 # nut
-Gestor de los **nuts**.<br />
+Gestor de los **nuts**.
+___
+
+## Definición de **nut**
 Los **nuts** son clases php cuyo objetivo es agrupar procedimientos que pueden o no invocar a otros objetos del **nogal**. Son las *vistas* del modelo.<br />
 A diferencia de los otros objetos, los **nuts** pueden ser utilizados dentro de las plantillas [rind](https://github.com/arielbottero/wiki/blob/master/nogal/docs/rind.md) como origen de datos.
 Todos los **nuts** son heredados del objeto principal. La forma de invocar un **nut** es:
 ```php
 $ngl("nut.NOMBRE_DEL_NUT")->run("NOMBRE_DE_METODO", $Array);
 ```
-___
 
 ## Definidos por el Usuario
 El sistema tiene algunos **nuts** genéricos, pero el usuario también puede definir los propios. Para aprender cómo, consultar la guía [Creando NUTS](https://github.com/arielbottero/wiki/blob/master/nogal/docs/nuts.md)
