@@ -51,6 +51,7 @@ para generar la estructura se debe tener en cuenta:
 	- name: nombre del permiso, grupo o perfil
 	- grant: valor del componente
 - los nombres de grants, groups y profiles no podran repetirse
+- si un permiso, grupo, o perfil es presedido por un signo menos **-**, esto indica que ese permiso se excluirá del token
 - el token final incluirá el nombre del perfil, los nombres de grupos en LCASE y los permisos UCASE
 - los nombres de los GRANTS que lleven . jerarquizan, ej: "sales" va a generar un token que incluya
 	- sales
@@ -102,7 +103,7 @@ generamos el token enviando los nombres de perfiles, grupos y permisos que quere
 $alvin->token(array("admin.boss"));
 ```
 
-un token no es igual a un perfil, un token puede contener uno o mas perfiles, grupos o permisos individuales tambien se pueden restar permisos de un perfil utilizando el - delante el nombre del componente, por ejemplo: podriamos otorgar el perfin admin.boss sin acceso a users
+Un token no es igual a un perfil, un token puede contener uno o mas perfiles, grupos o permisos individuales tambien se pueden restar permisos de un perfil utilizando el **-** delante el nombre del componente, por ejemplo: podriamos otorgar el perfin admin.boss sin acceso a users
 ```php
 $alvin->token(array("admin.boss", "-users"));
 ```
@@ -127,8 +128,8 @@ Los chequeos de permisos, ya sean por el método [analize](https://github.com/ar
 |Cadena|Descripción|
 |---|---|
 |permiso,permiso2,permiso3|Chequea que el usuario cuente con todos los permisos|
-|**!&#124;**permiso,permiso2,permiso3|Chequea que el usuario **NO** cuente con todos los permisos|
-|**?&#124;**permiso,permiso2,permiso3|Chequea que el usuario cuente con al menos uno de los permisos|
+|!&#124;permiso,permiso2,permiso3|Chequea que el usuario **NO** cuente con todos los permisos|
+|?&#124;permiso,permiso2,permiso3|Chequea que el usuario cuente con al menos uno de los permisos|
 
 
 ### Tipos de chequeos (para el perfil admin.boss del ejemplo):
