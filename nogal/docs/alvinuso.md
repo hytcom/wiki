@@ -121,6 +121,15 @@ $alvin->load($sToken);
 $alvin->load();
 ```
 
+### Cadenas de Permisos
+Los chequeos de permisos, ya sean por el método [analize](https://github.com/arielbottero/wiki/blob/master/nogal/docs/alvin.md#analize) ó [check](https://github.com/arielbottero/wiki/blob/master/nogal/docs/alvin.md#check) se realizan sobre las *cadenas de permisos*. Estas estan compuestas por los permisos a chequear separados por , (coma). Adicionalmente las cadenas pueden comenzar con los flags **!|** ó **?|**  
+|Cadena|Descripción|
+|---|---|
+|permiso,permiso2,permiso3|Chequea que el usuario cuente con todos los permisos|
+|!\|permiso,permiso2,permiso3|Chequea que el usuario **NO** cuente con todos los permisos|
+|?\|permiso,permiso2,permiso3|Chequea que el usuario cuente con al menos uno de los permisos|
+
+
 ### Tipos de chequeos (para el perfil admin.boss del ejemplo):
 
 - individual
@@ -141,6 +150,14 @@ false
 - cualquiera de los permisos consultados
 ```php
 $chk = $alvin->check("?|USERS>VIEW,USERS>EDIT");
+
+#retornará
+true
+```
+
+- ninguno de los permisos consultados
+```php
+$chk = $alvin->check("!|USERS>VIEW,USERS>EDIT");
 
 #retornará
 true

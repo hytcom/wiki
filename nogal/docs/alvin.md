@@ -17,40 +17,74 @@ ___
 # Métodos
 |Método|Descripción|
 |---|---|
-|[analize](#analize)|Obtiene el valor del obtiene el valor de uno de los índices del array de argumentos|
-|[check](#check)|Obtiene el valor del obtiene el valor de uno de los índices del array de argumentos|
-|[grants](#grants)|Obtiene el valor del obtiene el valor de uno de los índices del array de argumentos|
-|[keys](#keys)|Obtiene el valor del obtiene el valor de uno de los índices del array de argumentos|
-|[load](#load)|Obtiene el valor del obtiene el valor de uno de los índices del array de argumentos|
-|[loaded](#loaded)|Obtiene el valor del obtiene el valor de uno de los índices del array de argumentos|
-|[password](#password)|Obtiene el valor del obtiene el valor de uno de los índices del array de argumentos|
-|[raw](#raw)|Obtiene el valor del obtiene el valor de uno de los índices del array de argumentos|
-|[setkey](#setkey)|Obtiene el valor del obtiene el valor de uno de los índices del array de argumentos|
-|[token](#token)|Obtiene el valor del obtiene el valor de uno de los índices del array de argumentos|
-|[unload](#unload)|Obtiene el valor del obtiene el valor de uno de los índices del array de argumentos|
-|[username](#username)|Obtiene el valor del obtiene el valor de uno de los índices del array de argumentos|
+|[analize](#analize)|Chequea uno o más permisos y retorna un array con el resultado de las validaciones|
+|[check](#check)|Chequea uno o más permisos y retorna **true** o **false** según el resultado de las validaciones|
+|[grants](#grants)|xxx|
+|[keys](#keys)|xxx|
+|[load](#load)|xxx|
+|[loaded](#loaded)|xxx|
+|[password](#password)|xxx|
+|[raw](#raw)|xxx|
+|[setkey](#setkey)|xxx|
+|[token](#token)|xxx|
+|[unload](#unload)|xxx|
+|[username](#username)|xxx|
 |Internos||
-|[CheckGrant](#checkgrant)|Obtiene el valor del obtiene el valor de uno de los índices del array de argumentos|
-|[MakeGroup](#makegroup)|Obtiene el valor del obtiene el valor de uno de los índices del array de argumentos|
-
+|[CheckGrant](#checkgrant)|xxx|
+|[MakeGroup](#makegroup)|xxx|
 
 &nbsp;
 
-## load
-> Carga y retorna un nut listo para ser usado
-> Al no ser este un objeto instanciable, si se pasa el argumento **$sNutID** el método intentará recuperar un **nut** previamente ejecutado
+## analize
+> Chequea uno o más permisos y retorna un array con el resultado de las validaciones
 
-**[object]** =  *public* function ( *string* $sNutName, *string* $sNutID );  
+**[array]** =  *public* function ( *string* $sGrant, *string* $sToken );  
 
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
-|**$sNutName**|string||Nombre del nut|
-|**$sNutID**|string||Id del nut|
+|**$sGrant**|string||Cadena de permisos a chequear|
+|**$sToken**|string|null|Token del usuario|
 ### Ejemplos
-Supongamos la existencia de un **nut* denomninado **foobar**
-#### carga del nut foobar
+Chequea los siguientes permisos sobre el usuario
 ```php
-$my = $ngl("nut.foobar");
+$chks = $alvin->analize("BUYING.DELETE,BUYING.ADD,BUYING.EDIT,USER.EDIT");
+print_r($chks);
+
+#retornará
+Array (
+	[BUYING.DELETE] => false
+	[BUYING.ADD] => true
+	[BUYING.EDIT] => true
+	[USER.EDIT] => false
+);
+```
+
+&nbsp;
+___
+&nbsp;
+
+## check
+> Chequea uno o más permisos y retorna **true** o **false** según el resultado de las validaciones
+
+**[array]** =  *public* function ( *string* $sGrant, *string* $sToken );  
+
+|Argumento|Tipo|Default|Descripción|
+|---|---|---|---|
+|**$sGrant**|string||Cadena de permisos a chequear|
+|**$sToken**|string|null|Token del usuario|
+### Ejemplos
+Chequea los siguientes permisos sobre el usuario
+```php
+$chks = $alvin->analize("BUYING.DELETE,BUYING.ADD,BUYING.EDIT,USER.EDIT");
+print_r($chks);
+
+#retornará
+Array (
+	[BUYING.DELETE] => false
+	[BUYING.ADD] => true
+	[BUYING.EDIT] => true
+	[USER.EDIT] => false
+);
 ```
 
 &nbsp;
