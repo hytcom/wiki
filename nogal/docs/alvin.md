@@ -30,8 +30,8 @@ ___
 |[unload](#unload)|Desetea el token actual|
 |[username](#username)|Retorna un nombre de usuario válido eliminando de **$sUsername** los caracteres prohibidos|
 |Internos||
-|[CheckGrant](#checkgrant)|xxx|
-|[MakeGroup](#makegroup)|xxx|
+|[CheckGrant](#checkgrant)|Utilizada por los métodos [analize](#analize) y [check](#check) para validar los permisos|
+|[MakeGroup](#makegroup)|Auxiliar de [grants](#grants). Crea los grupos y perfiles|
 
 &nbsp;
 
