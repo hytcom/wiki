@@ -123,6 +123,7 @@ $alvin->load();
 
 ### Cadenas de Permisos
 Los chequeos de permisos, ya sean por el método [analize](https://github.com/arielbottero/wiki/blob/master/nogal/docs/alvin.md#analize) ó [check](https://github.com/arielbottero/wiki/blob/master/nogal/docs/alvin.md#check) se realizan sobre las *cadenas de permisos*. Estas estan compuestas por los permisos a chequear separados por , (coma). Adicionalmente las cadenas pueden comenzar con los flags **!|** ó **?|**  
+
 |Cadena|Descripción|
 |---|---|
 |permiso,permiso2,permiso3|Chequea que el usuario cuente con todos los permisos|
