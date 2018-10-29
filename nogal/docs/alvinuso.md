@@ -127,8 +127,8 @@ Los chequeos de permisos, ya sean por el método [analize](https://github.com/ar
 |Cadena|Descripción|
 |---|---|
 |permiso,permiso2,permiso3|Chequea que el usuario cuente con todos los permisos|
-|!&#124;permiso,permiso2,permiso3|Chequea que el usuario **NO** cuente con todos los permisos|
-|?&#124;permiso,permiso2,permiso3|Chequea que el usuario cuente con al menos uno de los permisos|
+|**!&#124;**permiso,permiso2,permiso3|Chequea que el usuario **NO** cuente con todos los permisos|
+|**?&#124;**permiso,permiso2,permiso3|Chequea que el usuario cuente con al menos uno de los permisos|
 
 
 ### Tipos de chequeos (para el perfil admin.boss del ejemplo):
