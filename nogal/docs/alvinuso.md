@@ -1,5 +1,5 @@
 # alvin
-Tutorial de uso de los tokens Alvin
+Tutorial de uso de los tokens [Alvin](https://github.com/arielbottero/wiki/blob/master/nogal/docs/alvin.md)
 ___
 
 # Indice
