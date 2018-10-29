@@ -4,7 +4,7 @@
 - [constantes](docs/constants.md)
 
 ## Objetos
-- *[alvin](docs/alvin.md)
+- [alvin](docs/alvin.md)
 - [barcode](docs/barcode.md)
 - [crypt](docs/crypt.md)
 - [dates](docs/dates.md)
