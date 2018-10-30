@@ -30,7 +30,7 @@ ___
 |**fields**|string|null|Array de campos de una nueva tabla o view|
 |**run**|boolean|false|Indica si el método [generate](#generate) debe ejecutar las sentencias en la base|
 
-## Definición de Campo
+## Definición de Campos
 Cuando se agreguen o modifique campos, los mismos deberán estar definidos según:
 - **type** = Tipo de campo
 	- BIGINT
@@ -62,9 +62,9 @@ Cuando se agreguen o modifique campos, los mismos deberán estar definidos segú
 	- VARBINARY
 	- VARCHAR
 	- YEAR
-- **length** = longuitud del campo, puede estar vacio para los tipo INT ó set de datos entecomillados para los tipos SET y ENUM
+- **length** = longuitud del campo ó set de datos entecomillados para los tipos SET y ENUM
 - **default** = valor por defecto
-	- VALOR
+	- valor
 	- NONE
 	- NULL
 	- CURRENT_TIMESTAMP
@@ -124,12 +124,8 @@ Cuando se agreguen o modifique campos, los mismos deberán estar definidos segú
 
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
-|**$sField**|string|*arg::field*|Nombre del campo|
-|**$mType**|mixed|*arg::type*|Define el tipo de campo:  
-<ul>
-	<li>**array** = con los parámetros del campo</li>
-</ul>
-|
+|**$sField**|string|*arg::field*|Nombre del campo. Puede asignarsele un alias separando el mismo por :|
+|**$mType**|mixed|*arg::type*|Define el tipo de campo:  <ul><li>**array** = con los parámetros de la [definición del campo](#definicion-de-campos)</li><li>**string**<ul><li>**cadena** = tipo/alias de un campo [predefinido](#types)</li><li>**@NOMBRE_TABLA:ALIAS** = define el campo como *INT UNSIGNED*, crea un índice sobre él y genera una relación con el objeto **NOMBRE_TABLA** aplicando el alias **ALIAS**</li><li>**@TABLA-PADRE** = cuando el argumento **$sField** es **pid**, define el campo como INT UNSIGNED, crea un índice sobre él y genera una relación **CHILDREN** con el objeto **TABLA-PADRE**</li></ul></li></ul>|
 |**$sAfter**|string|*arg::after*|Nombre del campo después del cual se agregará el nuevo campo. Usar **true** para agregar al final|
 ### Ejemplos
 Chequea los siguientes permisos sobre el usuario
