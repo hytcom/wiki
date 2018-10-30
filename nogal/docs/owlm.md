@@ -105,7 +105,7 @@ Cuando se agreguen o modifique campos, los mismos deberán estar definidos segú
 |[join](#join)|Se utiliza para realizar uniones directas entre el objeto actual y una VIEW|
 |[presets](#presets)|Lista los objetos preseteados que pueden ser añadidos a la estructura|
 |[rem](#rem)|Elimina uno o más campos del objeto activo|
-|[rename](#rename)|Registra una VIEW en la estructura|
+|[rename](#rename)|Renombra el objeto actual|
 |[save](#save)|Retorna la estructura owl con sus modificaciones actuales en formato JSON|
 |[types](#types)|Lista los tipos de campos predefinidos que pueden ser utilizados en los objetos|
 |[view](#view)|Registra una VIEW en la estructura|
@@ -422,6 +422,16 @@ ___
 |---|---|---|---|
 |**$sNewName**|array|*arg::newname*|Nuevo nombre del objeto|
 |**$sTitle**|string|*arg::title*|Nuevo título para el objeto|
+### Ejemplos
+#### renombrar
+```php
+$my = $ngl("mysql")->connect();
+$owlm = $ngl("owlm");
+$owlm->load("owl", $my)
+	->select("contactos")
+	->rename("contactos_clientes", "Contactos de Clientes")
+;
+```
 
 &nbsp;
 ___
