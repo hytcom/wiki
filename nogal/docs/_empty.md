@@ -28,7 +28,7 @@ ___
 |**$sGrant**|string||[Cadena de permisos](https://github.com/arielbottero/wiki/blob/master/nogal/docs/alvinuso.md#cadenas-de-permisos) a chequear|
 |**$sToken**|string|null|Token del usuario|
 ### Ejemplos
-Chequea los siguientes permisos sobre el usuario
+#### chequea los siguientes permisos sobre el usuario
 ```php
 $chks = $alvin->analize("BUYING.DELETE,BUYING.ADD,BUYING.EDIT,USER.EDIT");
 print_r($chks);

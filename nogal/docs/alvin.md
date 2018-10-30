@@ -77,7 +77,7 @@ En los ejemplos supondremos la siguiente estructura de permisos
 |**$sGrant**|string||[Cadena de permisos](https://github.com/arielbottero/wiki/blob/master/nogal/docs/alvinuso.md#cadenas-de-permisos) a chequear|
 |**$sToken**|string|null|Token del usuario|
 ### Ejemplos
-Chequea los siguientes permisos sobre el usuario
+#### chequea los siguientes permisos sobre el usuario
 ```php
 $chks = $alvin->analize("BUYING.DELETE,BUYING.ADD,BUYING.EDIT,USER.EDIT");
 print_r($chks);
@@ -105,7 +105,7 @@ ___
 |**$sGrant**|string||[Cadena de permisos](https://github.com/arielbottero/wiki/blob/master/nogal/docs/alvinuso.md#cadenas-de-permisos) a chequear|
 |**$sToken**|string|null|Token del usuario|
 ### Ejemplos
-Chequea los siguientes permisos sobre el usuario
+#### chequea los siguientes permisos sobre el usuario
 ```php
 $chks = $alvin->analize("BUYING.DELETE,BUYING.ADD,BUYING.EDIT,USER.EDIT");
 print_r($chks);
@@ -137,7 +137,7 @@ ___
 **[array]** =  *public* function ( );  
 
 ### Ejemplos
-Par de claves pública/privada
+#### par de claves pública/privada
 ```php
 $keys = $ngl("alvin")->keys();
 
@@ -173,7 +173,7 @@ ___
 |---|---|---|---|
 |**$sToken**|string|null|Token de permisos del usuario|
 ### Ejemplos
-Carga de clave pública y token
+#### carga de clave pública y token
 ```php
 $alvin->setkey(NGL_ALVIN);
 $alvin->load($sToken);
@@ -201,7 +201,7 @@ ___
 |---|---|---|---|
 |**$sPassword**|string||Password sin hashear|
 ### Ejemplos
-Carga de clave pública y hasheo de password
+#### carga de clave pública y hasheo de password
 ```php
 $alvin->setkey(NGL_ALVIN);
 $alvin->password("mipass4321");
@@ -222,7 +222,7 @@ ___
 |**$sIndex**|string|null|Indice **RAW** que se quiere recuperar|
 |**$sToken**|string|null|Token del usuario|
 ### Ejemplos
-Retornará el fragmento de consulta SQL para limitar una sentencia
+#### retornará el fragmento de consulta SQL para limitar una sentencia
 ```php
 $alvin->raw("sql")["place"];
 ```
@@ -257,7 +257,7 @@ ___
 |**$aProfiles**|array|array()|Array con los permisos del usuario|
 |**$aRaw**|array|array()|Clave pública/privada|
 ### Ejemplos
-Crea un token con acceso a todo compras y ventas, salvo a borrarlas
+#### crea un token con acceso a todo compras y ventas, salvo a borrarlas
 ```php
 echo $alvin->token(array("buying", "-buying.delete", "sales", "-sales.delete"));
 ```

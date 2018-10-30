@@ -128,19 +128,34 @@ Cuando se agreguen o modifique campos, los mismos deberán estar definidos segú
 |**$mType**|mixed|*arg::type*|Define el tipo de campo:  <ul><li>**array** = con los parámetros de la [definición del campo](#definicion-de-campos)</li><li>**string**<ul><li>**cadena** = tipo/alias de un campo [predefinido](#types)</li><li>**@NOMBRE_TABLA:ALIAS**<br />define el campo como *INT UNSIGNED*, crea un índice sobre él y genera una relación con el objeto **NOMBRE_TABLA** aplicando el alias **ALIAS**</li><li>**@TABLA-PADRE**<br />cuando el argumento **$sField** es **pid**, define el campo como INT UNSIGNED, crea un índice sobre él y genera una relación **CHILDREN** con el objeto **TABLA-PADRE**. En este caso el alias de la tabla será: **TABLA-PADRE_OBJETO-ACTUAL**</li></ul></li></ul>|
 |**$sAfter**|string|*arg::after*|Nombre del campo después del cual se agregará el nuevo campo. Usar **true** para agregar al final|
 ### Ejemplos
-
+#### agregando un campo predefinido
 ```php
-$chks = $alvin->analize("BUYING.DELETE,BUYING.ADD,BUYING.EDIT,USER.EDIT");
-print_r($chks);
-
-#retornará
-Array (
-	[BUYING.DELETE] => false
-	[BUYING.ADD] => true
-	[BUYING.EDIT] => true
-	[USER.EDIT] => false
-);
+$my = $ngl("mysql")->connect();
+$owlm = $ngl("owlm")->base($my);
+$owlm->load("owl");
+$owlm->select("contactos");
+$owlm->add("direccion", "address");
 ```
+#### agregando un campo tipo VARCHAR(32)
+```php
+$owlm->add("mascota", array("type"=>"varchar", "length"=>32));
+```
+#### agregando un campo vinculado a otro objeto
+```php
+$owlm->add("localidad", "@localidades:contactos_localidades");
+```
+#### agregando multiples campos
+```php
+$my = $ngl("mysql")->connect();
+$owlm = $ngl("owlm")->base($my);
+$owlm->load("owl");
+$owlm->select("clientes");
+$owlm->add(array(
+	array("fecha_alta", "date"),
+	array("email_alternativo", "email"),
+	array("responsable_compras", array("type"=>"varchar", "length"=>64))
+));
+``````
 
 &nbsp;
 ___
