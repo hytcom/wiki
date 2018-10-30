@@ -121,7 +121,7 @@ ___
 ## grants
 > Carga en el objeto la estructura de persmisos con la que se generarán los tokens
 
-**[object]** =  *public* function ( *array* $aDefinitions );  
+**[$this]** =  *public* function ( *array* $aDefinitions );  
 
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
@@ -167,7 +167,7 @@ ___
 > Carga el token del usuario en el objeto  
 > Antes de cargar el token es necesario haber definido la clave pública para que éste pueda ser leído
 
-**[object]** =  *public* function ( *string* $sToken );  
+**[$this]** =  *public* function ( *string* $sToken );  
 
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
@@ -285,7 +285,7 @@ ___
 ## unload
 > Desetea el token actual
 
-**[object]** =  *public* function ( );  
+**[$this]** =  *public* function ( );  
 
 &nbsp;
 ___
@@ -305,7 +305,7 @@ ___
 ___
 &nbsp;
 
-# Privados
+# Internos
 ## CheckGrant
 > Utilizada por los métodos [analize](#analize) y [check](#check) para validar los permisos
 

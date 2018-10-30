@@ -22,6 +22,7 @@
 - [mysqlq](docs/mysqlq.md)
 - [nut](docs/nut.md)
 - *[owl](docs/owl.md)
+- *[owlm](docs/owlm.md)
 - *[pdf](docs/pdf.md)
 - *[pdomysql](docs/pdomysql.md)
 - *[qr](docs/qr.md)

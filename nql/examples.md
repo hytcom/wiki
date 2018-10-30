@@ -83,3 +83,20 @@ mysql connect
 	@set dni {$}
 	mysql query "update rastrilladores set password='{$pass}' WHERE dni = '{$dni}'"
 endloop
+
+# mas owlm
+mysql connect
+owlm base "{$}"
+{$} load owl
+
+{$} create events_doctypes
+{$} add ["code", "code"]
+{$} add ["name", "name"]
+
+{$} create events_documents
+{$} add ["pid", "@events"]
+{$} add ["type", "@events_doctypes"]
+{$} add ["file", "@uploads"]
+{$} add ["pdf", "boolean"]
+
+{$} generate
