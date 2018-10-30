@@ -164,7 +164,7 @@ ___
 &nbsp;
 
 ## alter
-> Modifica un campo en el objeto actual. La modificación puede o no incluir un cambio en el nombre del campo.
+> Modifica un campo en el objeto actual. La modificación puede o no incluir un cambio en el nombre del campo.  
 
 **[$this]** =  *public* function ( *string* $sField, *mixed* $mType );  
 
