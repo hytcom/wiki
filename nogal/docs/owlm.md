@@ -24,7 +24,7 @@ ___
 |**select**|string|null|Selecciona el objeto como activo|
 |**preset**|string|null|Añade un objeto preseteado a la estructura|
 |**type**|mixed|null|Define el tipo de campo que se quiere agregar|
-|**field**|string|null|Nombre del campo que se quiere agregar|
+|**field**|mixed|null|Nombre del campo que se quiere agregar o Array bidimencional con la definición de varios campos|
 |**entity**|string|null|Chequea si el valor es una tabla o view de la estructura|
 |**title**|string|null|Define el título de una tabla visible en la interfaz gráfica|
 |**fields**|string|null|Array de campos de una nueva tabla o view|
@@ -125,10 +125,10 @@ Cuando se agreguen o modifique campos, los mismos deberán estar definidos segú
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**$sField**|string|*arg::field*|Nombre del campo. Puede asignarsele un alias separando el mismo por :|
-|**$mType**|mixed|*arg::type*|Define el tipo de campo:  <ul><li>**array** = con los parámetros de la [definición del campo](#definicion-de-campos)</li><li>**string**<ul><li>**cadena** = tipo/alias de un campo [predefinido](#types)</li><li>**@NOMBRE_TABLA:ALIAS** = define el campo como *INT UNSIGNED*, crea un índice sobre él y genera una relación con el objeto **NOMBRE_TABLA** aplicando el alias **ALIAS**</li><li>**@TABLA-PADRE** = cuando el argumento **$sField** es **pid**, define el campo como INT UNSIGNED, crea un índice sobre él y genera una relación **CHILDREN** con el objeto **TABLA-PADRE**</li></ul></li></ul>|
+|**$mType**|mixed|*arg::type*|Define el tipo de campo:  <ul><li>**array** = con los parámetros de la [definición del campo](#definicion-de-campos)</li><li>**string**<ul><li>**cadena** = tipo/alias de un campo [predefinido](#types)</li><li>**@NOMBRE_TABLA:ALIAS**<br />define el campo como *INT UNSIGNED*, crea un índice sobre él y genera una relación con el objeto **NOMBRE_TABLA** aplicando el alias **ALIAS**</li><li>**@TABLA-PADRE**<br />cuando el argumento **$sField** es **pid**, define el campo como INT UNSIGNED, crea un índice sobre él y genera una relación **CHILDREN** con el objeto **TABLA-PADRE**. En este caso el alias de la tabla será: **TABLA-PADRE_OBJETO-ACTUAL**</li></ul></li></ul>|
 |**$sAfter**|string|*arg::after*|Nombre del campo después del cual se agregará el nuevo campo. Usar **true** para agregar al final|
 ### Ejemplos
-Chequea los siguientes permisos sobre el usuario
+
 ```php
 $chks = $alvin->analize("BUYING.DELETE,BUYING.ADD,BUYING.EDIT,USER.EDIT");
 print_r($chks);
