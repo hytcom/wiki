@@ -33,6 +33,8 @@ ___
 ## Definición de Campos
 Cuando se agreguen o modifique campos, los mismos deberán estar definidos según:
 - **type** = Tipo de campo
+	- @NOMBRE_TABLA (para crear una unión PADRE-HIJO con otro objeto)
+	- @NOMBRE_TABLA:ALIAS (para crear una unión con otro objeto)
 	- BIGINT
 	- BINARY
 	- BIT
@@ -89,7 +91,7 @@ Cuando se agreguen o modifique campos, los mismos deberán estar definidos segú
 |Método|Descripción|
 |---|---|
 |[add](#add)|Añade un campo al objeto actual|
-|[alter](#alter)|xxx|
+|[alter](#alter)|Modifica un campo en el objeto actual|
 |[check](#check)|xxx|
 |[chtitle](#chtitle)|xxx|
 |[create](#create)|xxx|
@@ -155,7 +157,44 @@ $owlm->add(array(
 	array("email_alternativo", "email"),
 	array("responsable_compras", array("type"=>"varchar", "length"=>64))
 ));
-``````
+```
+
+&nbsp;
+___
+&nbsp;
+
+## alter
+> Modifica un campo en el objeto actual. La modificación puede o no incluir un cambio en el nombre del campo.
+
+**[$this]** =  *public* function ( *string* $sField, *mixed* $mType );  
+
+|Argumento|Tipo|Default|Descripción|
+|---|---|---|---|
+|**$sField**|string|*arg::field*|Nombre del campo. Puede asignarsele un alias separando el mismo por :|
+|**$mType**|mixed|*arg::type*|Define el tipo de campo: <ul><li>**array** = con los parámetros de la [definición del campo](#definicion-de-campos), completa o referenciando a un campo [predefinido](#types). Puede incluise el nuevo nombre en el índice **name**</li><li>**string**<ul><li>**cadena** = nuevo nombre del campo</li><li>**@NOMBRE_TABLA:ALIAS**<br />define el campo como *INT UNSIGNED*, crea un índice sobre él y genera una relación con el objeto **NOMBRE_TABLA** aplicando el alias **ALIAS**</li><li>**@TABLA-PADRE**<br />cuando el argumento **$sField** es **pid**, define el campo como INT UNSIGNED, crea un índice sobre él y genera una relación **CHILDREN** con el objeto **TABLA-PADRE**. En este caso el alias de la tabla será: **TABLA-PADRE_OBJETO-ACTUAL**</li></ul></li></ul>|
+### Ejemplos
+#### cambia el nombre de un campo
+```php
+$my = $ngl("mysql")->connect();
+$owlm = $ngl("owlm")->base($my);
+$owlm->load("owl");
+$owlm->select("contactos");
+$owlm->alter("direccion", "direccion_comercial");
+```
+#### cambia el largo de un campo
+```php
+# supongamos que el campo nombre tiene 32 caracteres de largo
+# y lo quereos extender a 64
+$owlm->alter("nombre", array("length"=>64));
+```
+#### cambia un campo VARCHAR a un índice relacionado con otra tabla
+```php
+$owlm->alter("genero", "@generos:generos_contactos");
+```
+#### cambia el nombre y tipo de campo
+```php
+$owlm->alter("cp", array("name"=>"codigo_postal", "alias"=>"zipcode"));
+```
 
 &nbsp;
 ___
