@@ -30,39 +30,8 @@ ___
 |**fields**|string|null|Array de campos de una nueva tabla o view|
 |**run**|boolean|false|Indica si el método [generate](#generate) debe ejecutar las sentencias en la base|
 
-# Métodos
-|Método|Descripción|
-|---|---|
-|[add](#add)|Añade un campo al objeto actual|
-|[alter](#alter)|xxx|
-|[check](#check)|xxx|
-|[chtitle](#chtitle)|xxx|
-|[create](#create)|xxx|
-|[describe](#describe)|xxx|
-|[describeall](#describeall)|xxx|
-|[drop](#drop)|xxx|
-|[duplicate](#duplicate)|xxx|
-|[generate](#generate)|xxx|
-|[load](#load)|xxx|
-|[join](#join)|xxx|
-|[presets](#presets)|xxx|
-|[rem](#rem)|xxx|
-|[rename](#rename)|xxx|
-|[save](#save)|xxx|
-|[types](#types)|xxx|
-|[view](#view)|xxx|
-|Internos||
-|[CheckJoins](#checkjoins)|xxx|
-|[CreateStructure](#createstructure)|xxx|
-|[DefJoins](#defjoins)|xxx|
-|[DescribeColumns](#describecolumns)|xxx|
-|[FieldDef](#fielddef)|xxx|
-|[MakePreset](#makepreset)|xxx|
-|[SetObject](#setobject)|xxx|
-
-# Definición de Campo
+## Definición de Campo
 Cuando se agreguen o modifique campos, los mismos deberán estar definidos según:
-
 - **type** = Tipo de campo
 	- BIGINT
 	- BINARY
@@ -113,6 +82,38 @@ Cuando se agreguen o modifique campos, los mismos deberán estar definidos segú
 - **null** = indica si el campo acepta datos NULL
 	- TRUE
 	- FALSE
+  
+&nbsp;
+
+# Métodos
+|Método|Descripción|
+|---|---|
+|[add](#add)|Añade un campo al objeto actual|
+|[alter](#alter)|xxx|
+|[check](#check)|xxx|
+|[chtitle](#chtitle)|xxx|
+|[create](#create)|xxx|
+|[describe](#describe)|xxx|
+|[describeall](#describeall)|xxx|
+|[drop](#drop)|xxx|
+|[duplicate](#duplicate)|xxx|
+|[generate](#generate)|xxx|
+|[load](#load)|xxx|
+|[join](#join)|xxx|
+|[presets](#presets)|xxx|
+|[rem](#rem)|xxx|
+|[rename](#rename)|xxx|
+|[save](#save)|xxx|
+|[types](#types)|xxx|
+|[view](#view)|xxx|
+|Internos||
+|[CheckJoins](#checkjoins)|xxx|
+|[CreateStructure](#createstructure)|xxx|
+|[DefJoins](#defjoins)|xxx|
+|[DescribeColumns](#describecolumns)|xxx|
+|[FieldDef](#fielddef)|xxx|
+|[MakePreset](#makepreset)|xxx|
+|[SetObject](#setobject)|xxx|
 
 &nbsp;
 
