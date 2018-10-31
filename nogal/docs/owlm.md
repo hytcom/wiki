@@ -1,6 +1,6 @@
 # owlm
 Owl Manager es la herramienta para crear y mantener la estructura de base de datos del objeto [owl](https://github.com/arielbottero/wiki/blob/master/nogal/docs/owl.md), en MySQSL.  
-Para ver un ejemplo de uso completo ver la guía [OWLM paso a paso](https://github.com/arielbottero/wiki/blob/master/nogal/docs/owlmuso.md)
+Para ver un ejemplo de uso completo ver la guía [owlm paso a paso](https://github.com/arielbottero/wiki/blob/master/nogal/docs/owlmuso.md)
 ___
 
 ## Variables
@@ -133,7 +133,7 @@ Cuando se agreguen o modifique campos, los mismos deberán estar definidos segú
 #### agregando un campo predefinido
 ```php
 $my = $ngl("mysql")->connect();
-$owlm = $ngl("owlm")->base($my);
+$owlm = $ngl("owlm")->db($my);
 $owlm->load("owl");
 $owlm->select("contactos");
 $owlm->add("direccion", "address");
@@ -149,7 +149,7 @@ $owlm->add("localidad", "@localidades:contactos_localidades");
 #### agregando multiples campos
 ```php
 $my = $ngl("mysql")->connect();
-$owlm = $ngl("owlm")->base($my);
+$owlm = $ngl("owlm")->db($my);
 $owlm->load("owl");
 $owlm->select("clientes");
 $owlm->add(array(
@@ -176,7 +176,7 @@ ___
 #### cambia el nombre de un campo
 ```php
 $my = $ngl("mysql")->connect();
-$owlm = $ngl("owlm")->base($my);
+$owlm = $ngl("owlm")->db($my);
 $owlm->load("owl");
 $owlm->select("contactos");
 $owlm->alter("direccion", "direccion_comercial");
@@ -240,8 +240,8 @@ ___
 #### crea un nuevo objeto responsables, dependiente de eventos y vinculado a cargos
 ```php
 $my = $ngl("mysql")->connect();
-$owlm = $ngl("owlm")->base($my);
-$owlm->load("owl");
+$owlm = $ngl("owlm");
+$owlm->load("owl", $my);
 $owlm->create(
 	"contactos",
 	array(
@@ -338,7 +338,8 @@ ___
 
 ## load
 > Carga en el objeto la estructura owl sobre la cual se necesita trabajar.  
-> Si el argumento **$mStructure** es NULL, se iniciará una nueva estructura owl.
+> Si el argumento **$mStructure** es NULL, se iniciará una nueva estructura owl.  
+> Si el argumento **$db** es NULL, se intenrará iniciar un objeto [mysql](https://github.com/arielbottero/wiki/blob/master/nogal/docs/mysql.md).
 
 **[$this]** =  *public* function ( *mixed* $mStructure, *object* $db ); 
 |Argumento|Tipo|Default|Descripción|
