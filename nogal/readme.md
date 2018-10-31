@@ -22,9 +22,9 @@
 |[md](docs/md.md)||
 |[mysql](docs/mysql.md)|Gestor de conexiones con bases de datos MySQL.<br />Las consultas SQL se ejecutan a través del método **query**, que en caso de exito retornarán un objeto [mysqlq](https://github.com/arielbottero/wiki/blob/master/nogal/docs/mysql.md)|
 |[mysqlq](docs/mysqlq.md)|Controla los resultados generados por consultas a la bases de datos MySQL.|
-|[nut](docs/nut.md)|Gestor de los **nuts**.<br />Los **nuts** son clases php cuyo objetivo es agrupar procedimientos que pueden o no invocar a otros objetos del **nogal**. Son las *vistas* del modelo.|
+|[nut](docs/nut.md)|Gestor de los **nuts**.<br />Los **nuts** son clases php cuyo objetivo es agrupar procedimientos que pueden o no invocar a otros objetos del **nogal**. Son las *vistas* del modelo.<br />Vea también la guía[NUTS Definidos por el Usuario](https://github.com/arielbottero/wiki/blob/master/nogal/docs/nuts.md)|
 |[owl](docs/owl.md)||
-|[owlm](docs/owlm.md)||
+|[owlm](docs/owlm.md)|Owl Manager es la herramienta para crear y mantener la estructura de base de datos del objeto [owl](https://github.com/arielbottero/wiki/blob/master/nogal/docs/owl.md), en MySQSL.<br />Para ver un ejemplo de uso completo ver la guía [owlm paso a paso](https://github.com/arielbottero/wiki/blob/master/nogal/docs/owlmuso.md)|
 |[pdf](docs/pdf.md)||
 |[pdomysql](docs/pdomysql.md)||
 |[qr](docs/qr.md)||
