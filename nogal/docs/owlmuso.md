@@ -53,6 +53,8 @@ $owlm = $ngl("owlm");
 $owlm->db($db)->load();
 ```
 
+&nbsp;
+
 ## Creando Objetos Predefinidos
 Creamos los objetos **areas** y **estadocivil**, que en nuestro sistema son simplemente listas desplegables
 ``` php 
