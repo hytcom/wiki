@@ -1,5 +1,6 @@
 # owlm
-Owl Manager es la herramienta por medio de la cual se crea y mantiene la estructura de base de datos (para MySQSL) del objeto [owl](https://github.com/arielbottero/wiki/blob/master/nogal/docs/owl.md)
+Owl Manager es la herramienta por medio de la cual se crea y mantiene la estructura de base de datos (para MySQSL) del objeto [owl](https://github.com/arielbottero/wiki/blob/master/nogal/docs/owl.md).  
+Para ver un ejemplo de uso completo ver el documento [Primeros pasos con OWL](https://github.com/arielbottero/wiki/blob/master/nogal/docs/owlmuso.md)
 ___
 
 ## Variables
@@ -23,7 +24,6 @@ ___
 |**structure**|string|null|Estructura owl en formato Array o una versión de la misma presente en la tabla **__ngl_sentences__**|
 |**newname**|string|null|Nombre del nuevo objeto|
 |**select**|string|null|Selecciona el objeto como activo|
-|**preset**|string|null|Añade un objeto preseteado a la estructura|
 |**type**|mixed|null|Define el tipo de campo que se quiere agregar|
 |**field**|mixed|null|Nombre de un campo o array de nombres|
 |**entity**|string|null|Nombre de un objeto que no es el actual. Es posible especificar un alias utilizando entidad:alias|
@@ -95,7 +95,7 @@ Cuando se agreguen o modifique campos, los mismos deberán estar definidos segú
 |[alter](#alter)|Modifica un campo en el objeto actual|
 |[check](#check)|Chequea si el valor es un Objeto o VIEW de la estructura|
 |[chtitle](#chtitle)|Establece el titulo de un objeto (tabla) de la estructura. Los títulos son utilizados para referencia el objeto dentro del entorno del usuario final|
-|[create](#create)|Crea un nuevo objeto dentro de la estructura|
+|[create](#create)|Crea un nuevo objeto dentro de la estructura y lo establese como objeto activo|
 |[describe](#describe)|Retorna los datos estructurales y de relación el objeto activo|
 |[describeall](#describeall)|Retorna la estructura owl completa|
 |[drop](#drop)|Elimina un objeto y todas sus referencias de la estructura|
@@ -103,6 +103,7 @@ Cuando se agreguen o modifique campos, los mismos deberán estar definidos segú
 |[generate](#generate)|Genera/ejecuta las sentencias SQL para generar impactar la estructura en la base de datos|
 |[load](#load)|Carga en el objeto la estructura owl sobre la cual se necesita trabajar|
 |[join](#join)|Se utiliza para realizar uniones directas entre el objeto actual y una VIEW|
+|[preset](#preset)|En caso de que exista, añade a la estructura el código de un objeto predefinido y lo establese como objeto activo|
 |[presets](#presets)|Lista los objetos preseteados que pueden ser añadidos a la estructura|
 |[rem](#rem)|Elimina uno o más campos del objeto activo|
 |[rename](#rename)|Renombra el objeto actual|
@@ -110,12 +111,10 @@ Cuando se agreguen o modifique campos, los mismos deberán estar definidos segú
 |[types](#types)|Lista los tipos de campos predefinidos que pueden ser utilizados en los objetos|
 |[view](#view)|Registra una VIEW en la estructura|
 |Internos||
-|[CheckJoins](#checkjoins)|xxx|
-|[CreateStructure](#createstructure)|xxx|
-|[DefJoins](#defjoins)|xxx|
-|[DescribeColumns](#describecolumns)|xxx|
-|[FieldDef](#fielddef)|xxx|
-|[MakePreset](#makepreset)|xxx|
+|[CreateStructure](#createstructure)|Retorna las sentencias SQL necesarias para crear las tablas de control|
+|[DefJoins](#defjoins)|Arma la estructura de relaciones para el objeto y campo dados|
+|[DescribeColumns](#describecolumns)|Retorna los fragmentos de sentencias SQL SELECT para las columnas de una tabla ó view|
+|[FieldDef](#fielddef)|Retorna el fragmento SQL utilizado por CREATE TABLE/ALTER TABLE que define a un campo, basado en su definición owl|
 |[SetObject](#setobject)|xxx|
 
 &nbsp;
@@ -382,6 +381,29 @@ $owlm->load("owl", $my)
 ___
 &nbsp;
 
+## preset
+> En caso de que exista, añade a la estructura el código de un objeto predefinido.
+
+**[string]** =  *public* function ( *string* $sEntity, *string* $sNewName, *string* $sTitle );  
+|Argumento|Tipo|Default|Descripción|
+|---|---|---|---|
+|**$sEntity**|string|*arg::entity*|Nombre del objeto preseteado|
+|**$sNewName**|string|*arg::newname*|Nombre del nuevo objeto|
+|**$sTitle**|string|*arg::title*|Título para el nuevo objeto|
+### Ejemplos
+#### clásico objeto de lista desplegable
+```php
+$my = $ngl("mysql")->connect();
+$owlm = $ngl("owlm");
+$owlm->load("owl", $my)
+	->preset("users", "usuarios", "Usuarios")
+;
+```
+
+&nbsp;
+___
+&nbsp;
+
 ## presets
 > Lista los objetos preseteados que pueden ser añadidos a la estructura.
 
@@ -484,14 +506,68 @@ ___
 &nbsp;
 
 # Internos
-## MakeGroup
-> Auxiliar de [grants](#grants). Crea los grupos y perfiles
+## CreateStructure
+> Retorna las sentencias SQL necesarias para crear las tablas de control
 
-**[array]** =  *public* function ( *array* $aData, *string* $sType );  
+**[string]** =  *private* function ( );  
+
+&nbsp;
+___
+&nbsp;
+
+## DefJoins
+> Arma la estructura de relaciones para el objeto y campo dados.  
+> Este método es utilizado como auxiliar por los métodos [add](#add) y [alter](#alter) 
+
+**[void]** =  *private* function ( *string* $sObject, *string* $sField, *string* $sType );  
 
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
-|**$aData**|array||Array de permisos|
+|**$sObject**|string||Nombre del objeto|
+|**$sField**|string||Nombre del campo|
+|**$sType**|string|null|Tipo/definición del campo|
+
+&nbsp;
+___
+&nbsp;
+
+## FieldDef
+> Retorna el fragmento SQL utilizado por CREATE TABLE/ALTER TABLE que define a un campo, basado en su definición owl
+
+**[string]** =  *private* function ( *string* $sField, *array* $aField );  
+
+|Argumento|Tipo|Default|Descripción|
+|---|---|---|---|
+|**$sField**|string||Nombre del campo|
+|**$aField**|array||Definición del campo|
+### Ejemplos
+#### VARCHAR
+```php
+$this->FieldDef("comentario", array(
+	"type"=>"VARCHAR", 
+	"length"=>"255", 
+	"default"=>"NONE", 
+	"attrs"=>"--", 
+	"index"=>"--", 
+	"null"=>false)
+);
+
+# retornará
+`comentario` VARCHAR (255) NOT NULL
+```
+
+&nbsp;
+___
+&nbsp;
+
+## SetObject
+> En caso de existir, setea a **$sObject** como el objeto activo.
+
+**[string]** =  *private* function ( *string* $sObject );  
+
+|Argumento|Tipo|Default|Descripción|
+|---|---|---|---|
+|**$sObject**|string||Nombre del objeto|
 
 &nbsp;
 ___
