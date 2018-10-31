@@ -1,6 +1,6 @@
 # owlm
 Owl Manager es la herramienta por medio de la cual se crea y mantiene la estructura de base de datos (para MySQSL) del objeto [owl](https://github.com/arielbottero/wiki/blob/master/nogal/docs/owl.md).  
-Para ver un ejemplo de uso completo ver el documento [Primeros pasos con OWL](https://github.com/arielbottero/wiki/blob/master/nogal/docs/owlmuso.md)
+Para ver un ejemplo de uso completo ver el documento [Administrar OWL](https://github.com/arielbottero/wiki/blob/master/nogal/docs/owlmuso.md)
 ___
 
 ## Variables
