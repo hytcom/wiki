@@ -1,5 +1,5 @@
 # dates
-Utilidades para operaciones con fechas y horas<br />
+Utilidades para operaciones con fechas y horas.  
 Generación de Calendarios
 ___
 

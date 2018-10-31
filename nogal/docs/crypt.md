@@ -1,5 +1,14 @@
 # crypt
-Implementa la clase 'phpseclib', de algoritmos de encriptación
+Implementa la clase 'phpseclib', de algoritmos de encriptación, con soporte para: 
+- AES
+- BLOWFISH
+- DES
+- TRIPLEDES
+- RC2
+- RC4
+- RIJNDAEL
+- RSA
+- TWOFISH
 ___
 
 ## Variables

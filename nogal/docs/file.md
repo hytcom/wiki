@@ -1,5 +1,5 @@
 # file
-Crea un objeto sobre archivos y/o directorio
+Crea un objeto sobre un archivo ó directorio permitiendo acceder a sus propiedades, leer y escribir su contenido.
 ___
 
 ## Variables
