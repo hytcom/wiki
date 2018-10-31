@@ -20,7 +20,7 @@
 |[jsql](docs/jsql.md)||
 |[mail](docs/mail.md)||
 |[md](docs/md.md)||
-|[mysql](docs/mysql.md)|Gestor de conexiones con bases de datos MySQL. Las consultas SQL se ejecutan a través del método **query**, que en caso de exito retornarán un objeto [mysqlq](https://github.com/arielbottero/wiki/blob/master/nogal/docs/mysql.md)|
+|[mysql](docs/mysql.md)|Gestor de conexiones con bases de datos MySQL. Las consultas SQL se ejecutan a través del método **query**, que en caso de exito retornarán un objeto [mysqlq](https://github.com/arielbottero/wiki/blob/master/nogal/docs/mysqlq.md)|
 |[mysqlq](docs/mysqlq.md)|Controla los resultados generados por consultas a la bases de datos MySQL.|
 |[nut](docs/nut.md)|Gestor de los **nuts**. Los **nuts** son clases php cuyo objetivo es agrupar procedimientos que pueden o no invocar a otros objetos del **nogal**. Son las *vistas* del modelo. Ver también la guía [NUTS Definidos por el Usuario](https://github.com/arielbottero/wiki/blob/master/nogal/docs/nuts.md)|
 |[owl](docs/owl.md)||
