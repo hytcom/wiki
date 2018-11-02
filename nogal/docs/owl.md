@@ -1,137 +1,135 @@
-# Nogal v1.0
-*the most simple PHP Framework* by hytcom.net
-___
-  
-
 # owl
-## nglOwl *extends* nglStd [instanciable] [%REVISION%]
 Owl es el ORM de NOGAL y permite ejecutar operaciones sobre distintos objetos de base de datos.
 Entre las funciones del objecto se encuentran:
-    <ul>
-    <li>consulta de listados de registros directos y con referencias cruzadas</li>
-    <li>consulta de un registro en particular</li>
-    <li>administración de objetos depentientes, como por ejemplo los datos una empresa y sus empleados</li><li>uso de foreignkeys a nivel objeto, sin importar el driver de base de datos</li><li>validación de datos por medio del objeto **nglValidate**</li><li>permite añadir, modificar, suspender y eliminar (eliminado lógico) registros</li><li>eliminación de registros en cascada</li></ul>Por todo ello, nglOwl trabaja con estructura de base de datos determinada.
-Para mas inforamción consultar owl_setup.txt
+- consulta de listados de registros directos y con referencias cruzadas
+- consulta de un registro en particular
+- administración de objetos depentientes, como por ejemplo los datos una empresa y sus empleados
+- uso de foreignkeys a nivel objeto, sin importar el driver de base de datos
+- validación de datos por medio del objeto [validate](https://github.com/arielbottero/wiki/blob/master/nogal/docs/validate.md)
+- permite añadir, modificar, suspender y eliminar (eliminado lógico) registros
+- eliminación de registros en cascada
   
 ## Variables
 |Argumento|Tipo|Descripción|
 |---|---|---|
-|$db|private|Objeto de base de datos|
-|$sObject|private|Nombre del Objeto activo|
-|$vObjects|private|Objetos cargados durante la ejecución|
-|$sChildTable|private|Nombre de la tabla del objeto dependiente activo|
-|$bChildMode|private|Establece el modo Child para los métodos de escritura|
-|$bInternalCall|private|Señala que llamada al método es interna. Usada para evitar el log|
-|$aCascade|private|Almacena las sentencias SQL para el borrado logico en cascada del último CrossRows|
-|$aTmpChildren|private|Almacena temporalmente los hijos durante nglOwl::select|
+|**$db**|private|Objeto de base de datos|
+|**$sObject**|private|Nombre del Objeto activo|
+|**$vObjects**|private|Objetos cargados durante la ejecución|
+|**$sChildTable**|private|Nombre de la tabla del objeto dependiente activo|
+|**$bChildMode**|private|Establece el modo Child para los métodos de escritura|
+|**$bInternalCall**|private|Señala que llamada al método es interna. Usada para evitar el log|
+|**$aCascade**|private|Almacena las sentencias SQL para el borrado logico en cascada del último CrossRows|
+|**$aTmpChildren**|private|Almacena temporalmente los hijos durante un [select](#select)|
 
 ## Argumentos
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
-|**alvin**|boolean|false|Activa y desactiva los chequeos ALVIN|
+|**alvin**|boolean|false|Activa y desactiva los chequeos [alvin](https://github.com/arielbottero/wiki/blob/master/nogal/docs/alvin.md)|
 |**cascade**|boolean|false|Activa y desactiva el borrado en cascada|
 |**child**|string|null|Nombre del Objeto dependiente activo|
 |**data**|mixed|array|Objeto o array asociativo con los nombres de las columnas y datos que se usará en los métodos de escritura. Este argumento no es válido para escrituras múltiples|
-|**duplicate_children**|boolean|false|Activa y desactiva la copia de registros dependientes en el método **nglOwl::duplicate**|
-|**escape**|boolean|null|Determina si **data** debe o no ser tratado por el método **escape** del objeto **\$db**|
-|**filter**|string|null|Porción de la código SQL o **JSQL** que complementa al generado por el método **nglOwl::view** y es utilizado para filtrar los resultados del método **nglOwl::getAll**|
-|**id**|mixed|null|Selecciona un registro del objeto activo utilizando el propio ID o IMYA|
+|**db**|object|null|Objeto de base de datos|
+|**duplicate_children**|boolean|false|Activa y desactiva la copia de registros dependientes en el método [duplicate](#duplicate)|
+|**escape**|boolean|null|Determina si *arg::data* debe o no ser tratado por el método **escape** del objeto **$db**|
+|**filter**|string|null|Porción de la código SQL ó JSQL que complementa al generado por el método [view](#view) y es utilizado para filtrar los resultados del método [getall](#getall)|
+|**id**|mixed|null|Selecciona un registro del objeto activo utilizando el propio **ID** o **IMYA**|
 |**inherit**|boolean|true|Determina las suspenciones deben propagarse a las tablas dependientes|
-|**insert_mode**|string|INSERT|Modo del método nglOwl::insert. Valores admitidos:<ul><li>**INSERT** =  inserta nuevos registros</li><li>**REPLACE** =  si el nuevo registro duplica un valor PRIMARY KEY o UNIQUE, el antiguo registro es eliminado</li><li>**IGNORE** =  el comando no aborta incluso si ocurren errores durante la ejecución</li></ul>|
-|**jsql**|string|null|Sentencia JSQL para ser ejecutada utilizando el método **nglOwl::query**|
-|**owlog**|boolean|true|Activa y desactiva el log en la tabla __ngl_owl_log__|
-|**owlog_changelog**|boolean|false|Activa y desactiva el uso del changelog en la tabla __ngl_owl_log__|
+|**insert_mode**|string|INSERT|Modo del método nglOwl::insert. Valores admitidos:<ul><li>**INSERT** = inserta nuevos registros</li><li>**REPLACE** = si el nuevo registro duplica un valor PRIMARY KEY o UNIQUE, el antiguo registro es eliminado</li><li>**IGNORE** = el comando no aborta incluso si ocurren errores durante la ejecución</li></ul>|
+|**jsql**|string|null|Sentencia JSQL para ser ejecutada utilizando el método [query](#query)|
+|**owlog**|boolean|true|Activa y desactiva el log en la tabla **__ngl_owl_log__**|
+|**owlog_changelog**|boolean|false|Activa y desactiva el uso del changelog en la tabla **__ngl_owl_log__**|
 |**object**|string|null|Nombre del Objeto que se establecerá como activo|
-|**use_history**|boolean|false|Activa y desactiva el uso del atributo **history**|
-|**view_alias**|string|auto|Política utilizada para nombrar los alias en el método **nglOwl::view**, se antepondrá el nombre de la tabla cuando:<ul><li>**all** =  en todos los campos de todas las tablas</li><li>**joins** =  en todos los campos, salvo en los de la tabla principal</li><li>**auto** =  sólo los campos que tengan un duplicado</li><li>**none** =  ningun campo</li></ul>|
-|**view_children**|mixed|false|Determina el tipo de unión con las tablas dependientes<ul><li>**true** =  todas las tablas</li><li>**false** =  ninguna tabla</li><li>**array** =  array con tablas seleccionadas</li></ul>|
-|**view_columns**|string|null|Cadena JSQL con los nombres de las columnas que deberá retornar el método **nglOwl::view**.
-Sintáxis: ["TABLE.COLUMN","ALIAS"] o "TABLE.COLUMN"
-Ej: [["tabla.campo1","foo"], "alias2.campo2", ["campo3","bar"]]|
-|**view_joins**|boolean|true|Activa y desactiva la unión con las tablas relacionadas (no dependientes) en el método **nglOwl::view**|
-|**view_mode**|string|jsql|Modo de salida de datos en el método **nglOwl::view**:<ul><li>**jsql** =  formato JSON</li><li>**sql** =  formato ANSI SQL</li></ul>|
+|**use_history**|boolean|false|Activa y desactiva el uso del atributo **attr::history**|
+|**view_alias**|string|auto|Política utilizada para nombrar los alias en el método [view](#view), se antepondrá el nombre de la tabla cuando:<ul><li>**all** = en todos los campos de todas las tablas</li><li>**joins** = en todos los campos, salvo en los de la tabla principal</li><li>**auto** = sólo los campos que tengan un duplicado</li><li>**none** = ningun campo</li></ul>|
+|**view_children**|mixed|false|Determina el tipo de unión con las tablas dependientes<ul><li>**true** = todas las tablas</li><li>**false** = ninguna tabla</li><li>**array** = array con tablas seleccionadas</li></ul>|
+|**view_columns**|string|null|Cadena JSQL con los nombres de las columnas que deberá retornar el método [view](#view).<br />Sintáxis: ["TABLE.COLUMN","ALIAS"] o "TABLE.COLUMN"<br />Ej: [["tabla.campo1","foo"], "alias2.campo2", ["campo3","bar"]]|
+|**view_joins**|boolean|true|Activa y desactiva la unión con las tablas relacionadas (no dependientes) en el método [view](#view)|
+|**view_mode**|string|jsql|Modo de salida de datos en el método [view](#view):<ul><li>**jsql** = formato JSON</li><li>**sql** = formato ANSI SQL</li></ul>|
 
 ## Atributos
 |Atributo|Tipo|Descripción|
 |---|---|---|
 |**current**|int|ID del registro activo|
-|**history**|string|Almacena el historial de logs durante la ejecución|
-|**log**|string|Almacena el log de la última acción ejecutada|
+|**attr::history**|string|Almacena el historial de logs durante la ejecución|
+|**attr::log**|string|Almacena el log de la última acción ejecutada|
 |**object_name**|string|Nombre del Objeto activo|
 |**query**|string|Ultima consulta SQL ejecutada|
 |**result**|string|Ultimo resultado SQL ejecutado por get o getall|
-|**validate**|array|Resultado de la última validación por **nglValidate::validate**|
-
+|**validate**|array|Resultado de la última validación por [validate](https://github.com/arielbottero/wiki/blob/master/nogal/docs/validate.md#validate)|
   
 &nbsp;
 
 # Métodos
 |Método|Descripción|
 |---|---|
-|[CrossRows](#CrossRows)|Verifica las referencias de la tabla $sTable con el resto de las tablas del obje...|
-|[DeleteInCascade](#DeleteInCascade)|Ejecuta las sentencias de borrado $aCascade y retorna el número de registros bor...|
-|[GetID](#GetID)|Obtiene el ID del registro $mID de la tabla $sTable confirmando la existencia de...|
-|[Logger](#Logger)|Registra la salida de LOG de un método en los atributos log y history. Cuando $s...|
-|[OwLog](#OwLog)|Genera un log sobre cada acción de escritura. El mismo es almacenado en la base ...|
-|[UpdateData](#UpdateData)|Ejecuta las actualizaciones enviadas por los métodos|
-|[Validate](#Validate)|Realiza la validación de datos por medio del objeto nglValidate|
-|[child](#child)|Prepara el objeto para trabajar con la dependencia $sChild y lo retorna|
+|[child](#child)|Prepara el objeto para trabajar con dependencias|
 |[children](#children)|Lista las tablas dependientes de objeto activo|
 |[close](#close)|Finaliza la conexión con la base de datos|
 |[columns](#columns)|Retorna los nombres de la columnas del objeto activo|
-|[connect](#connect)|Establece la conexión con la base de datos|
-|[delete](#delete)|Utiliza el método nglOwl::UpdateData para intentar eliminar el o los registros s...|
+|[delete](#delete)|Utiliza el método [UpdateData](#updatedata) para intentar eliminar el o los registros seleccionados|
 |[describe](#describe)|Detalles del objeto activo|
-|[duplicate](#duplicate)|Duplica un registro con o sin sus dependencias (hijos). Las diferentes metodolog...|
-|[get](#get)|Retorna un objeto iNglDataObjet con los datos de un registro y todas sus relacio...|
-|[getAll](#getAll)|Retorna un objeto iNglDataObjet con todos registros y relaciones en base a su $s...|
-|[insert](#insert)|Inserta uno o mas registros en las tablas que componen los objetos. Este método ...|
-|[query](#query)|Ejecuta una sentencia JSQL utilizando el método query del objeto $db y retorna u...|
+|[duplicate](#duplicate)|Duplica un registro con o sin sus dependencias (hijos)|
+|[get](#get)|Retorna un objeto de base de datos de un registro y todas sus relaciones|
+|[getall](#getall)|Retorna un objeto con todos registros y relaciones|
+|[insert](#insert)|Inserta uno ó más registros en las tablas que componen los objetos|
+|[load](#load)|Carga el objeto que establece la conexión con la base de datos |
+|[query](#query)|Ejecuta una sentencia **JSQL** utilizando el método query del objeto **$db**|
 |[relationship](#relationship)|Muestra la estructura relacional del objeto seleccionado|
-|[select](#select)|Selecciona y establece como activo al objeto $sObjectName|
-|[showtables](#showtables)|Retorna un Array con los datos de todos los elementos que componen el sistema DB...|
-|[suspend](#suspend)|Suspende uno o mas registros aplicando la misma lógica que el método nglOwl::upd...|
-|[toggle](#toggle)|Suspende y/o desuspende uno o mas registros aplicando la misma lógica que el mét...|
-|[unsuspend](#unsuspend)|Reactiva registros suspendidos por nglOwl::suspend, actualizando state = 1Cuando...|
-|[update](#update)|Actualiza uno o mas registros en las tablas que componen los objetos. Este métod...|
-|[view](#view)|Retorna las partes SELECT y FROM de la consulta SQL necesaria para generar una V...|
-|[viewChildren](#viewChildren)|Retorna las partes SELECT y FROM de la consulta SQL necesaria para generar una V...|
-
+|[select](#select)|Selecciona y establece como activo al objeto|
+|[showtables](#showtables)|Retorna un Array con los datos de todos los elementos que componen el sistema|
+|[suspend](#suspend)|Suspende uno ó más registros aplicando la misma lógica que [update](#update)|
+|[toggle](#toggle)|Suspende y/o desuspende uno ó más registros|
+|[unsuspend](#unsuspend)|Reactiva registros suspendidos por [suspend](#suspend)|
+|[update](#update)|Actualiza uno ó más registros en las tablas que componen los objetos|
+|[view](#view)|Retorna las partes SELECT y FROM de la consulta SQL necesaria para generar una VIEW|
+|[viewChildren](#viewchildren)|Identico a [view](#view) pero en objetos con depentencias|
+|Internos||
+|[AlvinInit](#alvininit)|Verifica el uso de [alvin](https://github.com/arielbottero/wiki/blob/master/nogal/docs/alvin.md) y lo activa en caso de ser requerido|
+|[AlvinSQL](#alvinsql)|Modifica las consultas para incorporar las restricciones|
+|[CrossRows](#crossrows)|Verifica las referencias de la tabla $sTable con el resto de las tablas del objeto|
+|[DeleteInCascade](#deleteincascade)|Ejecuta las sentencias de borrado y retorna el número de registros eliminados|
+|[GetID](#getid)|Obtiene el ID de un registro confirmando la existencia del mismo|
+|[GetRelationship](#getrelationship)|Obtiene las relaciones de un objeto dentro de la estructura|
+|[GetRelationshipChildren](#getrelationshipchildren)|Obtiene las relaciones de los objetos dependientes de un objeto dentro de la estructura|
+|[JsonAppener](#jsonappener)|Añade una porsición de código JSQL a otra|
+|[JsqlParser](#jsqlparser)|Parsea una cadena JSQL utilizando el método **jsqlParser** del objeto de base de datos|
+|[Logger](#logger)|Registra la salida de LOG de un método en los atributos log y history|
+|[OwLog](#owlog)|Genera un log sobre cada acción de escritura en la tabla **__ngl_owl_log__**|
+|[UpdateData](#updatedata)|Ejecuta las actualizaciones enviadas por los métodos|
+|[Validate](#validate)|Realiza la validación de datos por medio del objeto [validate](https://github.com/arielbottero/wiki/blob/master/nogal/docs/validate.md)|
   
 &nbsp;
 
-
 ## child
-Prepara el objeto para trabajar con la dependencia **\$sChild** y lo retorna  
+> Prepara el objeto para trabajar con la dependencia **$sChild** y lo retorna  
 
-**[$this]** =  *public* function ( *string* \$sChild );  
+**[$this]** = *public* function ( *string* $sChild );  
 
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
-|**\$sChild**|string|null|Nombre del Objeto dependiente activo|
+|**$sChild**|string|*arg::child*|Nombre del Objeto dependiente activo|
 ### Ejemplos  
 #### inserción de datos dependientes  
-```php
-#creacion del objeto y conexion a la db
-$conn = $ngl('mysql.test');
-$foo = $ngl('owl.foo');
-$foo->connect($conn);
+``` php
+$conn = $ngl("mysql");
+$foo = $ngl("owl");
+$foo->load($conn);
 
 #selección del registro principal con ID 1
-$foo->select('customers')->id = 1;
+$foo->select("customers")->id = 1;
 
 #insercion de registros vinculados al registro principal
-$foo->child('customers_contacts')->insert(
-    array('firstname'=>'Martino', 'surname'=>'Herrera', 'age'=>'35', 'gender'=>'M'),
-    array('firstname'=>'Monica', 'surname'=>'Castillo', 'age'=>'29', 'gender'=>'F'),
-    array('firstname'=>'Juan', 'surname'=>'Rojas', 'age'=>'43', 'gender'=>'M')
+$foo->child("customers_contacts")->insert(
+    array("firstname"=>"Martino", "surname"=>"Herrera", "age"=>"35", "gender"=>"M"),
+    array("firstname"=>"Monica", "surname"=>"Castillo", "age"=>"29", "gender"=>"F"),
+    array("firstname"=>"Juan", "surname"=>"Rojas", "age"=>"43", "gender"=>"M")
 );
 ```
 #### lectura de dependencias (hijos)  
-```php
+``` php
 #consulta
-$foo->select('customers')->id(1);
-$data = $foo->child('customers_contacts')->get('2', 'all', true);
+$foo->select("customers")->id(1);
+$data = $foo->child("customers_contacts")->get("2", "all", true);
 print_r($data->get());
 
 #salida
@@ -162,105 +160,76 @@ ___
 &nbsp;
 
 ## children
-Lista las tablas dependientes de objeto activo  
+> Lista las tablas dependientes de objeto activo  
 
-**[array]** =  *public* function ( );
+**[array]** = *public* function ( );
   
-
 &nbsp;
 ___
 &nbsp;
 
 ## close
-Finaliza la conexión con la base de datos  
+> Finaliza la conexión con la base de datos  
 
-**[boolean]** =  *public* function ( );
-  
+**[boolean]** = *public* function ( );
 
 &nbsp;
 ___
 &nbsp;
 
 ## columns
-Retorna los nombres de la columnas del objeto activo  
+> Retorna los nombres de la columnas del objeto activo  
 
-**[array]** =  *public* function ( );
-  
-
-&nbsp;
-___
-&nbsp;
-
-## connect
-Establece la conexión con la base de datos  
-
-**[$this]** =  *public* function ( *object* \$driver );  
-
-|Argumento|Tipo|Default|Descripción|
-|---|---|---|---|
-|**\$driver**|object||Objecto de Base de Datos|
-
-&nbsp;
-___
-&nbsp;
-
-## CrossRows
-Verifica las referencias de la tabla **\$sTable** con el resto de las tablas del objeto y retorna un array informandolas  
-
-**[array]** =  *private* function ( *string* \$sTable, *string* \$sWhere, *array* \$aConditions );  
-
-|Argumento|Tipo|Default|Descripción|
-|---|---|---|---|
-|**\$sTable**|string||Nombre de la tabla principal|
-|**\$sWhere**|string||Condición WHERE que determina el conjunto de resultados sobre el cual se analizará las referencias|
-|**\$aConditions**|array||Array de condiciones FROM y WHERE que determina el conjunto de resultados en modo recursivo|
+**[array]** = *public* function ( );
 
 &nbsp;
 ___
 &nbsp;
 
 ## delete
-Utiliza el método **nglOwl::UpdateData** para intentar eliminar el o los registros seleccionados, ya sean del una tabla principal o de una dependiente (hijo).
-Si el existiesen conflictos de **foreignkey** el borrado no se llevará a cabo y un informe de dependencias será almacenado en los atributos **log** y **history**.
-En este último caso **delete** retornará **false**. De lo contrario devolverá el número de elementos borrados.
-Si el argumento **cascade** estuviese indicado como **true** y hubiese conflictos de **foreignkey**, se omitirá el informe y el borrado se llevará a cabo de manera recursiva.  
+> Utiliza el método [UpdateData](#updatedata)* para intentar eliminar el o los registros seleccionados, ya sean del una tabla principal o de una dependiente (hijo).
+> Si el existiesen conflictos de **foreignkey** el borrado no se llevará a cabo y un informe de dependencias será almacenado en los atributos **attr::log** y **attr::history**.
+> En este último caso **delete** retornará **false**. De lo contrario devolverá el número de elementos borrados.
+> Si el argumento **cascade** estuviese indicado como **true** y hubiese conflictos de **foreignkey**, se omitirá el informe y el borrado se llevará a cabo de manera recursiva.  
 
-**[int]** =  *public* function ( *mixed* \$aData1, *array* \$... );  
+**[int]** = *public* function ( *mixed* $aData1, *array* $... );  
 
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
-|**\$aData1**|mixed|null|Selecciona un registro del objeto activo utilizando el propio ID o IMYA|
-|**\$...**|array||Lista variable de argumentos de tipo Array similares a **\$aData1**|
+|**$aData1**|mixed|null|Selecciona un registro del objeto activo utilizando el propio ID o IMYA|
+|**$...**|array||Lista variable de argumentos de tipo Array similares a **$aData1**|
 ### Ejemplos  
 #### por atributo ID  
-```php
-#creacion del objeto y conexion a la db
-$conn = $ngl('mysql.test');
-$foo = $ngl('owl.foo');
-$foo->connect($conn);
+``` php
+$conn = $ngl("mysql");
+$foo = $ngl("owl");
+$foo->load($conn);
 
 #selección del registro con ID 1
-$foo->select('customers')->id = 1;
+$foo->select("customers")->id = 1;
 $foo->delete();
 ```
+
 #### por ID o IMYA a través de $aData1  
-```php
-$foo->select('customers')->delete(array('id'=>1));
-$foo->select('customers')->delete(array('imya'=>'wdoxbe6a2afqMbc7S0fy2f57hel61ec4'));
+``` php
+$foo->select("customers")->delete(array("id"=>1));
+$foo->select("customers")->delete(array("imya"=>"wdoxbe6a2afqMbc7S0fy2f57hel61ec4"));
 ```
+
 #### por ID o IMYA a través de $aData1, $aData2, $... (modo múltiple)  
-```php
-$foo->select('customers')->delete(
-    array('id'=>1),
-    array('id'=>2),
-    array('imya'=>'fq6213Xb5qf4c5a286e8rcOacf66b2rc')
+``` php
+$foo->select("customers")->delete(
+    array("id"=>1),
+    array("id"=>2),
+    array("imya"=>"fq6213Xb5qf4c5a286e8rcOacf66b2rc")
 );
 ```
+
 #### modo cascada FALSE  
-```php
+``` php
 $foo->cascade = false;
-$ngl()->dump($foo->select('customers')->delete(array('id'=>1)));
-$ngl()->dump($foo->log, 'pre');
+$ngl()->dump($foo->select("customers")->delete(array("id"=>1)));
+$ngl()->dump($foo->log, "pre");
 
 //-- salida ------------
 bool(false)
@@ -273,11 +242,12 @@ Array (
     )
 )
 ```
+
 #### modo cascada TRUE  
-```php
+``` php
 $foo->cascade = true;
-$ngl()->dump($foo->select('customers')->delete(array('id'=>1)));
-$ngl()->dump($foo->log, 'pre');
+$ngl()->dump($foo->select("customers")->delete(array("id"=>1)));
+$ngl()->dump($foo->log, "pre");
 
 //-- salida ------------
 int(5)
@@ -328,89 +298,80 @@ Array (
     )
 )
 ```
+
 #### el Contacto con ID 2 del Cliente con ID 1  
-```php
-$foo->select('customers')->id = 1;
-$foo->child('customers_contacts')->delete(array('id'=>2));
+``` php
+$foo->select("customers")->id = 1;
+$foo->child("customers_contacts")->delete(array("id"=>2));
 
 // NOTA: si no se seleccionase un ID para el registro principal se producirá un error
 ```
+
 #### todos los Contactos del Cliente con ID 1  
-```php
-$foo->select('customers')->id = 1;
-$foo->child('customers_contacts')->delete();
+``` php
+$foo->select("customers")->id = 1;
+$foo->child("customers_contacts")->delete();
 ```
-
-&nbsp;
-___
-&nbsp;
-
-## DeleteInCascade
-Ejecuta las sentencias de borrado \$aCascade y retorna el número de registros borrados  
-
-**[int]** =  *private* function ( *mixed* \$aCascade );  
-
-|Argumento|Tipo|Default|Descripción|
-|---|---|---|---|
-|**\$aCascade**|mixed|null|Selecciona un registro del objeto activo utilizando el propio ID o IMYA|
 
 &nbsp;
 ___
 &nbsp;
 
 ## describe
-Detalles del objeto activo  
+> Detalles del objeto activo  
 
-**[array]** =  *public* function ( *string* \$sObjectName );  
-
-|Argumento|Tipo|Default|Descripción|
-|---|---|---|---|
-|**\$sObjectName**|string||Nombre de la tabla/objecto que se establecerá como activo|
+**[array]** = *public* function ( );  
 
 &nbsp;
 ___
 &nbsp;
 
 ## duplicate
-Duplica un registro con o sin sus dependencias (hijos). Las diferentes metodologías de ejecución son:<ul><li>**principal CON dependencias** =  cuando **\$bChildren** = true</li><li>**principal SIN dependencias** =  cuando **\$bChildren** = false</li><li>**dependencia específica** =  cuando se ejecute por medio del método **nglOwl::child** se duplicará el registro dependiente con el id o imya **\$mID**</li><li>**todas las dependencias** =  cuando se ejecute por medio del método **nglOwl::child** y el valor **\$mID** no sea especificado</li></ul>Al finalizar se retornará el **ID** del registro duplicado; si se hubiese ejecutado una inserción multiple se retornará un array con todos los nuevos **IDs**.
-Un informe del detalle de las duplicaciones será almacenado en los atributos **log** y **history**.
-El **ID** de la última inserción se guardará en el atributo **id**.
+> Duplica un registro con o sin sus dependencias (hijos). Las diferentes metodologías de ejecución son:
+> - **principal CON dependencias** = cuando **$bChildren** = true
+> - **principal SIN dependencias** = cuando **$bChildren** = false
+> - **dependencia específica** = cuando se ejecute por medio del método [child](#child) se duplicará el registro dependiente con el id o imya **$mID**
+> - **todas las dependencias** = cuando se ejecute por medio del método [child](#child) y el valor **$mID** no sea especificado
+> 
+> Al finalizar se retornará el **ID** del registro duplicado; si se hubiese ejecutado una inserción multiple se retornará un array con todos los nuevos **IDs**.
+> Un informe del detalle de las duplicaciones será almacenado en los atributos **attr::log** y **attr::history**.
+> El **ID** de la última inserción se guardará en el atributo **id**.  
+> **IMPORTANTE** para duplicar sólo dependencias se deberá seleccionar previamente un registro principal.  
 
-**IMPORTANTE** para duplicar sólo dependencias se deberá seleccionar previamente un registro principal.  
-
-**[mixed]** =  *public* function ( *mixed* \$mID, *boolean* \$bChildren );  
+**[mixed]** = *public* function ( *mixed* $mID, *boolean* $bChildren );  
 
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
-|**\$mID**|mixed||Cadena IMYA o número entero|
-|**\$bChildren**|boolean|duplicate_children|Activa y desactiva la copia de registros dependientes|
+|**$mID**|mixed|*arg::id*|Cadena IMYA o número entero|
+|**$bChildren**|boolean|*arg::duplicate_children*|Activa y desactiva la copia de registros dependientes|
 ### Ejemplos  
 #### principal CON dependencias  
-```php
-#creacion del objeto y conexion a la db
-$conn = $ngl('mysql.test');
-$foo = $ngl('owl.foo');
-$foo->connect($conn);
+``` php
+$conn = $ngl("mysql");
+$foo = $ngl("owl")->load($conn);
 
-$foo->select('customers');
+$foo->select("customers");
 $foo->duplicate(1,true);
 ```
+
 #### principal SIN dependencias  
-```php
-$foo->select('customers');
+``` php
+$foo->select("customers");
 $foo->duplicate(1,false);
 ```
+
 #### dependencia específica  
-```php
+``` php
 #duplica el contacto con ID 19 que depende del cliente 6
-$foo->select('customers')->id(6);
-$foo->child('customers_contacts')->duplicate(19);
+$foo->select("customers")->id(6);
+$foo->child("customers_contacts")->duplicate(19);
 ```
+
 #### todas las dependencias  
-```php
+``` php
 #duplica todos los contactos del cliente 6
-$foo->select('customers')->id(6);
-$foo->child('customers_contacts')->duplicate();
+$foo->select("customers")->id(6);
+$foo->child("customers_contacts")->duplicate();
 ```
 
 &nbsp;
@@ -418,39 +379,35 @@ ___
 &nbsp;
 
 ## get
-Retorna un objeto **iNglDataObjet** con los datos de un registro y todas sus relaciones en base a su **ID** o **IMYA**  
+> Retorna un objeto de base de datos de un registro y todas sus relaciones en base a su **ID** o **IMYA**  
 
-**[object]** =  *public* function ( *mixed* \$mID, *string* \$sAliasMode, *boolean* \$bJoins, *mixed* \$mChildren );  
+**[object]** = *public* function ( *mixed* $mID, *string* $sAliasMode, *boolean* $bJoins, *mixed* $mChildren );  
 
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
-|**\$mID**|mixed|null|Selecciona un registro del objeto activo utilizando el propio ID o IMYA|
-|**\$sAliasMode**|string|auto|Política utilizada para nombrar los alias en el método **nglOwl::view**, se antepondrá el nombre de la tabla cuando:<ul><li>**all** =  en todos los campos de todas las tablas</li><li>**joins** =  en todos los campos, salvo en los de la tabla principal</li><li>**auto** =  sólo los campos que tengan un duplicado</li><li>**none** =  ningun campo</li></ul>|
-|**\$bJoins**|boolean|true|Activa y desactiva la unión con las tablas relacionadas (no dependientes) en el método **nglOwl::view**|
-|**\$mChildren**|mixed|false|Determina el tipo de unión con las tablas dependientes<ul><li>**true** =  todas las tablas</li><li>**false** =  ninguna tabla</li><li>**array** =  array con tablas seleccionadas</li></ul>|
+|**$mID**|mixed|*arg::id*|Selecciona un registro del objeto activo utilizando el propio ID o IMYA|
+|**$sAliasMode**|string|*arg::view_alias*|Política utilizada para nombrar los alias en el método [view](#view), se antepondrá el nombre de la tabla cuando:<ul><li>**all** = en todos los campos de todas las tablas</li><li>**joins** = en todos los campos, salvo en los de la tabla principal</li><li>**auto** = sólo los campos que tengan un duplicado</li><li>**none** = ningun campo</li></ul>|
+|**$bJoins**|boolean|*arg::view_joins*|Activa y desactiva la unión con las tablas relacionadas (no dependientes) en el método [view](#view)|
+|**$mChildren**|mixed|*arg::view_children*|Determina el tipo de unión con las tablas dependientes<ul><li>**true** = todas las tablas</li><li>**false** = ninguna tabla</li><li>**array** = array con tablas seleccionadas</li></ul>|
 ### Ejemplos  
 #### lectura por ID  
-```php
-#creacion del objeto y conexion a la db
-$conn = $ngl('mysql.test');
-$foo = $ngl('owl.foo');
-$foo->connect($conn);
-print_r($foo->select('customers')->get(1)->get());
+``` php
+$conn = $ngl("mysql");
+$foo = $ngl("owl")->load($conn);
+print_r($foo->select("customers")->get(1)->get());
 ```
+
 #### lectura por IMYA con dependencias y relaciones  
-```php
-#creacion del objeto y conexion a la db
-$conn = $ngl('mysql.test');
-$foo = $ngl('owl.foo');
-$foo->connect($conn);
-$data = $foo->select('customers')->get('fq6213Xb5qf4c5a286e8rcOacf66b2rc', 'all', true, true);
+``` php
+$data = $foo->select("customers")->get("fq6213Xb5qf4c5a286e8rcOacf66b2rc", "all", true, true);
 print_r($data->getall());
 ```
+
 #### lectura de sólo dependencias (hijos) con relaciones  
-```php
+``` php
 #con relaciones
-$foo->select('customers')->id('URI75pbceMb7ca85acLD7160Ze40Kb94');
-$data = $foo->child('customers_contacts')->get('J7d66l11xyqk6vB1f691b2bbA5068993', 'all', true);
+$foo->select("customers")->id("URI75pbceMb7ca85acLD7160Ze40Kb94");
+$data = $foo->child("customers_contacts")->get("J7d66l11xyqk6vB1f691b2bbA5068993", "all", true);
 print_r($data->get());
 ```
 
@@ -458,40 +415,33 @@ print_r($data->get());
 ___
 &nbsp;
 
-## getAll
-Retorna un objeto **iNglDataObjet** con todos registros y relaciones en base a su **\$sFilter**  
+## getall
+> Retorna un objeto con todos registros y relaciones en base a su **$sFilter**
 
-**[object]** =  *public* function ( *string* \$sFilter, *string* \$sAliasMode, *boolean* \$bJoins, *mixed* \$mChildren, *string* \$sColumns );  
+**[object]** = *public* function ( *string* $sFilter, *string* $sAliasMode, *boolean* $bJoins, *mixed* $mChildren, *string* $sColumns );  
 
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
-|**\$sFilter**|string|null|Porción de la código SQL o **JSQL** que complementa al generado por el método **nglOwl::view** y es utilizado para filtrar los resultados del método **nglOwl::getAll**|
-|**\$sAliasMode**|string|auto|Política utilizada para nombrar los alias en el método **nglOwl::view**, se antepondrá el nombre de la tabla cuando:<ul><li>**all** =  en todos los campos de todas las tablas</li><li>**joins** =  en todos los campos, salvo en los de la tabla principal</li><li>**auto** =  sólo los campos que tengan un duplicado</li><li>**none** =  ningun campo</li></ul>|
-|**\$bJoins**|boolean|true|Activa y desactiva la unión con las tablas relacionadas (no dependientes) en el método **nglOwl::view**|
-|**\$mChildren**|mixed|false|Determina el tipo de unión con las tablas dependientes<ul><li>**true** =  todas las tablas</li><li>**false** =  ninguna tabla</li><li>**array** =  array con tablas seleccionadas</li></ul>|
-|**\$sColumns**|string|null|Cadena JSQL con los nombres de las columnas que deberá retornar el método **nglOwl::view**.
-Sintáxis: ["TABLE.COLUMN","ALIAS"] o "TABLE.COLUMN"
-Ej: [["tabla.campo1","foo"], "alias2.campo2", ["campo3","bar"]]|
+|**$sFilter**|string|*arg::filter*|Porción de la código SQL o **JSQL** que complementa al generado por el método [view](#view) y es utilizado para filtrar los resultados del método **nglOwl::getAll**|
+|**$sAliasMode**|string|*arg::view_alias*|Política utilizada para nombrar los alias en el método [view](#view), se antepondrá el nombre de la tabla cuando:<ul><li>**all** = en todos los campos de todas las tablas</li><li>**joins** = en todos los campos, salvo en los de la tabla principal</li><li>**auto** = sólo los campos que tengan un duplicado</li><li>**none** = ningun campo</li></ul>|
+|**$bJoins**|boolean|*arg::view_joins*|Activa y desactiva la unión con las tablas relacionadas (no dependientes) en el método [view](#view)|
+|**$mChildren**|mixed|*arg::view_children*|Determina el tipo de unión con las tablas dependientes<ul><li>**true** = todas las tablas</li><li>**false** = ninguna tabla</li><li>**array** = array con tablas seleccionadas</li></ul>|
+|**$sColumns**|string|*arg::view_columns*|Cadena JSQL con los nombres de las columnas que deberá retornar el método [view](#view).<br />Sintáxis: ["TABLE.COLUMN","ALIAS"] o "TABLE.COLUMN"<br />Ej: [["tabla.campo1","foo"], "alias2.campo2", ["campo3","bar"]]|
 ### Ejemplos  
 #### JSQL filter  
-```php
-#creacion del objeto y conexion a la db
-$conn = $ngl('mysql.test');
-$foo = $ngl('owl.foo');
-$foo->connect($conn);
-$get = $foo->select('customers')->getAll('{
-    'where': [['customers.id','eq','(1)']], 
-    'order': ['customers.tradename:ASC']
-}');
+``` php
+$conn = $ngl("mysql");
+$foo = $ngl("owl")->load($conn);
+$get = $foo->select("customers")->getAll("{
+    "where": [["customers.id","eq","(1)"]], 
+    "order": ["customers.tradename:ASC"]
+}");
 print_r($get->getall());
 ```
 #### Obtener todos los registros Hijos de un ID  
-```php
-$conn = $ngl('mysql.test');
-$foo = $ngl('owl.foo');
-$foo->connect($conn);
-$foo->select('customers')->id('URI75pbceMb7ca85acLD7160Ze40Kb94');
-$data = $foo->child('customers_contacts')->getAll();
+``` php
+$foo->select("customers")->id("URI75pbceMb7ca85acLD7160Ze40Kb94");
+$data = $foo->child("customers_contacts")->getAll();
 print_r($data->getall());
 ```
 
@@ -499,52 +449,34 @@ print_r($data->getall());
 ___
 &nbsp;
 
-## GetID
-Obtiene el ID del registro **\$mID** de la tabla **\$sTable** confirmando la existencia del mismo, en base a su IMYA, a una condicion SQL o al propio ID.
-Cuando **\$mID** es un array se espera: array("campo", "signo", "valor")
-Cuando **\$sTable** sea distinto de **NULL** el valor retornado será almacenado en el atributo **id**  
-
-**[none]** =  *private* function ( *mixed* \$mID, *string* \$sTable );  
-
-|Argumento|Tipo|Default|Descripción|
-|---|---|---|---|
-|**\$mID**|mixed||Cadena IMYA, array o número entero|
-|**\$sTable**|string|NULL|Nombre de la tabla en la cual buscar. Cuando el valor es **NULL** se trabajará sobre la tabla principal del objeto activo|
-
-&nbsp;
-___
-&nbsp;
-
 ## insert
-Inserta uno o mas registros en las tablas que componen los objetos. Este método también efectua las inserciones en las tablas dependientes (hijos).
-Al finalizar se retornará el **ID** de la inseción; si se hubiese ejecutado una inserción multiple se retornará un array con todos los nuevos **IDs**.
-Un informe del detalle de las inserciones será almacenado en los atributos **log** y **history**.
-El **ID** de la última inserción se guardará en el atributo **current**.
+> Inserta uno ó más registros en las tablas que componen los objetos. Este método también efectua las inserciones en las tablas dependientes (hijos).
+> Al finalizar se retornará el **ID** de la inseción; si se hubiese ejecutado una inserción multiple se retornará un array con todos los nuevos **IDs**.
+> Un informe del detalle de las inserciones será almacenado en los atributos **attr::log** y **attr::history**.
+> El **ID** de la última inserción se guardará en el atributo **current**.  
+> 
+> **IMPORTANTE** los campos **id**, **imya** y **state** son administrados por el método, por lo que serán ignorados.  
 
-**IMPORTANTE** los campos **id**, **imya** y **state** son administrados por el método, por lo que serán ignorados.  
-
-**[mixed]** =  *public* function ( *array* \$aData1, *array* \$... );  
+**[mixed]** = *public* function ( *array* $aData1, *array* $... );  
 
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
-|**\$aData1**|array||Array asociativo (o bidimensional de ellos) con los datos del registro a insertar|
-|**\$...**|array||Lista variable de argumentos de tipo Array similares a **\$aData1**|
+|**$aData1**|array||Array asociativo (o bidimensional de ellos) con los datos del registro a insertar|
+|**$...**|array||Lista variable de argumentos de tipo Array similares a **$aData1**|
 ### Ejemplos  
 #### inserción por array  
-```php
-#creacion del objeto y conexion a la db
-$conn = $ngl('mysql.test');
-$foo = $ngl('owl.foo');
-$foo->connect($conn);
+``` php
+$conn = $ngl("mysql");
+$foo = $ngl("owl")->load($conn);
 
 #preparando datos
 $a = array();
-$a['tradename'] = 'abcontenidos';
-$a['cuit'] = '30111111110';
-$a['email'] = 'info@abcontenidos.com';
+$a["tradename"] = "abcontenidos";
+$a["cuit"] = "30111111110";
+$a["email"] = "info@abcontenidos.com";
 
 #insercion de datos
-$foo->select('customers');
+$foo->select("customers");
 $foo->insert($a);
 
 #log de la operación
@@ -562,49 +494,53 @@ Array (
     )
 )
 ```
+
 #### inserción por objeto  
-```php
+``` php
 $a = new stdClass();
-$a->tradename = 'abcontenidos';
-$a->cuit = '30111111110';
-$a->email = 'info@abcontenidos.com';
-$foo->select('customers')->insert($a);
+$a->tradename = "abcontenidos";
+$a->cuit = "30111111110";
+$a->email = "info@abcontenidos.com";
+$foo->select("customers")->insert($a);
 ```
+
 #### inserción por argument::data  
-```php
+``` php
 $vData = array();
-$vData['tradename'] = 'abcontenidos';
-$vData['cuit'] = '30111111110';
-$vData['email'] = 'info@abcontenidos.com';
+$vData["tradename"] = "abcontenidos";
+$vData["cuit"] = "30111111110";
+$vData["email"] = "info@abcontenidos.com";
 $foo->data = $vData;
 
 #insercion de datos
-$foo->select('customers')->insert();
+$foo->select("customers")->insert();
 ```
+
 #### inserción multiple  
-```php
-$foo->select('products');
+``` php
+$foo->select("products");
 $foo->insert(
-    array('name'=>'Monitor', 'barcode'=>'00000001'),
-    array('name'=>'Mouse', 'barcode'=>'00000002'),
-    array('name'=>'Teclado', 'barcode'=>'00000003'),
-    array('name'=>'Gabinete', 'barcode'=>'00000004')
+    array("name"=>"Monitor", "barcode"=>"00000001"),
+    array("name"=>"Mouse", "barcode"=>"00000002"),
+    array("name"=>"Teclado", "barcode"=>"00000003"),
+    array("name"=>"Gabinete", "barcode"=>"00000004")
 );
 ```
+
 #### inserción de registros dependientes (hijos)  
-```php
+``` php
 // en un primer paso se debe seleccionar el registro de la tabla principal
 // al cual se asociaran los registros dependientes
-$foo->select('customers')->id = 1;
+$foo->select("customers")->id = 1;
 
 // luego se procede a la inserción
-$foo->child('customers_contacts')->insert(array('firstname'=>'Alberto', 'surname'=>'Acosta'));
+$foo->child("customers_contacts")->insert(array("firstname"=>"Alberto", "surname"=>"Acosta"));
 
 // modo múltiple 
-$foo->child('customers_contacts')->insert(
-    array('firstname'=>'Martino', 'surname'=>'Herrera'),
-    array('firstname'=>'Alejo', 'surname'=>'Castillo'),
-    array('firstname'=>'Juan', 'surname'=>'Rojas')
+$foo->child("customers_contacts")->insert(
+    array("firstname"=>"Martino", "surname"=>"Herrera"),
+    array("firstname"=>"Alejo", "surname"=>"Castillo"),
+    array("firstname"=>"Juan", "surname"=>"Rojas")
 );
 ```
 
@@ -612,70 +548,51 @@ $foo->child('customers_contacts')->insert(
 ___
 &nbsp;
 
-## Logger
-Registra la salida de LOG de un método en los atributos **log** y **history**. Cuando **\$sStatus** = NULL se reseteará el valor del atributo **log**  
+## load
+> Carga el objeto que establece la conexión con la base de datos y en caso de existir ejecuta el método connect
 
-**[none]** =  *private* function ( *string* \$sStatus, *string* \$aDetails );  
-
-|Argumento|Tipo|Default|Descripción|
-|---|---|---|---|
-|**\$sStatus**|string|NULL|Definición del estado|
-|**\$aDetails**|string|array|Detalles de la operación ejecutada|
-
-&nbsp;
-___
-&nbsp;
-
-## OwLog
-Genera un log sobre cada acción de escritura. El mismo es almacenado en la base datos en la tabla `__ngl_owl_log__` y pasado al método **nglOwl::Logger**.
-Los datos que conforman el log son:<ul><li>**table** =  nombre de la tabla afectada</li><li>**row** =  identificador del registro afectado</li><li>**user** =  id del usuario que ejecutó el cambio (valor **self::call("sysvar")->UID**)</li><li>**action** =  acción ejecutada: insert, update, suspend o delete</li><li>**date** =  fecha y hora en la que se ejecutó el cambio (formato **Y-m-d H:i:s**)</li><li>**ip** =  dirección IP desde la cual se ejecutó el cambio</li></ul>  
-
-**[none]** =  *private* function ( *string* \$sTable, *int* \$nRow, *string* \$sAction );  
+**[$this]** = *public* function ( *object* $driver );  
 
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
-|**\$sTable**|string||Nombre de la tabla afectada|
-|**\$nRow**|int||Identificador del registro afectado|
-|**\$sAction**|string||Acción ejecutada: insert, update, suspend o delete|
+|**$driver**|object|*arg::db*|Objecto de Base de Datos|
 
 &nbsp;
 ___
 &nbsp;
 
 ## query
-Ejecuta una sentencia JSQL utilizando el método **query** del objeto **\$db** y retorna un objecto del tipo**iNglDBQuery**  
+> Ejecuta una sentencia JSQL utilizando el método **query** del objeto **$db** y retorna un objecto del tipo **query result**
 
-**[iNglDBQuery object]** =  *public* function ( *string* \$sJSQL, *array* \$aArgs );  
+**[object]** = *public* function ( *string* $sJSQL, *array* $aArgs );  
 
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
-|**\$sJSQL**|string|null|Sentencia JSQL para ser ejecutada utilizando el método **nglOwl::query**|
-|**\$aArgs**|array|argument::jsql_args|Argumentos pasados al método, que serán traducidos a la sentencia utilizando vsprintf|
+|**$sJSQL**|string|null|Sentencia en formato [JSQL]((https://github.com/arielbottero/wiki/blob/master/nogal/docs/jsql.md)|
+|**$aArgs**|array|*arg::jsql*|Argumentos pasados al método, que serán traducidos a la sentencia utilizando vsprintf|
 ### Ejemplos  
 #### MySQL  
-```php
-#creacion del objeto y conexion a la db
-$conn = $ngl('mysql.test');
-$foo = $ngl('owl.foo');
-$foo->connect($conn);
+``` php
+$conn = $ngl("mysql");
+$foo = $ngl("owl")->load($conn);
 
 #ejecución
-$bar = $foo->query('{
+$bar = $foo->query("{
         "columns":["id"], 
         "tables":["customers"], 
         "where":[["id","eq","(3)"]]
     }
 );
 ```
+
 #### SQLite  
-```php
-#creacion del objeto y conexion a la db
-$conn = $ngl('sqlite.test');
-$foo = $ngl('owl.foo');
-$foo->connect($conn);
+``` php
+$conn = $ngl("sqlite.test");
+$foo = $ngl("owl");
+$foo->load($conn);
 
 #ejecución
-$bar = $foo->query('{
+$bar = $foo->query("{
         "columns":["id"], 
         "tables":["customers"], 
         "where":[["id","eq","(3)"]]
@@ -688,41 +605,39 @@ ___
 &nbsp;
 
 ## relationship
-Muestra la estructura relacional del objeto seleccionado  
+> Muestra la estructura relacional del objeto seleccionado  
 
-**[string]** =  *public* function ( );
+**[string]** = *public* function ( );
   
-
 &nbsp;
 ___
 &nbsp;
 
 ## select
-Selecciona y establece como activo al objeto **\$sObjectName**  
+Selecciona y establece como activo al objeto **$sObjectName**  
 
-**[object]** =  *public* function ( *string* \$sObjectName );  
+**[object]** = *public* function ( *string* $sObjectName );  
 
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
-|**\$sObjectName**|string||Nombre de la tabla/objecto que se establecerá como activo. Deberá respetar el patrón [a-zA-Z0-9_\-]+|
+|**$sObjectName**|string|*arg::object*|Nombre de la tabla/objecto que se establecerá como activo. Deberá respetar el patrón [a-zA-Z0-9_\-]+|
 ### Ejemplos  
-#### selección por ID  
-```php
-#creacion del objeto y conexion a la db
-$conn = $ngl('mysql.test');
-$foo = $ngl('owl.foo');
-$foo->connect($conn);
-$foo->select('customers');
+#### selección 
+``` php
+$conn = $ngl("mysql");
+$foo = $ngl("owl")->load($conn);
+$foo->select("customers");
+```
+
+#### selección del objeto y de un registro por ID  
+``` php
+$foo->select("customers");
 $foo->id(156);
 ```
-#### selección por IMYA  
-```php
-#creacion del objeto y conexion a la db
-$conn = $ngl('mysql.test');
-$foo = $ngl('owl.foo');
-$foo->connect($conn);
-$foo->select('customers');
-$foo->id('wdoxbe6a2afqMbc7S0fy2f57hel61ec4');
+#### selección del objeto y de un registro IMYA  
+``` php
+$foo->select("customers");
+$foo->id("wdoxbe6a2afqMbc7S0fy2f57hel61ec4");
 ```
 
 &nbsp;
@@ -730,17 +645,20 @@ ___
 &nbsp;
 
 ## showtables
-Retorna un Array con los datos de todos los elementos que componen el sistema **DB**. Cada indice del Array está compuesto por:<ul><li>**name** =  String con el nombre de la tabla</li><li>**columns** =  Array con las columnas de la tabla</li><li>**foreignkey** =  True cuando la tabla contiene foreignkeys</li><li>**relationship** =  True cuando la tabla es ademas la tabla principal de un objeto **DB**</li></ul>  
+Retorna un Array con los datos de todos los elementos que componen el sistema    
+Cada indice del Array está compuesto por:
+- **name** = string con el nombre de la tabla
+- **columns** = array con las columnas de la tabla
+- **foreignkey** = true cuando la tabla contiene foreignkeys
+- **relationship** = true cuando la tabla es ademas la tabla principal de un objeto
 
-**[array]** =  *public* function ( );
-  
+**[array]** = *public* function ( );
+
 ### Ejemplos  
 #### por atributo ID  
-```php
-#creacion del objeto y conexion a la db
-$conn = $ngl('mysql.test');
-$foo = $ngl('owl.foo');
-$foo->connect($conn);
+``` php
+$conn = $ngl("mysql");
+$foo = $ngl("owl")>load($conn);
 
 #listado de tablas
 $ngl->dump($foo->showtables());
@@ -751,36 +669,33 @@ ___
 &nbsp;
 
 ## suspend
-Suspende uno o mas registros aplicando la misma lógica que el método **nglOwl::update**, con la diferencia de que sólo un campo es actualizado; **state = 0**
-Cuando un registro principal es suspendido, todos sus registros dependientes también lo son.
-Al finalizar se retornará el número de suspensiones ejecutadas exitosamente.
-Un informe del detalle de las suspensiones será almacenado en los atributos **log** y **history**.
-El **ID** de la última suspensión se guardará en el atributo **id**.  
+> Suspende uno ó más registros aplicando la misma lógica que el método [update](#update), con la diferencia de que sólo un campo es actualizado: **state = 0**  
+> Cuando un registro principal es suspendido, todos sus registros dependientes también lo son. Al finalizar se retornará el número de suspensiones ejecutadas exitosamente.  
+> Un informe del detalle de las suspensiones será almacenado en los atributos **attr::log** y **attr::history**.  
+> El **ID** de la última suspensión se guardará en el atributo **id**.  
 
-**[int]** =  *public* function ( *mixed* \$aData1, *array* \$... );  
+**[int]** = *public* function ( *mixed* $aData1, *array* $... );  
 
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
-|**\$aData1**|mixed|null|Selecciona un registro del objeto activo utilizando el propio ID o IMYA|
-|**\$...**|array||Lista variable de argumentos de tipo Array similares a **\$aData1**|
+|**$aData1**|mixed|null|Selecciona un registro del objeto activo utilizando el propio ID o IMYA|
+|**$...**|array||Lista variable de argumentos de tipo Array similares a **$aData1**|
 ### Ejemplos  
 #### suspención múltiple y basada en el ID o IMYA  
-```php
-#creacion del objeto y conexion a la db
-$conn = $ngl('mysql.test');
-$foo = $ngl('owl.foo');
-$foo->connect($conn);
+``` php
+$conn = $ngl("mysql");
+$foo = $ngl("owl")->load($conn);
 
 #suspención de registro principales
-$foo->select('customers')->suspend(
-    array('id'=>4),
-    array('imya'=>'wdoxbe6a2afqMbc7S0fy2f57hel61ec4')
+$foo->select("customers")->suspend(
+    array("id"=>4),
+    array("imya"=>"wdoxbe6a2afqMbc7S0fy2f57hel61ec4")
 );
 
 #suspención de registro dependientes
-$foo->child('customers_contacts')->suspend(
-    array('imya'=>'J7d66l11xyqk6vB1f691b2bbA5068993'),
-    array('imya'=>'fq6213Xb5qf4c5a286e8rcOacf66b2rc')
+$foo->child("customers_contacts")->suspend(
+    array("imya"=>"J7d66l11xyqk6vB1f691b2bbA5068993"),
+    array("imya"=>"fq6213Xb5qf4c5a286e8rcOacf66b2rc")
 );
 ```
 
@@ -789,36 +704,30 @@ ___
 &nbsp;
 
 ## toggle
-Suspende y/o desuspende uno o mas registros aplicando la misma lógica que el método **nglOwl::update**, con la diferencia de que sólo un campo es actualizado; **state = 0**
-Cuando un registro principal es suspendido, todos sus registros dependientes también lo son.
-Al finalizar se retornará el número de suspensiones ejecutadas exitosamente.
-Un informe del detalle de las suspensiones será almacenado en los atributos **log** y **history**.
-El **ID** de la última suspensión se guardará en el atributo **id**.  
+> Suspende y/o desuspende uno ó más registros aplicando la misma lógica que los métodos [suspend](#suspend) y [unsuspend](#unsuspend)
 
-**[int]** =  *public* function ( *mixed* \$aData1, *array* \$... );  
+**[int]** = *public* function ( *mixed* $aData1, *array* $... );  
 
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
-|**\$aData1**|mixed|null|Selecciona un registro del objeto activo utilizando el propio ID o IMYA|
-|**\$...**|array||Lista variable de argumentos de tipo Array similares a **\$aData1**|
+|**$aData1**|mixed|null|Selecciona un registro del objeto activo utilizando el propio ID o IMYA|
+|**$...**|array||Lista variable de argumentos de tipo Array similares a **$aData1**|
 ### Ejemplos  
 #### campios de estado múltiples y basada en el ID o IMYA  
-```php
-#creacion del objeto y conexion a la db
-$conn = $ngl('mysql.test');
-$foo = $ngl('owl.foo');
-$foo->connect($conn);
+``` php
+$conn = $ngl("mysql");
+$foo = $ngl("owl")->load($conn);
 
 #suspención de registro principales
-$foo->select('customers')->toggle(
-    array('id'=>4),
-    array('imya'=>'wdoxbe6a2afqMbc7S0fy2f57hel61ec4')
+$foo->select("customers")->toggle(
+    array("id"=>4),
+    array("imya"=>"wdoxbe6a2afqMbc7S0fy2f57hel61ec4")
 );
 
 #suspención de registro dependientes
-$foo->child('customers_contacts')->toggle(
-    array('imya'=>'J7d66l11xyqk6vB1f691b2bbA5068993'),
-    array('imya'=>'fq6213Xb5qf4c5a286e8rcOacf66b2rc')
+$foo->child("customers_contacts")->toggle(
+    array("imya"=>"J7d66l11xyqk6vB1f691b2bbA5068993"),
+    array("imya"=>"fq6213Xb5qf4c5a286e8rcOacf66b2rc")
 );
 ```
 
@@ -827,36 +736,33 @@ ___
 &nbsp;
 
 ## unsuspend
-Reactiva registros suspendidos por **nglOwl::suspend**, actualizando **state = 1**
-Cuando un registro principal es reactivado, todos sus registros dependientes también lo son.
-Al finalizar se retornará el número de reactivaciones ejecutadas exitosamente.
-Un informe del detalle de las reactivaciones será almacenado en los atributos **log** y **history**.
-El **ID** de la última reactivación se guardará en el atributo **id**.  
+> Suspende uno ó más registros aplicando la misma lógica que el método [update](#update), con la diferencia de que sólo un campo es actualizado: **state = 1**  
+> Cuando un registro principal es suspendido, todos sus registros dependientes también lo son. Al finalizar se retornará el número de suspensiones ejecutadas exitosamente.  
+> Un informe del detalle de las suspensiones será almacenado en los atributos **attr::log** y **attr::history**.  
+> El **ID** de la última suspensión se guardará en el atributo **id**.   
 
-**[int]** =  *public* function ( *mixed* \$aData1, *array* \$... );  
+**[int]** = *public* function ( *mixed* $aData1, *array* $... );  
 
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
-|**\$aData1**|mixed|null|Selecciona un registro del objeto activo utilizando el propio ID o IMYA|
-|**\$...**|array||Lista variable de argumentos de tipo Array similares a **\$aData1**|
+|**$aData1**|mixed|null|Selecciona un registro del objeto activo utilizando el propio ID o IMYA|
+|**$...**|array||Lista variable de argumentos de tipo Array similares a **$aData1**|
 ### Ejemplos  
 #### reactivación múltiple y basada en el ID o IMYA  
-```php
-#creacion del objeto y conexion a la db
-$conn = $ngl('mysql.test');
-$foo = $ngl('owl.foo');
-$foo->connect($conn);
+``` php
+$conn = $ngl("mysql");
+$foo = $ngl("owl")->load($conn);
 
 #reactivación de registro principales
-$foo->select('customers')->unsuspend(
-    array('id'=>4),
-    array('imya'=>'wdoxbe6a2afqMbc7S0fy2f57hel61ec4')
+$foo->select("customers")->unsuspend(
+    array("id"=>4),
+    array("imya"=>"wdoxbe6a2afqMbc7S0fy2f57hel61ec4")
 );
 
 #reactivación de registro dependientes
-$foo->child('customers_contacts')->unsuspend(
-    array('imya'=>'J7d66l11xyqk6vB1f691b2bbA5068993'),
-    array('imya'=>'fq6213Xb5qf4c5a286e8rcOacf66b2rc')
+$foo->child("customers_contacts")->unsuspend(
+    array("imya"=>"J7d66l11xyqk6vB1f691b2bbA5068993"),
+    array("imya"=>"fq6213Xb5qf4c5a286e8rcOacf66b2rc")
 );
 ```
 
@@ -865,123 +771,355 @@ ___
 &nbsp;
 
 ## update
-Actualiza uno o mas registros en las tablas que componen los objetos. Este método también efectua las actualizaciones en las tablas dependientes (hijos).
-Los datos para la operación podrán ser tomados del atributo **ID** y del argumento **data** o de los valores pasados por medio de los parámetros **\$aData1, ,\$...**
-El o los registros serán identificados en base a su **ID**, **IMYA** y/o al **PID** del objeto padre.
-Al finalizar se retornará el número de actualiciones ejecutadas exitosamente.
-Un informe del detalle de las actualizaciones será almacenado en los atributos **log** y **history**.
-El **ID** de la última actualición se guardará en el atributo **id**.
+> Actualiza uno ó más registros en las tablas que componen los objetos. Este método también efectua las actualizaciones en las tablas dependientes (hijos).  
+> Los datos para la operación podrán ser tomados del atributo **ID** y del argumento **data** o de los valores pasados por medio de los parámetros **$aData1, ,$...**  
+> El o los registros serán identificados en base a su **ID**, **IMYA** y/o al **PID** del objeto padre.  
+> Al finalizar se retornará el número de actualiciones ejecutadas exitosamente.  
+> Un informe del detalle de las actualizaciones será almacenado en los atributos **attr::log** y **attr::history**.  
+> El **ID** de la última actualición se guardará en el atributo **id**.  
+> 
+> **IMPORTANTE** los campos **id**, **imya** y **state** son administrados por el método, por lo que serán ignorados.  
 
-**IMPORTANTE** los campos **id**, **imya** y **state** son administrados por el método, por lo que serán ignorados.  
-
-**[int]** =  *public* function ( *mixed* \$aData1, *array* \$... );  
+**[int]** = *public* function ( *mixed* $aData1, *array* $... );  
 
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
-|**\$aData1**|mixed|array|Objeto o array asociativo con los nombres de las columnas y datos que se usará en los métodos de escritura. Este argumento no es válido para escrituras múltiples|
-|**\$...**|array||Lista variable de argumentos de tipo Array similares a **\$aData1**|
+|**$aData1**|mixed|array|Objeto o array asociativo con los nombres de las columnas y datos que se usará en los métodos de escritura. Este argumento no es válido para escrituras múltiples|
+|**$...**|array||Lista variable de argumentos de tipo Array similares a **$aData1**|
 ### Ejemplos  
 #### por atributo ID  
-```php
-#creacion del objeto y conexion a la db
-$conn = $ngl('mysql.test');
-$foo = $ngl('owl.foo');
-$foo->connect($conn);
+``` php
+$conn = $ngl("mysql");
+$foo = $ngl("owl")->load($conn);
 
 #selección del registro con ID 1
-$foo->select('customers')->id = 1;
+$foo->select("customers")->id(1);
 
 #preparando datos
 $a = array();
-$a['tradename'] = 'hytcom';
-$a['email'] = 'info@hytcom.net'; 
+$a["tradename"] = "abcontenidos";
+$a["email"] = "info@abcontenidos.com"; 
 
 #actualización
 $foo->update($a);
 ```
+
 #### actualización múltiple y basada en el ID o IMYA pasado dentro del grupo de datos  
-```php
+``` php
 #selección del objeto y actualización
-$foo->select('customers')->update(
-    array('id'=>1, 'town'=>2),
-    array('imya'=>'wdoxbe6a2afqMbc7S0fy2f57hel61ec4', 'town'=>2)
+$foo->select("customers")->update(
+    array("id"=>1, "town"=>2),
+    array("imya"=>"wdoxbe6a2afqMbc7S0fy2f57hel61ec4", "town"=>2)
 );
 ```
+
 #### actualización de registros dependientes (hijos)  
-```php
+``` php
 // en un primer paso se debe seleccionar el registro de la tabla principal
 // al cual están asociados los registros dependientes
-$foo->select('customers')->id = 1;
+$foo->select("customers")->id = 1;
 
 // luego se procede a la actualización
-$foo->child('customers_contacts')->update(array('id'=>1, 'firstname'=>'Carlos Alberto'));
+$foo->child("customers_contacts")->update(array("id"=>1, "firstname"=>"Carlos Alberto"));
 
 // modo múltiple 
-$foo->child('customers_contacts')->update(
-    array('id'=>2, 'email'=>'mherrera@hytcom.net'),
-    array('id'=>3, 'email'=>'acastillo@hytcom.net'),
-    array('id'=>4, 'email'=>'jrojas@hytcom.net')
+$foo->child("customers_contacts")->update(
+    array("id"=>2, "email"=>"mherrera@abcontenidos.com"),
+    array("id"=>3, "email"=>"acastillo@abcontenidos.com"),
+    array("id"=>4, "email"=>"jrojas@abcontenidos.com")
 );
 ```
+
 #### todos los Contactos del Cliente con ID 2  
-```php
-$foo->select('customers')->id = 2;
-$foo->child('customers_contacts')->update('town'=>'6');
+``` php
+$foo->select("customers")->id = 2;
+$foo->child("customers_contacts")->update("town"=>"6");
 ```
+
+&nbsp;
+___
+&nbsp;
+
+## upsert
+> Es la combinación de los métodos [insert](#insert) y [update](#update), con la diferencia de que cuando el registro referencia existe es actualizado pero en caso de que no exista es creado.
+
+**[int]** = *public* function ( *mixed* $aData1, *array* $... );  
+
+|Argumento|Tipo|Default|Descripción|
+|---|---|---|---|
+|**$aData1**|mixed|null|Selecciona un registro del objeto activo utilizando el propio ID o IMYA|
+|**$...**|array||Lista variable de argumentos de tipo Array similares a **$aData1**|
+
+## view
+> Retorna las partes SELECT y FROM de la consulta SQL necesaria para generar una VIEW del objeto activo  
+
+**[string]** = *public* function ( *string* $sOutputMode, *string* $sAliasMode, *boolean* $, *mixed* $mChildren, *string* $sColumns );  
+
+|Argumento|Tipo|Default|Descripción|
+|---|---|---|---|
+|**$sOutputMode**|string|*arg::view_mode*|Modo de salida de datos para el método: <ul><li>**jsql** = formato JSON</li><li>**sql** = formato ANSI SQL</li></ul>|
+|**$sAliasMode**|string|*arg::view_alias*|Política utilizada para nombrar los alias, se antepondrá el nombre de la tabla cuando: <ul><li>**all** = en todos los campos de todas las tablas</li><li>**joins** = en todos los campos, salvo en los de la tabla principal</li><li>**auto** = sólo los campos que tengan un duplicado</li><li>**none** = ningun campo</li></ul>|
+|**$bJoins**|boolean|*arg::view_joins*|Activa y desactiva la unión con las tablas relacionadas (no dependientes)|
+|**$mChildren**|mixed|*arg::view_children*|Activa y desactiva la unión con las tablas dependientes|
+|**$sColumns**|string|*arg::view_columns*|Cadena JSQL con los nombres de las columnas que deberá retornar el método. <br />Sintáxis: ["TABLE.COLUMN","ALIAS"]<br />Ej: [["tabla.campo1","foo"], "alias2.campo2", ["campo3","bar"]]|
+
+&nbsp;
+___
+&nbsp;
+
+## viewchildren
+> Retorna las partes SELECT y FROM de la consulta SQL necesaria para generar una VIEW de un hijo del objeto activo  
+
+**[string]** = *public* function ( *string* $sOutputMode, *string* $sAliasMode, *boolean* $bJoins );  
+
+|Argumento|Tipo|Default|Descripción|
+|---|---|---|---|
+|**$sOutputMode**|string|*arg::view_mode*|Modo de salida de datos en el método [view](#view):<ul><li>**jsql** = formato JSON</li><li>**sql** = formato ANSI SQL</li></ul>|
+|**$sAliasMode**|string|*arg::view_alias*|Política utilizada para nombrar los alias en el método [view](#view), se antepondrá el nombre de la tabla cuando:<ul><li>**all** = en todos los campos de todas las tablas</li><li>**joins** = en todos los campos, salvo en los de la tabla principal</li><li>**auto** = sólo los campos que tengan un duplicado</li><li>**none** = ningun campo</li></ul>|
+|**$bJoins**|boolean|*arg::view_joins*|Activa y desactiva la unión con las tablas relacionadas (no dependientes) en el método [view](#view)|
+
+&nbsp;
+___
+&nbsp;
+
+# Internos
+## AlvinInit
+> Verifica el uso de [alvin](https://github.com/arielbottero/wiki/blob/master/nogal/docs/alvin.md) y lo activa en caso de ser requerido
+
+**[boolean]** = *private* function ( );  
+
+&nbsp;
+___
+&nbsp;
+
+## AlvinSQL
+> Modifica las consultas para incorporar las restricciones consignadas en la tabla **__ngl_owl_index__**
+
+**[array]** = *private* function ( *string* $sJSQL, *string* $sAlvinGrant );  
+
+|Argumento|Tipo|Default|Descripción|
+|---|---|---|---|
+|**$sJSQL**|string||Sentencia [jsql](https://github.com/arielbottero/wiki/blob/master/nogal/docs/jsql.md)|
+|**$sAlvinGrant**|string|select|Tipo de permiso que deberá aplicarse, estos pueden ser: <ul><li>**insert** = valor con el cual se marcarán los registros dados de alta por el usuario</li><li>**select** = listado separo por comas, de las marcas que está autorizado a ver el usuario. El asterísco indica acceso a todos los registros</li><li>**update** = listado separo por comas, de las marcas que está autorizado a modificar el usuario. El asterísco indica acceso a todos los registros</li></ul>|
+### Ejemplos  
+#### Formato de permisos **alvin-owl** 
+``` json
+// FORMATO alvin-owl
+{
+    "object_name": {
+        "insert" : "valor unico",
+        "select" : "* + el propio ID de insert",
+        "update" : "valores,separados,por,comas + el propio ID de insert"
+    },
+    
+    "object_name_2": {
+        "insert" : "valor unico",
+        "select" : "valores,separados,por,comas + el propio ID de insert",
+        "update" : "valores,separados,por,comas + el propio ID de insert"
+    }
+}
+
+// Ejemplo:
+{
+    // el usuario marca sus registros con el ID 1
+    // puede ver todos los registros
+    // tiene acceso a modificar sus propios registros y los de los usuarios 2 y 3
+    "sales": {
+        "insert" : "1",
+        "select" : "*",
+        "update" : "1,2,3",
+    },
+
+    // el usuario marca sus registros con el ID 1
+    // puede ver sus propios registros y los de los usuarios 2 y 3
+    // tiene acceso a modificar sólo sus registros
+    "ventas": {
+        "insert" : "1",
+        "select" : "1,2,3",
+        "update" : "1",
+    }
+}
+```
+
+&nbsp;
+___
+&nbsp;
+
+## CrossRows
+> Verifica las referencias de la tabla con el resto de las tablas del objeto y retorna un array informando  
+> - **info** = reporte de relaciones
+> - **cascade** = array bidimensional con los datos de las relaciones en cascada
+>     - **0** = nombre de la tabla relacionada
+>     - **1** = ids de los registros comprometidos separados por coma
+>     - **2** = sentencia JSQL necesaria para eliminar logicamente a los registros comprometidos
+
+**[array]** = *private* function ( *string* $sTable, *string* $sWhere, *array* $aConditions );  
+
+|Argumento|Tipo|Default|Descripción|
+|---|---|---|---|
+|**$sTable**|string||Nombre de la tabla principal|
+|**$sWhere**|string||Condición WHERE que determina el conjunto de resultados sobre el cual se analizará las referencias|
+|**$aConditions**|array||Array de condiciones FROM y WHERE que determina el conjunto de resultados en modo recursivo|
+
+&nbsp;
+___
+&nbsp;
+
+## DeleteInCascade
+> Ejecuta las sentencias de borrado $aCascade y retorna el número de registros borrados  
+
+**[int]** = *private* function ( *mixed* $aCascade );  
+
+|Argumento|Tipo|Default|Descripción|
+|---|---|---|---|
+|**$aCascade**|mixed||Indice **cascade** del resultado arrojado por [CrossRows](#crossrows)|
+
+&nbsp;
+___
+&nbsp;
+
+## GetID
+> Obtiene el ID de un registro (confirmando la existencia del mismo) en base a al propio ID, IMYA ó condicion SQL (en formato array).  
+> Cuando **$mID** es un array se espera: ```array("campo", "signo", "valor")```  
+> Cuando **$sTable** sea distinto de **NULL** el valor retornado será almacenado en el atributo **id**  
+
+**[mixed]** = *private* function ( *mixed* $mID, *string* $sTable );  
+
+|Argumento|Tipo|Default|Descripción|
+|---|---|---|---|
+|**$mID**|mixed||Cadena IMYA, array o número entero|
+|**$sTable**|string|null|Nombre de la tabla en la cual buscar. Cuando el valor es **NULL** se trabajará sobre la tabla principal del objeto activo|
+
+&nbsp;
+___
+&nbsp;
+
+## GetRelationship
+> Obtiene las relaciones JOIN y CHILDREN de un objeto dentro de la estructura
+
+**[array]** = *private* function ( *array* &$aTables, *array* $vObject );  
+
+|Argumento|Tipo|Default|Descripción|
+|---|---|---|---|
+|**$aTables**|array||Array donde se irán guardando las relaciones obtenidas|
+|**$vObject**|array||Array con los datos de la estructura OWL del objeto relacionado|
+
+&nbsp;
+___
+&nbsp;
+
+## GetRelationshipChildren
+> Obtiene las relaciones JOIN y CHILDREN de los objetos dependientes de un objeto dentro de la estructura
+
+**[array]** = *private* function ( *array* &$aTables, *array* $vObject, *string* $sAlias );  
+
+|Argumento|Tipo|Default|Descripción|
+|---|---|---|---|
+|**$aTables**|array||Array donde se irán guardando las relaciones obtenidas|
+|**$vObject**|array||Array con los datos de la estructura OWL del objeto relacionado|
+|**$sAlias**|string|null|Nombre que se le será asigando al objeto relacionado|
+
+&nbsp;
+___
+&nbsp;
+
+## JsonAppener
+> Añade una porsición de código JSQL a otra
+
+**[string]** = *private* function ( *string* $sJSQL, *string* $sExtra );  
+
+|Argumento|Tipo|Default|Descripción|
+|---|---|---|---|
+|**$sJSQL**|string||Cadena JSQL actual|
+|**$sExtra**|string||Nueva porción de código|
+
+&nbsp;
+___
+&nbsp;
+
+## JsqlParser
+> Parsea una cadena JSQL utilizando el método **jsqlParser** del objeto de base de datos
+
+**[string]** = *private* function ( *mixed* $mJSQL, *string* $EOL );  
+
+|Argumento|Tipo|Default|Descripción|
+|---|---|---|---|
+|**$mJSQL**|mixed||Cadena JSQL o Array|
+|**$EOL**|string|null|Caracter utilizado para el fin de línea|
+
+&nbsp;
+___
+&nbsp;
+
+## Logger
+Registra la salida de LOG de un método en los atributos **attr::log** y **attr::history**. Cuando **$sStatus** = NULL se reseteará el valor del atributo **attr::log**  
+
+**[void]** = *private* function ( *string* $sStatus, *string* $aDetails );  
+
+|Argumento|Tipo|Default|Descripción|
+|---|---|---|---|
+|**$sStatus**|string|null|Definición del estado|
+|**$aDetails**|string|array|Detalles de la operación ejecutada|
+
+&nbsp;
+___
+&nbsp;
+
+## OwLog
+Genera un log sobre cada acción de escritura. El mismo es almacenado en la base datos en la tabla `**__ngl_owl_log__**` y pasado al método **nglOwl::Logger**.
+Los datos que conforman el log son:
+- **table** = nombre de la tabla afectada
+- **row** = identificador del registro afectado
+- **user** = id del usuario que ejecutó el cambio (valor **sysvar::UID**)
+- **action** = acción ejecutada: insert, update, suspend o delete
+- **date** = fecha y hora en la que se ejecutó el cambio (formato **Y-m-d H:i:s**)
+- **ip** = dirección IP desde la cual se ejecutó el cambio
+
+**[void]** = *private* function ( *string* $sTable, *int* $nRow, *string* $sAction, *array* $aChangeLog );  
+
+|Argumento|Tipo|Default|Descripción|
+|---|---|---|---|
+|**$sTable**|string||Nombre de la tabla afectada|
+|**$nRow**|int||Identificador del registro afectado|
+|**$sAction**|string||Acción ejecutada: insert, update, suspend o delete|
+|**$aChangeLog**|array|null|Array con los datos del registro previos a la modificación|
 
 &nbsp;
 ___
 &nbsp;
 
 ## UpdateData
-Ejecuta las actualizaciones enviadas por los métodos  
+Ejecuta las actualizaciones enviadas por los métodos:
+- [delete](#delete)
+- [insert](#insert)
+- [suspend](#suspend)
+- [toggle](#toggle)
+- [unsuspend](#unsuspend)
+- [update](#update)
 
-**[int]** =  *private* function ( *mixed* \$aArguments, *int* \$nState );  
+**[int]** = *private* function ( *mixed* $aArguments, *int* $nState );  
 
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
-|**\$aArguments**|mixed|array|Objeto o array asociativo con los nombres de las columnas y datos que se usará en los métodos de escritura. Este argumento no es válido para escrituras múltiples|
-|**\$nState**|int||Estado al que se cambiaran los registros:<ul><li>**0** =  eliminado (en la base de datos setea `state` = NULL)</li><li>**1** =  activo (en la base de datos setea `state` = 1)</li><li>**2** =  suspendido (en la base de datos setea `state` = 0)</li></ul>|
+|**$aArguments**|mixed|array|Objeto o array asociativo con los nombres de las columnas y datos que se usará en los métodos de escritura. Este argumento no es válido para escrituras múltiples|
+|**$nState**|int|1|Estado al que se cambiaran los registros:<ul><li>**0** = eliminado (en la base de datos setea `state` = NULL)</li><li>**1** = activo (en la base de datos setea `state` = 1)</li><li>**2** = suspendido (en la base de datos setea `state` = 0)</li></ul>|
 
 &nbsp;
 ___
 &nbsp;
 
 ## Validate
-Realiza la validación de datos por medio del objeto **nglValidate**  
+Realiza la validación de datos por medio del objeto [validate](https://github.com/arielbottero/wiki/blob/master/nogal/docs/validate.md)
 
-**[array]** =  *private* function ( *array* \$vData, *string* \$sRules );  
-
-|Argumento|Tipo|Default|Descripción|
-|---|---|---|---|
-|**\$vData**|array||Datos a validar|
-|**\$sRules**|string||Conjunto de reglas para la validación|
-
-&nbsp;
-___
-&nbsp;
-
-## view
-Retorna las partes SELECT y FROM de la consulta SQL necesaria para generar una VIEW del objeto activo  
-
- *public* function ( );
-  
-
-&nbsp;
-___
-&nbsp;
-
-## viewChildren
-Retorna las partes SELECT y FROM de la consulta SQL necesaria para generar una VIEW de un hijo del objeto activo  
-
-**[string]** =  *public* function ( *string* \$sOutputMode, *string* \$sAliasMode, *boolean* \$bJoins );  
+**[array]** = *private* function ( *array* $vData, *string* $sRules, *boolean* $bIgnoreDefault);  
 
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
-|**\$sOutputMode**|string|jsql|Modo de salida de datos en el método **nglOwl::view**:<ul><li>**jsql** =  formato JSON</li><li>**sql** =  formato ANSI SQL</li></ul>|
-|**\$sAliasMode**|string|auto|Política utilizada para nombrar los alias en el método **nglOwl::view**, se antepondrá el nombre de la tabla cuando:<ul><li>**all** =  en todos los campos de todas las tablas</li><li>**joins** =  en todos los campos, salvo en los de la tabla principal</li><li>**auto** =  sólo los campos que tengan un duplicado</li><li>**none** =  ningun campo</li></ul>|
-|**\$bJoins**|boolean|true|Activa y desactiva la unión con las tablas relacionadas (no dependientes) en el método **nglOwl::view**|
+|**$vData**|array||Datos a validar|
+|**$sRules**|string||Conjunto de reglas para la validación|
+|**$bIgnoreDefault**|boolean|false|Ignora el los valores por defecto de las reglas; por lo general cuando se trata de una actualización de datos|
 
 &nbsp;
 ___
-&nbsp;
+<sub><b>nogal</b> - <em>the most simple PHP Framework</em></sub><br />
+<sup>&copy; 2018 by <a href="http://hytcom.net/nogal">hytcom.net/nogal</a> - <a href="https://github.com/arielbottero">@arielbottero</a></sup><br />
