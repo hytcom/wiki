@@ -8,7 +8,7 @@ Entre las funciones del objecto se encuentran:
 - validación de datos por medio del objeto [validate](https://github.com/arielbottero/wiki/blob/master/nogal/docs/validate.md)
 - permite añadir, modificar, suspender y eliminar (eliminado lógico) registros
 - eliminación de registros en cascada
-Para ver un ejemplo de uso completo ver la guía [owlm paso a paso](https://github.com/arielbottero/wiki/blob/master/nogal/docs/owluso.md)
+Para ver un ejemplo de uso completo ver la guía [owl paso a paso](https://github.com/arielbottero/wiki/blob/master/nogal/docs/owluso.md)
 
 ## Variables
 |Argumento|Tipo|Descripción|
