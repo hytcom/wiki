@@ -1053,7 +1053,7 @@ ___
 &nbsp;
 
 ## Logger
-Registra la salida de LOG de un método en los atributos **attr::log** y **attr::history**. Cuando **$sStatus** = NULL se reseteará el valor del atributo **attr::log**  
+> Registra la salida de LOG de un método en los atributos **attr::log** y **attr::history**. Cuando **$sStatus** = NULL se reseteará el valor del atributo **attr::log**  
 
 **[void]** = *private* function ( *string* $sStatus, *string* $aDetails );  
 
@@ -1067,14 +1067,14 @@ ___
 &nbsp;
 
 ## OwLog
-Genera un log sobre cada acción de escritura. El mismo es almacenado en la base datos en la tabla `**__ngl_owl_log__**` y pasado al método **nglOwl::Logger**.
-Los datos que conforman el log son:
-- **table** = nombre de la tabla afectada
-- **row** = identificador del registro afectado
-- **user** = id del usuario que ejecutó el cambio (valor **sysvar::UID**)
-- **action** = acción ejecutada: insert, update, suspend o delete
-- **date** = fecha y hora en la que se ejecutó el cambio (formato **Y-m-d H:i:s**)
-- **ip** = dirección IP desde la cual se ejecutó el cambio
+> Genera un log sobre cada acción de escritura. El mismo es almacenado en la base datos en la tabla `**__ngl_owl_log__**` y pasado al método **nglOwl::Logger**.
+> Los datos que conforman el log son:
+> - **table** = nombre de la tabla afectada
+> - **row** = identificador del registro afectado
+> - **user** = id del usuario que ejecutó el cambio (valor **sysvar::UID**)
+> - **action** = acción ejecutada: insert, update, suspend o delete
+> - **date** = fecha y hora en la que se ejecutó el cambio (formato **Y-m-d H:i:s**)
+> - **ip** = dirección IP desde la cual se ejecutó el cambio
 
 **[void]** = *private* function ( *string* $sTable, *int* $nRow, *string* $sAction, *array* $aChangeLog );  
 
@@ -1090,13 +1090,13 @@ ___
 &nbsp;
 
 ## UpdateData
-Ejecuta las actualizaciones enviadas por los métodos:
-- [delete](#delete)
-- [insert](#insert)
-- [suspend](#suspend)
-- [toggle](#toggle)
-- [unsuspend](#unsuspend)
-- [update](#update)
+> Ejecuta las actualizaciones enviadas por los métodos:
+> - [delete](#delete)
+> - [insert](#insert)
+> - [suspend](#suspend)
+> - [toggle](#toggle)
+> - [unsuspend](#unsuspend)
+> - [update](#update)
 
 **[int]** = *private* function ( *mixed* $aArguments, *int* $nState );  
 
@@ -1110,7 +1110,7 @@ ___
 &nbsp;
 
 ## Validate
-Realiza la validación de datos por medio del objeto [validate](validate.md)
+> Realiza la validación de datos por medio del objeto [validate](validate.md)
 
 **[array]** = *private* function ( *array* $vData, *string* $sRules, *boolean* $bIgnoreDefault);  
 
