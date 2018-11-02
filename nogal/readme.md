@@ -1,7 +1,9 @@
 # Nogal
 
 ## Estructura y Sintaxis
-- [constantes](docs/constants.md)
+|Tema|Resumen|
+|---|---|
+|[constantes](docs/constants.md)|<ul><li>[Proyecto](#proyecto)</li><li>[Rutas](#rutas)</li><li>[Seguridad](#seguridad)</li><li>[Errores](#errores)</li><li>[Separadores de Cadenas](#separadores-de-cadenas)</li><li>[Fechas e Idioma](#fechas-e-idioma)</li><li>[Otras](#otras)</li><li>[Opcionales](#opcionales)</li></ul>|
 
 ## **Objetos**
 |Nombre|Descripción|

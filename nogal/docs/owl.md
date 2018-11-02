@@ -5,7 +5,7 @@ Entre las funciones del objecto se encuentran:
 - consulta de un registro en particular
 - administración de objetos depentientes, como por ejemplo los datos una empresa y sus empleados
 - uso de foreignkeys a nivel objeto, sin importar el driver de base de datos
-- validación de datos por medio del objeto [validate](https://github.com/arielbottero/wiki/blob/master/nogal/docs/validate.md)
+- validación de datos por medio del objeto [validate](../validate.md)
 - permite añadir, modificar, suspender y eliminar (eliminado lógico) registros
 - eliminación de registros en cascada
 Para ver un ejemplo de uso completo ver la guía [owl paso a paso](https://github.com/arielbottero/wiki/blob/master/nogal/docs/owluso.md)
