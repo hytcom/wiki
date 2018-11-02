@@ -1,12 +1,12 @@
 # owlm
-Owl Manager es la herramienta para crear y mantener la estructura de base de datos del objeto [owl](https://github.com/arielbottero/wiki/blob/master/nogal/docs/owl.md), en MySQSL.  
-Para ver un ejemplo de uso completo ver la guía [owl paso a paso](https://github.com/arielbottero/wiki/blob/master/nogal/docs/owluso.md)
+Owl Manager es la herramienta para crear y mantener la estructura de base de datos del objeto [owl](owl.md), en MySQSL.  
+Para ver un ejemplo de uso completo ver la guía [owl paso a paso](owluso.md)
 ___
 
 ## Variables
 |Argumento|Tipo|Descripción|
 |---|---|---|
-|**$owl**|private|Objeto [owl](https://github.com/arielbottero/wiki/blob/master/nogal/docs/owl.md)|
+|**$owl**|private|Objeto [owl](owl.md)|
 |**$aTypes**|private|Tipos de campos predefinidos|
 |**$bUpdate**|private|Indicador de modificación|
 |**$aAdd**|private|Array de datos de agregado de la siguiente actualización|
@@ -20,7 +20,7 @@ ___
 |**about**|string|null|Tipo de dato solicitado al método [describe](#describe)|
 |**after**|boolean|true|Nombre del campo después del cual se agregará el nuevo campo. Usar true para agregar al final|
 |**core**|boolean|false|Indica si se deben agregar las sentencias para las creación de las tablas de control en el método [generate](#generate)|
-|**db**|string|null|Objeto [mysql](https://github.com/arielbottero/wiki/blob/master/nogal/docs/mysql.md)|
+|**db**|string|null|Objeto [mysql](mysql.md)|
 |**structure**|string|null|Estructura owl en formato Array o una versión de la misma presente en la tabla **__ngl_sentences__**|
 |**newname**|string|null|Nombre del nuevo objeto|
 |**select**|string|null|Selecciona el objeto como activo|
@@ -339,13 +339,13 @@ ___
 ## load
 > Carga en el objeto la estructura owl sobre la cual se necesita trabajar.  
 > Si el argumento **$mStructure** es NULL, se iniciará una nueva estructura owl.  
-> Si el argumento **$db** es NULL, se intenrará iniciar un objeto [mysql](https://github.com/arielbottero/wiki/blob/master/nogal/docs/mysql.md).
+> Si el argumento **$db** es NULL, se intenrará iniciar un objeto [mysql](mysql.md).
 
 **[$this]** =  *public* function ( *mixed* $mStructure, *object* $db ); 
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**$mStructure**|mixed|*arg::structure*|Estructura owl en formato Array o una versión de la misma presente en la tabla **__ngl_sentences__**|
-|**$db**|object|*arg::db*|Objeto [mysql](https://github.com/arielbottero/wiki/blob/master/nogal/docs/mysql.md)|
+|**$db**|object|*arg::db*|Objeto [mysql](mysql.md)|
 ### Ejemplos
 #### carga de una antigua versión de la estructura
 ```php

@@ -4,14 +4,14 @@ ___
 
 ## Definición de **nut**
 Los **nuts** son clases php cuyo objetivo es agrupar procedimientos que pueden o no invocar a otros objetos del **nogal**. Son las *vistas* del modelo.<br />
-A diferencia de los otros objetos, los **nuts** pueden ser utilizados dentro de las plantillas [rind](https://github.com/arielbottero/wiki/blob/master/nogal/docs/rind.md) como origen de datos.
+A diferencia de los otros objetos, los **nuts** pueden ser utilizados dentro de las plantillas [rind](rind.md) como origen de datos.
 Todos los **nuts** son heredados del objeto principal. La forma de invocar un **nut** es:
 ```php
 $ngl("nut.NOMBRE_DEL_NUT")->run("NOMBRE_DE_METODO", $Array);
 ```
 
 ## Definidos por el Usuario
-El sistema tiene algunos **nuts** genéricos, pero el usuario también puede definir los propios. Para aprender cómo, consultar la guía [Creando NUTS](https://github.com/arielbottero/wiki/blob/master/nogal/docs/nuts.md)
+El sistema tiene algunos **nuts** genéricos, pero el usuario también puede definir los propios. Para aprender cómo, consultar la guía [Creando NUTS](nuts.md)
   
 ## Variables
 |Argumento|Tipo|Descripción|
@@ -29,7 +29,7 @@ El sistema tiene algunos **nuts** genéricos, pero el usuario también puede def
 |[arg](#arg)|Obtiene el valor del obtiene el valor de uno de los índices del array de argumentos|
 |[ifmethod](#ifmethod)|Verifica la existencia de un método dentro de un **nut**|
 |[load](#load)|Carga y retorna un **nut** listo para ser usado|
-|[ngl](#ngl)|Retorna un objeto del framework utilizando el método [root::call](https://github.com/arielbottero/wiki/blob/master/nogal/docs/root.md#call)|
+|[ngl](#ngl)|Retorna un objeto del framework utilizando el método [root::call](root.md#call)|
 |[run](#run)|Ejecuta el método $sMethod del nut|
 |[safemode](#safemode)|Setea y/o retorna el valor de la variable **$bSafemode**|
 |Internos||
@@ -53,7 +53,7 @@ ___
 &nbsp;
 
 ## ngl
-> Retorna un objeto del framework utilizando el método [root::call](https://github.com/arielbottero/wiki/blob/master/nogal/docs/root.md#call)
+> Retorna un objeto del framework utilizando el método [root::call](root.md#call)
 
 **[object]** =  *public* function ( *string* $sObjectName );  
 
@@ -142,7 +142,7 @@ ___
 
 ## safemode
 > Setea y/o retorna el valor de la variable **$bSafemode**
-> Los **nuts** son accesesibles desde las plantillas [rind](https://github.com/arielbottero/wiki/blob/master/nogal/docs/rind.md). Cuando **$bSafemode** = **true** sólo podrán ejecutarse desde las plantillas aquellos métodos declarados en **$safemethods**
+> Los **nuts** son accesesibles desde las plantillas [rind](rind.md). Cuando **$bSafemode** = **true** sólo podrán ejecutarse desde las plantillas aquellos métodos declarados en **$safemethods**
 > Cuando el valor de **$bMode** sea **null** simplemente se retornará el valor actual de la variable.
 
 **[boolean]** =  *public* function ( *boolean* $bMode );  

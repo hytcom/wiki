@@ -1,6 +1,6 @@
 # mysql
 Gestor de conexiones con bases de datos MySQL  
-Las consultas SQL se ejecutan a través del método [query](#query), que en caso de exito retornarán un objeto [mysqlq](https://github.com/arielbottero/wiki/blob/master/nogal/docs/mysqlq.md)
+Las consultas SQL se ejecutan a través del método [query](#query), que en caso de exito retornarán un objeto [mysqlq](mysqlq.md)
 ___
 
 ## Variables
@@ -57,8 +57,8 @@ ___
 |[insert](#insert)|Inserta un nuevo registro en una tabla|
 |[jsqlParser](#jsqlParser)|Convierte una sentencia JSQL y retorna una sentencia SQL|
 |[mexec](#mexec)|Ejecuta varias sentencias SQL separadas por ; y retorna un array de objectos [mysqli_result](http://php.net/mysqli_result)|
-|[mquery](#mquery)|Ejecuta varias sentencias SQL separadas por ; y retorna un array de objectos[nglDBMySQLQuery](https://github.com/arielbottero/wiki/blob/master/nogal/docs/mysqlq.md) o TRUE cuando DO esta activo|
-|[query](#query)|Ejecuta una sentencia SQL y retorna un objecto [nglDBMySQLQuery](https://github.com/arielbottero/wiki/blob/master/nogal/docs/mysqlq.md)|
+|[mquery](#mquery)|Ejecuta varias sentencias SQL separadas por ; y retorna un array de objectos[nglDBMySQLQuery](mysqlq.md) o TRUE cuando DO esta activo|
+|[query](#query)|Ejecuta una sentencia SQL y retorna un objecto [nglDBMySQLQuery](mysqlq.md)|
 |[update](#update)|Actualiza todos los registros que cumplan con la condición $sWhere|
 |Internos||
 |[Error](#Error)|Muestra el mensaje de Error generado por el fallo más reciente|
@@ -239,8 +239,8 @@ ___
 &nbsp;
 
 ## jsqlParser
-> Convierte una cadena JSQL una sentencia SQL utilizando el objeto [jsql](https://github.com/arielbottero/wiki/blob/master/nogal/docs/jsql.md)
-> Este método es utilizado por lo general por otros objetos, como por ejemplo [owl](https://github.com/arielbottero/wiki/blob/master/nogal/docs/owl.md)
+> Convierte una cadena JSQL una sentencia SQL utilizando el objeto [jsql](jsql.md)
+> Este método es utilizado por lo general por otros objetos, como por ejemplo [owl](owl.md)
 
 **[string]** =  *public* function ( *mixed* $mJSQL, *string* $sEOL );  
 

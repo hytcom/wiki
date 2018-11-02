@@ -8,7 +8,7 @@ Entre las funciones del objecto se encuentran:
 - validación de datos por medio del objeto [validate](validate.md)
 - permite añadir, modificar, suspender y eliminar (eliminado lógico) registros
 - eliminación de registros en cascada
-Para ver un ejemplo de uso completo ver la guía [owl paso a paso](https://github.com/arielbottero/wiki/blob/master/nogal/docs/owluso.md)
+Para ver un ejemplo de uso completo ver la guía [owl paso a paso](owluso.md)
 
 ## Variables
 |Argumento|Tipo|Descripción|
@@ -25,7 +25,7 @@ Para ver un ejemplo de uso completo ver la guía [owl paso a paso](https://githu
 ## Argumentos
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
-|**alvin**|boolean|false|Activa y desactiva los chequeos [alvin](https://github.com/arielbottero/wiki/blob/master/nogal/docs/alvin.md)|
+|**alvin**|boolean|false|Activa y desactiva los chequeos [alvin](alvin.md)|
 |**cascade**|boolean|false|Activa y desactiva el borrado en cascada|
 |**child**|string|null|Nombre del Objeto dependiente activo|
 |**data**|mixed|array|Objeto o array asociativo con los nombres de las columnas y datos que se usará en los métodos de escritura. Este argumento no es válido para escrituras múltiples|
@@ -56,7 +56,7 @@ Para ver un ejemplo de uso completo ver la guía [owl paso a paso](https://githu
 |**object_name**|string|Nombre del Objeto activo|
 |**query**|string|Ultima consulta SQL ejecutada|
 |**result**|string|Ultimo resultado SQL ejecutado por get o getall|
-|**validate**|array|Resultado de la última validación por [validate](https://github.com/arielbottero/wiki/blob/master/nogal/docs/validate.md#validate)|
+|**validate**|array|Resultado de la última validación por [validate](validate.md#validate)|
   
 &nbsp;
 
@@ -85,7 +85,7 @@ Para ver un ejemplo de uso completo ver la guía [owl paso a paso](https://githu
 |[view](#view)|Retorna las partes SELECT y FROM de la consulta SQL necesaria para generar una VIEW|
 |[viewChildren](#viewchildren)|Identico a [view](#view) pero en objetos con depentencias|
 |Internos||
-|[AlvinInit](#alvininit)|Verifica el uso de [alvin](https://github.com/arielbottero/wiki/blob/master/nogal/docs/alvin.md) y lo activa en caso de ser requerido|
+|[AlvinInit](#alvininit)|Verifica el uso de [alvin](alvin.md) y lo activa en caso de ser requerido|
 |[AlvinSQL](#alvinsql)|Modifica las consultas para incorporar las restricciones|
 |[CrossRows](#crossrows)|Verifica las referencias de la tabla $sTable con el resto de las tablas del objeto|
 |[DeleteInCascade](#deleteincascade)|Ejecuta las sentencias de borrado y retorna el número de registros eliminados|
@@ -97,7 +97,7 @@ Para ver un ejemplo de uso completo ver la guía [owl paso a paso](https://githu
 |[Logger](#logger)|Registra la salida de LOG de un método en los atributos log y history|
 |[OwLog](#owlog)|Genera un log sobre cada acción de escritura en la tabla **__ngl_owl_log__**|
 |[UpdateData](#updatedata)|Ejecuta las actualizaciones enviadas por los métodos|
-|[Validate](#validate)|Realiza la validación de datos por medio del objeto [validate](https://github.com/arielbottero/wiki/blob/master/nogal/docs/validate.md)|
+|[Validate](#validate)|Realiza la validación de datos por medio del objeto [validate](validate.md)|
   
 &nbsp;
 
@@ -569,7 +569,7 @@ ___
 
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
-|**$sJSQL**|string|null|Sentencia en formato [JSQL]((https://github.com/arielbottero/wiki/blob/master/nogal/docs/jsql.md)|
+|**$sJSQL**|string|null|Sentencia en formato [JSQL]((jsql.md)|
 |**$aArgs**|array|*arg::jsql*|Argumentos pasados al método, que serán traducidos a la sentencia utilizando vsprintf|
 ### Ejemplos  
 #### MySQL  
@@ -885,7 +885,7 @@ ___
 
 # Internos
 ## AlvinInit
-> Verifica el uso de [alvin](https://github.com/arielbottero/wiki/blob/master/nogal/docs/alvin.md) y lo activa en caso de ser requerido
+> Verifica el uso de [alvin](alvin.md) y lo activa en caso de ser requerido
 
 **[boolean]** = *private* function ( );  
 
@@ -900,7 +900,7 @@ ___
 
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
-|**$sJSQL**|string||Sentencia [jsql](https://github.com/arielbottero/wiki/blob/master/nogal/docs/jsql.md)|
+|**$sJSQL**|string||Sentencia [jsql](jsql.md)|
 |**$sAlvinGrant**|string|select|Tipo de permiso que deberá aplicarse, estos pueden ser: <ul><li>**insert** = valor con el cual se marcarán los registros dados de alta por el usuario</li><li>**select** = listado separo por comas, de las marcas que está autorizado a ver el usuario. El asterísco indica acceso a todos los registros</li><li>**update** = listado separo por comas, de las marcas que está autorizado a modificar el usuario. El asterísco indica acceso a todos los registros</li></ul>|
 ### Ejemplos  
 #### Formato de permisos **alvin-owl** 
@@ -1110,7 +1110,7 @@ ___
 &nbsp;
 
 ## Validate
-Realiza la validación de datos por medio del objeto [validate](https://github.com/arielbottero/wiki/blob/master/nogal/docs/validate.md)
+Realiza la validación de datos por medio del objeto [validate](validate.md)
 
 **[array]** = *private* function ( *array* $vData, *string* $sRules, *boolean* $bIgnoreDefault);  
 

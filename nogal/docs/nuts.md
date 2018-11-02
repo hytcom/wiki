@@ -3,8 +3,8 @@
 ___
 
 ## Creando NUTS
-Los [nuts](https://github.com/arielbottero/wiki/blob/master/nogal/docs/nut.md) son clases php cuyo objetivo es agrupar procedimientos que pueden o no invocar a otros objetos del **nogal**<br />
-Estas clases son las *vistas* del modelo, por lo que los **nuts** no deberían incluir operaciones de escritura, para ello están los [tutores](https://github.com/arielbottero/wiki/blob/master/nogal/docs/tutor.md)
+Los [nuts](nut.md) son clases php cuyo objetivo es agrupar procedimientos que pueden o no invocar a otros objetos del **nogal**<br />
+Estas clases son las *vistas* del modelo, por lo que los **nuts** no deberían incluir operaciones de escritura, para ello están los [tutores](tutor.md)
 
 ## Declaración
 Para declarar un **nut** hay que tener presente:
@@ -13,7 +13,7 @@ Para declarar un **nut** hay que tener presente:
 - Los métodos accesibles desde el método [run]() del objeto principal son únicamente los **protected**
 - Al momento de cargar el nut se ejecuta, de existir, el método **init**, utilizado generalmente para configuraciones iniciales
 
-Otro factor a tener en cuenta, es que a diferencia de los otros objetos, los **nuts** pueden ser utilizados dentro de las plantillas [rind](https://github.com/arielbottero/wiki/blob/master/nogal/docs/rind.md) como origen de datos, pero por seguridad sólo pueden ejecutarse los métodos autorizado por medio de [safemethods](https://github.com/arielbottero/wiki/blob/master/nogal/docs/nut.md#safemethods)
+Otro factor a tener en cuenta, es que a diferencia de los otros objetos, los **nuts** pueden ser utilizados dentro de las plantillas [rind](rind.md) como origen de datos, pero por seguridad sólo pueden ejecutarse los métodos autorizado por medio de [safemethods](nut.md#safemethods)
 
 La sintáxsis básica de los **nuts** es:
 

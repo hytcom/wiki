@@ -3,7 +3,7 @@
 ## Estructura y Sintaxis
 |Tema|Resumen|
 |---|---|
-|[constantes](docs/constants.md)|<ul><li>[Proyecto](#proyecto)</li><li>[Rutas](#rutas)</li><li>[Seguridad](#seguridad)</li><li>[Errores](#errores)</li><li>[Separadores de Cadenas](#separadores-de-cadenas)</li><li>[Fechas e Idioma](#fechas-e-idioma)</li><li>[Otras](#otras)</li><li>[Opcionales](#opcionales)</li></ul>|
+|[constantes](docs/constants.md)|<ul><li>[Proyecto](constants.md#proyecto)</li><li>[Rutas](constants.md#rutas)</li><li>[Seguridad](constants.md#seguridad)</li><li>[Errores](constants.md#errores)</li><li>[Separadores de Cadenas](constants.md#separadores-de-cadenas)</li><li>[Fechas e Idioma](constants.md#fechas-e-idioma)</li><li>[Otras](constants.md#otras)</li><li>[Opcionales](constants.md#opcionales)</li></ul>|
 
 ## **Objetos**
 |Nombre|Descripción|

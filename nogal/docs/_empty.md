@@ -25,7 +25,7 @@ ___
 
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
-|**$sGrant**|string||[Cadena de permisos](https://github.com/arielbottero/wiki/blob/master/nogal/docs/alvinuso.md#cadenas-de-permisos) a chequear|
+|**$sGrant**|string||[Cadena de permisos](alvinuso.md#cadenas-de-permisos) a chequear|
 |**$sToken**|string|null|Token del usuario|
 ### Ejemplos
 #### chequea los siguientes permisos sobre el usuario

@@ -1,7 +1,7 @@
 # alvin
 Alvin es el sistema de seguridad de **nogal**, encargado de gestionar permisos, grupos y perfiles de usuario.  
 Mas que un objeto es un concepto que atraviesa transversalmente todo el framework.  
-Para aprender cómo aplicar Alvin, consultar la guía de [Aplicando Alvin](https://github.com/arielbottero/wiki/blob/master/nogal/docs/alvinuso.md)
+Para aprender cómo aplicar Alvin, consultar la guía de [Aplicando Alvin](alvinuso.md)
 ___
 
 ## Variables
@@ -9,7 +9,7 @@ ___
 |---|---|---|
 |**$aToken**|private|Datos con los que se generá el token|
 |**$sEncryptKey**|private|Clave RSA pública/privada utilizada para encriptar/desencritar el token. Por defecto la constante **NGL_ALVIN**|
-|**$crypt**|private|Objecto [crypt](https://github.com/arielbottero/wiki/blob/master/nogal/docs/alvin.md)|
+|**$crypt**|private|Objecto [crypt](alvin.md)|
 |**$vGrants**|public|Estructura de permisos de la cual se desprende el token|
 
 &nbsp;
@@ -20,11 +20,11 @@ ___
 |[analize](#analize)|Chequea uno o más permisos y retorna un array con el resultado de las validaciones|
 |[check](#check)|Chequea uno o más permisos y retorna **true** o **false** según el resultado de las validaciones|
 |[grants](#grants)|Carga en el objeto la estructura de persmisos con la que se generarán los tokens|
-|[keys](#keys)|Retorna el par de claves publica-privada o false, en caso de no existir el objeto [crypt](https://github.com/arielbottero/wiki/blob/master/nogal/docs/crypt.md)|
+|[keys](#keys)|Retorna el par de claves publica-privada o false, en caso de no existir el objeto [crypt](crypt.md)|
 |[load](#load)|Carga el token del usuario en el objeto|
 |[loaded](#loaded)|Verifica si el token del usuario se encuentra cargado correctamente|
 |[password](#password)|Retorna un password SHA512 de 5000 vueltas, basado en **$sPassword** y utilizando como **salt** la clave pública|
-|[raw](#raw)|Retorna el contenido de un [valor crudo](https://github.com/arielbottero/wiki/blob/master/nogal/docs/alvinuso.md#valores-crudos)|
+|[raw](#raw)|Retorna el contenido de un [valor crudo](alvinuso.md#valores-crudos)|
 |[setkey](#setkey)|Setea **$sKey** como clave activa, ya sea pública para leer o privada para generar el token|
 |[token](#token)|Establece los permisos y valores RAW que se utilizarán para generar el token|
 |[unload](#unload)|Desetea el token actual|
@@ -74,7 +74,7 @@ En los ejemplos supondremos la siguiente estructura de permisos
 
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
-|**$sGrant**|string||[Cadena de permisos](https://github.com/arielbottero/wiki/blob/master/nogal/docs/alvinuso.md#cadenas-de-permisos) a chequear|
+|**$sGrant**|string||[Cadena de permisos](alvinuso.md#cadenas-de-permisos) a chequear|
 |**$sToken**|string|null|Token del usuario|
 ### Ejemplos
 #### chequea los siguientes permisos sobre el usuario
@@ -102,7 +102,7 @@ ___
 
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
-|**$sGrant**|string||[Cadena de permisos](https://github.com/arielbottero/wiki/blob/master/nogal/docs/alvinuso.md#cadenas-de-permisos) a chequear|
+|**$sGrant**|string||[Cadena de permisos](alvinuso.md#cadenas-de-permisos) a chequear|
 |**$sToken**|string|null|Token del usuario|
 ### Ejemplos
 #### chequea los siguientes permisos sobre el usuario
@@ -125,14 +125,14 @@ ___
 
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
-|**$aDefinitions**|array||[Estructura de permisos](https://github.com/arielbottero/wiki/blob/master/nogal/docs/alvinuso.md#definir-permisos)|
+|**$aDefinitions**|array||[Estructura de permisos](alvinuso.md#definir-permisos)|
 
 &nbsp;
 ___
 &nbsp;
 
 ## keys
-> Retorna el par de claves publica-privada o false, en caso de no existir el objeto [crypt](https://github.com/arielbottero/wiki/blob/master/nogal/docs/crypt.md)
+> Retorna el par de claves publica-privada o false, en caso de no existir el objeto [crypt](crypt.md)
 
 **[array]** =  *public* function ( );  
 
@@ -212,7 +212,7 @@ ___
 &nbsp;
 
 ## raw
-> Retorna el contenido de un [valor crudo](https://github.com/arielbottero/wiki/blob/master/nogal/docs/alvinuso.md#valores-crudos)  
+> Retorna el contenido de un [valor crudo](alvinuso.md#valores-crudos)  
 > En caso de no especificarse un valor para **$sIndex** retornará el array completo de valores **RAW**
 
 **[mixed]** =  *public* function ( *string* $sIndex, *string* $sToken );  
@@ -248,7 +248,7 @@ ___
 
 ## token
 > Establece los permisos y valores RAW que se utilizarán para generar el token  
-> En cuanto a los permisos, si los mismos están presedidos por un **-** eso indica que es un permiso de exclusión, [ver ejemplo](https://github.com/arielbottero/wiki/blob/master/nogal/docs/alvinuso.md#generar-token)
+> En cuanto a los permisos, si los mismos están presedidos por un **-** eso indica que es un permiso de exclusión, [ver ejemplo](alvinuso.md#generar-token)
 
 **[string]** =  *public* function ( *array* $aProfiles, *array* $aRaw );  
 
@@ -313,7 +313,7 @@ ___
 
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
-|**$sGrant**|string||[Cadena de permisos](https://github.com/arielbottero/wiki/blob/master/nogal/docs/alvinuso.md#cadenas-de-permisos) a chequear|
+|**$sGrant**|string||[Cadena de permisos](alvinuso.md#cadenas-de-permisos) a chequear|
 |**$sToken**|string|null|Token del usuario|
 |**$sMode**|string|single|Determina el tipo de chequeo que se efectuará:<br /><ul><li><b>analize</b> retorna un array con el análisis de los chequeos</li><li><b>any</b> retorna <b>true</b> cuando al menos 1 de los permisos sea positivo</li><li><b>all</b> retorna <b>true</b> cuando todos los permisos sean positivos</li><li><b>none</b> retorna <b>true</b> cuando todos los permisos sean negativos</li></ul>|
 

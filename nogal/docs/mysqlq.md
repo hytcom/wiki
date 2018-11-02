@@ -134,7 +134,7 @@ ___
 > - **nombre_columna** en este caso se retornará un vector númerico donde el valor de cada índice será el valor de la columna.
 > - **#nombre_columna** en este caso se retornará un array multidimensional donde el valor de la columna será utilizado como indice asociativo del primer nivel. En un segundo nivel se agruparan los registros que tengan igual valor en el campo **$sColumn**.
 > - **@nombre_columna** retornará un vector asociativo CLAVE-VALOR. Para ello se explotará el valor de column por una punto y coma (;), el primer indice será utilizado como indice del vector, y el segundo como valor. Si no se encontrase una coma se usará el valor de column para ambas partes. En el caso de que hubiera mas de un valor para un indice, sólo se tendrá en cuenta la primer aparción del mismo.
-> - **Cuando column sea un Array** será utilizado como estructura de agrupamiento de [fn::arrayGroup](https://github.com/arielbottero/wiki/blob/master/nogal/docs/fn.md#arraygroup)
+> - **Cuando column sea un Array** será utilizado como estructura de agrupamiento de [fn::arrayGroup](fn.md#arraygroup)
 > Este método reinicia el conjunto de resultados a la primera fila.  
 
 **[mixed]** =  *public* function ( *string* $mColumn, *string* $sMode, *array* $aGroup );  
@@ -203,7 +203,7 @@ Array (
 );
 ```
 #### agrupado especiales pasando como argumento un array
-Ver [fn::arrayGroup](https://github.com/arielbottero/wiki/blob/master/nogal/docs/fn.md#arraygroup)
+Ver [fn::arrayGroup](fn.md#arraygroup)
 
 &nbsp;
 ___

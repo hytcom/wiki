@@ -10,8 +10,8 @@ Los no instanciables son aquellos que realizan operaciones particulares y concre
 Por el contrario, los componentes instanciables son aquellos que gestionan entidades o grupos de datos, como las conexiones a bases de datos o archivos.  
 
 Un claro ejemplo de esto son los componentes:
-- [files](https://github.com/arielbottero/wiki/blob/master/nogal/docs/files.md) que lista y ejecuta acciones entre archivos
-- [file](https://github.com/arielbottero/wiki/blob/master/nogal/docs/file.md) contiene la información de un archivo específico y ejecuta acciones sobre el mismo
+- [files](files.md) que lista y ejecuta acciones entre archivos
+- [file](file.md) contiene la información de un archivo específico y ejecuta acciones sobre el mismo
 
 &nbsp;
 
@@ -21,7 +21,7 @@ Para llamar a un componente sólo se debe pasar el nombre del mismo como argumen
 ``` php
 $ngl("NOMBRE_COMPONENTE");
 ```
-Cuando no se proporcione un nombre de componente el sistema asumirá que se trata de una llamada al objeto principal o al componente [fn](https://github.com/arielbottero/wiki/blob/master/nogal/docs/fn.md). Para ver una lista de los componentes disponibles podrá ejecutarse: 
+Cuando no se proporcione un nombre de componente el sistema asumirá que se trata de una llamada al objeto principal o al componente [fn](fn.md). Para ver una lista de los componentes disponibles podrá ejecutarse: 
 ``` php
 print_r($ngl()->availables());
 ```

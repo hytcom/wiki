@@ -1,5 +1,5 @@
 # Owlm Paso a Paso
-Tutorial sobre como crear y administra una estrucutra [owl](https://github.com/arielbottero/wiki/blob/master/nogal/docs/owl.md) utilizando el objeto [owlm](https://github.com/arielbottero/wiki/blob/master/nogal/docs/owlm.md)
+Tutorial sobre como crear y administra una estrucutra [owl](owl.md) utilizando el objeto [owlm](owlm.md)
 ___
 
 ## Indice
@@ -28,7 +28,7 @@ Como el objetivo es aprender a usar la herramienta y no ahondar en un análisis 
 &nbsp;
 
 ## Conexión a MySQL
-El primer paso es crear el objeto de gestión de MySQL ([mysql](https://github.com/arielbottero/wiki/blob/master/nogal/docs/mysql.md))
+El primer paso es crear el objeto de gestión de MySQL ([mysql](mysql.md))
 ``` php
 $db = $ngl("mysql");
 $db->args(array(
@@ -42,7 +42,7 @@ $db->args(array(
 &nbsp;
 
 ## Iniciando OWLM
-Iniciamos el objeto [owlm](https://github.com/arielbottero/wiki/blob/master/nogal/docs/owlm.md) con una estructura vacía.
+Iniciamos el objeto [owlm](owlm.md) con una estructura vacía.
 ``` php
 $owlm = $ngl("owlm");
 $owlm->load(null, $db);
