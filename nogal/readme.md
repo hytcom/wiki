@@ -23,7 +23,7 @@
 |[mysql](docs/mysql.md)|Gestor de conexiones con bases de datos MySQL. Las consultas SQL se ejecutan a través del método **query**, que en caso de exito retornarán un objeto [mysqlq](https://github.com/arielbottero/wiki/blob/master/nogal/docs/mysqlq.md)|
 |[mysqlq](docs/mysqlq.md)|Controla los resultados generados por consultas a la bases de datos MySQL.|
 |[nut](docs/nut.md)|Gestor de los **nuts**. Los **nuts** son clases php cuyo objetivo es agrupar procedimientos que pueden o no invocar a otros objetos del **nogal**. Son las *vistas* del modelo. Ver también la guía [NUTS Definidos por el Usuario](https://github.com/arielbottero/wiki/blob/master/nogal/docs/nuts.md)|
-|[owl](docs/owl.md)||
+|[owl](docs/owl.md)|Owl es el ORM de NOGAL y permite ejecutar operaciones sobre distintos objetos de base de datos. Para ver un ejemplo de uso completo ver la guía [owlm paso a paso](https://github.com/arielbottero/wiki/blob/master/nogal/docs/owluso.md)|
 |[owlm](docs/owlm.md)|Owl Manager es la herramienta para crear y mantener la estructura de base de datos del objeto [owl](https://github.com/arielbottero/wiki/blob/master/nogal/docs/owl.md), en MySQSL. Para ver un ejemplo de uso completo ver la guía [owlm paso a paso](https://github.com/arielbottero/wiki/blob/master/nogal/docs/owlmuso.md)|
 |[pdf](docs/pdf.md)||
 |[pdomysql](docs/pdomysql.md)||
