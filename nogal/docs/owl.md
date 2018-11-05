@@ -433,10 +433,10 @@ ___
 ``` php
 $conn = $ngl("mysql");
 $foo = $ngl("owl")->load($conn);
-$get = $foo->select("customers")->getAll("{
+$get = $foo->select("customers")->getAll('{
     "where": [["customers.id","eq","(1)"]], 
     "order": ["customers.tradename:ASC"]
-}");
+}');
 print_r($get->getall());
 ```
 #### Obtener todos los registros Hijos de un ID  
@@ -557,6 +557,12 @@ ___
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**$driver**|object|*arg::db*|Objecto de Base de Datos|
+### Ejemplos  
+#### MySQL  
+``` php
+$conn = $ngl("mysql");
+$foo = $ngl("owl")->load($conn);
+```
 
 &nbsp;
 ___
@@ -578,12 +584,11 @@ $conn = $ngl("mysql");
 $foo = $ngl("owl")->load($conn);
 
 #ejecución
-$bar = $foo->query("{
-        "columns":["id"], 
-        "tables":["customers"], 
-        "where":[["id","eq","(3)"]]
-    }
-);
+$bar = $foo->query('{
+    "columns":["id"], 
+    "tables":["customers"], 
+    "where":[["id","eq","(3)"]]
+}');
 ```
 
 #### SQLite  
@@ -593,12 +598,11 @@ $foo = $ngl("owl");
 $foo->load($conn);
 
 #ejecución
-$bar = $foo->query("{
-        "columns":["id"], 
-        "tables":["customers"], 
-        "where":[["id","eq","(3)"]]
-    }
-);
+$bar = $foo->query('{
+    "columns":["id"], 
+    "tables":["customers"], 
+    "where":[["id","eq","(3)"]]
+}');
 ```
 
 &nbsp;
