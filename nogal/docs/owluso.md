@@ -14,7 +14,7 @@ ___
 	- [Generar Estructura](#generar-estructura)
 	- [Modificando Objetos](#modificando-objetos)
 - [OWL](#owl)
-	- [Conectando](#conectado)
+	- [Conectando](#conectando)
 	- [Selección de Objeto](#seleccion-de-objeto)
 	- [Guardando Datos](#guardando-datos)
 	- [Recuperar Listado](#recuperar-listado)
