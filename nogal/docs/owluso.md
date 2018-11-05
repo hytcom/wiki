@@ -14,6 +14,13 @@ ___
 	- [Generar Estructura](#generar-estructura)
 	- [Modificando Objetos](#modificando-objetos)
 - [OWL](#owl)
+	- [Conectando](#conectado)
+	- [Selección de Objeto](#seleccion-de-objeto)
+	- [Guardando Datos](#guardando-datos)
+	- [Recuperar Listado](#recuperar-listado)
+	- [Recuperar Registro](#recuperar-registro)
+	- [Actualización de Datos](#actualizacion-de-datos)
+	- [Registros Dependientes](#registros-dependientes)
 
 &nbsp;
 
@@ -158,7 +165,112 @@ $owlm
 &nbsp;
 
 ## OWL
+### Conectando
+La carga del objeto [owl](owl.md) es similiar a la del objeto [owlm](owlm.md), la diferencia es que se deberá pasar un único argumento con el conector a la base de datos con la que se trabajará. En este caso, [MySQL](mysql.md).
+``` php
+$db = $ngl("mysql");
+$owl = $ngl("owl")->load($db);
+```
 
+&nbsp;
+
+### Selección de Objeto
+Una vez cargado el **owl** debemos seleccionar el objeto con el cual queremos trabajar, para eso usamos
+``` php
+$db = $ngl("mysql");
+$owl = $ngl("owl")->load($db);
+$owl->select("personal");
+```
+
+&nbsp;
+
+### Guardando Datos
+Una de las maneras de enviar los datos al objeto **owl** es en forma de array asociativo. No siempre hace falta enviar todos los campos del objeto, eso dependerá de la estructura del mismo. Y el array también puede contener datos que el objeto no use, estos serán ignorados.
+``` php
+$db = $ngl("mysql");
+$owl = $ngl("owl")->load($db);
+$owl->select("personal")->insert(array(
+	"nombre" => "Joe",
+	"apellido" => "Smith",
+	"interno" => "245",
+	"correo" => "jsmith@domain.com",
+	"fecha_nacimiento" => "1983-07-14",
+	"hijos" => 1
+));
+```
+
+### Recuperar Listado
+Para recuperar el grupo completo de registros de un objeto basta con ejecutar el método [getall](owl.md#getall). Como este método retorna un objeto del tipo **result** del objeto de base de datos, es necesario ejecutar los métodos **get** ó **getall** de este último para acceder a los datos.
+``` php
+$db = $ngl("mysql");
+$owl = $ngl("owl")->load($db);
+$list = $owl->select("personal")->getall();
+
+if($list->rows()) {
+	while($row = $list->get()) {
+		echo "Nombre: ".$row["nombre"]." ".$row["apellido"]."<br />";
+		echo "e-mail: ".$row["correo"]."<br />";
+		echo "<hr />";
+	}
+}
+```
+
+A la hora de utilizar [getall](owl.md#getall) es posible aplicar un filtro, este deberá estar en formato [jsql](#jsql.md). El siguiente listado muestra a todas las personas nacidas desdes la 1990 agrupadas por la cantidad de hijos que tienen.
+``` php
+$db = $ngl("mysql");
+$owl = $ngl("owl")->load($db);
+$list = $owl->select("personal")->getall('{
+	"where": [
+		["fecha_nacimiento","gteq","(1990-01-01)"]
+	]
+}');
+print_r($list->getall("#hijos"));
+```
+
+### Recuperar Registro
+Para recuperar un registro en particular se utiliza el método [get](#owl.md#get), especificando su **id** o **imya** por el método [id](#owl.md#id) o directamente como primer argumento del método **get**. Este método también retorna un objeto del tipo **result** del objeto de base de datos.
+``` php
+$db = $ngl("mysql");
+$owl = $ngl("owl")->load($db);
+$data = $owl->select("personal")->get("URI75pbceMb7ca85acLD7160Ze40Kb94");
+$reg = $data->get();
+echo "Hola ".$reg["nombre"].", tu correo sigue siendo: ".$reg["correo"]."?";
+```
+
+### Actualización de Datos
+Para actualizar un registro en particular se utiliza el método [update](#owl.md#update), especificando su **id** o **imya** por el método [id](#owl.md#id). Este método espera como argumento uno o mas arrays.
+``` php
+# este ejemplo simula una petición POST
+
+# validación de IMYA
+$imya = $ngl()->imya($_POST["imya"]);
+
+# objeto OWL
+$db = $ngl("mysql");
+$owl = $ngl("owl")->load($db);
+$owl->select("personal")->id($imya);
+
+// actualización
+$data = array();
+$data["correo"] = preg_replace("/[a-z0-9@\_\-\.]/is", "", $_POST["email"]);
+$data["hijos"] = (int)$_POST["children"];
+$owl->update(array("correo"=>"jsmith@mydomain.net"));
+```
+
+### Registros Dependientes
+En este ejemplo vemos como obtener todos las minutas del usuario Joe Smith
+``` php
+# owl
+$db = $ngl("mysql");
+$owl = $ngl("owl")->load($db);
+
+# seleccion del objeto y registro principal
+$owl->select("personal")->id("URI75pbceMb7ca85acLD7160Ze40Kb94");
+
+# obtener todas las minutas del usuario seleccionado
+$data = $owl->child("minutas")->getAll();
+print_r($data->getall());
+```
 
 &nbsp;
 ___
