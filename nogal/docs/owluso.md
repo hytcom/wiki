@@ -198,6 +198,8 @@ $owl->select("personal")->insert(array(
 	"hijos" => 1
 ));
 ```
+  
+&nbsp;
 
 ### Recuperar Listado
 Para recuperar el grupo completo de registros de un objeto basta con ejecutar el método [getall](owl.md#getall). Como este método retorna un objeto del tipo **result** del objeto de base de datos, es necesario ejecutar los métodos **get** ó **getall** de este último para acceder a los datos.
@@ -226,6 +228,8 @@ $list = $owl->select("personal")->getall('{
 }');
 print_r($list->getall("#hijos"));
 ```
+  
+&nbsp;
 
 ### Recuperar Registro
 Para recuperar un registro en particular se utiliza el método [get](#owl.md#get), especificando su **id** o **imya** por el método [id](#owl.md#id) o directamente como primer argumento del método **get**. Este método también retorna un objeto del tipo **result** del objeto de base de datos.
@@ -236,6 +240,8 @@ $data = $owl->select("personal")->get("URI75pbceMb7ca85acLD7160Ze40Kb94");
 $reg = $data->get();
 echo "Hola ".$reg["nombre"].", tu correo sigue siendo: ".$reg["correo"]."?";
 ```
+  
+&nbsp;
 
 ### Actualización de Datos
 Para actualizar un registro en particular se utiliza el método [update](#owl.md#update), especificando su **id** o **imya** por el método [id](#owl.md#id). Este método espera como argumento uno o mas arrays.
@@ -256,6 +262,8 @@ $data["correo"] = preg_replace("/[a-z0-9@\_\-\.]/is", "", $_POST["email"]);
 $data["hijos"] = (int)$_POST["children"];
 $owl->update(array("correo"=>"jsmith@mydomain.net"));
 ```
+  
+&nbsp;
 
 ### Registros Dependientes
 En este ejemplo vemos como obtener todos las minutas del usuario Joe Smith
