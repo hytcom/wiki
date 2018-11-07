@@ -407,14 +407,18 @@ ___
 
 ## alvin
 Ejecuta una evaluación de permisos a traves de la clase **nogal::nglAlvin**
-Cuenta con dos modos de ejecución:<ul><li>Respuesta booleana: para ser utilizado como condición de **RindCommands::ifcase**</li><li>Autoriza contenidos: en caso de una respuesta afirmativa autorizará la carga del contenido encerrado en el bloque</li></ul>En ambos casos, los permisos a ser evaluados deben estar encerrados entre paréntesis y ubicados en la misma línea que el inicio del bloquee **RindCommands::alvin**.  
-Al menos que los permisos a evaluar comiencen con "?|" (sin comillas) **RindCommands::alvin** retornará TRUE sólo si TODOS los permisos son válidos.
-Para cuando se quiera evaluar la inexistencia de uno ó mas permisos se deberá utilizar "!|" (sin comillas)
+Cuenta con dos modos de ejecución:
+- **Respuesta booleana** = para ser utilizado como condición de **RindCommands::ifcase**
+- **Autoriza contenidos** = en caso de una respuesta afirmativa autorizará la carga del contenido encerrado en el bloque
+
+En ambos casos, los permisos a ser evaluados deben estar encerrados entre paréntesis y ubicados en la misma línea que el inicio del bloquee **RindCommands::alvin**. 
+Al menos que los permisos a evaluar comiencen con "?|" (sin comillas) **RindCommands::alvin** retornará TRUE sólo si TODOS los permisos son válidos. 
+Para cuando se quiera evaluar la inexistencia de uno ó mas permisos se deberá utilizar "!|" (sin comillas)  
+- Si la cadena de permisos esta vacia o su sintáxis es incorrecta, comando devolverá **false**
+- Si la cadena de permisos es igual a **true** ó **1**, comando devolverá **true**
 
 Para que **RindCommands::alvin** pueda ejecutarse, el TOKEN de permisos deberá está almacenado en la variable:
-**\$_SESSION[NGL_SESSION_INDEX]["LOGIN"]["ALVIN_TOKEN"]**  
-
-);
+**$_SESSION[NGL_SESSION_INDEX]["LOGIN"]["ALVIN_TOKEN"]**  
   
 ### Ejemplos  
 #### Respuesta Booleana  
@@ -799,13 +803,13 @@ ___
 
 ## incfile
 Incluye un archivo dentro de otro durante el proceso de datos. Este comando es equivalente al **include** de **PHP**.
-A diferencia de **include**, **RindCommands::incfile** trabaja con un array denominado **\$_SET.INCLUDES**, un índice de archivos que evita inclusiones no contempladas por el desarrollador.
+A diferencia de **include**, **RindCommands::incfile** trabaja con un array denominado **$_SET.INCLUDES**, un índice de archivos que evita inclusiones no contempladas por el desarrollador.
 Este array es declarado en el archivo **ngl/conf/rind.conf**  
 
 
 |Parámetro|Descripción|
 |---|---|
-|**content**|ID del archivo a incluir en el indice **\\$_SET.INCLUDES**.|
+|**content**|ID del archivo a incluir en el indice **\$_SET.INCLUDES**.|
 ### Ejemplos  
 #### Inclusion  
 ```php
@@ -915,12 +919,12 @@ Indicadores disponibles en cada vuelta:<ul><li>**data** = datos recogidos en la 
 **{nombre_del_bucle.#indicador} ó {nombre_del_bucle:#indicador}** por ejemplo: **{foobar.#numrow}**  
 
 - forma explícita  
-**{\$_SET.nombre_del_bucle.indicador}** por ejemplo: **{\$_SET.foobar.numrow}**  
+**{$_SET.nombre_del_bucle.indicador}** por ejemplo: **{$_SET.foobar.numrow}**  
 
 
 Sin importar el **type** del bucle, todos los datos almacenados en el índice **data** serán tratados como un array asociativo, y para acceder a ellos en cada vuelta sólo bastará con colocar el nombre del sub-índice entre llaves: **{nombre_subindice}**.
 
-Tambien serán aceptados como formatos de llamada, sobre todo para los casos en los cuales se produzca anidamiento de bucles con nombres de índices iguales:<ul><li>**{nombre_bucle.subindice}**&nbsp;</li><li>**{nombre_bucle:subindice}**&nbsp;</li><li>**{\$_SET.nombre_bucle.data.subindice}**&nbsp;</li><li>**{\$_SET["nombre_bucle"]["data"]["subindice"]}**&nbsp;</li></ul>  
+Tambien serán aceptados como formatos de llamada, sobre todo para los casos en los cuales se produzca anidamiento de bucles con nombres de índices iguales:<ul><li>**{nombre_bucle.subindice}**&nbsp;</li><li>**{nombre_bucle:subindice}**&nbsp;</li><li>**{$_SET.nombre_bucle.data.subindice}**&nbsp;</li><li>**{$_SET["nombre_bucle"]["data"]["subindice"]}**&nbsp;</li></ul>  
 
 
 |Parámetro|Descripción|
@@ -1276,9 +1280,9 @@ ___
 
 ## set
 Este método permite setear variables en el ambito de las plantillas.
-Todos los valores seteados por medio de **RindCommands::set** serán alamcenados como indices de la variable **\$_SET** y podrán ser accedidos utilizando las sintaxis:
-**{\$_SET.name}** o **{\$_SET["name"]}** para variables simples
-**{\$_SET.name.foo.bar}** o **{\$_SET["name"]["foo"]["bar"]}** para arrays
+Todos los valores seteados por medio de **RindCommands::set** serán alamcenados como indices de la variable **$_SET** y podrán ser accedidos utilizando las sintaxis:
+**{$_SET.name}** o **{$_SET["name"]}** para variables simples
+**{$_SET.name.foo.bar}** o **{$_SET["name"]["foo"]["bar"]}** para arrays
 
 Para el caso en que se necesite setear una variable en modo condicional, es decir, que el valor a asignar dependa de tal o cual factor/es, se podrá establecer como **value** el resultado del comando **RindCommands::ifcase** con la opción **setmode** activa. Para mas detalles ver **RindCommands::ifcase**
 Los nombres de variables deberán matchear con el patrón **[a-z0-9_{}%]**, cualquier caracter fuera del patrón será eliminado.
