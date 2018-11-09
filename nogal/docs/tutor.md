@@ -24,10 +24,18 @@ ___
 |Método|Descripción|
 |---|---|
 |[debugging](#debugging)|Indica si el tutor se encuentra en modo **debug**|
-|[load](#load)|Carga un tutor en el |
-|[run](#run)|Chequea uno o más permisos y retorna un array con el resultado de las validaciones|
+|[load](#load)|Carga un tutor en el objeto **tutor** y lo prepara para su ejecución|
+|[run](#run)|Ejecuta un método del tutor cargado|
 |Internos||
-|[MakeGroup](#makegroup)|Auxiliar de [grants](#grants). Crea los grupos y perfiles|
+|[Alvin](#alvin)|Cuando la constante **NGL_ALVIN** se encuentra activa, verifica que la ejecución del tutor se haga desde un usuario logueado|
+|[Debug](#debug)|Genera una salida de datos del tipo **debug**|
+|[Lock](#lock)|Bloquea el tutor para que no pueda ser ejecutado|
+|[Lockable](#lockable)|Define al tutor como **bloqueable** y lo bloquea|
+|[MethodName](#methodname)|Establece el método activo|
+|[Nulls](#nulls)|Utilizando [emptytonull](fn.md#emptytonull), establece como NULL los argumentos pasados por **$aNulls**|
+|[TutorCaller](#tutorcaller)|Evita que un tutor pueda ser ejecutado sin pasar por el objeto **tutor**|
+|[TutorName](#tutorname)|Nombre del tutor activo|
+|[Unlock](#unlock)|Desbloquea el tutor para que no pueda ser ejecutado|
 
 &nbsp;
 
