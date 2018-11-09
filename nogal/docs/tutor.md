@@ -1,9 +1,10 @@
 # tutor
 Los tutores son los encargados de realizar las tareas de *escritura* dentro del sistema, son los controladores del modelo MVC. En en ellos se declaran los procedimientos de escritura en base de datos, administración de archivos, envio de correos, etc.  
-Este objeto no es en sí mismo un tutor, sino que es el padre del cual se desprenden los tutores.  
+Este objeto no es en sí mismo un tutor, sino que es el padre del cual se desprenden los tutores. Todos los tutores declarados por el usuario deben ser un **extends** de este objeto.  
 Los tutores pueden o no ser **bloqueables**, esto significa que sus métodos sólo funcionan cuando previamente se ha ejecutado el método **unlock**, evitando que puedan ser invocados desde la URL sin consentimiento. Luego, el tutor se vuelve a **bloquear** automáticamente.  
 Dentro de los tutores de un proyecto es posible definir un tutor **master**, el cual realiza tareas comunes a más de un tutor, como por ejemplo, enviar e-mails.  
-Cuando se declara un **tutor** se debe tener en cuenta que estos no aceptan métodos que no sean del tipo **protected** o **private**. Cualquier otro tipo de método será ignorado.
+Cuando se declara un **tutor** se debe tener en cuenta que estos no aceptan métodos que no sean del tipo **protected** o **private**. Cualquier otro tipo de método será ignorado.  
+Para aprender como definir un **tutor** consultar la guía [Definiendo Tutores](tutors.md)
 ___
 
 ## Variables
@@ -39,27 +40,63 @@ ___
 
 &nbsp;
 
-## analize
-> Chequea uno o más permisos y retorna un array con el resultado de las validaciones
+## debugging
+> Ni el desarrollador que está haciendo uso del tutor, ni el usuario final, pueden poner a un tutor en modo **debug**, esta facultad sólo la tiene el desarrollador del **tutor** desde adentro del mismo.  
+> Este método indica si el tutor se encuentra o no en modo **debug**. Este dato es útil para manejar la salida de datos del mismo.
 
-**[array]** =  *public* function ( *string* $sGrant, *string* $sToken );  
+**[boolean]** =  *public* function ( );  
+
+### Ejemplos
+#### en caso de debug aborta el script
+```php
+$tutor = $ngl("tutor")->load("personal");
+$response = $tutor->run("update", array(
+	"id"=>"URI75pbceMb7ca85acLD7160Ze40Kb94", "hijos"=>3)
+);
+
+if($tutor->debugging()) { exit($response); }
+```
+
+&nbsp;
+___
+&nbsp;
+
+## load
+> Carga un tutor en el objeto **tutor** y lo prepara para su ejecución.
+
+**[$this]** =  *public* function ( *string* $sTutorName, *mixed* $mArguments );  
 
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
-|**$sGrant**|string||[Cadena de permisos](https://github.com/arielbottero/wiki/blob/master/nogal/docs/alvinuso.md#cadenas-de-permisos) a chequear|
-|**$sToken**|string|null|Token del usuario|
-### Ejemplos
-#### chequea los siguientes permisos sobre el usuario
-```php
-$chks = $alvin->analize("BUYING.DELETE,BUYING.ADD,BUYING.EDIT,USER.EDIT");
-print_r($chks);
+|**$sTutorName**|string||Nombre del tutor|
+|**$mArguments**|mixed|null|Variable pasada al método **init** del tutor cargado|
 
-#retornará
-Array (
-	[BUYING.DELETE] => false
-	[BUYING.ADD] => true
-	[BUYING.EDIT] => true
-	[USER.EDIT] => false
+### Ejemplos
+#### carga de un tutor
+```php
+$tutor = $ngl("tutor")->load("personal");
+```
+
+&nbsp;
+___
+&nbsp;
+
+## run
+> Ejecuta un método del tutor cargado.
+
+**[mixed]** =  *public* function ( *string* $sMethod, *array* $aArguments );  
+
+|Argumento|Tipo|Default|Descripción|
+|---|---|---|---|
+|**$sMethod**|string||Nombre del método que se desea ejecutar del tutor cargado|
+|**$aArguments**|array|null|Argumentos pasados al método|
+
+### Ejemplos
+#### actualizacion de datos
+```php
+$tutor = $ngl("tutor")->load("personal");
+$response = $tutor->run("update", array(
+	"id"=>"URI75pbceMb7ca85acLD7160Ze40Kb94", "hijos"=>3)
 );
 ```
 
@@ -76,6 +113,8 @@ ___
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**$aData**|array||Array de permisos|
+|**$aData**|array||Array de permisos|
+
 
 &nbsp;
 ___
