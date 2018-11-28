@@ -99,22 +99,57 @@ $response = $tutor->run("update", array(
 	"id"=>"URI75pbceMb7ca85acLD7160Ze40Kb94", "hijos"=>3)
 );
 ```
+#### autenticación de usuario
+```php
+$tutor = $ngl("tutor")->load("users");
+$response = $tutor->run("login", array(
+	"username"=>$_POST["user"], "passwrod"=>$_POST["pass"])
+);
+```
 
 &nbsp;
 ___
 &nbsp;
 
 # Internos
-## MakeGroup
-> Auxiliar de [grants](#grants). Crea los grupos y perfiles
+Para una mejor comprensión de estos métodos ver, [Definiendo Tutores](tutors.md)
 
-**[array]** =  *public* function ( *array* $aData, *string* $sType );  
+## Alvin
+> Cuando la constante **NGL_ALVIN** se encuentra activa, verifica que la ejecución del tutor se haga desde un usuario logueado.  
+
+**[$this]** =  *public* function ( );  
+
+&nbsp;
+___
+&nbsp;
+
+## Debug
+> Efectua un DUMP de las variables pasadas, junto con el **REQUEST_METHOD**, el nombre del tutor y el **método** ejecutado.
+
+**[string]** =  *public* function ( *mixed* $mVar1, ..., *mixed* $mVarN );  
 
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
-|**$aData**|array||Array de permisos|
-|**$aData**|array||Array de permisos|
+|**$mVar1**|mixed||Una o mas variables|
 
+&nbsp;
+___
+&nbsp;
+
+## Lock
+> Bloquea el tutor para que no pueda ser ejecutado. Para rehabilitar la ejecución deberá ejecutarse [Unlock](#unlock)  
+
+**[$this]** =  *public* function ( );  
+
+
+
+|[Lock](#lock)||
+|[Lockable](#lockable)|Define al tutor como **bloqueable** y lo bloquea|
+|[MethodName](#methodname)|Establece el método activo|
+|[Nulls](#nulls)|Utilizando [emptytonull](fn.md#emptytonull), establece como NULL los argumentos pasados por **$aNulls**|
+|[TutorCaller](#tutorcaller)|Evita que un tutor pueda ser ejecutado sin pasar por el objeto **tutor**|
+|[TutorName](#tutorname)|Nombre del tutor activo|
+|[Unlock](#unlock)|Desbloquea el tutor para que no pueda ser ejecutado|
 
 &nbsp;
 ___
