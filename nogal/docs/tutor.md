@@ -206,7 +206,7 @@ class tutorName extends nglTutor {
 ___
 &nbsp;
 
-## MethodName
+## TutorName
 > Establece el tutor activo  
 
 **[$this]** =  *public* function ( *string* $sName );  
