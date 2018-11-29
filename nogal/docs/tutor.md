@@ -141,15 +141,88 @@ ___
 
 **[$this]** =  *public* function ( );  
 
+&nbsp;
+___
+&nbsp;
 
+## Lockable
+> Define al tutor como **bloqueable** y lo bloquea. Un tutor bloqueado no permite la ejecución de sus métodos, y como los métodos para bloquear y desbloquer son del tipo **protected**, el único ambiente posible para su uso es el privado. Esto es especialmente útil en tutores que ejecutan acciones importantes como enviar correos, ya que solo puede invocarse al método que realiza en envío desde otro tutor.
 
-|[Lock](#lock)||
-|[Lockable](#lockable)|Define al tutor como **bloqueable** y lo bloquea|
-|[MethodName](#methodname)|Establece el método activo|
-|[Nulls](#nulls)|Utilizando [emptytonull](fn.md#emptytonull), establece como NULL los argumentos pasados por **$aNulls**|
-|[TutorCaller](#tutorcaller)|Evita que un tutor pueda ser ejecutado sin pasar por el objeto **tutor**|
-|[TutorName](#tutorname)|Nombre del tutor activo|
-|[Unlock](#unlock)|Desbloquea el tutor para que no pueda ser ejecutado|
+**[$this]** =  *public* function ( );  
+
+&nbsp;
+___
+&nbsp;
+
+## MethodName
+> Establece el método activo  
+
+**[$this]** =  *public* function ( *string* $sName );  
+
+|Argumento|Tipo|Default|Descripción|
+|---|---|---|---|
+|**$sName**|string||Nombre del método|
+
+&nbsp;
+___
+&nbsp;
+
+## Nulls
+> Utilizando [emptytonull](fn.md#emptytonull), establece como NULL los valores de **$aData**, cuyo indice se encuentre en **$aNulls** y retornen TRUE a la funcion **empty**
+
+**[$this]** =  *public* function ( *array* $aData, *array* $aNulls );  
+
+|Argumento|Tipo|Default|Descripción|
+|---|---|---|---|
+|**$aData**|array||Array de datos|
+|**$aNulls**|array||Array con los nombres de las claves del array $aData|
+
+&nbsp;
+___
+&nbsp;
+
+## TutorCaller
+> Invocarla evita que un tutor pueda ser ejecutado sin pasar por el objeto **tutor**  
+
+**[void]** =  *public* function ( *string* $sCaller );  
+
+|Argumento|Tipo|Default|Descripción|
+|---|---|---|---|
+|**$sCaller**|mixed||**self::requirer()**|
+### Ejemplos
+#### actualizacion de datos
+```php
+namespace nogal;
+$this->TutorCaller(self::requirer());
+
+class tutorName extends nglTutor {
+	.
+	.
+	.
+}
+```
+
+&nbsp;
+___
+&nbsp;
+
+## MethodName
+> Establece el tutor activo  
+
+**[$this]** =  *public* function ( *string* $sName );  
+
+|Argumento|Tipo|Default|Descripción|
+|---|---|---|---|
+|**$sName**|string||Nombre del tutor|
+
+&nbsp;
+___
+&nbsp;
+
+## Unlock
+> Desbloquea el tutor para que pueda ser ejecutado. 
+
+**[$this]** =  *public* function ( );  
 
 &nbsp;
 ___
