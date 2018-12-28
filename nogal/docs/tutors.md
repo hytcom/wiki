@@ -48,7 +48,8 @@ Para invocar a otros objetos de **nogal** dentro del **tutor** se debe utilizar
 ```php
 self::call("OBJETO");
 ```
-Estos objetos se comportarán como si los estuvises ejecutando fuera del **tutor**, por lo que tomarán todas las configuraciones del los archivos *.conf* disponibles
+Estos objetos se comportarán como si los estuvises ejecutando fuera del **tutor**, por lo que tomarán todas las configuraciones del los archivos *.conf* disponibles.  
+
 
 ### Escritura de información de una base de datos utilizando [owl](owl.md)
 ```php

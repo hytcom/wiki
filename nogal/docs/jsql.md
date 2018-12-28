@@ -1,11 +1,69 @@
-# Nogal v1.0
-*the most simple PHP Framework* by hytcom.net
-___
-  
-
 # jsql
-## nglJSQL *extends* nglStd [main] [20160201]
-Métodos auxiliares para el parseo de una cadena JSQL.
+JSQL es una sintáxis que busca estandarizar las consultas SQL en un formato JSON. 
+El objeto **jsql** proporciona un conjunto de métodos que posibilitan el parseo de la cadena JSON. Luego, cada objeto de base de datos deberá contar con un método que interprete esos datos y los traduzca en una sentencia SQL válida para su motor.  
+La estructura del objeto es:
+
+``` json
+{
+	"columns" : [
+		["tabla.campo1", "foo"],
+		["alias2.campo2"],
+		["campo3","bar"]
+	],
+	"tables" : [
+		["tabla"],
+		[
+			"tabla2",
+			"alias2", [
+				["tabla.campo1","eq", "alias2.campo2"],
+				"AND",
+				[
+					["tabla.campo2", "gt", "alias2.campo3"], 
+					"OR",
+					["tabla.campo2", "lt", "alias2.campo4"]
+				],
+				"AND",
+				["tabla.campo3", "like", "(I'm John)"],
+				"AND",
+				["tabla.campo4", "eq", "(2)"]
+			]
+		]
+	],
+	"where" : [
+		["tabla.campo1", "eq", "alias2.campo2"],
+		"AND",
+		[
+			["tabla.campo2", "gt", "alias2.campo3"], 
+			"OR",
+			["tabla.campo2", "lt", "alias2.campo4"]
+		],
+		"AND",
+		["tabla.campo3", "eq", "(string)"],
+		"AND",
+		["tabla.campo4", "like", "(don't)"]
+	],
+	"group" : ["tabla.campo1", "tabla.campo2"],
+	"having" : [
+		["tabla.campo2", "gt", "alias2.campo3"], 
+		"OR",
+		["tabla.campo2", "lt", "alias2.campo4"]
+	],
+	"order" : ["tabla.campo1:ASC", "alias2.campo1:DESC"],
+	"offset" : 0,
+	"limit" : 10
+}
+```
+___
+
+# Métodos
+|Método|Descripción|
+|---|---|
+|[close](#close)|Finaliza la conexión con la base de datos|
+|[connect](#connect)|Establece la conexión con la base de datos utilizando un objeto [mysqli](http://php.net/mysqli)|
+|[destroy](#destroy)|Cierra la conexión y destruye el objeto|
+
+
+
 
 #Estructura JSQL
 <pre>
