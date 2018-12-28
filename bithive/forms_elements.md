@@ -37,14 +37,14 @@
 &nbsp;
 
 ## Conceptos Generales
-### Atributos comunes a todos los Elementos
+### Atributos comunes a todos los Elementos (excepto cols, colsgroup y tabs)
 - **class** = clase css del campo
 - **groupclass** = clase css que se añadirá al *DIV* form-group
 - **labelclass** = clase css que se añadirá al *LABEL* form-label
-- **label** = etiqueta (exepto en el elemento hidden)
+- **label** = etiqueta (excepto en el elemento hidden)
 - **name** = nombre del campo
 - **value** = valor previo del campo (opcionalmente). En el caso de valores multiples (selects, checkboxs y radios), utilizar una cadena de valores separados por ;
-- **notes** = text/html que se colocará despues del campo (exepto hidden)
+- **notes** = text/html que se colocará despues del campo (excepto hidden). Si queremos evitar el salto en blanco dejado por este texto en caso de no usarlo, utilizar la clase **nonote** en el atributo **groupclass**
 - **attribs** = json con atributos extras
 - **disabled** = deshabilita el campo
 - **readonly** = establece el campo como solo lectura
@@ -149,8 +149,7 @@ Para validar un dato contra el servidor, en tiempo real, se pueden utilizar los 
 &nbsp;
 
 # Elementos Básicos
-En la sección **Atributos** de cada elemento enumeran los atributos particulares y opcionales del elemento que se suman a los atributos comunes.
-&nbsp;
+En la sección **Atributos** de cada elemento enumeran los atributos particulares y opcionales del elemento que se suman a los atributos comunes.  
 
 ## attacher
 Zona para drag a drop para adjuntar archivos
@@ -278,6 +277,7 @@ Cada llamada al elemento que contenga unicamente el atributo *colsgroup*, cerrar
 #### opcionales
 - **open** = indica el inicio del grupo, se puede utilizar 1 o true
 - **close** = indica el cierre del grupo, se puede utilizar 1 o true
+- **class** = clase css del grupo
 
 ```json
 El tabulado del ejemplo es unicamente con fines estéticos

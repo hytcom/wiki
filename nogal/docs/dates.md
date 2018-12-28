@@ -213,13 +213,15 @@ ___
 &nbsp;
 
 ## timesdiff
-> Retorna la diferencia, en segundos, entre 2 horas. Cuando la segunda hora sea menor a la primera, el método asume que se trata de 2 días diferentes.
+> Retorna la diferencia, en segundos, entre 2 horas. Cuando la segunda hora sea menor a la primera, el método asume que se trata de 2 días diferentes.  
+> Si *$sTime2* es *NULL* el cálculo se realizará con la hora actual del sistema.
 
-**[float]** =  *public* function ( *float* $nTimeIni );  
+**[int]** =  *public* function ( *string* $sTime1,  *string* $sTime2 );  
 
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**$sTime1**|string||Hora en notación [strtotime](http://php.net/manual/es/datetime.formats.time.php)|
+|**$sTime2**|string|null|Hora en notación [strtotime](http://php.net/manual/es/datetime.formats.time.php)|
 
 &nbsp;
 ___
@@ -229,7 +231,7 @@ ___
 ## CalendarMonth
 > Genera el array bidimensional retornado por el método [calendar](#calendar)
 
-**[float]** =  *public* CalendarMonth ( *int* $nYear, *int* $nMonth, *boolean* $bComplete );  
+**[array]** =  *public* CalendarMonth ( *int* $nYear, *int* $nMonth, *boolean* $bComplete );  
 
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|

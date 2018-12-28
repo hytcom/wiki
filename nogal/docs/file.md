@@ -15,7 +15,7 @@ ___
 |**downname**|string|*attr::basename*|Nombre que se asignará al archivo en caso de download|
 |**filepath**|string||Ruta del archivo o directorio|
 |**length**|int|null|Tamaño máximo en bytes del archivo contemplado para lectura o escritura|
-|**mimetype**|string|text/plain|Formato de archivo|
+|**mimetype**|string|text/plain|Formato del archivo|
 |**outtype**|string|null|Formato de salida para el método view|
 |**reload**|boolean|true|Determina si se aplicará nuevamente el método [load](#load) sobre el archivo para actualizar la información|
 

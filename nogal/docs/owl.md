@@ -866,7 +866,7 @@ ___
 |**$sAliasMode**|string|*arg::view_alias*|Política utilizada para nombrar los alias, se antepondrá el nombre de la tabla cuando: <ul><li>**all** = en todos los campos de todas las tablas</li><li>**joins** = en todos los campos, salvo en los de la tabla principal</li><li>**auto** = sólo los campos que tengan un duplicado</li><li>**none** = ningun campo</li></ul>|
 |**$bJoins**|boolean|*arg::view_joins*|Activa y desactiva la unión con las tablas relacionadas (no dependientes)|
 |**$mChildren**|mixed|*arg::view_children*|Activa y desactiva la unión con las tablas dependientes|
-|**$sColumns**|string|*arg::view_columns*|Cadena JSQL con los nombres de las columnas que deberá retornar el método. <br />Sintáxis: ["TABLE.COLUMN","ALIAS"]<br />Ej: [["tabla.campo1","foo"], "alias2.campo2", ["campo3","bar"]]|
+|**$sColumns**|string|*arg::view_columns*|Cadena JSQL con los nombres de las columnas que deberá retornar el método. <br />Sintáxis: ["TABLE.COLUMN","ALIAS"] o "TABLE.COLUMN"<br />Ej: [["tabla.campo1","foo"], "alias2.campo2", ["campo3","bar"]]|
 
 &nbsp;
 ___
