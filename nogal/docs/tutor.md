@@ -1,10 +1,10 @@
 # tutor
-Los tutores son los encargados de realizar las tareas de *escritura* dentro del sistema, son los controladores del modelo MVC. En en ellos se declaran los procedimientos de escritura en base de datos, administración de archivos, envio de correos, etc.  
+Los tutores son los encargados de realizar las tareas de *escritura* dentro del sistema, son los controladores del modelo. En en ellos se declaran los procedimientos de escritura en base de datos, administración de archivos, envio de correos, etc.  
 Este objeto no es en sí mismo un tutor, sino que es el padre del cual se desprenden los tutores. Todos los tutores declarados por el usuario deben ser un **extends** de este objeto.  
 Los tutores pueden o no ser **bloqueables**, esto significa que sus métodos sólo funcionan cuando previamente se ha ejecutado el método **unlock**, evitando que puedan ser invocados desde la URL sin consentimiento. Luego, el tutor se vuelve a **bloquear** automáticamente.  
 Dentro de los tutores de un proyecto es posible definir un tutor **master**, el cual realiza tareas comunes a más de un tutor, como por ejemplo, enviar e-mails.  
 Cuando se declara un **tutor** se debe tener en cuenta que estos no aceptan métodos que no sean del tipo **protected** o **private**. Cualquier otro tipo de método será ignorado.  
-Para aprender como definir un **tutor** consultar la guía [Definiendo Tutores](tutors.md)
+Para aprender como definir un **tutor** consultar la guía [Declarando Tutores](tutors.md)
 ___
 
 ## Variables
