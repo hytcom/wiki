@@ -1,123 +1,160 @@
 # tutor
-**nuts** definidos por el usuario.
-
-NGL_PATH_TUTORS
+Como ya digimos, los tutores son controlados por el objeto [tutor](tutor.md), pero para que esto funcione debe existir un repositorio de tutores donde el objeto principal vaya a buscarlos.
+Es repositorio puede ser cualquier carpeta dentro del sistema, y su ruta deberá estar definida en la constante **NGL_PATH_TUTORS**
 
 ___
 
-## Creando NUTS
-Los [nuts](nut.md) son clases php cuyo objetivo es agrupar procedimientos que pueden o no invocar a otros objetos del **nogal**<br />
-Estas clases son las *vistas* del modelo, por lo que los **nuts** no deberían incluir operaciones de escritura, para ello están los [tutores](tutor.md)
+## Creando Tutores
+Los **tutores** son clases php cuyo objetivo es controlar la escritura de datos dentro del sistema, ya sea en base de datos, en el sistema de archivo (copiando, modificando y borrando archivos) o enviando correos.<br />
+Estas clases son los *controladores* del modelo, por lo que los **tutores** no deberían incluir operaciones de lectura, para ello están los [nuts](nut.md), más que las necesarias para poder realizar las de escritura.
 
 ## Declaración
-Para declarar un **nut** hay que tener presente:
-- Todos los **nuts** son heredados del objeto principal
-- Los **nuts** admiten únicamente métodos *protected* y *private*. La declaración de un método *public* anula al **nut**
-- Los métodos accesibles desde el método [run]() del objeto principal son únicamente los **protected**
-- Al momento de cargar el nut se ejecuta, de existir, el método **init**, utilizado generalmente para configuraciones iniciales
+Para declarar un **tutor** hay que tener presente:
+- Todos los **tutores** son heredados del objeto principal
+- Los **tutores** admiten únicamente métodos *protected* y *private*. La declaración de un método *public* anula al **tutor**
+- Los métodos accesibles desde el método [run](tutor.md#run) del objeto principal son únicamente los **protected**
+- Al momento de cargar el tutor se ejecuta, de existir, el método **init**, utilizado generalmente para configuraciones iniciales
+- Al comienzo de cada archivo de tutor y antes de la declaración del mismo, se deberá colocar la línea ```php $this->TutorCaller(self::requirer());``` Esto evita que la clase pueda ser incluída por cualquier otro archivo que no sea el objeto principal [tutor](tutor.md).
 
-Otro factor a tener en cuenta, es que a diferencia de los otros objetos, los **nuts** pueden ser utilizados dentro de las plantillas [rind](rind.md) como origen de datos, pero por seguridad sólo pueden ejecutarse los métodos autorizado por medio de [safemethods](nut.md#safemethods)
-
-La sintáxsis básica de los **nuts** es:
+La sintáxsis básica de los **tutores** es:
 
 ```php
 <?php
 
 namespace nogal;
+$this->TutorCaller(self::requirer());
 
-class nutNOMBRE_DEL_NUT extends nglNut {
+class tutorOBJECTNAME extends nglTutor {
 
-	protected function init() {
-		$this->SafeMethods();
+	private $foo;
+	private $bar;
+	
+	protected function init($aArguments=array()) {
+		.
+		.
+		.
 	}
 
-	protected function NOMBRE_DEL_NUT($aArguments) {
+	protected function METODO($aArguments=array()) {
+		.
+		.
+		.
 	}
-	.
-	.
-	.
 }
 ?>
 ```
 
-Para invocar a otros objetos de **nogal** dentro del **nut** se debe utilizar
+Para invocar a otros objetos de **nogal** dentro del **tutor** se debe utilizar
 ```php
-$this->ngl("OBJETO");
+self::call("OBJETO");
 ```
-Estos objetos se comportarán como si los estuvises ejecutando fuera del **nut**, por lo que tomarán todas las configuraciones del los archivos *.conf* disponibles
+Estos objetos se comportarán como si los estuvises ejecutando fuera del **tutor**, por lo que tomarán todas las configuraciones del los archivos *.conf* disponibles
 
-### Lectura de información de una base de datos en forma de Array
+### Escritura de información de una base de datos utilizando [owl](owl.md)
 ```php
 <?php
 
 namespace nogal;
+$this->TutorCaller(self::requirer());
 
-class nutWeb extends nglNut {
+class tutorWeb extends nglTutor {
 
-	protected function subcategorias($aArguments) {
-		$db = $this->ngl("mysql");
-		$nParent = (int)$aArguments["parent"];
-		$data = $db->query("SELECT * FROM `categorias` WHERE `parent`='".$nParent."'");
-		if($data->rows()) {
-			return $data->getall();
-		}
-		return array();
+	private $db;
+	private $owl;
+	
+	protected function init($aArguments=array()) {
+		$this->db = self::call("mysql");
+		$this->owl = self::call("owl");
+		$this->owl->connect($this->db);
+		$this->owl->select("objectname");
+	}
+
+	protected function save($aArguments=array()) {
+		if(!count($aArguments)) { return false; }
+
+		$this->alvin();
+
+		# si desescapamos esta línea el tutor entra en modo debug y retorna el valor de la variable $aArguments
+		# esto es util para verificar que datos le están llegando al método
+		// return $this->debug($aArguments);
+
+		$insert = $this->owl->insert($aArguments);
+		return ($insert!==false) ? $insert : $this->owl->validate;
 	}
 }
-?>
 ```
+
 Ejecución desde PHP
 ```php 
 <?php defined("NGL_SOWED") || exit();
 
-print_r($ngl("nut.web")->run("subcategorias", array("parent"=>2)));
+$tutor = $ngl("tutor")->load("web");
+$response = $tutor->run("save", $_POST);
+
+# si el tutor estuviera en modo debug, esta línea se encargará de mostrar la salida de datos
+if($tutor->debugging()) { exit($response); }
 
 ?>
 ```
 
-### Ejecución desde Rind
-Para ejecutar un método desde las plantillas es necesario que se lo defina como un método seguro
+
+### Envío de correos
 ```php
 <?php
 
 namespace nogal;
+$this->TutorCaller(self::requirer());
 
-class nutWeb extends nglNut {
+class tutorMailer extends nglTutor {
 
-	protected function init() {
-		$this->SafeMethods("ventas");
+	private $mail;
+
+	protected function init($aArguments=array()) {
+		$this->mail = self::call("mail")
+			->server("smtp")
+			->host("tls://smtp.gmail.com")
+			->secure("tls")
+			->port(587)
+			->user("foobar@gmail.com")
+			->pass("YourP@ssw0rd")
+			->charset("iso-8859-1")
+			->connect()
+			->login()
+			->from("Foo Bar<foobar@gmail.com>")
+		;
 	}
 
-	protected function ventas($aArguments) {
-		$db = $this->ngl("mysql");
-		$sTable = preg_replace("/[^a-z0-9_]/i", "", $aArguments["table"]);
-		$aWhere = $db->escape($aArguments["DATA"]);
-		$data = $db->query("
-			SELECT * 
-			FROM `".$sTable."` 
-			WHERE 
-				`sucursal`='".$aWhere["sucursal"]."' AND 
-				`estado`='".$aWhere["estado"]."'
-		");
-		if($data->rows()) {
-			return $data->getall();
-		}
-		return array();
+	protected function send($aArguments=array()) {
+		if(!count($aArguments)) { return false; }
+		$this->alvin();
+
+		if(isset($aArguments["cc"])) { $this->mail->cc($aArguments["cc"]); }
+		$this->mail
+			->subject($aArguments["subject"])
+			->message($aArguments["message"])
+			->send($aArguments["to"])
+		;
+
+		return $this->mail->log;
 	}
 }
-?>
 ```
 
-Llamada desde plantillas. Este ejemplo también usa argumentos del tipo DATA
-```xml 
-<rind:nut.web.ventas>
-	<@tabla>ventas</@tabla>
-	<@data-sucursal>Central</@data-sucursal>
-	<@data-estado>pagada</@data-estado>
-</rind:nut.web.ventas>
+Ejecución desde PHP
+```php 
+<?php defined("NGL_SOWED") || exit();
+
+$tutor = $ngl("tutor")->load("mailer");
+echo $tutor->run("send", array(
+	"subject" => "Prueba",
+	"message" => "Esta es una prueba de correo",
+	"to" => "someguy@gmail.com",
+));
+
+?>
 ```
 
 &nbsp;
 ___
 <sub><b>nogal</b> - <em>the most simple PHP Framework</em></sub><br />
-<sup>&copy; 2018 by <a href="http://hytcom.net/nogal">hytcom.net/nogal</a> - <a href="https://github.com/arielbottero">@arielbottero</a></sup><br />
+<sup>&copy; 2019 by <a href="http://hytcom.net/nogal">hytcom.net/nogal</a> - <a href="https://github.com/arielbottero">@arielbottero</a></sup><br />

@@ -10,7 +10,7 @@ Estas clases son las *vistas* del modelo, por lo que los **nuts** no deberían i
 Para declarar un **nut** hay que tener presente:
 - Todos los **nuts** son heredados del objeto principal
 - Los **nuts** admiten únicamente métodos *protected* y *private*. La declaración de un método *public* anula al **nut**
-- Los métodos accesibles desde el método [run]() del objeto principal son únicamente los **protected**
+- Los métodos accesibles desde el método [run](nut.md#run) del objeto principal son únicamente los **protected**
 - Al momento de cargar el nut se ejecuta, de existir, el método **init**, utilizado generalmente para configuraciones iniciales
 
 Otro factor a tener en cuenta, es que a diferencia de los otros objetos, los **nuts** pueden ser utilizados dentro de las plantillas [rind](rind.md) como origen de datos, pero por seguridad sólo pueden ejecutarse los métodos autorizado por medio de [safemethods](nut.md#safemethods)
@@ -117,4 +117,4 @@ Llamada desde plantillas. Este ejemplo también usa argumentos del tipo DATA
 &nbsp;
 ___
 <sub><b>nogal</b> - <em>the most simple PHP Framework</em></sub><br />
-<sup>&copy; 2018 by <a href="http://hytcom.net/nogal">hytcom.net/nogal</a> - <a href="https://github.com/arielbottero">@arielbottero</a></sup><br />
+<sup>&copy; 2019 by <a href="http://hytcom.net/nogal">hytcom.net/nogal</a> - <a href="https://github.com/arielbottero">@arielbottero</a></sup><br />

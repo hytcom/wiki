@@ -287,4 +287,4 @@ $alvin->raw("403")[$ngl("sysvar")->SELF["url"]];
 &nbsp;
 ___
 <sub><b>nogal</b> - <em>the most simple PHP Framework</em></sub><br />
-<sup>&copy; 2018 by <a href="http://hytcom.net/nogal">hytcom.net/nogal</a> - <a href="https://github.com/arielbottero">@arielbottero</a></sup><br />
+<sup>&copy; 2019 by <a href="http://hytcom.net/nogal">hytcom.net/nogal</a> - <a href="https://github.com/arielbottero">@arielbottero</a></sup><br />
