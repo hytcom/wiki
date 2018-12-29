@@ -59,9 +59,9 @@ Ejemplos basados en MySQL
 
 |JSQL|MySQL|
 |---|---|
-|["tabla.campo", "eq", "tabla2.campo1"]|`tabla`.`campo` = `tabla2`.`campo1`|
-|["tabla.campo1", "gt", "(18)"]|`tabla`.`campo1` > '18'|
-|["tabla.campo2", "like", "(stri%)"]|`tabla`.`campo2` LIKE 'stri%'|
+|["tabla.campo", "eq", "tabla2.campo1"]|\`tabla\`.\`campo\` = \`tabla2\`.\`campo1\`|
+|["tabla.campo1", "gt", "(18)"]|\`tabla\`.\`campo1\` > '18'|
+|["tabla.campo2", "like", "(stri%)"]|\`tabla\`.\`campo2\` LIKE 'stri%'|
 
 ___
 
@@ -81,9 +81,9 @@ ___
 ## column
 > Transforma la representación **JSQL** de una columna y la retorna en formato **SQL**
 > Formatos válidos y sus resultados
-> - **["TABLE.FIELD", "ALIAS"]** => `TABLE`.`FIELD` AS 'ALIAS'
-> - **["TABLE.FIELD"]** => `TABLE`.`FIELD`
-> - **["FIELD","ALIAS"]** => `FIELD` AS 'ALIAS'
+> - **["TABLE.FIELD", "ALIAS"]** => \`TABLE\`.\`FIELD\` AS 'ALIAS'
+> - **["TABLE.FIELD"]** => \`TABLE\`.\`FIELD\`
+> - **["FIELD","ALIAS"]** => \`FIELD\` AS 'ALIAS'
 
 **[string]** =  *public* function ( *string* $mField, *string* $sAliasQuote, *string* $sQuote, *string* $sTableColumnGlue );  
 
@@ -101,8 +101,8 @@ ___
 ## conditions
 > Transforma un array de condiciones **JSQL** en una sentencia **WHERE** o en un grupo de par de valores **SQL SET**
 > Formatos válidos y sus resultados
-> - **["TABLE1.FIELD1", "OPERATOR", "TABLE2.FIELD2"]** => `TABLE1`.`FIELD1` = `TABLE2`.`FIELD2`
-> - **["TABLE1.FIELD1", "OPERATOR", "(STRING VALUE)"]** => `TABLE1`.`FIELD1` LIKE '%foobar%'
+> - **["TABLE1.FIELD1", "OPERATOR", "TABLE2.FIELD2"]** => \`TABLE1\`.\`FIELD1\` = \`TABLE2\`.\`FIELD2\`
+> - **["TABLE1.FIELD1", "OPERATOR", "(STRING VALUE)"]** => \`TABLE1\`.\`FIELD1\` LIKE '%foobar%'
 
 **[string]** =  *public* function ( *array* $aSource, *boolean* $bSetMode );  
 
