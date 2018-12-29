@@ -19,7 +19,7 @@
 |[ftp](docs/ftp.md)||
 |[help](docs/help.md)||
 |[image](docs/image.md)||
-|[jsql](docs/jsql.md)||
+|[jsql](docs/jsql.md)|JSQL es una sintáxis que busca estandarizar las consultas SQL en un formato JSON. El objeto **jsql** proporciona un conjunto de métodos que posibilita el parseo de dichas cadenas.|
 |[mail](docs/mail.md)||
 |[md](docs/md.md)||
 |[mysql](docs/mysql.md)|Gestor de conexiones con bases de datos MySQL. Las consultas SQL se ejecutan a través del método **query**, que en caso de exito retornarán un objeto [mysqlq](docs/mysqlq.md)|
