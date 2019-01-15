@@ -206,7 +206,7 @@ Lista autocompletable de opciones
 ```
 
 **ejecutando un método después de la selección**
-> el método deberá estar previamente declarado y pasado por medio de ```"attribs": {"data-after":"myMethod"}```
+> el método deberá estar previamente declarado y pasado por medio de ```"attribs": {"data-after":"myMethod"}```  
 > al método le serán pasado 2 argumentos, el objeto *autocomplete* y los datos del *item* seleccionado
 
 ```json
