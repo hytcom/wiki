@@ -21,6 +21,7 @@ ___
 |**after**|boolean|true|Nombre del campo después del cual se agregará el nuevo campo. Usar true para agregar al final|
 |**core**|boolean|false|Indica si se deben agregar las sentencias para las creación de las tablas de control en el método [generate](#generate)|
 |**db**|string|null|Objeto [mysql](mysql.md)|
+|**der**|string|null|Determina si el método [describeall](#describeall) debe retornar los datos perparados para generar un DER|
 |**structure**|string|null|Estructura owl en formato Array o una versión de la misma presente en la tabla **__ngl_sentences__**|
 |**newname**|string|null|Nombre del nuevo objeto|
 |**select**|string|null|Selecciona el objeto como activo|
@@ -99,7 +100,6 @@ Cuando se agreguen o modifique campos, los mismos deberán estar definidos segú
 |[describe](#describe)|Retorna los datos estructurales y de relación el objeto activo|
 |[describeall](#describeall)|Retorna la estructura owl completa|
 |[drop](#drop)|Elimina un objeto y todas sus referencias de la estructura|
-|[duplicate](#duplicate)|Duplica un objeto existente|
 |[generate](#generate)|Genera/ejecuta las sentencias SQL para generar impactar la estructura en la base de datos|
 |[load](#load)|Carga en el objeto la estructura owl sobre la cual se necesita trabajar|
 |[join](#join)|Se utiliza para realizar uniones directas entre el objeto actual y una VIEW|
@@ -108,6 +108,7 @@ Cuando se agreguen o modifique campos, los mismos deberán estar definidos segú
 |[rem](#rem)|Elimina uno o más campos del objeto activo|
 |[rename](#rename)|Renombra el objeto actual|
 |[save](#save)|Retorna la estructura owl con sus modificaciones actuales en formato JSON|
+|[twin](#twin)|Duplica un objeto existente|
 |[types](#types)|Lista los tipos de campos predefinidos que pueden ser utilizados en los objetos|
 |[view](#view)|Registra una VIEW en la estructura|
 |Internos||
@@ -282,9 +283,13 @@ ___
 &nbsp;
 
 ## describeall
-> Retorna la estructura owl completa
+> Retorna la estructura owl completa ó o los datos necesarios para generar un DER
 
-**[array]** =  *public* function ( );  
+**[array]** =  *public* function ( *boolean* $bDer );  
+
+|Argumento|Tipo|Default|Descripción|
+|---|---|---|---|
+|**$bDer**|boolean|*arg::der*|Determina si el método debe retornar los datos perparados para generar un DER|
 
 &nbsp;
 ___
@@ -295,30 +300,6 @@ ___
 > **dropped_NOMBRE-OBJETO_FECHA-COMPLETA_ID-UNICO** por ejemplo: **dropped_comercios_20181030_Hdf23rT3** 
 
 **[$this]** =  *public* function ( );  
-
-&nbsp;
-___
-&nbsp;
-
-## duplicate
-> Duplica un objeto existente.
-
-**[$this]** =  *public* function ( *string* $sClone, *string* $sTitle );  
-
-|Argumento|Tipo|Default|Descripción|
-|---|---|---|---|
-|**$sClone**|string|*arg::newname*|Nombre del nuevo objeto|
-|**$sTitle**|string|*arg::title*|Título para el objeto|
-### Ejemplos
-#### duplicando el objeto contactos
-```php
-$my = $ngl("mysql")->connect();
-$owlm = $ngl("owlm");
-$owlm->load("owl", $my)
-	->select("contactos")
-	->duplicate("contactos_proveedores", "Contacto de Proveedores")
-;
-```
 
 &nbsp;
 ___
@@ -464,6 +445,30 @@ ___
 > Retorna la estructura owl con sus modificaciones actuales en formato JSON.
 
 **[string]** =  *public* function ( );  
+
+&nbsp;
+___
+&nbsp;
+
+## twin
+> Duplica un objeto existente.
+
+**[$this]** =  *public* function ( *string* $sTwin, *string* $sTitle );  
+
+|Argumento|Tipo|Default|Descripción|
+|---|---|---|---|
+|**$sTwin**|string|*arg::newname*|Nombre del nuevo objeto|
+|**$sTitle**|string|*arg::title*|Título para el objeto|
+### Ejemplos
+#### duplicando el objeto contactos
+```php
+$my = $ngl("mysql")->connect();
+$owlm = $ngl("owlm");
+$owlm->load("owl", $my)
+	->select("contactos")
+	->clone("contactos_proveedores", "Contacto de Proveedores")
+;
+```
 
 &nbsp;
 ___

@@ -193,7 +193,7 @@ Lista autocompletable de opciones
 	"notes": "Comience a tipear el nombre del barrio"
 }]
 ```
-*con la opción de agregar valores a la lista*
+**con la opción de agregar valores a la lista**
 
 ```json
 ["autocomplete", {
@@ -204,6 +204,27 @@ Lista autocompletable de opciones
 	"addsource": "add.html"
 }]
 ```
+
+**ejecutando un método después de la selección**
+> el método deberá estar previamente declarado y pasado por medio de ```"attribs": {"data-after":"myMethod"}```
+> al método le serán pasado 2 argumentos, el objeto *autocomplete* y los datos del *item* seleccionado
+
+```json
+["autocomplete", {
+	"name": "town",
+	"label": "Barrio",
+	"source": "__knot?imya=uEdVChLkoZkKbHsYQtiiulHQNwnihLxd",
+	"addtext": "Agregar Nuevo Barrio",
+	"addsource": "add.html",
+	"attribs": {"data-after":"myMethod"}
+}]
+```
+``` js
+	function myMethod(a) {
+		console.debug(a);
+	}
+```
+
 &nbsp;
 
 ## break

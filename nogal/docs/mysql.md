@@ -18,11 +18,13 @@ ___
 |**check_colnames**|boolean|true|Activa el chequeo de los nombre de las columnas de la tabla en los métodos [insert](#insert) y [update](#update)|
 |**debug**|boolean|false|Cuando es TRUE los métodos retorna la sentencia SQL en lugar de ejecutarla|
 |**do**|boolean|false|Cuando es TRUE el método query ejecuta la sentencia pero no retorna resultado|
+|**engine**|string|MyISAM|Motor de base de datos utilizado para crear tablas en el método [import](#import)|
 |**error_description**|boolean|false|Ante un error mostrará la descripción del mismo|
 |**error_query**|boolean|false|Ante un error mostrará la consulta que le dió origen|
 |**file**|string|null|Ruta del archivo utilizado en los métodos [import](#import) y [update](#export)|
-|**file_separator**|string|\t|Delimitador de campos en los archivos **file**|
 |**file_eol**|string|\n|Ruta del archivo utilizado en los métodos [import](#import) y [export](#export)|
+|**file_local**|boolean|true|Determina si debe utilizarse la palabra clave **LOCAL** en la sentencia ejecutada por [import](#import)|
+|**file_separator**|string|\t|Delimitador de campos en los archivos **file**|
 |**host**|string|127.0.0.1|Puede ser o un nombre de host o una dirección IP. Pasando el valor NULL o la cadena "localhost" se asumirá el host local|
 |**insert_mode**|string|INSERT|tipo de modo INSERT. Valores admitidos:<ul><li>**INSERT** =  inserta nuevos registros</li><li>**REPLACE** =  si el nuevo registro duplica un valor PRIMARY KEY o UNIQUE, el antiguo registro es eliminado</li><li>**IGNORE** =  el comando no aborta incluso si ocurren errores durante la ejecución</li></ul>|
 |**jsql**|mixed|null|Sentencia SQL en formato JSON o Array:<ul><li>columns</li><li>tables</li><li>where</li><li>group</li><li>having</li><li>order</li><li>offset</li><li>limit</li></ul>|
@@ -177,6 +179,7 @@ ___
 ## import
 > Intenta importar el contenido de un archivo en una tabla utilizando la sentencia **LOAD DATA LOCAL INFILE**
 > A la hora de importar son utilizados los siguientes parámetros:
+> - uso de LOCAL: *arg::file_local*
 > - separador de campos: *arg::file_separator*
 > - separador de registros: *arg::file_eol*
 > - juego de caracteres: *arg::charset*
