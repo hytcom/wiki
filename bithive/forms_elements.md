@@ -220,9 +220,9 @@ Lista autocompletable de opciones
 }]
 ```
 ``` js
-	function myMethod(a) {
-		console.debug(a);
-	}
+function myMethod(a) {
+	console.debug(a);
+}
 ```
 
 &nbsp;
