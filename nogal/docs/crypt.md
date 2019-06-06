@@ -65,7 +65,7 @@ ___
 ### Ejemplos  
 #### AES  
 ```php
-echo $ngl("crypt.")
+echo $ngl("crypt")
     ->key("asd123")
     ->text("hola mundo!")
     ->encrypt()
@@ -73,7 +73,7 @@ echo $ngl("crypt.")
 ```
 #### RSA  
 ```php
-$cr = $ngl("crypt.");
+$cr = $ngl("crypt");
 $keys = $cr->type("rsa")->keys();
 $cr->key($keys["private"])->encrypt("hola mundo!");
 ```

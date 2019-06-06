@@ -207,7 +207,7 @@ Lista autocompletable de opciones
 
 **ejecutando un método después de la selección**
 > el método deberá estar previamente declarado y pasado por medio de ```"attribs": {"data-after":"myMethod"}```  
-> al método le serán pasado 2 argumentos, el objeto *autocomplete* y los datos del *item* seleccionado
+> al método le serán pasado 3 argumentos, el objeto *autocomplete*, los datos del *item* seleccionado y true en caso de ser una carga para edición
 
 ```json
 ["autocomplete", {
@@ -345,6 +345,9 @@ Selector de fecha y/u hora
 	- **data-max** = máximo valor posible, sólo para los tipo *picker*
 - **selector** = selector de rangos de fechas (sólo disponible en **date-range**) Cadena separada por comas, las opciones son:
 	- | = separador
+	- today = hoy
+	- yesterday = ayer
+	- tomorrow = mañana
 	- week = semana actual
 	- month = mes actual
 	- pastWeek = última semana
@@ -555,6 +558,8 @@ Lista desplegable de opciones
 - **attribs**
 	- **multiple** = determina si es un `<select>` de selección multiple, true o false
 	- **size** = cantidad de valores visibles en el select tamaño
+- **prepend** = antepone al campo una caja para código HTML
+- **append** = coloca después al campo una caja para código HTML
 
 ```json
 ["select", {

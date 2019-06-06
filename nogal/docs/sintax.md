@@ -166,7 +166,7 @@ Por otro lado, los atributos son seteados por la clase y son de sólo lectura, c
 			$conf["message"] = "Lorem ipsum dolor sit amet consectetur adipiscing elit";
 			$conf["to"] = "you@yourdomain.com";
 
-			**$ngl**("mail.")
+			**$ngl**("mail")
 				->args($conf)
 				->connect()
 				->login()
@@ -174,7 +174,7 @@ Por otro lado, los atributos son seteados por la clase y son de sólo lectura, c
 		",
 
 		"Como variables del objeto" : "
-			$mail = **$ngl**("mail.");
+			$mail = **$ngl**("mail");
 
 			$mail->server = "smtp";
 			$mail->host = "smtp.gmail.com";
@@ -194,7 +194,7 @@ Por otro lado, los atributos son seteados por la clase y son de sólo lectura, c
 		",
 
 		"Como setters del objeto" : "
-			**$ngl**("mail.")
+			**$ngl**("mail")
 				->server("smtp")
 				->host("smtp.gmail.com")
 				->secure("ssl")

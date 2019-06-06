@@ -27,7 +27,7 @@ ___
 |**select**|string|null|Selecciona el objeto como activo|
 |**type**|mixed|null|Define el tipo de campo que se quiere agregar|
 |**field**|mixed|null|Nombre de un campo o array de nombres|
-|**entity**|string|null|Nombre de un objeto que no es el actual. Es posible especificar un alias utilizando entidad:alias|
+|**entity**|string|null|Nombre de un objeto que no es el actual|
 |**title**|string|null|Define el título de un objeto visible en la interfaz gráfica. Si no se especifica se utilizará como título el nombre del objeto|
 |**fields**|string|null|Array de campos de un nuevo objeto o view|
 |**run**|boolean|false|Indica si el método [generate](#generate) debe ejecutar las sentencias en la base|
@@ -36,7 +36,7 @@ ___
 Cuando se agreguen o modifique campos, los mismos deberán estar definidos según:
 - **type** = Tipo de campo
 	- @NOMBRE_TABLA (para crear una unión PADRE-HIJO con otro objeto)
-	- @NOMBRE_TABLA:ALIAS (para crear una unión con otro objeto)
+	- @NOMBRE_TABLA (para crear una unión con otro objeto)
 	- BIGINT
 	- BINARY
 	- BIT
@@ -128,7 +128,7 @@ Cuando se agreguen o modifique campos, los mismos deberán estar definidos segú
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**$sField**|string|*arg::field*|Nombre del campo. Puede asignarsele un alias separando el mismo por :|
-|**$mType**|mixed|*arg::type*|Define el tipo de campo:  <ul><li>**array** = con los parámetros de la [definición del campo](#definicion-de-campos)</li><li>**string**<ul><li>**cadena** = tipo/alias de un campo [predefinido](#types)</li><li>**@NOMBRE_TABLA:ALIAS**<br />define el campo como *INT UNSIGNED*, crea un índice sobre él y genera una relación con el objeto **NOMBRE_TABLA** aplicando el alias **ALIAS**</li><li>**@TABLA-PADRE**<br />cuando el argumento **$sField** es **pid**, define el campo como INT UNSIGNED, crea un índice sobre él y genera una relación **CHILDREN** con el objeto **TABLA-PADRE**. En este caso el alias de la tabla será: **TABLA-PADRE_OBJETO-ACTUAL**</li></ul></li></ul>|
+|**$mType**|mixed|*arg::type*|Define el tipo de campo:  <ul><li>**array** = con los parámetros de la [definición del campo](#definicion-de-campos)</li><li>**string**<ul><li>**cadena** = tipo/alias de un campo [predefinido](#types)</li><li>**@NOMBRE_TABLA**<br />define el campo como *INT UNSIGNED*, crea un índice sobre él y genera una relación con el objeto **NOMBRE_TABLA**</li><li>**@TABLA-PADRE**<br />cuando el argumento **$sField** es **pid**, define el campo como INT UNSIGNED, crea un índice sobre él y genera una relación **CHILDREN** con el objeto **TABLA-PADRE**. En este caso el alias de la tabla será: **TABLA-PADRE_OBJETO-ACTUAL**</li></ul></li></ul>|
 |**$sAfter**|string|*arg::after*|Nombre del campo después del cual se agregará el nuevo campo. Usar **true** para agregar al final|
 ### Ejemplos
 #### agregando un campo predefinido
@@ -145,7 +145,7 @@ $owlm->add("mascota", array("type"=>"varchar", "length"=>32));
 ```
 #### agregando un campo vinculado a otro objeto
 ```php
-$owlm->add("localidad", "@localidades:contactos_localidades");
+$owlm->add("localidad", "@localidades");
 ```
 #### agregando multiples campos
 ```php
@@ -172,7 +172,7 @@ ___
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**$sField**|string|*arg::field*|Nombre del campo. Puede asignarsele un alias separando el mismo por :|
-|**$mType**|mixed|*arg::type*|Define el tipo de campo: <ul><li>**array** = con los parámetros de la [definición del campo](#definicion-de-campos), completa o referenciando a un campo [predefinido](#types). Puede incluise el nuevo nombre en el índice **name**</li><li>**string**<ul><li>**cadena** = nuevo nombre del campo</li><li>**@NOMBRE_TABLA:ALIAS**<br />define el campo como *INT UNSIGNED*, crea un índice sobre él y genera una relación con el objeto **NOMBRE_TABLA** aplicando el alias **ALIAS**</li><li>**@TABLA-PADRE**<br />cuando el argumento **$sField** es **pid**, define el campo como INT UNSIGNED, crea un índice sobre él y genera una relación **CHILDREN** con el objeto **TABLA-PADRE**. En este caso el alias de la tabla será: **TABLA-PADRE_OBJETO-ACTUAL**</li></ul></li></ul>|
+|**$mType**|mixed|*arg::type*|Define el tipo de campo: <ul><li>**array** = con los parámetros de la [definición del campo](#definicion-de-campos), completa o referenciando a un campo [predefinido](#types). Puede incluise el nuevo nombre en el índice **name**</li><li>**string**<ul><li>**cadena** = nuevo nombre del campo</li><li>**@NOMBRE_TABLA**<br />define el campo como *INT UNSIGNED*, crea un índice sobre él y genera una relación con el objeto **NOMBRE_TABLA**</li><li>**@TABLA-PADRE**<br />cuando el argumento **$sField** es **pid**, define el campo como INT UNSIGNED, crea un índice sobre él y genera una relación **CHILDREN** con el objeto **TABLA-PADRE**. En este caso el alias de la tabla será: **TABLA-PADRE_OBJETO-ACTUAL**</li></ul></li></ul>|
 ### Ejemplos
 #### cambia el nombre de un campo
 ```php
@@ -190,7 +190,7 @@ $owlm->alter("nombre", array("length"=>64));
 ```
 #### cambia un campo VARCHAR a un índice relacionado con otra tabla
 ```php
-$owlm->alter("genero", "@generos:generos_contactos");
+$owlm->alter("genero", "@generos");
 ```
 #### cambia el nombre y tipo de campo
 ```php
@@ -247,7 +247,7 @@ $owlm->create(
 	"contactos",
 	array(
 		array("pid", "@eventos"),
-		array("cargo", "@cargos:responsables_cargos"),
+		array("cargo", "@cargos"),
 		array("nombre", "name"),
 		array("correo", "email")
 	)
@@ -346,7 +346,7 @@ ___
 **[$this]** =  *public* function ( *mixed* $sWith, *object* $sField ); 
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
-|**$sWith**|string|*arg::entity*|Nombre de un objeto que no es el actual. Es posible especificar un alias utilizando entidad:alias|
+|**$sWith**|string|*arg::entity*|Nombre de un objeto que no es el actual|
 |**$sField**|string|*arg::field*|Nombre del campo por el cual se realizará la unión|
 ### Ejemplos
 #### unión contra una VIEW
@@ -355,7 +355,7 @@ $my = $ngl("mysql")->connect();
 $owlm = $ngl("owlm");
 $owlm->load("owl", $my)
 	->select("clientes")
-	->join("view_reporte_ventas:ventas_por_clientes", "cuit")
+	->join("view_reporte_ventas", "cuit")
 ;
 ```
 

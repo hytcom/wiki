@@ -41,7 +41,7 @@ Genera y retorna el puntero de la imagen del código QR
 ### Ejemplos  
 #### impresión de imagen  
 ```php
-$qr = $ngl("qr.");
+$qr = $ngl("qr");
 $qr->args(array("size" => 5, "margin" => 2));
 $ngl("image.code")->load($qr->image("test"))->view();
 ```

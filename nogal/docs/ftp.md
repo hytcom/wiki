@@ -96,7 +96,7 @@ Establece la conexión con el servidor remoto
 ### Ejemplos  
 #### Upload de archivo  
 ```php
-$ftp = $ngl->c("ftp.")->connect("dominio.com")->login("userfoo", "passbar");
+$ftp = $ngl->c("ftp")->connect("dominio.com")->login("userfoo", "passbar");
 $ftp->upload("files/demo.zip", "public_html/zipfiles/demo.zip");
 ```
 
@@ -141,7 +141,7 @@ descarga un archivo o directorio del servidor a la maquina local
 #### Descarga de archivos y directorios  
 ```php
 # conexión
-$ftp = $ngl->c("ftp.")->connect("dominio.com")->login("userfoo", "passbar");
+$ftp = $ngl->c("ftp")->connect("dominio.com")->login("userfoo", "passbar");
 
 # listado de archivos
 $ftp->recursive = true;
@@ -274,7 +274,7 @@ Si el directorio ya existe y el argumento force_create es TRUE, mkdir le agregar
 #### Crea un directorio  
 ```php
 # conexión
-$ftp = $ngl->c("ftp.")->connect("dominio.com")->login("userfoo", "passbar");
+$ftp = $ngl->c("ftp")->connect("dominio.com")->login("userfoo", "passbar");
 
 # listado de archivos
 $ftp->ls_mode = "signed";
@@ -336,7 +336,7 @@ Cambia el nombre de un archivo o directorio
 #### Cambiar nombre de un archivo  
 ```php
 # conexión
-$ftp = $ngl->c("ftp.")->connect("dominio.com")->login("userfoo", "passbar");
+$ftp = $ngl->c("ftp")->connect("dominio.com")->login("userfoo", "passbar");
 
 # listado de archivos
 $ftp->ls_mode = "signed";
@@ -382,7 +382,7 @@ Sube un archivo o directorio al servidor remoto
 ### Ejemplos  
 #### Upload de archivo  
 ```php
-$ftp = $ngl->c("ftp.")->connect("dominio.com")->login("userfoo", "passbar");
+$ftp = $ngl->c("ftp")->connect("dominio.com")->login("userfoo", "passbar");
 $ftp->upload("files/demo.zip", "public_html/zipfiles/demo.zip");
 ```
 

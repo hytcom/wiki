@@ -94,7 +94,7 @@ Exporta el contenido de imagen para ser usado como origen de datos de <img> o cs
 ### Ejemplos  
 #### Uso  
 ```php
-echo "<img src='".$ngl("image.")->load("demo.jpg")->base64()."' />";
+echo "<img src='".$ngl("image")->load("demo.jpg")->base64()."' />";
 ```
 
 &nbsp;
@@ -152,7 +152,7 @@ Redimensiona el lienzo de la imagen
 ### Ejemplos  
 #### Cambio del tamaño del canvas  
 ```php
-$ngl("image.")->load("demo.jpg")->canvas(200,200)->view();
+$ngl("image")->load("demo.jpg")->canvas(200,200)->view();
 ```
 
 &nbsp;
@@ -293,7 +293,7 @@ Si una imagen mide 100px de ancho y se le añaden 10px de margen, el nuevo ancho
 ### Ejemplos  
 #### Margen de 10 pixeles  
 ```php
-$ngl("image.")->load("demo.jpg")->margin(10)->view();
+$ngl("image")->load("demo.jpg")->margin(10)->view();
 ```
 
 &nbsp;
@@ -313,7 +313,7 @@ Si una imagen mide 100px de ancho y se le añaden 10px de padding, el ancho segu
 ### Ejemplos  
 #### Padding de 10 pixeles  
 ```php
-$ngl("image.")->load("demo.jpg")->padding(10)->view();
+$ngl("image")->load("demo.jpg")->padding(10)->view();
 ```
 
 &nbsp;
@@ -356,15 +356,15 @@ Redimensiona una imagen
 ### Ejemplos  
 #### Cambio de alto y ancho  
 ```php
-$ngl("image.")->load("demo.jpg")->resize(800,800)->view();
+$ngl("image")->load("demo.jpg")->resize(800,800)->view();
 ```
 #### Ancho proporcional al alto  
 ```php
-$ngl("image.")->load("demo.jpg")->resize(0,800)->view();
+$ngl("image")->load("demo.jpg")->resize(0,800)->view();
 ```
 #### 300px para el lado mas grande de la imagen  
 ```php
-$ngl("image.")->load("demo.jpg")->resize(300,"max")->view();
+$ngl("image")->load("demo.jpg")->resize(300,"max")->view();
 ```
 
 &nbsp;
@@ -387,12 +387,12 @@ Por ello este método es mas eficiente en el reemplazo de colores plenos en imag
 #### Reemplazo sin tolerancia  
 ```php
 # Reemplaza el blanco pleno por rojo
-$ngl("image.")->load("demo.jpg")->replace("#FFFFFF", "#FF0000", 0)->view();
+$ngl("image")->load("demo.jpg")->replace("#FFFFFF", "#FF0000", 0)->view();
 ```
 #### Reemplazo con tolerancia  
 ```php
 # Reemplaza tonalidades de azul por azul pletno
-$ngl("image.")->load("demo.jpg")->replace("#0000FF", "#0000FF", 50)->view();
+$ngl("image")->load("demo.jpg")->replace("#0000FF", "#0000FF", 50)->view();
 ```
 
 &nbsp;
@@ -417,13 +417,13 @@ Inserta una imagen dentro de otra
 ### Ejemplos  
 #### Imagen vacia con texto  
 ```php
-$img = $ngl("image.");
+$img = $ngl("image");
 $img->text_font = "fonts/roboto.ttf";
 $img->load()->resize(120,40)->text("Foo Bar Text", "#FFFFFF", "bottom left")->view();
 ```
 #### Texto sobre una imagen  
 ```php
-$img = $ngl("image.");
+$img = $ngl("image");
 $img->text_font = "fonts/roboto.ttf";
 $img->load("demo.jpg")->text("www.mydomain.com", "#FFFF00", "bottom right", -10)->view();
 ```
@@ -443,7 +443,7 @@ Exportar la imagen al navegador
 ### Ejemplos  
 #### Salida al navegador  
 ```php
-$ngl("image.")->load("demo.jpg")->view();
+$ngl("image")->load("demo.jpg")->view();
 ```
 
 &nbsp;
@@ -462,7 +462,7 @@ Exportar la imagen a un archivo
 ### Ejemplos  
 #### Generar una miniatura  
 ```php
-$ngl("image.")->load("demo.jpg")->resize(140,"max")->write("images/thumb.jpg");
+$ngl("image")->load("demo.jpg")->resize(140,"max")->write("images/thumb.jpg");
 ```
 
 &nbsp;
