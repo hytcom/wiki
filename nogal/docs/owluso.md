@@ -1,12 +1,12 @@
 # owl Paso a Paso
-Tutorial sobre como crear y administra una estrucutra [owl](owl.md) utilizando el objeto [owlm](owlm.md)
+Tutorial sobre como crear y administra una estrucutra [owl](owl.md) utilizando el objeto [nest](nest.md)
 ___
 
 ## Indice
-- [OWL Manager](#owl-manager)
+- [Nest](#nest)
 	- [Objetivo](#objetivo)
 	- [Conexión a MySQL](#conexion-a-mysql)
-	- [Iniciando OWLM](#iniciando-owlm)
+	- [Iniciando Nest](#iniciando-nest)
 	- [Creando Objetos Predefinidos](#creando-objetos-predefinidos)
 	- [Creando Objetos](#creando-objetos)
 	- [Relaciones](#relaciones)
@@ -24,7 +24,7 @@ ___
 
 &nbsp;
 
-## OWL Manager
+## Nest
 ### Objetivo
 A lo largo de este documento vamos a crear una estructura para un pequeño sistema de reuniones interno. Los objetos que usaremos son:  
 - areas
@@ -51,16 +51,16 @@ $db->args(array(
 
 &nbsp;
 
-### Iniciando OWLM
-Iniciamos el objeto [owlm](owlm.md) con una estructura vacía.
+### Iniciando Nest
+Iniciamos el objeto [nest](nest.md) con una estructura vacía.
 ``` php
-$owlm = $ngl("owlm");
-$owlm->load(null, $db);
+$nest = $ngl("nest");
+$nest->load(null, $db);
 ```
 también podríamos usar
 ```php
-$owlm = $ngl("owlm");
-$owlm->db($db)->load();
+$nest = $ngl("nest");
+$nest->db($db)->load();
 ```
 
 &nbsp;
@@ -68,8 +68,8 @@ $owlm->db($db)->load();
 ### Creando Objetos Predefinidos
 Creamos los objetos **areas** y **estadocivil**, que en nuestro sistema son simplemente listas desplegables
 ``` php 
-$owlm->preset("basic", "areas", "Areas");
-$owlm->preset("basic", "estadocivil", "Estado Civil");
+$nest->preset("basic", "areas", "Areas");
+$nest->preset("basic", "estadocivil", "Estado Civil");
 ```
 
 &nbsp;
@@ -77,7 +77,7 @@ $owlm->preset("basic", "estadocivil", "Estado Civil");
 ### Creando Objetos
 Ahora crearemos los objetos **personal** y **reuniones**
 ``` php 
-$owlm->create("personal", 
+$nest->create("personal", 
 	array(
 		array("nombre", "name"),
 		array("apellido", "name"),
@@ -89,7 +89,7 @@ $owlm->create("personal",
 	"Personal"
 );
 
-$owlm->create("reuniones", 
+$nest->create("reuniones", 
 	array(
 		array("fecha", "date"),
 		array("inicio", "time"),
@@ -107,7 +107,7 @@ $owlm->create("reuniones",
 En este paso relacionaremos los objetos **areas** y **estadocivil** con el objeto **personal**.  
 Para ellos crearemos dos nuevos campos en **personal** y los referenciaremos a los otros objetos. 
 ``` php 
-$owlm->select("personal")
+$nest->select("personal")
 	->add("area", "@areas")
 	->add("estado_civil", "@estadocivil")
 ;
@@ -119,7 +119,7 @@ $owlm->select("personal")
 Sólo nos resta crear el objeto **comentarios**, que dependerá de **reuniones** ya que una reunión podrá ser comentada por muchas personas, para ello hacemos uso del campo **pid** que crea una relación **padre-hijo**.  
 También generaremos la relación **comentario-persona**
 ``` php 
-$owlm->create("comentarios")
+$nest->create("comentarios")
 	array(
 		array("pid", "@reuniones"),
 		array("emisor", "@personal:comentarios_personas"),
@@ -138,10 +138,10 @@ Para ello nos valemos del único argumento que tiene el método:
 - **true** = ejecuta la estructura y retornará la cadena **RUNNED**
 - **false** = retorna la estructura en formato cadena. FALSE es el valor por defecto
 ``` php 
-echo $owlm->generate();
+echo $nest->generate();
 ```
 ``` php 
-echo $owlm->generate(true);
+echo $nest->generate(true);
 ```
 
 &nbsp;
@@ -149,10 +149,10 @@ echo $owlm->generate(true);
 ### Modificando Objetos
 Supongamos que la estructura ya fue ejecutada y cargada en la base de datos. 
 Cuando generamos el objeto **comentarios** escribimos mal el nombre del campo **mensaje**, ahora vamos a corregir eso, vamos a darle mas capacidad de almacenamiento al campo y renombraremos el objeto como **minutas**.  
-Para ello primero debemos recargar la estrucura actual (el registro *owl* de la tabla *__ngl_sentences__*) en un objeto **owlm** nuevo y luego efectuar los cambios.
+Para ello primero debemos recargar la estrucura actual (el registro *owl* de la tabla *__ngl_sentences__*) en un objeto **nest** nuevo y luego efectuar los cambios.
 ``` php 
-$owlm = $ngl("owlm");
-$owlm
+$nest = $ngl("nest");
+$nest
 	->db($db)
 	->load("owl")
 	->select("comentarios")
@@ -166,7 +166,7 @@ $owlm
 
 ## OWL
 ### Conectando
-La carga del objeto [owl](owl.md) es similiar a la del objeto [owlm](owlm.md), la diferencia es que se deberá pasar un único argumento con el conector a la base de datos con la que se trabajará. En este caso, [MySQL](mysql.md).
+La carga del objeto [owl](owl.md) es similiar a la del objeto [nest](nest.md), la diferencia es que se deberá pasar un único argumento con el conector a la base de datos con la que se trabajará. En este caso, [MySQL](mysql.md).
 ``` php
 $db = $ngl("mysql");
 $owl = $ngl("owl")->load($db);

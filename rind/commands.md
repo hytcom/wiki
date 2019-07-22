@@ -407,19 +407,29 @@ ___
 
 ## alvin
 Ejecuta una evaluación de permisos a traves de la clase **nogal::nglAlvin**
-Cuenta con dos modos de ejecución:
+Cuenta con tres modos de ejecución:
 - **Respuesta booleana** = para ser utilizado como condición de **RindCommands::ifcase**
-- **Autoriza contenidos** = en caso de una respuesta afirmativa autorizará la carga del contenido encerrado en el bloque
+- **Autorización contenidos** = en caso de una respuesta afirmativa autorizará la carga del contenido encerrado en el bloque
+- **Retorno de valores RAW** = retorna una cadena o array de valores **RAW**
 
 En ambos casos, los permisos a ser evaluados deben estar encerrados entre paréntesis y ubicados en la misma línea que el inicio del bloquee **RindCommands::alvin**. 
 Al menos que los permisos a evaluar comiencen con "?|" (sin comillas) **RindCommands::alvin** retornará TRUE sólo si TODOS los permisos son válidos. 
 Para cuando se quiera evaluar la inexistencia de uno ó mas permisos se deberá utilizar "!|" (sin comillas)  
-- Si la cadena de permisos esta vacia o su sintáxis es incorrecta, comando devolverá **false**
-- Si la cadena de permisos es igual a **true** ó **1**, comando devolverá **true**
+- Si la cadena de permisos esta vacia o su sintáxis es incorrecta, el comando devolverá **false**
+- Si la cadena de permisos es igual a **true** ó **1**, el comando devolverá **true**
+- Si la cadena de permisos es igual a **RAW**, el comando retornará un valor RAW valiendose de los parámetros en **rawindex** y **rawdada**. Si los valores **RAW** tuvieran palabras claves con el formato **{:keyword:}**, estas serán reemplazadas con los valores pasados por medio de **rawdata**.
 
 Para que **RindCommands::alvin** pueda ejecutarse, el TOKEN de permisos deberá está almacenado en la variable:
 **$_SESSION[NGL_SESSION_INDEX]["LOGIN"]["ALVIN_TOKEN"]**  
-  
+
+
+|Parámetro|Descripción|
+|---|---|
+|**content**|Cadena de permisos a evaluar.|
+|**rawindex**|Cadena de indices RAW; si esta contiene . (puntos), será explotada por ellos y se navegará el resultado en los indices de **RAW** hasta retornar y valor. Si no se especificase un valor para **rawindex**, se retornará el array completo de valores **RAW**|
+|**rawdata**|Valores en formato *JSON* con los que se reemplazarán las palabras claves de los valores retornados.|
+
+
 ### Ejemplos  
 #### Respuesta Booleana  
 ```php
@@ -447,6 +457,29 @@ Para que **RindCommands::alvin** pueda ejecutarse, el TOKEN de permisos deberá 
     <@then>PUEDE VERME</@then>
     <@else>NO PUEDE VERME</@else>
 </rind:ifcase>
+```
+
+```php
+/* array de valores RAW */
+<rind:set>
+	<@name>raw</@name>
+	<@value><rind:alvin>RAW</rind:alvin></@value>
+</rind:set>
+<rind:dump>{$_SET.raw}</rind:dump>
+```
+
+```php
+/* valor RAW con reemplazo de keyword */
+<rind:set>
+	<@name>filter</@name>
+	<@value>
+		<rind:alvin>
+			<@content>RAW</@content>
+			<@rawindex>jsql.empleados</@rawindex>
+			<@rawdata json>{"userid":"{$ENV.alvin.id}"}</@rawdata>
+		</rind:alvin>
+	</@value>
+</rind:set>
 ```
 
 #### Autoriza contenidos  

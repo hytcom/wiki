@@ -1,5 +1,5 @@
-# owlm
-Owl Manager es la herramienta para crear y mantener la estructura de base de datos del objeto [owl](owl.md), en MySQSL.  
+# nest
+Nest es la herramienta para crear y mantener la estructura de base de datos del objeto [owl](owl.md), en MySQSL.  
 Para ver un ejemplo de uso completo ver la guía [owl paso a paso](owluso.md)
 ___
 
@@ -134,26 +134,26 @@ Cuando se agreguen o modifique campos, los mismos deberán estar definidos segú
 #### agregando un campo predefinido
 ```php
 $my = $ngl("mysql")->connect();
-$owlm = $ngl("owlm")->db($my);
-$owlm->load("owl");
-$owlm->select("contactos");
-$owlm->add("direccion", "address");
+$nest = $ngl("nest")->db($my);
+$nest->load("owl");
+$nest->select("contactos");
+$nest->add("direccion", "address");
 ```
 #### agregando un campo tipo VARCHAR(32)
 ```php
-$owlm->add("mascota", array("type"=>"varchar", "length"=>32));
+$nest->add("mascota", array("type"=>"varchar", "length"=>32));
 ```
 #### agregando un campo vinculado a otro objeto
 ```php
-$owlm->add("localidad", "@localidades");
+$nest->add("localidad", "@localidades");
 ```
 #### agregando multiples campos
 ```php
 $my = $ngl("mysql")->connect();
-$owlm = $ngl("owlm")->db($my);
-$owlm->load("owl");
-$owlm->select("clientes");
-$owlm->add(array(
+$nest = $ngl("nest")->db($my);
+$nest->load("owl");
+$nest->select("clientes");
+$nest->add(array(
 	array("fecha_alta", "date"),
 	array("email_alternativo", "email"),
 	array("responsable_compras", array("type"=>"varchar", "length"=>64))
@@ -177,24 +177,24 @@ ___
 #### cambia el nombre de un campo
 ```php
 $my = $ngl("mysql")->connect();
-$owlm = $ngl("owlm")->db($my);
-$owlm->load("owl");
-$owlm->select("contactos");
-$owlm->alter("direccion", "direccion_comercial");
+$nest = $ngl("nest")->db($my);
+$nest->load("owl");
+$nest->select("contactos");
+$nest->alter("direccion", "direccion_comercial");
 ```
 #### cambia el largo de un campo
 ```php
 # supongamos que el campo nombre tiene 32 caracteres de largo
 # y lo quereos extender a 64
-$owlm->alter("nombre", array("length"=>64));
+$nest->alter("nombre", array("length"=>64));
 ```
 #### cambia un campo VARCHAR a un índice relacionado con otra tabla
 ```php
-$owlm->alter("genero", "@generos");
+$nest->alter("genero", "@generos");
 ```
 #### cambia el nombre y tipo de campo
 ```php
-$owlm->alter("cp", array("name"=>"codigo_postal", "alias"=>"zipcode"));
+$nest->alter("cp", array("name"=>"codigo_postal", "alias"=>"zipcode"));
 ```
 
 &nbsp;
@@ -241,9 +241,9 @@ ___
 #### crea un nuevo objeto responsables, dependiente de eventos y vinculado a cargos
 ```php
 $my = $ngl("mysql")->connect();
-$owlm = $ngl("owlm");
-$owlm->load("owl", $my);
-$owlm->create(
+$nest = $ngl("nest");
+$nest->load("owl", $my);
+$nest->create(
 	"contactos",
 	array(
 		array("pid", "@eventos"),
@@ -331,8 +331,8 @@ ___
 #### carga de una antigua versión de la estructura
 ```php
 $my = $ngl("mysql")->connect();
-$owlm = $ngl("owlm");
-$owlm->load("owl-20180101145231", $my);
+$nest = $ngl("nest");
+$nest->load("owl-20180101145231", $my);
 ```
 
 &nbsp;
@@ -352,8 +352,8 @@ ___
 #### unión contra una VIEW
 ```php
 $my = $ngl("mysql")->connect();
-$owlm = $ngl("owlm");
-$owlm->load("owl", $my)
+$nest = $ngl("nest");
+$nest->load("owl", $my)
 	->select("clientes")
 	->join("view_reporte_ventas", "cuit")
 ;
@@ -376,8 +376,8 @@ ___
 #### clásico objeto de lista desplegable
 ```php
 $my = $ngl("mysql")->connect();
-$owlm = $ngl("owlm");
-$owlm->load("owl", $my)
+$nest = $ngl("nest");
+$nest->load("owl", $my)
 	->preset("users", "usuarios", "Usuarios")
 ;
 ```
@@ -406,8 +406,8 @@ ___
 #### eliminando campos
 ```php
 $my = $ngl("mysql")->connect();
-$owlm = $ngl("owlm");
-$owlm->load("owl", $my)
+$nest = $ngl("nest");
+$nest->load("owl", $my)
 	->select("contactos")
 	->rem(array("MSN","ICQ"))
 ;
@@ -430,8 +430,8 @@ ___
 #### renombrar
 ```php
 $my = $ngl("mysql")->connect();
-$owlm = $ngl("owlm");
-$owlm->load("owl", $my)
+$nest = $ngl("nest");
+$nest->load("owl", $my)
 	->select("contactos")
 	->rename("contactos_clientes", "Contactos de Clientes")
 ;
@@ -463,8 +463,8 @@ ___
 #### duplicando el objeto contactos
 ```php
 $my = $ngl("mysql")->connect();
-$owlm = $ngl("owlm");
-$owlm->load("owl", $my)
+$nest = $ngl("nest");
+$nest->load("owl", $my)
 	->select("contactos")
 	->clone("contactos_proveedores", "Contacto de Proveedores")
 ;
@@ -497,8 +497,8 @@ ___
 #### registro de una VIEW
 ```php
 $my = $ngl("mysql")->connect();
-$owlm = $ngl("owlm");
-$owlm->load("owl", $my)
+$nest = $ngl("nest");
+$nest->load("owl", $my)
 	->view(
 		"view_reporte_ventas",
 		array("fecha","cuit","monto"),

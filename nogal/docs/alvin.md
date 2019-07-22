@@ -213,6 +213,7 @@ ___
 
 ## raw
 > Retorna el contenido de un [valor crudo](alvinuso.md#valores-crudos)  
+> Si **$sIndex** contiene . (puntos), se explotará la cadena por ellos y se navegará el resultado en los indices de **RAW** hasta retornar y valor
 > En caso de no especificarse un valor para **$sIndex** retornará el array completo de valores **RAW**
 
 **[mixed]** =  *public* function ( *string* $sIndex, *string* $sToken );  
@@ -225,6 +226,10 @@ ___
 #### retornará el fragmento de consulta SQL para limitar una sentencia
 ```php
 $alvin->raw("sql")["place"];
+
+# o podría utilizarse
+
+$alvin->raw("sql.place");
 ```
 
 &nbsp;

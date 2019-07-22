@@ -40,9 +40,11 @@ Para ver un ejemplo de uso completo ver la guía [owl paso a paso](owluso.md)
 |**owlog**|boolean|true|Activa y desactiva el log en la tabla **__ngl_owl_log__**|
 |**owlog_changelog**|boolean|false|Activa y desactiva el uso del changelog en la tabla **__ngl_owl_log__**|
 |**object**|string|null|Nombre del Objeto que se establecerá como activo|
+|**subobject**|string|null|Nombre de un Objeto sobre el cual se realizará alguna operación de consulta|
 |**use_history**|boolean|false|Activa y desactiva el uso del atributo **attr::history**|
 |**view_alias**|string|auto|Política utilizada para nombrar los alias en el método [view](#view), se antepondrá el nombre de la tabla cuando:<ul><li>**all** = en todos los campos de todas las tablas</li><li>**joins** = en todos los campos, salvo en los de la tabla principal</li><li>**auto** = sólo los campos que tengan un duplicado</li><li>**none** = ningun campo</li></ul>|
 |**view_children**|mixed|false|Determina el tipo de unión con las tablas dependientes<ul><li>**true** = todas las tablas</li><li>**false** = ninguna tabla</li><li>**array** = array con tablas seleccionadas</li></ul>|
+|**view_eol**|string||Caracter de fin de línea en los métodos  [view](#view) y [viewchildren](#viewchildren)|
 |**view_columns**|string|null|Cadena JSQL con los nombres de las columnas que deberá retornar el método [view](#view).<br />Sintáxis: ["TABLE.COLUMN","ALIAS"] o "TABLE.COLUMN"<br />Ej: [["tabla.campo1","foo"], "alias2.campo2", ["campo3","bar"]]|
 |**view_joins**|boolean|true|Activa y desactiva la unión con las tablas relacionadas (no dependientes) en el método [view](#view)|
 |**view_mode**|string|jsql|Modo de salida de datos en el método [view](#view):<ul><li>**jsql** = formato JSON</li><li>**sql** = formato ANSI SQL</li></ul>|
@@ -108,7 +110,7 @@ Para ver un ejemplo de uso completo ver la guía [owl paso a paso](owluso.md)
 
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
-|**$sChild**|string|*arg::child*|Nombre del Objeto dependiente activo|
+|**$sChild**|string|*arg::child*|Alias o nombre del Objeto dependiente activo|
 ### Ejemplos  
 #### inserción de datos dependientes  
 ``` php
