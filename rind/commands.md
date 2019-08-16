@@ -1335,8 +1335,8 @@ Nota: Como **RindCommands::set** almacena en la variable todo lo que se encuentr
 |**operator**|Tipo de operador. Por defecto se utilizará el operador **=**, para dar inicio a la variable. Si el operador es diferente de **=**, el valor de la variable será alterado segun el caso.<br /><br /><br /><br />Se espera: ( = \| . \| + \| - \| * \| / \| % ).</i><ul><li>**.** = concatena el nuevo valor al valor actual. Unicamente válido para cadenas.</li><li>**+** = suma el nuevo valor al valor actual.</li><li>**-** = resta el nuevo valor al valor actual.</li><li>***** = multiplica el valor actual por el nuevo.</li><li>**/** = divide el valor actual por el nuevo.</li><li>**%** = modulo el valor actual y el nuevo.</li></ul>|
 |**splitter**|Caracter utilizado como separador en **explode**, y caracter de concatenación en **implode**. Por defecto , (coma)|
 |**structure**|Cadena JSON que detemina la estructura de agrupamiento del método **group**<br /><br />Formato:<br /><br />{<br /><br />"MAIN": [ <note>nodo principal</note><br /><br />"id", [ <note>id del nodo</note><br /><br />"campo 1", <note>campos del nodo</note><br /><br />"campo N"<br /><br />]<br /><br />],<br /><br />"id_secundario": [ <note>nodo de agrupamiento</note><br /><br />"campo 5", [ <note>id del nodo</note><br /><br />"campo 1", <note>campos del nodo</note><br /><br />"campo N"<br /><br />]<br /><br />]<br /><br />}<br /><br />|
-|**userpwd**|Utilizado cuando **file** requiera autenticación HTTP ó en WS del tipo REST<br /><br />El valor debe ser pasado con el attributo **base64**<ul><li>**HTTP** = username:password</li><li>**basic** = basic username:password</li><li>**bearer** = bearer token</li><li>**alvin** = alvin alvintoken</li></ul><br /><br />|
-|**body**|Cadena de datos que se enviará en el BODY en caso de solicitudes REST **file**. El valor debe ser pasado con el attributo **base64**|
+|**userpwd**|Utilizado cuando **file** requiera autenticación HTTP ó en WS del tipo REST<br /><br />En ocaciones el valor debe ser pasado con el attributo **quotes**<ul><li>**HTTP** = username:password</li><li>**basic** = basic username:password</li><li>**bearer** = bearer token</li><li>**alvin** = alvin alvintoken</li></ul><br /><br />|
+|**body**|Cadena de datos que se enviará en el BODY en caso de solicitudes REST **file**. En ocaciones el valor debe ser pasado con el attributo **json**|
 |**value**|Nombre del índice el sub-array|
 ### Ejemplos  
 #### Ejemplo Simple  
@@ -1736,8 +1736,8 @@ con autenticación basic y body en formato JSON
 <rind:set>
 	<@name>test</@name>
 	<@value>https://dominio.io/ws/run</@value>
-	<@userpwd base64>basic foo:barpass</@userpwd>
-	<@body base64>{"method":"list", "limit":"8"}</@body>
+	<@userpwd>basic foo:barpass</@userpwd>
+	<@body json>{"method":"list", "limit":"{$_GET.limit}"}</@body>
 	<@method>file,jsondec</@method>
 </rind:set>
 
