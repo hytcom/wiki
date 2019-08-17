@@ -1197,15 +1197,19 @@ ___
 Incluye un archivo dentro de otro previo al proceso de datos. Esto significa que todos los comandos **rind** hallados dentro del archivo incluído, serán tratados como parte del archivo original.
 **RindCommands::mergefile** puede ser invocado de dos maneras diferentes:<ul><li>**Modo Simple** = Sólo hay que especificar la ruta del archivo a incluir entre las etiquetas **&lt;rind:mergefile&gt;** y **&lt;/rind:mergefile&gt;**</li><li>**Modo Enriquecido** = Utilizado en los casos en los que se quieren transferir valores al archivo incluído sin tener validarlos por medio del sistema de variables o tener que setearlos previamente con **RindCommands::SET**
 Para estos casos el parámetro **source** es utilizado para setear la ruta de inclución y el parámetro **data** para pasar los valores en formato JSON
-En la plantilla a incluir, las claves de estos valores deberán estar expresadas en el formato {%NOMBRECLAVE%}. Las claves que no tengan un valor asignado en **data**, serán reemplazadas por cadenas vacias.</li><li>**Modo Enriquecido Inline** = El concepto es el mismo que el del Modo Enriquecido, sólo que los datos se pasan por medio de la cola del archivo</li><li>**Modo Multiple** = Este permite incluir varios archivos que esten en la misma carpeta, especificada en la etiqueta **source** 
+En la plantilla a incluir, las claves de estos valores deberán estar expresadas en el formato {%NOMBRECLAVE%}. Las claves que no tengan un valor asignado en **data**, serán reemplazadas por cadenas vacias.</li><li>**Modo Multiple** = Este permite incluir varios archivos que esten en la misma carpeta, especificada en la etiqueta **source** 
 Luego, en la etiqueta **multiple**, se especificarán las rutas y datos adicionales de cada uno de los archivos (ver ejemplo)</li></ul>Mergefile trabaja en conjunto con el modo de CACHE del objeto **rind**:<ul><li>**none** = como la plantilla principal es leída en cada llamada, las sub-plantillas también lo son</li><li>**dev** = las sub-plantillas son leídas únicamente en la primer lectura de la plantilla principal, o cuando esta es modificada</li><li>**use** = nunca se leen las sub-plantillas, se utiliza el contenido cacheado durante la primer lectura de la plantilla principal</li></ul>  
 
 
 |Parámetro|Descripción|
 |---|---|
 |**data**|Cadena JSON con las claves y valores que se desean pasar a la plantilla|
+|**data-NAME**|Valor a pasar a la plantilla, donde NAME es la clave del mismo|
 |**source**|Ruta del archivo a ser incluído o carpeta contenedora para el caso de una inclución múltiple.|
-|**multiple**|Cadena JSON con las rutas relativas a **source** de cada plantilla y los datos enriquecidos para cada una de ellas<br /><br />Formato:<br /><br />[<br /><br />["template1.html", {"title":"foo", "text":"bar"},<br /><br />["template2.html", {"value":"foo", "option":"bar"},<br /><br />["templateN.html", {"name":"foo", "lastname":"bar"}<br /><br />]<br /><br /><br /><br />|
+|**multiple**|Cadena JSON con las rutas relativas a **source** de cada plantilla y los datos enriquecidos para cada una de ellas<br />Formato:<br />```[```<br />&nbsp;&nbsp;&nbsp;&nbsp;```["template1.html", {"title":"foo", "text":"bar"}```<br />&nbsp;&nbsp;&nbsp;&nbsp;```["template2.html", {"value":"foo", "option":"bar"},```<br />&nbsp;&nbsp;&nbsp;&nbsp;```["templateN.html", {"name":"foo", "lastname":"bar"}```<br />```]```|
+
+Los parámetros **data-NAME**, **data** y las cadenas de datos de **multiple**, son complementarios. A mismas claves, prevalecerá la mas cercana a la plantilla.
+
 ### Ejemplos  
 #### Modo Simple  
 ```php
@@ -1227,10 +1231,7 @@ Luego, en la etiqueta **multiple**, se especificarán las rutas y datos adiciona
     ...
 </body>
 ```
-#### Modo Enriquecido Inline  
-```php
-<rind:mergefile>note.html?title=Nota de Prueba&bgcolor=#DEDEDE</rind:mergefile>
-```
+
 #### Modo Multiple  
 ```php
 # Comando
@@ -1266,7 +1267,31 @@ Luego, en la etiqueta **multiple**, se especificarán las rutas y datos adiciona
     </@content>
 </rind:loop>
 ```
-
+#### Multiples parámetros **data**
+En este caso, todos los templates asumirán el valor **form-control** para la clave **cssclass**.
+Los dos primeros **switchs** utilizarán como **source** los valores **SI** y **NO**, mientras que el último **switch** utilizará su propio origen de datos.
+```php
+# Comando
+<rind:mergefile>
+    <@source>snippets/forms</@source>
+    <@data-cssclass>form-control</@data-cssclass>
+    <@data json>
+        {"source": [{"label":"SI","value":"1"},{"label":"NO","value":"0"}]}
+    </@data>
+    <@multiple json>
+        [
+            ["input.html", {"name":"fullname", "label":"Nombre Completo"}],
+            ["switch.html", {"name":"married", "label":"Casado"}],
+            ["switch.html", {"name":"children", "label":"Hijos"}],
+            ["switch.html", {
+                "name":"newsletter",
+                "label":"Suscribirse",
+                "source": [{"label":"SI","value":"1"}]
+            }],
+        ]
+    </@multiple>
+</rind:mergefile>
+```
 &nbsp;
 ___
 &nbsp;
