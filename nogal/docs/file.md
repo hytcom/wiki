@@ -1,11 +1,8 @@
 # file
 Crea un objeto sobre un archivo ó directorio permitiendo acceder a sus propiedades, leer y escribir su contenido.
+Este objeto está alcanzado por la directiva **SANDBOX**, que es el entorno dentro del cual se establecerá el dominio del objeto, es decir, establece el directorio dentro del cual estará contenido el accionar del método, cualquier intento de leer o escribir un archivo fuera de este entorno resultará en error. Por seguridad, **SANDBOX** toma el valor de la constante [NGL_SANDBOX](constants.md#opcionales) y en caso de que ella no estuviese definida asumirá el valor de [NGL_PATH_PROJECT](constants.md#rutas)
 ___
 
-## Variables
-|Argumento|Tipo|Descripción|
-|---|---|---|
-|**$sSandbox**|private|Entorno dentro del cual se establecerá el dominio del objeto, es decir, establece el directorio dentro del cual estará contenido el accionar del método, cualquier intento de leer o escribir un archivo fuera de este entorno resultará en error. Por seguridad, **$sSandbox** toma el valor de la constante [NGL_SANDBOX](constants.md#opcionales) y en caso de que ella no estuviera definida asumirá el valor de [NGL_PATH_PROJECT](constants.md#rutas)|
   
 ## Argumentos
 |Argumento|Tipo|Default|Descripción|
@@ -160,7 +157,7 @@ ___
 
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
-|**$sFilePath**|string|*arg::filepath*|Ruta del archivo o directorio.<ul><li>Si la ruta comienza con un **DIRECTORY_SEPARATOR**, dos puntos .. ó un punto seguido de un **DIRECTORY_SEPARATOR** la ruta será comprendida dentro de **$sSandbox**</li><li>Si la ruta compienza con cualquier otro caracter, será comprendida dentro del directorio [NGL_PATH_PUBLIC](constants.md#rutas)</li><li>Si hace referencia a un archivo inexistente, **load** intentará crearlo</li><li>Si es exactamente igual a TRUE se trabajará con un archivo temporal en el directorio temporal del sistema</li></ul>|
+|**$sFilePath**|string|*arg::filepath*|Ruta del archivo o directorio.<ul><li>Si la ruta comienza con un **DIRECTORY_SEPARATOR**, dos puntos .. ó un punto seguido de un **DIRECTORY_SEPARATOR** la ruta será comprendida dentro de **SANDBOX**</li><li>Si la ruta compienza con cualquier otro caracter, será comprendida dentro del directorio [NGL_PATH_PUBLIC](constants.md#rutas)</li><li>Si hace referencia a un archivo inexistente, **load** intentará crearlo</li><li>Si es exactamente igual a TRUE se trabajará con un archivo temporal en el directorio temporal del sistema</li></ul>|
 
 ### Ejemplos  
 #### Carga de archivo local público
