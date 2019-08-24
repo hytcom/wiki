@@ -1198,7 +1198,7 @@ Incluye un archivo dentro de otro previo al proceso de datos. Esto significa que
 **RindCommands::mergefile** puede ser invocado de dos maneras diferentes:<ul><li>**Modo Simple** = Sólo hay que especificar la ruta del archivo a incluir entre las etiquetas **&lt;rind:mergefile&gt;** y **&lt;/rind:mergefile&gt;**</li><li>**Modo Enriquecido** = Utilizado en los casos en los que se quieren transferir valores al archivo incluído sin tener validarlos por medio del sistema de variables o tener que setearlos previamente con **RindCommands::SET**
 Para estos casos el parámetro **source** es utilizado para setear la ruta de inclución y el parámetro **data** para pasar los valores en formato JSON
 En la plantilla a incluir, las claves de estos valores deberán estar expresadas en el formato {%NOMBRECLAVE%}. Las claves que no tengan un valor asignado en **data**, serán reemplazadas por cadenas vacias.</li><li>**Modo Multiple** = Este permite incluir varios archivos que esten en la misma carpeta, especificada en la etiqueta **source** 
-Luego, en la etiqueta **multiple**, se especificarán las rutas y datos adicionales de cada uno de los archivos (ver ejemplo)</li></ul>Mergefile trabaja en conjunto con el modo de CACHE del objeto **rind**:<ul><li>**none** = como la plantilla principal es leída en cada llamada, las sub-plantillas también lo son</li><li>**dev** = las sub-plantillas son leídas únicamente en la primer lectura de la plantilla principal, o cuando esta es modificada</li><li>**use** = nunca se leen las sub-plantillas, se utiliza el contenido cacheado durante la primer lectura de la plantilla principal</li></ul>  
+Luego, en la etiqueta **multiple**, se especificarán las rutas y datos adicionales de cada uno de los archivos (ver ejemplo)</li><li>**Modo Submerge** = Es la combinación los modos **simples** y **multiple**. Permite reempalzar una **clave** del archivo especificado en **source** por el contenido de uno ó más archivos. Para esto nos valdremos de las etiquetas **submerge** y **multiple** (ver ejemplo)</li></ul>Mergefile trabaja en conjunto con el modo de CACHE del objeto **rind**:<ul><li>**none** = como la plantilla principal es leída en cada llamada, las sub-plantillas también lo son</li><li>**dev** = las sub-plantillas son leídas únicamente en la primer lectura de la plantilla principal, o cuando esta es modificada</li><li>**use** = nunca se leen las sub-plantillas, se utiliza el contenido cacheado durante la primer lectura de la plantilla principal</li></ul>  
 
 
 |Parámetro|Descripción|
@@ -1207,6 +1207,7 @@ Luego, en la etiqueta **multiple**, se especificarán las rutas y datos adiciona
 |**data-NAME**|Valor a pasar a la plantilla, donde NAME es la clave del mismo|
 |**source**|Ruta del archivo a ser incluído o carpeta contenedora para el caso de una inclución múltiple.|
 |**multiple**|Cadena JSON con las rutas relativas a **source** de cada plantilla y los datos enriquecidos para cada una de ellas<br />Formato:<br />```[```<br />&nbsp;&nbsp;&nbsp;&nbsp;```["template1.html", {"title":"foo", "text":"bar"}```<br />&nbsp;&nbsp;&nbsp;&nbsp;```["template2.html", {"value":"foo", "option":"bar"},```<br />&nbsp;&nbsp;&nbsp;&nbsp;```["templateN.html", {"name":"foo", "lastname":"bar"}```<br />```]```|
+|**submerge**|Cadena mediante la que se especifican la clave donde se cargará el contenido de la/s subplantillas y la ruta principal las mismas, el equivalente a **source**. El formato es: **clave**:**ruta**|
 
 Los parámetros **data-NAME**, **data** y las cadenas de datos de **multiple**, son complementarios. A mismas claves, prevalecerá la mas cercana a la plantilla.
 
@@ -1274,7 +1275,7 @@ Los dos primeros **switchs** utilizarán como **source** los valores **SI** y **
 # Comando
 <rind:mergefile>
     <@source>snippets/forms</@source>
-    <@data-cssclass>form-control</@data-cssclass>
+    <@data-cssclass base64>form-control</@data-cssclass>
     <@data json>
         {"source": [{"label":"SI","value":"1"},{"label":"NO","value":"0"}]}
     </@data>
@@ -1291,6 +1292,32 @@ Los dos primeros **switchs** utilizarán como **source** los valores **SI** y **
         ]
     </@multiple>
 </rind:mergefile>
+```
+#### Submerge
+En este caso se utiliza **mergefile** para realizar la inclusión de una plantilla principal (modo inverso) en la que se cargará un formulario en la clave **form**
+```php
+# Comando
+<rind:mergefile>
+    <@source>/templates/index.html</@source>
+    <@data-title base64>Formulario de Login</@data-title>
+    <@submerge base64>form:/templates/forms-parts/</@submerge>
+    <@multiple json>
+        [
+            ["input.html", {"name":"user", "label":"Nombre de Usuario"}],
+            ["password.html", {"name":"pass", "label":"Contraseña"}]
+        ]
+    </@multiple>
+</rind:mergefile>
+
+# contenido de index.html
+<body>
+    Bienvenido!<br />
+    <br />
+    <form action="login">
+        {%form%}
+        <div><input type="submit" /></div>
+    </form>
+</body>
 ```
 &nbsp;
 ___

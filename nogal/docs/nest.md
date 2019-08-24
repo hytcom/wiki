@@ -466,7 +466,7 @@ $my = $ngl("mysql")->connect();
 $nest = $ngl("nest");
 $nest->load("owl", $my)
 	->select("contactos")
-	->clone("contactos_proveedores", "Contacto de Proveedores")
+	->twin("contactos_proveedores", "Contacto de Proveedores")
 ;
 ```
 
