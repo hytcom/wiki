@@ -1325,7 +1325,7 @@ En este caso se utiliza **mergefile** para realizar la inclusión de una plantil
 
 
 
-#### Multiple en multiple (falla) {#mergefile-fail}
+#### Multiple en argumento <a name="mergefile-fail"></a>
 ```php
 # Comando
 <rind:mergefile>
@@ -1334,7 +1334,7 @@ En este caso se utiliza **mergefile** para realizar la inclusión de una plantil
     <@content>
         <h2>Login</h2>
         <rind:mergefile>
-            <@source>/bithive/forms/</@source>
+            <@source>/snippets/forms/</@source>
             <@multiple json>
                 ["input.html", {"name":"user", "label":"Nombre de Usuario"}],
                 ["password.html", {"name":"pass", "label":"Contraseña"}]
