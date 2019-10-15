@@ -1326,6 +1326,7 @@ En este caso se utiliza **mergefile** para realizar la inclusión de una plantil
 
 
 #### Multiple en argumento <a name="mergefile-fail"></a>
+No es posible declarar un **mergefile** multiple dentro del argumento de otro **mergefile**.
 ```php
 # Comando
 <rind:mergefile>
