@@ -1209,8 +1209,10 @@ Luego, en la etiqueta **multiple**, se especificarán las rutas y datos adiciona
 |**multiple**|Cadena JSON con las rutas relativas a **source** de cada plantilla y los datos enriquecidos para cada una de ellas<br />Formato:<br />```[```<br />&nbsp;&nbsp;&nbsp;&nbsp;```["template1.html", {"title":"foo", "text":"bar"}```<br />&nbsp;&nbsp;&nbsp;&nbsp;```["template2.html", {"value":"foo", "option":"bar"},```<br />&nbsp;&nbsp;&nbsp;&nbsp;```["templateN.html", {"name":"foo", "lastname":"bar"}```<br />```]```|
 |**submerge**|Cadena mediante la que se especifican la clave donde se cargará el contenido de la/s subplantillas y la ruta principal las mismas, el equivalente a **source**. El formato es: **clave**:**ruta**|
 
-Los parámetros **data-NAME**, **data** y las cadenas de datos de **multiple**, son complementarios. A mismas claves, prevalecerá la mas cercana a la plantilla.  
-**ATENCION** No es posible declarar **mergefiles multiples** dentro del contenido de los argumentos de otro **mergefile** ( [ver caso](#mergefile-fail) )
+Los parámetros **data-NAME**, **data** y las cadenas de datos de **multiple**, son complementarios. A mismas claves, prevalecerá la mas cercana a la plantilla. 
+
+### ATENCION ###
+No es posible declarar **mergefiles multiples** dentro del contenido de los argumentos de otro **mergefile** ( [ver caso](#mergefile-fail) )
 
 ### Ejemplos  
 #### Modo Simple  
