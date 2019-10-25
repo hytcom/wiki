@@ -3,8 +3,7 @@
 ___
   
 
-# Formularios
-## Indice
+## Formularios
 ### Elementos de Datos
 - [attacher](#attacher)
 - [autocomplete](#autocomplete)
@@ -1139,6 +1138,5 @@ El tabulado y las columnas del ejemplo son unicamente con fines ilustrtivos
 
 &nbsp;
 ___
-<sub>Ultima revisión: 2019-10-25<br />
-<sub><b>bithive</b> - <em>maximiza tu tiempo</em></sub><br />
+<sub><b>Ultima revisión:</b> 2019-10-25 - <b>bithive</b> - <em>maximiza tu tiempo</em></sub><br />
 <sup>&copy; 2019 by <a href="https://abcontenidos.com">abcontenidos.com</a> - <a href="https://github.com/arielbottero">@arielbottero</a></sup><br />
