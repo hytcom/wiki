@@ -56,6 +56,7 @@ ___
 - **disabled** = deshabilita el campo
 - **readonly** = establece el campo como solo lectura
 - **skip** = cuando el valor es **1** excluye el elemento del formulario. **NO LO OCULTA, LO EXCLUYE DEL DOCUMENTO HTML**
+- **noskip** = cuando el valor es **1** contradice la orden **skip**, de esta manera, utilizando una variable, un elemento puede estar excluído por **skip** a menos que la variable sea igual a **1**
 
 ```json
 	"attribs": {
