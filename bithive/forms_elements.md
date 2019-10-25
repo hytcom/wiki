@@ -1,43 +1,50 @@
+# Bithive
+*maximiza tu tiempo* by abcontenidos.com
+___
+  
+
 # Bithive Formularios
 ## Indice
-### Elementos Básicos
+### Elementos de Datos
 - [attacher](#attacher)
 - [autocomplete](#autocomplete)
-- [break](#break)
 - [checkbox](#checkbox)
 - [color](#color)
-- [cols](#cols)
-- [cols](#cols)
-- [colsgroup](#colsgroup)
 - [date](#date)
 - [date-range](#date)
 - [days](#days)
-- [divider](#divider)
 - [file](#file)
 - [coords](#coords)
 - [hidden](#hidden)
-- [html](#html)
 - [input](#input)
 - [number](#number)
 - [password](#password)
 - [radio](#radio)
 - [readonly](#readonly)
-- [section](#section)
 - [select](#select)
 - [social](#social)
 - [slider](#slider)
 - [switch](#switch)
-- [tabs](#tabs)
 - [tags](#tags)
 - [textarea](#textarea)
 
 ### Elementos Avanzados
 - [relation](#relation)
 - [subform](#subform)
+
+### Elementos GUI
+- [break](#break)
+- [cols](#cols)
+- [colsgroup](#colsgroup)
+- [divider](#divider)
+- [html](#html)
+- [section](#section)
+- [steps](#steps)
+- [tabs](#tabs)
 &nbsp;
 
 ## Conceptos Generales
-### Atributos comunes a todos los Elementos (excepto cols, colsgroup y tabs)
+### Atributos comunes a todos los elementos de datos
 - **class** = clase css del campo
 - **groupclass** = clase css que se añadirá al *DIV* form-group
 - **labelclass** = clase css que se añadirá al *LABEL* form-label
@@ -48,6 +55,7 @@
 - **attribs** = json con atributos extras
 - **disabled** = deshabilita el campo
 - **readonly** = establece el campo como solo lectura
+- **skip** = cuando el valor es **1** excluye el elemento del formulario. **NO LO OCULTA, LO EXCLUYE DEL DOCUMENTO HTML**
 
 ```json
 	"attribs": {
@@ -148,7 +156,7 @@ Para validar un dato contra el servidor, en tiempo real, se pueden utilizar los 
 ---
 &nbsp;
 
-# Elementos Básicos
+# Elementos de Datos
 En la sección **Atributos** de cada elemento enumeran los atributos particulares y opcionales del elemento que se suman a los atributos comunes.  
 
 ## attacher
@@ -227,14 +235,6 @@ function myMethod(a) {
 
 &nbsp;
 
-## break
-Añade un espacio vertical. Este elemento unicamente soporta el atributo *class* y de manera opcional
-
-```json
-["break"]
-```
-&nbsp;
-
 ## checkbox
 Grupo de opciones checkbox
 ### Atributos
@@ -258,65 +258,6 @@ Selector de color hexadecimal
 
 ```json
 ["color", {"name":"color", "label":"Color"}]
-```
-&nbsp;
-
-## cols
-Agrupa los campos de 2 a 5 columnas en resoluciones mayores a **992px**
-En resoluciones menores, los bloques de 4 y 5 columnas se transformarán en 2 columnas, y los bloques de 2 y 3 en 1 columna.
-Un bloque de columnas se inicia con la llamada de un elemento **cols** con el atributo *open* y se cierra con la llamada de otro elemento **cols** que tenga presente el atributo *close*
-Cada llamada al elemento que contenga unicamente el atributo *cols*, cerrará el bloque anterior de columnas e iniciará uno nuevo
-### Atributos
-- **cols** = cantidad de columnas 2 a 5
-#### opcionales
-- **open** = indica el inicio del encolumnado, se puede utilizar 1 o true
-- **close** = indica el cierre de columnas, se puede utilizar 1 o true
-
-```json
-El tabulado del ejemplo es unicamente con fines estéticos
-
-["cols", {"cols":"3", "open":"1"}],
-	["input", {"name":"name", "label":"Label"}],
-	["input", {"name":"name", "label":"Label"}],
-	["input", {"name":"name", "label":"Label"}],
-["cols", {"cols":"2"}],
-	["input", {"name":"name", "label":"Label"}],
-	["input", {"name":"name", "label":"Label"}],
-["cols", {"cols":"3"}],
-	["input", {"name":"name", "label":"Label"}],
-	["input", {"name":"name", "label":"Label"}],
-	["input", {"name":"name", "label":"Label"}],
-["cols", {"close":"1"}]
-```
-&nbsp;
-
-## colsgroup
-Permite generar bloques con grupos de campos dentro del elemento **cols**
-Un grupo se inicia con la llamada de un elemento **colsgroup** con el atributo *open* y se cierra con la llamada de otro elemento **cols** que tenga presente el atributo *close*
-Cada llamada al elemento que contenga unicamente el atributo *colsgroup*, cerrará el bloque anterior de columnas e iniciará uno nuevo
-### Atributos
-#### opcionales
-- **open** = indica el inicio del grupo, se puede utilizar 1 o true
-- **close** = indica el cierre del grupo, se puede utilizar 1 o true
-- **class** = clase css del grupo
-
-```json
-El tabulado del ejemplo es unicamente con fines estéticos
-
-["cols", {"cols":"3", "open":"1"}],
-	["colsgroup", {"open":"1"}],
-		["input", {"name":"name", "label":"Label"}],
-		["input", {"name":"name", "label":"Label"}],
-		["input", {"name":"name", "label":"Label"}],
-	["colsgroup"],
-		["input", {"name":"name", "label":"Label"}],
-		["input", {"name":"name", "label":"Label"}],
-	["colsgroup"],
-		["input", {"name":"name", "label":"Label"}],
-		["input", {"name":"name", "label":"Label"}],
-		["input", {"name":"name", "label":"Label"}],
-	["colsgroup", {"close":"1"}],
-["cols", {"close":"1"}]
 ```
 &nbsp;
 
@@ -398,14 +339,6 @@ El formato de los datos guardados es una cadena de 7 caracteres donde:
 ```
 &nbsp;
 
-## divider
-Añade un divisor horizontal `<hr>`. Este elemento sólo acepta el atributo **class** de manera opcional
-
-```json
-["divider"]
-```
-&nbsp;
-
 ## file
 Clásico input file
 
@@ -428,25 +361,6 @@ Clásico input hidden. Por su característica de oculto, este elemento no soport
 
 ```json
 ["hidden", {"name":"id"}]
-```
-&nbsp;
-
-## html
-En si mismo, este elemento no añade contenido alguno. Es una herramienta para añadir todo tipo de código HTML al formulario.
-### Atributos
-- **code** = código HTML, único atributo soportado por el elemento. En el valor del atributo deberán considerarse los caracteres especiales para no romper la estructura JSON.
-
-```json
-["html", {"code":"
-    <table class='table table-bordered'>
-        <tbody>
-            <tr><td>7</td><td>8</td><td>9</td></tr>
-            <tr><td>4</td><td>5</td><td>6</td></tr>
-            <tr><td>1</td><td>2</td><td>3</td></tr>
-            <tr><td colspan='2'>0</td><td>.</td></tr>
-        </tbody>
-    </table>
-"}]
 ```
 &nbsp;
 
@@ -525,23 +439,6 @@ Emula un campo `<input>` utilizando un `<span>`, la utilidad de es este elemento
 	"label":"Responsable",
 	"value":"1",
 	"show": "Mark Otto (@motto)"
-}]
-```
-&nbsp;
-
-## section
-Inserta un título de sección del tipo `<h.>` con la posibilidad de anteponer un `<hr>`
-### Atributos
-#### opcionales
-- **divider** = si tiene seteado cualquier valor, se insertará un `<hr>` antes del título de sección
-- **title** = texto del título de la sección
-- **size** = tamaño de texto del título, valores de 1 a 6. Por defecto 3
-- **dclass** = clase CSS del divider
-
-```json
-["section", {
-	"divider":"1",
-	"title":"Sección"
 }]
 ```
 &nbsp;
@@ -629,48 +526,6 @@ Grupo de opciones **checkbox** en formato de botones switch
 	"source":"__knot?imya=uEdVChLkoZkKbHsYQtiiulHQNwnihLxd",
 	"class": "col-lg-4 col-md-6 col-xs-12"
 }]
-```
-&nbsp;
-
-## tabs
-Genera un grupo de tabs.
-El grupo se inicia con la llamada de un elemento **tabs** con el atributo *open* y se cierra con la llamada de otro elemento **tabs** que tenga presente el atributo *close*
-Cada llamada al elemento que contenga unicamente el atributo *title*, cerrará el tab anterior y abrirá uno nuevo
-### Atributos
-- **title** = título del TAB
-- **class** = clase aplicada al contenedor de todo el bloque. Solo tiene efecto cuando se encuentra presente el atributo *open*
-#### opcionales
-- **open** = indica el inicio del grupo de tabs, se espera *1* o *true*
-- **close** = indica el cierre del grupo de tabs, se espera *1* o *true*
-- **id** = valor que se asignará al atributo **ID** del elemento **LI** utilizado como pestaña
-
-```json
-```json
-El tabulado y las columnas del ejemplo son unicamente con fines ilustrtivos
-[            
-    ["tabs", {"title":"Datos Personales", "open":"1"}],
-        ["cols", {"open":"1", "cols":"3"}],
-            ["input", {"name":"name", "label":"input"}],
-            ["input", {"name":"name", "label":"input"}],
-            ["input", {"name":"name", "label":"input"}],
-        ["cols", {"cols":"4"}],
-            ["input", {"name":"name", "label":"input"}],
-            ["input", {"name":"name", "label":"input"}],
-            ["input", {"name":"name", "label":"input"}],
-            ["input", {"name":"name", "label":"input"}],
-        ["cols", {"cols":"2"}],
-            ["input", {"name":"name", "label":"input"}],
-            ["input", {"name":"name", "label":"input"}],
-        ["cols", {"close":"1"}],
-    ["tabs", {"title":"Datos Laborales"}],
-        ["input", {"name":"name", "label":"Label"}],
-        ["input", {"name":"name", "label":"Label"}],
-    ["tabs", {"title":"Datos Bancarios"}],
-        ["input", {"name":"name", "label":"Label"}],
-        ["input", {"name":"name", "label":"Label"}],
-        ["input", {"name":"name", "label":"Label"}],
-    ["tabs", {"close":"1"}]
-]
 ```
 &nbsp;
 
@@ -1054,3 +909,235 @@ Ej: ingredientes de una receta
     {"value": "6", "label": "Leche"}
 ]
 ```
+&nbsp;
+&nbsp;
+
+---
+&nbsp;
+
+# Elementos GUI
+## break
+Añade un espacio vertical. Este elemento unicamente soporta el atributo *class* y de manera opcional
+
+```json
+["break"]
+```
+&nbsp;
+
+## cols
+Agrupa los campos de 2 a 5 columnas en resoluciones mayores a **992px**
+En resoluciones menores, los bloques de 4 y 5 columnas se transformarán en 2 columnas, y los bloques de 2 y 3 en 1 columna.
+Un bloque de columnas se inicia con la llamada de un elemento **cols** con el atributo *open* y se cierra con la llamada de otro elemento **cols** que tenga presente el atributo *close*
+Cada llamada al elemento que contenga unicamente el atributo *cols*, cerrará el bloque anterior de columnas e iniciará uno nuevo
+### Atributos
+- **cols** = cantidad de columnas 2 a 5
+#### opcionales
+- **open** = indica el inicio del encolumnado, se puede utilizar 1 o true
+- **close** = indica el cierre de columnas, se puede utilizar 1 o true
+
+```json
+El tabulado del ejemplo es unicamente con fines estéticos
+
+["cols", {"cols":"3", "open":"1"}],
+	["input", {"name":"name", "label":"Label"}],
+	["input", {"name":"name", "label":"Label"}],
+	["input", {"name":"name", "label":"Label"}],
+["cols", {"cols":"2"}],
+	["input", {"name":"name", "label":"Label"}],
+	["input", {"name":"name", "label":"Label"}],
+["cols", {"cols":"3"}],
+	["input", {"name":"name", "label":"Label"}],
+	["input", {"name":"name", "label":"Label"}],
+	["input", {"name":"name", "label":"Label"}],
+["cols", {"close":"1"}]
+```
+&nbsp;
+
+## colsgroup
+Permite generar bloques con grupos de campos dentro del elemento **cols**
+Un grupo se inicia con la llamada de un elemento **colsgroup** con el atributo *open* y se cierra con la llamada de otro elemento **cols** que tenga presente el atributo *close*
+Cada llamada al elemento que contenga unicamente el atributo *colsgroup*, cerrará el bloque anterior de columnas e iniciará uno nuevo
+### Atributos
+#### opcionales
+- **open** = indica el inicio del grupo, se puede utilizar 1 o true
+- **close** = indica el cierre del grupo, se puede utilizar 1 o true
+- **class** = clase css del grupo
+
+```json
+El tabulado del ejemplo es unicamente con fines estéticos
+
+["cols", {"cols":"3", "open":"1"}],
+	["colsgroup", {"open":"1"}],
+		["input", {"name":"name", "label":"Label"}],
+		["input", {"name":"name", "label":"Label"}],
+		["input", {"name":"name", "label":"Label"}],
+	["colsgroup"],
+		["input", {"name":"name", "label":"Label"}],
+		["input", {"name":"name", "label":"Label"}],
+	["colsgroup"],
+		["input", {"name":"name", "label":"Label"}],
+		["input", {"name":"name", "label":"Label"}],
+		["input", {"name":"name", "label":"Label"}],
+	["colsgroup", {"close":"1"}],
+["cols", {"close":"1"}]
+```
+&nbsp;
+
+## divider
+Añade un divisor horizontal `<hr>`. Este elemento sólo acepta el atributo **class** de manera opcional
+
+```json
+["divider"]
+```
+&nbsp;
+
+## html
+En si mismo, este elemento no añade contenido alguno. Es una herramienta para añadir todo tipo de código HTML al formulario.
+### Atributos
+- **code** = código HTML, único atributo soportado por el elemento. En el valor del atributo deberán considerarse los caracteres especiales para no romper la estructura JSON.
+
+```json
+["html", {"code":"
+    <table class='table table-bordered'>
+        <tbody>
+            <tr><td>7</td><td>8</td><td>9</td></tr>
+            <tr><td>4</td><td>5</td><td>6</td></tr>
+            <tr><td>1</td><td>2</td><td>3</td></tr>
+            <tr><td colspan='2'>0</td><td>.</td></tr>
+        </tbody>
+    </table>
+"}]
+```
+&nbsp;
+
+## section
+Inserta un título de sección del tipo `<h.>` con la posibilidad de anteponer un `<hr>`
+### Atributos
+#### opcionales
+- **divider** = si tiene seteado cualquier valor, se insertará un `<hr>` antes del título de sección
+- **title** = texto del título de la sección
+- **size** = tamaño de texto del título, valores de 1 a 6. Por defecto 3
+- **dclass** = clase CSS del divider
+
+```json
+["section", {
+	"divider":"1",
+	"title":"Sección"
+}]
+```
+&nbsp;
+
+## steps
+Genera slides dentro de un formulario.
+El grupo se inicia con la llamada de un elemento **steps** con el atributo *open* y se cierra con la llamada de otro elemento **steps** que tenga presente el atributo *close*
+Cada llamada al elemento que contenga unicamente el atributo *title*, cerrará el paso anterior y abrirá uno nuevo
+### Atributos
+- **title** = título del Paso (slide)
+- **open** = indica el inicio del grupo de pasos, se espera *1* o *true*
+- **close** = indica el cierre del grupo de pasos, se espera *1* o *true*
+- **buttons** = botones que se mostrarán debajo del contenido del Paso. Los botones cuentan a su vez con atributos propios
+  - **label** = texto del botón
+  - **class** = clase CSS
+  - **action** = acción que se ejecutará al hacer click. Los valores esperados son:
+    - *prev* = paso anterior
+	- *next* = paso siguente
+	- *#xx* = donde *xx* es un número de paso
+- **before** = nombre de una función JS que se ejecutará antes de **action**
+- **after** = nombre de una función JS que se ejecutará después de **action**
+
+
+```json
+```json
+El tabulado y las columnas del ejemplo son unicamente con fines ilustrtivos
+[            
+	["steps", {
+		"open": "1",
+		"title": "Paso 1",
+		"buttons": [
+			{"label": "Siguiente", "action":"next"}
+		]
+	}],
+		["input", {"name":"name", "label":"input"}],
+		["input", {"name":"name", "label":"input"}]
+
+	["steps", {
+		"title": "Paso 2",
+		"buttons": [
+			{"label": "Anterior", "action":"prev"},
+			{"label": "Siguiente", "action":"next"}
+			{"label": "Ir Final", "action":"#4", "class":"ml-lg"},
+		]
+	}],
+		["input", {"name":"name", "label":"input"}],
+		["input", {"name":"name", "label":"input"}]
+
+	["steps", {
+		"title": "Paso 3",
+		"buttons": [
+			{"label": "Anterior", "action":"prev"},
+			{"label": "Siguiente", "action":"next"}
+		]
+	}],
+		["input", {"name":"name", "label":"input"}],
+		["input", {"name":"name", "label":"input"}]
+
+	["steps", {
+		"title": "Paso 4",
+		"buttons": [
+			{"label": "Anterior", "action":"prev"},
+			{"label": "Enviar", "class":"form-submit"}
+		]
+	}],
+		["input", {"name":"name", "label":"input"}],
+		["input", {"name":"name", "label":"input"}]
+
+	["steps", {"close": "1" }
+]
+
+```
+&nbsp;
+
+## tabs
+Genera un grupo de tabs.
+El grupo se inicia con la llamada de un elemento **tabs** con el atributo *open* y se cierra con la llamada de otro elemento **tabs** que tenga presente el atributo *close*
+Cada llamada al elemento que contenga unicamente el atributo *title*, cerrará el tab anterior y abrirá uno nuevo
+### Atributos
+- **title** = título del TAB
+- **class** = clase aplicada al contenedor de todo el bloque. Solo tiene efecto cuando se encuentra presente el atributo *open*
+- **open** = indica el inicio del grupo de tabs, se espera *1* o *true*
+- **close** = indica el cierre del grupo de tabs, se espera *1* o *true*
+- **id** = valor que se asignará al atributo **ID** del elemento **LI** utilizado como pestaña
+
+```json
+```json
+El tabulado y las columnas del ejemplo son unicamente con fines ilustrtivos
+[            
+    ["tabs", {"title":"Datos Personales", "open":"1"}],
+        ["cols", {"open":"1", "cols":"3"}],
+            ["input", {"name":"name", "label":"input"}],
+            ["input", {"name":"name", "label":"input"}],
+            ["input", {"name":"name", "label":"input"}],
+        ["cols", {"cols":"4"}],
+            ["input", {"name":"name", "label":"input"}],
+            ["input", {"name":"name", "label":"input"}],
+            ["input", {"name":"name", "label":"input"}],
+            ["input", {"name":"name", "label":"input"}],
+        ["cols", {"cols":"2"}],
+            ["input", {"name":"name", "label":"input"}],
+            ["input", {"name":"name", "label":"input"}],
+        ["cols", {"close":"1"}],
+    ["tabs", {"title":"Datos Laborales"}],
+        ["input", {"name":"name", "label":"Label"}],
+        ["input", {"name":"name", "label":"Label"}],
+    ["tabs", {"title":"Datos Bancarios"}],
+        ["input", {"name":"name", "label":"Label"}],
+        ["input", {"name":"name", "label":"Label"}],
+        ["input", {"name":"name", "label":"Label"}],
+    ["tabs", {"close":"1"}]
+]
+```
+
+&nbsp;
+___
+<sub><b>bithive</b> - <em>maximiza tu tiempo</em></sub><br />
+<sup>&copy; 2019 by <a href="https://abcontenidos.com">abcontenidos.com</a> - <a href="https://github.com/arielbottero">@arielbottero</a></sup><br />
