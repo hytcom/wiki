@@ -572,7 +572,7 @@ Oferta!
 1 x <b>$5</b>
 10 x <b><rind:eco>(5*10)-{$discount}</rind:eco></b>
 
-# Resultado en pantalla
+# Resultado
 Oferta!
 1 x <b>$5</b>
 10 x <b>$44</b>
@@ -1000,7 +1000,7 @@ $aAnimals = array(
     </@content>
 </rind:loop>
 
-# Resultado en pantalla
+# Resultado
 - bird ó bird
 - cat ó cat
 - dog ó dog
@@ -1050,7 +1050,7 @@ $aUsers = array(
     <@empty>- no se hallaron resultados -</@empty>
 </rind:loop>
 
-# Resultado en pantalla
+# Resultado
 John de <i>35</i> se apellida <b>Smith</b>
 Susan de <i>29</i> se apellida <b>Johnson</b>
 Carl de <i>43</i> se apellida <b>Williams</b>
@@ -1071,7 +1071,7 @@ Carl de <i>43</i> se apellida <b>Williams</b>
     </rind:loop>
 </select>
 
-# Resultado en pantalla
+# Resultado
 Lista desplegable con los días del mes
 
 # Comando
@@ -1088,7 +1088,7 @@ Lista desplegable con los días del mes
     </rind:loop>
 </select>
 
-# Resultado en pantalla
+# Resultado
 Lista desplegable con los meses del año
 
 
@@ -1106,7 +1106,7 @@ Lista desplegable con los meses del año
     </rind:loop>
 </select>
 
-# Resultado en pantalla
+# Resultado
 Lista desplegable con los años en modo descendente, desde el 2016 al 1900
 
 # NOTA: en los ejemplos se puede ver como, en los loops numéricos, es posible imprimir el dato de diferentes maneras
@@ -1151,7 +1151,7 @@ $aEmployees = array(array(
     </@content>
 </rind:loop>
 
-# Resultado en pantalla
+# Resultado
 •Employees
     •John Smith
         ◦Sara
@@ -1404,13 +1404,12 @@ Los nombres de variables deberán matchear con el patrón **[a-z0-9_{}%]**, cual
 
 Nota: Como **RindCommands::set** almacena en la variable todo lo que se encuentre entre <@value> y </@value>, se debe tener cuidado con las tabulaciones y saltos de linea.  
 
-
 |Parámetro|Descripción|
 |---|---|
 |**index**|Valor númerico que indica la posición del array que se desea obtener cuando se utiliza el **method** es **element**<br /><br />ó nombre del indice del sub-array que hará de clave en el método **vector**<br /><br />|
 |**keys**|Lista de valores separados por coma (,) utilizados cuando se emplea el método **chkeys**<br /><br />|
 |**linebreak**|Caracter utilizado como salto de línea para cuando **method** es **explode**|
-|**method**|Establece el/los método/s con el/los que será tratado el valor de **value** antes de almacenarlo. <br /><br />Se pueden especificar varios métodos separandos por coma (,) en este caso los métodos se aplicarán en secuencia.<br /><br /><br /><br />Métodos disponibles	:<ul><li>**<i>N</i>** = el contenido alamcenado contendrá al elemento **<i>N</i>** del conjunto **value**, ya sea el valor de un índice cuando sea un array o un caracter cuando sea una cadena.<br />**<i>N</i>** comienza a contar desde 1, cuando el valor sea negativo se contará desde el final del conjunto.</li><li>**<i>N:L</i>** = el contenido alamcenado será la secuencia de elementos del conjunto **value** tal y como se especifiquen los valores **<i>N</i>** y **<i>L</i>**. Donde el primero es la posición del primer elemento y el segundo la cantidad de elementos a capturar.<br />**<i>N</i>** comienza a contar desde 1, cuando el valor sea negativo se contará desde el final del conjunto.</li><li>**<i>N\|N1\|N2\|Nn</i>** = el contenido alamcenado será la secuencia de elementos del conjunto **value** tal y como se especifiquen los valores **<i>N</i>**. Donde cada **N** es la posición del elemento a capturar. **<i>N</i>** puede ser un valor entero o una cadena de texto para el caso de arrays asociativos.<br />Los números enteros comienza a contar desde 1 y deben ser siempre mayores a 0.</li><li>**base64dec** = antes de ser almacenado el contenido será tratado con **base64_decode**</li><li>**base64enc** = antes de ser almacenado el contenido será tratado con **base64_encode**</li><li>**chkeys** = cuando el contenido sea un array, sus claves serán reemplazadas por los valores de la cadena <@keys></li><li>**each** = cuando el contenido sea un array bidimensional, indica que el siguiente método deberá aplicarse de manera recursiva sobre todos sus elementos</li><li>**element** = en caso de existir, el contenido alamcenado será el resultado de ejecutar el método **get** del objeto **value**</li><li>**elements** = en caso de existir, el contenido alamcenado será el resultado de ejecutar el método **getall** del objeto **value**</li><li>**explode** = antes de ser almacenado el contenido será explotado utilizando **splitter** como separador<br /><br />Opcionalmente se podrá especificar el parámetro **linebreak** como salto de línea, consiguiendo asi un array multidimensional</li><li>**file** = el valor será tratado como un path de archivo y se intentará obtener su contenido. Cuando se especifiquen mas de un método, sólo el primero de ellos podrá ser **file**.</li><li>**group** = agrupa los valores según la estructura **structure** Cuando no se proporcione una estructura, los valores únicos de cada columna formarán subgrupos</li><li>**implode** = antes de ser almacenado el contenido será tratado con **implode** utilizando **splitter** como caracter de unión</li><li>**jsondec** = antes de ser almacenado el contenido será tratado con **json_decode** y convertido en un array asociativo</li><li>**jsonenc** = antes de ser almacenado el contenido será tratado con **json_encode** con los flags:JSON_HEX_TAG \| JSON_NUMERIC_CHECK \| JSON_HEX_APOS \| JSON_HEX_QUOT \| JSON_HEX_AMP \| JSON_UNESCAPED_UNICODE</li><li>**keys** = trabaja sobre un array de datos el cual es tratado con **array_keys**, es decir, que retorna un vector con las claves del valor de origen</li><li>**length**/**len** = calcula el largo del valor, utilizando **count** y **strlen**</li><li>**object** = antes de ser almacenado el contenido será convertido en un array de manera recursiva</li><li>**querydec** = antes de ser almacenado el contenido será tratado con **parse_str** y convertido en un array</li><li>**queryenc** = antes de ser almacenado el contenido será tratado con **http_build_query**</li><li>**rawurldec** = antes de ser almacenado el contenido será tratado con **rawurldecode**</li><li>**rawurlenc** = antes de ser almacenado el contenido será tratado con **rawurlencode**</li><li>**serialenc** = antes de ser almacenado el contenido será tratado con **serialize**</li><li>**serialdec** = antes de ser almacenado el contenido será tratado con **unserialize** y convertido en un array</li><li>**urldec** = antes de ser almacenado el contenido será tratado con **urldecode**</li><li>**urlenc** = antes de ser almacenado el contenido será tratado con **urlencode**</li><li>**vector** = genera un vector clave/valor a partir de un array bidimensional, con **index** como clave y **column** como valor</li><li>**xml** = antes de ser almacenado el contenido será convertido en un array</li></ul>|
+|**method**|Establece el/los método/s con el/los que será tratado el valor de **value** antes de almacenarlo. <br /><br />Se pueden especificar varios métodos separandos por coma (,) en este caso los métodos se aplicarán en secuencia.<br /><br /><br /><br />Métodos disponibles	:<ul><li>**<i>N</i>** = el contenido alamcenado contendrá al elemento **<i>N</i>** del conjunto **value**, ya sea el valor de un índice cuando sea un array o un caracter cuando sea una cadena.<br />**<i>N</i>** comienza a contar desde 1, cuando el valor sea negativo se contará desde el final del conjunto.<br />Cuando el resultado sea un array bidimensional de un único subindice, este será retornado como vector. Para conseguir un array de vectores se deberá anteponer el método **each**</li><li>**<i>N:L</i>** = el contenido alamcenado será la secuencia de elementos del conjunto **value** tal y como se especifiquen los valores **<i>N</i>** y **<i>L</i>**. Donde el primero es la posición del primer elemento y el segundo la cantidad de elementos a capturar.<br />**<i>N</i>** comienza a contar desde 1, cuando el valor sea negativo se contará desde el final del conjunto.</li><li>**<i>N\|N1\|N2\|Nn</i>** = el contenido alamcenado será la secuencia de elementos del conjunto **value** tal y como se especifiquen los valores **<i>N</i>**. Donde cada **N** es la posición del elemento a capturar. **<i>N</i>** puede ser un valor entero o una cadena de texto para el caso de arrays asociativos.<br />Los números enteros comienza a contar desde 1 y deben ser siempre mayores a 0.</li><li>**base64dec** = antes de ser almacenado el contenido será tratado con **base64_decode**</li><li>**base64enc** = antes de ser almacenado el contenido será tratado con **base64_encode**</li><li>**chkeys** = cuando el contenido sea un array, sus claves serán reemplazadas por los valores de la cadena <@keys></li><li>**each** = cuando el contenido sea un array bidimensional, indica que el siguiente método deberá aplicarse de manera recursiva sobre todos sus elementos</li><li>**element** = en caso de existir, el contenido alamcenado será el resultado de ejecutar el método **get** del objeto **value**</li><li>**elements** = en caso de existir, el contenido alamcenado será el resultado de ejecutar el método **getall** del objeto **value**</li><li>**explode** = antes de ser almacenado el contenido será explotado utilizando **splitter** como separador<br /><br />Opcionalmente se podrá especificar el parámetro **linebreak** como salto de línea, consiguiendo asi un array multidimensional</li><li>**file** = el valor será tratado como un path de archivo y se intentará obtener su contenido. Cuando se especifiquen mas de un método, sólo el primero de ellos podrá ser **file**.</li><li>**group** = agrupa los valores según la estructura **structure** Cuando no se proporcione una estructura, los valores únicos de cada columna formarán subgrupos</li><li>**implode** = antes de ser almacenado el contenido será tratado con **implode** utilizando **splitter** como caracter de unión</li><li>**jsondec** = antes de ser almacenado el contenido será tratado con **json_decode** y convertido en un array asociativo</li><li>**jsonenc** = antes de ser almacenado el contenido será tratado con **json_encode** con los flags:JSON_HEX_TAG \| JSON_NUMERIC_CHECK \| JSON_HEX_APOS \| JSON_HEX_QUOT \| JSON_HEX_AMP \| JSON_UNESCAPED_UNICODE</li><li>**keys** = trabaja sobre un array de datos el cual es tratado con **array_keys**, es decir, que retorna un vector con las claves del valor de origen</li><li>**length**/**len** = calcula el largo del valor, utilizando **count** y **strlen**</li><li>**object** = antes de ser almacenado el contenido será convertido en un array de manera recursiva</li><li>**querydec** = antes de ser almacenado el contenido será tratado con **parse_str** y convertido en un array</li><li>**queryenc** = antes de ser almacenado el contenido será tratado con **http_build_query**</li><li>**rawurldec** = antes de ser almacenado el contenido será tratado con **rawurldecode**</li><li>**rawurlenc** = antes de ser almacenado el contenido será tratado con **rawurlencode**</li><li>**serialenc** = antes de ser almacenado el contenido será tratado con **serialize**</li><li>**serialdec** = antes de ser almacenado el contenido será tratado con **unserialize** y convertido en un array</li><li>**urldec** = antes de ser almacenado el contenido será tratado con **urldecode**</li><li>**urlenc** = antes de ser almacenado el contenido será tratado con **urlencode**</li><li>**vector** = genera un vector clave/valor a partir de un array bidimensional, con **index** como clave y **column** como valor</li><li>**xml** = antes de ser almacenado el contenido será convertido en un array</li></ul>|
 |**name**|Nombre de la variable a setear|
 |**operator**|Tipo de operador. Por defecto se utilizará el operador **=**, para dar inicio a la variable. Si el operador es diferente de **=**, el valor de la variable será alterado segun el caso.<br /><br /><br /><br />Se espera: ( = \| . \| + \| - \| * \| / \| % ).</i><ul><li>**.** = concatena el nuevo valor al valor actual. Unicamente válido para cadenas.</li><li>**+** = suma el nuevo valor al valor actual.</li><li>**-** = resta el nuevo valor al valor actual.</li><li>***** = multiplica el valor actual por el nuevo.</li><li>**/** = divide el valor actual por el nuevo.</li><li>**%** = modulo el valor actual y el nuevo.</li></ul>|
 |**splitter**|Caracter utilizado como separador en **explode**, y caracter de concatenación en **implode**. Por defecto , (coma)|
@@ -1738,7 +1737,7 @@ var ENV = eval({$_SET.envjson});
     <@splitter>;</@splitter>
 </rind:set>
 
-# Resultado en pantalla
+# Resultado
 Array (
     [0] => lunes
     [1] => martes
@@ -1747,6 +1746,44 @@ Array (
     [4] => viernes
     [5] => sabado
     [6] => domingo
+)
+```
+#### sub-arrays / vector
+```php
+# array PHP
+$data = array(
+    array("name"=>"John", "surname"=>"Smith", "age"=>"35", "gender"=>"M"),
+    array("name"=>"Susan", "surname"=>"Johnson", "age"=>"29", "gender"=>"F"),
+    array("name"=>"Carl", "surname"=>"Williams", "age"=>"43", "gender"=>"M")
+);
+
+# Comando
+<rind:set>
+  <@name>foo</@name>
+  <@value>{$data}</@value>
+  <@method>1</@method>
+</rind:set>
+
+# Resultado
+Array (
+    [name] => Susan
+    [surname] => Johnson
+    [age] => 29
+    [gender] => F
+)
+
+# Comando
+<rind:set>
+  <@name>foo</@name>
+  <@value>{$data}</@value>
+  <@method>each,1</@method>
+</rind:set>
+
+# Resultado
+Array (
+    [0] => Array ( [name] => John )
+    [1] => Array ( [name] => Susan )
+    [2] => Array ( [name] =>  Carl )
 )
 ```
 #### Ejemplo de subcadena  
@@ -1758,7 +1795,7 @@ Array (
   <@method>3:4</@method>
 </rind:set>
 
-# Resultado en pantalla
+# Resultado
 CDEF
 ```
 #### Vector de valores  
@@ -1779,7 +1816,7 @@ $data = array(
   <@index>name</@index>
 </rind:set>
 
-# Resultado en pantalla
+# Resultado
 Array (
     [John] => Smith
     [Susan] => Johnson
@@ -1821,7 +1858,7 @@ con autenticación basic y body en formato JSON
 	<@method>file,jsondec</@method>
 </rind:set>
 
-# Resultado en pantalla
+# Resultado
 (JSON de resultados)
 
 &nbsp;
