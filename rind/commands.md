@@ -1748,7 +1748,7 @@ Array (
     [6] => domingo
 )
 ```
-#### sub-arrays / vector
+#### sub-arrays / each
 ```php
 # array PHP
 $data = array(
