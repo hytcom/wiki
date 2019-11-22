@@ -1766,10 +1766,10 @@ $data = array(
 
 # Resultado
 Array (
-    [name] => Susan
-    [surname] => Johnson
-    [age] => 29
-    [gender] => F
+    [name] => John
+    [surname] => Smith
+    [age] => 35
+    [gender] => M
 )
 
 # Comando
