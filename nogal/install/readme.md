@@ -88,7 +88,24 @@ Para conocer el host al que deberemos apuntar desde otros contenedores, debemos 
 docker network inspect bridge
 ```
 En el valor **Containers** encontraremos los datos de los contenedores que componen la red
-
+```json
+"Containers": {
+    "ec400c2dba04182f61b35b5781d2e0ade16a643cad40bd4a035653dc9051988c": {
+        "Name": "nogaltest",
+        "EndpointID": "e7ff2012abb5e86a38932a8c37629c8305b3ed97c5fc5b57df209d59b4dc37b8",
+        "MacAddress": "02:42:ac:04:00:42",
+        "IPv4Address": "172.17.0.2/16",
+        "IPv6Address": ""
+    },
+    "691ae0817a30c9b4236e12c528e7a0849af7e89c505ad59072e47631923ff864": {
+        "Name": "mariadb",
+        "EndpointID": "d1dc692034601e511748133a939e8d38ccee88953d598130b7aa980d9150ae35",
+        "MacAddress": "11:00:02:ab:10:03",
+        "IPv4Address": "172.17.0.3/16",
+        "IPv6Address": ""
+    }
+}
+```
 &nbsp;
 ___
 <sub><b>nogal</b> - <em>the most simple PHP Framework</em></sub><br />
