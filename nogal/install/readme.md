@@ -1,10 +1,12 @@
 # Instalación de nogal en Windows
-## Docker con MariaDB Local
+## Utilizando contenedores Docker
 
 ### Docker
 - Instalar Docker [https://www.docker.com/get-started](https://www.docker.com/get-started)
 - Configurar Docker para que utilice [Contenedores Linux](https://docs.docker.com/docker-for-windows/#switch-between-windows-and-linux-containers)
-- Crear una carpeta y copiar en ella los archivos *dockerfile* y *php.ini*
+
+### Nogal
+- Crear la carpeta local en la que se instalará el framework y copiar en ella los archivos *dockerfile* y *php.ini*
 - Abrir PowerShell y situarse en esa carpeta
 - Ejecutar el archivo dockerfile
 ```bash
@@ -30,25 +32,64 @@ docker start NOMBRE_CONTENEDOR
 
 Si por algún motivo fuera necesario ingresar al contenedor como si estuvieramos por SSH, puede hacerse ejecutando
 ```bash
-docker exec -i -t NOMBRE_CONTENEDOR /bin/bash
+docker exec -it NOMBRE_CONTENEDOR bash
 ```
 
 ### MariaDB
-- Instalar MariaDB de manera local [https://mariadb.org/download](https://mariadb.org/download)
-- Para acceder desde los contenedores se debe averiguar la IP de la maquina local desde Docker. Para ello se puede utilizar algunos de estos comandos en PowerShell
+- Crear la carpeta local para el contendor MariaDB y copiar en ella el archivo *my.cnf*
+- Crear una subcarpeta **datadir** donde se almacenarán las bases de datos
+- Abrir PowerShell y descargar la última versión de MariaDB desde el repositorio oficial
 ```bash
-Get-NetIPAddress -InterfaceAlias "vEthernet (Modificador pre)" -AddressFamily IPv4
+docker pull mariadb
+```
+- Crear el contenedor MariaDB ejecutando
+```bash
+docker run --name NOMBRE_CONTENEDOR -v PATH_LOCAL:/etc/mysql/conf.d -v PATH_LOCAL/datadir:/var/lib/mysql -p 3306:3306 -d mariadb:TAG
+```
+> donde PATH_LOCAL es la ruta de la carpeta donde se instalará MariaDB
+> NOMBRE_CONTENEDOR es el nombre del contenedor
+> TAG es la versión de MariaDB que queremos instalar. Ver versiones en [https://hub.docker.com/_/mariadb](https://hub.docker.com/_/mariadb)
+> por ejemplo:
+```bash
+docker run --name mariadb -v /c/mydockers/mariadb:/etc/mysql/conf.d -v /c/mydockers/mariadb/datadir:/var/lib/mysql -p 3306:3306 -d mariadb:10
+```
+- Ya creado el contenedor, verificar su estado ejecutando: ```docker ps -a```
+- Si se encuentra detenido ejecutar
+```bash
+docker start NOMBRE_CONTENEDOR
+```
+- Lo siguiente es generar los permisos para poder ingresar como **root** a nuestras base de datos. Para ello debemos:
+  - Acceder a la consola del contenedor
+  - Ingresar a la base de datos con el usuario **root**
+  - Generar los permisos
+```bash
+docker exec -it NOMBRE_CONTENEDOR bash
 ```
 ```bash
-Get-NetIPAddress -InterfaceAlias "vEthernet (Default Switch)" -AddressFamily IPv4
+# mysql -uroot
+```
+```bash
+MariaDB [(none)]> CREATE USER 'root'@'%' IDENTIFIED BY 'rootoor';
+MariaDB [(none)]> GRANT ALL PRIVILEGES ON * . * TO 'root'@'%';
+MariaDB [(none)]> FLUSH PRIVILEGES;
+MariaDB [(none)]> exit
+```
+```bash
+# exit
 ```
 
-- En caso de querer modificar la carpeta en donde se guardan las bases de datos seguir estos pasos:
-	- reemplazar el archivo my.ini de la instalación, por ejemplo: **c:\Program Files\MariaDB 5.5\data\my.ini** por el archivo **my.ini**
-	- en el nuevo archivo **my.ini** configurar el path de la carpeta de bases de datos
-	- reinicar el servicio de MariaDB desde el administrador de servicios. Para abrirlo puede ejecutarse ```services.msc``` en PowerShell 
+Para conectarse a MariaDB desde el host, basta con apuntar a **localhost**, puerto 3306 y utilizando el protocolo **TCP**
+```bash
+mysql -h localhost -P 3306 --protocol=tcp -u root
+``` 
+
+Para conocer el host al que deberemos apuntar desde otros contenedores, debemos inspeccionar la red de contenedores y averiguar la IP del contenedor MariaDB, para ello ejecutuamos
+```bash
+docker network inspect bridge
+```
+En el valor **Containers** encontraremos los datos de los contenedores que componen la red
 
 &nbsp;
 ___
-<sub><b>nogal v1.0</b> - <em>the most simple PHP Framework</em></sub><br />
-<sup>&copy; 2018 by <a href="http://hytcom.net/nogal">hytcom.net/nogal</a> - <a href="https://github.com/arielbottero">@arielbottero</a></sup><br />
+<sub><b>nogal</b> - <em>the most simple PHP Framework</em></sub><br />
+<sup>&copy; 2019 by <a href="https://hytcom.net/nogal">hytcom.net/nogal</a> - <a href="https://github.com/arielbottero">@arielbottero</a></sup><br />
