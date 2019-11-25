@@ -157,6 +157,8 @@ ___
 > - datos encerrados entre: **"** *(comillas dobles)*
 > - caracter de escape: **\\** *(barra invertida)*
 
+Por seguridad la ruta del archivo **$sFilePath** está alcanzada por la directiva [SANDBOX](file.md)
+
 **string** =  *public* function ( *string* $sQuery, *string* $sFilePath );  
 
 |Argumento|Tipo|Default|Descripción|
@@ -185,6 +187,8 @@ ___
 > - juego de caracteres: *arg::charset*
 > - datos encerrados entre: **"** *(comillas dobles)*
 > - caracter de escape: **\\** *(barra invertida)*
+
+Por seguridad la ruta del archivo **$sFilePath** está alcanzada por la directiva [SANDBOX](file.md)
 
 **boolean** =  *public* function ( *string* $sFilePath, *string* $sTable );  
 
