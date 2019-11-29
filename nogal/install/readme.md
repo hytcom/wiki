@@ -35,9 +35,9 @@ Si por algún motivo fuera necesario ingresar al contenedor como si estuvieramos
 docker exec -it NOMBRE_CONTENEDOR bash
 ```
 
-En el caso de trabajar en varios proyectos bajo una misma versión de **nogal**, es conveniente compartir la carpeta **nogal**.  
-Para ello debemos ubicar esta carpeta en un nivel superior al proyecto y montarla en un directorio diferente dentro del contenedor
-> por ejemplo:
+En el caso de trabajar en varios proyectos bajo una misma versión de **nogal**, es conveniente compartir la carpeta del framework.  
+Para ello debemos ubicar la carpeta **nogal** en un nivel superior al proyecto y montarla en un directorio diferente dentro del contenedor
+> ejemplos:
 ```bash
 docker run -d -it -p 80:80 -v /c/mydockers/nogal:/var/nogal -v /c/mydockers/proyecto1:/var/www --name=proyecto1 php:nogal
 docker run -d -it -p 80:80 -v /c/mydockers/nogal:/var/nogal -v /c/mydockers/proyecto2:/var/www --name=proyecto2 php:nogal
