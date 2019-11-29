@@ -35,6 +35,15 @@ Si por algún motivo fuera necesario ingresar al contenedor como si estuvieramos
 docker exec -it NOMBRE_CONTENEDOR bash
 ```
 
+En el caso de necesitar llevar varios proyectos bajo una misma versión de **nogal** puede compartirse al carpeta del framework creandola en un nivel superior al proyecto y montandola en una carpeta diferente dentro del contenedor
+> por ejemplo:
+```bash
+docker run -d -it -p 80:80 -v /c/mydockers/nogal:/var/nogal -v /c/mydockers/proyecto1:/var/www --name=proyecto1 php:nogal
+docker run -d -it -p 80:80 -v /c/mydockers/nogal:/var/nogal -v /c/mydockers/proyecto2:/var/www --name=proyecto2 php:nogal
+docker run -d -it -p 80:80 -v /c/mydockers/nogal:/var/nogal -v /c/mydockers/proyecto3:/var/www --name=proyecto3 php:nogal
+```
+
+
 ### MariaDB
 - Crear la carpeta local para el contendor MariaDB y copiar en ella el archivo *my.cnf*
 - Crear una subcarpeta **datadir** donde se almacenarán las bases de datos
