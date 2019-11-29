@@ -54,14 +54,14 @@ docker pull mariadb
 ```
 - Crear el contenedor MariaDB ejecutando
 ```bash
-docker run --name NOMBRE_CONTENEDOR -v PATH_LOCAL:/etc/mysql/conf.d -v PATH_LOCAL/datadir:/var/lib/mysql -p 3306:3306 -d mariadb:TAG
+docker run -e MYSQL_ROOT_PASSWORD=mypass -v PATH_LOCAL:/etc/mysql/conf.d -v PATH_LOCAL/datadir:/var/lib/mysql -p 3306:3306  --name NOMBRE_CONTENEDOR -d mariadb:TAG
 ```
 > donde PATH_LOCAL es la ruta de la carpeta donde se instalará MariaDB
 > NOMBRE_CONTENEDOR es el nombre del contenedor
 > TAG es la versión de MariaDB que queremos instalar. Ver versiones en [https://hub.docker.com/_/mariadb](https://hub.docker.com/_/mariadb)
 > por ejemplo:
 ```bash
-docker run --name mariadb -v /c/mydockers/mariadb:/etc/mysql/conf.d -v /c/mydockers/mariadb/datadir:/var/lib/mysql -p 3306:3306 -d mariadb:10
+docker run -e MYSQL_ROOT_PASSWORD=asd123 -v /c/mydockers/mariadb:/etc/mysql/conf.d -v /c/mydockers/mariadb/datadir:/var/lib/mysql -p 3306:3306 --name mariadb -d mariadb:10
 ```
 - Ya creado el contenedor, verificar su estado ejecutando: ```docker ps -a```
 - Si se encuentra detenido ejecutar
