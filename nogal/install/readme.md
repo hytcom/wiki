@@ -35,7 +35,7 @@ Si por algún motivo fuera necesario ingresar al contenedor como si estuvieramos
 docker exec -it NOMBRE_CONTENEDOR bash
 ```
 
-En el caso de trabajar en varios proyectos bajo una misma versión de **nogal**, es conveniente compartir la carpeta **nogal**.
+En el caso de trabajar en varios proyectos bajo una misma versión de **nogal**, es conveniente compartir la carpeta **nogal**.  
 Para ello debemos ubicar esta carpeta en un nivel superior al proyecto y montarla en un directorio diferente dentro del contenedor
 > por ejemplo:
 ```bash
