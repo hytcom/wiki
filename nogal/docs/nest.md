@@ -27,6 +27,7 @@ ___
 |**select**|string|null|Selecciona el objeto como activo|
 |**type**|mixed|null|Define el tipo de campo que se quiere agregar|
 |**field**|mixed|null|Nombre de un campo o array de nombres|
+|**using**|mixed|null|Nombre del campo sobre el cual recaerá la unión de un [join](#join)|
 |**entity**|string|null|Nombre de un objeto que no es el actual|
 |**title**|string|null|Define el título de un objeto visible en la interfaz gráfica. Si no se especifica se utilizará como título el nombre del objeto|
 |**fields**|string|null|Array de campos de un nuevo objeto o view|
@@ -262,8 +263,9 @@ ___
 
 ## describe
 > Por defecto, retorna un array con todos los datos estructurales y de relación el objeto activo.  
+	- **fields** = lista de campos
 	- **relationship** = informe de relaciones
-	- **view_code** = sentencia SQL para generar una VIEW
+	- **view** = sentencia SQL para generar una VIEW
 	- **structure** = definición de la estructura de campos
 	- **foreignkeys** = relaciones de claves foraneas
 	- **children** = dependencias directas
@@ -309,6 +311,7 @@ ___
 > Genera/ejecuta las sentencias SQL para generar impactar la estructura en la base de datos.
 
 **[string]** =  *public* function ( *boolean* $bRun ); 
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**$bRun**|boolean|*arg::run*|Indica si el método debe ejecutar las sentencias en la base o sólo retornarlas|
@@ -323,6 +326,7 @@ ___
 > Si el argumento **$db** es NULL, se intenrará iniciar un objeto [mysql](mysql.md).
 
 **[$this]** =  *public* function ( *mixed* $mStructure, *object* $db ); 
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**$mStructure**|mixed|*arg::structure*|Estructura owl en formato Array o una versión de la misma presente en la tabla **__ngl_sentences__**|
@@ -341,13 +345,15 @@ ___
 
 ## join
 > Se utiliza para realizar uniones directas entre el objeto actual y una [VIEW](#view) previamente cargada en la estructura.  
-> Las uniones se realizan siempre contra la columna **ID** de la VIEW, si la **VIEW** no cuenta con un campo **ID** ó si se necesitan más condiciones en el **ON**, se deberá crear una nueva **VIEW**
+> Las uniones se realizan siempre contra una única columna de la VIEW, si se necesitan más condiciones en el **ON**, se deberá crear una nueva **VIEW**
 
-**[$this]** =  *public* function ( *mixed* $sWith, *object* $sField ); 
+**[$this]** =  *public* function (  *string* $sUsing, *string* $sWith, *string* $sField ); 
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
+|**$sUsing**|string|*arg::using*|Nombre del campo de la tabla sobre el cual recaerá la unión|
 |**$sWith**|string|*arg::entity*|Nombre de un objeto que no es el actual|
-|**$sField**|string|*arg::field*|Nombre del campo por el cual se realizará la unión|
+|**$sField**|string|*arg::field*|Nombre del campo de la view por el cual se realizará la unión|
 ### Ejemplos
 #### unión contra una VIEW
 ```php
@@ -355,7 +361,7 @@ $my = $ngl("mysql")->connect();
 $nest = $ngl("nest");
 $nest->load("owl", $my)
 	->select("clientes")
-	->join("view_reporte_ventas", "cuit")
+	->join("id", "view_reporte_ventas", "cliente")
 ;
 ```
 
@@ -367,6 +373,7 @@ ___
 > En caso de que exista, añade a la estructura el código de un objeto predefinido.
 
 **[string]** =  *public* function ( *string* $sEntity, *string* $sNewName, *string* $sTitle );  
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**$sEntity**|string|*arg::entity*|Nombre del objeto preseteado|
@@ -399,6 +406,7 @@ ___
 > Elimina uno o más campos del objeto activo.
 
 **[$this]** =  *public* function ( *mixed* $mField ); 
+
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**$mField**|mixed|*arg::field*|Nombre o array de nombres de los campos a eliminar|

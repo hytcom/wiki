@@ -80,7 +80,7 @@ docker exec -it NOMBRE_CONTENEDOR bash
 ```
 ```bash
 MariaDB [(none)]> CREATE USER 'root'@'%' IDENTIFIED BY 'rootoor';
-MariaDB [(none)]> GRANT ALL PRIVILEGES ON * . * TO 'root'@'%';
+MariaDB [(none)]> GRANT ALL PRIVILEGES ON * . * TO 'root'@'%' WITH GRANT OPTION;
 MariaDB [(none)]> FLUSH PRIVILEGES;
 MariaDB [(none)]> exit
 ```

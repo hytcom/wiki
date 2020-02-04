@@ -21,6 +21,7 @@ ___
 |[check](#check)|Chequea uno o más permisos y retorna **true** o **false** según el resultado de las validaciones|
 |[grants](#grants)|Carga en el objeto la estructura de persmisos con la que se generarán los tokens|
 |[keys](#keys)|Retorna el par de claves publica-privada o false, en caso de no existir el objeto [crypt](crypt.md)|
+|[list](#list)|Lista los permisos del token, discriminando grants, grupos y perfiles|
 |[load](#load)|Carga el token del usuario en el objeto|
 |[loaded](#loaded)|Verifica si el token del usuario se encuentra cargado correctamente|
 |[password](#password)|Retorna un password SHA512 de 5000 vueltas, basado en **$sPassword** y utilizando como **salt** la clave pública|
@@ -29,8 +30,10 @@ ___
 |[token](#token)|Establece los permisos y valores RAW que se utilizarán para generar el token|
 |[unload](#unload)|Desetea el token actual|
 |[username](#username)|Retorna un nombre de usuario válido eliminando de **$sUsername** los caracteres prohibidos|
+|[viewtoken](#viewtoken)|Retorna el token cargado en forma de array|
 |Internos||
 |[CheckGrant](#checkgrant)|Utilizada por los métodos [analize](#analize) y [check](#check) para validar los permisos|
+|[FlatGrants](#flatgrants)|Desglosa grupos y perfiles en grants|
 |[MakeGroup](#makegroup)|Auxiliar de [grants](#grants). Crea los grupos y perfiles|
 
 &nbsp;
@@ -70,7 +73,7 @@ En los ejemplos supondremos la siguiente estructura de permisos
 ## analize
 > Chequea uno o más permisos y retorna un array con el resultado de las validaciones
 
-**[array]** =  *public* function ( *string* $sGrant, *string* $sToken );  
+**[array]** = *public* function ( *string* $sGrant, *string* $sToken );  
 
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
@@ -98,7 +101,7 @@ ___
 ## check
 > Chequea uno o más permisos y retorna **true** o **false** según el resultado de las validaciones
 
-**[boolean]** =  *public* function ( *string* $sGrant, *string* $sToken );  
+**[boolean]** = *public* function ( *string* $sGrant, *string* $sToken );  
 
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
@@ -121,7 +124,7 @@ ___
 ## grants
 > Carga en el objeto la estructura de persmisos con la que se generarán los tokens
 
-**[$this]** =  *public* function ( *array* $aDefinitions );  
+**[$this]** = *public* function ( *array* $aDefinitions );  
 
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
@@ -134,7 +137,7 @@ ___
 ## keys
 > Retorna el par de claves publica-privada o false, en caso de no existir el objeto [crypt](crypt.md)
 
-**[array]** =  *public* function ( );  
+**[array]** = *public* function ( );  
 
 ### Ejemplos
 #### par de claves pública/privada
@@ -163,11 +166,28 @@ Array (
 ___
 &nbsp;
 
+## list
+> Lista los permisos del token, discriminando grants, grupos y perfiles  
+> Si no se espefica el tipo de permiso, el método devolverá todos
+
+**[array]** = *public* function ( *string* $sType );  
+
+|Argumento|Tipo|Default|Descripción|
+|---|---|---|---|
+|**$sType**|string|null|Tipo de permiso: **grant**, **group** ó **profile**|
+### Ejemplos
+#### lista todo los permisos del token
+```php
+$alvin->setkey(NGL_ALVIN);
+$alvin->load($sToken);
+print_r($alvin->list());
+```
+
 ## load
 > Carga el token del usuario en el objeto  
 > Antes de cargar el token es necesario haber definido la clave pública para que éste pueda ser leído
 
-**[$this]** =  *public* function ( *string* $sToken );  
+**[$this]** = *public* function ( *string* $sToken );  
 
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
@@ -186,7 +206,7 @@ ___
 ## loaded
 > Verifica si el token del usuario se encuentra cargado correctamente
 
-**[boolean]** =  *public* function ( );  
+**[boolean]** = *public* function ( );  
 
 &nbsp;
 ___
@@ -195,7 +215,7 @@ ___
 ## password
 > Retorna un password SHA512 de 5000 vueltas, basado en **$sPassword** y utilizando como **salt** la clave pública 
 
-**[string]** =  *public* function ( *string* $sPassword );  
+**[string]** = *public* function ( *string* $sPassword );  
 
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
@@ -216,7 +236,7 @@ ___
 > Si **$sIndex** contiene . (puntos), se explotará la cadena por ellos y se navegará el resultado en los indices de **RAW** hasta retornar y valor
 > En caso de no especificarse un valor para **$sIndex** retornará el array completo de valores **RAW**
 
-**[mixed]** =  *public* function ( *string* $sIndex, *string* $sToken );  
+**[mixed]** = *public* function ( *string* $sIndex, *string* $sToken );  
 
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
@@ -240,7 +260,7 @@ ___
 > Setea **$sKey** como clave activa, ya sea pública para leer o privada para generar el token.  
 > Sino se especifíca una clave, el objeto conserva como activa la constante NGL_ALVIN
 
-**[string]** =  *public* function ( *string* $sKey );  
+**[string]** = *public* function ( *string* $sKey );  
 
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
@@ -255,7 +275,7 @@ ___
 > Establece los permisos y valores RAW que se utilizarán para generar el token  
 > En cuanto a los permisos, si los mismos están presedidos por un **-** eso indica que es un permiso de exclusión, [ver ejemplo](alvinuso.md#generar-token)
 
-**[string]** =  *public* function ( *array* $aProfiles, *array* $aRaw );  
+**[string]** = *public* function ( *array* $aProfiles, *array* $aRaw );  
 
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
@@ -290,7 +310,7 @@ ___
 ## unload
 > Desetea el token actual
 
-**[$this]** =  *public* function ( );  
+**[$this]** = *public* function ( );  
 
 &nbsp;
 ___
@@ -300,7 +320,7 @@ ___
 > Retorna un nombre de usuario válido eliminando de **$sUsername** los caracteres prohibidos  
 > Los catacteres permitidos deberán matchear con &#91;^a-zA-Z0-9\_\-\.\@&#93;
 
-**[string]** =  *public* function ( *string* $sUsername );  
+**[string]** = *public* function ( *string* $sUsername );  
 
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
@@ -314,7 +334,7 @@ ___
 ## CheckGrant
 > Utilizada por los métodos [analize](#analize) y [check](#check) para validar los permisos
 
-**[mixed]** =  *public* function ( *string* $sGrant, *string* $sToken, *string* $sMode );  
+**[mixed]** = *public* function ( *string* $sGrant, *string* $sToken, *string* $sMode );  
 
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
@@ -322,10 +342,20 @@ ___
 |**$sToken**|string|null|Token del usuario|
 |**$sMode**|string|single|Determina el tipo de chequeo que se efectuará:<br /><ul><li><b>analize</b> retorna un array con el análisis de los chequeos</li><li><b>any</b> retorna <b>true</b> cuando al menos 1 de los permisos sea positivo</li><li><b>all</b> retorna <b>true</b> cuando todos los permisos sean positivos</li><li><b>none</b> retorna <b>true</b> cuando todos los permisos sean negativos</li></ul>|
 
+## FlatGrants
+> Auxiliar de [grants](#grants). Crea los grupos y perfiles
+
+**[array]** = *public* function ( *array* $aData, *string* $sType );  
+
+|Argumento|Tipo|Default|Descripción|
+|---|---|---|---|
+|**$aData**|array||Array de permisos|
+|**$sMode**|string||Determina el tipo si es **profile** ó **group**|
+
 ## MakeGroup
 > Auxiliar de [grants](#grants). Crea los grupos y perfiles
 
-**[array]** =  *public* function ( *array* $aData, *string* $sType );  
+**[array]** = *public* function ( *array* $aData, *string* $sType );  
 
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|

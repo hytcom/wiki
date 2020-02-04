@@ -371,6 +371,17 @@ Clásico input text
 #### opcionales
 - **prepend** = antepone al campo una caja para código HTML
 - **append** = coloca después al campo una caja para código HTML
+- **mask** = máscara de ingreso. Valores esperados
+  - **mask-decimal** = 0.00
+  - **mask-money** = 0,000,000.00
+  - **mask-cuit** = 00-00000000-0
+  - **mask-dni** = 00.000.000
+  - **mask-ip** = 000.000.000.000
+  - **mask-cbu** = 0000000000000000000000
+  - **mask-phone** = 0000 0000
+  - **mask-phone_area** = (00) 0000 0000
+  - **mask-cellphone** = 15 0000 0000
+  - **mask-cellphone_area** = (00) 15 0000 0000
 
 ```json
 ["input", {"name":"name", "label":"Nombre"}]
@@ -553,6 +564,7 @@ Clasico campo `<textarea>` o versiones enriquecidas
 - **type** = tipo de `<textarea>`, las opciones son:
 	- **dynamic** = dinámico, el campo se agranda automaticamente para su edición pero luego vuelve a ocupar pocas líneas
 	- **fullscreen** = añade la posibilidad de llevar el `<textarea>` al 90% del alto y ancho de la ventana
+	- **fullinput** = igual a **fullinput** con la diferencia que plegado se muestra como un campo **input**
 	- **wysiwyg-lite** = editor WYSIWYG con funcionalidades mínimas: `<b><i><u>`
 	- **wysiwyg** = editor WYSIWYG estandar: `<b><i><u>` + alineaciones
 	- **wysiwyg-full** = editor WYSIWYG completo
@@ -851,6 +863,13 @@ Ej: ingredientes de una receta
 		<@method>chkeys,jsonenc,base64enc</@method>
 	</rind:set>
 	```
+- **target** = selector jquery de la zona en donde se cargará *source*. En caso de no especificarse el sistema generará un *target* automaticamente
+- **limit** = número máximo de **subforms** admitidos en **target**. Dejar vacío o en 0 para ilimitado
+- **limit-message** = mensaje de alerta que se mostrará cuando **limit** sea alcanzado
+- **afteradd** = nombre de función que se ejecutará luego de añadir un **subform**. El **subform** es pasado como argumento
+- **afterrem** = nombre de función que se ejecutará luego de eliminar un **subform**
+
+
 #### en los documentos *source*
 - **data-subform-id** = campo del conjunto de datos **value** que se utilizará para identificar al sub-formulario en caso de *update* y *remove*. 
 - **data-subform** = por medio de este atributo se puede asignar funcionalidades a los elementos de los documentos cargados en el diálogo
@@ -859,6 +878,7 @@ Ej: ingredientes de una receta
 	- **down** = mueve el sub-formulario hacia abajo, colocandolo por debajo del sub-formulario inmediato posterior
 	- **update** = cuando existe bloquea la edición de los campos y la eliminacion del sub-formulario. Al hacer click activa la edición y crea un campo oculto que tiene por nombre el valor del atributo *data-subform-id* + *_update* y le asigna el valor el almacenado en *value* para ese indice. Esto actua como FLAG de modificación. (ver ejemplo)
 	- **remove** = remueve el sub-formulario y de existir *data-subform-id* crea un campo oculto que tiene por nombre el valor del atributo + *_update* y le asigna el valor el almacenado en *value* para ese indice. Esto actua como FLAG de eliminación. (ver ejemplo)
+- **data-subform-nested** =  URL de un sub-sub-formulario que se anidará debajo del subformulario actual
 
 ##### [subform - ejemplo 1]
 ```json
@@ -926,12 +946,12 @@ Añade un espacio vertical. Este elemento unicamente soporta el atributo *class*
 &nbsp;
 
 ## cols
-Agrupa los campos de 2 a 5 columnas en resoluciones mayores a **992px**
+Agrupa los campos de 2 a 5 columnas en resoluciones mayores a **992px**, salvo cuando el valor de cols es 1, en cuyo caso se comportará como una fila y donde el ancho de las columnas deberá ser especificado en el atributo **groupclass** de los elementos
 En resoluciones menores, los bloques de 4 y 5 columnas se transformarán en 2 columnas, y los bloques de 2 y 3 en 1 columna.
 Un bloque de columnas se inicia con la llamada de un elemento **cols** con el atributo *open* y se cierra con la llamada de otro elemento **cols** que tenga presente el atributo *close*
 Cada llamada al elemento que contenga unicamente el atributo *cols*, cerrará el bloque anterior de columnas e iniciará uno nuevo
 ### Atributos
-- **cols** = cantidad de columnas 2 a 5
+- **cols** = cantidad de columnas 1 a 5
 #### opcionales
 - **open** = indica el inicio del encolumnado, se puede utilizar 1 o true
 - **close** = indica el cierre de columnas, se puede utilizar 1 o true
@@ -950,6 +970,10 @@ El tabulado del ejemplo es unicamente con fines estéticos
 	["input", {"name":"name", "label":"Label"}],
 	["input", {"name":"name", "label":"Label"}],
 	["input", {"name":"name", "label":"Label"}],
+["cols", {"cols":"1"}],
+	["input", {"groupclass":"2", "name":"name", "label":"Label"}],
+	["input", {"groupclass":"2", "name":"name", "label":"Label"}],
+	["input", {"groupclass":"8", "name":"name", "label":"Label"}],
 ["cols", {"close":"1"}]
 ```
 &nbsp;
@@ -1012,18 +1036,20 @@ En si mismo, este elemento no añade contenido alguno. Es una herramienta para a
 &nbsp;
 
 ## section
-Inserta un título de sección del tipo `<h.>` con la posibilidad de anteponer un `<hr>`
+Inserta una sección dentro de un formulario, la cuál puede llevar un título del tipo `<h.>`. Sino se especifica **open**, el bloque se abrirá y cerrará automaticamente.
 ### Atributos
 #### opcionales
-- **divider** = si tiene seteado cualquier valor, se insertará un `<hr>` antes del título de sección
-- **title** = texto del título de la sección
+- **open** = inicia el bloque de sección
+- **close** = finaliza el bloque de sección
+- **sectiontitle** = texto del título de la sección
 - **size** = tamaño de texto del título, valores de 1 a 6. Por defecto 3
-- **dclass** = clase CSS del divider
+- **groupclass** = clase CSS del bloque
+- **class** = clase CSS del `<h.>`
 
 ```json
 ["section", {
 	"divider":"1",
-	"title":"Sección"
+	"sectiontitle":"Sección"
 }]
 ```
 &nbsp;

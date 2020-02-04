@@ -85,6 +85,7 @@ Para ver un ejemplo de uso completo ver la guía [owl paso a paso](owluso.md)
 |[unsuspend](#unsuspend)|Reactiva registros suspendidos por [suspend](#suspend)|
 |[update](#update)|Actualiza uno ó más registros en las tablas que componen los objetos|
 |[view](#view)|Retorna las partes SELECT y FROM de la consulta SQL necesaria para generar una VIEW|
+|[viewFields](#view)|Retorna un array con los campos utilizados en [view](#view)|
 |[viewChildren](#viewchildren)|Identico a [view](#view) pero en objetos con depentencias|
 |Internos||
 |[AlvinInit](#alvininit)|Verifica el uso de [alvin](alvin.md) y lo activa en caso de ser requerido|
@@ -857,10 +858,31 @@ ___
 |**$aData1**|mixed|null|Selecciona un registro del objeto activo utilizando el propio ID o IMYA|
 |**$...**|array||Lista variable de argumentos de tipo Array similares a **$aData1**|
 
+&nbsp;
+___
+&nbsp;
+
 ## view
 > Retorna las partes SELECT y FROM de la consulta SQL necesaria para generar una VIEW del objeto activo  
 
 **[string]** = *public* function ( *string* $sOutputMode, *string* $sAliasMode, *boolean* $, *mixed* $mChildren, *string* $sColumns );  
+
+|Argumento|Tipo|Default|Descripción|
+|---|---|---|---|
+|**$sOutputMode**|string|*arg::view_mode*|Modo de salida de datos para el método: <ul><li>**jsql** = formato JSON</li><li>**sql** = formato ANSI SQL</li></ul>|
+|**$sAliasMode**|string|*arg::view_alias*|Política utilizada para nombrar los alias, se antepondrá el nombre de la tabla cuando: <ul><li>**all** = en todos los campos de todas las tablas</li><li>**joins** = en todos los campos, salvo en los de la tabla principal</li><li>**auto** = sólo los campos que tengan un duplicado</li><li>**none** = ningun campo</li></ul>|
+|**$bJoins**|boolean|*arg::view_joins*|Activa y desactiva la unión con las tablas relacionadas (no dependientes)|
+|**$mChildren**|mixed|*arg::view_children*|Activa y desactiva la unión con las tablas dependientes|
+|**$sColumns**|string|*arg::view_columns*|Cadena JSQL con los nombres de las columnas que deberá retornar el método. <br />Sintáxis: ["TABLE.COLUMN","ALIAS"] o "TABLE.COLUMN"<br />Ej: [["tabla.campo1","foo"], "alias2.campo2", ["campo3","bar"]]|
+
+&nbsp;
+___
+&nbsp;
+
+## viewFields
+> Retorna un array con los campos utilizados en [view](#view)  
+
+**[array]** = *public* function ( *string* $sOutputMode, *string* $sAliasMode, *boolean* $, *mixed* $mChildren, *string* $sColumns );  
 
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
