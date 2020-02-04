@@ -372,16 +372,16 @@ Clásico input text
 - **prepend** = antepone al campo una caja para código HTML
 - **append** = coloca después al campo una caja para código HTML
 - **mask** = máscara de ingreso. Valores esperados
-  - **mask-decimal** = 0.00
-  - **mask-money** = 0,000,000.00
-  - **mask-cuit** = 00-00000000-0
-  - **mask-dni** = 00.000.000
-  - **mask-ip** = 000.000.000.000
-  - **mask-cbu** = 0000000000000000000000
-  - **mask-phone** = 0000 0000
-  - **mask-phone_area** = (00) 0000 0000
-  - **mask-cellphone** = 15 0000 0000
-  - **mask-cellphone_area** = (00) 15 0000 0000
+  - **decimal** = 0.00
+  - **money** = 0,000,000.00
+  - **cuit** = 00-00000000-0
+  - **dni** = 00.000.000
+  - **ip** = 000.000.000.000
+  - **cbu** = 0000000000000000000000
+  - **phone** = 0000 0000
+  - **phone_area** = (00) 0000 0000
+  - **cellphone** = 15 0000 0000
+  - **cellphone_area** = (00) 15 0000 0000
 
 ```json
 ["input", {"name":"name", "label":"Nombre"}]
