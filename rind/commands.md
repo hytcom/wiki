@@ -648,10 +648,10 @@ Evalúa una condición como verdadera o falsa. En caso de ser	verdadera se compo
 Existe la posibilidad de utilizar **ifcase** sin los parámetros **iff**, **isset**, **in** y **notin** en cuyo caso lo que se evaluará será que el parámetro **then**, siempre que no esté vacío.
 También puede utilizarse **content** en lugar de **then**
 
-**RindCommands::ifcase** también soporta el modo abreviado: 
-**&lt;rind:ifcase&gt;**(expr)sentencias**&lt;/rind:ifcase&gt;**
-**&lt;rind:ifcase&gt;**(**?**expr)sentencias**&lt;/rind:ifcase&gt;** (para evaluar isset)
-**&lt;rind:ifcase&gt;**(**#**expr)sentencias**&lt;/rind:ifcase&gt;** (para evaluar count/strlen)
+**RindCommands::ifcase** también soporta el modo abreviado:  
+**&lt;rind:ifcase&gt;**(expr)sentencias**&lt;/rind:ifcase&gt;**  
+**&lt;rind:ifcase&gt;**(**?**expr)sentencias**&lt;/rind:ifcase&gt;** (para evaluar isset)  
+**&lt;rind:ifcase&gt;**(**#**expr)sentencias**&lt;/rind:ifcase&gt;** (para evaluar count/strlen)  
 
 donde se evaluará la expresión entre paréntesis y en caso de TRUE se ejecutarán las sentencias.
 La expresión entre paréntesis debe estar en la misma línea que el inicio del bloquee **ifcase**, esto no es necesario en el caso de las sentencias.** Ver ejemplos
