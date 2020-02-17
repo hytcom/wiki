@@ -651,6 +651,7 @@ También puede utilizarse **content** en lugar de **then**
 **RindCommands::ifcase** también soporta el modo abreviado: 
 **&lt;rind:ifcase&gt;**(expr)sentencias**&lt;/rind:ifcase&gt;**
 **&lt;rind:ifcase&gt;**(**?**expr)sentencias**&lt;/rind:ifcase&gt;** (para evaluar isset)
+**&lt;rind:ifcase&gt;**(**#**expr)sentencias**&lt;/rind:ifcase&gt;** (para evaluar count/strlen)
 
 donde se evaluará la expresión entre paréntesis y en caso de TRUE se ejecutarán las sentencias.
 La expresión entre paréntesis debe estar en la misma línea que el inicio del bloquee **ifcase**, esto no es necesario en el caso de las sentencias.** Ver ejemplos
@@ -804,7 +805,13 @@ También existe un modo en el que se utiliza **ifcase** como una estructura **sw
 <rind:ifcase>(?{$bIsAdult})Es mayor de edad</rind:ifcase>
 
 # Isset (negado)
-<rind:ifcase>(?!{$bIsAdult})Es mayor de edad</rind:ifcase>
+<rind:ifcase>(?!{$bIsAdult})Es menor de edad</rind:ifcase>
+
+# Count/Strlen
+<rind:ifcase>(#{$sName})Saludos amigo</rind:ifcase>
+
+# Count/Strlen (negado)
+<rind:ifcase>(#!{$sName})Saludos desconocido</rind:ifcase>
 ```
 #### Set Mode  
 ```php
