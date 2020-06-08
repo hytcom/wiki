@@ -2,10 +2,10 @@
 
 ## Indice de contenidos
 
-- [Introducción](#introducción)
+- [Introducción](#introducción) 
+- [Constantes](#constantes)
 - [Primeros Pasos](#primeros-pasos)
 - [Objecto $ngl](#objeto-ngl)
-- [Constantes](#constantes)
 - [Objetos](#objetos)
 - [Ejemplo Práctico](#ejemplo-práctico)
 - [Bee](#bee)
@@ -14,9 +14,18 @@
 ## Introducción
 lorem
 
+&nbsp;
+
 ## Primeros Pasos
+Para arrancar el framework unicamente hace falta incluir el archivo **nogal.php** ubicado en la carpeta **nogal**.  
+Hay distintas maneras de hacer esta inclusión, puede ser:
+- **directo** = donde se asumirán todas las configuraciones por defecto.
+- **config** = utilizando un archivo **config.php** en donde se declaran las [contantes](docs/constants.md) previa a la inclusión de **nogal.php**
+- **prickout** = que permite no sólo el uso de un **config.php**, sino que además habilita que los archivos del cógido fuente estén fuera de la carpeta pública.
+
 ### Uso directo
-Sólo hace falta incluir el archivo **nogal.php**. En este caso, el framework arrancará con todas las configuraciones por default. Podemos ver los valores adoptados por las constantes **NGL...** utilizando el método **constants**
+Sólo hace falta incluir el archivo **nogal.php**. En este caso, el framework arrancará con todas las configuraciones por default.  
+Podemos ver los valores adoptados por las constantes **NGL...** utilizando el método **constants**
 ```php
 <?php
 
@@ -93,12 +102,12 @@ Que verifica por medio de la existencia de la constante **NGL_SOWED** que el arc
 Una vez cargado el framework todos sus objetos serán accesibles desde la variable **\$ngl**, y su utilización es realmente fácil de comprender. Todos los objetos del **nogal** se invocan dentro de la variable-función **\$ngl()**. Esta invocación retorna el objeto solicitado, de manera que todos sus métodos quedan accesibles inmediatamente utilizando el operador **->**.  
 Existen dos tipos de objeto:  
 
-- **principales** = son extensiones del objeto principal, realizan operaciones particulares, que no necesitan un instanciamiento. Funcionan como librerías de herramientas.
-- **instanciables** = son aquellos que administran grupos concretos de datos y pueden requerir varias instancias simultaneas
+- **feeder** = son extensiones del objeto principal, realizan operaciones particulares, que no necesitan un instanciamiento. Funcionan como librerías de herramientas.
+- **branch** = son aquellos que administran grupos concretos de datos y pueden requerir varias instancias simultaneas
 
 Por ejemplo
-- **nglFiles** = lista y ejecuta acciones entre lotes de archivos o rutas. *(principal)*
-- **nglFile** = contiene la información de un archivo específico y ejecuta acciones sobre el mismo. *(instanciable)*
+- **nglFiles** = lista y ejecuta acciones entre lotes de archivos o rutas. *(feeder)*
+- **nglFile** = contiene la información de un archivo específico y ejecuta acciones sobre el mismo. *(branch)*
 
 Para ver un listado completo de los objetos disponibles se debe ejecutar el método **availables**.
 
@@ -113,7 +122,7 @@ $ngl()->dumphtml($ngl()->availables());
 
 &nbsp;
 
-### Objetos Principales
+### Objetos Feeder
 - Se invocan utilizando unicamente su nombre
 - Siempre retornan un resultado concreto (string, array, boolean, int)
 - Los argumentos a cada uno de sus métodos deberán se pasados al momento de la invocación
@@ -131,10 +140,10 @@ print_r($ls);
 
 &nbsp;
 
-### Objetos Instanciables
-- Al igual a los principales, se pueden invocar sólo con su nombre. Sin embargo, para cuando sea necesario identificar las instancias de un mismo objeto, existe la posibilidad de añardirles un identificador, separando a este por un punto. También puede utilizarse el punto sólo, en cuyo caso el sistema asignará uno aleatorio, que luego podrá ser obtenido mediante el método **\_\_me\_\_** del objeto. 
+### Objetos Branch
+- Al igual a los feeders, se pueden invocar sólo con su nombre. Sin embargo, para cuando sea necesario identificar las instancias de un mismo objeto, existe la posibilidad de añardirles un identificador, separando a este por un punto. También puede utilizarse el punto sólo, en cuyo caso el sistema asignará uno aleatorio, que luego podrá ser obtenido mediante el método **\_\_me\_\_** del objeto. 
 - Mayormente retornarán una referencia al propio objeto, lo que permite ejecutar multiples métodos en una sola llamada. Aunque dependiendo del caso, podrían retornan un resultado concreto (string, array, boolean, int)
-- Estos objetos cuentan con argumentos y atributos. Los atributos son de sólo lectura y van siendo seteados por el objeto en función de los argumentos pasados y/o de los métodos ejecutados. Por otro lado, los argumentos permiten configurar el objeto y ejecutar sus métodos. Existen **MULTIPLES** maneras de configurar y ejecturar los métedos de un objeto instanciable:
+- Estos objetos cuentan con argumentos y atributos. Los atributos son de sólo lectura y van siendo seteados por el objeto en función de los argumentos pasados y/o de los métodos ejecutados. Por otro lado, los argumentos permiten configurar el objeto y ejecutar sus métodos. Existen **MULTIPLES** maneras de configurar y ejecturar los métodos de un objeto **branch**:
 
   - **default** = son los configurados directamente en la clase
   - **archivo.conf** = cuando exista un archivo **OBJETO.conf** en la carpeta **NGL_PATH_CONF**, el objeto se iniciará con dicha configuración
@@ -229,28 +238,15 @@ var_export($ngl("mysql")->__whoami__());
 
 &nbsp;
 
-## Constantes
-- [Todas](docs/constants.md)
-- [Proyecto](docs/constants.md#proyecto)
-- [Rutas](docs/constants.md#rutas)
-- [Seguridad](docs/constants.md#seguridad)
-- [Errores](docs/constants.md#errores)
-- [Separadores de Cadenas](docs/constants.md#separadores-de-cadenas)
-- [Fechas e Idioma](docs/constants.md#fechas-e-idioma)
-- [Otras](docs/constants.md#otras)
-- [De Sistema](docs/constants.md#sistema)
-
-&nbsp;
-
 ## Objetos
-|Nombre|Descripción|
+|Nombre|Tipo|Descripción|
 |---|---|
-|[alvin](docs/alvin.md)|Alvin es el sistema de seguridad de **nogal**, encargado de gestionar permisos, grupos y perfiles de usuario. Mas que un objeto es un concepto que atraviesa transversalmente todo el framework.<br />Para aprender cómo aplicar Alvin, consultar la guía de [Aplicando Alvin](docs/alvinuso.md)|
-|[barcode](docs/barcode.md)|Implementa la clase 'barcode-generator' para generar códigos de barras|
-|[crypt](docs/crypt.md)|Implementa la clase 'phpseclib', de algoritmos de encriptación, con soporte para:<br /><ul><li>aes</li><li>blowfish</li><li>des</li><li>tripledes</li><li>rc2</li><li>rc4</li><li>rijndael</li><li>rsa</li><li>twofish</li></ul>|
-|[dates](docs/dates.md)|Utilidades para operaciones con fechas y horas. Generación de Calendarios|
-|[excel](docs/excel.md)||
-|[file](docs/file.md)|Crea un objeto sobre un archivo ó directorio permitiendo acceder a sus propiedades, leer y escribir su contenido.|
+|[alvin](docs/alvin.md)|feeder|Alvin es el sistema de seguridad de **nogal**, encargado de gestionar permisos, grupos y perfiles de usuario. Mas que un objeto es un concepto que atraviesa transversalmente todo el framework.<br />Para aprender cómo aplicar Alvin, consultar la guía de [Aplicando Alvin](docs/alvinuso.md)|
+|[barcode](docs/barcode.md)|graft|Implementa la clase 'barcode-generator' para generar códigos de barras|
+|[crypt](docs/crypt.md)|graft|Implementa la clase 'phpseclib', de algoritmos de encriptación, con soporte para:<br /><ul><li>aes</li><li>blowfish</li><li>des</li><li>tripledes</li><li>rc2</li><li>rc4</li><li>rijndael</li><li>rsa</li><li>twofish</li></ul>|
+|[dates](docs/dates.md)|feeder|Utilidades para operaciones con fechas y horas. Generación de Calendarios|
+|[excel](docs/excel.md)|graft||
+|[file](docs/file.md)|branch|Crea un objeto sobre un archivo ó directorio permitiendo acceder a sus propiedades, leer y escribir su contenido.|
 |[files](docs/files.md)||
 |[fn](docs/fn.md)||
 |[ftp](docs/ftp.md)||
