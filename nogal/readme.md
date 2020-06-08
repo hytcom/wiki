@@ -34,7 +34,6 @@ print_r($ngl()->constants());
 
 ?>
 ```
-&nbsp;
 
 ### Arranque customizado
 Para poder configurar el framework antes de su arranque, podemos utilizar un archivo en donde definir las constantes **NGL**
@@ -46,7 +45,6 @@ print_r($ngl()->constants());
 
 ?>
 ```  
-&nbsp;
 
 ### Uso de prickout.php
 El uso de **prickout** permite que los archivos del cógido fuente estén fuera de la carpeta pública, agregando asi una capa de seguridad.  
@@ -117,7 +115,6 @@ $ngl()->dumphtml($ngl()->availables());
 
 ?>
 ```
-&nbsp;
 
 ### Objetos Feeder
 - Se invocan utilizando unicamente su nombre
@@ -134,7 +131,6 @@ print_r($ls);
 
 ?>
 ```
-&nbsp;
 
 ### Objetos Branch
 - Al igual a los feeders, se pueden invocar sólo con su nombre. Sin embargo, para cuando sea necesario identificar las instancias de un mismo objeto, existe la posibilidad de añardirles un identificador, separando a este por un punto. También puede utilizarse el punto sólo, en cuyo caso el sistema asignará uno aleatorio, que luego podrá ser obtenido mediante el método **\_\_me\_\_** del objeto. 
