@@ -13,6 +13,7 @@ endloop
 @clear
 
 # importar csv en una nueva tabla de mysql
+# primero subir el archivo
 mysql import ["path/archivo/foo.csv", "nombre_tabla"]
 
 # exportar a consola
@@ -102,6 +103,19 @@ owlm base "{$}"
 {$} generate
 
 
+
+# mail
+mail server imap
+-$: host outlook.office365.com
+-$: port 993
+-$: secure ssl
+-$: user xxx@xxxx.com
+-$: pass xxxxxx
+-$: connect
+-$: login
+-$: mailbox INBOX
+-$: getall ["ALL", "10"]
+shift html -$:
 
 
 

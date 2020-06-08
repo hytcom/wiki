@@ -21,17 +21,18 @@ Las plantillas (documentos HTML) son procesados por Rind y cacheados hasta que s
 |[dump](#dump)|Vuelca en pantalla el contenido completo de una variable. Esto es especialmente ...|
 |[eco](#eco)|Imprime una expresión o resultado de otro comando como datetime, math o length.|
 |[halt](#halt)|Aborta la ejecución de todas las acciones. Opcionalmente, al ejecutar RindComman...|
-|[heredoc](#heredoc)|ESTE ES UN METODO DE NORMALIZACION DE DATOSEn ocasiones las cadenas cuentan con ...|
+|[heredoc](#heredoc)|ESTE ES UN METODO DE NORMALIZACION DE DATOS En ocasiones las cadenas cuentan con ...|
 |[ifcase](#ifcase)|Evalúa una condición como verdadera o falsa. En caso de serverdadera se comporta...|
 |[incfile](#incfile)|Incluye un archivo dentro de otro durante el proceso de datos. Este comando es e...|
-|[json](#json)|ESTE ES UN METODO DE NORMALIZACION DE DATOSEs una variante de heredoc, pero a di...|
+|[json](#json)|ESTE ES UN METODO DE NORMALIZACION DE DATOS Es una variante de heredoc, pero a di...|
 |[length](#length)|Intenta retorna el largo de una variable, cantidad de elementos de un Array una ...|
 |[loop](#loop)|Este método puede ser utilizado para recorrer todo tipo de bucles, ya sean array...|
 |[mergefile](#mergefile)|Incluye un archivo dentro de otro previo al proceso de datos. Esto significa que...|
-|[rtn](#rtn)|ESTE ES UN METODO DE NORMALIZACION DE DATOSPor razones de seguridad todas las ex...|
+|[once](#once)|Retorna un código [ONCECODE](../../nogal/docs/fn.md#once)|
+|[rtn](#rtn)|ESTE ES UN METODO DE NORMALIZACION DE DATOS Por razones de seguridad todas las ex...|
 |[set](#set)|Este método permite setear variables en el ambito de las plantillas.Todos los va...|
 |[skip](#skip)|Aborta la ejecución de la actual vuelta y continúa con la siguiente. Disponible ...|
-|[unique](#unique)|Genera un código único.|
+|[unique](#unique)|Genera un [código único](../../nogal/docs/fn.md#unique)|
 |[unset](#unset)|Permite desetear variables seteadas por medio del método RindCommands::set. Los ...|
 
   
@@ -1213,10 +1214,11 @@ Luego, en la etiqueta **multiple**, se especificarán las rutas y datos adiciona
 |**data**|Cadena JSON con las claves y valores que se desean pasar a la plantilla|
 |**data&#8209;NAME**|Valor a pasar a la plantilla, donde NAME es la clave del mismo|
 |**source**|Ruta del archivo a ser incluído o carpeta contenedora para el caso de una inclución múltiple.|
-|**multiple**|Cadena JSON con las rutas relativas a **source** de cada plantilla y los datos enriquecidos para cada una de ellas<br />Formato:<br />```[```<br />&nbsp;&nbsp;&nbsp;&nbsp;```["template1.html", {"title":"foo", "text":"bar"}```<br />&nbsp;&nbsp;&nbsp;&nbsp;```["template2.html", {"value":"foo", "option":"bar"},```<br />&nbsp;&nbsp;&nbsp;&nbsp;```["templateN.html", {"name":"foo", "lastname":"bar"}```<br />```]```|
+|**multiple**|Cadena ó archivo JSON con las rutas relativas a **source** de cada plantilla y los datos enriquecidos para cada una de ellas<br />Formato:<br />```[```<br />&nbsp;&nbsp;&nbsp;&nbsp;```["template1.html", {"title":"foo", "text":"bar"}```<br />&nbsp;&nbsp;&nbsp;&nbsp;```["template2.html", {"value":"foo", "option":"bar"},```<br />&nbsp;&nbsp;&nbsp;&nbsp;```["templateN.html", {"name":"foo", "lastname":"bar"}```<br />```]```|
 |**submerge**|Cadena mediante la que se especifican la clave donde se cargará el contenido de la/s subplantillas y la ruta principal las mismas, el equivalente a **source**. El formato es: **clave**:**ruta**|
 
 Los parámetros **data-NAME**, **data** y las cadenas de datos de **multiple**, son complementarios. A mismas claves, prevalecerá la mas cercana a la plantilla. 
+Tanto en **source** como en la ruta de los archivos JSON de **multiple**, si la misma comienza con /, la lectura se hará desde la carpeta NGL_SANDBOX. De lo contrario se tomará como ruta relativa a la del archivo principal. 
 
 ### ATENCION ###
 No es posible declarar **mergefiles multiples** dentro del contenido de los argumentos de otro **mergefile** ( [ver caso](#mergefile-fail) )
@@ -1328,6 +1330,34 @@ En este caso se utiliza **mergefile** para realizar la inclusión de una plantil
         <div><input type="submit" /></div>
     </form>
 </body>
+```
+
+#### JSON externo
+Este caso es igual al anterior, solo que los datos del argumento **multiple** provienen de un archivo JSON.  
+```php
+# Comando
+<rind:mergefile>
+    <@source>/templates/index.html</@source>
+    <@data-title base64>Formulario de Login</@data-title>
+    <@submerge base64>form:/templates/forms-parts/</@submerge>
+    <@multiple json>form.json</@multiple>
+</rind:mergefile>
+
+# contenido de index.html
+<body>
+    Bienvenido!<br />
+    <br />
+    <form action="login">
+        {%form%}
+        <div><input type="submit" /></div>
+    </form>
+</body>
+
+# contenido de form.json
+[
+    ["input.html", {"name":"user", "label":"Nombre de Usuario"}],
+    ["password.html", {"name":"pass", "label":"Contraseña"}]
+]
 ```
 
 

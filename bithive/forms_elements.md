@@ -1,7 +1,5 @@
 # Bithive
-*maximiza tu tiempo* by abcontenidos.com
 ___
-  
   
 
 ## Formularios
@@ -9,28 +7,36 @@ ___
 - [attacher](#attacher)
 - [autocomplete](#autocomplete)
 - [checkbox](#checkbox)
+- [buttonsset](#buttonsset) FALTA
 - [color](#color)
+- [coords](#coords)
 - [date](#date)
 - [date-range](#date)
 - [days](#days)
+- [fake](#fake) FALTA
+- [find](#find) FALTA
 - [file](#file)
-- [coords](#coords)
 - [hidden](#hidden)
 - [input](#input)
+- [months](#months)
 - [number](#number)
 - [password](#password)
 - [radio](#radio)
 - [readonly](#readonly)
 - [select](#select)
-- [social](#social)
 - [slider](#slider)
+- [social](#social)
+- [steps](#steps) FALTA
 - [switch](#switch)
 - [tags](#tags)
 - [textarea](#textarea)
+- [year](#year) FALTA
 
 ### Elementos Avanzados
 - [relation](#relation)
 - [subform](#subform)
+- [subform-number](#subform) FALTA
+- [subform-select](#subform) FALTA suffix /extend/
 
 ### Elementos GUI
 - [break](#break)
@@ -55,8 +61,7 @@ ___
 - **attribs** = json con atributos extras
 - **disabled** = deshabilita el campo
 - **readonly** = establece el campo como solo lectura
-- **skip** = cuando el valor es **1** excluye el elemento del formulario. **NO LO OCULTA, LO EXCLUYE DEL DOCUMENTO HTML**
-- **noskip** = cuando el valor es **1** contradice la orden **skip**, de esta manera, utilizando una variable, un elemento puede estar excluído por **skip** a menos que la variable sea igual a **1**
+- **stamp** = mostrará el campo cuando el valor sea *vacio* o sea una expresión lógica que al evaluarla devuelva **true**. En caso contrario excluirá el elemento del formulario. **NO LO OCULTA, LO EXCLUYE DEL DOCUMENTO HTML**
 
 ```json
 	"attribs": {
@@ -168,7 +173,6 @@ Zona para drag a drop para adjuntar archivos
 - **attacher-image** acepta un único archivo del tipo imagen, se usa para fotos de perfil
 
 ### Atributos
-- **text** = texto de la zona de drop
 #### opcionales
 - **types** = tipos de archivos separados por coma (,)
 - **max** = maximo de archivos permitidos
@@ -842,7 +846,7 @@ Al igual que [relation](#relation), el propósito del elemento es generar vincul
 Ej: ingredientes de una receta
 
 ### Atributos
-- **button** = texto que se mostrará en el botón
+- **button** = texto que se mostrará en el botón. Si se deja vacío, no se mostrará el botón para agregar nuevos sub-formulaios.
 - **source** = URL del sub-formulario. Puede contener variables, esto permite, por ejemplo, pasar el **id** de un registro maestro
 #### opcionales
 - **default** = cantidad de sub-formularios que se cargarán la primera vez
@@ -878,7 +882,7 @@ Ej: ingredientes de una receta
 	- **down** = mueve el sub-formulario hacia abajo, colocandolo por debajo del sub-formulario inmediato posterior
 	- **update** = cuando existe bloquea la edición de los campos y la eliminacion del sub-formulario. Al hacer click activa la edición y crea un campo oculto que tiene por nombre el valor del atributo *data-subform-id* + *_update* y le asigna el valor el almacenado en *value* para ese indice. Esto actua como FLAG de modificación. (ver ejemplo)
 	- **remove** = remueve el sub-formulario y de existir *data-subform-id* crea un campo oculto que tiene por nombre el valor del atributo + *_update* y le asigna el valor el almacenado en *value* para ese indice. Esto actua como FLAG de eliminación. (ver ejemplo)
-- **data-subform-nested** =  URL de un sub-sub-formulario que se anidará debajo del subformulario actual
+- **data-subform-nested** =  URL de un sub-sub-formulario que se anidará debajo del subformulario actual. Si el valor es **true** se anidará el mismo formulario
 
 ##### [subform - ejemplo 1]
 ```json
@@ -1167,4 +1171,4 @@ El tabulado y las columnas del ejemplo son unicamente con fines ilustrtivos
 &nbsp;
 ___
 <sub><b>revisión:</b> 2019-10-25 - <b>bithive</b> - <em>maximiza tu tiempo</em></sub><br />
-<sup>&copy; 2019 by <a href="https://abcontenidos.com">abcontenidos.com</a> - <a href="https://github.com/arielbottero">@arielbottero</a></sup><br />
+<sup>&copy; 2020 by <a href="https://hytcom.net">hytcom.net</a> - <a href="https://github.com/hytcom">@hytcom</a></sup><br /> 

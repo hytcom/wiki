@@ -8,7 +8,7 @@ Constantes predefinidas disponibles en cualquier script en ejecucción
 - [Separadores de Cadenas](#separadores-de-cadenas)
 - [Fechas e Idioma](#fechas-e-idioma)
 - [Otras](#otras)
-- [Opcionales](#opcionales)
+- [De Sistema](#sistema)
 
 ## Proyecto
 |Constante|Definición|
@@ -23,29 +23,30 @@ Constantes predefinidas disponibles en cualquier script en ejecucción
 |---|---|
 |NGL_DOCUMENT_ROOT|document_root|
 |NGL_PATH_CONF|Repositorio de archivos de configuración (.conf)|
-|NGL_PATH_CURRENT|Path del archivo actual desde NGL_URL y REQUEST_URI|
 |NGL_PATH_DATA|Repositorio de datos|
+|NGL_PATH_FRAMEWORK|Directorio Nogal|
+|NGL_PATH_GRAFTS|Repositorio de aplicaciones de terceros dentro del proyecto|
+|NGL_PATH_LOGS|Carpeta de logs|
 |NGL_PATH_NUTS|Repositorio de NUTS|
 |NGL_PATH_PROJECT|Directorio del proyecto|
 |NGL_PATH_PUBLIC|Directorio público (public_html)|
+|NGL_PATH_PRICKOUT|Directorio que contiene los archivos fuente cuando se utiliza **prickout**|
 |NGL_PATH_SESSIONS|Repositorio de sesiones para los modos fs o sqlite|
 |NGL_PATH_TMP|Carpeta temporal|
 |NGL_PATH_TUTORS|Repositorio de tutores|
 |NGL_PATH_VALIDATE|Repositorio de las reglas para la validacion de variables|
-|NGL_PATH_VIEWS_APP|Vistas PHP|
-|NGL_PATH_VIEWS_GUI|Vistas HTML|
-|NGL_PATH_VIEWS|Directorio principal de las vistas|
+|NGL_SANDBOX|Ruta dentro de la cual se establecerá el dominio de los objetos que trabajan con el FileSystem|
 |NGL_URL|URL del proyecto|
-|NGL_URL_HOST|Dominio de la URL, en caso de existir|
-|NGL_URL_PROTOCOL|Protocolo de la URL, en caso de existir|
-|NGL_URL_ROOT|Conjunción de NGL_URL_PROTOCOL y NGL_URL_HOST|
 
 &nbsp;
 
 ## Seguridad
 |Constante|Definición|
 |---|---|
+
 |NGL_ALVIN|Activa el control de accesos (NULL para desactivar)|
+|NGL_ALVIN_MODE|tipo de carga de ALVIN-TOKEN (TOKEN, TOKENUSER ó PROFILE)|
+|NGL_AUTHORIZED_IPS|array de IPs autorizadas (NULL para desactivar)|
 |NGL_ONCECODE|Valida la vigencia de un código ONCE|
 |NGL_ONCECODE_TIMELIFE|Tiempo de vigencia de los códigos ONCE|
 |NGL_PASSWORD_KEY|Clave AES para encriptar passwords (NULL para desactivar encriptación)|
@@ -86,23 +87,32 @@ Constantes predefinidas disponibles en cualquier script en ejecucción
 ## Otras
 |Constante|Definición|
 |---|---|
+|NGL_BEE|Activa/desactiva la inclusión de BEE|
 |NGL_CHMOD_FILE|Permisos aplicados a los nuevos archivos (ambientes linux)|
 |NGL_CHMOD_FOLDER|Permisos aplicados a las nuevas carpetas (linux)|
 |NGL_DIR_SLASH|separador de directorios|
 |NGL_ERROR_REPORTING|Política de reporte de errores. Ddesarrollo: E_ALL,  Produccion: E_ERROR \| E_WARNING \| E_PARSE \| E_NOTICE|
+|NGL_FALLEN|Pone al sistema fuera de linea|
 |NGL_GARDERNER|activa/desactiva la pantalla de configuración|
-|NGL_GOOGLE_API_KEY|Google api key|
 |NGL_NULL|Indica valor nulo pudiendo ser o no NULL|
 |NGL_RUN_ANYWAY|Inicia el framework ignorando los chequeos de compatibilidad|
 
 &nbsp;
 
-## Opcionales
+## Sistema
 |Constante|Definición|
 |---|---|
-|NGL_SANDBOX|Ruta dentro de la cual se establecerá el dominio de los objetos que trabajan con el FileSystem|
+|NGL_PATH_CURRENT|Path del archivo actual desde NGL_URL y REQUEST_URI|
+|NGL_PATH_CURRENT_QUERY|Cola de datos del archivo actual|
+|NGL_TERMINAL|Indica si la ejecución actual proviene de la línea de comandos|
+|NGL_URL_HOST|Dominio de la URL, en caso de existir|
+|NGL_URL_PORT|Puerto de la URL, en caso de existir|
+|NGL_URL_PROTOCOL|Protocolo de la URL, en caso de existir|
+|NGL_URL_ROOT|Conjunción de NGL_URL_PROTOCOL y NGL_URL_HOST|
+|NGL_WINDOWS|Indica si la ejecución actual es en un servidor Windows|
 
 &nbsp;
+
 ___
 <sub><b>nogal</b> - <em>the most simple PHP Framework</em></sub><br />
-<sup>&copy; 2019 by <a href="http://hytcom.net/nogal">hytcom.net/nogal</a> - <a href="https://github.com/arielbottero">@arielbottero</a></sup><br />
+<sup>&copy; 2020 by <a href="http://hytcom.net/nogal">hytcom.net/nogal</a> - <a href="https://github.com/arielbottero">@arielbottero</a></sup><br />
