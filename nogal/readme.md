@@ -34,7 +34,6 @@ print_r($ngl()->constants());
 
 ?>
 ```
-
 &nbsp;
 
 ### Arranque customizado
@@ -47,7 +46,6 @@ print_r($ngl()->constants());
 
 ?>
 ```  
-
 &nbsp;
 
 ### Uso de prickout.php
@@ -95,7 +93,6 @@ print_r($ngl()->constants());
 ?>
 ```
 Que verifica por medio de la existencia de la constante **NGL_SOWED** que el archivo esté siendo ejecutado dentro del entorno de **nogal** y no de manera directa.
-
 &nbsp;
 
 ## Objeto $ngl
@@ -119,7 +116,6 @@ $ngl()->dumphtml($ngl()->availables());
 
 ?>
 ```
-
 &nbsp;
 
 ### Objetos Feeder
@@ -137,7 +133,6 @@ print_r($ls);
 
 ?>
 ```
-
 &nbsp;
 
 ### Objetos Branch
@@ -235,7 +230,6 @@ var_export($ngl("mysql")->__whoami__());
 
 ?>
 ```
-
 &nbsp;
 
 ## Objetos
@@ -276,7 +270,6 @@ var_export($ngl("mysql")->__whoami__());
 |[unicode](docs/unicode.md)|feeder||
 |[url](docs/url.md)|branch||
 |[validate](docs/validate.md)|feeder||
-
 &nbsp;
 
 ## Ejemplo Práctico
@@ -315,7 +308,6 @@ if($data->rows()) {
 ?>
 ```
 **NOTA:** Si la distribución cuenta con las librerías **grafts** instaladas, en lugar de generar un archivo **csv** se podrían generar archivos **xlsx**, **pdf**, etc.
-
 &nbsp;
 
 ## Bee
@@ -361,7 +353,6 @@ shift convert ["-$:", "array-csv"]
 bzzz
 
 ```
-
 &nbsp;
 ___
 <sub><b>nogal</b> - <em>the most simple PHP Framework</em></sub><br />
