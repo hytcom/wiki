@@ -1,4 +1,4 @@
-# Nogal - Constantes
+# nogal - Constantes
 Constantes predefinidas disponibles en cualquier script en ejecucción  
 
 - [Proyecto](#proyecto)
@@ -115,4 +115,4 @@ Constantes predefinidas disponibles en cualquier script en ejecucción
 
 ___
 <sub><b>nogal</b> - <em>the most simple PHP Framework</em></sub><br />
-<sup>&copy; 2020 by <a href="http://hytcom.net/nogal">hytcom.net/nogal</a> - <a href="https://github.com/arielbottero">@arielbottero</a></sup><br />
+<sup>&copy; 2020 by <a href="https://hytcom.net">hytcom.net</a> - <a href="https://github.com/hytcom">@hytcom</a></sup><br />

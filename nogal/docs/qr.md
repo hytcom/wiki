@@ -1,4 +1,4 @@
-# Nogal v1.0
+# nogal
 *the most simple PHP Framework* by hytcom.net
 ___
   
