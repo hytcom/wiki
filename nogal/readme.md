@@ -1,12 +1,12 @@
 # nogal
 
 ## Indice de contenidos
-- [Introducción](#introduccion) 
+- [Introducción](#introducción)
 - [Primeros Pasos](#primeros-pasos)
 - [Objecto $ngl](#objeto-ngl)
 - [Constantes](#constantes)
 - [Objetos](#objetos)
-- [Ejemplo Práctico](#ejemplo-practico)
+- [Ejemplo Práctico](#ejemplo-práctico)
 - [Bee](#bee)
 
 &nbsp;
