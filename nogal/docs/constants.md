@@ -43,7 +43,6 @@ Constantes predefinidas disponibles en cualquier script en ejecucción
 ## Seguridad
 |Constante|Definición|
 |---|---|
-
 |NGL_ALVIN|Activa el control de accesos (NULL para desactivar)|
 |NGL_ALVIN_MODE|tipo de carga de ALVIN-TOKEN (TOKEN, TOKENUSER ó PROFILE)|
 |NGL_AUTHORIZED_IPS|array de IPs autorizadas (NULL para desactivar)|
