@@ -3,7 +3,6 @@
 ## Indice de contenidos
 
 - [Introducción](#introducción) 
-- [Constantes](#constantes)
 - [Primeros Pasos](#primeros-pasos)
 - [Objecto $ngl](#objeto-ngl)
 - [Objetos](#objetos)
