@@ -421,6 +421,7 @@ BEE
 
 ?>
 ```
+&nbsp;
 
 En la carpeta raíz del framework se encuentra un archivo llamado *bee*, sin extención. Ese archivo es en realidad un archivo *.php* que permite utilizar **bee** en la linea de comandos. Para utilizarlo sólo hay que configurar el archivo de arranque de **nogal**, por defecto viene configurado *nogal.php* que se encuentra en la misma carpeta, pero si se copia *bee* en otra ubicación habrá que reapuntarlo.  
 
