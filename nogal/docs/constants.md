@@ -92,7 +92,7 @@ Constantes predefinidas disponibles en cualquier script en ejecucción
 |NGL_DIR_SLASH|separador de directorios|
 |NGL_ERROR_REPORTING|Política de reporte de errores. Ddesarrollo: E_ALL,  Produccion: E_ERROR \| E_WARNING \| E_PARSE \| E_NOTICE|
 |NGL_FALLEN|Pone al sistema fuera de linea|
-|NGL_GARDERNER|activa/desactiva la pantalla de configuración|
+|NGL_GARDENER|activa/desactiva la pantalla de configuración|
 |NGL_NULL|Indica valor nulo pudiendo ser o no NULL|
 |NGL_RUN_ANYWAY|Inicia el framework ignorando los chequeos de compatibilidad|
 

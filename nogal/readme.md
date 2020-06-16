@@ -4,6 +4,7 @@
 
 - [Introducción](#introducción) 
 - [Primeros Pasos](#primeros-pasos)
+- [Secuencia de Inicio](#secuencia-de-inicio)
 - [Objecto $ngl](#objeto-ngl)
 - [Objetos](#objetos)
 - [Ejemplo Práctico](#ejemplo-práctico)
@@ -19,8 +20,8 @@ lorem
 Para arrancar el framework unicamente hace falta incluir el archivo **nogal.php** ubicado en la carpeta **nogal**.  
 Hay distintas maneras de hacer esta inclusión, puede ser:
 - **directo** = donde se asumirán todas las configuraciones por defecto.
-- **config** = utilizando un archivo **config.php** en donde se declaran las [contantes](docs/constants.md) previa a la inclusión de **nogal.php**
-- **prickout** = que permite no sólo el uso de un **config.php**, sino que además habilita que los archivos del cógido fuente estén fuera de la carpeta pública.
+- **customizado** = utilizando un archivo **config.php** en donde se declaran las [contantes](docs/constants.md) previa a la inclusión de **nogal.php**
+- **prickout** = que permite no sólo el uso de un **config.php**, sino que además habilita que los archivos del cógido fuente estén fuera de la carpeta pública. Ver **re-prickout** para hacer redireccionamientos.
 
 ### Uso directo
 Sólo hace falta incluir el archivo **nogal.php**. En este caso, el framework arrancará con todas las configuraciones por default.  
@@ -33,7 +34,7 @@ print_r($ngl()->constants());
 
 ?>
 ```
-
+---
 ### Arranque customizado
 Para poder configurar el framework antes de su arranque, podemos utilizar un archivo en donde definir las constantes **NGL**
 ```php
@@ -44,7 +45,7 @@ print_r($ngl()->constants());
 
 ?>
 ```  
-
+---
 ### Uso de prickout.php
 El uso de **prickout** permite que los archivos del cógido fuente estén fuera de la carpeta pública, agregando asi una capa de seguridad.  
 Para ello es necesario definir en la constante **NGL_PATH_PRICKOUT** el path de la carpeta principal que alberga los archivos fuentes y utilizar redirecciones en el servidor, como por ejemplo, usando rewrite mode en .htaccess  
@@ -89,7 +90,64 @@ print_r($ngl()->constants());
 
 ?>
 ```
-Que verifica por medio de la existencia de la constante **NGL_SOWED** que el archivo esté siendo ejecutado dentro del entorno de **nogal** y no de manera directa.
+Que verifica por medio de la existencia de la constante **NGL_SOWED** que el archivo esté siendo ejecutado dentro del entorno de **nogal** y no de manera directa. 
+
+---
+### Uso de re-prickout.php
+También es posible hacer redirecciones atraves de **prickout** utilizando el arvhivo **re-prickout.php** de la carpeta **NGL_PATH_PROJECT**.
+
+```php
+# re-prickout.php
+
+<?php defined("NGL_SOWED") || exit();
+
+switch(true) {
+	// http://www.dominio.com/foo/bar.php => http://www.dominio.com/index.php?id=foobar
+	case ($_SERVER["REDIRECT_URL"] == "/foo/bar.php"):
+		$NGL_REPRICKOUT_URL = "/index.php?id=foobar";
+		break;
+
+	// http://www.dominio.com/foo/1234 => http://www.dominio.com/foo.php?id=1234
+	case (substr($_SERVER["REDIRECT_URL"], 0, 5)=="/foo/"):
+		$NGL_REPRICKOUT_URL = explode("/", $_SERVER["REDIRECT_URL"], 3);
+		$NGL_REPRICKOUT_URL = "/foo.php?id=".$NGL_REPRICKOUT_URL[2];
+		break;
+	
+	// http://www.dominio.com/ws/getinfo => http://www.dominio.com/ws/ws/webservice.php con datos POST
+	case ($_SERVER["REDIRECT_URL"] == "/ws/getinfo"):
+		$NGL_REPRICKOUT_REQUEST	= array("method"=>"getinfo", "body"=>file_get_contents("php://input"));
+		$NGL_REPRICKOUT_URL		= NGL_URL."/ws/webservice.php";
+		break;
+}
+
+if(isset($NGL_REPRICKOUT_URL)) {
+	if(isset($NGL_REPRICKOUT_REQUEST)) {
+		$req = $ngl("file")->load($NGL_REPRICKOUT_URL);
+		$options = array(
+			"CURLOPT_CUSTOMREQUEST" => "POST",
+			"CURLOPT_POST" => 1,
+			"CURLOPT_POSTFIELDS" => $NGL_REPRICKOUT_REQUEST
+		);
+
+		echo $req->read(null, $options);
+	} else {
+		header("location:".$NGL_REPRICKOUT_URL);
+	}
+	
+	exit();
+}
+
+?>
+```
+
+&nbsp;
+
+## Secuencia de Inicio
+En el proceso de carga de **nogal.php**, sin importar el método empleado, se intentarán cagar los siguientes archivos, que si bien estos archivos no son obligatorios para el arranque y uso del framework, es importante tener presente su orden de carga para comprender donde deben configurarse las distintas instancias.
+
+- **NGL_PATH_PROJECT/session.php** = Define el tipo de manejo que se le dará las sessiones.
+- **NGL_PATH_PROJECT/settings.php** = Carga las configuraciones necesarias para el funcionamiento del proyecto, como variables de entorno ó las directivas de seguridad [alvin](docs/alvin.md) 
+- **NGL_PATH_FRAMEWORK/alvin.php** = Si se cumple la condicion: ```(NGL_ALVIN!==null || NGL_AUTHORIZED_IPS!==null)``` se carga el objeto [alvin](docs/alvin.md), encargado de la seguridad en todos los ambitos del framework.
 
 &nbsp;
 
@@ -114,7 +172,7 @@ $ngl()->dumphtml($ngl()->availables());
 
 ?>
 ```
-
+---
 ### Objetos Feeder
 - Se invocan utilizando unicamente su nombre
 - Siempre retornan un resultado concreto (string, array, boolean, int)
@@ -130,7 +188,7 @@ print_r($ls);
 
 ?>
 ```
-
+---
 ### Objetos Branch
 - Al igual a los feeders, se pueden invocar sólo con su nombre. Sin embargo, para cuando sea necesario identificar las instancias de un mismo objeto, existe la posibilidad de añardirles un identificador, separando a este por un punto. También puede utilizarse el punto sólo, en cuyo caso el sistema asignará uno aleatorio, que luego podrá ser obtenido mediante el método **\_\_me\_\_** del objeto. 
 - Mayormente retornarán una referencia al propio objeto, lo que permite ejecutar multiples métodos en una sola llamada. Aunque dependiendo del caso, podrían retornan un resultado concreto (string, array, boolean, int)
@@ -234,14 +292,15 @@ var_export($ngl("mysql")->__whoami__());
 |---|---|---|
 |[alvin](docs/alvin.md)|feeder|Alvin es el sistema de seguridad de **nogal**, encargado de gestionar permisos, grupos y perfiles de usuario. Mas que un objeto es un concepto que atraviesa transversalmente todo el framework.<br />Para aprender cómo aplicar Alvin, consultar la guía de [Aplicando Alvin](docs/alvinuso.md)|
 |[barcode](docs/barcode.md)|graft|Implementa la clase 'barcode-generator' para generar códigos de barras|
+|[coon](docs/coon.md)|branch||
 |[crypt](docs/crypt.md)|graft|Implementa la clase 'phpseclib', de algoritmos de encriptación, con soporte para:<br /><ul><li>aes</li><li>blowfish</li><li>des</li><li>tripledes</li><li>rc2</li><li>rc4</li><li>rijndael</li><li>rsa</li><li>twofish</li></ul>|
 |[dates](docs/dates.md)|feeder|Utilidades para operaciones con fechas y horas. Generación de Calendarios|
+|[dbase](docs/dbase.md)|branch||
 |[excel](docs/excel.md)|graft||
 |[file](docs/file.md)|branch|Crea un objeto sobre un archivo ó directorio permitiendo acceder a sus propiedades, leer y escribir su contenido.|
 |[files](docs/files.md)|feeder||
 |[fn](docs/fn.md)|feeder||
 |[ftp](docs/ftp.md)|branch||
-|[help](docs/help.md)|branch||
 |[image](docs/image.md)|branch||
 |[jsql](docs/jsql.md)|feeder|JSQL es una sintáxis que busca estandarizar las consultas SQL en un formato JSON. El objeto **jsql** proporciona un conjunto de métodos que posibilita el parseo de dichas cadenas.|
 |[mail](docs/mail.md)|branch||
@@ -253,6 +312,7 @@ var_export($ngl("mysql")->__whoami__());
 |[owl](docs/owl.md)|branch|Owl es el ORM de NOGAL y permite ejecutar operaciones sobre distintos objetos de base de datos. Para ver un ejemplo de uso completo ver la guía [owl paso a paso](docs/owluso.md)|
 |[pdf](docs/pdf.md)|graft||
 |[pdomysql](docs/pdomysql.md)|branch||
+|[qparser](docs/qparser.md)|feeder||
 |[qr](docs/qr.md)|graft||
 |[rind](docs/rind.md)|branch||
 |[sess](docs/sess.md)|feeder||
@@ -261,12 +321,12 @@ var_export($ngl("mysql")->__whoami__());
 |[sqlite](docs/sqlite.md)|branch||
 |[sqliteq](docs/sqliteq.md)|branch||
 |[sysvar](docs/sysvar.md)|feeder||
-|[todopago](docs/todopago.md)|graft||
 |[tree](docs/tree.md)|branch||
 |[tutor](docs/tutor.md)|branch|Gestor de los **tutores**. Los **tutores** son los encargados de realizar las tareas de escritura dentro del sistema, son los **controladores** del modelo. Ver también la guía [Declarando Tutores](docs/tutors.md)|
 |[unicode](docs/unicode.md)|feeder||
 |[url](docs/url.md)|branch||
 |[validate](docs/validate.md)|feeder||
+|[zip](docs/zip.md)|branch||
  
 &nbsp;
 
@@ -310,48 +370,77 @@ if($data->rows()) {
 &nbsp;
 
 ## Bee
+[bee](docs/bee.md) nos brinda acceso a todos métodos públicos de cualquier objetos del framework, utilizando cadenas de texto plano.
+
+```php
+<?php
+
+require_once("config.php");
+echo $ngl("bee")->bzzz("fn imya");
+
+?>
 ```
 
-files ls [".","nogal.*","info"]
-bzzz
+es equivalente a 
 
+```php
+<?php
 
+require_once("config.php");
+echo $ngl()->imya();
 
-file load https://cdn.bithive.cloud/json/material-design-colors.json
--$: read
-shift convert ["-$:", "json-array"]
-@get -$: pink
-bzzz
+?>
+```
 
+Pero entoces, por que usarlo?  
 
-file load https://cdn.bithive.cloud/json/material-design-colors.json
--$: read
-bzzz
+La respuesta es simple, porque con [bee](docs/bee.md) se pueden ejecutar multiples sentencias almacenadas en una cadena de texto, ya sea en una variable, un archivo ó en una base de datos. De esta manera podemos almacenar rutinas ó bien darle al usuario final la posibilidad de crear las que necesite. Eso si, tomando recaudos.  
 
+La estructura de las sentencias es siempre la misma:  
 
+**objeto** **_metodo_** _[argumentos]_
 
-mysql host 172.17.0.3
--$: base test
--$: user root
--$: pass rootoor
+Los argumentos pueden ser una cadena literal o un **array** en formato **JSON**  
+En cada sentecia la variable **-$:** contendrá el resultado de la sentencia inmediatamente anterior, sin importar el tipo de dato.
+
+El siquiente ejemplo lee datos de la base y los exporta en formato CSV. 
+
+```php
+<?php
+
+require_once("config.php");
+
+echo $ngl("bee")->bzzz(<<<BEE
+mysql args [{"host":"172.17.0.3", "base":"test", "user":"root", "pass":"rootoor"}]
 -$: connect
--$: query show tables
--$: getall
-shift convert ["-$:", "array-text"]
-bzzz
-
-
-mysql host 172.17.0.3
--$: base test
--$: user root
--$: pass rootoor
--$: connect
--$: query select * from __ngl_owl_log__
+-$: query select * from ventas
 -$: getall
 shift convert ["-$:", "array-csv"]
-bzzz
+BEE
+);
 
+?>
 ```
+
+En la carpeta raíz del framework se encuentra un archivo llamado *bee*, sin extención. Ese archivo es en realidad un archivo *.php* que permite utilizar **bee** en la linea de comandos. Para utilizarlo sólo hay que configurar el archivo de arranque de **nogal**, por defecto viene configurado *nogal.php* que se encuentra en la misma carpeta, pero si se copia *bee* en otra ubicación habrá que reapuntarlo.  
+
+[bee](docs/bee.md) en linea de comandos tiene 2 modos de ejecución, lineal y en bloque.  
+El modo lineal se ejecuta al presionar **ENTER** y sólo permite una única sentencia
+
+```bash
+$ php bee files ls [\".\",null,\"info\"]
+```
+
+El modo bloque se inicia con la llamada **php bee** y finaliza con la sentencia *bzzz* seguida de **ENTER**.  
+
+```bash
+$ php bee
+bee: file load https://cdn.bithive.cloud/json/material-design-colors.json
+bee: -$: read
+bee: shift convert ["-$:", "json-ttable"]
+bee: bzzz
+```
+
 &nbsp;
 ___
 <sub><b>nogal</b> - <em>the most simple PHP Framework</em></sub><br />
