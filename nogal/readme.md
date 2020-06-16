@@ -432,7 +432,7 @@ El modo lineal se ejecuta al presionar **ENTER** y sólo permite una única sent
 $ php bee files ls [\".\",null,\"info\"]
 ```
 
-El modo bloque se inicia con la llamada **php bee** y finaliza con la sentencia *bzzz* seguida de **ENTER**.  
+El modo bloque se inicia con la llamada **php bee** y finaliza con la sentencia **bzzz** seguida de **ENTER**.  
 
 ```bash
 $ php bee
