@@ -17,7 +17,7 @@ En este momento no vamos a adentrarnos mucho en este tema, sólo debemos saber q
 
 - **HTML** es donde vamos a trabajar con los comandos
 - **PHP** es donde el programador PHP prepara los datos e invoca al archivo HTML
-- **RIND** es el resultado que arroja el sistema luego de procesar los archivos HTML y PHP
+- **HTML-RIND** es el resultado que arroja el sistema luego de procesar los archivos HTML y PHP
 <br />
 
 Rind combina los datos del archivo PHP con las declaraciones e interfaz gráfica del archivo HTML. El resultado de este proceso es un archivo RIND, que no es mas que un archivo PHP avanzado.
@@ -48,7 +48,7 @@ echo $ngl("rind")->stamp();
 ```
 <br />
 
-**index.html.rind**
+**index.html** (rind)
 ``` php
 <?php /*rind-ac2c9f4756518fe726709b2758e58e52-N9uaFH-20170115223049*/ ?>
 <html>
