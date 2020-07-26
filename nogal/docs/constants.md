@@ -64,12 +64,14 @@ Constantes predefinidas disponibles en cualquier script en ejecucción
 
 &nbsp;
 
-## Separadores de Cadenas
+## Separadores
 |Constante|Definición|
 |---|---|
 |NGL_STRING_LINEBREAK|Separador de filas|
 |NGL_STRING_SPLITTER|Separador de columnas|
 |NGL_STRING_NUMBERS_SPLITTER|Separador de números|
+|NGL_NUMBER_SEPARATOR_DECIMAL|Separador de decimales|
+|NGL_NUMBER_SEPARATOR_THOUSANDS|Separador de miles|
 
 &nbsp;
 

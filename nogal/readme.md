@@ -9,6 +9,7 @@
 - [Objetos](#objetos)
 - [Ejemplo Práctico](#ejemplo-práctico)
 - [Bee](#bee)
+- [Rind](#rind)
 &nbsp;
 
 ## Introducción

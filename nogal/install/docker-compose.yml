@@ -1,0 +1,22 @@
+version: '3.8'
+services:
+    nogal:
+        image: hytcom/nogal:2.5
+        container_name: nogal
+        ports:
+            - 80:80
+        volumes:
+            - ${PROJECT_PATH}:/var/www
+        links: 
+            - mariadb:mariadb
+
+    mariadb:
+        image: mariadb:10
+        container_name: mariadb
+        ports:
+            - 3306:3306
+        environment:
+            MYSQL_ROOT_PASSWORD: ${MARIADB_PASSWORD}
+        volumes:
+            - ${MARIADB_PATH}:/etc/mysql/conf.d
+            - ${MARIADB_PATH}/datadir:/var/lib/mysql

@@ -653,6 +653,8 @@ También puede utilizarse **content** en lugar de **then**
 **&lt;rind:ifcase&gt;**( expr )sentencias**&lt;/rind:ifcase&gt;**  
 **&lt;rind:ifcase&gt;**( **?** expr )sentencias**&lt;/rind:ifcase&gt;** (para evaluar isset)  
 **&lt;rind:ifcase&gt;**( **#** expr )sentencias**&lt;/rind:ifcase&gt;** (para evaluar count/strlen)  
+**&lt;rind:ifcase&gt;**( **-** expr )sentencias**&lt;/rind:ifcase&gt;** (retorna **false** cuando la condicion ó su resultado, son vacios)
+**&lt;rind:ifcase&gt;**( **+** expr )sentencias**&lt;/rind:ifcase&gt;** (retorna **true** cuando la condicion ó su resultado, son vacios)
 
 donde se evaluará la expresión entre paréntesis y en caso de TRUE se ejecutarán las sentencias.
 La expresión entre paréntesis debe estar en la misma línea que el inicio del bloquee **ifcase**, esto no es necesario en el caso de las sentencias.** Ver ejemplos
