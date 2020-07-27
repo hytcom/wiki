@@ -1,6 +1,4 @@
-![](https://cdn.abcontenidos.com/images/nogal/nogal.svg =200)
-# nogal
-
+<img src="https://cdn.abcontenidos.com/images/nogal/nogal.svg" width="150" alt="nogal"/><br />
 ## Indice de contenidos
 
 - [Introducción](#introducción) 
