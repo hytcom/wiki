@@ -2,7 +2,7 @@
 ## Indice de contenidos
 
 - [Introducción](#introducción) 
-- [Intalación](install/readme.md) 
+- [Intalación](install/) 
 - [Primeros Pasos](#primeros-pasos)
 - [Secuencia de Inicio](#secuencia-de-inicio)
 - [Objecto $ngl](#objeto-ngl)
