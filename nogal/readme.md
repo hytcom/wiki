@@ -1,3 +1,4 @@
+![](https://cdn.abcontenidos.com/images/nogal/nogal.svg =200)
 # nogal
 
 ## Indice de contenidos
@@ -400,7 +401,7 @@ El modo bloque se inicia con la llamada **php bee** y finaliza con la sentencia 
 
 ```bash
 $ php bee
-bee: file load https://cdn.hytcom.net/json/material-design-colors.json
+bee: file load https://cdn.abcontenidos.com/json/material-design-colors.json
 bee: -$: read
 bee: shift convert ["-$:", "json-ttable"]
 bee: bzzz
@@ -411,7 +412,7 @@ bee: bzzz
 ## Rind
 Rind es el sistemas de templates de nogal y está pensado para diseñadores web que tengan algunos conocimientos básicos de programación en javascript o mejor aún en PHP, aunque esto no es excluyente. Está conformado por un conjunto de etiquetas HTML que al ser procesadas son decodificadas en código PHP, lo que permite trabajar con PHP desde HTML, haciendo que el código resultante sea más claro y limpio. 
 
-[Guía completa con los primeros pasos](../rind)
+[Guía completa con los primeros pasos](../rind)  
 [Indice de comandos](../rind/commands.md)
 
 &nbsp;
