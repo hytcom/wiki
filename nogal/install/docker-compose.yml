@@ -1,8 +1,9 @@
 version: '3.8'
 services:
     nogal:
-        image: hytcom/nogal:2.5
+        image: ${NOGAL}
         container_name: nogal
+        #restart: always
         ports:
             - 80:80
         volumes:
@@ -11,8 +12,9 @@ services:
             - mariadb:mariadb
 
     mariadb:
-        image: mariadb:10
+        image: ${MARIADB}
         container_name: mariadb
+        #restart: always
         ports:
             - 3306:3306
         environment:

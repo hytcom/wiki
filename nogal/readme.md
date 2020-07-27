@@ -3,17 +3,23 @@
 ## Indice de contenidos
 
 - [Introducción](#introducción) 
+- [Intalación](install/readme.md) 
 - [Primeros Pasos](#primeros-pasos)
 - [Secuencia de Inicio](#secuencia-de-inicio)
 - [Objecto $ngl](#objeto-ngl)
-- [Objetos](#objetos)
+- [Objetos](objects.md)
 - [Ejemplo Práctico](#ejemplo-práctico)
 - [Bee](#bee)
 - [Rind](#rind)
+- [Licencia](#licencia)
 &nbsp;
 
 ## Introducción
-lorem
+**nogal** es un framework PHP de código abierto pensado para que todos puedan desarrollar aplicaciones sin necesidad de tener grandes conocimientos de programación (the most simple PHP Framework)  
+
+Su estructura está pensada para que todo aquel que tenga conocimientos básicos de programación, como que es una **variable**, un **if** y un **bucle**, pueda desarrollar aplicaciones sin mayores dificultades. Esto es gracias, entre otras cosas, a su poderoso sistema de templates llamado [rind](../rind) que permite al desarrollador comunicarse con cualquiera de los objetos del framework desde el HTML, utilizando una sintáxis basada en XML, JS y JSON.
+
+A pesar de ser fácil de utilizar y de tener una curva de aprendizaje muy rápida, **nogal** es también una poderosa herramienta para el desarrollador experimentado, ya que respeta los estandares del modelo MVC, tiene una sintáxsis muy limpia en el uso de PHP y un interprete denominado [Bee](#bee) que le permitirá ejecutar cualquier objeto del framework desde una terminal.
 
 &nbsp;
 
@@ -285,50 +291,7 @@ var_export($ngl("mysql")->__whoami__());
 
 ?>
 ```
- 
-&nbsp;
 
-## Objetos
-|Nombre|Tipo|Descripción|
-|---|---|---|
-|[alvin](docs/alvin.md)|feeder|Alvin es el sistema de seguridad de **nogal**, encargado de gestionar permisos, grupos y perfiles de usuario. Mas que un objeto es un concepto que atraviesa transversalmente todo el framework.<br />Para aprender cómo aplicar Alvin, consultar la guía de [Aplicando Alvin](docs/alvinuso.md)|
-|[barcode](docs/barcode.md)|graft|Implementa la clase 'barcode-generator' para generar códigos de barras|
-|[coon](docs/coon.md)|branch||
-|[crypt](docs/crypt.md)|graft|Implementa la clase 'phpseclib', de algoritmos de encriptación, con soporte para:<br /><ul><li>aes</li><li>blowfish</li><li>des</li><li>tripledes</li><li>rc2</li><li>rc4</li><li>rijndael</li><li>rsa</li><li>twofish</li></ul>|
-|[dates](docs/dates.md)|feeder|Utilidades para operaciones con fechas y horas. Generación de Calendarios|
-|[dbase](docs/dbase.md)|branch||
-|[excel](docs/excel.md)|graft||
-|[file](docs/file.md)|branch|Crea un objeto sobre un archivo ó directorio permitiendo acceder a sus propiedades, leer y escribir su contenido.|
-|[files](docs/files.md)|feeder||
-|[fn](docs/fn.md)|feeder||
-|[ftp](docs/ftp.md)|branch||
-|[image](docs/image.md)|branch||
-|[jsql](docs/jsql.md)|feeder|JSQL es una sintáxis que busca estandarizar las consultas SQL en un formato JSON. El objeto **jsql** proporciona un conjunto de métodos que posibilita el parseo de dichas cadenas.|
-|[mail](docs/mail.md)|branch||
-|[md](docs/md.md)|branch||
-|[mysql](docs/mysql.md)|branch|Gestor de conexiones con bases de datos MySQL. Las consultas SQL se ejecutan a través del método **query**, que en caso de exito retornarán un objeto [mysqlq](docs/mysqlq.md)|
-|[mysqlq](docs/mysqlq.md)|branch|Controla los resultados generados por consultas a la bases de datos MySQL.|
-|[nest](docs/nest.md)|branch|Nest es la herramienta para crear y mantener la estructura de base de datos del objeto [owl](docs/owl.md), en MySQSL. Para ver un ejemplo de uso completo ver la guía [owl paso a paso](docs/owluso.md)|
-|[nut](docs/nut.md)|feeder|Gestor de los **nuts**. Los **nuts** son clases php cuyo objetivo es agrupar procedimientos que pueden o no invocar a otros objetos del **nogal**. Son las **vistas** del modelo. Ver también la guía [NUTS Definidos por el Usuario](docs/nuts.md)|
-|[owl](docs/owl.md)|branch|Owl es el ORM de NOGAL y permite ejecutar operaciones sobre distintos objetos de base de datos. Para ver un ejemplo de uso completo ver la guía [owl paso a paso](docs/owluso.md)|
-|[pdf](docs/pdf.md)|graft||
-|[pdomysql](docs/pdomysql.md)|branch||
-|[qparser](docs/qparser.md)|feeder||
-|[qr](docs/qr.md)|graft||
-|[rind](docs/rind.md)|branch||
-|[sess](docs/sess.md)|feeder||
-|[set](docs/set.md)|branch||
-|[shift](docs/shift.md)|feeder||
-|[sqlite](docs/sqlite.md)|branch||
-|[sqliteq](docs/sqliteq.md)|branch||
-|[sysvar](docs/sysvar.md)|feeder||
-|[tree](docs/tree.md)|branch||
-|[tutor](docs/tutor.md)|branch|Gestor de los **tutores**. Los **tutores** son los encargados de realizar las tareas de escritura dentro del sistema, son los **controladores** del modelo. Ver también la guía [Declarando Tutores](docs/tutors.md)|
-|[unicode](docs/unicode.md)|feeder||
-|[url](docs/url.md)|branch||
-|[validate](docs/validate.md)|feeder||
-|[zip](docs/zip.md)|branch||
- 
 &nbsp;
 
 ## Ejemplo Práctico
@@ -437,11 +400,44 @@ El modo bloque se inicia con la llamada **php bee** y finaliza con la sentencia 
 
 ```bash
 $ php bee
-bee: file load https://cdn.bithive.cloud/json/material-design-colors.json
+bee: file load https://cdn.hytcom.net/json/material-design-colors.json
 bee: -$: read
 bee: shift convert ["-$:", "json-ttable"]
 bee: bzzz
 ```
+
+&nbsp;
+
+## Rind
+Rind es el sistemas de templates de nogal y está pensado para diseñadores web que tengan algunos conocimientos básicos de programación en javascript o mejor aún en PHP, aunque esto no es excluyente. Está conformado por un conjunto de etiquetas HTML que al ser procesadas son decodificadas en código PHP, lo que permite trabajar con PHP desde HTML, haciendo que el código resultante sea más claro y limpio. 
+
+[Guía completa con los primeros pasos](../rind)
+[Indice de comandos](../rind/commands.md)
+
+&nbsp;
+
+## Licencia
+The MIT License (MIT) - Copyright (c) 2016 Ariel Bottero
+[hytcom.net](https://hytcom.net/nogal)
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of 
+this software and associated documentation files (the "Software"), to deal in 
+the Software without restriction, including without limitation the rights to 
+use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies 
+of the Software, and to permit persons to whom the Software is furnished to do 
+so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all 
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR 
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE 
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER 
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, 
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE 
+SOFTWARE.
+
 
 &nbsp;
 ___

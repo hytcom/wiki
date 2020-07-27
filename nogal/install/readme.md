@@ -5,7 +5,7 @@
 - Instalar Docker [https://www.docker.com/get-started](https://www.docker.com/get-started)
 - Si tu OS es Windows, debés configurar Docker para que utilice [Contenedores Linux](https://docs.docker.com/docker-for-windows/#switch-between-windows-and-linux-containers)
 
-### Nogal
+### nogal
 - Crear la carpeta local y dentro crar 2 carpetas, que servirán de repositiorio para los archivos del proyecto y las bases de datos, por ejemplo:
 ```bash
 /home/me
@@ -28,8 +28,10 @@ docker pull mariadb:10
 docker-compose up -d
 ```
 - LISTO! ya podés usar el **nogal**  
+
 &nbsp;
 
+### Notas
 Si por algún motivo fuera necesario ingresar a los contenedores, podés hacer por medio de la terminal ejecutando
 ```bash
 # nogal
@@ -39,7 +41,7 @@ docker exec -it nogal bash
 docker exec -it nogal bash
 ```
 
-## NOTA
+## IMPORTANTE!
 El contenedor **mariadb** es accesible desde el contenedor **nogal** mediante el nombre **mariadb**, es decir, que en la configuración del conector de base de datos, el host debe ser **mariadb**
 
 &nbsp;
