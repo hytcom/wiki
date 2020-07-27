@@ -2,7 +2,7 @@
 ## Indice de contenidos
 
 - [Introducción](#introducción) 
-- [Intalación](install/) 
+- [Instalación](#instalación) 
 - [Primeros Pasos](#primeros-pasos)
 - [Secuencia de Inicio](#secuencia-de-inicio)
 - [Objecto $ngl](#objeto-ngl)
@@ -19,6 +19,48 @@
 Su estructura está pensada para que todo aquel que tenga conocimientos básicos de programación, como que es una **variable**, un **if** y un **bucle**, pueda desarrollar aplicaciones sin mayores dificultades. Esto es gracias, entre otras cosas, a su poderoso sistema de templates llamado [rind](../rind) que permite al desarrollador comunicarse con cualquiera de los objetos del framework desde el HTML, utilizando una sintáxis basada en XML, JS y JSON.
 
 A pesar de ser fácil de utilizar y de tener una curva de aprendizaje muy rápida, **nogal** es también una poderosa herramienta para el desarrollador experimentado, ya que respeta los estandares del modelo MVC, tiene una sintáxsis muy limpia en el uso de PHP y un interprete denominado [Bee](#bee) que le permitirá ejecutar cualquier objeto del framework desde una terminal.
+
+&nbsp;
+
+## Instalación
+En el siguiente enlace encontrarás los pasos para la instalación de **nogal** [Como instalar nogal](install/)
+
+Para realizar la instalación es necesario tener instalado PHP 5.6 o superior, con los siguientes módulos:
+- bcmath
+- Core
+- ctype
+- curl
+- date
+- dom
+- fileinfo
+- filter
+- ftp
+- gd
+- hash
+- iconv
+- json
+- libxml
+- mbstring
+- mysqli
+- mysqlnd
+- openssl
+- pcre
+- Phar
+- posix
+- readline
+- Reflection
+- session
+- SimpleXML
+- sodium
+- SPL
+- sqlite3
+- standard
+- tokenizer
+- xml
+- xmlreader
+- xmlwriter
+- zip
+- zlib
 
 &nbsp;
 

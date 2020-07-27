@@ -1,4 +1,4 @@
-# nogal - Objetos
+# nogal - Objetos [documento y subdocumentos en desarrollo]
 Los objetos en nogal se invocan atraves de la variable **$ngl**, no en necesario incluir librerías ni instanciarlos de manera previa.
 
 ```php
