@@ -1,4 +1,4 @@
-# nogal::rind - Clase 3 - Bucles
+# rind - Clase 3 - Bucles
 Plantillas HTML
 ___
 
@@ -86,6 +86,7 @@ Listado de indicadores:
 - **numrow** número de la vuelta actual, comenzando por el 0
 - **odd** retorna **0** si la vuelta es par y **1** si es impar
 - **parity** retorna **even** si la vuelta es par y **odd** si es impar
+- **previous** = datos recogidos en la vuelta anterior, en la primer vuelta retorna NULL
 
 Seguimos con el caso de los colores
 ``` html
@@ -336,3 +337,8 @@ Para ver la descripción completa del comando ver la [ayuda](commands.md#loop)
 ---
 - [Clase 2 - Condicional IF](clase-02.md)
 - [Clase 4 - Seteo de Variables](clase-04.md)
+
+&nbsp;
+___
+<sub><b>nogal</b> - <em>the most simple PHP Framework</em></sub><br />
+<sup>&copy; 2020 by <a href="https://hytcom.net">hytcom.net</a> - <a href="https://github.com/hytcom">@hytcom</a></sup><br />

@@ -1,4 +1,4 @@
-# nogal::rind -  Clase 2 - Condicional IF
+# rind -  Clase 2 - Condicional IF
 Plantillas HTML
 ___
 
@@ -150,3 +150,8 @@ Para ver la descripción completa del comando ver la [ayuda](commands.md#ifcase)
 ---
 - [Clase 1 - Conceptos Básicos](clase-01.md)
 - [Clase 3 - Bucles](clase-03.md)
+
+&nbsp;
+___
+<sub><b>nogal</b> - <em>the most simple PHP Framework</em></sub><br />
+<sup>&copy; 2020 by <a href="https://hytcom.net">hytcom.net</a> - <a href="https://github.com/hytcom">@hytcom</a></sup><br />

@@ -1,4 +1,4 @@
-# nogal::rind - Clase 1 - Conceptos Básicos
+# rind - Clase 1 - Conceptos Básicos
 Plantillas HTML
 ___
 
@@ -343,4 +343,4 @@ ___
 &nbsp;
 ___
 <sub><b>nogal</b> - <em>the most simple PHP Framework</em></sub><br />
-<sup>&copy; 2018 by <a href="http://hytcom.net/nogal">hytcom.net/nogal</a> - <a href="https://github.com/arielbottero">@arielbottero</a></sup><br />
+<sup>&copy; 2020 by <a href="https://hytcom.net">hytcom.net</a> - <a href="https://github.com/hytcom">@hytcom</a></sup><br /> 
