@@ -15,6 +15,7 @@ $ngl("file")->load("/tmp/doc.txt")->read();
 |---|---|---|
 |[alvin](docs/alvin.md)|feeder|Alvin es el sistema de seguridad de **nogal**, encargado de gestionar permisos, grupos y perfiles de usuario. Mas que un objeto es un concepto que atraviesa transversalmente todo el framework.<br />Para aprender cómo aplicar Alvin, consultar la guía de [Aplicando Alvin](docs/alvinuso.md)|
 |[barcode](docs/barcode.md)|graft|Implementa la clase 'barcode-generator' para generar códigos de barras|
+|[bee](docs/bee.md)|feeder||
 |[coon](docs/coon.md)|branch||
 |[crypt](docs/crypt.md)|graft|Implementa la clase 'phpseclib', de algoritmos de encriptación, con soporte para:<br /><ul><li>aes</li><li>blowfish</li><li>des</li><li>tripledes</li><li>rc2</li><li>rc4</li><li>rijndael</li><li>rsa</li><li>twofish</li></ul>|
 |[dates](docs/dates.md)|feeder|Utilidades para operaciones con fechas y horas. Generación de Calendarios|
@@ -32,6 +33,7 @@ $ngl("file")->load("/tmp/doc.txt")->read();
 |[mysqlq](docs/mysqlq.md)|branch|Controla los resultados generados por consultas a la bases de datos MySQL.|
 |[nest](docs/nest.md)|branch|Nest es la herramienta para crear y mantener la estructura de base de datos del objeto [owl](docs/owl.md), en MySQSL. Para ver un ejemplo de uso completo ver la guía [owl paso a paso](docs/owluso.md)|
 |[nut](docs/nut.md)|feeder|Gestor de los **nuts**. Los **nuts** son clases php cuyo objetivo es agrupar procedimientos que pueden o no invocar a otros objetos del **nogal**. Son las **vistas** del modelo. Ver también la guía [NUTS Definidos por el Usuario](docs/nuts.md)|
+|[ocr](docs/pdf.md)|graft||
 |[owl](docs/owl.md)|branch|Owl es el ORM de NOGAL y permite ejecutar operaciones sobre distintos objetos de base de datos. Para ver un ejemplo de uso completo ver la guía [owl paso a paso](docs/owluso.md)|
 |[pdf](docs/pdf.md)|graft||
 |[pdomysql](docs/pdomysql.md)|branch||
