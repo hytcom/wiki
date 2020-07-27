@@ -201,11 +201,20 @@ print_r($ls);
 - Estos objetos cuentan con argumentos y atributos. Los atributos son de sólo lectura y van siendo seteados por el objeto en función de los argumentos pasados y/o de los métodos ejecutados. Por otro lado, los argumentos permiten configurar el objeto y ejecutar sus métodos. Existen **MULTIPLES** maneras de configurar y ejecturar los métodos de un objeto **branch**:
 
   - **default** = son los configurados directamente en la clase
-  - **archivo.conf** = cuando exista un archivo **OBJETO.conf** en la carpeta **NGL_PATH_CONF**, el objeto se iniciará con dicha configuración
+  - **archivo.conf** = cuando exista un archivo **OBJETO.conf**\* en la carpeta **NGL_PATH_CONF**, el objeto se iniciará con dicha configuración.
   - **archivo.conf específico** = igual al anterior, con la diferencia es que el nombre del archivo deberá ser pasado por referencia a la hora de iniciar el objeto, separandolo del nombre utilizando un pipe **|**. Esto es util cuando, por ejemplo, se trabaja con el objeto **mysql** en dos o más bases de datos diferentes.
   - **function syntax** = ya en tiempo de ejecución se llama al argumento como si fuese un método y se pasa el valor como un único argumento.
   - **variable syntax** = ya en tiempo de ejecución se asigna el valor al argumento utilizando la sintaxis de asignación de variables.
   - **método args** = por medio de este método puede pasarse la configuración de varios argumentos simultanemente, en forma de un array asociativo.
+
+\* para generar un archivo de configuración deberá ejecutarse el siguiente método
+```php
+<?php
+
+$ngl("<OBJETO>")->__configfile__();
+
+?>
+```
 
 Veamos unos ejemplos aplicados sobre el objeto **mysql**
 
