@@ -20,8 +20,7 @@ PROJECT_PATH=/home/me/project
 MARIADB_PATH=/home/me/mariadb
 MARIADB_PASSWORD=mypass
 ```
-- Abrir una terminal, cmd ó PowerShell y situarse en esa carpeta
-- Ejecutar los siguientes comandos
+- Abrir una terminal, cmd ó PowerShell, situarse en esa carpeta y ejecutar
 ```bash
 docker-compose up -d
 ```
