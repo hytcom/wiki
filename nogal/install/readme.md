@@ -23,8 +23,6 @@ MARIADB_PASSWORD=mypass
 - Abrir una terminal, cmd ó PowerShell y situarse en esa carpeta
 - Ejecutar los siguientes comandos
 ```bash
-docker pull hytcom/nogal:2.5
-docker pull mariadb:10
 docker-compose up -d
 ```
 - LISTO! ya podés usar el **nogal**  
@@ -38,7 +36,7 @@ Si por algún motivo fuera necesario ingresar a los contenedores, podés hacer p
 docker exec -it nogal bash
 
 # mariadb
-docker exec -it nogal bash
+docker exec -it mariadb bash
 ```
 
 ## IMPORTANTE!
