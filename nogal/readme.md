@@ -72,7 +72,7 @@ print_r($ngl()->constants());
 El uso de **prickout** permite que los archivos del cógido fuente estén fuera de la carpeta pública, agregando asi una capa de seguridad.  
 Para ello es necesario definir en la constante **NGL_PATH_PRICKOUT** el path de la carpeta principal que alberga los archivos fuentes y utilizar redirecciones en el servidor, como por ejemplo, usando rewrite mode en .htaccess  
 Cuando se utilice **prickout**, **nogal** intentará ejecutar el **path** siguiendo estas directivas:
-- si no se encuentra ```$_SERVER["REDIRECT_URL"]``` o ```$_SERVER["REDIRECT_SCRIPT_URL"]```, arrojará error 403
+- si no se encuentra ```$REDIRECTURL``` o ```$_SERVER["REDIRECT_SCRIPT_URL"]```, arrojará error 403
 - si el **path** es de un archivo **.php** intentará ejecutarlo
 - si el **path** termina en **/** intentará ejecutar un archivo **index.php**
 - se intentará enviar los datos del **path** al archivo **\_\_container.php** de la ruta del **path**
@@ -116,7 +116,8 @@ Que verifica por medio de la existencia de la constante **NGL_SOWED** que el arc
 
 ---
 ### Uso de re-prickout.php
-También es posible hacer redirecciones atraves de **prickout** utilizando el arvhivo **re-prickout.php** de la carpeta **NGL_PATH_PROJECT**.
+También es posible hacer redirecciones atraves de **prickout** utilizando el arvhivo **re-prickout.php** de la carpeta **NGL_PATH_PROJECT**.  
+**prickout** hereda a **re-prickout.php** la variable **\$REDIRECTURL**, con el valor de la URL solicitada
 
 ```php
 # re-prickout.php
@@ -125,18 +126,18 @@ También es posible hacer redirecciones atraves de **prickout** utilizando el ar
 
 switch(true) {
 	// http://www.dominio.com/foo/bar.php => http://www.dominio.com/index.php?id=foobar
-	case ($_SERVER["REDIRECT_URL"] == "/foo/bar.php"):
+	case ($REDIRECTURL == "/foo/bar.php"):
 		$NGL_REPRICKOUT_URL = "/index.php?id=foobar";
 		break;
 
 	// http://www.dominio.com/foo/1234 => http://www.dominio.com/foo.php?id=1234
-	case (substr($_SERVER["REDIRECT_URL"], 0, 5)=="/foo/"):
-		$NGL_REPRICKOUT_URL = explode("/", $_SERVER["REDIRECT_URL"], 3);
+	case (substr($REDIRECTURL, 0, 5)=="/foo/"):
+		$NGL_REPRICKOUT_URL = explode("/", $REDIRECTURL, 3);
 		$NGL_REPRICKOUT_URL = "/foo.php?id=".$NGL_REPRICKOUT_URL[2];
 		break;
 	
 	// http://www.dominio.com/ws/getinfo => http://www.dominio.com/ws/ws/webservice.php con datos POST
-	case ($_SERVER["REDIRECT_URL"] == "/ws/getinfo"):
+	case ($REDIRECTURL == "/ws/getinfo"):
 		$NGL_REPRICKOUT_REQUEST	= array("method"=>"getinfo", "body"=>file_get_contents("php://input"));
 		$NGL_REPRICKOUT_URL		= NGL_URL."/ws/webservice.php";
 		break;
