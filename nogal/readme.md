@@ -26,41 +26,15 @@ A pesar de ser fácil de utilizar y de tener una curva de aprendizaje muy rápid
 En el siguiente enlace encontrarás los pasos para la instalación de **nogal** [Como instalar nogal](install/)
 
 Para realizar la instalación es necesario tener instalado PHP 5.6 o superior, con los siguientes módulos:
-- bcmath
-- Core
-- ctype
-- curl
-- date
-- dom
-- fileinfo
-- filter
-- ftp
-- gd
-- hash
-- iconv
-- json
-- libxml
-- mbstring
-- mysqli
-- mysqlnd
-- openssl
-- pcre
-- Phar
-- posix
-- readline
-- Reflection
-- session
-- SimpleXML
-- sodium
-- SPL
-- sqlite3
-- standard
-- tokenizer
-- xml
-- xmlreader
-- xmlwriter
-- zip
-- zlib
+||||||
+|-|-|-|-|-|
+|bcmath|Core|ctype|curl|date|
+|dom|fileinfo|filter|ftp|gd|
+|hash|iconv|json|libxml|mbstring|
+|mysqli|mysqlnd|openssl|pcre|Phar|
+|posix|readline|Reflection|session|SimpleXML|
+|sodium|SPL|sqlite3|standard|tokenizer|
+|xml|xmlreader|xmlwriter|zip|zlib|
 
 &nbsp;
 
