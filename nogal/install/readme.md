@@ -1,5 +1,5 @@
 # Instalación de nogal y mariadb con Docker
-## nogal 2.5 / mariadb 10
+## nogal 2.5.1 / mariadb 10
 
 ### Docker
 - Instalar Docker [https://www.docker.com/get-started](https://www.docker.com/get-started)
