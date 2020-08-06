@@ -414,16 +414,29 @@ BEE
 
 En la carpeta raíz del framework se encuentra un archivo llamado *bee*, sin extención. Ese archivo es en realidad un archivo *.php* que permite utilizar **bee** en la linea de comandos. Para utilizarlo sólo hay que configurar el archivo de [arranque](#primeros-pasos) de **nogal**; por defecto viene configurado *nogal.php* que se encuentra en la misma carpeta, pero si se copia *bee* en otra ubicación habrá que reapuntarlo.  
 
-[bee](docs/bee.md) en linea de comandos tiene 2 modos de ejecución, lineal y en bloque.  
-El modo lineal se ejecuta al presionar **ENTER** y sólo permite una única sentencia
+[bee](docs/bee.md) en linea de comandos tiene 2 modos de ejecución, directa y en bloque.  
+El modo directo se ejecuta al presionar **ENTER**. Opcionalmente puede ejecutarse en modo silencioso y tambien multiples comandos entrecomillados y separados por uno o varios caracteres.  
+**IMPORTANTE:** el separador no debe repetirse dentro de la cadena de comandos, mas que para separar a estos entre sí.  
 
 ```bash
+$ php bee <COMMAND>						modo directo
+$ php bee -s <COMMAND>					modo directo silencioso
+$ php bee -m "<COMMAND>|<COMMAND>"		modo multiple
+$ php bee -m@ "<COMMAND>@<COMMAND>"		modo multiple con @ como separador
+$ php bee -mXX "<COMMAND>XX<COMMAND>"	modo multiple con XX como separador
+$ php bee -s -m "<COMMAND>|<COMMAND>"	modo multiple silencioso
+
+# ejemplo
 $ php bee files ls [\".\",null,\"info\"]
 ```
 
 El modo bloque se inicia con la llamada **php bee** y finaliza con la sentencia **bzzz** seguida de **ENTER**.  
 
 ```bash
+$ php bee								modo consola
+$ php bee -s							modo consola silencioso
+
+# ejemplo
 $ php bee
 bee: file load https://cdn.abcontenidos.com/json/material-design-colors.json
 bee: -$: read
