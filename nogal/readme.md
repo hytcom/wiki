@@ -419,12 +419,12 @@ El modo directo se ejecuta al presionar **ENTER**. Opcionalmente puede ejecutars
 **IMPORTANTE:** el separador no debe repetirse dentro de la cadena de comandos, mas que para separar a estos entre sí.  
 
 ```bash
-$ php bee <COMMAND>						modo directo
-$ php bee -s <COMMAND>					modo directo silencioso
-$ php bee -m "<COMMAND>|<COMMAND>"		modo multiple
-$ php bee -m@ "<COMMAND>@<COMMAND>"		modo multiple con @ como separador
-$ php bee -mXX "<COMMAND>XX<COMMAND>"	modo multiple con XX como separador
-$ php bee -s -m "<COMMAND>|<COMMAND>"	modo multiple silencioso
+$ php bee <COMMAND>                     modo directo
+$ php bee -s <COMMAND>                  modo directo silencioso
+$ php bee -m "<COMMAND>|<COMMAND>"      modo multiple
+$ php bee -m@ "<COMMAND>@<COMMAND>"     modo multiple con @ como separador
+$ php bee -mXX "<COMMAND>XX<COMMAND>"   modo multiple con XX como separador
+$ php bee -s -m "<COMMAND>|<COMMAND>"   modo multiple silencioso
 
 # ejemplo
 $ php bee files ls [\".\",null,\"info\"]
@@ -433,8 +433,8 @@ $ php bee files ls [\".\",null,\"info\"]
 El modo bloque se inicia con la llamada **php bee** y finaliza con la sentencia **bzzz** seguida de **ENTER**.  
 
 ```bash
-$ php bee								modo consola
-$ php bee -s							modo consola silencioso
+$ php bee                               modo consola
+$ php bee -s                            modo consola silencioso
 
 # ejemplo
 $ php bee
