@@ -421,10 +421,12 @@ El modo directo se ejecuta al presionar **ENTER**. Opcionalmente puede ejecutars
 ```bash
 $ php bee <COMMAND>                     modo directo
 $ php bee -s <COMMAND>                  modo directo silencioso
+$ php bee -r <COMMAND>                  modo inline retorno (valor crudo, sin formato. En caso de error retorna NULL)
 $ php bee -m "<COMMAND>|<COMMAND>"      modo multiple
 $ php bee -m@ "<COMMAND>@<COMMAND>"     modo multiple con @ como separador
 $ php bee -mXX "<COMMAND>XX<COMMAND>"   modo multiple con XX como separador
 $ php bee -s -m "<COMMAND>|<COMMAND>"   modo multiple silencioso
+$ php bee -r -m "<COMMAND>|<COMMAND>"   modo inline retorno (valor crudo, sin formato. En caso de error retorna NULL)
 
 # ejemplo
 $ php bee files ls [\".\",null,\"info\"]
