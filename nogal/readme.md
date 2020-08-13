@@ -23,8 +23,6 @@ A pesar de ser fácil de utilizar y de tener una curva de aprendizaje muy rápid
 &nbsp;
 
 ## Instalación
-En el siguiente enlace encontrarás los pasos para la instalación de **nogal** [Como instalar nogal](install/)
-
 Para realizar la instalación es necesario tener instalado PHP 5.6 o superior, con los siguientes módulos:
 |Módulos|||||
 |:---:|:---:|:---:|:---:|:---:|
@@ -35,6 +33,12 @@ Para realizar la instalación es necesario tener instalado PHP 5.6 o superior, c
 |posix|readline|Reflection|session|SimpleXML|
 |sodium|SPL|sqlite3|standard|tokenizer|
 |xml|xmlreader|xmlwriter|zip|zlib|
+
+&nbsp;
+
+Luego clonar el código del repositorio ```git@github.com:hytcom/nogal-php.git```
+
+Otra opción es hacer la instalación desde Docker Hub. [Instalación de nogal y mariadb con Docker](install/)
 
 &nbsp;
 
@@ -51,7 +55,7 @@ Podemos ver los valores adoptados por las constantes **NGL...** utilizando el m�
 ```php
 <?php
 
-require_once("/var/nogal/nogal.php");
+require_once("/usr/share/nogal/nogal.php");
 print_r($ngl()->constants());
 
 ?>
