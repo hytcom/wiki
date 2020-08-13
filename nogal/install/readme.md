@@ -29,7 +29,7 @@ docker-compose up -d
 &nbsp;
 
 ### Notas
-Si por algún motivo fuera necesario ingresar a los contenedores, podés hacer por medio de la terminal ejecutando
+- Si por algún motivo fuera necesario ingresar a los contenedores, podés hacer por medio de la terminal ejecutando
 ```bash
 # nogal
 docker exec -it nogal bash
@@ -37,6 +37,8 @@ docker exec -it nogal bash
 # mariadb
 docker exec -it mariadb bash
 ```
+- En la carpeta **/urs/share/nogal/samples** están diponibles ejemplos de los 3 modos de arranque del framework. Para probarlos, se debe copiar el contenido de cada una de ellas en la carpeta **/home/me/project**  
+
 
 ## IMPORTANTE!
 El contenedor **mariadb** es accesible desde el contenedor **nogal** mediante el nombre **mariadb**, es decir, que en la configuración del conector de base de datos, el host debe ser **mariadb**
