@@ -14,7 +14,7 @@
 &nbsp;
 
 ## Introducción
-**nogal** es un framework PHP de código abierto pensado para que todos puedan desarrollar aplicaciones sin necesidad de tener grandes conocimientos de programación (the most simple PHP Framework)  
+[nogal](https://github.com/hytcom/nogal-php) es un framework PHP de código abierto pensado para que todos puedan desarrollar aplicaciones sin necesidad de tener grandes conocimientos de programación (the most simple PHP Framework)  
 
 Su estructura está pensada para que todo aquel que tenga conocimientos básicos de programación, como que es una **variable**, un **if** y un **bucle**, pueda desarrollar aplicaciones sin mayores dificultades. Esto es gracias, entre otras cosas, a su poderoso sistema de templates llamado [rind](../rind) que permite al desarrollador comunicarse con cualquiera de los objetos del framework desde el HTML, utilizando una sintáxis basada en XML, JS y JSON.
 
@@ -38,7 +38,7 @@ Para realizar la instalación es necesario tener instalado PHP 5.6 o superior, c
 
 Luego clonar el código del repositorio ```git@github.com:hytcom/nogal-php.git```
 
-Otra opción es hacer la instalación desde Docker Hub. [Instalación de nogal y mariadb con Docker](install/)
+Otra opción es hacer la instalación desde [Docker Hub](https://hub.docker.com/repository/docker/hytcom/nogal) Ver la guía de [Instalación de nogal y mariadb con Docker](install/)
 
 &nbsp;
 
