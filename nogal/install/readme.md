@@ -39,6 +39,7 @@ docker exec -it mariadb bash
 ```
 - En la carpeta **/urs/share/nogal/samples** están diponibles ejemplos de los 3 modos de arranque del framework. Para probarlos, se debe copiar el contenido de cada una de ellas en la carpeta **/home/me/project**  
 
+&nbsp;
 
 ## IMPORTANTE!
 El contenedor **mariadb** es accesible desde el contenedor **nogal** mediante el nombre **mariadb**, es decir, que en la configuración del conector de base de datos, el host debe ser **mariadb**
