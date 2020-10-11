@@ -414,9 +414,15 @@ Para cuando se quiera evaluar la inexistencia de uno ó mas permisos se deberá 
 - Si la cadena de permisos esta vacia o su sintáxis es incorrecta, el comando devolverá **false**
 - Si la cadena de permisos es igual a **true** ó **1**, el comando devolverá **true**
 - Si la cadena de permisos es igual a **RAW**, el comando retornará un valor RAW valiendose de los parámetros en **rawindex** y **rawdada**. Si los valores **RAW** tuvieran palabras claves con el formato **{:keyword:}**, estas serán reemplazadas con los valores pasados por medio de **rawdata**.
+- Para el nombre de usuario **admin** todos los permisos serán ignorados.
 
 Para que **RindCommands::alvin** pueda ejecutarse, el TOKEN de permisos deberá está almacenado en la variable:
 **$_SESSION[NGL_SESSION_INDEX]["LOGIN"]["ALVIN_TOKEN"]**  
+
+La política de evaluación está condicionada por el argumento **alvin_mode** del objeto **rind**
+- all: todas las validaciones están activas
+- none: se ignoran todas las validaciones
+- users: se ignoran todas las validaciones para los usuarios declarados. Cadena separada por ,
 
 
 |Parámetro|Descripción|
@@ -431,7 +437,7 @@ Para que **RindCommands::alvin** pueda ejecutarse, el TOKEN de permisos deberá 
 ```php
 /* concede acceso al perfil que tenga los dos permisos */
 <rind:ifcase>
-    <@iff><rind:alvin>(?|SALES>VIEW,SALES>ADD)</rind:alvin></@iff>
+    <@iff><rind:alvin>(?|sales.view,sales.add)</rind:alvin></@iff>
     <@then>PUEDE VERME</@then>
     <@else>NO PUEDE VERME</@else>
 </rind:ifcase>
@@ -440,7 +446,7 @@ Para que **RindCommands::alvin** pueda ejecutarse, el TOKEN de permisos deberá 
 ```php
 /* concede acceso a los perfiles que tengan cualquiera de los 2 permisos */
 <rind:ifcase>
-    <@iff><rind:alvin>(?|SALES>VIEW,BUY>VIEW)</rind:alvin></@iff>
+    <@iff><rind:alvin>(?|sales.view,buy.view)</rind:alvin></@iff>
     <@then>PUEDE VERME</@then>
     <@else>NO PUEDE VERME</@else>
 </rind:ifcase>
@@ -449,7 +455,7 @@ Para que **RindCommands::alvin** pueda ejecutarse, el TOKEN de permisos deberá 
 ```php
 /* concede acceso a los perfiles que no tengan el permiso */
 <rind:ifcase>
-    <@iff><rind:alvin>(!|SALES>REPORT)</rind:alvin></@iff>
+    <@iff><rind:alvin>(!|sales.report)</rind:alvin></@iff>
     <@then>PUEDE VERME</@then>
     <@else>NO PUEDE VERME</@else>
 </rind:ifcase>
@@ -480,7 +486,7 @@ Para que **RindCommands::alvin** pueda ejecutarse, el TOKEN de permisos deberá 
 
 #### Autoriza contenidos  
 ```php
-<rind:alvin>(SALES,BUY)
+<rind:alvin>(sales,buy)
     <rind:loop>
         <@name>count</@name>
         <@type>number</@type>
