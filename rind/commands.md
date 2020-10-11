@@ -422,7 +422,7 @@ Para que **RindCommands::alvin** pueda ejecutarse, el TOKEN de permisos deberá 
 La política de evaluación está condicionada por el argumento **alvin_mode** del objeto **rind**
 - all: todas las validaciones están activas
 - none: se ignoran todas las validaciones
-- users: se ignoran todas las validaciones para los usuarios declarados. Cadena separada por ,
+- users: se ignoran todas las validaciones para los usuarios declarados. Cadena separada por , (coma)
 
 
 |Parámetro|Descripción|
