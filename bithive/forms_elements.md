@@ -197,7 +197,7 @@ Los argumentos deben ser pasados utilizando los atributos
   - **text** = números y letras
   - **symbols** = sólo símbolos
 
-En caso de utilizar la estructura **JSON** para el armado del formulario, los atributos deben declararse dentro del índice **alvin** 
+En caso de utilizar la estructura **JSON** para el armado del formulario, los atributos deben declararse dentro del índice **jsalvin** 
 
 ### Ejemplo HTML
 ```html
@@ -217,12 +217,12 @@ En caso de utilizar la estructura **JSON** para el armado del formulario, los at
 	{
 		"label": "Edad (18 a 65)",
 		"name": "age",
-		"alvin": {
+		"jsalvin": {
 			"required": "true",
 			"type": "int",
 			"greaterthan": "18",
 			"lessthan": "65",
-			"message": "Valor inválido, rango 18 a 65"
+			"message": "Valor invalido, rango 18 a 65"
 		}
 	}
 ]
