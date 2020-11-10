@@ -3,6 +3,9 @@ ___
   
 
 ## Formularios
+### Seguridad
+Validación de datos por medio del objeto [avlin](#alvin)
+
 ### Elementos de Datos
 - [attacher](#attacher)
 - [autocomplete](#autocomplete)
@@ -59,6 +62,7 @@ ___
 - **value** = valor previo del campo (opcionalmente). En el caso de valores multiples (selects, checkboxs y radios), utilizar una cadena de valores separados por ;
 - **notes** = text/html que se colocará despues del campo (excepto hidden). Si queremos evitar el salto en blanco dejado por este texto en caso de no usarlo, utilizar la clase **nonote** en el atributo **groupclass**
 - **attribs** = json con atributos extras
+- **alvin** = json con las validaciones de seguridad ALVIN
 - **disabled** = deshabilita el campo
 - **readonly** = establece el campo como solo lectura
 - **stamp** = mostrará el campo cuando el valor sea *vacio* o sea una expresión lógica que al evaluarla devuelva **true**. En caso contrario excluirá el elemento del formulario. **NO LO OCULTA, LO EXCLUYE DEL DOCUMENTO HTML**
@@ -155,6 +159,73 @@ Para validar un dato contra el servidor, en tiempo real, se pueden utilizar los 
 	"data-checker": "__knot?imya=fUyqGMP1vTnvECn2zRHCtjj5RIHVtgdz",
 	"data-checker-fail": "El nombre de usuario *** ya está siendo utilizado"
 }
+```
+&nbsp;
+&nbsp;
+
+---
+&nbsp;
+# Alvin
+Validación de campos antes del envío.
+Los argumentos deben ser pasados utilizando los atributos
+
+- **alvin-message** = Mensaje que se le mostrará al usuario en caso de error
+- **alvin-required** = Campo obligatorio
+- **alvin-minlength** = valor mínimo aceptado
+- **alvin-maxlength** = valor máximo aceptado
+- **alvin-greaterthan** = el valor debe ser mayor o igual a
+- **alvin-lessthan** = el valor debe ser menor o igual a
+- **alvin-in** = el valor debe estar en este listado de valores separados por , 
+- **alvin-type** = Validación del tipo de dato
+  - **noempty** = el campo no puede quedar vacio
+  - **all** = acepta todo tipo de caracter
+  - **html** = idem **all**
+  - **color** = formato hexadecimal
+  - **date** = formato YYYY-mm-dd
+  - **datetime** = formato YYYY-mm-dd HH:ii:ss
+  - **email** = dirección de correo
+  - **filename** = path local o url
+  - **int** = número entero
+  - **imya** = imya
+  - **ipv4** = IPV4
+  - **ipv6** = IPV6
+  - **number** = número entero o decimal, positivo o negativo. Con separadores , y/o .
+  - **time** = HH:ii:ss ó HH:ii
+  - **url** = URL
+  - **alpha** = sólo letras
+  - **string** = números y letras
+  - **text** = números y letras
+  - **symbols** = sólo símbolos
+
+En caso de utilizar la estructura **JSON** para el armado del formulario, los atributos deben declararse dentro del índice **alvin** 
+
+### Ejemplo HTML
+```html
+	<label for="age">Edad (18 a 65)</label>
+	<input id="age" type="text" name="age" 
+		alvin-required="true" 
+		alvin-type="int" 
+		alvin-greaterthan="18" 
+		alvin-lessthan="65" 
+		alvin-message="Valor inválido, rango 18 a 65" 
+	/>
+```
+
+### Ejemplo JSON
+```json
+["input", 
+	{
+		"label": "Edad (18 a 65)",
+		"name": "age",
+		"alvin": {
+			"required": "true",
+			"type": "int",
+			"greaterthan": "18",
+			"lessthan": "65",
+			"message": "Valor inválido, rango 18 a 65"
+		}
+	}
+]
 ```
 &nbsp;
 &nbsp;
