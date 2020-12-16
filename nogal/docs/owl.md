@@ -74,6 +74,7 @@ Para ver un ejemplo de uso completo ver la guía [owl paso a paso](owluso.md)
 |[duplicate](#duplicate)|Duplica un registro con o sin sus dependencias (hijos)|
 |[get](#get)|Retorna un objeto de base de datos de un registro y todas sus relaciones|
 |[getall](#getall)|Retorna un objeto con todos registros y relaciones|
+|[getbyimya](#getbyimya)|Basado en un **IMYA**, retorna un array con 2 índices: 0 = nombre de la tabla y 1 = datos de la fila|
 |[insert](#insert)|Inserta uno ó más registros en las tablas que componen los objetos|
 |[load](#load)|Carga el objeto que establece la conexión con la base de datos |
 |[query](#query)|Ejecuta una sentencia **JSQL** utilizando el método query del objeto **$db**|
@@ -95,6 +96,7 @@ Para ver un ejemplo de uso completo ver la guía [owl paso a paso](owluso.md)
 |[GetID](#getid)|Obtiene el ID de un registro confirmando la existencia del mismo|
 |[GetRelationship](#getrelationship)|Obtiene las relaciones de un objeto dentro de la estructura|
 |[GetRelationshipChildren](#getrelationshipchildren)|Obtiene las relaciones de los objetos dependientes de un objeto dentro de la estructura|
+|[Imya](#imya)|Genera un **IMYA** para el registro|
 |[JsonAppener](#jsonappener)|Añade una porsición de código JSQL a otra|
 |[JsqlParser](#jsqlparser)|Parsea una cadena JSQL utilizando el método **jsqlParser** del objeto de base de datos|
 |[Logger](#logger)|Registra la salida de LOG de un método en los atributos log y history|
@@ -448,6 +450,30 @@ $foo->select("customers")->id("URI75pbceMb7ca85acLD7160Ze40Kb94");
 $data = $foo->child("customers_contacts")->getAll();
 print_r($data->getall());
 ```
+
+&nbsp;
+___
+&nbsp;
+
+## getbyimya
+> Diponible a partir de la versión: 2.8.1
+> Basado en un **IMYA**, retorna un array con 2 índices:
+> - **0** = nombre de la tabla
+> - **1** = datos de la fila
+
+**[array]** = *public* function ( *string* $sImya );  
+
+|Argumento|Tipo|Default|Descripción|
+|---|---|---|---|
+|**$sImya**|string|*arg::id*|Selecciona un registro del objeto activo utilizando el IMYA|
+
+### Ejemplos  
+#### lectura
+``` php
+$conn = $ngl("mysql");
+$foo = $ngl("owl")->load($conn);
+print_r($foo->getbyimya("URI75pbceMb7ca85acLD7160Ze40Kb94"));
+
 
 &nbsp;
 ___
@@ -1047,6 +1073,19 @@ ___
 |**$aTables**|array||Array donde se irán guardando las relaciones obtenidas|
 |**$vObject**|array||Array con los datos de la estructura OWL del objeto relacionado|
 |**$sAlias**|string|null|Nombre que se le será asigando al objeto relacionado|
+
+&nbsp;
+___
+&nbsp;
+
+## Imya
+> Genera un **IMYA** para el objeto
+
+**[string]** = *private* function ( *string* $sObjectName );  
+
+|Argumento|Tipo|Default|Descripción|
+|---|---|---|---|
+|**$sObjectName**|string|*arg::object*|Nombre de la tabla/objecto para el cual se quiere generar un imya|
 
 &nbsp;
 ___
