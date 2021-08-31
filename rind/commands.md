@@ -13,7 +13,6 @@ El siguiente gráfico describe la lógica que utiliza **RIND** para generar cont
 
 <div style="text-align:center"><img src="http://drive.google.com/uc?export=view&id=18wLjIWXZbbLUgubDQxpxkDWe8rFXzCzc" /></div>
 
-
 A continación enumeramos los conceptos básicos del sistema, como el uso de variables, comandos y estructuras de datos.
 
 &nbsp;
