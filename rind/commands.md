@@ -102,7 +102,7 @@ En caso de que querramos utilizar un texto que represente una variable, y que é
 {{$foo}} = imprime el texto literal {$foo}
 ```
 
-## Comandos  
+## Uso de Comandos
 ```php
 # Todos los comandos respetan la sintaxis
 <rind:COMANDO>
