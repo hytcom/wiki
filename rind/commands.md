@@ -1120,7 +1120,7 @@ Luego, en la etiqueta **multiple**, se especificarán las rutas y datos adiciona
 |**data**|Cadena JSON con las claves y valores que se desean pasar a la plantilla|
 |**data&#8209;NAME**|Valor a pasar a la plantilla, donde NAME es la clave del mismo|
 |**source**|Ruta del archivo a ser incluído o carpeta contenedora para el caso de una inclución múltiple.|
-|**multiple**|Cadena ó archivo JSON con las rutas relativas a **source** de cada plantilla y los datos enriquecidos para cada una de ellas<br />Formato:<br />[<blockquote>["template1.html", {"title":"foo", "text":"bar"}],<br />["template2.html", {"value":"foo", "option":"bar"}],<br />["templateN.html", {"name":"foo", "lastname":"bar"}</blockquote>]|
+|**multiple**|Cadena ó archivo JSON con las rutas relativas a **source** de cada plantilla y los datos enriquecidos para cada una de ellas<br />Formato:<br />[<blockquote>["template1.html", {"title":"foo", "text":"bar"}],<br />["template2.html", {"value":"foo", "option":"bar"}],<br />["templateN.html", {"name":"foo", "lastname":"bar"}]</blockquote>]|
 |**submerge**|Cadena mediante la que se especifican la clave donde se cargará el contenido de la/s subplantillas y la ruta principal las mismas, el equivalente a **source**. El formato es: **clave**:**ruta**|
 
 Los parámetros **data-NAME**, **data** y las cadenas de datos de **multiple**, son complementarios. A mismas claves, prevalecerá la mas cercana a la plantilla. 
