@@ -1,44 +1,15 @@
 # Rind Commands
-## Conceptos Básicos
+
+[Conceptos y Fundamentos](#Conceptos-y-Fundamentos)  
+[Comandos](#Comandos)  
+[Normalización de Datos](#Normalizacion-de-Datos)  
+
+
+# Conceptos y Fundamentos
 Rind es el sistema de plantillas de NOGAL. Esta compuesto por 16 comandos que permiten realizar todo tipo de operaciones en el ambito HTML.
 Las plantillas (documentos HTML) son procesados por Rind y cacheados hasta que sufran algun cambio en su estructura, ahorrando asi tiempo de procesamiento.
-  
-  
-&nbsp;
 
-# Métodos
-|Método|Descripción|
-|---|---|
-|[ABC](#abc)|Nociones y fundamentos básicos del sistema|
-|[abort](#abort)|Disponible sólo dentro del comando RindCommands::loop. Termina con la ejecución ...|
-|[alvin](#alvin)|Ejecuta una evaluación de permisos a traves de la clase nogal::nglAlvinCuenta co...|
-|[comments](comments)|Rind cuenta con una manera de añadir comentarios al código fuente.Los comentario...|
-|[dump](#dump)|Vuelca en pantalla el contenido completo de una variable. Esto es especialmente ...|
-|[eco](#eco)|Imprime una expresión o resultado de otro comando como datetime, math o length.|
-|[halt](#halt)|Aborta la ejecución de todas las acciones. Opcionalmente, al ejecutar RindComman...|
-|[heredoc](#heredoc)|ESTE ES UN METODO DE NORMALIZACION DE DATOS En ocasiones las cadenas cuentan con ...|
-|[ifcase](#ifcase)|Evalúa una condición como verdadera o falsa. En caso de serverdadera se comporta...|
-|[incfile](#incfile)|Incluye un archivo dentro de otro durante el proceso de datos. Este comando es e...|
-|[json](#json)|ESTE ES UN METODO DE NORMALIZACION DE DATOS Es una variante de heredoc, pero a di...|
-|[length](#length)|Intenta retorna el largo de una variable, cantidad de elementos de un Array una ...|
-|[loop](#loop)|Este método puede ser utilizado para recorrer todo tipo de bucles, ya sean array...|
-|[mergefile](#mergefile)|Incluye un archivo dentro de otro previo al proceso de datos. Esto significa que...|
-|[once](#once)|Retorna un código [ONCECODE](../../nogal/docs/fn.md#once)|
-|[rtn](#rtn)|ESTE ES UN METODO DE NORMALIZACION DE DATOS Por razones de seguridad todas las ex...|
-|[set](#set)|Este método permite setear variables en el ambito de las plantillas.Todos los va...|
-|[skip](#skip)|Aborta la ejecución de la actual vuelta y continúa con la siguiente. Disponible ...|
-|[unique](#unique)|Genera un [código único](../../nogal/docs/fn.md#unique)|
-|[unset](#unset)|Permite desetear variables seteadas por medio del método RindCommands::set. Los ...|
-
-  
-&nbsp;
-
-
-## ABC
-Nociones y fundamentos básicos del sistema  
-  
-### Ejemplos  
-#### Llamadas a Variables/Constantes  
+## Llamadas a Variables/Constantes  
 ```php
 {$foo}    variables PHP
 {@foo}    constantes PHP permitidas
@@ -48,7 +19,8 @@ Nociones y fundamentos básicos del sistema
 {%foo%}    variables pasadas al archivo de destino en el comando MERGEFILE
 {:foo:}    reservada para usos multiples
 ```
-#### Variables  
+
+## Variables  
 ```php
 # Para imprimir una variable proveniente del entorno PHP, se deberá citar el misma entre llaves.
 # Existen dos formatos en los cuales el sistema entiende las variables:
@@ -83,7 +55,8 @@ $foobar->foo["bar"] = "lorem ipsum";
 # argumentos: vars_deny, vars_allow 
 # Por otro lado, las varibales $GLOBALS y $ngl estarán SIEMPRE denegadas
 ```
-#### Variables Anidadas  
+
+## Variables Anidadas  
 ```php
 # A la hora de utilizar una variable como indice de otra se pueden utilizar la sintáxis
 # tradicional, la Rind ó la combinación de ambas.
@@ -129,7 +102,7 @@ En caso de que querramos utilizar un texto que represente una variable, y que é
 {{$foo}} = imprime el texto literal {$foo}
 ```
 
-#### Comandos  
+## Comandos  
 ```php
 # Todos los comandos respetan la sintaxis
 <rind:COMANDO>
@@ -154,51 +127,13 @@ En caso de que querramos utilizar un texto que represente una variable, y que é
 <rind:dump>{$datos}</rind:dump>
 # ambas expresiones son equivalentes
 
-# A todos los parámetros se les puede establecer por medio de un atributo si deben o no 
-# ser tratados por un normalizador de datos.
-# Supongamos que tenemos el parámetro <@value>, entonces:
-
-<@value base64>...</@value>
-# el valor RAW del argumento es tratado con base64_encode antes de ser utilizado
-# con valor RAW nos referimos al código crudo (exacto) hallado en la plantilla, antes de ser procesado por el sistema
-# por ejemplo:
-#
-#    <@value><rind:php.strtoupper>foobar</rind:php.strtoupper></@value>
-#    retornará: FOOBAR
-#
-#    <@value base64><rind:php.strtoupper>foobar</rind:php.strtoupper></@value>
-#    retornará: PHJpbmQ6cGhwLnN0cnRvdXBwZXI+Zm9vYmFyPC9yaW5kOnBocC5zdHJ0b3VwcGVyPg==>
-#    decoficado: <rind:php.strtoupper>foobar</rind:php.strtoupper>
-
-<@value split>...</@value>
-# el argumento es tratado con explode, usando coma como separador, antes de ser utilizado
-
-<@value join>...</@value>
-# el argumento es tratado con implode, usando coma como pegamento, antes de ser utilizado
-
-<@value json>...</@value>
-# el argumento es tratado con json_endode antes de ser utilizado
-# es equivalente a utilizar
-    <@value><rind:json>...</rind:json></@value>
-
-<@value quotes>...</@value>
-# el valor es tratado como una variable generada con HEREDOC, se pueden utilizar comillas dobles y simples
-# es equivalente a utilizar
-    <@value><rind:heredoc>...</rind:heredoc></@value>
-
-<@value math>...</@value>
-# prepara una expresión para ser utilizada dentro de otro comando
-# es equivalente a utilizar
-    <@value><rind:rtn>...</rind:rtn></@value>
-
-
 # Existen 3 tipos de comandos soportados en el sistema:
 # -----------------------------------------------------
 
 # Comando nativos, son los explicados en esta ayuda
 <rind:dump>{$datos}</rind:dump>
 
-# Métodos PHP, son declarados en el argumento php_functions del objeto Rind
+# Comandos PHP, son declarados en el argumento php_functions del objeto Rind
 # en estos comandos no tienen importancia el nombre de los parámetros, sino su orden
 <rind:php.str_repeat>
     <@string>lorem</@string>
@@ -216,7 +151,8 @@ En caso de que querramos utilizar un texto que represente una variable, y que é
 # esto debe tenerse en cuenta a la hora de pasar los argumentos
 # en el caso de que el argumento utilice comillas dobles, estas deberán ser escapadas o el parámetro deberá ser tratado con heredoc o json
 ```
-#### Comandos Anidados  
+
+## Comandos Anidados  
 ```php
 # Al anidar comandos es conveniente declarar todos los parámetros para evitar una lectura erronea:
 # Este eco es correcto porque hay un unico y posible parámetro <@content>
@@ -241,10 +177,11 @@ En caso de que querramos utilizar un texto que represente una variable, y que é
     </@content>
 </rind:eco>
 ```
-#### Nuts  
+
+## Nuts  
 ```php
 # Los nuts son extenciones del objeto nglNut declarados por el programador.
-# Su implementación es idéntica a la de los comandos nativos o los métodos de PHP, salvo porque:
+# Su implementación es idéntica a la de los comandos nativos o los comandos de PHP, salvo porque:
 
 #     - es importante respetar el nombre de los parámetros
 #     - no importa el orden en el que sean enviados
@@ -284,7 +221,8 @@ En caso de que querramos utilizar un texto que represente una variable, y que é
 # retorna la ultima consulta SQL ejecutada por el objeto OWL
 <rind:nut.owl.query><@nutid>mynut</@nutid></rind:nut.owl.query>
 ```
-#### Nuts - Ejemplo de anidamiento con loop  
+
+## Nuts - Ejemplo de anidamiento con loop  
 ```php
 <select name="parent">
     <option value="0" selected>- principal -</option>
@@ -318,7 +256,8 @@ En caso de que querramos utilizar un texto que represente una variable, y que é
 
 </select>
 ```
-#### Nuts - Ejemplo de anidamiento con loop con filtro  
+
+## Nuts - Ejemplo de anidamiento con loop con filtro  
 ```php
 <select name="parent">
     <option value="0" selected>- principal -</option>
@@ -352,7 +291,8 @@ En caso de que querramos utilizar un texto que represente una variable, y que é
 
 </select>
 ```
-#### Object  
+
+## Object  
 ```php
 # Los objects son objetos declarados en PHP por el programador.
 # Su implementación es idéntica a la de los nuts, pero tanto el orden como el nombre de los parámetros dependerá del objeto.
@@ -367,7 +307,7 @@ En caso de que querramos utilizar un texto que represente una variable, y que é
 
 
 # Ejemplo con un puntero de DB leído por un Objeto,
-# Donde el método asarray retorna el resultado del puntero como un Array
+# Donde el comando asarray retorna el resultado del puntero como un Array
 <table width="100%">
     <thead>
         <tr>
@@ -401,6 +341,30 @@ En caso de que querramos utilizar un texto que represente una variable, y que é
 ___
 &nbsp;
 
+# Comandos
+|Comando|Descripción|
+|---|---|
+|[ABC](#abc)||
+|[abort](#abort)|Disponible sólo dentro del comando RindCommands::loop. Termina con la ejecución ...|
+|[alvin](#alvin)|Ejecuta una evaluación de permisos a traves de la clase nogal::nglAlvinCuenta co...|
+|[comments](comments)|Rind cuenta con una manera de añadir comentarios al código fuente.Los comentario...|
+|[dump](#dump)|Vuelca en pantalla el contenido completo de una variable. Esto es especialmente ...|
+|[eco](#eco)|Imprime una expresión o resultado de otro comando como datetime, math o length.|
+|[halt](#halt)|Aborta la ejecución de todas las acciones. Opcionalmente, al ejecutar RindComman...|
+|[ifcase](#ifcase)|Evalúa una condición como verdadera o falsa. En caso de serverdadera se comporta...|
+|[incfile](#incfile)|Incluye un archivo dentro de otro durante el proceso de datos. Este comando es e...|
+|[length](#length)|Intenta retorna el largo de una variable, cantidad de elementos de un Array una ...|
+|[loop](#loop)|Este comando puede ser utilizado para recorrer todo tipo de bucles, ya sean array...|
+|[mergefile](#mergefile)|Incluye un archivo dentro de otro previo al proceso de datos. Esto significa que...|
+|[once](#once)|Retorna un código [ONCECODE](../../nogal/docs/fn.md#once)|
+|[rtn](#rtn)|ESTE ES UN METODO DE NORMALIZACION DE DATOS Por razones de seguridad todas las ex...|
+|[set](#set)|Este comando permite setear variables en el ambito de las plantillas.Todos los va...|
+|[skip](#skip)|Aborta la ejecución de la actual vuelta y continúa con la siguiente. Disponible ...|
+|[unique](#unique)|Genera un [código único](../../nogal/docs/fn.md#unique)|
+|[unset](#unset)|Permite desetear variables seteadas por medio del comando RindCommands::set. Los ...|
+
+&nbsp;
+  
 ## alvin
 Ejecuta una evaluación de permisos a traves de la clase **nogal::nglAlvin**
 Cuenta con tres modos de ejecución:
@@ -616,41 +580,6 @@ Aborta la ejecución de todas las acciones. Opcionalmente, al ejecutar **RindCom
 ___
 &nbsp;
 
-## heredoc
-**ESTE ES UN METODO DE NORMALIZACION DE DATOS**
-En ocasiones las cadenas cuentan con una compleja combinación de comillas dobles y simples, lo que dificulta su uso como argumento de otros métodos.
-Para estos casos es apropiado utilizar **heredoc**, que englobla el contenido de una variable en el formato:
-
-&lt;&lt;&lt;HEREDOC
-&nbsp;&nbsp; contenido...
-&nbsp;&nbsp; contenido...
-&nbsp;&nbsp; contenido...
-HEREDOC;
-
-Cuando sea necesario utilizar variables dentro la cadena, estas se deberán escribir respetando la sintáxis habitual de PHP.  
-
-
-|Parámetro|Descripción|
-|---|---|
-|**content**|Cadena.|
-### Ejemplos  
-#### Cadena con comillas  
-```php
-<rind:set>
-    <@name>quotes</@name>
-    <@value>
-        <rind:heredoc>
-            Lorem ipsum "dolor" sit amet, consectetur adipiscing elit. 
-            Cras accumsan enim 'tincidunt' justo interdum
-        </rind:heredoc>
-    </@value>
-</rind:set>
-```
-
-&nbsp;
-___
-&nbsp;
-
 ## ifcase
 Evalúa una condición como verdadera o falsa. En caso de ser	verdadera se comportará según **then**, de lo contrario lo hará según las directivas de **else**.
 Existe la posibilidad de utilizar **ifcase** sin los parámetros **iff**, **isset**, **in** y **notin** en cuyo caso lo que se evaluará será que el parámetro **then**, siempre que no esté vacío.
@@ -675,8 +604,8 @@ También existe un modo en el que se utiliza **ifcase** como una estructura **sw
 |Parámetro|Descripción|
 |---|---|
 |**iff**|Condición que se evaluará como TRUE o FALSE.|
-|**then**|Acciones que se ejecutarán o contenidos que se mostrarán cuando la evaluación del método retorne TRUE.|
-|**else**|Acciones que se ejecutarán o contenidos que se mostrarán cuando la evaluación del método retorne FALSE.|
+|**then**|Acciones que se ejecutarán o contenidos que se mostrarán cuando la evaluación del comando retorne TRUE.|
+|**else**|Acciones que se ejecutarán o contenidos que se mostrarán cuando la evaluación del comando retorne FALSE.|
 |**isset**|Espera una variable o grupo de ellas y evalúa si estas existen, es decir, si han sido previamente seteada. También es posible evaluar si la variable NO existe, anteponiendo el signo de admiración (!) al nombre de la misma. Este parámetro acepta ser combinado con **iff**, esto significa que para que **RindCommands::ifcase** retorne TRUE, ambas evaluaciones deberán ser TRUE.|
 |**empty**|Devuelve TRUE cuando el contenido del argumento es vacío: 0, null ó cadena vacía|
 |**noempty**|Devuelve TRUE cuando el contenido del argumento es distinto de vacío|
@@ -825,7 +754,7 @@ También existe un modo en el que se utiliza **ifcase** como una estructura **sw
 ```
 #### Set Mode  
 ```php
-# Para combinar con el método RindCommands::set
+# Para combinar con el comando RindCommands::set
 <rind:set>
     <@name>puesto</@name>
     <@value>
@@ -938,7 +867,7 @@ ___
 
 ## length
 Intenta retorna el largo de una variable, cantidad de elementos de un Array una cadena de texto.
-Este método retorna un resultado del tipo return.
+Este comando retorna un resultado del tipo return.
 
 Los resultados para los diferentes tipos de variables son:<ul><li>**Array** = Cantidad de elementos del mismo.</li><li>**Object** = Cantidad de elementos del mismo, cuando sea del tipo Countable.</li><li>**Cadena de Texto** = Cantidad de caracteres.</li></ul>  
 
@@ -957,7 +886,7 @@ ___
 &nbsp;
 
 ## loop
-Este método puede ser utilizado para recorrer todo tipo de bucles, ya sean arrays, árboles, recursos de base de datos, xml o simplemente una sucesión númerica.
+Este comando puede ser utilizado para recorrer todo tipo de bucles, ya sean arrays, árboles, recursos de base de datos, xml o simplemente una sucesión númerica.
 **RindCommands::loop** dará una vuelta por cada índice, fila o incremento que encuentre en el origen **data**.
 Cuando **RindCommands::loop** recorre un bucle almacena los datos recogidos en un índice (**name**) de la variable **SET**.
 
@@ -981,7 +910,7 @@ Tambien serán aceptados como formatos de llamada, sobre todo para los casos en 
 |---|---|
 |**name**|Nombre del **RindCommands::loop** y por consiguiente del indice de la variable **RindCommands::set**. Este parámetro no es obligatorio, pero se aconseja utilizarlo.|
 |**source**|Origen de datos del **RindCommands::loop**. Este puede ser una variable previamente seteada en PHP, una variable **RindCommands::set**, la salida de un **nglNut**, un path o URL de un archivo o simplemente texto plano.|
-|**type**|Tipo de bucle, esto determina que tratamiento se le deberá dar a los datos proporcionados por medio de **source**:<ul><li>**array** = array simple o multidimensional. En los casos de arrays simples, se dará una vuelta por cada índice. Valor por defecto.</li><li>**element** = objeto de datos.<br />contenido = será el resultado de ejecutar el método **get** ó un array vacío cuando no exista<br />numrows = será el resultado de ejecutar el método **rows** ó 0 si no existe<br />resetear el objeto = será el resultado de ejecutar el método **reset**, cuando exista</li><li>**owl** = Objeto de Datos del tipo **nglOwl**.</li><li>**vector** = array simple, sólo se dará una vuelta.</li><li>**number** = genera un bucle de repetición basado en los parámetros **from** y **limit**.<br />El mismo  consistirá en un contador iniciado en **from** y dará **limit** vueltas. Si **from** y **limit** no son especificados, sus valores serán 0 y 1 respectivamente.<br />**limit** no podrá ser mayor al valor del argumento **loop_limit** del objeto **Rind**.</li><li>**object** = el contenido de **source** será tratado como un objeto, y se intentará convertirlo en un array asosiativo de manera recursiva.</li></ul>|
+|**type**|Tipo de bucle, esto determina que tratamiento se le deberá dar a los datos proporcionados por medio de **source**:<ul><li>**array** = array simple o multidimensional. En los casos de arrays simples, se dará una vuelta por cada índice. Valor por defecto.</li><li>**element** = objeto de datos.<br />contenido = será el resultado de ejecutar el comando **get** ó un array vacío cuando no exista<br />numrows = será el resultado de ejecutar el comando **rows** ó 0 si no existe<br />resetear el objeto = será el resultado de ejecutar el comando **reset**, cuando exista</li><li>**owl** = Objeto de Datos del tipo **nglOwl**.</li><li>**vector** = array simple, sólo se dará una vuelta.</li><li>**number** = genera un bucle de repetición basado en los parámetros **from** y **limit**.<br />El mismo  consistirá en un contador iniciado en **from** y dará **limit** vueltas. Si **from** y **limit** no son especificados, sus valores serán 0 y 1 respectivamente.<br />**limit** no podrá ser mayor al valor del argumento **loop_limit** del objeto **Rind**.</li><li>**object** = el contenido de **source** será tratado como un objeto, y se intentará convertirlo en un array asosiativo de manera recursiva.</li></ul>|
 |**debug**|Imprime todos los contenidos disponibles en la primer vuelta del loop. Esto es útil para conocer el nombre de los índices disponibles|
 |**aggregate**|Calcula valores de agregación sobre los campos solicitados. Los valores agregados son:<br /><ul><li>**sum** = suma</li><li>**avg** = promedio</li><li>**max** = valor máximo</li><li>**min** = valor mínimo</li></ul><br />Este parámetro espera el nombre de uno de los campos del **loop**, o una lista de ellos separados por coma (,)<br />Para llamar a los valores se deberá utilizar la sintáxis: **{#VALOR.CAMPO}**, por ejemplo **{#sum.amount}**|
 |**index**|Reemplaza el índice natural del bucle y establece un nuevo orden de salida de datos. Este atributo espera como valor un **array** o una cadena separa por comas(,).|
@@ -1427,7 +1356,7 @@ Este comando prepara una expresión para ser utilizada dentro de otro, eliminand
 
 |Parámetro|Descripción|
 |---|---|
-|**content**|Expresión u otro método.|
+|**content**|Expresión u otro comando.|
 |**print**|Determina si el resultado se imprime o retorna. Default TRUE|
 ### Ejemplos  
 #### expresión matemática  
@@ -1462,7 +1391,7 @@ ___
 &nbsp;
 
 ## set
-Este método permite setear variables en el ambito de las plantillas.
+Este comando permite setear variables en el ambito de las plantillas.
 Todos los valores seteados por medio de **RindCommands::set** serán alamcenados como indices de la variable **$_SET** y podrán ser accedidos utilizando las sintaxis:
 **{\$_SET.name}** o **{\$_SET["name"]}** para variables simples
 **{\$_SET.name.foo.bar}** o **{\$_SET["name"]["foo"]["bar"]}** para arrays
@@ -1474,19 +1403,19 @@ Nota: Como **RindCommands::set** almacena en la variable todo lo que se encuentr
 
 |Parámetro|Descripción|
 |---|---|
-|**index**|Valor númerico que indica la posición del array que se desea obtener cuando se utiliza el **method** es **element** ó nombre del indice del sub-array que hará de clave en el método **vector**|
-|**filter**|Condición evaluada en el método **filter**, donde **$v** será el valor actual de item y **$k** el nombre de su clave. Por ejemplo: ```{$v.age}>17 && {$v.gender}=="M"``` |
-|**keys**|Lista de valores separados por coma (,) utilizados cuando se emplea el método **chkeys**|
+|**index**|Valor númerico que indica la posición del array que se desea obtener cuando se utiliza el **method** es **element** ó nombre del indice del sub-array que hará de clave en el comando **vector**|
+|**filter**|Condición evaluada en el comando **filter**, donde **$v** será el valor actual de item y **$k** el nombre de su clave. Por ejemplo: ```{$v.age}>17 && {$v.gender}=="M"``` |
+|**keys**|Lista de valores separados por coma (,) utilizados cuando se emplea el comando **chkeys**|
 |**linebreak**|Caracter utilizado como salto de línea para cuando **method** es **explode**|
-|**method**|Establece el/los método/s con el/los que será tratado el valor de **value** antes de almacenarlo. <br />Se pueden especificar varios métodos separandos por coma (,) en este caso los métodos se aplicarán en secuencia.<br />Métodos disponibles:<ul><li>**<i>N</i>** = el contenido alamcenado contendrá al elemento **<i>N</i>** del conjunto **value**, ya sea el valor de un índice cuando sea un array o un caracter cuando sea una cadena.<br />**<i>N</i>** comienza a contar desde 1, cuando el valor sea negativo se contará desde el final del conjunto.<br />Cuando el resultado sea un array bidimensional de un único subindice, este será retornado como vector. Para conseguir un array de vectores se deberá anteponer el método **each**</li><li>**<i>N:L</i>** = el contenido alamcenado será la secuencia de elementos del conjunto **value** tal y como se especifiquen los valores **<i>N</i>** y **<i>L</i>**. Donde el primero es la posición del primer elemento y el segundo la cantidad de elementos a capturar.<br />**<i>N</i>** comienza a contar desde 1, cuando el valor sea negativo se contará desde el final del conjunto.</li><li>**<i>N\|N1\|N2\|Nn</i>** = el contenido alamcenado será la secuencia de elementos del conjunto **value** tal y como se especifiquen los valores **<i>N</i>**. Donde cada **N** es la posición del elemento a capturar. **<i>N</i>** puede ser un valor entero o una cadena de texto para el caso de arrays asociativos.<br />Los números enteros comienza a contar desde 1 y deben ser siempre mayores a 0.</li><li>**\[ _keyword_ \]** = obtiene el índice **keyword** del conjunto **value**</li><li>**base64dec** = antes de ser almacenado el contenido será tratado con **base64_decode**</li><li>**base64enc** = antes de ser almacenado el contenido será tratado con **base64_encode**</li><li>**chkeys** = cuando el contenido sea un array, sus claves serán reemplazadas por los valores de la cadena <@keys></li><li>**each** = cuando el contenido sea un array bidimensional, indica que el siguiente método deberá aplicarse de manera recursiva sobre todos sus elementos</li><li>**element** = en caso de existir, el contenido alamcenado será el resultado de ejecutar el método **get** del objeto **value**</li><li>**elements** = en caso de existir, el contenido alamcenado será el resultado de ejecutar el método **getall** del objeto **value**</li><li>**explode** = antes de ser almacenado el contenido será explotado utilizando **splitter** como separador<br />Opcionalmente se podrá especificar el parámetro **linebreak** como salto de línea, consiguiendo asi un array multidimensional</li><li>**file** = el valor será tratado como un path de archivo y se intentará obtener su contenido. Cuando se especifiquen mas de un método, sólo el primero de ellos podrá ser **file**.</li><li>**filter** = trabaja sobre un array de datos el cual es tratado con **array_filter**, la condición evaluada será la de argumento <@filter> y debe repetar la sintáxsis del comando [ifcase](#ifcase) en su modalidad **inline** sin los paréntesis. En cada iteración se pasarán al métodos 2 valores: <ul><li>**$k** clave de la vuelta actual</li><li>**$v** datos de la vuelta</li></ul></li><li>**group** = agrupa los valores según la estructura **structure** Cuando no se proporcione una estructura, los valores únicos de cada columna formarán subgrupos</li><li>**implode** = antes de ser almacenado el contenido será tratado con **implode** utilizando **splitter** como caracter de unión</li><li>**jsondec** = antes de ser almacenado el contenido será tratado con **json_decode** y convertido en un array asociativo</li><li>**jsonenc** = antes de ser almacenado el contenido será tratado con **json_encode** con los flags:JSON_HEX_TAG \| JSON_NUMERIC_CHECK \| JSON_HEX_APOS \| JSON_HEX_QUOT \| JSON_HEX_AMP \| JSON_UNESCAPED_UNICODE</li><li>**keys** = trabaja sobre un array de datos el cual es tratado con **array_keys**, es decir, que retorna un vector con las claves del valor de origen</li><li>**length**/**len** = calcula el largo del valor, utilizando **count** y **strlen**</li><li>**nest** = trabaja sobre un array, anidando sus elementos convirtiendose asi en un árbol. Para ello se deberá definir una relación de dos indices (padre,hijo) en el argumento <@relation></li><li>**number** = se eliminarán del contenido todos los caracteres NO numéricos antes almacenarlo. Si el resultado de la limpieza fuese un valor NO numérico, el valor será 0</li><li>**object** = antes de ser almacenado el contenido será convertido en un array de manera recursiva</li><li>**querydec** = antes de ser almacenado el contenido será tratado con **parse_str** y convertido en un array</li><li>**queryenc** = antes de ser almacenado el contenido será tratado con **http_build_query**</li><li>**rawurldec** = antes de ser almacenado el contenido será tratado con **rawurldecode**</li><li>**rawurlenc** = antes de ser almacenado el contenido será tratado con **rawurlencode**</li><li>**serialenc** = antes de ser almacenado el contenido será tratado con **serialize**</li><li>**serialdec** = antes de ser almacenado el contenido será tratado con **unserialize** y convertido en un array</li><li>**urldec** = antes de ser almacenado el contenido será tratado con **urldecode**</li><li>**urlenc** = antes de ser almacenado el contenido será tratado con **urlencode**</li><li>**vector** = genera un vector clave/valor a partir de un array bidimensional, con **index** como clave y **column** como valor. Si **column** no es especificado, tomará el primer índice del sub-array</li><li>**xml** = antes de ser almacenado el contenido será convertido en un array</li></ul>|
+|**method**|Establece el/los comando/s con el/los que será tratado el valor de **value** antes de almacenarlo. <br />Se pueden especificar varios comandos separandos por coma (,) en este caso los comandos se aplicarán en secuencia.<br />Comandos disponibles:<ul><li>**<i>N</i>** = el contenido alamcenado contendrá al elemento **<i>N</i>** del conjunto **value**, ya sea el valor de un índice cuando sea un array o un caracter cuando sea una cadena.<br />**<i>N</i>** comienza a contar desde 1, cuando el valor sea negativo se contará desde el final del conjunto.<br />Cuando el resultado sea un array bidimensional de un único subindice, este será retornado como vector. Para conseguir un array de vectores se deberá anteponer el comando **each**</li><li>**<i>N:L</i>** = el contenido alamcenado será la secuencia de elementos del conjunto **value** tal y como se especifiquen los valores **<i>N</i>** y **<i>L</i>**. Donde el primero es la posición del primer elemento y el segundo la cantidad de elementos a capturar.<br />**<i>N</i>** comienza a contar desde 1, cuando el valor sea negativo se contará desde el final del conjunto.</li><li>**<i>N\|N1\|N2\|Nn</i>** = el contenido alamcenado será la secuencia de elementos del conjunto **value** tal y como se especifiquen los valores **<i>N</i>**. Donde cada **N** es la posición del elemento a capturar. **<i>N</i>** puede ser un valor entero o una cadena de texto para el caso de arrays asociativos.<br />Los números enteros comienza a contar desde 1 y deben ser siempre mayores a 0.</li><li>**\[ _keyword_ \]** = obtiene el índice **keyword** del conjunto **value**</li><li>**base64dec** = antes de ser almacenado el contenido será tratado con **base64_decode**</li><li>**base64enc** = antes de ser almacenado el contenido será tratado con **base64_encode**</li><li>**chkeys** = cuando el contenido sea un array, sus claves serán reemplazadas por los valores de la cadena <@keys></li><li>**each** = cuando el contenido sea un array bidimensional, indica que el siguiente comando deberá aplicarse de manera recursiva sobre todos sus elementos</li><li>**element** = en caso de existir, el contenido alamcenado será el resultado de ejecutar el comando **get** del objeto **value**</li><li>**elements** = en caso de existir, el contenido alamcenado será el resultado de ejecutar el comando **getall** del objeto **value**</li><li>**explode** = antes de ser almacenado el contenido será explotado utilizando **splitter** como separador<br />Opcionalmente se podrá especificar el parámetro **linebreak** como salto de línea, consiguiendo asi un array multidimensional</li><li>**file** = el valor será tratado como un path de archivo y se intentará obtener su contenido. Cuando se especifiquen mas de un comando, sólo el primero de ellos podrá ser **file**.</li><li>**filter** = trabaja sobre un array de datos el cual es tratado con **array_filter**, la condición evaluada será la de argumento <@filter> y debe repetar la sintáxsis del comando [ifcase](#ifcase) en su modalidad **inline** sin los paréntesis. En cada iteración se pasarán al comandos 2 valores: <ul><li>**$k** clave de la vuelta actual</li><li>**$v** datos de la vuelta</li></ul></li><li>**group** = agrupa los valores según la estructura **structure** Cuando no se proporcione una estructura, los valores únicos de cada columna formarán subgrupos</li><li>**implode** = antes de ser almacenado el contenido será tratado con **implode** utilizando **splitter** como caracter de unión</li><li>**jsondec** = antes de ser almacenado el contenido será tratado con **json_decode** y convertido en un array asociativo</li><li>**jsonenc** = antes de ser almacenado el contenido será tratado con **json_encode** con los flags:JSON_HEX_TAG \| JSON_NUMERIC_CHECK \| JSON_HEX_APOS \| JSON_HEX_QUOT \| JSON_HEX_AMP \| JSON_UNESCAPED_UNICODE</li><li>**keys** = trabaja sobre un array de datos el cual es tratado con **array_keys**, es decir, que retorna un vector con las claves del valor de origen</li><li>**length**/**len** = calcula el largo del valor, utilizando **count** y **strlen**</li><li>**nest** = trabaja sobre un array, anidando sus elementos convirtiendose asi en un árbol. Para ello se deberá definir una relación de dos indices (padre,hijo) en el argumento <@relation></li><li>**number** = se eliminarán del contenido todos los caracteres NO numéricos antes almacenarlo. Si el resultado de la limpieza fuese un valor NO numérico, el valor será 0</li><li>**object** = antes de ser almacenado el contenido será convertido en un array de manera recursiva</li><li>**querydec** = antes de ser almacenado el contenido será tratado con **parse_str** y convertido en un array</li><li>**queryenc** = antes de ser almacenado el contenido será tratado con **http_build_query**</li><li>**rawurldec** = antes de ser almacenado el contenido será tratado con **rawurldecode**</li><li>**rawurlenc** = antes de ser almacenado el contenido será tratado con **rawurlencode**</li><li>**serialenc** = antes de ser almacenado el contenido será tratado con **serialize**</li><li>**serialdec** = antes de ser almacenado el contenido será tratado con **unserialize** y convertido en un array</li><li>**urldec** = antes de ser almacenado el contenido será tratado con **urldecode**</li><li>**urlenc** = antes de ser almacenado el contenido será tratado con **urlencode**</li><li>**vector** = genera un vector clave/valor a partir de un array bidimensional, con **index** como clave y **column** como valor. Si **column** no es especificado, tomará el primer índice del sub-array</li><li>**xml** = antes de ser almacenado el contenido será convertido en un array</li></ul>|
 |**name**|Nombre de la variable a setear|
 |**operator**|Tipo de operador. Por defecto se utilizará el operador **=**, para dar inicio a la variable. Si el operador es diferente de **=**, el valor de la variable será alterado segun el caso.<br />Se espera: ( = \| . \| + \| - \| * \| / \| % ).</i><ul><li>**.** = concatena el nuevo valor al valor actual. Unicamente válido para cadenas.</li><li>**+** = suma el nuevo valor al valor actual.</li><li>**-** = resta el nuevo valor al valor actual.</li><li>***** = multiplica el valor actual por el nuevo.</li><li>**/** = divide el valor actual por el nuevo.</li><li>**%** = modulo el valor actual y el nuevo.</li></ul>|
-|**relation**|Par valores separados por coma (,) utilizados cuando se emplea el método **nest**. El orden es, **id,id_parent**|
+|**relation**|Par valores separados por coma (,) utilizados cuando se emplea el comando **nest**. El orden es, **id,id_parent**|
 |**splitter**|Caracter utilizado como separador en **explode**, y caracter de concatenación en **implode**. Por defecto , (coma)|
-|**structure**|Cadena JSON que detemina la estructura de agrupamiento del método **group**<br />Formato:<br />{<br />"MAIN": [ <note>nodo principal</note><br />"id", [ <note>id del nodo</note><br />"campo 1", <note>campos del nodo</note><br />"campo N"<br />]<br />],<br />"id_secundario": [ <note>nodo de agrupamiento</note><br />"campo 5", [ <note>id del nodo</note><br />"campo 1", <note>campos del nodo</note><br />"campo N"<br />]<br />]<br />}<br />|
+|**structure**|Cadena JSON que detemina la estructura de agrupamiento del comando **group**<br />Formato:<br />{<br />"MAIN": [ <note>nodo principal</note><br />"id", [ <note>id del nodo</note><br />"campo 1", <note>campos del nodo</note><br />"campo N"<br />]<br />],<br />"id_secundario": [ <note>nodo de agrupamiento</note><br />"campo 5", [ <note>id del nodo</note><br />"campo 1", <note>campos del nodo</note><br />"campo N"<br />]<br />]<br />}<br />|
 |**userpwd**|Utilizado cuando **file** requiera autenticación HTTP ó en WS del tipo REST<br />En ocaciones el valor debe ser pasado con el attributo **quotes**<ul><li>**HTTP** = username:password</li><li>**basic** = basic username:password</li><li>**bearer** = bearer token</li><li>**alvin** = alvin alvintoken</li></ul><br />|
 |**body**|Cadena de datos que se enviará en el BODY en caso de solicitudes REST **file**. En ocaciones el valor debe ser pasado con el attributo **json**|
-|**columns**|Nombre del índice el sub-array en el método **vector**|
+|**columns**|Nombre del índice el sub-array en el comando **vector**|
 |**value**|Nombre del índice el sub-array|
 ### Ejemplos  
 #### Ejemplo Simple  
@@ -1534,7 +1463,7 @@ Nota: Como **RindCommands::set** almacena en la variable todo lo que se encuentr
     </@value>
 </rind:set>
 ```
-#### Métodos  
+#### Comandos  
 ```php
 #explode
 <rind:set>
@@ -1557,7 +1486,7 @@ Nota: Como **RindCommands::set** almacena en la variable todo lo que se encuentr
 </rind:set>
 <rind:dump>{$_SET.query}</rind:dump>
 ```
-#### Aplicando varios métodos  
+#### Aplicando varios comandos  
 ```php
 <rind:set>
     <@name>owl2json</@name>
@@ -2039,7 +1968,7 @@ ___
 &nbsp;
 
 ## unset
-Permite desetear variables seteadas por medio del método **RindCommands::set**. Los nombres de variables deberán matchear con el patrón **[a-z0-9_]**, cualquier caracter fuera del patrón será eliminado.  
+Permite desetear variables seteadas por medio del comando **RindCommands::set**. Los nombres de variables deberán matchear con el patrón **[a-z0-9_]**, cualquier caracter fuera del patrón será eliminado.  
 
 
 |Parámetro|Descripción|
@@ -2096,5 +2025,58 @@ donde **...** ejemplifica el texto que desea ser comentado.
 
 &nbsp;
 ___
+&nbsp;
+
+# Normalización de Datos
+A todos los parámetros se les puede establecer por medio de un atributo si deben o no ser tratados por un normalizador de datos.
+Supongamos que tenemos el parámetro <@value>, entonces:
+
+**&lt;@value base64&gt;...&lt;/@value&gt;**  
+
+el valor RAW del argumento es tratado con base64_encode antes de ser utilizado
+con valor RAW nos referimos al código crudo (exacto) hallado en la plantilla, antes de ser procesado por el sistema, entonces:
+
+```php
+<@value>foobar is a test string</@value>
+retornará: foobar is a test string
+
+<@value base64>foobar is a test string</@value>
+retornará: Zm9vYmFyIGlzIGEgdGVzdCBzdHJpbmc=
+```
+
+## Comandos de Normalización
+|Comando|Descripción|
+|---|---|
+|quotes|Englobla el contenido de una variable en el formato HEREDOC|
+|base64|trata al valor como un cadena y la codifica en base64|
+|join|Aplica **implode** sobre el valor, usando **NGL_STRING_SPLITTER** como pegamento, antes de ser utilizado|
+|json|Trata al valor como un cadena json y la convierte en un array|
+|split|Aplica **explode** sobre el valor, usando **NGL_STRING_SPLITTER** como separador, antes de ser utilizado|
+
+```html
+<rind:loop>
+    <@name>data</@name>
+    <@source json>
+		[
+			{
+				"id": 1,
+				"name": "Coca-Cola 3lts",
+				"price": 22
+			},
+			{
+				"id": 1,
+				"name": "Coca-Cola 2lts",
+				"price": 18
+			}
+		]
+    </@source>
+    <@content>
+        {name} ${price}<br />
+    </@content>
+</rind:loop>
+```
+
+&nbsp;
+___
 <sub><b>nogal</b> - <em>the most simple PHP Framework</em></sub><br />
-<sup>&copy; 2020 by <a href="https://hytcom.net">hytcom.net</a> - <a href="https://github.com/hytcom">@hytcom</a></sup><br /> 
+<sup>&copy; 2021 by <a href="https://hytcom.net">hytcom.net</a> - <a href="https://github.com/hytcom">@hytcom</a></sup><br /> 
