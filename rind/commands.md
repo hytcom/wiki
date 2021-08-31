@@ -1418,7 +1418,7 @@ Todos los valores seteados por medio de **RindCommands::set** serán alamcenados
 Para el caso en que se necesite setear una variable en modo condicional, es decir, que el valor a asignar dependa de tal o cual factor/es, se podrá establecer como **value** el resultado del comando **RindCommands::ifcase** con la opción **setmode** activa. Para mas detalles ver **RindCommands::ifcase**
 Los nombres de variables deberán matchear con el patrón **[a-z0-9_{}%]**, cualquier caracter fuera del patrón será eliminado.
 
-Nota: Como **RindCommands::set** almacena en la variable todo lo que se encuentre entre <@value> y </@value>, se debe tener cuidado con las tabulaciones y saltos de linea.  
+Nota: Como **RindCommands::set** almacena en la variable todo lo que se encuentre entre &lt;@value&gt; y &lt;/@value&gt;, se debe tener cuidado con las tabulaciones y saltos de linea.  
 
 |Parámetro|Descripción|
 |---|---|
