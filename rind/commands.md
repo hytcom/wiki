@@ -163,10 +163,9 @@ Nuts, son los definidos por el programador PHP para cada proyecto
 ```
 
 ___
-**!!!! IMPORTANTE !!!!**  
-Rind asume que los argumentos podrán ser entrecomillados con comillas dobles, esto debe tenerse en cuenta a la hora de pasar los argumentos. En el caso de que el argumento utilice comillas dobles, estas deberán ser escapadas o el parámetro deberá ser tratado con los métodos de normalización **base64** o **json**
+>**!!!! IMPORTANTE !!!!**  
+>Rind asume que los argumentos podrán ser entrecomillados con comillas dobles, esto debe tenerse en cuenta a la hora de pasar los argumentos. En el caso de que el argumento utilice comillas dobles, estas deberán ser escapadas o el parámetro deberá ser tratado con los métodos de normalización **base64** o **json**
 ___
-<br />
 
 ## Comandos Anidados  
 Al anidar comandos es conveniente declarar todos los parámetros para evitar una lectura erronea:
@@ -1133,7 +1132,6 @@ ___
 **!!!! IMPORTANTE !!!!**  
 No es posible declarar **mergefiles multiples** dentro del contenido del argumento **content** de otro **mergefile**. Para ello se debera utilizar **data-content base64** ( [ver caso](#mergefile-fail) )
 ___
-<br />
 
 ### Ejemplos  
 #### Modo Simple  
