@@ -1129,8 +1129,8 @@ Los parámetros **data-NAME**, **data** y las cadenas de datos de **multiple**, 
 Tanto en **source** como en la ruta de los archivos JSON de **multiple**, si la misma comienza con /, la lectura se hará desde la carpeta NGL_SANDBOX. De lo contrario se tomará como ruta relativa a la del archivo principal. 
 
 ___
-**!!!! IMPORTANTE !!!!**  
-No es posible declarar **mergefiles multiples** dentro del contenido del argumento **content** de otro **mergefile**. Para ello se debera utilizar **data-content base64** ( [ver caso](#mergefile-fail) )
+>**!!!! IMPORTANTE !!!!**  
+>No es posible declarar **mergefiles multiples** dentro del contenido del argumento **content** de otro **mergefile**. Para ello se debera utilizar **data-content base64** ( [ver caso](#mergefile-fail) )
 ___
 
 ### Ejemplos  
