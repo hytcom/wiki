@@ -6,10 +6,14 @@
 
 
 # Conceptos y Fundamentos
-Rind es el sistema de plantillas de NOGAL. Esta compuesto por 16 comandos que permiten realizar todo tipo de operaciones en el ambito HTML.
-Las plantillas (documentos HTML) son procesados por Rind y cacheados hasta que sufran algun cambio en su estructura, ahorrando asi tiempo de procesamiento.
+Rind es el sistema de plantillas de NOGAL. Esta compuesto por 17 comandos que permiten realizar todo tipo de operaciones en el ambito HTML.
+Las plantillas (documentos HTML) son procesados por Rind y cacheados hasta que sufran algún cambio en su estructura, ahorrando asi tiempo de procesamiento.
 
-## Llamadas a Variables/Constantes  
+A continación enumeramos los conceptos básicos del sistema, como el uso de variables, comandos y estructuras de datos.
+
+&nbsp;
+
+## Variables/Constantes  
 ```php
 {$foo}    variables PHP
 {@foo}    constantes PHP permitidas
@@ -103,71 +107,83 @@ En caso de que querramos utilizar un texto que represente una variable, y que é
 ```
 
 ## Uso de Comandos
+Todos los comandos respetan la sintaxis
 ```php
-# Todos los comandos respetan la sintaxis
 <rind:COMANDO>
     <@parametro_1>...</@parametro_1>
     <@parametro_2>...</@parametro_2>
     ...
     <@parametro_N>...</@parametro_N>
 </rind:COMANDO>
+```
 
-# o para comandos en una linea
+o para comandos en una línea
+```php
 <rind:COMANDO />
+```
 
-# Los parámetros son pasados por medio de las etiquetas <@...>, por ejemplo:
+Los parámetros son pasados por medio de las etiquetas <@...>, por ejemplo:
+```php
 <@name>...</@name>
 <@value>...</@value>
 <@type>...</@type>
 <@source>...</@source>
+```
 
-# También es posible ejecutar el comando con un solo parámetro sin especificar el mismo
-# en estos casos se asume que el valor pasado corresponde al parámetro <@content>.
+También es posible ejecutar el comando con un solo parámetro sin especificar el mismo, en estos casos se asume que el valor pasado corresponde al parámetro **&lt;@content&gt;**
+```php
 <rind:dump><@content>{$datos}<@content></rind:dump>
 <rind:dump>{$datos}</rind:dump>
-# ambas expresiones son equivalentes
+```
+ambas expresiones son equivalentes
+&nbsp;
 
-# Existen 3 tipos de comandos soportados en el sistema:
-# -----------------------------------------------------
+### Existen 3 tipos de comandos soportados en el sistema:
 
-# Comando nativos, son los explicados en esta ayuda
+Comando nativos, son los explicados en este documento
+```php
 <rind:dump>{$datos}</rind:dump>
+```
 
-# Comandos PHP, son declarados en el argumento php_functions del objeto Rind
-# en estos comandos no tienen importancia el nombre de los parámetros, sino su orden
+Comandos PHP, son declarados en el argumento php_functions del objeto Rind.
+En estos comandos no tienen importancia el nombre de los parámetros, sino su orden.
+```php
 <rind:php.str_repeat>
     <@string>lorem</@string>
     <@count>lorem</@count>
 </rind:php.str_repeat>
+```
 
-# Nuts, son los definidos por el programador PHP para cada proyecto
+Nuts, son los definidos por el programador PHP para cada proyecto
+```php
 <rind:nut.datetime.format>
     <@format>Y-m-d</@format>
     <@date>{$date}</@date>
 </rind:nut.datetime.format>
-
-# !!!! IMPORTANTE !!!! --------
-# Rind asume que los argumentos podrán ser entrecomillados con comillas dobles
-# esto debe tenerse en cuenta a la hora de pasar los argumentos
-# en el caso de que el argumento utilice comillas dobles, estas deberán ser escapadas o el parámetro deberá ser tratado con heredoc o json
 ```
 
-## Comandos Anidados  
-```php
-# Al anidar comandos es conveniente declarar todos los parámetros para evitar una lectura erronea:
-# Este eco es correcto porque hay un unico y posible parámetro <@content>
-<rind:eco>{$date}</rind:eco>
+**!!!! IMPORTANTE !!!!**  
+Rind asume que los argumentos podrán ser entrecomillados con comillas dobles, esto debe tenerse en cuenta a la hora de pasar los argumentos. En el caso de que el argumento utilice comillas dobles, estas deberán ser escapadas o el parámetro deberá ser tratado con los métodos de normalización **base64** o **json**
 
-# Sin embargo en el siguiente ejemplo Rind ignora todas las etiquetas dentro de eco
-# hasta llegar al <@content> del datetime, al cual intrepreta como el del eco
+## Comandos Anidados  
+Al anidar comandos es conveniente declarar todos los parámetros para evitar una lectura erronea:
+Este eco es correcto porque hay un unico y posible parámetro **&lt;@content&gt;**
+```php
+<rind:eco>{$date}</rind:eco>
+```
+
+Sin embargo en el siguiente ejemplo Rind ignora todas las etiquetas dentro de eco
+hasta llegar al **&lt;@content&gt;** del datetime, al cual intrepreta como el **&lt;@content&gt;** del eco
+```php
 <rind:eco>
     <rind:nut.datetime>
         <@format>Y-m-d</@format>
         <@content>{$date}</@content>
     </rind:nut.datetime>
 </rind:eco>
-
-# Por lo tanto hay que declarar el comando de la siguiente manera
+```
+Por lo tanto hay que declarar el comando de la siguiente manera
+```php
 <rind:eco>
     <@content>
         <rind:nut.datetime>
@@ -179,15 +195,15 @@ En caso de que querramos utilizar un texto que represente una variable, y que é
 ```
 
 ## Nuts  
+Los nuts son extenciones del objeto nglNut declarados por el programador.
+Su implementación es idéntica a la de los comandos nativos o los comandos de PHP, salvo porque:
+- es importante respetar el nombre de los parámetros
+- no importa el orden en el que sean enviados
+- cuantan con SAFEMODE, por lo que el programador PHP puede limitar la ejecución de comandos
+  
+
+Para llamar un nut se utiliza las siguiente sintaxis
 ```php
-# Los nuts son extenciones del objeto nglNut declarados por el programador.
-# Su implementación es idéntica a la de los comandos nativos o los comandos de PHP, salvo porque:
-
-#     - es importante respetar el nombre de los parámetros
-#     - no importa el orden en el que sean enviados
-#     - cuantan con SAFEMODE, por lo que el programador PHP puede limitar la ejecución de comandos
-
-# Para llamar un nut se utiliza las siguiente sintaxis
 <rind:nut.NOMBRENUT.NOMBRECOMANDO>
     <@NUTID>...</@NUTID>
     <@parametro_1>...</@parametro_1>
@@ -195,17 +211,19 @@ En caso de que querramos utilizar un texto que represente una variable, y que é
     ...
     <@parametro_N>...</@parametro_N>
 </rind:nut.NOMBRENUT.NOMBRECOMANDO>
-
-# o esta otra, para cuando el nombre del COMANDO sea igual al nombre del NUT
+```
+o esta otra, para cuando el nombre del COMANDO sea igual al nombre del NUT
+```php
 <rind:nut.NOMBRENUT>
     <@parametro_1>...</@parametro_1>
     <@parametro_2>...</@parametro_2>
     ...
     <@parametro_N>...</@parametro_N>
 </rind:nut.NOMBRENUT>
-
-# @NUTID es un parámetro opcional, que es util cuando se desea llamar a la misma instancia de un nut, por ej:
-# obtiene datos por medio de un objeto OWL
+```
+@NUTID es un parámetro opcional, que es util cuando se desea llamar a la misma instancia de un nut, por ej:
+obtiene datos por medio de un objeto OWL
+```php
 <rind:set>
     <@name>data</@name>
     <@value>
@@ -217,8 +235,9 @@ En caso de que querramos utilizar un texto que represente una variable, y que é
     </@value>
     <@method>object</@method>
 </rind:set>
-
-# retorna la ultima consulta SQL ejecutada por el objeto OWL
+```
+retorna la ultima consulta SQL ejecutada por el objeto OWL
+```php
 <rind:nut.owl.query><@nutid>mynut</@nutid></rind:nut.owl.query>
 ```
 
@@ -293,21 +312,22 @@ En caso de que querramos utilizar un texto que represente una variable, y que é
 ```
 
 ## Object  
-```php
-# Los objects son objetos declarados en PHP por el programador.
-# Su implementación es idéntica a la de los nuts, pero tanto el orden como el nombre de los parámetros dependerá del objeto.
+Los objects son objetos declarados en PHP por el programador.
+Su implementación es idéntica a la de los nuts, pero tanto el orden como el nombre de los parámetros dependerá del objeto.
 
-# Para llamar un object se utiliza las siguiente sintaxis
+Para llamar un object se utiliza las siguiente sintaxis
+```php
 <rind:object.NOMBREOBJECT.NOMBREMETODO>
     <@parametro_1>...</@parametro_1>
     <@parametro_2>...</@parametro_2>
     ...
     <@parametro_N>...</@parametro_N>
 </rind:object.NOMBREOBJECT.NOMBREMETODO>
+```
 
-
-# Ejemplo con un puntero de DB leído por un Objeto,
-# Donde el comando asarray retorna el resultado del puntero como un Array
+Ejemplo con un puntero de DB leído por un Objeto,
+Donde el comando asarray retorna el resultado del puntero como un Array
+```php
 <table width="100%">
     <thead>
         <tr>
@@ -2043,8 +2063,8 @@ retornará: foobar is a test string
 retornará: Zm9vYmFyIGlzIGEgdGVzdCBzdHJpbmc=
 ```
 
-## Comandos de Normalización
-|Comando|Descripción|
+## Métodos de Normalización
+|Método|Descripción|
 |---|---|
 |quotes|Englobla el contenido de una variable en el formato HEREDOC|
 |base64|trata al valor como un cadena y la codifica en base64|
