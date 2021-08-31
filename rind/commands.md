@@ -1126,7 +1126,7 @@ Luego, en la etiqueta **multiple**, se especificarán las rutas y datos adiciona
 Los parámetros **data-NAME**, **data** y las cadenas de datos de **multiple**, son complementarios. A mismas claves, prevalecerá la mas cercana a la plantilla. 
 Tanto en **source** como en la ruta de los archivos JSON de **multiple**, si la misma comienza con /, la lectura se hará desde la carpeta NGL_SANDBOX. De lo contrario se tomará como ruta relativa a la del archivo principal. 
 
-**!!!! IMPORTANTE !!!!**  
+<span style="color:red">**!!!! IMPORTANTE !!!!**</span>
 No es posible declarar **mergefiles multiples** dentro del contenido del argumento **content** de otro **mergefile**. Para ello se debera utilizar **data-content base64** ( [ver caso](#mergefile-fail) )
 
 ### Ejemplos  
