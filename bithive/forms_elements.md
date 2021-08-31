@@ -637,12 +637,15 @@ Selector de etiquetas. Estas pueden ser libres y/o provenientes de un autocomple
 Clasico campo `<textarea>` o versiones enriquecidas
 ### Atributos
 - **type** = tipo de `<textarea>`, las opciones son:
+    - **limited** = limita la cantidad de caracteres y añade un contador. El límite por defecto es 255 pero puede especificarse en el atributo **limit**
 	- **dynamic** = dinámico, el campo se agranda automaticamente para su edición pero luego vuelve a ocupar pocas líneas
 	- **fullscreen** = añade la posibilidad de llevar el `<textarea>` al 90% del alto y ancho de la ventana
 	- **fullinput** = igual a **fullinput** con la diferencia que plegado se muestra como un campo **input**
 	- **wysiwyg-lite** = editor WYSIWYG con funcionalidades mínimas: `<b><i><u>`
 	- **wysiwyg** = editor WYSIWYG estandar: `<b><i><u>` + alineaciones
 	- **wysiwyg-full** = editor WYSIWYG completo
+
+- **limit** = límite de caracteres cuando el tipo es **limited**
 
 ```json
 ["textarea", {

@@ -595,8 +595,9 @@ Aborta la ejecución de todas las acciones. Opcionalmente, al ejecutar **RindCom
 |Parámetro|Descripción|
 |---|---|
 |**content**|Mensaje que se mostrará en pantalla|
+|**url**|En caso de proporcionarse, el comando abortará la carga y redirigirá a esta URL|
 ### Ejemplos  
-#### example  
+#### if con exit
 ```php
 <rind:ifcase>
     <@iff>{$sIP}!="192.168.0.1"</@iff>
@@ -604,6 +605,11 @@ Aborta la ejecución de todas las acciones. Opcionalmente, al ejecutar **RindCom
         <rind:halt>Acceso Denengado!</rind:halt>
     </@then>
 </rind:ifcase>
+```
+
+#### redirección
+```php
+<rind:halt><@url>https://hytcom.net</@url></rind:halt>
 ```
 
 &nbsp;
@@ -1060,6 +1066,7 @@ $aUsers = array(
     </@content>
     <@empty>- no se hallaron resultados -</@empty>
 </rind:loop>
+<h2>Edad promedio: {$_SET["counter"]["avg"]["age"]}</h2>
 
 # Resultado
 John de <i>35</i> se apellida <b>Smith</b>
@@ -1224,7 +1231,7 @@ Los parámetros **data-NAME**, **data** y las cadenas de datos de **multiple**, 
 Tanto en **source** como en la ruta de los archivos JSON de **multiple**, si la misma comienza con /, la lectura se hará desde la carpeta NGL_SANDBOX. De lo contrario se tomará como ruta relativa a la del archivo principal. 
 
 ### ATENCION ###
-No es posible declarar **mergefiles multiples** dentro del contenido de los argumentos de otro **mergefile** ( [ver caso](#mergefile-fail) )
+No es posible declarar **mergefiles multiples** dentro del contenido del argumento **content** de otro **mergefile**. Para ello se debera utilizar **data-content base64** ( [ver caso](#mergefile-fail) )
 
 ### Ejemplos  
 #### Modo Simple  
@@ -1364,9 +1371,8 @@ Este caso es igual al anterior, solo que los datos del argumento **multiple** pr
 ```
 
 
-
-#### Multiple en argumento <a name="mergefile-fail"></a>
-No es posible declarar un **mergefile** multiple dentro del argumento de otro **mergefile**.
+#### Multiple en argumento content <a name="mergefile-fail"></a>
+No es posible declarar un **mergefile** multiple dentro del argumento **content** de otro **mergefile**.
 ```php
 # Comando
 <rind:mergefile>
@@ -1377,11 +1383,33 @@ No es posible declarar un **mergefile** multiple dentro del argumento de otro **
         <rind:mergefile>
             <@source>/snippets/forms/</@source>
             <@multiple json>
-                ["input.html", {"name":"user", "label":"Nombre de Usuario"}],
-                ["password.html", {"name":"pass", "label":"Contraseña"}]
+                [
+                    ["input.html", {"name":"user", "label":"Nombre de Usuario"}],
+                    ["password.html", {"name":"pass", "label":"Contraseña"}]
+                ]
             </@multiple>
         </rind:mergefile>
     </@content>
+</rind:mergefile>
+```
+**SOLUCION** 
+```php
+# Comando
+<rind:mergefile>
+    <@source>/templates/index.html</@source>
+    <@data-title base64>Formulario de Login</@data-title>
+    <@data-content base64>
+        <h2>Login</h2>
+        <rind:mergefile>
+            <@source>/snippets/forms/</@source>
+            <@multiple json>
+                [
+                    ["input.html", {"name":"user", "label":"Nombre de Usuario"}],
+                    ["password.html", {"name":"pass", "label":"Contraseña"}]
+                ]
+            </@multiple>
+        </rind:mergefile>
+    </@data-content>
 </rind:mergefile>
 ```
 
@@ -1563,8 +1591,8 @@ $aSource = array(
     array("sale"=>1,"date"=>"2015-11-23","name"=>"Castro Hnos SRL","cuit"=>"30-36251478-9","product"=>1,"quantity"=>15,"price"=>20),
     array("sale"=>1,"date"=>"2015-11-23","name"=>"Castro Hnos SRL","cuit"=>"30-36251478-9","product"=>2,"quantity"=>10,"price"=>16),
     array("sale"=>1,"date"=>"2015-11-23","name"=>"Castro Hnos SRL","cuit"=>"30-36251478-9","product"=>3,"quantity"=>20,"price"=>20),
-    array("sale"=>2,"date"=>"2015-11-24","name"=>"Ravelli S.A.","cuit"=>"33-58796321-8","product"=>2,"quantity"=>13,"price"=>16),
-    array("sale"=>2,"date"=>"2015-11-24","name"=>"Ravelli S.A.","cuit"=>"33-58796321-8","product"=>3,"quantity"=>8,"price"=>20)
+    array("sale"=>2,"date"=>"2015-11-24","name"=>"Ravelli SA","cuit"=>"33-58796321-8","product"=>2,"quantity"=>13,"price"=>16),
+    array("sale"=>2,"date"=>"2015-11-24","name"=>"Ravelli SA","cuit"=>"33-58796321-8","product"=>3,"quantity"=>8,"price"=>20)
 );
 
 # comando
@@ -1599,7 +1627,7 @@ array(
     [2] => array(
             [sale] => 2
             [date] => 2015-11-24
-            [name] => Ravelli S.A.
+            [name] => Ravelli SA
             [cuit] => 33-58796321-8
             [product] => array(
                 [0] => 2
@@ -1624,8 +1652,8 @@ $data = array(
     array("sale"=>1,"date"=>"2015-11-23","name"=>"Castro Hnos SRL","cuit"=>"30-36251478-9","product"=>1,"quantity"=>15,"price"=>20),
     array("sale"=>1,"date"=>"2015-11-23","name"=>"Castro Hnos SRL","cuit"=>"30-36251478-9","product"=>2,"quantity"=>10,"price"=>16),
     array("sale"=>1,"date"=>"2015-11-23","name"=>"Castro Hnos SRL","cuit"=>"30-36251478-9","product"=>3,"quantity"=>20,"price"=>20),
-    array("sale"=>2,"date"=>"2015-11-24","name"=>"Ravelli S.A.","cuit"=>"33-58796321-8","product"=>2,"quantity"=>13,"price"=>16),
-    array("sale"=>2,"date"=>"2015-11-24","name"=>"Ravelli S.A.","cuit"=>"33-58796321-8","product"=>3,"quantity"=>8,"price"=>20)
+    array("sale"=>2,"date"=>"2015-11-24","name"=>"Ravelli SA","cuit"=>"33-58796321-8","product"=>2,"quantity"=>13,"price"=>16),
+    array("sale"=>2,"date"=>"2015-11-24","name"=>"Ravelli SA","cuit"=>"33-58796321-8","product"=>3,"quantity"=>8,"price"=>20)
 );
 
 # comando
@@ -1676,7 +1704,7 @@ array(
     )
     [2] => array(
         [sale] => 2
-        [name] => Ravelli S.A.
+        [name] => Ravelli SA
         [cuit] => 33-58796321-8
         [date] => 2015-11-24
         [details] => array(
@@ -1754,8 +1782,8 @@ $data = array(
     array("sale"=>1,"date"=>"2015-11-23","name"=>"Castro Hnos SRL","cuit"=>"30-36251478-9","product"=>1,"quantity"=>15,"price"=>20),
     array("sale"=>1,"date"=>"2015-11-23","name"=>"Castro Hnos SRL","cuit"=>"30-36251478-9","product"=>2,"quantity"=>10,"price"=>16),
     array("sale"=>1,"date"=>"2015-11-23","name"=>"Castro Hnos SRL","cuit"=>"30-36251478-9","product"=>3,"quantity"=>20,"price"=>20),
-    array("sale"=>2,"date"=>"2015-11-24","name"=>"Ravelli S.A.","cuit"=>"33-58796321-8","product"=>2,"quantity"=>13,"price"=>16),
-    array("sale"=>2,"date"=>"2015-11-24","name"=>"Ravelli S.A.","cuit"=>"33-58796321-8","product"=>3,"quantity"=>8,"price"=>20)
+    array("sale"=>2,"date"=>"2015-11-24","name"=>"Ravelli SA","cuit"=>"33-58796321-8","product"=>2,"quantity"=>13,"price"=>16),
+    array("sale"=>2,"date"=>"2015-11-24","name"=>"Ravelli SA","cuit"=>"33-58796321-8","product"=>3,"quantity"=>8,"price"=>20)
 );
 
 # comando
@@ -1779,6 +1807,16 @@ $data = array("name"=>"John", "lastname"=>"Smith", "age"=>35);
     <@method>jsonenc,base64enc</@method>
 </rind:set>
 <rind:dump>{$_SET.json2b64}</rind:dump>
+```
+#### Crear un array a partir de una cadena
+```php
+<rind:set>
+	<@name>tests</@name>
+	<@value json>[
+        {"name":"Castro Hnos SRL", "cuit":"30-36251478-9"},
+        {"name":"Ravelli SA", "cuit":"33-58796321-8"}
+    ]</@value>
+</rind:set>
 ```
 #### Convertir un array de PHP a JS  
 ```php
