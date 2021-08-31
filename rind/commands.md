@@ -162,8 +162,11 @@ Nuts, son los definidos por el programador PHP para cada proyecto
 </rind:nut.datetime.format>
 ```
 
+___
 **!!!! IMPORTANTE !!!!**  
 Rind asume que los argumentos podrán ser entrecomillados con comillas dobles, esto debe tenerse en cuenta a la hora de pasar los argumentos. En el caso de que el argumento utilice comillas dobles, estas deberán ser escapadas o el parámetro deberá ser tratado con los métodos de normalización **base64** o **json**
+___
+&nbsp;
 
 ## Comandos Anidados  
 Al anidar comandos es conveniente declarar todos los parámetros para evitar una lectura erronea:
