@@ -828,62 +828,6 @@ Incluirá el archivo "home/files/menu.php"
 ___
 &nbsp;
 
-## json
-**ESTE ES UN METODO DE NORMALIZACION DE DATOS**
-Es una variante de **heredoc**, pero a diferencia de este trata al valor como un cadena **json** y la convierte en un **array**:  
-
-
-|Parámetro|Descripción|
-|---|---|
-|**content**|Cadena.|
-### Ejemplos  
-#### Seteando un JSON  
-```php
-<rind:set>
-    <@name>json</@name>
-    <@value>
-        <rind:json>
-            [
-                {
-                    "id": 1,
-                    "name": "Coca-Cola 'light' 3lts",
-                    "price": {$price},
-                }
-            ]
-        </rind:json>
-    </@value>
-</rind:set>
-```
-#### LOOP con JSON en línea  
-```php
-<rind:loop>
-    <@name>data</@name>
-    <@source>
-        <rind:json>
-            [
-                {
-                    "id": 1,
-                    "name": "Coca-Cola 3lts",
-                    "price": 22
-                },
-                {
-                    "id": 1,
-                    "name": "Coca-Cola 2lts",
-                    "price": "18"
-                }
-            ]
-        </rind:json>
-    </@source>
-    <@content>
-        {name} ${price}
-    </@content>
-</rind:loop>
-```
-
-&nbsp;
-___
-&nbsp;
-
 ## length
 Intenta retorna el largo de una variable, cantidad de elementos de un Array una cadena de texto.
 Este comando retorna un resultado del tipo return.
@@ -919,7 +863,6 @@ Indicadores disponibles en cada vuelta:<ul><li>**data** = datos recogidos en la 
 - forma explícita  
 **{\$_SET.nombre_del_bucle.indicador}** por ejemplo: **{$_SET.foobar.numrow}**  
 
-
 Sin importar el **type** del bucle, todos los datos almacenados en el índice **data** serán tratados como un array asociativo, y para acceder a ellos en cada vuelta sólo bastará con colocar el nombre del sub-índice entre llaves: **{nombre_subindice}**.
 
 Tambien serán aceptados como formatos de llamada, sobre todo para los casos en los cuales se produzca anidamiento de bucles con nombres de índices iguales:<ul><li>**{nombre_bucle.subindice}**&nbsp;</li><li>**{nombre_bucle:subindice}**&nbsp;</li><li>**{\$_SET.nombre_bucle.data.subindice}**&nbsp;</li><li>**{$_SET["nombre_bucle"]["data"]["subindice"]}**&nbsp;</li></ul>  
@@ -941,6 +884,7 @@ Tambien serán aceptados como formatos de llamada, sobre todo para los casos en 
 |**zerofill**|Cantidad de 0 con los que se completa por adelante **numrow** y **line**|
 |**content**|Contenidos que se mostrarán como resultado de cada vuelta del bucle.|
 |**empty**|Contenidos que se mostrarán como resultado en caso de que el bucle no tuviese datos que mostrar.|
+  
 ### Ejemplos  
 #### Array Simple  
 ```php
@@ -974,6 +918,7 @@ $aAnimals = array(
 - horse ó horse
 - cow ó cow
 ```
+
 #### Element  
 ```php
 # Datos
@@ -994,6 +939,7 @@ $aGuy = array("id"=>1,"name"=>"John", "surname"=>"Smith", "age"=>"35")
     </@content>
 </rind:loop>
 ```
+
 #### Array Multidimensional  
 ```php
 # Datos
@@ -1021,6 +967,7 @@ John de <i>35</i> se apellida <b>Smith</b>
 Susan de <i>29</i> se apellida <b>Johnson</b>
 Carl de <i>43</i> se apellida <b>Williams</b>
 ```
+
 #### Numéricos  
 ```php
 # Comando
@@ -1057,7 +1004,6 @@ Lista desplegable con los días del mes
 # Resultado
 Lista desplegable con los meses del año
 
-
 # Comando
 <select name="year">
     <rind:loop>
@@ -1077,7 +1023,8 @@ Lista desplegable con los años en modo descendente, desde el 2016 al 1900
 
 # NOTA: en los ejemplos se puede ver como, en los loops numéricos, es posible imprimir el dato de diferentes maneras
 ```
-#### Arbol  
+
+#### Arbol
 ```php
 # Datos
 $aEmployees = array(array(
@@ -1128,6 +1075,7 @@ $aEmployees = array(array(
         ◦Mary
         ◦Thomas
 ```
+
 #### Archivo JSON  
 ```php
 <rind:set>
@@ -1178,7 +1126,7 @@ Luego, en la etiqueta **multiple**, se especificarán las rutas y datos adiciona
 Los parámetros **data-NAME**, **data** y las cadenas de datos de **multiple**, son complementarios. A mismas claves, prevalecerá la mas cercana a la plantilla. 
 Tanto en **source** como en la ruta de los archivos JSON de **multiple**, si la misma comienza con /, la lectura se hará desde la carpeta NGL_SANDBOX. De lo contrario se tomará como ruta relativa a la del archivo principal. 
 
-### ATENCION ###
+**!!!! IMPORTANTE !!!!**  
 No es posible declarar **mergefiles multiples** dentro del contenido del argumento **content** de otro **mergefile**. Para ello se debera utilizar **data-content base64** ( [ver caso](#mergefile-fail) )
 
 ### Ejemplos  
@@ -1219,6 +1167,7 @@ No es posible declarar **mergefiles multiples** dentro del contenido del argumen
     </@multiple>
 </rind:mergefile>
 ```
+
 #### Embed + Modo Enriquecido  
 ```php
 # Para el caso de un LOOP variable, como podria ser el del snippet de un SELECT
@@ -1238,6 +1187,7 @@ No es posible declarar **mergefiles multiples** dentro del contenido del argumen
     </@content>
 </rind:loop>
 ```
+
 #### Multiples parámetros **data**
 En este caso, todos los templates asumirán el valor **form-control** para la clave **cssclass**.
 Los dos primeros **switchs** utilizarán como **source** los valores **SI** y **NO**, mientras que el último **switch** utilizará su propio origen de datos.
@@ -1263,6 +1213,7 @@ Los dos primeros **switchs** utilizarán como **source** los valores **SI** y **
     </@multiple>
 </rind:mergefile>
 ```
+
 #### Submerge
 En este caso se utiliza **mergefile** para realizar la inclusión de una plantilla principal (modo inverso) en la que se cargará un formulario en la clave **form**
 ```php
@@ -1318,7 +1269,6 @@ Este caso es igual al anterior, solo que los datos del argumento **multiple** pr
 ]
 ```
 
-
 #### Multiple en argumento content <a name="mergefile-fail"></a>
 No es posible declarar un **mergefile** multiple dentro del argumento **content** de otro **mergefile**.
 ```php
@@ -1340,6 +1290,7 @@ No es posible declarar un **mergefile** multiple dentro del argumento **content*
     </@content>
 </rind:mergefile>
 ```
+
 **SOLUCION** 
 ```php
 # Comando
@@ -1361,14 +1312,11 @@ No es posible declarar un **mergefile** multiple dentro del argumento **content*
 </rind:mergefile>
 ```
 
-
-
 &nbsp;
 ___
 &nbsp;
 
 ## rtn
-**ESTE ES UN METODO DE NORMALIZACION DE DATOS**
 Por razones de seguridad todas las expresiones utilizadas en los comandos son entrecomilladas por el sistema.
 Este comando prepara una expresión para ser utilizada dentro de otro, eliminando las comillas de apertura y cierre.  
 
@@ -1377,6 +1325,7 @@ Este comando prepara una expresión para ser utilizada dentro de otro, eliminand
 |---|---|
 |**content**|Expresión u otro comando.|
 |**print**|Determina si el resultado se imprime o retorna. Default TRUE|
+
 ### Ejemplos  
 #### expresión matemática  
 ```php
@@ -1389,6 +1338,7 @@ Este comando prepara una expresión para ser utilizada dentro de otro, eliminand
     </@value>
 </rind:set>
 ```
+
 #### dump a variable  
 ```php
 <rind:set>
@@ -1436,6 +1386,7 @@ Nota: Como **RindCommands::set** almacena en la variable todo lo que se encuentr
 |**body**|Cadena de datos que se enviará en el BODY en caso de solicitudes REST **file**. En ocaciones el valor debe ser pasado con el attributo **json**|
 |**columns**|Nombre del índice el sub-array en el método **vector**|
 |**value**|Nombre del índice el sub-array|
+
 ### Ejemplos  
 #### Ejemplo Simple  
 ```php
@@ -1460,6 +1411,7 @@ Nota: Como **RindCommands::set** almacena en la variable todo lo que se encuentr
 # Impresión
 {$_SET.counter} => 2
 ```
+
 #### Set Mode  
 ```php
 <rind:set>
@@ -1482,6 +1434,7 @@ Nota: Como **RindCommands::set** almacena en la variable todo lo que se encuentr
     </@value>
 </rind:set>
 ```
+
 #### Comandos  
 ```php
 #explode
@@ -1505,6 +1458,7 @@ Nota: Como **RindCommands::set** almacena en la variable todo lo que se encuentr
 </rind:set>
 <rind:dump>{$_SET.query}</rind:dump>
 ```
+
 #### Aplicando varios comandos  
 ```php
 <rind:set>
@@ -1532,6 +1486,7 @@ Nota: Como **RindCommands::set** almacena en la variable todo lo que se encuentr
 </rind:set>
 <rind:dump>{$_SET.owl2json}</rind:dump>
 ```
+
 #### Metodo Group SIN estructura  
 ```php
 # array PHP
@@ -1593,6 +1548,7 @@ array(
     )
 )
 ```
+
 #### Metodo Group CON estructura (1)  
 ```php
 # array PHP
@@ -1668,6 +1624,7 @@ array(
     )
 )
 ```
+
 #### Metodo Group CON estructura (2)  
 ```php
 # array PHP
@@ -1723,6 +1680,7 @@ array(
     )
 )
 ```
+
 #### Metodo Filter 
 ```php
 # array PHP
@@ -1742,6 +1700,7 @@ $data = array(
     <@filter>{$v.price}<20</@filter>
 </rind:set>
 ```
+
 #### Convertir un array a Base64  
 ```php
 # array PHP
@@ -1756,7 +1715,8 @@ $data = array("name"=>"John", "lastname"=>"Smith", "age"=>35);
 </rind:set>
 <rind:dump>{$_SET.json2b64}</rind:dump>
 ```
-#### Crear un array a partir de una cadena
+
+#### Crear un array a partir de una cadena  
 ```php
 <rind:set>
 	<@name>tests</@name>
@@ -1766,6 +1726,7 @@ $data = array("name"=>"John", "lastname"=>"Smith", "age"=>35);
     ]</@value>
 </rind:set>
 ```
+
 #### Convertir un array de PHP a JS  
 ```php
 <rind:set>
@@ -1775,6 +1736,7 @@ $data = array("name"=>"John", "lastname"=>"Smith", "age"=>35);
 </rind:set>
 var ENV = eval({$_SET.envjson});
 ```
+
 #### Lista de valores  
 ```php
 # Comando
@@ -1796,7 +1758,8 @@ Array (
     [6] => domingo
 )
 ```
-#### sub-arrays / each
+
+#### sub-arrays / each  
 ```php
 # array PHP
 $data = array(
@@ -1834,6 +1797,7 @@ Array (
     [2] => Array ( [name] =>  Carl )
 )
 ```
+
 #### Ejemplo de subcadena  
 ```php
 # Comando
@@ -1846,6 +1810,7 @@ Array (
 # Resultado
 CDEF
 ```
+
 #### Indice alfanumérico  
 ```php
 # array PHP
@@ -1863,6 +1828,7 @@ $data = array("name"=>"John", "lastname"=>"Smith", "age"=>35);
 # Resultado
 Smith
 ```
+
 #### Vector de valores  
 ```php
 # array PHP
@@ -1888,6 +1854,7 @@ Array (
     [Carl] => Williams
 )
 ```
+
 #### Set Mode (ver RindCommands::ifcase)  
 ```php
 # Establece el valor de la variable en función del resultado del ifcase
@@ -1911,6 +1878,7 @@ Array (
     </@value>
 </rind:set>
 ```
+
 #### Web Service REST
 con autenticación basic y body en formato JSON
 ```php
