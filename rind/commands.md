@@ -813,9 +813,9 @@ Este array es declarado en el archivo **ngl/conf/rind.conf**
 ```php
 # Datos
 [includes]
-menu    = "home/files/menu.php";
-index    = "home/modules/index.php";
-libs    = "home/modules/inc/libs.php";
+menu   = "home/files/menu.php";
+index  = "home/modules/index.php";
+libs   = "home/modules/inc/libs.php";
 
 # Comando
 <rind:incfile>menu</rind:incfile>
