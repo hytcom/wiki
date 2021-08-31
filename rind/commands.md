@@ -1130,6 +1130,7 @@ ___
 **!!!! IMPORTANTE !!!!**  
 No es posible declarar **mergefiles multiples** dentro del contenido del argumento **content** de otro **mergefile**. Para ello se debera utilizar **data-content base64** ( [ver caso](#mergefile-fail) )
 ___
+&nbsp;
 
 ### Ejemplos  
 #### Modo Simple  
