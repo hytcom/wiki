@@ -344,7 +344,6 @@ ___
 # Comandos
 |Comando|Descripción|
 |---|---|
-|[ABC](#abc)||
 |[abort](#abort)|Disponible sólo dentro del comando RindCommands::loop. Termina con la ejecución ...|
 |[alvin](#alvin)|Ejecuta una evaluación de permisos a traves de la clase nogal::nglAlvinCuenta co...|
 |[comments](comments)|Rind cuenta con una manera de añadir comentarios al código fuente.Los comentario...|
