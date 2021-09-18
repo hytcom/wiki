@@ -1245,4 +1245,4 @@ El tabulado y las columnas del ejemplo son unicamente con fines ilustrtivos
 &nbsp;
 ___
 <sub><b>revisión:</b> 2019-10-25 - <b>bithive</b> - <em>maximiza tu tiempo</em></sub><br />
-<sup>&copy; 2020 by <a href="https://hytcom.net">hytcom.net</a> - <a href="https://github.com/hytcom">@hytcom</a></sup><br /> 
+<sup>&copy; 2021 by <a href="https://hytcom.net">hytcom.net</a> - <a href="https://github.com/hytcom">@hytcom</a></sup><br /> 

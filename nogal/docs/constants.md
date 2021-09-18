@@ -116,4 +116,4 @@ Constantes predefinidas disponibles en cualquier script en ejecucción
 
 ___
 <sub><b>nogal</b> - <em>the most simple PHP Framework</em></sub><br />
-<sup>&copy; 2020 by <a href="https://hytcom.net">hytcom.net</a> - <a href="https://github.com/hytcom">@hytcom</a></sup><br />
+<sup>&copy; 2021 by <a href="https://hytcom.net">hytcom.net</a> - <a href="https://github.com/hytcom">@hytcom</a></sup><br />
