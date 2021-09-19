@@ -1,9 +1,9 @@
 ## Estados de los Presupuestos
 
-**Pendiente**
+**Pendiente** 
 El presupuesto fué enviado al cliente para su aceptación.
 
-**Aceptado**
+**Aceptado** 
 El cliente ha aceptado el presupuesto. Se inicia la gestión.
 
 ### Diseño
