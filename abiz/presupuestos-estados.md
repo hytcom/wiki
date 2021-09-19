@@ -15,7 +15,7 @@ Los diseños han sido terminados y están listos para ser enviados al cliente.
 ### Solicitud
 Se envia nuevamente el presupuesto con los diseños al cliente para su apobación.
 
-### Administracion
+### Administración
 El cliente aprueba de manera definitiva el presupuesto, dando inicio al pedido.
 
 ### Pago
