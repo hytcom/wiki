@@ -1,10 +1,10 @@
 ## Estados de los Presupuestos
 
 ### Pendiente
-El presupuesto fué enviado al cliente para su aceptación.<br /><br />
+> El presupuesto fué enviado al cliente para su aceptación.
 
 ### Aceptado
-El cliente ha aceptado el presupuesto. Se inicia la gestión.<br /><br />
+> El cliente ha aceptado el presupuesto. Se inicia la gestión.
 
 ### Diseño
 Comienza la instancia de diseño. Se peparan los bocetos para que sean enviados al cliente.<br /><br />
