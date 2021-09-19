@@ -1,4 +1,5 @@
 ## Tipos de Documentos
+El sistema acepta los siguientes tipos de documentos contables.
 
 ### Factura de Compra
 Refleja la compra de un bien o la prestación de un servicio por parte de la empresa.
