@@ -1,6 +1,7 @@
-## Tipos de Documentos
+# Tipos de Documentos
 El sistema acepta los siguientes tipos de documentos contables.
 
+## Registraciones Contables
 ### Factura de Compra
 Refleja la compra de un bien o la prestación de un servicio por parte de la empresa.
 
@@ -33,14 +34,15 @@ Comprobante de un cargo o deuda a favor de la empresa.
 - Por el cobro de comisiones.
 - Gasto de envió.
 
-### Orden de Pago
-Refleja el envío de fondos a una persona, empresa o institución, sin que obre factura de por medio.
+### Saldo Anterior
+Refleja el saldo de la cuenta al momento de ingresar al sistema.
 
+## Movimientos de Dinero
 ### Recibo de Cobro
 Refleja la realización del cobro de una factura por parte de la empresa.
 
 ### Recibo de Pago
 Refleja la realización del pago de una factura por parte de la empresa.
 
-### Saldo Anterior
-Refleja el saldo de la cuenta al momento de ingresar al sistema.
+### Orden de Pago
+Refleja el envío de fondos a una persona, empresa o institución, sin que obre factura de por medio.
