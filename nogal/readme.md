@@ -392,6 +392,8 @@ La respuesta es simple, porque con [bee](docs/bee.md) se pueden ejecutar multipl
 La estructura de las sentencias es siempre la misma:  
 
 **objeto** **_metodo_** _[argumentos]_
+o
+**objeto**:**_metodo_** _[argumentos]_
 
 Los argumentos pueden ser una cadena literal o un **array** en formato **JSON**  
 En cada sentecia la variable **-$:** contendrá el resultado de la sentencia inmediatamente anterior, sin importar el tipo de dato.
@@ -423,14 +425,23 @@ El modo directo se ejecuta al presionar **ENTER**. Opcionalmente puede ejecutars
 **IMPORTANTE:** el separador no debe repetirse dentro de la cadena de comandos, mas que para separar a estos entre sí.  
 
 ```bash
-$ php bee <COMMAND>                     modo directo
-$ php bee -s <COMMAND>                  modo directo silencioso
-$ php bee -r <COMMAND>                  modo inline retorno (valor crudo, sin formato, y en caso de error la cadena NULL)
-$ php bee -m "<COMMAND>|<COMMAND>"      modo multiple
-$ php bee -m@ "<COMMAND>@<COMMAND>"     modo multiple con @ como separador
-$ php bee -mXX "<COMMAND>XX<COMMAND>"   modo multiple con XX como separador
-$ php bee -s -m "<COMMAND>|<COMMAND>"   modo multiple silencioso
-$ php bee -r -m "<COMMAND>|<COMMAND>"   modo inline retorno (valor crudo, sin formato, y en caso de error la cadena NULL)
+Uso:
+    php bee [OPTIONS] <COMMAND>
+    php bee [OPTIONS] -m"<COMMAND><SEPARATOR><COMMAND>"
+    php bee [OPTIONS] (modo consola. para finalizar, usar bzzz)
+
+Comandos:
+    Las sintaxis de los comandos pueden ser:
+        <OBJECT> <METHOD> [<ARGUMENT> ... <ARGUMENT>]
+       <OBJECT>:<METHOD> [<ARGUMENT> ... <ARGUMENT>]
+
+Opciones:
+    -h    ayuda
+    -s    modo silencioso, no tiene salida
+    -r    retorna el valor crudo de la respusts (raw)
+    -f    carga el código a ejecutar, desde un archivo
+    -m    permite ejecutar multiples comandos en línea
+    -m@   multiples comandos con un separador distinto a |, en este caso, @
 
 # ejemplo
 $ php bee files ls [\".\",null,\"info\"]
@@ -439,15 +450,11 @@ $ php bee files ls [\".\",null,\"info\"]
 El modo bloque se inicia con la llamada **php bee** y finaliza con la sentencia **bzzz** seguida de **ENTER**.  
 
 ```bash
-$ php bee                               modo consola
-$ php bee -s                            modo consola silencioso
-
-# ejemplo
 $ php bee
-bee: file load https://cdn.abcontenidos.com/json/material-design-colors.json
-bee: -$: read
-bee: shift convert ["-$:", "json-ttable"]
-bee: bzzz
+file load https://cdn.abcontenidos.com/json/material-design-colors.json
+-$: read
+shift convert ["-$:", "json-ttable"]
+bzzz
 ```
 
 &nbsp;

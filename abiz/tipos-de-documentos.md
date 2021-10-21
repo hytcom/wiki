@@ -39,7 +39,6 @@ Comprobante de un cargo o deuda a favor de la empresa.
 Refleja el saldo de la cuenta al momento de ingresar al sistema.
 
 ## Movimientos de Dinero
----
 ### Recibo de Cobro
 Refleja la realización del cobro de una factura por parte de la empresa.
 
