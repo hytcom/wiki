@@ -73,7 +73,7 @@ print_r($ngl("nut.web")->run("subcategorias", array("parent"=>2)));
 ```
 
 ### Ejecución desde Rind
-Para ejecutar un método desde las plantillas es necesario que se lo defina como un método seguro
+Para ejecutar un método desde las plantillas es necesario que se lo defina como un método seguro.  
 Los argumentos pueden ser pasados directamente utilizando el nombre del argumento, o utilizando el prefijo **data-**
 ```php
 <?php
