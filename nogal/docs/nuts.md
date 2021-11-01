@@ -25,7 +25,7 @@ namespace nogal;
 class nutNOMBRE_DEL_NUT extends nglNut {
 
 	protected function init() {
-		$this->SafeMethods();
+		$this->SafeMethods(["foo","bar"]);
 	}
 
 	protected function NOMBRE_DEL_NUT($aArguments) {
@@ -82,7 +82,7 @@ namespace nogal;
 class nutWeb extends nglNut {
 
 	protected function init() {
-		$this->SafeMethods("ventas");
+		$this->SafeMethods(["ventas"]);
 	}
 
 	protected function ventas($aArguments) {
