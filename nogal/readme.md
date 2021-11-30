@@ -14,7 +14,7 @@
 &nbsp;
 
 ## Introducción
-[nogal](https://github.com/hytcom/nogal-php) es un framework PHP de código abierto pensado para que todos puedan desarrollar aplicaciones sin necesidad de tener grandes conocimientos de programación (the most simple PHP Framework)  
+[nogal](https://github.com/hytcom/nogal) es un framework PHP de código abierto pensado para que todos puedan desarrollar aplicaciones sin necesidad de tener grandes conocimientos de programación (the most simple PHP Framework)  
 
 Su estructura está pensada para que todo aquel que tenga conocimientos básicos de programación, como que es una **variable**, un **if** y un **bucle**, pueda desarrollar aplicaciones sin mayores dificultades. Esto es gracias, entre otras cosas, a su poderoso sistema de templates llamado [rind](../rind) que permite al desarrollador comunicarse con cualquiera de los objetos del framework desde el HTML, utilizando una sintáxis basada en XML, JS y JSON.
 
@@ -442,20 +442,35 @@ Opciones:
     -f    carga el código a ejecutar, desde un archivo
     -m    permite ejecutar multiples comandos en línea
     -m@   multiples comandos con un separador distinto a |, en este caso, @
-
-# ejemplo
-$ php bee files ls [\".\",null,\"info\"]
+	-v    variable de entorno key=value
 ```
 
-El modo bloque se inicia con la llamada **php bee** y finaliza con la sentencia **bzzz** seguida de **ENTER**.  
+#### ejemplos
+**En línea**
+```bash
+$ php bee files ls . :null: info
+```
 
+**Modo Bloque**
+Se inicia con la llamada **php bee** y finaliza con la sentencia **bzzz** seguida de **ENTER**.  
 ```bash
 $ php bee
-file load https://cdn.abcontenidos.com/json/material-design-colors.json
+file load https://cdn.upps.cloud/json/material-design-colors.json
 -$: read
 shift convert ["-$:", "json-ttable"]
 bzzz
 ```
+
+**Iteración**
+```bash
+@loop 1:10
+    @set row -$:
+    @loop ["A","B","C"]
+        @print "-$:{$row} "
+    endloop
+endloop
+```
+
 
 &nbsp;
 
