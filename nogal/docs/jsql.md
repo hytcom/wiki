@@ -58,24 +58,26 @@ Las estructuras de los objetos son:
 **create**
 ```json
 {
+    "type" : "create",
     "table" : "nombre_tabla",
-    "type" : "",
+    "tabletype": "",
     "comment" : "comentarios",
-    "attribs" : {},
+    "attrs" : {},
     "columns" : [
-        {"name":"campo1", "type":"", "length":"", "null":"", "default":"", "index":"", "attribs":[], "comment":""},
-        {"name":"campo2", "type":"", "length":"", "null":"", "default":"", "index":"", "attribs":[], "comment":""},
-        {"name":"campo3", "type":"", "length":"", "null":"", "default":"", "index":"", "attribs":[], "comment":""}
+        {"name":"campo1", "type":"", "length":"", "null":"", "default":"", "index":"", "attrs":[], "comment":""},
+        {"name":"campo2", "type":"", "length":"", "null":"", "default":"", "index":"", "attrs":[], "comment":""},
+        {"name":"campo3", "type":"", "length":"", "null":"", "default":"", "index":"", "attrs":[], "comment":""}
     ]
 }
 
 #ejemplo
 {
+    "type" : "create",
     "table" : "log",
     "comment" : "Log de operaciones realizadas",
-    "attribs" : ["ENGINE=MyISAM", "DEFAULT", "CHARSET=utf8mb4", "COLLATE=utf8mb4_unicode_ci"],
+    "attrs" : ["ENGINE=MyISAM", "DEFAULT", "CHARSET=utf8mb4", "COLLATE=utf8mb4_unicode_ci"],
     "columns" : [
-        {"name":"id", "type":"INT", "null":"false", "index":"PRIMARY", "attribs":["AUTO_INCREMENT"]},
+        {"name":"id", "type":"INT", "null":"false", "index":"PRIMARY", "attrs":["AUTO_INCREMENT"]},
         {"name":"user", "type":"INT", "null":"true", "index":"INDEX", "default":"null", "comment":"id del usuario que ejecutó la acción"},
         {"name":"action", "type":"ENUM", "length":"'insert','delete','update'", "null":"false", "default":"insert", "comment":"acción"},
         {"name":"date", "type":"TIMESTAMP", "null":"false", "default":"CURRENT_TIMESTAMP", "comment":"fecha y hora de la ejecución"}
