@@ -406,7 +406,7 @@ El siquiente ejemplo lee datos de la base y los exporta en formato CSV.
 require_once("config.php");
 
 echo $ngl("bee")->bzzz(<<<BEE
-mysql args [{"host":"172.17.0.3", "base":"test", "user":"root", "pass":"rootoor"}]
+mysql args [{"host":"localhost", "base":"test", "user":"root", "pass":"rootoor"}]
 -$: connect
 -$: query select * from ventas
 -$: getall
@@ -451,7 +451,7 @@ Opciones:
 $ php bee files ls . :null: info
 ```
 
-**Modo Bloque**
+**Modo Bloque**  
 Se inicia con la llamada **php bee** y finaliza con la sentencia **bzzz** seguida de **ENTER**.  
 ```bash
 $ php bee
@@ -461,14 +461,40 @@ shift convert ["-$:", "json-ttable"]
 bzzz
 ```
 
+**Condicionales**
+Existen 2 condicionales, **if** e **ifnot**. Ya que por el momento no es posible utilizar **else** en el condicional **if**
+```bash
+$ php bee
+@php file_exists foobar.txt
+@if -$:
+	@print "file exists"
+endif
+bzzz
+```
+
+```bash
+$ php bee
+@php file_exists foobar.txt
+@set file -$:
+@if {$file}
+	@print "file exists"
+endif
+@ifnot {$file}
+	@print "file not exists"
+endif
+bzzz
+```
+
 **Iteración**
 ```bash
-@loop 1:10
-    @set row -$:
+$ php bee
+@loop 1:5
+    @print "ROW -$:"
     @loop ["A","B","C"]
-        @print "-$:{$row} "
+        @print "    COL -$:"
     endloop
 endloop
+bzzz
 ```
 
 

@@ -5,52 +5,52 @@ La estructura del objeto es:
 
 ``` json
 {
-	"columns" : [
-		["tabla.campo1", "foo"],
-		["alias2.campo2"],
-		["campo3","bar"]
-	],
-	"tables" : [
-		["tabla"],
-		[
-			"tabla2",
-			"alias2", [
-				["tabla.campo1","eq", "alias2.campo2"],
-				"AND",
-				[
-					["tabla.campo2", "gt", "alias2.campo3"], 
-					"OR",
-					["tabla.campo2", "lt", "alias2.campo4"]
-				],
-				"AND",
-				["tabla.campo3", "like", "(I'm John)"],
-				"AND",
-				["tabla.campo4", "eq", "(2)"]
-			]
-		]
-	],
-	"where" : [
-		["tabla.campo1", "eq", "alias2.campo2"],
-		"AND",
-		[
-			["tabla.campo2", "gt", "alias2.campo3"], 
-			"OR",
-			["tabla.campo2", "lt", "alias2.campo4"]
-		],
-		"AND",
-		["tabla.campo3", "eq", "(string)"],
-		"AND",
-		["tabla.campo4", "like", "(don't)"]
-	],
-	"group" : ["tabla.campo1", "tabla.campo2"],
-	"having" : [
-		["tabla.campo2", "gt", "alias2.campo3"], 
-		"OR",
-		["tabla.campo2", "lt", "alias2.campo4"]
-	],
-	"order" : ["tabla.campo1:ASC", "alias2.campo1:DESC"],
-	"offset" : 0,
-	"limit" : 10
+    "columns" : [
+        ["tabla.campo1", "foo"],
+        ["alias2.campo2"],
+        ["campo3","bar"]
+    ],
+    "tables" : [
+        ["tabla"],
+        [
+            "tabla2",
+            "alias2", [
+                ["tabla.campo1","eq", "alias2.campo2"],
+                "AND",
+                [
+                    ["tabla.campo2", "gt", "alias2.campo3"], 
+                    "OR",
+                    ["tabla.campo2", "lt", "alias2.campo4"]
+                ],
+                "AND",
+                ["tabla.campo3", "like", "(I'm John)"],
+                "AND",
+                ["tabla.campo4", "eq", "(2)"]
+            ]
+        ]
+    ],
+    "where" : [
+        ["tabla.campo1", "eq", "alias2.campo2"],
+        "AND",
+        [
+            ["tabla.campo2", "gt", "alias2.campo3"], 
+            "OR",
+            ["tabla.campo2", "lt", "alias2.campo4"]
+        ],
+        "AND",
+        ["tabla.campo3", "eq", "(string)"],
+        "AND",
+        ["tabla.campo4", "like", "(don't)"]
+    ],
+    "group" : ["tabla.campo1", "tabla.campo2"],
+    "having" : [
+        ["tabla.campo2", "gt", "alias2.campo3"], 
+        "OR",
+        ["tabla.campo2", "lt", "alias2.campo4"]
+    ],
+    "order" : ["tabla.campo1:ASC", "alias2.campo1:DESC"],
+    "offset" : 0,
+    "limit" : 10
 }
 ```
 
