@@ -63,7 +63,7 @@ Las estructuras de los objetos son:
     "tabletype": "",
     "comment" : "comentarios",
     "attrs" : {},
-    "autoinc" : "campo1",
+    "autoinc" : "nombre_campo_autoincrementable",
     "columns" : [
         {"name":"campo1", "type":"", "length":"", "null":"", "default":"", "index":"", "attrs":[], "comment":""},
         {"name":"campo2", "type":"", "length":"", "null":"", "default":"", "index":"", "attrs":[], "comment":""},
