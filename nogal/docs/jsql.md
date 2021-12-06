@@ -63,6 +63,7 @@ Las estructuras de los objetos son:
     "tabletype": "",
     "comment" : "comentarios",
     "attrs" : {},
+    "autoinc" : "campo1",
     "columns" : [
         {"name":"campo1", "type":"", "length":"", "null":"", "default":"", "index":"", "attrs":[], "comment":""},
         {"name":"campo2", "type":"", "length":"", "null":"", "default":"", "index":"", "attrs":[], "comment":""},
@@ -76,8 +77,9 @@ Las estructuras de los objetos son:
     "table" : "log",
     "comment" : "Log de operaciones realizadas",
     "attrs" : ["ENGINE=MyISAM", "DEFAULT", "CHARSET=utf8mb4", "COLLATE=utf8mb4_unicode_ci"],
+    "autoinc" : "id",
     "columns" : [
-        {"name":"id", "type":"INT", "null":"false", "index":"PRIMARY", "attrs":["AUTO_INCREMENT"]},
+        {"name":"id", "type":"INT", "null":"false", "index":"PRIMARY"},
         {"name":"user", "type":"INT", "null":"true", "index":"INDEX", "default":"null", "comment":"id del usuario que ejecutó la acción"},
         {"name":"action", "type":"ENUM", "length":"'insert','delete','update'", "null":"false", "default":"insert", "comment":"acción"},
         {"name":"date", "type":"TIMESTAMP", "null":"false", "default":"CURRENT_TIMESTAMP", "comment":"fecha y hora de la ejecución"}
