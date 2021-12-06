@@ -1,8 +1,9 @@
 # jsql
 JSQL es una sintáxis que busca estandarizar las consultas SQL en un formato JSON. El objeto **jsql** proporciona un conjunto de métodos que posibilita el parseo de dichas cadenas.  
 Luego, cada objeto de base de datos deberá contar con un método que interprete esos datos y los traduzca en una sentencia SQL válida para su motor.  
-La estructura del objeto es:
+Las estructuras de los objetos son:
 
+**select**
 ``` json
 {
     "columns" : [
@@ -51,6 +52,34 @@ La estructura del objeto es:
     "order" : ["tabla.campo1:ASC", "alias2.campo1:DESC"],
     "offset" : 0,
     "limit" : 10
+}
+```
+
+**create**
+```json
+{
+    "table" : "nombre_tabla",
+    "type" : "",
+    "comment" : "comentarios",
+    "attribs" : {},
+    "columns" : [
+        {"name":"campo1", "type":"", "length":"", "null":"", "default":"", "index":"", "attribs":[], "comment":""},
+        {"name":"campo2", "type":"", "length":"", "null":"", "default":"", "index":"", "attribs":[], "comment":""},
+        {"name":"campo3", "type":"", "length":"", "null":"", "default":"", "index":"", "attribs":[], "comment":""}
+    ]
+}
+
+#ejemplo
+{
+    "table" : "log",
+    "comment" : "Log de operaciones realizadas",
+    "attribs" : ["ENGINE=MyISAM", "DEFAULT", "CHARSET=utf8mb4", "COLLATE=utf8mb4_unicode_ci"],
+    "columns" : [
+        {"name":"id", "type":"INT", "null":"false", "index":"PRIMARY", "attribs":["AUTO_INCREMENT"]},
+        {"name":"user", "type":"INT", "null":"true", "index":"INDEX", "default":"null", "comment":"id del usuario que ejecutó la acción"},
+        {"name":"action", "type":"ENUM", "length":"'insert','delete','update'", "null":"false", "default":"insert", "comment":"acción"},
+        {"name":"date", "type":"TIMESTAMP", "null":"false", "default":"CURRENT_TIMESTAMP", "comment":"fecha y hora de la ejecución"}
+    ]
 }
 ```
 
