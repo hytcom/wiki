@@ -1392,7 +1392,7 @@ Nota: Como **RindCommands::set** almacena en la variable todo lo que se encuentr
 |**structure**|Cadena JSON que detemina la estructura de agrupamiento del método **group**<br />{<blockquote> "MAIN": [ <i>nodo principal</i> <blockquote> "id", [ <i>id del nodo</i> <blockquote> "campo 1", <i>campos del nodo</i><br /> "campo N"<br /> </blockquote> ] </blockquote> ],<br /> "id_secundario": [ <i>nodo de agrupamiento</i> <blockquote> "campo 5", [ <i>id del nodo</i><br /> <blockquote> "campo 1", <i>campos del nodo</i><br /> "campo N"<br /> </blockquote> ] </blockquote> ] </blockquote>}<br />|
 |**userpwd**|Utilizado cuando **file** requiera autenticación HTTP ó en WS del tipo REST<br />En ocaciones el valor debe ser pasado con el attributo **quotes**<ul><li>**HTTP** = username:password</li><li>**basic** = basic username:password</li><li>**bearer** = bearer token</li><li>**alvin** = alvin alvintoken</li></ul><br />|
 |**body**|Cadena de datos que se enviará en el BODY en caso de solicitudes REST **file**. En ocaciones el valor debe ser pasado con el attributo **json**|
-|**columns**|Nombre del índice el sub-array en el método **vector**|
+|**column**|Nombre del índice el sub-array en el método **vector**|
 |**value**|Nombre del índice el sub-array|
 
 ### Ejemplos  
@@ -1765,6 +1765,27 @@ Array (
     [5] => sabado
     [6] => domingo
 )
+```
+
+#### Implode de subindices
+```php
+# array PHP
+$data = array(
+    array("id"=>1,"name"=>"Castro Hnos SRL","cuit"=>"30362514789"),
+    array("id"=>2,"name"=>"Ravelli SA","cuit"=>"30362514789")
+);
+
+# Comando
+<rind:set>
+    <@name>cuits</@name>
+    <@value>{$data}</@value>
+    <@column>cuit<@column>
+    <@splitter>;</@splitter>
+    <@method>vector,implode</@method>
+</rind:set>
+
+# Resultado
+30362514789;30362514789
 ```
 
 #### sub-arrays / each  

@@ -1,11 +1,19 @@
 # jsql
 JSQL es una sintáxis que busca estandarizar las consultas SQL en un formato JSON. El objeto **jsql** proporciona un conjunto de métodos que posibilita el parseo de dichas cadenas.  
 Luego, cada objeto de base de datos deberá contar con un método que interprete esos datos y los traduzca en una sentencia SQL válida para su motor.  
-Las estructuras de los objetos son:
+
+Para los condicionales en JOIN, WHERE y HAVING, o asignación de valores en INSERT y UPDATE, los nombres de los campos deben ir entre **[ ]**.
+```json
+    ...["[tabla1.campo1]", "eq", "[tabla2.campo1"]...
+    ...["[tabla1.campo1]", "eq", "foobar"]...
+```
+
+## Estructuras de las queries
 
 **select**
 ``` json
 {
+    "query" : "select",
     "columns" : [
         ["tabla.campo1", "foo"],
         ["alias2.campo2"],
@@ -16,38 +24,38 @@ Las estructuras de los objetos son:
         [
             "tabla2",
             "alias2", [
-                ["tabla.campo1","eq", "alias2.campo2"],
+                ["[tabla.campo1]","eq", "[alias2.campo2]"],
                 "AND",
                 [
-                    ["tabla.campo2", "gt", "alias2.campo3"], 
+                    ["[tabla.campo2]", "gt", "[alias2.campo3]"], 
                     "OR",
-                    ["tabla.campo2", "lt", "alias2.campo4"]
+                    ["[tabla.campo2]", "lt", "alias2.campo4"]
                 ],
                 "AND",
-                ["tabla.campo3", "like", "(I'm John)"],
+                ["[tabla.campo3]", "like", "I'm John"],
                 "AND",
-                ["tabla.campo4", "eq", "(2)"]
+                ["[tabla.campo4]", "eq", "2"]
             ]
         ]
     ],
     "where" : [
-        ["tabla.campo1", "eq", "alias2.campo2"],
+        ["[tabla.campo1]", "eq", "[alias2.campo2]"],
         "AND",
         [
-            ["tabla.campo2", "gt", "alias2.campo3"], 
+            ["[tabla.campo2]", "gt", "[alias2.campo3]"], 
             "OR",
-            ["tabla.campo2", "lt", "alias2.campo4"]
+            ["[tabla.campo2]", "lt", "[alias2.campo4]"]
         ],
         "AND",
-        ["tabla.campo3", "eq", "(string)"],
+        ["[tabla.campo3]", "eq", "string"],
         "AND",
-        ["tabla.campo4", "like", "(don't)"]
+        ["[tabla.campo4]", "like", "don't"]
     ],
     "group" : ["tabla.campo1", "tabla.campo2"],
     "having" : [
-        ["tabla.campo2", "gt", "alias2.campo3"], 
+        ["[tabla.campo2]", "gt", "[alias2.campo3]"], 
         "OR",
-        ["tabla.campo2", "lt", "alias2.campo4"]
+        ["[tabla.campo2]", "lt", "[alias2.campo4]"]
     ],
     "order" : ["tabla.campo1:ASC", "alias2.campo1:DESC"],
     "offset" : 0,
@@ -58,34 +66,129 @@ Las estructuras de los objetos son:
 **create**
 ```json
 {
-    "type" : "create",
-    "table" : "nombre_tabla",
-    "tabletype": "",
+    "query" : "create",
+    "table" : "nombre tabla",
+    "type": "",
+    "drop" : "true o false. Elimina la tabla si existe",
     "comment" : "comentarios",
-    "attrs" : {},
-    "autoinc" : "nombre_campo_autoincrementable",
     "columns" : [
-        {"name":"campo1", "type":"", "length":"", "null":"", "default":"", "index":"", "attrs":[], "comment":""},
-        {"name":"campo2", "type":"", "length":"", "null":"", "default":"", "index":"", "attrs":[], "comment":""},
-        {"name":"campo3", "type":"", "length":"", "null":"", "default":"", "index":"", "attrs":[], "comment":""}
+        {"name":"campo1", "type":"", "length":"", "null":"", "default":"", "index":"", "attrs":[], "comment":"", "autoinc":"", "after":""}
     ]
 }
 
 #ejemplo
 {
-    "type" : "create",
+    "query" : "create",
     "table" : "log",
+    "drop" : "true",
     "comment" : "Log de operaciones realizadas",
-    "attrs" : ["ENGINE=MyISAM", "DEFAULT", "CHARSET=utf8mb4", "COLLATE=utf8mb4_unicode_ci"],
-    "autoinc" : "id",
     "columns" : [
-        {"name":"id", "type":"INT", "null":"false", "index":"PRIMARY"},
+        {"name":"id", "type":"INT", "null":"false", "index":"PRIMARY", "autoinc":"true"},
         {"name":"user", "type":"INT", "null":"true", "index":"INDEX", "default":"null", "comment":"id del usuario que ejecutó la acción"},
         {"name":"action", "type":"ENUM", "length":"'insert','delete','update'", "null":"false", "default":"insert", "comment":"acción"},
         {"name":"date", "type":"TIMESTAMP", "null":"false", "default":"CURRENT_TIMESTAMP", "comment":"fecha y hora de la ejecución"}
     ]
 }
 ```
+
+**comment**
+```json
+{
+    "query" : "comment",
+    "table" : "nombre_tabla",
+    "comment" : "comentario"
+}
+```
+
+**drop**
+```json
+{
+    "query" : "drop",
+    "table" : "nombre_tabla"
+}
+```
+
+**rename**
+```json
+{
+    "query" : "rename",
+    "name" : "viejo nombre",
+    "newname": "nuevo nombre"
+}
+```
+
+**colmodify**
+```json
+{
+    "query" : "alter",
+    "table" : "nombre de tabla",
+    "column" : {"name":"campo1", "type":"", "length":"", "null":"", "default":"", "index":"", "attrs":[], "comment":"", "autoinc":"", "after":""}
+}
+```
+
+**coldrop**
+```json
+{
+    "query" : "dropcol",
+    "table" : "nombre de tabla",
+    "column" : "nombre de columna"
+}
+```
+
+**colremame**
+```json
+{
+    "query" : "remamecol",
+    "table" : "nombre de tabla",
+    "column" : {"oldname":"", "name":"campo1", "type":"", "length":"", "null":"", "default":"", "index":"", "attrs":[], "comment":"", "autoinc":"", "after":""}
+}
+```
+
+**index**
+```json
+{
+    "query" : "index",
+    "table" : "nombre de tabla",
+    "column" : "nombre de columna",
+    "type" : "tipo de indice" 
+}
+```
+
+## Tipos de datos
+### Números
+- TINYINT: pequeño, from -128 to 127
+- SMALLINT: entero chico, from -32768 to 32767 
+- MEDIUMINT: entero mediano, from -8388608 to 8388607
+- INT: entero, from -2147483648 to 2147483647 
+- BIGINT: entero grande
+- DECIMAL: número exacto de coma flotante
+- FLOAT: número de coma flotante de presición simple
+- DOUBLE: número de coma flotante de presición doble
+
+### Cadenas
+- CHAR: longitud fijo, longitud máxima de 255 caracteres
+- VARCHAR: longitud variable length, longitud máxima de 255 caracteres
+- TINYTEXT: cadena, longitud máxima de 255 caracteres
+- TEXT: cadena, longitud máxima de 65.535 caracteres
+- MEDIUMTEXT: cadena, longitud máxima de 16.777.215 caracteres
+- BIGTEXT: cadena, longitud máxima de 4.294.967.295 caracteres
+- JSON: cadena, longitud máxima de 4.294.967.295 caracteres
+- TINYBLOB: cadena binaria, longitud máxima de 255 caracteres
+- BLOB:  cadena binaria, longitud máxima de 65.535 caracteres
+- MEDIUMBLOB:  cadena binaria, longitud máxima de 4.294.967.295 caracteres
+- BIGBLOB:  cadena binaria, longitud máxima de 4.294.967.295 caracteres
+- ENUM: enumeración
+
+### Fechas
+- DATE: fecha YYYY-MM-DD
+- TIME: hora HH:MM:SS.ssssss
+- DATETIME: fecha y hora juntos, YYYY-MM-DD HH:MM:SS
+- TIMESTAMP: fecha y hora con presición de nanosegundos YYYY-MM-DD HH:MM:SS.ffffff
+- YEAR: año, 4 dígitos
+
+
+
+
 
 Cuando sea necesario hacer comparaciones de valor, ya sea en las condiciones **WHERE** o en las **ON**, se deberá encerrar el valor entre paréntesis, utilizando estos como "comillas".  
 Ejemplos basados en MySQL

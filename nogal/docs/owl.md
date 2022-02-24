@@ -36,7 +36,7 @@ Para ver un ejemplo de uso completo ver la guía [owl paso a paso](owluso.md)
 |**id**|mixed|null|Selecciona un registro del objeto activo utilizando el propio **ID** o **IMYA**|
 |**inherit**|boolean|true|Determina las suspenciones deben propagarse a las tablas dependientes|
 |**insert_mode**|string|INSERT|Modo del método nglOwl::insert. Valores admitidos:<ul><li>**INSERT** = inserta nuevos registros</li><li>**REPLACE** = si el nuevo registro duplica un valor PRIMARY KEY o UNIQUE, el antiguo registro es eliminado</li><li>**IGNORE** = el comando no aborta incluso si ocurren errores durante la ejecución</li></ul>|
-|**jsql**|string|null|Sentencia JSQL para ser ejecutada utilizando el método [query](#query)|
+|**jsqlq**|string|null|Sentencia JSQL para ser ejecutada utilizando el método [query](#query)|
 |**owlog**|boolean|true|Activa y desactiva el log en la tabla **__ngl_owl_log__**|
 |**owlog_changelog**|boolean|false|Activa y desactiva el uso del changelog en la tabla **__ngl_owl_log__**|
 |**object**|string|null|Nombre del Objeto que se establecerá como activo|
