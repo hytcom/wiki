@@ -181,7 +181,7 @@ endloop
 &nbsp;
 
 **Ejemplo completo de un instalador**  
-[https://github.com/hytcom/bithive/blob/master/install.bee]()
+[https://github.com/hytcom/bithive/blob/master/install.bee](https://github.com/hytcom/bithive/blob/master/install.bee])
 &nbsp;
 
 **Lectura de base de datos a formato CSV (php)**
