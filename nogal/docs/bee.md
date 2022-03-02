@@ -78,6 +78,7 @@ bzzz
 ```
 seguida de un **ENTER**
 &nbsp;
+&nbsp;
 ___
 
 ## Ayuda en Terminal
