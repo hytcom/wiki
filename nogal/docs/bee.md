@@ -78,8 +78,8 @@ bzzz
 ```
 seguida de un **ENTER**
 &nbsp;
-&nbsp;
 ___
+&nbsp;
 
 ## Ayuda en Terminal
 Si se ejecuta **bee** con el flag -h, se mostrará una ayuda rápida en pantalla:
