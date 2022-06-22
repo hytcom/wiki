@@ -370,6 +370,7 @@ ___
 # Comandos
 |Comando|Descripción|
 |---|---|
+|[scomments](#comentarios-especiales)|Comentarios con funcionalidades especiales|
 |[abort](#abort)|Disponible sólo dentro del comando RindCommands::loop. Termina con la ejecución ...|
 |[alvin](#alvin)|Ejecuta una evaluación de permisos a traves de la clase nogal::nglAlvinCuenta co...|
 |[comments](comments)|Rind cuenta con una manera de añadir comentarios al código fuente.Los comentario...|
@@ -390,6 +391,12 @@ ___
 
 &nbsp;
   
+## Comentarios Especiales
+#### \<rind:/\*!!\*/\>
+Impide que una plantilla pueda ser llamada fuera del contexto **RindCommands::mergefile**. Por ejemplo, un header o una navbar.
+Para ello lo hay que colocar este comentario en la primer línea del código de la plantilla/
+
+
 ## alvin
 Ejecuta una evaluación de permisos a traves de la clase **nogal::nglAlvin**
 Cuenta con tres modos de ejecución:
