@@ -53,12 +53,13 @@ ___
 |Comando|Descripción|
 |---|---|
 |**@clear**|Limpia el buffer de salida|
+|**@dump**|Vuelca el contenido de una ó mas variables directamente a la salida de datos|
 |**@exit**|Aborta la excusión en curso|
 |**@if**|Permite la ejecuión condicional de sentencias cuando el resultado del mismo es **true**. El bloque de sentencias finaliza con **endif**.<br />Limitaciones: <ul><li>no se cuenta con bloque **else**</li><li>cuando las variables y/o constantes sean cadenas, deberán ser entrecomilladas</ul>|
 |**@ifnot**|Idéntico **@if**, sólo que las sentencias se ejecutan cuando el condicional retorna **false**|
 |**@get**|Obtiene el valor de una variable. Principalmente útil en el caso de arrays|
 |**@launch**|Redirige a la URL pasada. Sólo disponible en la versión web|
-|**@loop**|Iterador de código (bucle). Se comporta como un foreach de php.<br />Origenes de datos<ul><li>arrays</li>|
+|**@loop**|Iterador de código (bucle). Se comporta como un foreach de php.<br />@**@loop** puede ser llamado con 1 o 2 argumentos. <ul><li>**@loop** *origen_de_datos*</li><li>**@loop** *nombre_clave* *origen_de_datos*</li></ul> Origenes de datos<ul><li>arrays</li></ul>|
 |**@php**|Permite la ejecución de una función php|
 |**@print**|Imprime una expresión en pantalla|
 |**@splitter**|Setea el separador de cadenas. Por defecto: \\t|
@@ -241,6 +242,17 @@ $ php bee
 	@print "ROW -$:"
 	@loop ["A","B","C"]
 		@print "  COL -$:"
+	endloop
+endloop
+bzzz
+```
+
+**Iteración con clave**
+```bash
+$ php bee
+@loop index [{"name":"bart", "age":"10", "gender":"M"}, {"name":"lisa", "age":"8", "gender":"F"}, {"name":"homero", "age":"34", "gender":"M"}]
+	@loop keyname -$:
+		@print {$index} {$keyname} -$:
 	endloop
 endloop
 bzzz

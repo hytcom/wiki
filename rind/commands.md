@@ -426,7 +426,7 @@ La política de evaluación está condicionada por el argumento **alvin_mode** d
 ```php
 /* concede acceso al perfil que tenga los dos permisos */
 <rind:ifcase>
-    <@iff><rind:alvin>(?|sales.view,sales.add)</rind:alvin></@iff>
+    <@iff><rind:alvin>(sales.view,sales.add)</rind:alvin></@iff>
     <@then>PUEDE VERME</@then>
     <@else>NO PUEDE VERME</@else>
 </rind:ifcase>

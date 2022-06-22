@@ -1,5 +1,5 @@
 # crypt
-Implementa la clase 'phpseclib', de algoritmos de encriptación, con soporte para: 
+Implementa la clase 'phpseclib3', de algoritmos de encriptación, con soporte para: 
 - AES
 - BLOWFISH
 - DES
@@ -22,7 +22,7 @@ ___
 |Argumento|Tipo|Default|Descripción|
 |---|---|---|---|
 |**key**|mixed|null|Clave de encriptación|
-|**keyslen**|int|512|Longuitud de las claves. Minima admitida: 256|
+|**keylen**|int|512|Longuitud de las claves. Minima admitida: 256|
 |**text**|mixed||Cadena a encriptar/desencriptar|
 |**type**|string|aes|Método de encriptación:<ul><li>aes</li><li>blowfish</li><li>des</li><li>tripledes</li><li>rc2</li><li>rc4</li><li>rijndael</li><li>rsa</li><li>twofish</li></ul>|
   
