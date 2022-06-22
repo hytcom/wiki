@@ -400,9 +400,8 @@ Para ello lo hay que colocar este comentario en la primer línea del código de 
 <div class="container-fluid bg-burgundy">
 	<div class="container">
 		<nav class="navbar navbar-expand-lg">
-			<a class="navbar-brand" href="#index"><img src="{$ENV.cdn}/images/passwered/passwered-iso_white.svg" height="40" class="m-n" /></a>
-			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar"
-				aria-expanded="false" aria-label="Toggle navigation">
+			<a class="navbar-brand" href="#index"><img src="logo.svg" height="40" class="m-n" /></a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar">
 				<span class="navbar-toggler-icon"><i class="fas fa-bars"></i></span>
 			</button>
 			<div class="collapse navbar-collapse" id="navbar">
