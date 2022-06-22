@@ -394,7 +394,29 @@ ___
 ## Comentarios Especiales
 #### \<rind:/\*!!\*/\>
 Impide que una plantilla pueda ser llamada fuera del contexto **RindCommands::mergefile**. Por ejemplo, un header o una navbar.
-Para ello lo hay que colocar este comentario en la primer línea del código de la plantilla/
+Para ello lo hay que colocar este comentario en la primer línea del código de la plantilla
+```html
+<rind:/*!!*/>
+<div class="container-fluid bg-burgundy">
+	<div class="container">
+		<nav class="navbar navbar-expand-lg">
+			<a class="navbar-brand" href="#index"><img src="{$ENV.cdn}/images/passwered/passwered-iso_white.svg" height="40" class="m-n" /></a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar"
+				aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"><i class="fas fa-bars"></i></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbar">
+				<ul class="navbar-nav mr-auto">
+					<li class="nav-item"><a class="nav-link" href="#what">{$ENV.title}</a></li>
+					<li class="nav-item"><a class="nav-link" href="#faqs">FAQs</a></li>
+					<li class="nav-item"><a class="nav-link" href="#comments">Comentarios</a></li>
+				</ul>
+			</div>
+		</nav>
+	</div>
+</div>
+<>
+```
 &nbsp;
 ___
 &nbsp;
