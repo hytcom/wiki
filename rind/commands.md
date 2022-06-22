@@ -395,7 +395,9 @@ ___
 #### \<rind:/\*!!\*/\>
 Impide que una plantilla pueda ser llamada fuera del contexto **RindCommands::mergefile**. Por ejemplo, un header o una navbar.
 Para ello lo hay que colocar este comentario en la primer línea del código de la plantilla/
-
+&nbsp;
+___
+&nbsp;
 
 ## alvin
 Ejecuta una evaluación de permisos a traves de la clase **nogal::nglAlvin**
