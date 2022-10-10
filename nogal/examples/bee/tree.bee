@@ -1,10 +1,10 @@
 # carga de arbol
 tree source_type json-file
--$: load tree_example.json
+-$: load https://raw.githubusercontent.com/hytcom/wiki/master/nogal/examples/bee/tree_example.json
 
 # carga de ramas individuales
 # tree source_type b-json-file
-# -$: load /usr/share/nogal/assets/samples/tree_branches_example.json
+# -$: load https://raw.githubusercontent.com/hytcom/wiki/master/nogal/examples/bee/tree_branches_example.json
 
 # imprime el arbol
 -$: show name
